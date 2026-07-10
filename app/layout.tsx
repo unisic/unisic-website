@@ -13,8 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-// TODO: replace with the real domain once hosting is decided.
-const SITE_URL = "https://unisic.github.io";
+const SITE_URL = "https://unisic.app/";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
