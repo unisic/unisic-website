@@ -1,0 +1,157 @@
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 72px 24px 0;
+  display: grid;
+  grid-template-columns: 11fr 12fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.copy {
+  min-width: 0;
+}
+
+.headline {
+  font-size: clamp(2.05rem, 1.2rem + 2.7vw, 2.85rem);
+  line-height: 1.08;
+}
+
+.sub {
+  margin-top: 20px;
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 46ch;
+}
+
+.ctas {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 46px;
+  padding: 0 26px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 650;
+  white-space: nowrap;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--text-on-accent);
+  box-shadow: 0 6px 22px rgba(200, 172, 214, 0.28);
+}
+
+.primary:hover {
+  background: var(--accent-bright);
+}
+
+.primary:active,
+.secondary:active {
+  transform: scale(0.96);
+}
+
+.secondary {
+  color: var(--text);
+  border: 1px solid var(--divider);
+  background: var(--surface);
+}
+
+.secondary:hover {
+  border-color: rgba(243, 240, 250, 0.3);
+}
+
+.visual {
+  min-width: 0;
+  position: relative;
+}
+
+/* glow stays exactly inside .visual: anything larger (inset or transform)
+   extends the document's scrollable overflow area */
+.visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    78% 82% at 52% 46%,
+    rgba(46, 35, 108, 0.6),
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.visual > * {
+  position: relative;
+}
+
+/* two overlapping windows: main window behind, editor front bottom-right.
+   Editor sits inside the stack's bottom padding, so nothing extends the
+   scrollable area. */
+.stack {
+  position: relative;
+  padding-bottom: 12%;
+}
+
+.mainWin {
+  width: 90%;
+}
+
+.editorWin {
+  position: absolute;
+  width: 62%;
+  right: 0;
+  bottom: 0;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
+}
+
+/* one-shot load-in, motivated: the app opens, then the editor lands on top,
+   telling the capture-then-edit story */
+@media (prefers-reduced-motion: no-preference) {
+  .copy {
+    animation: rise 0.7s var(--ease-out) both;
+  }
+
+  .mainWin {
+    animation: rise 0.7s var(--ease-out) 0.12s both;
+  }
+
+  .editorWin {
+    animation: rise 0.7s var(--ease-out) 0.45s both;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 899px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 48px;
+  }
+
+  .sub {
+    font-size: 16px;
+  }
+}

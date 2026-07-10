@@ -1,0 +1,227 @@
+.chips {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip,
+.chipActive {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.chip:hover {
+  color: var(--text);
+  border-color: rgba(243, 240, 250, 0.3);
+}
+
+.chip:active,
+.chipActive:active {
+  transform: scale(0.96);
+}
+
+.chipActive {
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.trio {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.trio > span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(128, 128, 128, 0.45);
+}
+
+/* ---- recolorable mini window ---- */
+
+.previewFrame {
+  margin: 24px 0 0;
+  container-type: inline-size;
+  max-width: 720px;
+}
+
+.preview {
+  --u: 0.15873cqi; /* 100cqi / 630 design px */
+  aspect-ratio: 630 / 300;
+  display: flex;
+  flex-direction: column;
+  border-radius: calc(16 * var(--u));
+  background: var(--p-bg);
+  border: 1px solid var(--divider);
+  box-shadow: 0 calc(18 * var(--u)) calc(46 * var(--u)) rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  transition: background var(--dur) var(--ease-out);
+}
+
+.titlebar {
+  height: calc(34 * var(--u));
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 calc(14 * var(--u));
+  background: var(--p-primary);
+  color: var(--p-text);
+  transition:
+    background var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out);
+}
+
+.titleText {
+  font-size: calc(13 * var(--u));
+  font-weight: 600;
+  line-height: 1;
+}
+
+.winDots {
+  display: inline-flex;
+  gap: calc(6 * var(--u));
+}
+
+.winDots > span {
+  width: calc(9 * var(--u));
+  height: calc(9 * var(--u));
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.sidebar {
+  width: calc(170 * var(--u));
+  flex: none;
+  background: var(--p-primary);
+  padding: calc(12 * var(--u)) calc(10 * var(--u));
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--u));
+  transition: background var(--dur) var(--ease-out);
+}
+
+.nav,
+.navActive {
+  height: calc(36 * var(--u));
+  border-radius: calc(10 * var(--u));
+  display: flex;
+  align-items: center;
+  gap: calc(10 * var(--u));
+  padding-left: calc(12 * var(--u));
+  font-size: calc(13 * var(--u));
+  line-height: 1;
+  color: var(--p-text);
+  transition:
+    background var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out);
+}
+
+.nav {
+  opacity: 0.62;
+}
+
+.navActive {
+  background: var(--p-tertiary);
+  font-weight: 600;
+}
+
+.navIcon {
+  width: calc(16 * var(--u));
+  height: calc(16 * var(--u));
+  flex: none;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: calc(18 * var(--u)) calc(22 * var(--u));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pageTitle {
+  font-size: calc(21 * var(--u));
+  font-weight: 700;
+  color: var(--p-text);
+  line-height: 1.2;
+  transition: color var(--dur) var(--ease-out);
+}
+
+.cards {
+  display: flex;
+  gap: calc(14 * var(--u));
+  margin-top: calc(14 * var(--u));
+}
+
+.card {
+  width: calc(150 * var(--u));
+  height: calc(96 * var(--u));
+  border-radius: calc(16 * var(--u));
+  background: var(--p-surface);
+  color: var(--p-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(8 * var(--u));
+  font-size: calc(13 * var(--u));
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid rgba(128, 128, 128, 0.22);
+  transition:
+    background var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out);
+}
+
+.cardIcon {
+  width: calc(24 * var(--u));
+  height: calc(24 * var(--u));
+}
+
+.accentBtn {
+  margin-top: calc(18 * var(--u));
+  height: calc(34 * var(--u));
+  display: inline-flex;
+  align-items: center;
+  padding: 0 calc(18 * var(--u));
+  border-radius: calc(17 * var(--u));
+  background: var(--p-accent);
+  color: var(--p-text-on-accent);
+  font-size: calc(13 * var(--u));
+  font-weight: 650;
+  line-height: 1;
+  transition:
+    background var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out);
+}
+
+.note {
+  margin-top: 20px;
+  color: var(--text-secondary);
+  font-size: 14.5px;
+}

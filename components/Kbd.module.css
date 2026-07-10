@@ -1,0 +1,30 @@
+.combo {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.group {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.plus {
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+
+.key {
+  display: inline-block;
+  padding: 2px 8px 3px;
+  border-radius: var(--radius-s);
+  background: var(--surface-hi);
+  border: 1px solid var(--divider);
+  border-bottom-width: 2px;
+  color: var(--text);
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  line-height: 1.5;
+}

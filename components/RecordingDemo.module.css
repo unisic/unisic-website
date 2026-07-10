@@ -1,0 +1,117 @@
+.frame {
+  margin: 0;
+  container-type: inline-size;
+  width: 100%;
+}
+
+.screen {
+  --u: 0.1852cqi; /* 100cqi / 540 design px */
+  aspect-ratio: 4 / 3;
+  position: relative;
+  border-radius: var(--radius-l);
+  border: 1px solid var(--divider);
+  overflow: hidden;
+  background: var(--bg-deep);
+  box-shadow: 0 calc(20 * var(--u)) calc(50 * var(--u)) rgba(0, 0, 0, 0.45);
+}
+
+.wallpaper {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(80% 110% at 85% 0%, rgba(67, 61, 139, 0.5), transparent 60%),
+    radial-gradient(70% 100% at 5% 100%, rgba(46, 35, 108, 0.6), transparent 60%),
+    linear-gradient(150deg, #181440, #0d0b26);
+}
+
+.ghostCardA,
+.ghostCardB {
+  position: absolute;
+  border-radius: calc(10 * var(--u));
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: calc(12 * var(--u));
+}
+
+.ghostCardA {
+  left: 7%;
+  top: 8%;
+  width: 40%;
+  height: 30%;
+}
+
+.ghostCardB {
+  right: 8%;
+  bottom: 10%;
+  width: 30%;
+  height: 42%;
+}
+
+.ghostLines {
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.09) 0,
+    rgba(255, 255, 255, 0.09) calc(6 * var(--u)),
+    transparent calc(6 * var(--u)),
+    transparent calc(16 * var(--u))
+  );
+  border-radius: calc(3 * var(--u));
+}
+
+/* 3px accent frame sandwiched by 1px dark contrast lines, square-cornered
+   like the real ffmpeg crop frame (RecordBorder.qml) */
+.region {
+  position: absolute;
+  left: 14%;
+  top: 22%;
+  width: 58%;
+  height: 52%;
+  border: calc(3 * var(--u)) solid var(--accent);
+  outline: 1px solid rgba(0, 0, 0, 0.55);
+  outline-offset: calc(-4 * var(--u));
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55);
+}
+
+/* REC badge (RecordBorder.qml:71-105) */
+.badge {
+  position: absolute;
+  top: calc(-38 * var(--u));
+  left: 0;
+  height: calc(26 * var(--u));
+  display: inline-flex;
+  align-items: center;
+  gap: calc(7 * var(--u));
+  padding: 0 calc(12 * var(--u));
+  border-radius: calc(13 * var(--u));
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  font-weight: 700;
+  font-size: calc(12 * var(--u));
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.dot {
+  width: calc(8 * var(--u));
+  height: calc(8 * var(--u));
+  border-radius: 50%;
+  background: #ff4d4d;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dot {
+    animation: blink 1.4s ease-in-out infinite;
+  }
+}
+
+/* smooth pulse 1.0 to 0.25 and back, as RecordBorder.qml (InOutSine 700ms) */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}

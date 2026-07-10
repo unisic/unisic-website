@@ -1,0 +1,275 @@
+/*
+ * Design canvas: 1060 x 700 (Main.qml:10-13). --u = one design pixel.
+ * Title bar 38px + sidebar 224px, both lighter(primary,1.12) gradients
+ * (Main.qml:84-87, 148-151); window backdrop background -> backgroundDeep
+ * (Main.qml:70-73); Capture page per CapturePage.qml.
+ */
+
+.frame {
+  margin: 0;
+  container-type: inline-size;
+  width: 100%;
+}
+
+.window {
+  --u: 0.09434cqi; /* 100cqi / 1060 */
+  aspect-ratio: 1060 / 700;
+  display: flex;
+  flex-direction: column;
+  border-radius: calc(18 * var(--u));
+  background: linear-gradient(var(--bg), var(--bg-deep));
+  border: 1px solid var(--divider);
+  box-shadow:
+    0 calc(28 * var(--u)) calc(70 * var(--u)) rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 var(--edge-light);
+  overflow: hidden;
+}
+
+/* ---- title bar (Main.qml:76-141) ---- */
+
+.titlebar {
+  height: calc(38 * var(--u));
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 calc(6 * var(--u)) 0 calc(20 * var(--u));
+  background: linear-gradient(var(--chrome-lite), var(--primary));
+}
+
+.title {
+  font-size: calc(14 * var(--u));
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+
+.winControls {
+  display: flex;
+  gap: calc(2 * var(--u));
+}
+
+.winBtn {
+  width: calc(30 * var(--u));
+  height: calc(30 * var(--u));
+  border-radius: calc(8 * var(--u));
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+}
+
+.winGlyph {
+  width: calc(14 * var(--u));
+  height: calc(14 * var(--u));
+}
+
+/* ---- sidebar (Main.qml:143-268) ---- */
+
+.body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.sidebar {
+  width: calc(224 * var(--u));
+  flex: none;
+  background: linear-gradient(var(--chrome-lite), var(--primary));
+  box-shadow: calc(3 * var(--u)) 0 calc(12 * var(--u)) rgba(0, 0, 0, 0.35);
+  padding: calc(32 * var(--u)) calc(12 * var(--u)) calc(20 * var(--u));
+  display: flex;
+  flex-direction: column;
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10 * var(--u));
+  margin-bottom: calc(32 * var(--u));
+}
+
+.brandLogo svg {
+  width: calc(34 * var(--u));
+  height: calc(34 * var(--u));
+}
+
+.brandName {
+  font-size: calc(22 * var(--u));
+  font-weight: 700;
+  line-height: 1;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--u));
+}
+
+.navItem,
+.navItemActive {
+  height: calc(44 * var(--u));
+  border-radius: calc(12 * var(--u));
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--u));
+  padding-left: calc(14 * var(--u));
+  font-size: calc(14 * var(--u));
+  line-height: 1;
+  color: var(--text-secondary);
+}
+
+.navItemActive {
+  background: var(--tertiary);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.navIcon {
+  width: calc(18 * var(--u));
+  height: calc(18 * var(--u));
+  flex: none;
+}
+
+/* ---- Capture page (CapturePage.qml) ---- */
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: calc(32 * var(--u)) calc(32 * var(--u)) calc(20 * var(--u));
+  display: flex;
+  flex-direction: column;
+}
+
+.pageTitle {
+  font-size: calc(28 * var(--u));
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pageSub {
+  margin-top: calc(20 * var(--u));
+  font-size: calc(14 * var(--u));
+  color: var(--text-secondary);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardRow {
+  display: flex;
+  gap: calc(20 * var(--u));
+  margin-top: calc(46 * var(--u));
+}
+
+.card {
+  width: calc(218 * var(--u));
+  height: calc(172 * var(--u));
+  border-radius: calc(26 * var(--u));
+  background: linear-gradient(var(--surface-top), var(--surface-bottom));
+  border: 1px solid var(--divider);
+  box-shadow: 0 calc(5 * var(--u)) calc(14 * var(--u)) var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10 * var(--u));
+}
+
+.cardIcon {
+  width: calc(40 * var(--u));
+  height: calc(40 * var(--u));
+  color: var(--text);
+}
+
+.cardTitle {
+  font-size: calc(17 * var(--u));
+  font-weight: 600;
+  line-height: 1;
+}
+
+.cardSub {
+  font-size: calc(12 * var(--u));
+  color: var(--text-secondary);
+  line-height: 1;
+}
+
+.cardChip {
+  padding: calc(4 * var(--u)) calc(10 * var(--u));
+  border-radius: calc(11 * var(--u));
+  background: var(--primary);
+  color: var(--accent);
+  font-family: var(--font-mono), monospace;
+  font-size: calc(11 * var(--u));
+  line-height: 1.2;
+}
+
+/* "After capture" UCard (CapturePage.qml:137-176) */
+
+.afterCard {
+  margin-top: calc(20 * var(--u));
+  max-width: calc(694 * var(--u));
+  border-radius: calc(18 * var(--u));
+  background: linear-gradient(var(--surface-top), var(--surface-bottom));
+  border: 1px solid var(--divider);
+  padding: calc(16 * var(--u)) calc(20 * var(--u));
+  display: flex;
+  flex-direction: column;
+}
+
+.afterTitle {
+  font-size: calc(17 * var(--u));
+  font-weight: 600;
+  margin-bottom: calc(6 * var(--u));
+}
+
+.toggleRow {
+  height: calc(36 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggleLabel {
+  font-size: calc(14 * var(--u));
+  color: var(--text);
+  line-height: 1;
+}
+
+/* USwitch.qml: 50x30 track, radius 15, 24px always-white gradient knob */
+.switchOn,
+.switchOff {
+  width: calc(50 * var(--u));
+  height: calc(30 * var(--u));
+  border-radius: calc(15 * var(--u));
+  flex: none;
+  position: relative;
+}
+
+.switchOn {
+  background: var(--accent);
+}
+
+.switchOff {
+  background: var(--surface-hi);
+  border: 1px solid var(--divider);
+}
+
+.knob {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(24 * var(--u));
+  height: calc(24 * var(--u));
+  border-radius: 50%;
+  background: linear-gradient(#ffffff, #ddd6ec);
+}
+
+.switchOn .knob {
+  right: calc(3 * var(--u));
+}
+
+.switchOff .knob {
+  left: calc(3 * var(--u));
+}

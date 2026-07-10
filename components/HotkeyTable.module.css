@@ -1,0 +1,41 @@
+.table {
+  width: 100%;
+}
+
+.caption {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  padding-bottom: 14px;
+}
+
+.headCell {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.row + .row .action,
+.row + .row .keys {
+  border-top: 1px solid var(--divider);
+}
+
+.action {
+  padding: 11px 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.keys {
+  padding: 11px 0;
+  text-align: right;
+}
+
+.note {
+  margin-top: 14px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+}
