@@ -1,4 +1,5 @@
 import styles from "./EditorMockup.module.css";
+import { SWATCHES } from "../lib/themes";
 import {
   ArrowIcon,
   BlurIcon,
@@ -21,6 +22,7 @@ import {
   UndoIcon,
   WindowIcon,
 } from "./icons";
+import type { Dictionary } from "../lib/i18n";
 
 /*
  * Faithful mini-recreation of the real post-capture editor
@@ -44,26 +46,13 @@ const TOOLS = [
   { icon: CropIcon, active: false },
 ];
 
-const SWATCHES = [
-  "var(--swatch-1)",
-  "var(--swatch-2)",
-  "var(--swatch-3)",
-  "var(--swatch-4)",
-  "var(--swatch-5)",
-  "var(--swatch-6)",
-  "var(--swatch-7)",
-];
-
-export function EditorMockup() {
+export function EditorMockup({ dict }: { dict: Dictionary }) {
+  const e = dict.editorMockup;
   return (
-    <figure
-      className={styles.frame}
-      role="img"
-      aria-label="The Unisic editor window: a toolbar with twelve annotation tools, a screenshot annotated with an arrow, a highlight and numbered steps, and copy, save and upload actions."
-    >
+    <figure className={styles.frame} role="img" aria-label={e.ariaLabel}>
       <div className={styles.window} aria-hidden="true">
         <div className={styles.titlebar}>
-          <span className={styles.title}>Unisic Editor</span>
+          <span className={styles.title}>{e.title}</span>
           <span className={styles.winControls}>
             <span className={styles.winBtn}>
               <MinusIcon className={styles.winGlyph} />
@@ -145,15 +134,15 @@ export function EditorMockup() {
           <span className={styles.actions}>
             <span className={styles.ghostBtn}>
               <CopyIcon className={styles.btnIcon} />
-              Copy
+              {e.copy}
             </span>
             <span className={styles.ghostBtn}>
               <SaveIcon className={styles.btnIcon} />
-              Save
+              {e.save}
             </span>
             <span className={styles.fillBtn}>
               <SendIcon className={styles.btnIcon} />
-              Upload
+              {e.upload}
             </span>
           </span>
         </div>

@@ -27,4 +27,17 @@
   font-family: var(--font-mono), monospace;
   font-size: 12px;
   line-height: 1.5;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+/* physically pressed on the visitor's keyboard (HotkeyTable) */
+.key[data-pressed] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-on-accent);
+  transform: translateY(1px);
 }

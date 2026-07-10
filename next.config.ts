@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Static export: deploys anywhere (no server). TODO: if hosted as a GitHub
-  // Pages *project* site (username.github.io/repo), add basePath: "/repo".
+  // Static export (no server). Served at the apex domain unisic.app root, so
+  // no basePath/assetPrefix is needed.
   output: "export",
   images: { unoptimized: true },
 };

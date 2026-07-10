@@ -13,7 +13,7 @@ const CACHE_TTL_MS = 10 * 60 * 1000;
 
 export const RELEASES_URL = "https://github.com/unisic/unisic/releases/latest";
 
-export type AssetFormat = "appimage" | "flatpak" | "deb" | "rpm" | "arch";
+export type AssetFormat = "appimage" | "flatpak" | "deb" | "arch";
 
 export type ReleaseAsset = {
   format: AssetFormat;
@@ -35,20 +35,18 @@ export const FORMAT_META: Record<
   appimage: { label: "AppImage", hint: "Universal, zsync updates" },
   flatpak: { label: "Flatpak", hint: "Sideload bundle" },
   deb: { label: ".deb", hint: "Debian, Ubuntu" },
-  rpm: { label: ".rpm", hint: "Fedora, openSUSE" },
   arch: { label: "Arch package", hint: "pacman -U" },
 };
 
-const FORMAT_ORDER: AssetFormat[] = ["appimage", "flatpak", "deb", "rpm", "arch"];
+const FORMAT_ORDER: AssetFormat[] = ["appimage", "flatpak", "deb", "arch"];
 
 function matchFormat(name: string): AssetFormat | null {
   const n = name.toLowerCase();
   if (n.endsWith(".appimage")) return "appimage";
   if (n.endsWith(".flatpak")) return "flatpak";
   if (n.endsWith(".deb")) return "deb";
-  if (n.endsWith(".rpm")) return "rpm";
   if (n.endsWith(".pkg.tar.zst") && !n.includes("-debug")) return "arch";
-  return null; // .zsync, debug builds, checksums
+  return null; // .zsync, .rpm (Fedora installs via COPR), debug builds, checksums
 }
 
 export function formatSize(bytes: number): string {

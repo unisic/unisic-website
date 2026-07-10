@@ -55,7 +55,7 @@
   border-radius: calc(8 * var(--u));
   display: grid;
   place-items: center;
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
 }
 
 .winGlyph {

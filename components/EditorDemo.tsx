@@ -1,8 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import styles from "./EditorDemo.module.css";
+import { SWATCHES } from "../lib/themes";
+import { interpolate, type Dictionary } from "../lib/i18n";
 import {
   ArrowIcon,
   BlurIcon,
@@ -57,23 +59,23 @@ type Anno =
   | { id: number; kind: "step"; x: number; y: number; n: number; color: string }
   | { id: number; kind: "blur" | "pixelate"; x: number; y: number; w: number; h: number };
 
-/* Tool order mirrors ToolCatalog.qml (crop needs a real image to make sense) */
-const TOOLS: { id: Tool; label: string; icon: typeof PenIcon }[] = [
-  { id: "pen", label: "Pen", icon: PenIcon },
-  { id: "line", label: "Line", icon: LineIcon },
-  { id: "arrow", label: "Arrow", icon: ArrowIcon },
-  { id: "rect", label: "Rectangle", icon: RectangleIcon },
-  { id: "ellipse", label: "Ellipse", icon: EllipseIcon },
-  { id: "text", label: "Text", icon: TextIcon },
-  { id: "highlight", label: "Highlight", icon: HighlightIcon },
-  { id: "blur", label: "Blur", icon: BlurIcon },
-  { id: "pixelate", label: "Pixelate", icon: PixelateIcon },
-  { id: "eraser", label: "Smart eraser (click a drawing)", icon: EraserIcon },
-  { id: "step", label: "Step marker", icon: StepIcon },
+/* Tool order mirrors ToolCatalog.qml (crop needs a real image to make sense).
+   Labels come from the dictionary, keyed by id. */
+const TOOL_ICONS: { id: Tool; icon: typeof PenIcon }[] = [
+  { id: "pen", icon: PenIcon },
+  { id: "line", icon: LineIcon },
+  { id: "arrow", icon: ArrowIcon },
+  { id: "rect", icon: RectangleIcon },
+  { id: "ellipse", icon: EllipseIcon },
+  { id: "text", icon: TextIcon },
+  { id: "highlight", icon: HighlightIcon },
+  { id: "blur", icon: BlurIcon },
+  { id: "pixelate", icon: PixelateIcon },
+  { id: "eraser", icon: EraserIcon },
+  { id: "step", icon: StepIcon },
 ];
 
-/* Theme.qml swatches; light strokes get a dark step number for contrast */
-const SWATCHES = [1, 2, 3, 4, 5, 6, 7].map((n) => `var(--swatch-${n})`);
+/* light strokes get a dark step number for contrast (SWATCHES from lib/themes) */
 const DARK_INK = new Set(["var(--swatch-2)", "var(--swatch-5)", "var(--swatch-6)"]);
 
 /* Design space: 800 x 450, uniform scale (the canvas keeps a 16/9 ratio) */
@@ -102,9 +104,21 @@ function penPath(points: number[]) {
   return d;
 }
 
-export function EditorDemo() {
+export function EditorDemo({ dict }: { dict: Dictionary }) {
+  const ed = dict.editorDemo;
+  const swatchNames = [
+    ed.swatchNames.red,
+    ed.swatchNames.yellow,
+    ed.swatchNames.green,
+    ed.swatchNames.blue,
+    ed.swatchNames.lilac,
+    ed.swatchNames.white,
+    ed.swatchNames.navy,
+  ];
   const canvasRef = useRef<HTMLDivElement>(null);
   const nextId = useRef(3);
+  const rectRef = useRef<DOMRect | null>(null);
+  const committedRef = useRef(false);
   const [tool, setTool] = useState<Tool>("arrow");
   const [color, setColor] = useState(SWATCHES[0]);
   const [annos, setAnnos] = useState<Anno[]>(SEED);
@@ -135,7 +149,7 @@ export function EditorDemo() {
   };
 
   const toPoint = (e: ReactPointerEvent) => {
-    const r = canvasRef.current!.getBoundingClientRect();
+    const r = rectRef.current ?? canvasRef.current!.getBoundingClientRect();
     return {
       x: Math.min(W, Math.max(0, ((e.clientX - r.left) / r.width) * W)),
       y: Math.min(H, Math.max(0, ((e.clientY - r.top) / r.height) * H)),
@@ -143,6 +157,10 @@ export function EditorDemo() {
   };
 
   const commitText = (value: string) => {
+    /* Enter unmounts the focused input, which also fires onBlur — guard so
+       the annotation is committed exactly once. Reset on each text open. */
+    if (committedRef.current) return;
+    committedRef.current = true;
     if (textDraft && value.trim()) {
       commit([
         ...annos,
@@ -157,8 +175,11 @@ export function EditorDemo() {
        commits); otherwise suppress the default focus steal / drag. */
     if (e.button !== 0 || textDraft || tool === "eraser") return;
     e.preventDefault();
+    /* measure the canvas once per interaction; every move reuses it */
+    rectRef.current = canvasRef.current!.getBoundingClientRect();
     const p = toPoint(e);
     if (tool === "text") {
+      committedRef.current = false;
       setTextDraft(p);
       return;
     }
@@ -214,6 +235,7 @@ export function EditorDemo() {
       commit([...annos, draft]);
     }
     setDraft(null);
+    rectRef.current = null;
   };
 
   const erase = (id: number) => {
@@ -347,28 +369,40 @@ export function EditorDemo() {
     );
   };
 
+  /* Committed layers are memoized so a live draft move (setDraft fires on
+     every pointermove) never reconciles the finished shapes/regions — they
+     change only on commit/undo/redo (annos) or a tool switch (eraser
+     hit-area). The single in-progress shape still renders per move. */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const committedRegions = useMemo(() => annos.map((a) => renderRegion(a)), [annos, tool]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const committedShapes = useMemo(() => annos.map((a) => renderShape(a)), [annos, tool]);
+
   return (
     <div className={styles.demo}>
-      <div className={styles.toolbar} role="toolbar" aria-label="Annotation tools (live demo)">
+      <div className={styles.toolbar} role="group" aria-label={ed.groupLabel}>
         <div className={styles.group}>
-          {TOOLS.map(({ id, label, icon: Icon }) => (
-            <button
-              key={id}
-              type="button"
-              className={styles.chip}
-              data-active={tool === id ? "" : undefined}
-              aria-label={label}
-              aria-pressed={tool === id}
-              title={label}
-              onClick={() => setTool(id)}
-            >
-              <Icon className={styles.chipIcon} />
-            </button>
-          ))}
-          <button type="button" className={styles.chip} aria-label="Undo" title="Undo" disabled={!undoStack.length} onClick={undo}>
+          {TOOL_ICONS.map(({ id, icon: Icon }) => {
+            const label = ed.tools[id];
+            return (
+              <button
+                key={id}
+                type="button"
+                className={styles.chip}
+                data-active={tool === id ? "" : undefined}
+                aria-label={label}
+                aria-pressed={tool === id}
+                title={label}
+                onClick={() => setTool(id)}
+              >
+                <Icon className={styles.chipIcon} />
+              </button>
+            );
+          })}
+          <button type="button" className={styles.chip} aria-label={ed.undo} title={ed.undo} disabled={!undoStack.length} onClick={undo}>
             <UndoIcon className={styles.chipIcon} />
           </button>
-          <button type="button" className={styles.chip} aria-label="Redo" title="Redo" disabled={!redoStack.length} onClick={redo}>
+          <button type="button" className={styles.chip} aria-label={ed.redo} title={ed.redo} disabled={!redoStack.length} onClick={redo}>
             <RedoIcon className={styles.chipIcon} />
           </button>
         </div>
@@ -380,7 +414,7 @@ export function EditorDemo() {
               type="button"
               className={styles.swatch}
               data-active={color === c ? "" : undefined}
-              aria-label={`Stroke color ${i + 1}`}
+              aria-label={interpolate(ed.strokeLabel, { color: swatchNames[i] })}
               aria-pressed={color === c}
               style={{ background: c }}
               onClick={() => setColor(c)}
@@ -389,9 +423,9 @@ export function EditorDemo() {
           <span className={styles.vdivider} />
           <button type="button" className={styles.captureBtn} onClick={capture}>
             <CheckmarkIcon className={styles.captureIcon} />
-            Capture
+            {ed.capture}
           </button>
-          <button type="button" className={styles.chip} aria-label="Clear all annotations" title="Clear" onClick={clear}>
+          <button type="button" className={styles.chip} aria-label={ed.clear} title={ed.clearTitle} onClick={clear}>
             <CloseIcon className={styles.closeIcon} />
           </button>
         </div>
@@ -415,11 +449,11 @@ export function EditorDemo() {
           </div>
         </div>
 
-        {annos.map((a) => renderRegion(a))}
+        {committedRegions}
         {draft && renderRegion(draft, true)}
 
         <svg className={styles.annoLayer} viewBox={`0 0 ${W} ${H}`} data-erase={tool === "eraser" ? "" : undefined}>
-          {annos.map((a) => renderShape(a))}
+          {committedShapes}
           {draft && renderShape(draft, true)}
         </svg>
 
@@ -431,14 +465,16 @@ export function EditorDemo() {
               top: `${(textDraft.y / H) * 100}%`,
               color,
             }}
-            ref={(el) => {
-              if (el) setTimeout(() => el.focus(), 0);
-            }}
-            placeholder="Type, then Enter"
+            autoFocus
+            aria-label={ed.textLabel}
+            placeholder={ed.textPlaceholder}
             maxLength={40}
             onKeyDown={(e) => {
               if (e.key === "Enter") commitText(e.currentTarget.value);
-              if (e.key === "Escape") setTextDraft(null);
+              if (e.key === "Escape") {
+                committedRef.current = true;
+                setTextDraft(null);
+              }
             }}
             onBlur={(e) => commitText(e.currentTarget.value)}
           />
@@ -448,12 +484,12 @@ export function EditorDemo() {
         {flashKey > 0 && (
           <span key={`s${flashKey}`} className={styles.savedChip} role="status">
             <CheckmarkIcon className={styles.savedIcon} />
-            Captured
+            {ed.captured}
           </span>
         )}
       </div>
 
-      <p className={styles.hint}>Live demo — pick a tool and drag on the canvas.</p>
+      <p className={styles.hint}>{ed.hint}</p>
     </div>
   );
 }

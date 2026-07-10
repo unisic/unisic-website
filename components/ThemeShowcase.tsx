@@ -1,16 +1,37 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import {
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent as ReactKeyboardEvent,
+} from "react";
 import styles from "./ThemeShowcase.module.css";
 import { THEMES } from "../lib/themes";
-import { CameraIcon, ConfigureIcon, MonitorIcon, RecordIcon, RegionIcon } from "./icons";
+import { interpolate, type Dictionary } from "../lib/i18n";
+import {
+  CameraIcon,
+  CloseIcon,
+  ConfigureIcon,
+  MinusIcon,
+  MonitorIcon,
+  RecordIcon,
+  RegionIcon,
+  WindowIcon,
+} from "./icons";
 
 /*
- * Interactive theme picker: each chip re-skins a miniature main window
- * using the real palette values from Theme.qml. The page itself stays
- * locked to the unisic dark theme; only the preview picture recolors.
+ * Interactive theme picker: each chip repaints only the miniature main
+ * window below with the real palette values from Theme.qml — the rest of
+ * the landing page keeps its own "unisic" skin. "Unisic" is the default.
+ * The palette values feed the preview through the local --p-* vars set on
+ * the figure, so nothing leaks onto <html> and the surrounding page never
+ * changes theme.
  */
-export function ThemeShowcase() {
+const RADIO_COUNT = THEMES.length;
+
+export function ThemeShowcase({ dict }: { dict: Dictionary }) {
+  const tx = dict.themes;
   const [active, setActive] = useState(0);
   const t = THEMES[active];
 
@@ -24,21 +45,59 @@ export function ThemeShowcase() {
     "--p-text-on-accent": t.textOnAccent,
   } as CSSProperties;
 
+  // Roving tabindex across the palette radios.
+  const chipRefs = useRef<Array<HTMLButtonElement | null>>([]);
+
+  const selectChip = (i: number) => {
+    setActive(i);
+  };
+
+  const onChipKeyDown = (e: ReactKeyboardEvent<HTMLButtonElement>, i: number) => {
+    let next: number;
+    switch (e.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        next = (i + 1) % RADIO_COUNT;
+        break;
+      case "ArrowLeft":
+      case "ArrowUp":
+        next = (i - 1 + RADIO_COUNT) % RADIO_COUNT;
+        break;
+      case "Home":
+        next = 0;
+        break;
+      case "End":
+        next = RADIO_COUNT - 1;
+        break;
+      default:
+        return;
+    }
+    e.preventDefault();
+    chipRefs.current[next]?.focus();
+    selectChip(next);
+  };
+
   return (
     <div>
       <div
         className={styles.chips}
-        role="group"
-        aria-label="Choose a theme to preview"
+        role="radiogroup"
+        aria-label={tx.groupLabel}
         data-stagger=""
       >
         {THEMES.map((theme, i) => (
           <button
             key={theme.name}
             type="button"
+            ref={(el) => {
+              chipRefs.current[i] = el;
+            }}
             className={i === active ? styles.chipActive : styles.chip}
-            aria-pressed={i === active}
-            onClick={() => setActive(i)}
+            role="radio"
+            aria-checked={i === active}
+            tabIndex={i === active ? 0 : -1}
+            onClick={() => selectChip(i)}
+            onKeyDown={(e) => onChipKeyDown(e, i)}
           >
             <span className={styles.trio} aria-hidden="true">
               <span style={{ background: theme.bg }} />
@@ -53,16 +112,22 @@ export function ThemeShowcase() {
       <figure
         className={styles.previewFrame}
         role="img"
-        aria-label={`The Unisic main window in the ${t.label} theme`}
+        aria-label={interpolate(tx.previewLabel, { theme: t.label })}
         style={previewVars}
       >
         <div className={styles.preview} aria-hidden="true">
           <div className={styles.titlebar}>
             <span className={styles.titleText}>Unisic</span>
-            <span className={styles.winDots}>
-              <span />
-              <span />
-              <span />
+            <span className={styles.winControls}>
+              <span className={styles.winBtn}>
+                <MinusIcon className={styles.winGlyph} />
+              </span>
+              <span className={styles.winBtn}>
+                <WindowIcon className={styles.winGlyph} />
+              </span>
+              <span className={styles.winBtn}>
+                <CloseIcon className={styles.winGlyph} />
+              </span>
             </span>
           </div>
           <div className={styles.body}>
@@ -98,10 +163,7 @@ export function ThemeShowcase() {
         </div>
       </figure>
 
-      <p className={styles.note}>
-        The ninth theme is your system: it follows the desktop light or dark
-        scheme and accent color live.
-      </p>
+      <p className={styles.note}>{tx.note}</p>
     </div>
   );
 }

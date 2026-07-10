@@ -24,6 +24,14 @@
   overflow: hidden;
   background: var(--bg-deep);
   box-shadow: 0 calc(24 * var(--u)) calc(70 * var(--u)) rgba(0, 0, 0, 0.5);
+  touch-action: none;
+  user-select: none;
+}
+
+/* while dragging, keep one cursor over the whole scene */
+.screen[data-active],
+.screen[data-active] * {
+  cursor: grabbing !important;
 }
 
 .wallpaper {
@@ -139,6 +147,7 @@
   border: calc(1.5 * var(--u)) solid var(--accent);
   box-shadow: 0 0 0 200cqi rgba(11, 9, 33, 0.62);
   transform-origin: top left;
+  cursor: move;
 }
 
 .handleTL,
@@ -148,14 +157,26 @@
   position: absolute;
   width: calc(9 * var(--u));
   height: calc(9 * var(--u));
+  padding: 0;
   background: var(--accent);
+  border: none;
   border-radius: calc(2 * var(--u));
+  appearance: none;
+  touch-action: none;
 }
 
-.handleTL { left: calc(-5 * var(--u)); top: calc(-5 * var(--u)); }
-.handleTR { right: calc(-5 * var(--u)); top: calc(-5 * var(--u)); }
-.handleBL { left: calc(-5 * var(--u)); bottom: calc(-5 * var(--u)); }
-.handleBR { right: calc(-5 * var(--u)); bottom: calc(-5 * var(--u)); }
+.handleTL:focus-visible,
+.handleTR:focus-visible,
+.handleBL:focus-visible,
+.handleBR:focus-visible {
+  outline: calc(2 * var(--u)) solid #fff;
+  outline-offset: calc(2 * var(--u));
+}
+
+.handleTL { left: calc(-5 * var(--u)); top: calc(-5 * var(--u)); cursor: nwse-resize; }
+.handleTR { right: calc(-5 * var(--u)); top: calc(-5 * var(--u)); cursor: nesw-resize; }
+.handleBL { left: calc(-5 * var(--u)); bottom: calc(-5 * var(--u)); cursor: nesw-resize; }
+.handleBR { right: calc(-5 * var(--u)); bottom: calc(-5 * var(--u)); cursor: nwse-resize; }
 
 .arrowAnno {
   position: absolute;
@@ -342,4 +363,19 @@
   to {
     stroke-dashoffset: 0;
   }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.hint {
+  margin: 14px 0 0;
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  text-align: center;
 }

@@ -66,4 +66,5 @@
   /* site-only */
   --max-width: 1160px;
   --accent-bright: #e2cfee;
+  --space-lede: 44px; /* gap from a section lede to the block below it */
 }

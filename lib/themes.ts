@@ -13,6 +13,13 @@ export type ThemePalette = {
   textOnAccent: string;
 };
 
+/* Stroke swatches — a fixed annotation palette (Theme.qml:102), independent
+   of the app theme. Values map to the --swatch-N tokens in tokens.css. */
+export const SWATCHES = [1, 2, 3, 4, 5, 6, 7].map((n) => `var(--swatch-${n})`);
+
+/* Human color names for accessible swatch labels (order matches SWATCHES). */
+export const SWATCH_NAMES = ["Red", "Yellow", "Green", "Blue", "Lilac", "White", "Navy"];
+
 export const THEMES: ThemePalette[] = [
   { name: "unisic", label: "Unisic", isDark: true, primary: "#17153B", tertiary: "#433D8B", accent: "#C8ACD6", bg: "#100E2C", surface: "#1E1B4A", text: "#F3F0FA", textOnAccent: "#1B1834" },
   { name: "dark", label: "Dark", isDark: true, primary: "#17171C", tertiary: "#2E2E36", accent: "#7C9CF5", bg: "#121216", surface: "#1D1D22", text: "#ECECEF", textOnAccent: "#0C1220" },

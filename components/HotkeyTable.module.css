@@ -27,6 +27,11 @@
   padding: 11px 0;
   color: var(--text-secondary);
   font-size: 15px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.row[data-hit] .action {
+  color: var(--text);
 }
 
 .keys {
@@ -34,8 +39,20 @@
   text-align: right;
 }
 
-.note {
+/* only meaningful once the client bundle listens for keys */
+.tryHint {
+  display: none;
   margin-top: 14px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+}
+
+:global(html[data-js]) .tryHint {
+  display: block;
+}
+
+.note {
+  margin-top: 6px;
   color: var(--text-secondary);
   font-size: 13.5px;
 }

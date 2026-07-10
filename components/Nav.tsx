@@ -1,7 +1,15 @@
 import styles from "./Nav.module.css";
 import { GitHubIcon, Logo } from "./icons";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import type { Dictionary } from "../lib/i18n";
 
-export function Nav() {
+export function Nav({
+  dict,
+  locale,
+}: {
+  dict: Dictionary;
+  locale: string;
+}) {
   return (
     <header className={styles.header}>
       <nav className={styles.nav} aria-label="Main">
@@ -11,23 +19,28 @@ export function Nav() {
         </a>
         <div className={styles.links}>
           <a href="#features" className={styles.link}>
-            Features
+            {dict.nav.features}
           </a>
           <a href="#recording" className={styles.link}>
-            Recording
+            {dict.nav.recording}
           </a>
           <a
             href="https://github.com/unisic/unisic"
             className={styles.iconLink}
-            aria-label="Unisic on GitHub"
+            aria-label={dict.nav.github}
           >
             <GitHubIcon size={20} />
           </a>
-          <a href="#download" className={styles.cta}>
-            Download
+          <LanguageSwitcher
+            current={locale}
+            label={dict.languageSwitcher.label}
+          />
+          <a href="#download" className={`${styles.cta} shine`}>
+            {dict.nav.download}
           </a>
         </div>
       </nav>
+      <span className={styles.progress} aria-hidden="true" />
     </header>
   );
 }

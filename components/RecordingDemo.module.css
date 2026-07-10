@@ -71,30 +71,92 @@
   outline: 1px solid rgba(0, 0, 0, 0.55);
   outline-offset: calc(-4 * var(--u));
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55);
+  transition: border-color var(--dur) var(--ease-out);
 }
 
-/* REC badge (RecordBorder.qml:71-105) */
+/* stopped: the frame lets go of the region */
+.frame[data-state="saved"] .region {
+  border-color: rgba(243, 240, 250, 0.28);
+}
+
+/* REC badge (RecordBorder.qml:71-105), now a real stop/restart button.
+   Sizes stay proportional to the container but never drop below usable /
+   legible floors (>=24px target, WCAG 2.5.8; >=11px text), and a persistent
+   ring + raised surface make it read as pressable on touch, with no hover
+   required. */
 .badge {
   position: absolute;
-  top: calc(-38 * var(--u));
+  /* lift enough that the floored height always clears the region border */
+  top: min(calc(-38 * var(--u)), -30px);
   left: 0;
-  height: calc(26 * var(--u));
+  height: max(24px, calc(26 * var(--u)));
   display: inline-flex;
   align-items: center;
-  gap: calc(7 * var(--u));
-  padding: 0 calc(12 * var(--u));
-  border-radius: calc(13 * var(--u));
+  gap: max(6px, calc(7 * var(--u)));
+  padding: 0 max(10px, calc(12 * var(--u)));
+  border-radius: max(12px, calc(13 * var(--u)));
+  border: max(1px, calc(1 * var(--u))) solid rgba(243, 240, 250, 0.34);
   background: rgba(0, 0, 0, 0.72);
   color: #fff;
   font-weight: 700;
-  font-size: calc(12 * var(--u));
+  font-size: max(11px, calc(12 * var(--u)));
   line-height: 1;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  box-shadow:
+    0 max(1px, calc(2 * var(--u))) max(5px, calc(9 * var(--u))) rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.badge:hover {
+  transform: scale(1.05);
+  border-color: var(--accent);
+  box-shadow:
+    0 max(1px, calc(2 * var(--u))) max(6px, calc(12 * var(--u))) rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.badge:active {
+  transform: scale(0.97);
+}
+
+.frame[data-state="saved"] .badge {
+  color: var(--success);
+}
+
+/* neutral divider between the live status and the explicit action word */
+.badgeSep {
+  color: rgba(243, 240, 250, 0.55);
+  font-weight: 700;
+}
+
+/* the action verb (Stop / Restart): the affordance made explicit in text */
+.badgeAction {
+  font-weight: 700;
+}
+
+.savedIcon {
+  width: max(10px, calc(11 * var(--u)));
+  height: max(10px, calc(11 * var(--u)));
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
 }
 
 .dot {
-  width: calc(8 * var(--u));
-  height: calc(8 * var(--u));
+  width: max(7px, calc(8 * var(--u)));
+  height: max(7px, calc(8 * var(--u)));
   border-radius: 50%;
   background: #ff4d4d;
 }

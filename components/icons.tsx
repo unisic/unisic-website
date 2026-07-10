@@ -463,6 +463,18 @@ export function GitHubIcon(p: IconProps) {
   );
 }
 
+export function GlobeIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <Stroke>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12 H21" />
+        <path d="M12 3 C15 6 15 18 12 21 C9 18 9 6 12 3 Z" />
+      </Stroke>
+    </Svg>
+  );
+}
+
 /* App logo, from unisic/resources/icons/unisic.svg with prefixed gradient ids. */
 export function Logo({ size = 32 }: { size?: number }) {
   return (

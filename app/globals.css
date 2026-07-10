@@ -1,4 +1,5 @@
-/* Dark-only by design: the site wears the app's own "unisic" theme. */
+/* Ships dark by default (the app's own "unisic" theme). The ThemeShowcase
+   picker only repaints its own miniature window, never the whole page. */
 
 *,
 *::before,
@@ -25,7 +26,6 @@ body {
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -101,6 +101,14 @@ table {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 96px 24px 0;
+  /* keep in-page jump targets clear of the 64px sticky nav */
+  scroll-margin-top: 80px;
+}
+
+/* #main and #top are jump targets but not .section elements */
+#main,
+#top {
+  scroll-margin-top: 80px;
 }
 
 .section h2 {
@@ -167,5 +175,37 @@ table {
   from {
     opacity: 0;
     transform: translateY(14px);
+  }
+}
+
+/* One-shot sheen sweeping across primary pill buttons on hover */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.34) 50%,
+    transparent 68%
+  );
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shine:hover::after {
+    animation: shine-sweep 0.75s var(--ease-out);
+  }
+}
+
+@keyframes shine-sweep {
+  to {
+    transform: translateX(130%);
   }
 }
