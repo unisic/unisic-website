@@ -11,6 +11,7 @@ export const de: Dictionary = {
     "ogImageAlt": "Unisic Screenshot-Editor unter Linux Wayland"
   },
   "nav": {
+    "docs": "Dokumentation",
     "skip": "Zum Inhalt springen",
     "features": "Funktionen",
     "recording": "Aufzeichnung",

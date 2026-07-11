@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./Nav.module.css";
 import { GitHubIcon, Logo } from "./icons";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -24,6 +25,9 @@ export function Nav({
           <a href="#recording" className={styles.link}>
             {dict.nav.recording}
           </a>
+          <Link href="/docs" className={styles.link}>
+            {dict.nav.docs}
+          </Link>
           <a
             href="https://github.com/unisic/unisic"
             className={styles.iconLink}

@@ -11,6 +11,7 @@ export const zhHans: Dictionary = {
     "ogImageAlt": "运行在 Linux Wayland 上的 Unisic 截图编辑器"
   },
   "nav": {
+    "docs": "文档",
     "skip": "跳到正文",
     "features": "功能",
     "recording": "录制",

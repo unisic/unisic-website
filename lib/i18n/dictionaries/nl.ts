@@ -11,6 +11,7 @@ export const nl: Dictionary = {
     "ogImageAlt": "Unisic screenshot-editor op Linux Wayland"
   },
   "nav": {
+    "docs": "Documentatie",
     "skip": "Ga naar inhoud",
     "features": "Functies",
     "recording": "Opnemen",

@@ -11,6 +11,7 @@ export const zhHant: Dictionary = {
     "ogImageAlt": "Linux Wayland 上的 Unisic 截圖編輯器"
   },
   "nav": {
+    "docs": "文件",
     "skip": "跳至內容",
     "features": "功能",
     "recording": "錄製",

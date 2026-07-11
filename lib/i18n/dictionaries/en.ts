@@ -22,6 +22,7 @@ export const en = {
     skip: "Skip to content",
     features: "Features",
     recording: "Recording",
+    docs: "Docs",
     github: "Unisic on GitHub",
     download: "Download",
   },
