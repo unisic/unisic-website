@@ -1,0 +1,304 @@
+.wrap {
+  margin: 40px auto 0;
+  max-width: 720px;
+  text-align: left;
+}
+
+.lede {
+  color: var(--text-secondary);
+  font-size: 15px;
+  text-align: center;
+}
+
+.distros {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.distroBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 14.5px;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.distroBtn:hover {
+  color: var(--text);
+  border-color: rgba(243, 240, 250, 0.3);
+  transform: translateY(-1px);
+}
+
+.distroBtn:active {
+  transform: scale(0.97);
+}
+
+.distroBtn[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: transparent;
+  color: var(--text-on-accent);
+}
+
+.distroIcon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+/* Reveal choreography: the panel (with the version switch when there is
+   one) rises first, then each step in order, then the note. Every remount
+   replays it; reduced-motion users get instant content. */
+@media (prefers-reduced-motion: no-preference) {
+  .panel,
+  .note {
+    animation: rise 0.4s var(--ease-out) both;
+  }
+
+  .steps li {
+    animation: rise 0.45s var(--ease-out) both;
+  }
+
+  .steps li:nth-child(2) {
+    animation-delay: 0.09s;
+  }
+
+  .steps li:nth-child(3) {
+    animation-delay: 0.18s;
+  }
+
+  .note {
+    animation-delay: 0.26s;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.variants {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.variantLabel {
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  margin-right: 4px;
+}
+
+.variantBtn {
+  height: 32px;
+  padding: 0 15px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.variantBtn:hover {
+  color: var(--text);
+  border-color: rgba(243, 240, 250, 0.3);
+}
+
+.variantBtn:active {
+  transform: scale(0.97);
+}
+
+.variantBtn[aria-pressed="true"] {
+  background: var(--surface-hi);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.steps {
+  margin-top: 22px;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.steps li {
+  counter-increment: step;
+}
+
+.stepLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.stepLabel::before {
+  content: counter(step);
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--surface-hi);
+  border: 1px solid var(--divider);
+  color: var(--text);
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.note {
+  margin-top: 12px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* Direct-download panel (AppImage / Flatpak) */
+
+.assetPanel {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.assetPanel .note {
+  margin-top: 0;
+  max-width: 52ch;
+}
+
+.version {
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.version strong {
+  color: var(--text);
+  font-family: var(--font-mono), monospace;
+  font-weight: 600;
+}
+
+.downloadBtn,
+.skeleton {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  min-width: 190px;
+  height: 62px;
+  padding: 0 26px;
+  border-radius: 999px;
+}
+
+.downloadBtn {
+  background: var(--accent);
+  box-shadow: 0 6px 22px rgba(200, 172, 214, 0.25);
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.downloadBtn:hover {
+  background: var(--accent-bright);
+  transform: translateY(-2px);
+}
+
+.downloadBtn:active {
+  transform: scale(0.97);
+}
+
+.btnLabel {
+  font-weight: 650;
+  font-size: 15.5px;
+  line-height: 1.1;
+  color: var(--text-on-accent);
+}
+
+.btnHint {
+  font-size: 12.5px;
+  line-height: 1.1;
+  color: rgba(27, 24, 52, 0.72);
+}
+
+.skeleton {
+  border: 1px solid var(--divider);
+  background: linear-gradient(
+    100deg,
+    var(--surface) 40%,
+    var(--surface-hi) 50%,
+    var(--surface) 60%
+  );
+  background-size: 220% 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton {
+    animation: shimmer 1.4s linear infinite;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 120% 0;
+  }
+
+  to {
+    background-position: -100% 0;
+  }
+}
+
+.allLink {
+  font-size: 14px;
+}
+
+.allLink a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.allLink a:hover {
+  color: var(--text);
+}

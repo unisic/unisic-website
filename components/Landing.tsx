@@ -1,8 +1,7 @@
 import { Fragment, type ReactNode } from "react";
 import styles from "../app/page.module.css";
 import { CompositorNotes } from "./CompositorNotes";
-import { CopyCommand } from "./CopyCommand";
-import { DownloadSection } from "./DownloadSection";
+import { DistroInstall } from "./DistroInstall";
 import { FeatureGrid } from "./FeatureGrid";
 import { Footer } from "./Footer";
 import { Hero } from "./Hero";
@@ -92,44 +91,8 @@ export function Landing({
         >
           <h2 id="download-title">{d.title}</h2>
           <p className="section-lede">{d.lede}</p>
-          <DownloadSection dict={dict} />
           <Reveal>
-            <div className={styles.copr}>
-              <h3>{d.coprTitle}</h3>
-              <CopyCommand
-                command={
-                  "sudo dnf copr enable deandark/Unisic\nsudo dnf install unisic"
-                }
-                copyLabel={d.coprCopy}
-                copiedLabel={d.coprCopied}
-              />
-              <p>
-                {template(d.coprBody, {
-                  code: <code>dnf upgrade</code>,
-                  link: (
-                    <a href="https://copr.fedorainfracloud.org/coprs/deandark/Unisic/">
-                      {d.coprLink}
-                    </a>
-                  ),
-                })}
-              </p>
-            </div>
-          </Reveal>
-          <Reveal>
-            <div className={styles.updateNotes} data-stagger="">
-              <div>
-                <h3>{d.appimageTitle}</h3>
-                <p>{d.appimageBody}</p>
-              </div>
-              <div>
-                <h3>{d.flatpakTitle}</h3>
-                <p>{d.flatpakBody}</p>
-              </div>
-              <div>
-                <h3>{d.debTitle}</h3>
-                <p>{d.debBody}</p>
-              </div>
-            </div>
+            <DistroInstall dict={dict} />
           </Reveal>
           <p className={styles.earlyAccess}>
             {template(d.earlyAccess, {

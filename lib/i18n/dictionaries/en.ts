@@ -143,26 +143,39 @@ export const en = {
   download: {
     title: "Install Unisic",
     lede: "Needs a Wayland session with xdg-desktop-portal. Recording also wants PipeWire and ffmpeg.",
+    repoLede:
+      "Pick your distribution — the repository keeps Unisic updated through your package manager. AppImage and Flatpak are direct downloads.",
+    distroListLabel: "Choose your distribution or package format",
+    versionLabel: "Version",
+    copyCmd: "Copy commands",
+    copiedCmd: "Copied",
+    steps: {
+      importKey: "Import the repository signing key:",
+      addRepo: "Add the repository:",
+      refreshRepo: "Refresh the repositories:",
+      enableRepo: "Enable the COPR repository:",
+      install: "Install Unisic:",
+    },
+    notes: {
+      ubuntu:
+        "Ubuntu 25.10 reaches end of life in July 2026 — prefer 26.04. Both need Qt 6.5+, which older releases don’t ship.",
+      debian: "Needs Debian 13 (trixie) or newer for Qt 6.5+.",
+      fedora:
+        "Builds for Fedora 43, 44 and Rawhide. The COPR build pulls in the optional dependencies, so recording, OCR and background removal work out of the box.",
+      opensuse:
+        "zypper asks you to accept the repository signing key during the refresh.",
+      arch: "A signed pacman repository on the openSUSE Build Service — no AUR needed.",
+      appimage:
+        "Universal — runs on any distribution. The app updates itself: it downloads the new AppImage and swaps in place, then restarts when idle.",
+      flatpak:
+        "A sideload bundle — re-download to update (the app notifies you when a new version exists) until Unisic lands on Flathub.",
+    },
+    downloadBtn: "Download",
     checking: "Checking the latest release",
     latest: "Latest release {tag}",
     fallbackBtn: "Get it from GitHub Releases",
     fallbackNote: "Couldn’t reach GitHub just now, but every build lives there.",
     allReleases: "All releases and older builds",
-    coprTitle: "On Fedora? Use the COPR repo",
-    coprBody:
-      "Builds for Fedora 43, 44 and Rawhide. Updates arrive with the rest of the system through {code}. Details on the {link}.",
-    coprLink: "COPR project page",
-    coprCopy: "Copy command",
-    coprCopied: "Copied",
-    appimageTitle: "AppImage",
-    appimageBody:
-      "Ships zsync update info: run AppImageUpdate on the file for a differential update.",
-    flatpakTitle: "Flatpak",
-    flatpakBody:
-      "The bundle is a sideload. Re-download to update until Unisic lands on Flathub.",
-    debTitle: "deb, Arch",
-    debBody:
-      "Install the new package over the old one. Prefer building from source? The README has you covered.",
     earlyAccess:
       "Unisic is in early developer access: it works, but expect rough edges on exotic compositors. Every report in {link} helps.",
     earlyAccessLink: "Issues",

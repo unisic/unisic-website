@@ -55,7 +55,7 @@ Unisic uses the right Wayland path for your session:
 
 You need a Wayland session with `xdg-desktop-portal` and a backend. Recording additionally needs PipeWire and `ffmpeg`.
 
-See [Installation](/docs/installation) for packages and build instructions, and [Compositors](/docs/compositors) for backend-specific setup.
+See [Installation](/docs/installation) for the distro repositories and build instructions, and [Compositors](/docs/compositors) for backend-specific setup.
 
 ## Early developer access
 
@@ -63,6 +63,6 @@ Unisic is in early developer access. It works, but you will run into rough edges
 
 ## Where to next
 
-- [Installation](/docs/installation) — install from a package or build from source.
+- [Installation](/docs/installation) — install from your distro's repository or build from source.
 - [Capture](/docs/capture) — full screen, region, and active-window captures.
 - [Hotkeys](/docs/hotkeys) — the default shortcuts and how to change them.

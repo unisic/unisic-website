@@ -37,18 +37,6 @@
   margin-right: auto;
 }
 
-.copr {
-  margin: 48px auto 0;
-  max-width: 520px;
-  text-align: left;
-}
-
-.copr h3 {
-  font-size: 15px;
-  font-weight: 650;
-  text-align: center;
-}
-
 .coprCmdWrap {
   position: relative;
   margin-top: 14px;
@@ -99,48 +87,6 @@
   height: 16px;
 }
 
-.copr p {
-  margin-top: 12px;
-  color: var(--text-secondary);
-  font-size: 14px;
-  line-height: 1.55;
-}
-
-.copr p code {
-  font-family: var(--font-mono), monospace;
-  font-size: 13px;
-}
-
-.copr a {
-  color: var(--text-secondary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.copr a:hover {
-  color: var(--text);
-}
-
-.updateNotes {
-  margin-top: 54px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  text-align: left;
-}
-
-.updateNotes h3 {
-  font-size: 15px;
-  font-weight: 650;
-}
-
-.updateNotes p {
-  margin-top: 6px;
-  color: var(--text-secondary);
-  font-size: 14px;
-  line-height: 1.55;
-}
-
 .earlyAccess {
   margin: 40px auto 0;
   max-width: 62ch;
@@ -177,11 +123,6 @@
 
   .recCopy {
     order: 0;
-  }
-
-  .updateNotes {
-    grid-template-columns: 1fr;
-    gap: 20px;
   }
 
   .refCols {

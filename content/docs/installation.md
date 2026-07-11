@@ -1,11 +1,11 @@
 ---
 title: "Installation"
-description: "Install from a package, the Fedora COPR repo, or build from source."
+description: "Install from a distribution repository (OBS / COPR), grab a direct download, or build from source."
 order: 2
 group: "Getting started"
 ---
 
-This page covers how to install Unisic: the prebuilt packages on GitHub Releases, the Fedora COPR repository, and building from source.
+This page covers how to install Unisic: the distribution repositories (recommended), direct downloads from GitHub Releases, and building from source.
 
 ## Requirements
 
@@ -13,40 +13,114 @@ Unisic runs on Linux Wayland. You need a Wayland session with `xdg-desktop-porta
 
 For compositor-specific setup (for example wlroots compositors like niri, which need `grim` for screenshots and compositor-side keybinds), see [Compositors](/docs/compositors).
 
-## Packages
+## Install from a repository (recommended)
 
-Grab the latest build from [Releases](https://github.com/unisic/unisic/releases/latest). The following formats are provided:
+Install from a repository and updates arrive automatically through your package manager, like any other package. The [website download section](/#download) has the same snippets with a distro picker and copy buttons.
 
-| Format | Notes |
-|---|---|
-| **AppImage** | Universal; zsync differential updates. |
-| **Flatpak bundle** | Sideload bundle. |
-| **deb** | Debian, Ubuntu. |
-| **rpm** | On Fedora, install via the COPR repo (see below). |
-| **Arch package** | Arch Linux. |
+### Debian / Ubuntu (OBS repo)
 
-The website download page fetches the latest release directly from GitHub.
+An auto-updating signed repository built on the [openSUSE Build Service](https://software.opensuse.org/download.html?project=home:unisic&package=unisic). Needs a release with Qt 6.5+: Debian 13, Ubuntu 25.10 / 26.04 (25.10 reaches EOL in July 2026 — prefer 26.04).
 
-## Updates
+First, pick your repo name and import the repository signing key (run both steps in the same shell so `$REPO` carries over):
 
-| Package | How it updates |
-|---|---|
-| **AppImage** | Embedded update info + `.zsync` on every release — run `AppImageUpdate` on the file for a differential update. |
-| **Flatpak** | The release bundle is a sideload — re-download to update (native `flatpak update` once Unisic lands on Flathub). |
-| **deb / rpm / Arch** | Download the new package from Releases and install it over the old one. |
+```sh
+REPO=Debian_13   # or xUbuntu_26.04 / xUbuntu_25.10
+curl -fsSL "https://download.opensuse.org/repositories/home:/unisic/${REPO}/Release.key" \
+  | gpg --dearmor | sudo tee /etc/apt/keyrings/home_unisic.gpg > /dev/null
+```
 
-## Fedora (COPR)
+Then add the repository:
 
-On Fedora, install from the COPR repository:
+```sh
+echo "deb [signed-by=/etc/apt/keyrings/home_unisic.gpg] https://download.opensuse.org/repositories/home:/unisic/${REPO}/ ./" \
+  | sudo tee /etc/apt/sources.list.d/home_unisic.list
+```
+
+Finally, update and install:
+
+```sh
+sudo apt update && sudo apt install unisic
+```
+
+### Fedora (COPR)
+
+On Fedora, install from the [`deandark/Unisic`](https://copr.fedorainfracloud.org/coprs/deandark/Unisic/) COPR repository.
+
+First, enable the COPR repository:
 
 ```sh
 sudo dnf copr enable deandark/Unisic
+```
+
+Then install Unisic:
+
+```sh
 sudo dnf install unisic
 ```
 
-Builds are provided for Fedora 43, 44, and Rawhide. Updates arrive with the rest of the system through `dnf upgrade`.
+Builds are provided for Fedora 43, 44, and Rawhide. The COPR build pulls in the optional deps (PipeWire, Tesseract, onnxruntime) so recording, OCR and U-2-Net background removal all work out of the box.
 
-The COPR project page is at https://copr.fedorainfracloud.org/coprs/deandark/Unisic/.
+### openSUSE (OBS repo)
+
+First, add the repository (for Leap 16.0 replace `openSUSE_Tumbleweed` with `16.0`):
+
+```sh
+sudo zypper addrepo https://download.opensuse.org/repositories/home:unisic/openSUSE_Tumbleweed/home:unisic.repo
+```
+
+Then refresh the repositories and accept the signing key when asked:
+
+```sh
+sudo zypper refresh
+```
+
+Finally, install Unisic:
+
+```sh
+sudo zypper install unisic
+```
+
+### Arch (OBS repo)
+
+The same OBS project publishes a signed pacman repository (no AUR needed).
+
+First, import and locally sign the repository key:
+
+```sh
+curl -fsSL 'https://build.opensuse.org/projects/home:unisic/signing_keys/download?kind=gpg' -o /tmp/unisic-obs.key
+sudo pacman-key --add /tmp/unisic-obs.key
+sudo pacman-key --lsign-key "$(gpg --show-keys --with-colons /tmp/unisic-obs.key | awk -F: '/^fpr/{print $10; exit}')"
+```
+
+Then add the repository to `/etc/pacman.conf`:
+
+```sh
+printf '\n[home_unisic_Arch]\nServer = https://download.opensuse.org/repositories/home:/unisic/Arch/$arch\n' \
+  | sudo tee -a /etc/pacman.conf
+```
+
+Finally, install Unisic:
+
+```sh
+sudo pacman -Syu unisic
+```
+
+## Direct downloads
+
+Direct downloads from [Releases](https://github.com/unisic/unisic/releases/latest) (AppImage, Flatpak bundle, deb, rpm, Arch package) work too: the AppImage updates itself in-app, and the deb/rpm register the repository on install so you end up on the automatic path anyway.
+
+## Updates
+
+Unisic checks GitHub for a new release shortly after startup and once a day (Settings → General → Updates; only the latest release version is fetched, nothing else is sent) and updates fully automatically:
+
+| Package | How it updates |
+|---|---|
+| **OBS repos (Debian, Ubuntu, openSUSE, Arch)** | Native system updates — `apt upgrade` / `zypper up` / `pacman -Syu` pick up every release automatically. |
+| **COPR (Fedora)** | `sudo dnf upgrade` — the repo ships new builds like any other `dnf` package. |
+| **deb / rpm downloaded from Releases** | The package registers its repo on install (OBS for Debian/Ubuntu, COPR for Fedora) — every later version arrives natively through `apt upgrade` / `dnf upgrade`. |
+| **AppImage** | The app downloads the new AppImage and swaps itself in place, then restarts when idle — no clicks needed. (`.zsync` for `AppImageUpdate` still ships too.) |
+| **Arch package from Releases** | `pacman -U` installs print a one-paste snippet enabling the OBS repo — after that `pacman -Syu` covers it. |
+| **Flatpak** | The release bundle is a sideload — re-download to update (the app notifies when a new version exists). |
 
 ## Build from source
 
@@ -86,7 +160,7 @@ cmake --build build
 ./build/unisic
 ```
 
-PipeWire and Tesseract dev packages are optional at build time — without them the app builds with recording/OCR disabled.
+PipeWire, Tesseract and onnxruntime dev packages are optional at build time — without them the app builds with recording / OCR / U-2-Net background removal disabled (the dependency-free heuristic object cutout still works). To enable AI background removal install `onnxruntime-devel` (Fedora) or `onnxruntime` (Arch) and rebuild; the ~4.5 MB U-2-Net model is fetched on first use.
 
 ## Run
 
