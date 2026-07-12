@@ -95,7 +95,7 @@ export const en = {
     title: "Install Unisic",
     lede: "Needs a Wayland session with xdg-desktop-portal. Recording also wants PipeWire and ffmpeg.",
     repoLede:
-      "Pick your distribution — the repository keeps Unisic updated through your package manager. AppImage and Flatpak are direct downloads.",
+      "Pick your distribution — the repository keeps Unisic updated through your package manager. AppImage is a direct download.",
     distroListLabel: "Choose your distribution or package format",
     versionLabel: "Version",
     copyCmd: "Copy commands",
@@ -118,8 +118,6 @@ export const en = {
       arch: "A signed pacman repository on the openSUSE Build Service — no AUR needed.",
       appimage:
         "Universal — runs on any distribution. The app updates itself: it downloads the new AppImage and swaps in place, then restarts when idle.",
-      flatpak:
-        "A sideload bundle — re-download to update (the app notifies you when a new version exists) until Unisic lands on Flathub.",
     },
     downloadBtn: "Download",
     checking: "Checking the latest release",

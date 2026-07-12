@@ -107,7 +107,7 @@ sudo pacman -Syu unisic
 
 ## Direct downloads
 
-Direct downloads from [Releases](https://github.com/unisic/unisic/releases/latest) (AppImage, Flatpak bundle, deb, rpm, Arch package) work too: the AppImage updates itself in-app, and the deb/rpm register the repository on install so you end up on the automatic path anyway.
+Direct downloads from [Releases](https://github.com/unisic/unisic/releases/latest) (AppImage, deb, rpm, Arch package) work too: the AppImage updates itself in-app, and the deb/rpm register the repository on install so you end up on the automatic path anyway.
 
 ## Updates
 
@@ -120,7 +120,6 @@ Unisic checks GitHub for a new release shortly after startup and once a day (Set
 | **deb / rpm downloaded from Releases** | The package registers its repo on install (OBS for Debian/Ubuntu, COPR for Fedora) — every later version arrives natively through `apt upgrade` / `dnf upgrade`. |
 | **AppImage** | The app downloads the new AppImage and swaps itself in place, then restarts when idle — no clicks needed. (`.zsync` for `AppImageUpdate` still ships too.) |
 | **Arch package from Releases** | `pacman -U` installs print a one-paste snippet enabling the OBS repo — after that `pacman -Syu` covers it. |
-| **Flatpak** | The release bundle is a sideload — re-download to update (the app notifies when a new version exists). |
 
 ## Build from source
 

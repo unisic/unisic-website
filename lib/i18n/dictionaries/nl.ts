@@ -76,7 +76,7 @@ export const nl: Dictionary = {
   "download": {
     "title": "Unisic installeren",
     "lede": "Vereist een Wayland-sessie met xdg-desktop-portal. Voor opnemen zijn ook PipeWire en ffmpeg nodig.",
-    "repoLede": "Kies je distributie — de repository houdt Unisic up-to-date via je pakketbeheerder. AppImage en Flatpak zijn directe downloads.",
+    "repoLede": "Kies je distributie — de repository houdt Unisic up-to-date via je pakketbeheerder. AppImage is een directe download.",
     "distroListLabel": "Kies je distributie of pakketformaat",
     "versionLabel": "Versie",
     "copyCmd": "Commando's kopiëren",
@@ -94,8 +94,7 @@ export const nl: Dictionary = {
       "fedora": "Builds voor Fedora 43, 44 en Rawhide. De COPR-build installeert de optionele afhankelijkheden mee, dus opnemen, OCR en achtergrondverwijdering werken meteen.",
       "opensuse": "zypper vraagt je tijdens het verversen om de ondertekeningssleutel van de repository te accepteren.",
       "arch": "Een ondertekende pacman-repository op de openSUSE Build Service — geen AUR nodig.",
-      "appimage": "Universeel — draait op elke distributie. De app werkt zichzelf bij: hij downloadt de nieuwe AppImage, wisselt zichzelf ter plekke om en herstart bij inactiviteit.",
-      "flatpak": "Een sideload-bundel — download opnieuw om bij te werken (de app meldt wanneer er een nieuwe versie is) totdat Unisic op Flathub verschijnt."
+      "appimage": "Universeel — draait op elke distributie. De app werkt zichzelf bij: hij downloadt de nieuwe AppImage, wisselt zichzelf ter plekke om en herstart bij inactiviteit."
     },
     "downloadBtn": "Downloaden",
     "checking": "De nieuwste release controleren",

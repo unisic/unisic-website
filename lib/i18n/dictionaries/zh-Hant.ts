@@ -76,7 +76,7 @@ export const zhHant: Dictionary = {
   "download": {
     "title": "安裝 Unisic",
     "lede": "需要具備 xdg-desktop-portal 的 Wayland 工作階段。錄製功能另需 PipeWire 與 ffmpeg。",
-    "repoLede": "選擇你的發行版——軟體庫會透過套件管理器讓 Unisic 保持最新。AppImage 與 Flatpak 為直接下載。",
+    "repoLede": "選擇你的發行版——軟體庫會透過套件管理器讓 Unisic 保持最新。AppImage 為直接下載。",
     "distroListLabel": "選擇發行版或軟體套件格式",
     "versionLabel": "版本",
     "copyCmd": "複製命令",
@@ -94,8 +94,7 @@ export const zhHant: Dictionary = {
       "fedora": "提供 Fedora 43、44 與 Rawhide 的組建。COPR 組建會一併安裝選用相依套件，因此錄製、OCR 與背景移除都能直接使用。",
       "opensuse": "重新整理時 zypper 會要求你接受軟體庫的簽署金鑰。",
       "arch": "openSUSE Build Service 上的已簽署 pacman 軟體庫——不需要 AUR。",
-      "appimage": "通用格式——可在任何發行版上執行。應用程式會自行更新：下載新的 AppImage 並就地替換，閒置時重新啟動。",
-      "flatpak": "側載套件包——請重新下載以更新（有新版本時應用程式會提醒你），直到 Unisic 登上 Flathub。"
+      "appimage": "通用格式——可在任何發行版上執行。應用程式會自行更新：下載新的 AppImage 並就地替換，閒置時重新啟動。"
     },
     "downloadBtn": "下載",
     "checking": "正在查看最新版本",

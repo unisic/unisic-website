@@ -13,7 +13,7 @@ const CACHE_TTL_MS = 10 * 60 * 1000;
 
 export const RELEASES_URL = "https://github.com/unisic/unisic/releases/latest";
 
-export type AssetFormat = "appimage" | "flatpak";
+export type AssetFormat = "appimage";
 
 export type ReleaseAsset = {
   format: AssetFormat;
@@ -28,12 +28,11 @@ export type LatestRelease = {
   assets: ReleaseAsset[];
 };
 
-const FORMAT_ORDER: AssetFormat[] = ["appimage", "flatpak"];
+const FORMAT_ORDER: AssetFormat[] = ["appimage"];
 
 function matchFormat(name: string): AssetFormat | null {
   const n = name.toLowerCase();
   if (n.endsWith(".appimage")) return "appimage";
-  if (n.endsWith(".flatpak")) return "flatpak";
   // .deb/.rpm/.pkg.tar.zst install via the distro repos (see lib/distros.ts),
   // .zsync, debug builds and checksums are never direct downloads
   return null;

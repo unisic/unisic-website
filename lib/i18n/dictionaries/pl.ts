@@ -76,7 +76,7 @@ export const pl: Dictionary = {
   "download": {
     "title": "Zainstaluj Unisic",
     "lede": "Wymaga sesji Wayland z xdg-desktop-portal. Nagrywanie potrzebuje też PipeWire i ffmpeg.",
-    "repoLede": "Wybierz swoją dystrybucję — repozytorium aktualizuje Unisic przez menedżera pakietów. AppImage i Flatpak to pobrania bezpośrednie.",
+    "repoLede": "Wybierz swoją dystrybucję — repozytorium aktualizuje Unisic przez menedżera pakietów. AppImage to pobranie bezpośrednie.",
     "distroListLabel": "Wybierz dystrybucję lub format pakietu",
     "versionLabel": "Wersja",
     "copyCmd": "Kopiuj komendy",
@@ -95,7 +95,6 @@ export const pl: Dictionary = {
       "opensuse": "Podczas odświeżania zypper poprosi o zaakceptowanie klucza podpisującego repozytorium.",
       "arch": "Podpisane repozytorium pacmana na openSUSE Build Service — AUR nie jest potrzebny.",
       "appimage": "Uniwersalny — działa na każdej dystrybucji. Aplikacja aktualizuje się sama: pobiera nowy AppImage, podmienia się w miejscu i restartuje przy bezczynności.",
-      "flatpak": "Paczka do instalacji ręcznej — pobierz ponownie, aby zaktualizować (aplikacja powiadomi o nowej wersji), dopóki Unisic nie trafi na Flathub."
     },
     "downloadBtn": "Pobierz",
     "checking": "Sprawdzanie najnowszego wydania",
