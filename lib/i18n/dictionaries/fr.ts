@@ -29,15 +29,7 @@ export const fr: Dictionary = {
     "lede": "La surface de sélection est une toile. Dessinez des flèches, du texte, du flou et des étapes sur l'écran figé, puis appuyez sur Entrée : les annotations sont incrustées dans la capture."
   },
   "overlay": {
-    "caption": "La surface de sélection d'Unisic : un écran figé avec une région sélectionnée, les dimensions en pixels en temps réel, une flèche dessinée avant la capture et une barre d'outils flottante. Faites glisser un coin pour redimensionner la région ou glissez à l'intérieur pour la déplacer.",
-    "hint": "Démo interactive : faites glisser un coin pour redimensionner, ou glissez à l'intérieur pour déplacer la région.",
-    "resizeHandle": "Redimensionner la sélection depuis le coin {corner}",
-    "corners": {
-      "tl": "supérieur gauche",
-      "tr": "supérieur droit",
-      "bl": "inférieur gauche",
-      "br": "inférieur droit"
-    },
+    "caption": "La surface de sélection d'Unisic : un écran figé avec une région sélectionnée, les dimensions en pixels en temps réel, une flèche dessinée avant la capture et une barre d'outils flottante.",
     "capture": "Capturer"
   },
   "features": {
@@ -45,7 +37,7 @@ export const fr: Dictionary = {
     "lede": "La plupart des outils vous livrent un rectangle de pixels et s'en vont. Unisic prend en charge le reste du flux de travail.",
     "editor": {
       "title": "Un vrai éditeur, pas une boîte de recadrage",
-      "body": "Douze outils, dont surligneur, pixellisation, gomme intelligente, étapes numérotées et recadrage. Annuler, rétablir, zoomer, le tout à l'échelle du pixel de l'image. Cette carte les exécute en ce moment même."
+      "body": "Douze outils, dont surligneur, pixellisation, gomme intelligente, étapes numérotées et recadrage. Annuler, rétablir, zoomer, le tout à l'échelle du pixel de l'image."
     },
     "upload": {
       "title": "Envoyez partout",
@@ -65,51 +57,11 @@ export const fr: Dictionary = {
       "body": "Zéro télémétrie, aucun compte, rien ne communique à l'extérieur. Sous licence GPL-3.0 et développé au grand jour."
     }
   },
-  "editorDemo": {
-    "groupLabel": "Outils d'annotation (démo interactive)",
-    "tools": {
-      "pen": "Crayon",
-      "line": "Ligne",
-      "arrow": "Flèche",
-      "rect": "Rectangle",
-      "ellipse": "Ellipse",
-      "text": "Texte",
-      "highlight": "Surligneur",
-      "blur": "Flou",
-      "pixelate": "Pixellisation",
-      "eraser": "Gomme intelligente (cliquez sur un dessin)",
-      "step": "Marqueur d'étape"
-    },
-    "undo": "Annuler",
-    "redo": "Rétablir",
-    "capture": "Capturer",
-    "clear": "Effacer toutes les annotations",
-    "clearTitle": "Effacer",
-    "strokeLabel": "Trait {color}",
-    "textLabel": "Texte d'annotation",
-    "textPlaceholder": "Saisissez, puis Entrée",
-    "captured": "Capturé",
-    "hint": "Démo interactive : choisissez un outil et faites glisser sur la toile.",
-    "swatchNames": {
-      "red": "Rouge",
-      "yellow": "Jaune",
-      "green": "Vert",
-      "blue": "Bleu",
-      "lilac": "Lilas",
-      "white": "Blanc",
-      "navy": "Bleu marine"
-    }
-  },
   "recording": {
     "title": "La même région, en GIF ou en vidéo",
     "lede": "GIF avec une palette en deux passes pour des couleurs nettes, ou MP4 et WebM via le portail ScreenCast, PipeWire et ffmpeg. Enregistrez une région, l'écran entier ou une fenêtre.",
-    "note": "{keys} arrête toujours un enregistrement, quel que soit l'élément actif. Essayez-le sur la démo dès maintenant.",
-    "stopLabel": "Arrêter l'enregistrement de démonstration (Ctrl+Échap fonctionne aussi)",
-    "restartLabel": "Redémarrer l'enregistrement de démonstration",
-    "stop": "Arrêter",
-    "restart": "Redémarrer",
-    "saved": "Enregistré",
-    "caption": "Une région de l'écran en cours d'enregistrement : Unisic dessine un cadre de la couleur d'accentuation autour de la région, avec un badge REC et un minuteur du temps écoulé. L'enregistrement de démonstration peut être arrêté et redémarré."
+    "note": "{keys} arrête toujours un enregistrement, quel que soit l'élément actif.",
+    "caption": "Une région de l'écran en cours d'enregistrement : Unisic dessine un cadre de la couleur d'accentuation autour de la région, avec un badge REC et un minuteur du temps écoulé."
   },
   "themes": {
     "title": "Neuf thèmes, dont le vôtre",

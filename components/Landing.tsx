@@ -9,7 +9,7 @@ import { HotkeyTable } from "./HotkeyTable";
 import { Kbd } from "./Kbd";
 import { Nav } from "./Nav";
 import { OverlayMockup } from "./OverlayMockup";
-import { RecordingDemo } from "./RecordingDemo";
+import { RecordingFrame } from "./RecordingFrame";
 import { Reveal } from "./Reveal";
 import { ThemeShowcase } from "./ThemeShowcase";
 import type { Dictionary } from "../lib/i18n";
@@ -62,7 +62,7 @@ export function Landing({
         <section className="section" id="recording" aria-labelledby="rec-title">
           <Reveal className={styles.recSplit}>
             <div className={styles.recVisual}>
-              <RecordingDemo dict={dict} />
+              <RecordingFrame dict={dict} />
             </div>
             <div className={styles.recCopy}>
               <h2 id="rec-title">{dict.recording.title}</h2>

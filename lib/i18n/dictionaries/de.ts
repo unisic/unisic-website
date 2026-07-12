@@ -29,15 +29,7 @@ export const de: Dictionary = {
     "lede": "Das Auswahl-Overlay ist eine Leinwand. Zeichnen Sie Pfeile, Text, Unschärfe und Schritte auf den eingefrorenen Bildschirm und drücken Sie dann Enter: Die Anmerkungen werden fest in die Aufnahme eingebrannt."
   },
   "overlay": {
-    "caption": "Das Unisic Auswahl-Overlay: ein eingefrorener Bildschirm mit einem ausgewählten Bereich, Live-Pixelmaßen, einem vor der Aufnahme gezeichneten Pfeil und einer schwebenden Werkzeugleiste. Ziehen Sie an einer Ecke, um die Größe des Bereichs zu ändern, oder ziehen Sie im Inneren, um ihn zu verschieben.",
-    "hint": "Live-Demo: Ziehen Sie an einer Ecke, um die Größe zu ändern, oder ziehen Sie im Inneren, um den Bereich zu verschieben.",
-    "resizeHandle": "Größe der Auswahl an der Ecke {corner} ändern",
-    "corners": {
-      "tl": "oben links",
-      "tr": "oben rechts",
-      "bl": "unten links",
-      "br": "unten rechts"
-    },
+    "caption": "Das Unisic Auswahl-Overlay: ein eingefrorener Bildschirm mit einem ausgewählten Bereich, Live-Pixelmaßen, einem vor der Aufnahme gezeichneten Pfeil und einer schwebenden Werkzeugleiste.",
     "capture": "Aufnehmen"
   },
   "features": {
@@ -45,7 +37,7 @@ export const de: Dictionary = {
     "lede": "Die meisten Tools liefern Ihnen ein Rechteck aus Pixeln und lassen Sie dann allein. Unisic deckt den Rest des Arbeitsablaufs ab.",
     "editor": {
       "title": "Ein echter Editor, keine Zuschneidebox",
-      "body": "Zwölf Werkzeuge, darunter Hervorheben, Verpixeln, intelligenter Radierer, nummerierte Schritte und Zuschneiden. Rückgängig, Wiederholen, Zoom – alles im Bildpixel-Raum. Diese Karte führt sie gerade jetzt aus."
+      "body": "Zwölf Werkzeuge, darunter Hervorheben, Verpixeln, intelligenter Radierer, nummerierte Schritte und Zuschneiden. Rückgängig, Wiederholen, Zoom – alles im Bildpixel-Raum."
     },
     "upload": {
       "title": "Überall hochladen",
@@ -65,51 +57,11 @@ export const de: Dictionary = {
       "body": "Keine Telemetrie, keine Konten, nichts funkt nach Hause. Unter GPL-3.0 lizenziert und offen entwickelt."
     }
   },
-  "editorDemo": {
-    "groupLabel": "Anmerkungswerkzeuge (Live-Demo)",
-    "tools": {
-      "pen": "Stift",
-      "line": "Linie",
-      "arrow": "Pfeil",
-      "rect": "Rechteck",
-      "ellipse": "Ellipse",
-      "text": "Text",
-      "highlight": "Hervorheben",
-      "blur": "Unschärfe",
-      "pixelate": "Verpixeln",
-      "eraser": "Intelligenter Radierer (Zeichnung anklicken)",
-      "step": "Schrittmarkierung"
-    },
-    "undo": "Rückgängig",
-    "redo": "Wiederholen",
-    "capture": "Aufnehmen",
-    "clear": "Alle Anmerkungen löschen",
-    "clearTitle": "Löschen",
-    "strokeLabel": "Strich in {color}",
-    "textLabel": "Anmerkungstext",
-    "textPlaceholder": "Tippen, dann Enter",
-    "captured": "Aufgenommen",
-    "hint": "Live-Demo: Wählen Sie ein Werkzeug und ziehen Sie auf der Leinwand.",
-    "swatchNames": {
-      "red": "Rot",
-      "yellow": "Gelb",
-      "green": "Grün",
-      "blue": "Blau",
-      "lilac": "Flieder",
-      "white": "Weiß",
-      "navy": "Marineblau"
-    }
-  },
   "recording": {
     "title": "Derselbe Bereich, als GIF oder Video",
     "lede": "GIF mit einer Zwei-Pass-Palette für klare Farben oder MP4 und WebM über das ScreenCast-Portal, PipeWire und ffmpeg. Nehmen Sie einen Bereich, den gesamten Bildschirm oder ein Fenster auf.",
-    "note": "{keys} stoppt immer eine Aufzeichnung, egal was gerade den Fokus hat. Probieren Sie es gleich an der Demo aus.",
-    "stopLabel": "Die Demo-Aufzeichnung stoppen (Strg+Esc funktioniert auch)",
-    "restartLabel": "Die Demo-Aufzeichnung neu starten",
-    "stop": "Stopp",
-    "restart": "Neu starten",
-    "saved": "Gespeichert",
-    "caption": "Ein Bildschirmbereich wird aufgezeichnet: Unisic zeichnet einen akzentfarbenen Rahmen um den Bereich mit einem REC-Symbol und einem laufenden Timer. Die Demo-Aufzeichnung kann gestoppt und neu gestartet werden."
+    "note": "{keys} stoppt immer eine Aufzeichnung, egal was gerade den Fokus hat.",
+    "caption": "Ein Bildschirmbereich wird aufgezeichnet: Unisic zeichnet einen akzentfarbenen Rahmen um den Bereich mit einem REC-Symbol und einem laufenden Timer."
   },
   "themes": {
     "title": "Neun Themes, darunter Ihr eigenes",

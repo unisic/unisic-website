@@ -27,25 +27,32 @@
   min-width: 0;
 }
 
-/* cursor-tracked spotlight; FeatureGrid.tsx feeds --mx/--my */
+/* Replaces the removed cursor spotlight: a quiet lift + accent edge on hover.
+   Colour/shadow change on any hover device; the translate (motion) is added
+   only when motion is welcome. */
 @media (hover: hover) {
-  .cell::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(
-      230px circle at var(--mx, 50%) var(--my, 50%),
-      rgba(200, 172, 214, 0.09),
-      transparent 65%
-    );
-    opacity: 0;
-    transition: opacity 0.35s var(--ease-out);
-    pointer-events: none;
+  .cell {
+    transition:
+      border-color var(--dur-fast) var(--ease-out),
+      box-shadow var(--dur-fast) var(--ease-out);
   }
 
-  .cell:hover::after {
-    opacity: 1;
+  .cell:hover {
+    border-color: rgba(200, 172, 214, 0.4);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .cell {
+    transition:
+      border-color var(--dur-fast) var(--ease-out),
+      box-shadow var(--dur-fast) var(--ease-out),
+      transform var(--dur-fast) var(--ease-out);
+  }
+
+  .cell:hover {
+    transform: translateY(-3px);
   }
 }
 

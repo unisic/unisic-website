@@ -29,15 +29,7 @@ export const zhHans: Dictionary = {
     "lede": "选区蒙层就是一块画布。在冻结的画面上绘制箭头、文字、模糊和步骤标记，然后按 Enter：标注即被烙入截图。"
   },
   "overlay": {
-    "caption": "Unisic 选区蒙层：冻结的屏幕上有一块选定区域、实时像素尺寸、一个在截图前绘制的箭头，以及一个浮动工具栏。拖动边角可调整选区大小，拖动内部可移动选区。",
-    "hint": "实时演示：拖动边角可调整大小，或拖动内部移动选区。",
-    "resizeHandle": "从{corner}调整选区大小",
-    "corners": {
-      "tl": "左上角",
-      "tr": "右上角",
-      "bl": "左下角",
-      "br": "右下角"
-    },
+    "caption": "Unisic 选区蒙层：冻结的屏幕上有一块选定区域、实时像素尺寸、一个在截图前绘制的箭头，以及一个浮动工具栏。",
     "capture": "截图"
   },
   "features": {
@@ -45,7 +37,7 @@ export const zhHans: Dictionary = {
     "lede": "大多数工具只丢给你一块矩形像素就撒手不管。Unisic 覆盖了工作流的其余部分。",
     "editor": {
       "title": "真正的编辑器，而非裁剪框",
-      "body": "十二种工具，包括高亮、像素化、智能橡皮擦、编号步骤和裁剪。撤销、重做、缩放，全部在图像像素空间中进行。这张卡片正在实时运行它们。"
+      "body": "十二种工具，包括高亮、像素化、智能橡皮擦、编号步骤和裁剪。撤销、重做、缩放，全部在图像像素空间中进行。"
     },
     "upload": {
       "title": "上传到任何地方",
@@ -65,51 +57,11 @@ export const zhHans: Dictionary = {
       "body": "零遥测、无需账户、绝不回传。以 GPL-3.0 授权，开放开发。"
     }
   },
-  "editorDemo": {
-    "groupLabel": "标注工具（实时演示）",
-    "tools": {
-      "pen": "画笔",
-      "line": "直线",
-      "arrow": "箭头",
-      "rect": "矩形",
-      "ellipse": "椭圆",
-      "text": "文字",
-      "highlight": "高亮",
-      "blur": "模糊",
-      "pixelate": "像素化",
-      "eraser": "智能橡皮擦（点击已绘制的内容）",
-      "step": "步骤标记"
-    },
-    "undo": "撤销",
-    "redo": "重做",
-    "capture": "截图",
-    "clear": "清除所有标注",
-    "clearTitle": "清除",
-    "strokeLabel": "{color}描边",
-    "textLabel": "标注文字",
-    "textPlaceholder": "输入后按 Enter",
-    "captured": "已截图",
-    "hint": "实时演示：选择一种工具并在画布上拖动。",
-    "swatchNames": {
-      "red": "红色",
-      "yellow": "黄色",
-      "green": "绿色",
-      "blue": "蓝色",
-      "lilac": "淡紫色",
-      "white": "白色",
-      "navy": "藏青色"
-    }
-  },
   "recording": {
     "title": "同一区域，可存为 GIF 或视频",
     "lede": "GIF 采用两遍调色板以获得清晰色彩，或通过 ScreenCast 门户、PipeWire 和 ffmpeg 导出 MP4 与 WebM。可录制某个区域、整个屏幕或某个窗口。",
-    "note": "无论焦点在哪里，{keys}始终能停止录制。现在就在演示上试试。",
-    "stopLabel": "停止演示录制（Ctrl+Esc 也可以）",
-    "restartLabel": "重新开始演示录制",
-    "stop": "停止",
-    "restart": "重新开始",
-    "saved": "已保存",
-    "caption": "正在录制一块屏幕区域：Unisic 在该区域周围绘制一个强调色边框，配有 REC 标记和已录时长计时器。演示录制可以停止和重新开始。"
+    "note": "无论焦点在哪里，{keys}始终能停止录制。",
+    "caption": "正在录制一块屏幕区域：Unisic 在该区域周围绘制一个强调色边框，配有 REC 标记和已录时长计时器。"
   },
   "themes": {
     "title": "九种主题，包括你自己的",

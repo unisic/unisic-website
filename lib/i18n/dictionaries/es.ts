@@ -29,15 +29,7 @@ export const es: Dictionary = {
     "lede": "La superposición de selección es un lienzo. Dibuja flechas, texto, desenfoque y pasos sobre la pantalla congelada y pulsa Intro: las anotaciones quedan grabadas en la captura."
   },
   "overlay": {
-    "caption": "La superposición de selección de Unisic: una pantalla congelada con una región seleccionada, dimensiones en píxeles en tiempo real, una flecha dibujada antes de capturar y una barra de herramientas flotante. Arrastra una esquina para redimensionar la región o arrastra dentro para moverla.",
-    "hint": "Demo en vivo: arrastra una esquina para redimensionar o arrastra dentro para mover la región.",
-    "resizeHandle": "Redimensionar la selección desde la esquina {corner}",
-    "corners": {
-      "tl": "superior izquierda",
-      "tr": "superior derecha",
-      "bl": "inferior izquierda",
-      "br": "inferior derecha"
-    },
+    "caption": "La superposición de selección de Unisic: una pantalla congelada con una región seleccionada, dimensiones en píxeles en tiempo real, una flecha dibujada antes de capturar y una barra de herramientas flotante.",
     "capture": "Capturar"
   },
   "features": {
@@ -45,7 +37,7 @@ export const es: Dictionary = {
     "lede": "La mayoría de las herramientas te entregan un rectángulo de píxeles y se despiden. Unisic cubre el resto del flujo de trabajo.",
     "editor": {
       "title": "Un editor de verdad, no un recuadro de recorte",
-      "body": "Doce herramientas, incluidas resaltado, pixelado, borrador inteligente, pasos numerados y recorte. Deshacer, rehacer, zoom, todo en el espacio de píxeles de la imagen. Esta tarjeta las está ejecutando ahora mismo."
+      "body": "Doce herramientas, incluidas resaltado, pixelado, borrador inteligente, pasos numerados y recorte. Deshacer, rehacer, zoom, todo en el espacio de píxeles de la imagen."
     },
     "upload": {
       "title": "Sube a cualquier sitio",
@@ -65,51 +57,11 @@ export const es: Dictionary = {
       "body": "Cero telemetría, sin cuentas, nada llama a casa. Con licencia GPL-3.0 y desarrollado en abierto."
     }
   },
-  "editorDemo": {
-    "groupLabel": "Herramientas de anotación (demo en vivo)",
-    "tools": {
-      "pen": "Lápiz",
-      "line": "Línea",
-      "arrow": "Flecha",
-      "rect": "Rectángulo",
-      "ellipse": "Elipse",
-      "text": "Texto",
-      "highlight": "Resaltado",
-      "blur": "Desenfoque",
-      "pixelate": "Pixelado",
-      "eraser": "Borrador inteligente (haz clic en un dibujo)",
-      "step": "Marcador de paso"
-    },
-    "undo": "Deshacer",
-    "redo": "Rehacer",
-    "capture": "Capturar",
-    "clear": "Borrar todas las anotaciones",
-    "clearTitle": "Borrar",
-    "strokeLabel": "Trazo {color}",
-    "textLabel": "Texto de anotación",
-    "textPlaceholder": "Escribe y pulsa Intro",
-    "captured": "Capturado",
-    "hint": "Demo en vivo: elige una herramienta y arrastra sobre el lienzo.",
-    "swatchNames": {
-      "red": "Rojo",
-      "yellow": "Amarillo",
-      "green": "Verde",
-      "blue": "Azul",
-      "lilac": "Lila",
-      "white": "Blanco",
-      "navy": "Azul marino"
-    }
-  },
   "recording": {
     "title": "La misma región, como GIF o vídeo",
     "lede": "GIF con una paleta de dos pasadas para colores nítidos, o MP4 y WebM a través del portal ScreenCast, PipeWire y ffmpeg. Graba una región, la pantalla completa o una ventana.",
-    "note": "{keys} siempre detiene una grabación, sin importar qué tenga el foco. Pruébalo ahora mismo en la demo.",
-    "stopLabel": "Detener la grabación de demostración (Ctrl+Esc también funciona)",
-    "restartLabel": "Reiniciar la grabación de demostración",
-    "stop": "Detener",
-    "restart": "Reiniciar",
-    "saved": "Guardado",
-    "caption": "Una región de pantalla en grabación: Unisic dibuja un marco con color de acento alrededor de la región, con una insignia REC y un temporizador. La grabación de demostración se puede detener y reiniciar."
+    "note": "{keys} siempre detiene una grabación, sin importar qué tenga el foco.",
+    "caption": "Una región de pantalla en grabación: Unisic dibuja un marco con color de acento alrededor de la región, con una insignia REC y un temporizador."
   },
   "themes": {
     "title": "Nueve temas, incluido el tuyo",

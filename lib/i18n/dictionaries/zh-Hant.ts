@@ -29,15 +29,7 @@ export const zhHant: Dictionary = {
     "lede": "選取覆蓋層就是一塊畫布。在凍結的畫面上畫箭頭、文字、模糊與步驟標記，然後按 Enter：標註便直接烙印進截圖中。"
   },
   "overlay": {
-    "caption": "Unisic 的選取覆蓋層：凍結的畫面上有一塊選取的區域、即時的像素尺寸、擷取前畫好的箭頭，以及浮動工具列。拖曳角落可調整區域大小，拖曳內部可移動它。",
-    "hint": "即時示範：拖曳角落可調整大小，或拖曳內部可移動區域。",
-    "resizeHandle": "從{corner}角調整選取範圍",
-    "corners": {
-      "tl": "左上",
-      "tr": "右上",
-      "bl": "左下",
-      "br": "右下"
-    },
+    "caption": "Unisic 的選取覆蓋層：凍結的畫面上有一塊選取的區域、即時的像素尺寸、擷取前畫好的箭頭，以及浮動工具列。",
     "capture": "擷取"
   },
   "features": {
@@ -45,7 +37,7 @@ export const zhHant: Dictionary = {
     "lede": "多數工具丟給你一塊矩形像素就走人。Unisic 則涵蓋了工作流程的其餘部分。",
     "editor": {
       "title": "真正的編輯器，而非裁切框",
-      "body": "十二種工具，包含螢光標記、像素化、智慧橡皮擦、編號步驟與裁切。復原、重做、縮放，全部在影像像素空間中進行。這張卡片正在即時執行它們。"
+      "body": "十二種工具，包含螢光標記、像素化、智慧橡皮擦、編號步驟與裁切。復原、重做、縮放，全部在影像像素空間中進行。"
     },
     "upload": {
       "title": "隨處上傳",
@@ -65,51 +57,11 @@ export const zhHant: Dictionary = {
       "body": "零遙測、無需帳號、不會回傳任何資料。採用 GPL-3.0 授權，並公開開發。"
     }
   },
-  "editorDemo": {
-    "groupLabel": "標註工具（即時示範）",
-    "tools": {
-      "pen": "畫筆",
-      "line": "直線",
-      "arrow": "箭頭",
-      "rect": "矩形",
-      "ellipse": "橢圓",
-      "text": "文字",
-      "highlight": "螢光標記",
-      "blur": "模糊",
-      "pixelate": "像素化",
-      "eraser": "智慧橡皮擦（點選繪圖）",
-      "step": "步驟標記"
-    },
-    "undo": "復原",
-    "redo": "重做",
-    "capture": "擷取",
-    "clear": "清除所有標註",
-    "clearTitle": "清除",
-    "strokeLabel": "{color}筆觸",
-    "textLabel": "標註文字",
-    "textPlaceholder": "輸入後按 Enter",
-    "captured": "已擷取",
-    "hint": "即時示範：選一個工具，然後在畫布上拖曳。",
-    "swatchNames": {
-      "red": "紅色",
-      "yellow": "黃色",
-      "green": "綠色",
-      "blue": "藍色",
-      "lilac": "淡紫色",
-      "white": "白色",
-      "navy": "深藍色"
-    }
-  },
   "recording": {
     "title": "同一塊區域，錄成 GIF 或影片",
     "lede": "GIF 採用兩階段調色盤帶來鮮明色彩，或透過 ScreenCast portal、PipeWire 與 ffmpeg 錄製 MP4 與 WebM。可錄製一塊區域、整個螢幕或單一視窗。",
-    "note": "無論焦點在哪裡，{keys} 都能停止錄製。現在就在示範上試試看。",
-    "stopLabel": "停止示範錄製（Ctrl+Esc 也可以）",
-    "restartLabel": "重新開始示範錄製",
-    "stop": "停止",
-    "restart": "重新開始",
-    "saved": "已儲存",
-    "caption": "正在錄製的一塊螢幕區域：Unisic 在區域四周畫出強調色邊框，並附上 REC 標記與計時器。示範錄製可以停止與重新開始。"
+    "note": "無論焦點在哪裡，{keys} 都能停止錄製。",
+    "caption": "正在錄製的一塊螢幕區域：Unisic 在區域四周畫出強調色邊框，並附上 REC 標記與計時器。"
   },
   "themes": {
     "title": "九種主題，包含你自己的",

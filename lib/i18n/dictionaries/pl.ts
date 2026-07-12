@@ -29,15 +29,7 @@ export const pl: Dictionary = {
     "lede": "Nakładka zaznaczenia to płótno. Rysuj strzałki, tekst, rozmycie i kroki na zamrożonym ekranie, a potem naciśnij Enter: adnotacje zostaną wtopione w zrzut."
   },
   "overlay": {
-    "caption": "Nakładka zaznaczenia Unisic: zamrożony ekran z zaznaczonym obszarem, wymiary w pikselach na żywo, strzałka narysowana przed przechwyceniem oraz pływający pasek narzędzi. Przeciągnij róg, aby zmienić rozmiar obszaru, lub przeciągnij wewnątrz, aby go przesunąć.",
-    "hint": "Demo na żywo: przeciągnij róg, aby zmienić rozmiar, lub przeciągnij wewnątrz, aby przesunąć obszar.",
-    "resizeHandle": "Zmień rozmiar zaznaczenia od rogu {corner}",
-    "corners": {
-      "tl": "lewego górnego",
-      "tr": "prawego górnego",
-      "bl": "lewego dolnego",
-      "br": "prawego dolnego"
-    },
+    "caption": "Nakładka zaznaczenia Unisic: zamrożony ekran z zaznaczonym obszarem, wymiary w pikselach na żywo, strzałka narysowana przed przechwyceniem oraz pływający pasek narzędzi.",
     "capture": "Przechwyć"
   },
   "features": {
@@ -45,7 +37,7 @@ export const pl: Dictionary = {
     "lede": "Większość narzędzi podaje ci prostokąt pikseli i odchodzi. Unisic zajmuje się resztą procesu.",
     "editor": {
       "title": "Prawdziwy edytor, a nie ramka do kadrowania",
-      "body": "Dwanaście narzędzi, w tym wyróżnienie, pikselizacja, inteligentna gumka, ponumerowane kroki i kadrowanie. Cofanie, ponawianie, powiększanie — wszystko w przestrzeni pikseli obrazu. Ta karta uruchamia je właśnie teraz."
+      "body": "Dwanaście narzędzi, w tym wyróżnienie, pikselizacja, inteligentna gumka, ponumerowane kroki i kadrowanie. Cofanie, ponawianie, powiększanie — wszystko w przestrzeni pikseli obrazu."
     },
     "upload": {
       "title": "Przesyłaj wszędzie",
@@ -65,51 +57,11 @@ export const pl: Dictionary = {
       "body": "Zero telemetrii, brak kont, nic nie wysyła danych na zewnątrz. Na licencji GPL-3.0, tworzony w otwarty sposób."
     }
   },
-  "editorDemo": {
-    "groupLabel": "Narzędzia do adnotacji (demo na żywo)",
-    "tools": {
-      "pen": "Pióro",
-      "line": "Linia",
-      "arrow": "Strzałka",
-      "rect": "Prostokąt",
-      "ellipse": "Elipsa",
-      "text": "Tekst",
-      "highlight": "Wyróżnienie",
-      "blur": "Rozmycie",
-      "pixelate": "Pikselizacja",
-      "eraser": "Inteligentna gumka (kliknij rysunek)",
-      "step": "Znacznik kroku"
-    },
-    "undo": "Cofnij",
-    "redo": "Ponów",
-    "capture": "Przechwyć",
-    "clear": "Wyczyść wszystkie adnotacje",
-    "clearTitle": "Wyczyść",
-    "strokeLabel": "Kolor pociągnięcia: {color}",
-    "textLabel": "Tekst adnotacji",
-    "textPlaceholder": "Wpisz, potem Enter",
-    "captured": "Przechwycono",
-    "hint": "Demo na żywo: wybierz narzędzie i przeciągnij po płótnie.",
-    "swatchNames": {
-      "red": "Czerwony",
-      "yellow": "Żółty",
-      "green": "Zielony",
-      "blue": "Niebieski",
-      "lilac": "Liliowy",
-      "white": "Biały",
-      "navy": "Granatowy"
-    }
-  },
   "recording": {
     "title": "Ten sam obszar jako GIF lub wideo",
     "lede": "GIF z dwuprzebiegową paletą dla wyrazistych kolorów albo MP4 i WebM przez portal ScreenCast, PipeWire i ffmpeg. Nagrywaj obszar, cały ekran lub okno.",
-    "note": "{keys} zawsze zatrzymuje nagrywanie, niezależnie od tego, co ma fokus. Wypróbuj to na wersji demo już teraz.",
-    "stopLabel": "Zatrzymaj nagrywanie demonstracyjne (Ctrl+Esc też działa)",
-    "restartLabel": "Uruchom ponownie nagrywanie demonstracyjne",
-    "stop": "Zatrzymaj",
-    "restart": "Uruchom ponownie",
-    "saved": "Zapisano",
-    "caption": "Nagrywany obszar ekranu: Unisic rysuje wokół obszaru ramkę w kolorze akcentu z plakietką REC i licznikiem czasu. Nagrywanie demonstracyjne można zatrzymać i uruchomić ponownie."
+    "note": "{keys} zawsze zatrzymuje nagrywanie, niezależnie od tego, co ma fokus.",
+    "caption": "Nagrywany obszar ekranu: Unisic rysuje wokół obszaru ramkę w kolorze akcentu z plakietką REC i licznikiem czasu."
   },
   "themes": {
     "title": "Dziewięć motywów, w tym twój",

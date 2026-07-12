@@ -41,15 +41,7 @@ export const en = {
 
   overlay: {
     caption:
-      "The Unisic selection overlay: a frozen screen with a selected region, live pixel dimensions, an arrow drawn before capture, and a floating toolbar. Drag a corner to resize the region or drag inside to move it.",
-    hint: "Live demo: drag a corner to resize, or drag inside to move the region.",
-    resizeHandle: "Resize selection from {corner} corner",
-    corners: {
-      tl: "top-left",
-      tr: "top-right",
-      bl: "bottom-left",
-      br: "bottom-right",
-    },
+      "The Unisic selection overlay: a frozen screen with a selected region, live pixel dimensions, an arrow drawn before capture, and a floating toolbar.",
     capture: "Capture",
   },
 
@@ -58,7 +50,7 @@ export const en = {
     lede: "Most tools hand you a rectangle of pixels and walk away. Unisic covers the rest of the workflow.",
     editor: {
       title: "A real editor, not a crop box",
-      body: "Twelve tools including highlight, pixelate, smart eraser, numbered steps and crop. Undo, redo, zoom, all in image-pixel space. This card is running them right now.",
+      body: "Twelve tools including highlight, pixelate, smart eraser, numbered steps and crop. Undo, redo, zoom, all in image-pixel space.",
     },
     upload: {
       title: "Upload anywhere",
@@ -79,53 +71,12 @@ export const en = {
     },
   },
 
-  editorDemo: {
-    groupLabel: "Annotation tools (live demo)",
-    tools: {
-      pen: "Pen",
-      line: "Line",
-      arrow: "Arrow",
-      rect: "Rectangle",
-      ellipse: "Ellipse",
-      text: "Text",
-      highlight: "Highlight",
-      blur: "Blur",
-      pixelate: "Pixelate",
-      eraser: "Smart eraser (click a drawing)",
-      step: "Step marker",
-    },
-    undo: "Undo",
-    redo: "Redo",
-    capture: "Capture",
-    clear: "Clear all annotations",
-    clearTitle: "Clear",
-    strokeLabel: "{color} stroke",
-    textLabel: "Annotation text",
-    textPlaceholder: "Type, then Enter",
-    captured: "Captured",
-    hint: "Live demo: pick a tool and drag on the canvas.",
-    swatchNames: {
-      red: "Red",
-      yellow: "Yellow",
-      green: "Green",
-      blue: "Blue",
-      lilac: "Lilac",
-      white: "White",
-      navy: "Navy",
-    },
-  },
-
   recording: {
     title: "The same region, as GIF or video",
     lede: "GIF with a two-pass palette for crisp colors, or MP4 and WebM through the ScreenCast portal, PipeWire and ffmpeg. Record a region, the full screen, or a window.",
-    note: "{keys} always stops a recording, no matter what has focus. Try it on the demo right now.",
-    stopLabel: "Stop the demo recording (Ctrl+Esc works too)",
-    restartLabel: "Restart the demo recording",
-    stop: "Stop",
-    restart: "Restart",
-    saved: "Saved",
+    note: "{keys} always stops a recording, no matter what has focus.",
     caption:
-      "A screen region being recorded: Unisic draws an accent-colored frame around the region with a REC badge and elapsed timer. The demo recording can be stopped and restarted.",
+      "A screen region being recorded: Unisic draws an accent-colored frame around the region with a REC badge and elapsed timer.",
   },
 
   themes: {

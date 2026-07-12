@@ -29,15 +29,7 @@ export const it: Dictionary = {
     "lede": "L'overlay di selezione è una tela. Disegna frecce, testo, sfocature e passaggi sullo schermo congelato, poi premi Invio: le annotazioni vengono impresse nella cattura."
   },
   "overlay": {
-    "caption": "L'overlay di selezione di Unisic: uno schermo congelato con una regione selezionata, dimensioni in pixel in tempo reale, una freccia disegnata prima della cattura e una barra degli strumenti fluttuante. Trascina un angolo per ridimensionare la regione o trascina all'interno per spostarla.",
-    "hint": "Demo dal vivo: trascina un angolo per ridimensionare o trascina all'interno per spostare la regione.",
-    "resizeHandle": "Ridimensiona la selezione dall'angolo {corner}",
-    "corners": {
-      "tl": "in alto a sinistra",
-      "tr": "in alto a destra",
-      "bl": "in basso a sinistra",
-      "br": "in basso a destra"
-    },
+    "caption": "L'overlay di selezione di Unisic: uno schermo congelato con una regione selezionata, dimensioni in pixel in tempo reale, una freccia disegnata prima della cattura e una barra degli strumenti fluttuante.",
     "capture": "Cattura"
   },
   "features": {
@@ -45,7 +37,7 @@ export const it: Dictionary = {
     "lede": "La maggior parte degli strumenti ti consegna un rettangolo di pixel e se ne va. Unisic si occupa del resto del flusso di lavoro.",
     "editor": {
       "title": "Un vero editor, non un riquadro di ritaglio",
-      "body": "Dodici strumenti tra cui evidenziatore, pixelatura, gomma intelligente, passaggi numerati e ritaglio. Annulla, ripeti, zoom, tutto nello spazio dei pixel dell'immagine. Questa scheda li sta eseguendo proprio ora."
+      "body": "Dodici strumenti tra cui evidenziatore, pixelatura, gomma intelligente, passaggi numerati e ritaglio. Annulla, ripeti, zoom, tutto nello spazio dei pixel dell'immagine."
     },
     "upload": {
       "title": "Carica ovunque",
@@ -65,51 +57,11 @@ export const it: Dictionary = {
       "body": "Zero telemetria, nessun account, niente che invii dati all'esterno. Licenza GPL-3.0 e sviluppato in modo aperto."
     }
   },
-  "editorDemo": {
-    "groupLabel": "Strumenti di annotazione (demo dal vivo)",
-    "tools": {
-      "pen": "Penna",
-      "line": "Linea",
-      "arrow": "Freccia",
-      "rect": "Rettangolo",
-      "ellipse": "Ellisse",
-      "text": "Testo",
-      "highlight": "Evidenziatore",
-      "blur": "Sfocatura",
-      "pixelate": "Pixelatura",
-      "eraser": "Gomma intelligente (clicca su un disegno)",
-      "step": "Indicatore di passaggio"
-    },
-    "undo": "Annulla",
-    "redo": "Ripeti",
-    "capture": "Cattura",
-    "clear": "Cancella tutte le annotazioni",
-    "clearTitle": "Cancella",
-    "strokeLabel": "Tratto {color}",
-    "textLabel": "Testo dell'annotazione",
-    "textPlaceholder": "Scrivi, poi Invio",
-    "captured": "Catturato",
-    "hint": "Demo dal vivo: scegli uno strumento e trascina sulla tela.",
-    "swatchNames": {
-      "red": "Rosso",
-      "yellow": "Giallo",
-      "green": "Verde",
-      "blue": "Blu",
-      "lilac": "Lilla",
-      "white": "Bianco",
-      "navy": "Blu notte"
-    }
-  },
   "recording": {
     "title": "La stessa regione, in GIF o video",
     "lede": "GIF con palette a due passaggi per colori nitidi, oppure MP4 e WebM tramite il portale ScreenCast, PipeWire e ffmpeg. Registra una regione, l'intero schermo o una finestra.",
-    "note": "{keys} interrompe sempre una registrazione, indipendentemente da cosa ha il focus. Provalo subito sulla demo.",
-    "stopLabel": "Interrompi la registrazione demo (funziona anche Ctrl+Esc)",
-    "restartLabel": "Riavvia la registrazione demo",
-    "stop": "Interrompi",
-    "restart": "Riavvia",
-    "saved": "Salvato",
-    "caption": "Una regione dello schermo in fase di registrazione: Unisic disegna una cornice con il colore d'accento attorno alla regione con un badge REC e un timer del tempo trascorso. La registrazione demo può essere interrotta e riavviata."
+    "note": "{keys} interrompe sempre una registrazione, indipendentemente da cosa ha il focus.",
+    "caption": "Una regione dello schermo in fase di registrazione: Unisic disegna una cornice con il colore d'accento attorno alla regione con un badge REC e un timer del tempo trascorso."
   },
   "themes": {
     "title": "Nove temi, incluso il tuo",

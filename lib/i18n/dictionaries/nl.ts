@@ -29,15 +29,7 @@ export const nl: Dictionary = {
     "lede": "De selectie-overlay is een canvas. Teken pijlen, tekst, vervaging en stappen op het bevroren scherm en druk op Enter: de annotaties worden in de opname ingebrand."
   },
   "overlay": {
-    "caption": "De Unisic selectie-overlay: een bevroren scherm met een geselecteerd gebied, live pixelafmetingen, een pijl die vóór het vastleggen is getekend en een zwevende werkbalk. Sleep een hoek om het gebied groter of kleiner te maken, of sleep binnenin om het te verplaatsen.",
-    "hint": "Live demo: sleep een hoek om te vergroten of te verkleinen, of sleep binnenin om het gebied te verplaatsen.",
-    "resizeHandle": "Selectieformaat wijzigen vanaf hoek {corner}",
-    "corners": {
-      "tl": "linksboven",
-      "tr": "rechtsboven",
-      "bl": "linksonder",
-      "br": "rechtsonder"
-    },
+    "caption": "De Unisic selectie-overlay: een bevroren scherm met een geselecteerd gebied, live pixelafmetingen, een pijl die vóór het vastleggen is getekend en een zwevende werkbalk.",
     "capture": "Vastleggen"
   },
   "features": {
@@ -45,7 +37,7 @@ export const nl: Dictionary = {
     "lede": "De meeste tools geven je een rechthoek met pixels en laten je vervolgens in de steek. Unisic dekt de rest van de workflow.",
     "editor": {
       "title": "Een echte editor, geen bijsnijkader",
-      "body": "Twaalf gereedschappen, waaronder markeren, pixeleren, slimme gum, genummerde stappen en bijsnijden. Ongedaan maken, opnieuw, zoomen, allemaal in beeldpixels. Deze kaart draait ze op dit moment."
+      "body": "Twaalf gereedschappen, waaronder markeren, pixeleren, slimme gum, genummerde stappen en bijsnijden. Ongedaan maken, opnieuw, zoomen, allemaal in beeldpixels."
     },
     "upload": {
       "title": "Overal uploaden",
@@ -65,51 +57,11 @@ export const nl: Dictionary = {
       "body": "Geen telemetrie, geen accounts, niets stuurt gegevens naar huis. Gelicentieerd onder GPL-3.0 en openlijk ontwikkeld."
     }
   },
-  "editorDemo": {
-    "groupLabel": "Annotatiegereedschappen (live demo)",
-    "tools": {
-      "pen": "Pen",
-      "line": "Lijn",
-      "arrow": "Pijl",
-      "rect": "Rechthoek",
-      "ellipse": "Ellips",
-      "text": "Tekst",
-      "highlight": "Markeren",
-      "blur": "Vervagen",
-      "pixelate": "Pixeleren",
-      "eraser": "Slimme gum (klik op een tekening)",
-      "step": "Stapmarkering"
-    },
-    "undo": "Ongedaan maken",
-    "redo": "Opnieuw",
-    "capture": "Vastleggen",
-    "clear": "Alle annotaties wissen",
-    "clearTitle": "Wissen",
-    "strokeLabel": "Lijnkleur {color}",
-    "textLabel": "Annotatietekst",
-    "textPlaceholder": "Typ en druk op Enter",
-    "captured": "Vastgelegd",
-    "hint": "Live demo: kies een gereedschap en sleep over het canvas.",
-    "swatchNames": {
-      "red": "Rood",
-      "yellow": "Geel",
-      "green": "Groen",
-      "blue": "Blauw",
-      "lilac": "Lila",
-      "white": "Wit",
-      "navy": "Marineblauw"
-    }
-  },
   "recording": {
     "title": "Hetzelfde gebied, als GIF of video",
     "lede": "GIF met een tweefasig palet voor scherpe kleuren, of MP4 en WebM via de ScreenCast-portal, PipeWire en ffmpeg. Neem een gebied, het volledige scherm of een venster op.",
-    "note": "{keys} stopt altijd een opname, ongeacht wat de focus heeft. Probeer het nu meteen op de demo.",
-    "stopLabel": "Stop de demo-opname (Ctrl+Esc werkt ook)",
-    "restartLabel": "Start de demo-opname opnieuw",
-    "stop": "Stoppen",
-    "restart": "Opnieuw starten",
-    "saved": "Opgeslagen",
-    "caption": "Een schermgebied dat wordt opgenomen: Unisic tekent een kader in accentkleur rond het gebied met een REC-badge en een verstreken tijd. De demo-opname kan worden gestopt en opnieuw gestart."
+    "note": "{keys} stopt altijd een opname, ongeacht wat de focus heeft.",
+    "caption": "Een schermgebied dat wordt opgenomen: Unisic tekent een kader in accentkleur rond het gebied met een REC-badge en een verstreken tijd."
   },
   "themes": {
     "title": "Negen thema's, waaronder dat van jou",
