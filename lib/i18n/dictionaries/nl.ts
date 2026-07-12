@@ -4,11 +4,11 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const nl: Dictionary = {
   "meta": {
-    "title": "Unisic — Screenshots zoals het hoort op Linux Wayland",
-    "description": "Open-source screenshot- en schermrecorder voor Linux Wayland. Annoteer vóór de opname, bewerk erna, neem GIF en video op, upload overal. Geen telemetrie, GPLv3.",
-    "ogTitle": "Unisic — Screenshots zoals het hoort op Linux Wayland",
+    "title": "Unisic — Screenshots zoals het hoort op Linux",
+    "description": "Open-source screenshot- en schermrecorder voor Linux. Annoteer vóór de opname, bewerk erna, neem GIF en video op, upload overal. Geen telemetrie, GPLv3.",
+    "ogTitle": "Unisic — Screenshots zoals het hoort op Linux",
     "ogDescription": "Geruisloos vastleggen, annotatie vóór de opname, een editor met 12 gereedschappen, GIF- en video-opname, direct uploaden. Geen telemetrie, GPLv3.",
-    "ogImageAlt": "Unisic screenshot-editor op Linux Wayland"
+    "ogImageAlt": "Unisic screenshot-editor op Linux"
   },
   "nav": {
     "docs": "Documentatie",
@@ -19,7 +19,7 @@ export const nl: Dictionary = {
     "download": "Downloaden"
   },
   "hero": {
-    "headline": "Screenshots zoals het hoort op Linux Wayland.",
+    "headline": "Screenshots zoals het hoort op Linux.",
     "sub": "Geruisloos vastleggen, annotatie vóór de opname, een editor met 12 gereedschappen, GIF- en video-opname, direct uploaden. Geen telemetrie. GPLv3.",
     "download": "Downloaden",
     "github": "Bekijk op GitHub"

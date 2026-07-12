@@ -4,11 +4,11 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const it: Dictionary = {
   "meta": {
-    "title": "Unisic — Screenshot fatti bene su Linux Wayland",
-    "description": "Strumento open-source di screenshot e registrazione schermo per Linux Wayland. Annota prima dello scatto, modifica dopo, registra GIF e video, carica ovunque. Zero telemetria, GPLv3.",
-    "ogTitle": "Unisic — Screenshot fatti bene su Linux Wayland",
+    "title": "Unisic — Screenshot fatti bene su Linux",
+    "description": "Strumento open-source di screenshot e registrazione schermo per Linux. Annota prima dello scatto, modifica dopo, registra GIF e video, carica ovunque. Zero telemetria, GPLv3.",
+    "ogTitle": "Unisic — Screenshot fatti bene su Linux",
     "ogDescription": "Cattura silenziosa, annotazione prima dello scatto, un editor con 12 strumenti, registrazione GIF e video, caricamento istantaneo. Zero telemetria, GPLv3.",
-    "ogImageAlt": "Editor di screenshot Unisic su Linux Wayland"
+    "ogImageAlt": "Editor di screenshot Unisic su Linux"
   },
   "nav": {
     "docs": "Documentazione",
@@ -19,7 +19,7 @@ export const it: Dictionary = {
     "download": "Scarica"
   },
   "hero": {
-    "headline": "Screenshot fatti bene su Linux Wayland.",
+    "headline": "Screenshot fatti bene su Linux.",
     "sub": "Cattura silenziosa, annotazione prima dello scatto, un editor con 12 strumenti, registrazione GIF e video, caricamento istantaneo. Zero telemetria. GPLv3.",
     "download": "Scarica",
     "github": "Vedi su GitHub"

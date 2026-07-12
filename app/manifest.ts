@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Unisic",
     short_name: "Unisic",
     description:
-      "Open-source screenshot and screen recorder for Linux Wayland. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
+      "Open-source screenshot and screen recorder for Linux. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
     theme_color: "#100E2C",
     background_color: "#100E2C",
     display: "browser",

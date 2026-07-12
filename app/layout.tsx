@@ -30,7 +30,7 @@ const jsonLd = {
   "@type": "SoftwareApplication",
   name: "Unisic",
   description:
-    "Open-source screenshot and screen recorder for Linux Wayland. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
+    "Open-source screenshot and screen recorder for Linux. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
   url: SITE_URL,
   image: `${SITE_URL}/social-preview.png`,
   operatingSystem: "Linux",

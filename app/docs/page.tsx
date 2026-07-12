@@ -6,7 +6,7 @@ import { SITE_URL } from "../../lib/site";
 
 const TITLE = "Documentation — Unisic";
 const DESCRIPTION =
-  "Guides for installing, configuring and using Unisic — the open-source screenshot and screen recorder for Linux Wayland.";
+  "Guides for installing, configuring and using Unisic — the open-source screenshot and screen recorder for Linux.";
 
 export const metadata: Metadata = {
   title: TITLE,

@@ -9,13 +9,13 @@
 
 export const en = {
   meta: {
-    title: "Unisic — Screenshots done right on Linux Wayland",
+    title: "Unisic — Screenshots done right on Linux",
     description:
-      "Open-source screenshot and screen recorder for Linux Wayland. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
-    ogTitle: "Unisic — Screenshots done right on Linux Wayland",
+      "Open-source screenshot and screen recorder for Linux. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
+    ogTitle: "Unisic — Screenshots done right on Linux",
     ogDescription:
       "Silent capture, annotation before the shot, a 12-tool editor, GIF and video recording, instant upload. Zero telemetry, GPLv3.",
-    ogImageAlt: "Unisic screenshot editor on Linux Wayland",
+    ogImageAlt: "Unisic screenshot editor on Linux",
   },
 
   nav: {
@@ -28,7 +28,7 @@ export const en = {
   },
 
   hero: {
-    headline: "Screenshots done right on Linux Wayland.",
+    headline: "Screenshots done right on Linux.",
     sub: "Silent capture, annotation before the shot, a 12-tool editor, GIF and video recording, instant upload. Zero telemetry. GPLv3.",
     download: "Download",
     github: "View on GitHub",

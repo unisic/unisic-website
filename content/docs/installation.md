@@ -9,7 +9,7 @@ This page covers how to install Unisic: the distribution repositories (recommend
 
 ## Requirements
 
-Unisic runs on Linux Wayland. You need a Wayland session with `xdg-desktop-portal` and a backend installed. Recording additionally needs PipeWire and `ffmpeg`. The app is built with C++20 / Qt 6 / QML.
+Unisic runs on Linux. You need a Wayland session with `xdg-desktop-portal` and a backend installed. Recording additionally needs PipeWire and `ffmpeg`. The app is built with C++20 / Qt 6 / QML.
 
 For compositor-specific setup (for example wlroots compositors like niri, which need `grim` for screenshots and compositor-side keybinds), see [Compositors](/docs/compositors).
 

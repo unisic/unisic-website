@@ -9,11 +9,11 @@ This page introduces Unisic: what it is, the capture-to-upload workflow it cover
 
 ## What is Unisic
 
-Unisic is an open-source, zero-telemetry screenshot and screen recorder for Linux Wayland, licensed under the GNU GPL v3. Most snipping tools stop at a rectangle of pixels and walk away. Unisic covers everything that should happen *after* you press the hotkey.
+Unisic is an open-source, zero-telemetry screenshot and screen recorder for Linux, licensed under the GNU GPL v3. Most snipping tools stop at a rectangle of pixels and walk away. Unisic covers everything that should happen *after* you press the hotkey.
 
 The moment you trigger a capture, Unisic gives you the whole workflow: annotate on the selection overlay before the shot is even taken, edit afterwards, cut objects out of their background, record the same region as a GIF or video, and push the result wherever it belongs — clipboard, disk, or a custom upload destination with the link ready to paste.
 
-It is built for Linux Wayland on legitimate APIs only (`xdg-desktop-portal`, KWin ScreenShot2, PipeWire, KGlobalAccel, `wlr-screencopy`), and is written in C++20 / Qt 6 / QML with a fully custom UI.
+It is built for Linux on legitimate APIs only (`xdg-desktop-portal`, KWin ScreenShot2, PipeWire, KGlobalAccel, `wlr-screencopy`), and is written in C++20 / Qt 6 / QML with a fully custom UI.
 
 ## The workflow
 
