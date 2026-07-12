@@ -17,7 +17,7 @@ For compositor-specific setup (for example wlroots compositors like niri, which 
 
 Install from a repository and updates arrive automatically through your package manager, like any other package. The [website download section](/#download) has the same snippets with a distro picker and copy buttons.
 
-### Debian / Ubuntu (OBS repo)
+### Debian / Ubuntu
 
 An auto-updating signed repository built on the [openSUSE Build Service](https://software.opensuse.org/download.html?project=home:unisic&package=unisic). Needs a release with Qt 6.5+: Debian 13, Ubuntu 25.10 / 26.04 (25.10 reaches EOL in July 2026 — prefer 26.04).
 
@@ -42,7 +42,7 @@ Finally, update and install:
 sudo apt update && sudo apt install unisic
 ```
 
-### Fedora (COPR)
+### Fedora
 
 On Fedora, install from the [`deandark/Unisic`](https://copr.fedorainfracloud.org/coprs/deandark/Unisic/) COPR repository.
 
@@ -60,7 +60,7 @@ sudo dnf install unisic
 
 Builds are provided for Fedora 43, 44, and Rawhide. The COPR build pulls in the optional deps (PipeWire, Tesseract, onnxruntime) so recording, OCR and U-2-Net background removal all work out of the box.
 
-### openSUSE (OBS repo)
+### openSUSE
 
 First, add the repository (for Leap 16.0 replace `openSUSE_Tumbleweed` with `16.0`):
 
@@ -80,7 +80,7 @@ Finally, install Unisic:
 sudo zypper install unisic
 ```
 
-### Arch (OBS repo)
+### Arch
 
 The same OBS project publishes a signed pacman repository (no AUR needed).
 
@@ -108,16 +108,6 @@ sudo pacman -Syu unisic
 ## Direct downloads
 
 The [Releases](https://github.com/unisic/unisic/releases/latest) page has a standalone **AppImage** that updates itself in-app. Every packaged format (deb, rpm, Arch, openSUSE) ships through the repositories above.
-
-## Updates
-
-Unisic checks GitHub for a new release shortly after startup and once a day (Settings → General → Updates; only the latest release version is fetched, nothing else is sent) and updates fully automatically:
-
-| Package | How it updates |
-|---|---|
-| **OBS repos (Debian, Ubuntu, openSUSE, Arch)** | Native system updates — `apt upgrade` / `zypper up` / `pacman -Syu` pick up every release automatically. |
-| **COPR (Fedora)** | `sudo dnf upgrade` — the repo ships new builds like any other `dnf` package. |
-| **AppImage** | The app downloads the new AppImage and swaps itself in place, then restarts when idle — no clicks needed. (`.zsync` for `AppImageUpdate` still ships too.) |
 
 ## Build from source
 
