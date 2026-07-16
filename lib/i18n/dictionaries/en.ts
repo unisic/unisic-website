@@ -9,7 +9,7 @@
 
 export const en = {
   meta: {
-    title: "Unisic — Screenshots done right on Linux",
+    title: "Unisic — Linux Screenshot Tool & Screen Recorder",
     description:
       "Open-source screenshot and screen recorder for Linux. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
     ogTitle: "Unisic — Screenshots done right on Linux",

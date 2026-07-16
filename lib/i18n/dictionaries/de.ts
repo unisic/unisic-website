@@ -4,7 +4,7 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const de: Dictionary = {
   "meta": {
-    "title": "Unisic — Screenshots richtig gemacht unter Linux",
+    "title": "Unisic — Screenshot-Tool & Bildschirmrekorder für Linux",
     "description": "Open-Source-Screenshot-Tool und Bildschirmrekorder für Linux. Kommentieren vor der Aufnahme, bearbeiten danach, GIF und Video aufnehmen, überall hochladen. Keine Telemetrie, GPLv3.",
     "ogTitle": "Unisic — Screenshots richtig gemacht unter Linux",
     "ogDescription": "Lautlose Aufnahme, Kommentieren vor der Aufnahme, ein Editor mit 12 Werkzeugen, GIF- und Videoaufnahme, sofortiges Hochladen. Keine Telemetrie, GPLv3.",

@@ -4,7 +4,7 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const fr: Dictionary = {
   "meta": {
-    "title": "Unisic — Les captures d'écran bien faites sur Linux",
+    "title": "Unisic — Capture d'écran et enregistreur pour Linux",
     "description": "Capture d'écran et enregistreur d'écran open source pour Linux. Annotez avant la prise, retouchez après, enregistrez en GIF et en vidéo, envoyez partout. Zéro télémétrie, GPLv3.",
     "ogTitle": "Unisic — Les captures d'écran bien faites sur Linux",
     "ogDescription": "Capture silencieuse, annotation avant la prise, un éditeur à 12 outils, enregistrement GIF et vidéo, envoi instantané. Zéro télémétrie, GPLv3.",

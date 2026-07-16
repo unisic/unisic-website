@@ -33,11 +33,29 @@ const jsonLd = {
     "Open-source screenshot and screen recorder for Linux. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
   url: SITE_URL,
   image: `${SITE_URL}/social-preview.png`,
+  screenshot: `${SITE_URL}/social-preview.png`,
   operatingSystem: "Linux",
   applicationCategory: "UtilitiesApplication",
+  applicationSubCategory: "Screenshot & screen recording",
+  softwareVersion: "0.7.1",
+  featureList: [
+    "Region, full-screen and window capture",
+    "Annotate the selection before the shot is taken",
+    "12-tool post-capture editor (arrows, blur, pixelate, numbered steps, crop)",
+    "GIF and MP4/WebM screen recording",
+    "Upload to custom HTTP, FTP, SFTP and ShareX destinations",
+    "Capture history with thumbnails",
+    "Native KWin capture on KDE Plasma, xdg-desktop-portal everywhere else",
+  ],
+  isAccessibleForFree: true,
   license: "https://www.gnu.org/licenses/gpl-3.0.html",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   downloadUrl: "https://github.com/unisic/unisic/releases/latest",
+  author: {
+    "@type": "Organization",
+    name: "Unisic",
+    url: "https://github.com/unisic",
+  },
 };
 
 export default function RootLayout({

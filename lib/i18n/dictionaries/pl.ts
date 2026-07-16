@@ -4,7 +4,7 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const pl: Dictionary = {
   "meta": {
-    "title": "Unisic — Zrzuty ekranu zrobione jak należy na Linux",
+    "title": "Unisic — Zrzuty ekranu i nagrywanie ekranu na Linux",
     "description": "Otwartoźródłowy program do zrzutów ekranu i nagrywania ekranu dla Linux. Adnotacje przed zrzutem, edycja po nim, nagrywanie GIF-ów i wideo, przesyłanie wszędzie. Zero telemetrii, GPLv3.",
     "ogTitle": "Unisic — Zrzuty ekranu zrobione jak należy na Linux",
     "ogDescription": "Ciche przechwytywanie, adnotacje przed zrzutem, edytor z 12 narzędziami, nagrywanie GIF-ów i wideo, natychmiastowe przesyłanie. Zero telemetrii, GPLv3.",

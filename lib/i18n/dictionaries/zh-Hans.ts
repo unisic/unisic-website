@@ -4,7 +4,7 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const zhHans: Dictionary = {
   "meta": {
-    "title": "Unisic — 在 Linux 上把截图做对",
+    "title": "Unisic — Linux 截图与录屏工具",
     "description": "面向 Linux 的开源截图与录屏工具。截图前先标注，截图后可再编辑，录制 GIF 和视频，上传到任何地方。零遥测，GPLv3。",
     "ogTitle": "Unisic — 在 Linux 上把截图做对",
     "ogDescription": "静默截图、截图前标注、12 种工具的编辑器、GIF 与视频录制、即时上传。零遥测，GPLv3。",
