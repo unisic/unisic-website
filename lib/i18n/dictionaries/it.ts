@@ -7,7 +7,7 @@ export const it: Dictionary = {
     "title": "Unisic — Screenshot fatti bene su Linux",
     "description": "Strumento open-source di screenshot e registrazione schermo per Linux. Annota prima dello scatto, modifica dopo, registra GIF e video, carica ovunque. Zero telemetria, GPLv3.",
     "ogTitle": "Unisic — Screenshot fatti bene su Linux",
-    "ogDescription": "Cattura silenziosa, annotazione prima dello scatto, un editor con 12 strumenti, registrazione GIF e video, caricamento istantaneo. Zero telemetria, GPLv3.",
+    "ogDescription": "Cattura silenziosa, annotazione prima dello scatto, un editor con 15 strumenti, registrazione GIF e video, OCR, caricamento istantaneo. Zero telemetria, GPLv3.",
     "ogImageAlt": "Editor di screenshot Unisic su Linux"
   },
   "nav": {
@@ -20,7 +20,7 @@ export const it: Dictionary = {
   },
   "hero": {
     "headline": "Screenshot fatti bene su Linux.",
-    "sub": "Cattura silenziosa, annotazione prima dello scatto, un editor con 12 strumenti, registrazione GIF e video, caricamento istantaneo. Zero telemetria. GPLv3.",
+    "sub": "Cattura silenziosa, annotazione prima dello scatto, un editor con 15 strumenti, registrazione GIF e video, OCR, caricamento istantaneo. Zero telemetria. GPLv3.",
     "download": "Scarica",
     "github": "Vedi su GitHub"
   },
@@ -37,7 +37,11 @@ export const it: Dictionary = {
     "lede": "La maggior parte degli strumenti ti consegna un rettangolo di pixel e se ne va. Unisic si occupa del resto del flusso di lavoro.",
     "editor": {
       "title": "Un vero editor, non un riquadro di ritaglio",
-      "body": "Dodici strumenti tra cui evidenziatore, pixelatura, gomma intelligente, passaggi numerati e ritaglio. Annulla, ripeti, zoom, tutto nello spazio dei pixel dell'immagine."
+      "body": "Quindici strumenti tra cui evidenziatore, pixelatura, gomma intelligente, callout, misura, passaggi numerati e ritaglio. Annulla, ripeti, zoom, tutto nello spazio dei pixel dell'immagine."
+    },
+    "ocr": {
+      "title": "Testo dai pixel",
+      "body": "Esegui l'OCR di una regione direttamente negli appunti, oppure seleziona singole parole nell'editor per copiarle, evidenziarle o oscurarle. I codici QR vengono decodificati nel loro contenuto."
     },
     "upload": {
       "title": "Carica ovunque",
@@ -59,7 +63,7 @@ export const it: Dictionary = {
   },
   "recording": {
     "title": "La stessa regione, in GIF o video",
-    "lede": "GIF con palette a due passaggi per colori nitidi, oppure MP4 e WebM tramite il portale ScreenCast, PipeWire e ffmpeg. Registra una regione, l'intero schermo o una finestra.",
+    "lede": "GIF con palette a due passaggi per colori nitidi, oppure MP4 e WebM con audio opzionale di sistema, del microfono o di una singola app — tramite il portale ScreenCast, PipeWire e ffmpeg. Registra una regione, l'intero schermo o una finestra, lascia che il replay istantaneo memorizzi gli ultimi 30 secondi e taglia il risultato direttamente dalla scheda di notifica.",
     "note": "{keys} interrompe sempre una registrazione, indipendentemente da cosa ha il focus.",
     "caption": "Una regione dello schermo in fase di registrazione: Unisic disegna una cornice con il colore d'accento attorno alla regione con un badge REC e un timer del tempo trascorso."
   },
@@ -76,7 +80,7 @@ export const it: Dictionary = {
   "download": {
     "title": "Installa Unisic",
     "lede": "Richiede una sessione Wayland con xdg-desktop-portal. Per la registrazione servono anche PipeWire e ffmpeg.",
-    "repoLede": "Scegli la tua distribuzione — il repository mantiene Unisic aggiornato tramite il gestore di pacchetti. AppImage è un download diretto.",
+    "repoLede": "Scegli la tua distribuzione — il repository mantiene Unisic aggiornato tramite il gestore di pacchetti. AppImage è un download diretto, e la release include anche pacchetti una tantum .deb, .rpm e Arch che configurano il repository alla prima installazione.",
     "distroListLabel": "Scegli la tua distribuzione o il formato di pacchetto",
     "versionLabel": "Versione",
     "copyCmd": "Copia comandi",
@@ -91,10 +95,10 @@ export const it: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 raggiunge il fine supporto a luglio 2026 — meglio scegliere la 26.04. Entrambe richiedono Qt 6.5+, assente nelle versioni più vecchie.",
       "debian": "Richiede Debian 13 (trixie) o più recente per Qt 6.5+.",
-      "fedora": "Build per Fedora 43, 44 e Rawhide. Il pacchetto COPR installa anche le dipendenze opzionali, quindi registrazione, OCR e rimozione dello sfondo funzionano subito.",
+      "fedora": "Build per Fedora 43, 44 e Rawhide. Il pacchetto COPR installa anche le dipendenze opzionali, quindi registrazione, OCR e decodifica dei codici QR funzionano subito.",
       "opensuse": "Durante il refresh zypper chiederà di accettare la chiave di firma del repository.",
       "arch": "Un repository pacman firmato su openSUSE Build Service — niente AUR.",
-      "appimage": "Universale — funziona su qualsiasi distribuzione. L'app si aggiorna da sola: scarica il nuovo AppImage, si sostituisce sul posto e si riavvia quando è inattiva."
+      "appimage": "Universale — funziona su qualsiasi distribuzione. L'app si aggiorna da sola tramite zsync integrato: vengono scaricati e sostituiti sul posto solo i blocchi modificati, e si riavvia quando è inattiva."
     },
     "downloadBtn": "Scarica",
     "checking": "Verifica dell'ultima release",
@@ -102,8 +106,8 @@ export const it: Dictionary = {
     "fallbackBtn": "Scaricalo da GitHub Releases",
     "fallbackNote": "Non è stato possibile raggiungere GitHub in questo momento, ma ogni build si trova lì.",
     "allReleases": "Tutte le release e le build precedenti",
-    "earlyAccess": "Unisic è in accesso anticipato per sviluppatori: funziona, ma aspettati qualche imperfezione su compositor esotici. Ogni segnalazione in {link} è d'aiuto.",
-    "earlyAccessLink": "Issue"
+    "stability": "Unisic 0.7 è la prima release stabile. Se il tuo compositor trova ancora il modo di sorprenderlo, ogni segnalazione in {link} è d'aiuto.",
+    "stabilityLink": "Issue"
   },
   "hotkeys": {
     "caption": "Scorciatoie predefinite",
@@ -113,8 +117,12 @@ export const it: Dictionary = {
       "full": "Cattura schermo intero",
       "region": "Cattura regione",
       "window": "Cattura finestra attiva",
-      "gif": "Registra GIF (regione)",
-      "video": "Registra video (regione)",
+      "gif": "Registra GIF (avvia/interrompi)",
+      "video": "Registra video (avvia/interrompi)",
+      "ocr": "OCR di una regione (copia il testo)",
+      "copyLast": "Copia l'ultima cattura",
+      "quickTask": "Apri il selettore di attività rapide",
+      "replay": "Avvia/salva il replay istantaneo",
       "stop": "Interrompi registrazione (fissa)"
     },
     "tryHint": "Questa tabella è dal vivo: tieni premuta una scorciatoia sulla tastiera e i tasti si illuminano.",
@@ -139,13 +147,14 @@ export const it: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "La finestra principale di Unisic: una barra laterale con le pagine Cattura, Registra, GIF, Cronologia, Destinazioni e Impostazioni, e la pagina Cattura con le azioni schermo intero, regione e finestra più gli interruttori post-cattura.",
+    "ariaLabel": "La finestra principale di Unisic: una barra laterale con le pagine Cattura, Registra, GIF, Modifica, Cronologia, Server e Impostazioni, e la pagina Cattura con le azioni schermo intero, regione e finestra più gli interruttori post-cattura.",
     "nav": {
       "capture": "Cattura",
       "record": "Registra",
       "gif": "GIF",
+      "edit": "Modifica",
       "history": "Cronologia",
-      "destinations": "Destinazioni",
+      "servers": "Server",
       "settings": "Impostazioni"
     },
     "pageTitle": "Cattura",
@@ -173,7 +182,7 @@ export const it: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "La finestra dell'editor di Unisic: una barra degli strumenti con dodici strumenti di annotazione, uno screenshot annotato con una freccia, un'evidenziazione e passaggi numerati, e le azioni copia, salva e carica.",
+    "ariaLabel": "La finestra dell'editor di Unisic: una barra degli strumenti con quindici strumenti di annotazione, uno screenshot annotato con una freccia, un'evidenziazione e passaggi numerati, e le azioni copia, salva e carica.",
     "title": "Editor Unisic",
     "copy": "Copia",
     "save": "Salva",

@@ -7,7 +7,7 @@ export const de: Dictionary = {
     "title": "Unisic — Screenshots richtig gemacht unter Linux",
     "description": "Open-Source-Screenshot-Tool und Bildschirmrekorder für Linux. Kommentieren vor der Aufnahme, bearbeiten danach, GIF und Video aufnehmen, überall hochladen. Keine Telemetrie, GPLv3.",
     "ogTitle": "Unisic — Screenshots richtig gemacht unter Linux",
-    "ogDescription": "Lautlose Aufnahme, Kommentieren vor der Aufnahme, ein Editor mit 12 Werkzeugen, GIF- und Videoaufnahme, sofortiges Hochladen. Keine Telemetrie, GPLv3.",
+    "ogDescription": "Lautlose Aufnahme, Kommentieren vor der Aufnahme, ein Editor mit 15 Werkzeugen, GIF- und Videoaufnahme, OCR, sofortiges Hochladen. Keine Telemetrie, GPLv3.",
     "ogImageAlt": "Unisic Screenshot-Editor unter Linux"
   },
   "nav": {
@@ -20,7 +20,7 @@ export const de: Dictionary = {
   },
   "hero": {
     "headline": "Screenshots richtig gemacht unter Linux.",
-    "sub": "Lautlose Aufnahme, Kommentieren vor der Aufnahme, ein Editor mit 12 Werkzeugen, GIF- und Videoaufnahme, sofortiges Hochladen. Keine Telemetrie. GPLv3.",
+    "sub": "Lautlose Aufnahme, Kommentieren vor der Aufnahme, ein Editor mit 15 Werkzeugen, GIF- und Videoaufnahme, OCR, sofortiges Hochladen. Keine Telemetrie. GPLv3.",
     "download": "Herunterladen",
     "github": "Auf GitHub ansehen"
   },
@@ -37,7 +37,11 @@ export const de: Dictionary = {
     "lede": "Die meisten Tools liefern Ihnen ein Rechteck aus Pixeln und lassen Sie dann allein. Unisic deckt den Rest des Arbeitsablaufs ab.",
     "editor": {
       "title": "Ein echter Editor, keine Zuschneidebox",
-      "body": "Zwölf Werkzeuge, darunter Hervorheben, Verpixeln, intelligenter Radierer, nummerierte Schritte und Zuschneiden. Rückgängig, Wiederholen, Zoom – alles im Bildpixel-Raum."
+      "body": "Fünfzehn Werkzeuge, darunter Hervorheben, Verpixeln, intelligenter Radierer, Sprechblase, Messwerkzeug, nummerierte Schritte und Zuschneiden. Rückgängig, Wiederholen, Zoom – alles im Bildpixel-Raum."
+    },
+    "ocr": {
+      "title": "Text aus Pixeln",
+      "body": "Erfassen Sie einen Bereich per OCR direkt in die Zwischenablage, oder wählen Sie einzelne Wörter im Editor aus, um sie zu kopieren, hervorzuheben oder zu schwärzen. QR-Codes werden zu ihrem Inhalt dekodiert."
     },
     "upload": {
       "title": "Überall hochladen",
@@ -59,7 +63,7 @@ export const de: Dictionary = {
   },
   "recording": {
     "title": "Derselbe Bereich, als GIF oder Video",
-    "lede": "GIF mit einer Zwei-Pass-Palette für klare Farben oder MP4 und WebM über das ScreenCast-Portal, PipeWire und ffmpeg. Nehmen Sie einen Bereich, den gesamten Bildschirm oder ein Fenster auf.",
+    "lede": "GIF mit einer Zwei-Pass-Palette für klare Farben oder MP4 und WebM mit optionalem Ton von System, Mikrofon oder einer einzelnen App – über das ScreenCast-Portal, PipeWire und ffmpeg. Nehmen Sie einen Bereich, den gesamten Bildschirm oder ein Fenster auf, lassen Sie die Sofortwiederholung die letzten 30 Sekunden puffern und schneiden Sie das Ergebnis direkt aus der Benachrichtigungskarte zu.",
     "note": "{keys} stoppt immer eine Aufzeichnung, egal was gerade den Fokus hat.",
     "caption": "Ein Bildschirmbereich wird aufgezeichnet: Unisic zeichnet einen akzentfarbenen Rahmen um den Bereich mit einem REC-Symbol und einem laufenden Timer."
   },
@@ -76,7 +80,7 @@ export const de: Dictionary = {
   "download": {
     "title": "Unisic installieren",
     "lede": "Benötigt eine Wayland-Sitzung mit xdg-desktop-portal. Für Aufzeichnungen sind zudem PipeWire und ffmpeg erforderlich.",
-    "repoLede": "Wählen Sie Ihre Distribution — das Repository hält Unisic über die Paketverwaltung aktuell. AppImage ist ein Direktdownload.",
+    "repoLede": "Wählen Sie Ihre Distribution — das Repository hält Unisic über die Paketverwaltung aktuell. AppImage ist ein Direktdownload, und das Release enthält zudem einmalige .deb-, .rpm- und Arch-Pakete, die bei der Erstinstallation das Repository einrichten.",
     "distroListLabel": "Distribution oder Paketformat wählen",
     "versionLabel": "Version",
     "copyCmd": "Befehle kopieren",
@@ -91,10 +95,10 @@ export const de: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 erreicht im Juli 2026 das Supportende — bevorzugen Sie 26.04. Beide benötigen Qt 6.5+, das ältere Versionen nicht mitbringen.",
       "debian": "Benötigt Debian 13 (trixie) oder neuer für Qt 6.5+.",
-      "fedora": "Builds für Fedora 43, 44 und Rawhide. Der COPR-Build installiert die optionalen Abhängigkeiten mit, sodass Aufnahme, OCR und Hintergrundentfernung sofort funktionieren.",
+      "fedora": "Builds für Fedora 43, 44 und Rawhide. Der COPR-Build installiert die optionalen Abhängigkeiten mit, sodass Aufnahme, OCR und QR-Dekodierung sofort funktionieren.",
       "opensuse": "zypper bittet beim Aktualisieren darum, den Signaturschlüssel des Repositorys zu akzeptieren.",
       "arch": "Ein signiertes pacman-Repository auf dem openSUSE Build Service — kein AUR nötig.",
-      "appimage": "Universell — läuft auf jeder Distribution. Die App aktualisiert sich selbst: Sie lädt das neue AppImage herunter, tauscht sich an Ort und Stelle aus und startet bei Leerlauf neu."
+      "appimage": "Universell — läuft auf jeder Distribution. Die App aktualisiert sich selbst per eingebettetem zsync: Nur die geänderten Blöcke werden heruntergeladen und an Ort und Stelle ausgetauscht, und bei Leerlauf startet sie neu."
     },
     "downloadBtn": "Herunterladen",
     "checking": "Neueste Version wird geprüft",
@@ -102,8 +106,8 @@ export const de: Dictionary = {
     "fallbackBtn": "Über GitHub Releases herunterladen",
     "fallbackNote": "GitHub konnte gerade nicht erreicht werden, aber jeder Build ist dort verfügbar.",
     "allReleases": "Alle Versionen und ältere Builds",
-    "earlyAccess": "Unisic befindet sich im frühen Entwicklerzugang: Es funktioniert, aber rechnen Sie mit Ecken und Kanten bei exotischen Compositoren. Jede Meldung in {link} hilft.",
-    "earlyAccessLink": "Issues"
+    "stability": "Unisic 0.7 ist die erste stabile Version. Falls Ihr Compositor dennoch einen Weg findet, sie zu überraschen, hilft jede Meldung in {link}.",
+    "stabilityLink": "Issues"
   },
   "hotkeys": {
     "caption": "Standard-Tastenkürzel",
@@ -113,8 +117,12 @@ export const de: Dictionary = {
       "full": "Vollbild aufnehmen",
       "region": "Bereich aufnehmen",
       "window": "Aktives Fenster aufnehmen",
-      "gif": "GIF aufzeichnen (Bereich)",
-      "video": "Video aufzeichnen (Bereich)",
+      "gif": "GIF aufzeichnen (Start/Stopp)",
+      "video": "Video aufzeichnen (Start/Stopp)",
+      "ocr": "Bereich per OCR erfassen (Text kopieren)",
+      "copyLast": "Letzte Aufnahme kopieren",
+      "quickTask": "Schnellaufgaben-Auswahl öffnen",
+      "replay": "Sofortwiederholung starten/speichern",
       "stop": "Aufzeichnung stoppen (fest)"
     },
     "tryHint": "Diese Tabelle ist live: Halten Sie ein Tastenkürzel auf Ihrer Tastatur gedrückt, und die Tasten leuchten auf.",
@@ -139,13 +147,14 @@ export const de: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "Das Unisic-Hauptfenster: eine Seitenleiste mit den Seiten Aufnehmen, Aufzeichnen, GIF, Verlauf, Ziele und Einstellungen sowie die Seite Aufnehmen mit Aktionen für Vollbild, Bereich und Fenster plus Umschaltern für die Aktionen nach der Aufnahme.",
+    "ariaLabel": "Das Unisic-Hauptfenster: eine Seitenleiste mit den Seiten Aufnehmen, Aufzeichnen, GIF, Bearbeiten, Verlauf, Server und Einstellungen sowie die Seite Aufnehmen mit Aktionen für Vollbild, Bereich und Fenster plus Umschaltern für die Aktionen nach der Aufnahme.",
     "nav": {
       "capture": "Aufnehmen",
       "record": "Aufzeichnen",
       "gif": "GIF",
+      "edit": "Bearbeiten",
       "history": "Verlauf",
-      "destinations": "Ziele",
+      "servers": "Server",
       "settings": "Einstellungen"
     },
     "pageTitle": "Aufnehmen",
@@ -173,7 +182,7 @@ export const de: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "Das Unisic-Editorfenster: eine Werkzeugleiste mit zwölf Anmerkungswerkzeugen, ein mit einem Pfeil, einer Hervorhebung und nummerierten Schritten kommentierter Screenshot sowie Aktionen zum Kopieren, Speichern und Hochladen.",
+    "ariaLabel": "Das Unisic-Editorfenster: eine Werkzeugleiste mit fünfzehn Anmerkungswerkzeugen, ein mit einem Pfeil, einer Hervorhebung und nummerierten Schritten kommentierter Screenshot sowie Aktionen zum Kopieren, Speichern und Hochladen.",
     "title": "Unisic Editor",
     "copy": "Kopieren",
     "save": "Speichern",

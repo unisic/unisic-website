@@ -7,7 +7,7 @@ export const zhHant: Dictionary = {
     "title": "Unisic — 在 Linux 上把截圖做對",
     "description": "適用於 Linux 的開源截圖與螢幕錄影工具。截圖前先標註，事後再編輯，錄製 GIF 與影片，隨處上傳。零遙測，GPLv3。",
     "ogTitle": "Unisic — 在 Linux 上把截圖做對",
-    "ogDescription": "靜默擷取、截圖前標註、12 種工具的編輯器、GIF 與影片錄製、即時上傳。零遙測，GPLv3。",
+    "ogDescription": "靜默擷取、截圖前標註、15 種工具的編輯器、GIF 與影片錄製、OCR、即時上傳。零遙測，GPLv3。",
     "ogImageAlt": "Linux 上的 Unisic 截圖編輯器"
   },
   "nav": {
@@ -20,7 +20,7 @@ export const zhHant: Dictionary = {
   },
   "hero": {
     "headline": "在 Linux 上把截圖做對。",
-    "sub": "靜默擷取、截圖前標註、12 種工具的編輯器、GIF 與影片錄製、即時上傳。零遙測。GPLv3。",
+    "sub": "靜默擷取、截圖前標註、15 種工具的編輯器、GIF 與影片錄製、OCR、即時上傳。零遙測。GPLv3。",
     "download": "下載",
     "github": "在 GitHub 上查看"
   },
@@ -37,7 +37,11 @@ export const zhHant: Dictionary = {
     "lede": "多數工具丟給你一塊矩形像素就走人。Unisic 則涵蓋了工作流程的其餘部分。",
     "editor": {
       "title": "真正的編輯器，而非裁切框",
-      "body": "十二種工具，包含螢光標記、像素化、智慧橡皮擦、編號步驟與裁切。復原、重做、縮放，全部在影像像素空間中進行。"
+      "body": "十五種工具，包含螢光標記、像素化、智慧橡皮擦、圖說文字、測量、編號步驟與裁切。復原、重做、縮放，全部在影像像素空間中進行。"
+    },
+    "ocr": {
+      "title": "把像素變成文字",
+      "body": "對一塊區域進行 OCR，文字直接進到你的剪貼簿；也可以在編輯器中點選單一字詞來複製、加上螢光標記或遮蔽。QR 碼則會解碼出其中的內容。"
     },
     "upload": {
       "title": "隨處上傳",
@@ -59,7 +63,7 @@ export const zhHant: Dictionary = {
   },
   "recording": {
     "title": "同一塊區域，錄成 GIF 或影片",
-    "lede": "GIF 採用兩階段調色盤帶來鮮明色彩，或透過 ScreenCast portal、PipeWire 與 ffmpeg 錄製 MP4 與 WebM。可錄製一塊區域、整個螢幕或單一視窗。",
+    "lede": "GIF 採用兩階段調色盤帶來鮮明色彩；MP4 與 WebM 則可選擇收錄系統、麥克風或單一應用程式的音訊——皆透過 ScreenCast portal、PipeWire 與 ffmpeg。可錄製一塊區域、整個螢幕或單一視窗，也可以讓即時重播緩衝最後 30 秒，並直接從通知卡片修剪成品。",
     "note": "無論焦點在哪裡，{keys} 都能停止錄製。",
     "caption": "正在錄製的一塊螢幕區域：Unisic 在區域四周畫出強調色邊框，並附上 REC 標記與計時器。"
   },
@@ -76,7 +80,7 @@ export const zhHant: Dictionary = {
   "download": {
     "title": "安裝 Unisic",
     "lede": "需要具備 xdg-desktop-portal 的 Wayland 工作階段。錄製功能另需 PipeWire 與 ffmpeg。",
-    "repoLede": "選擇你的發行版——軟體庫會透過套件管理器讓 Unisic 保持最新。AppImage 為直接下載。",
+    "repoLede": "選擇你的發行版——軟體庫會透過套件管理器讓 Unisic 保持最新。AppImage 為直接下載，發佈版本中也附有一次性的 .deb、.rpm 與 Arch 套件，首次安裝時就會設定好軟體庫。",
     "distroListLabel": "選擇發行版或軟體套件格式",
     "versionLabel": "版本",
     "copyCmd": "複製命令",
@@ -91,10 +95,10 @@ export const zhHant: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 將於 2026 年 7 月結束支援——建議選擇 26.04。兩者都需要 Qt 6.5+，較舊的版本並未提供。",
       "debian": "因需要 Qt 6.5+，須使用 Debian 13（trixie）或更新版本。",
-      "fedora": "提供 Fedora 43、44 與 Rawhide 的組建。COPR 組建會一併安裝選用相依套件，因此錄製、OCR 與背景移除都能直接使用。",
+      "fedora": "提供 Fedora 43、44 與 Rawhide 的組建。COPR 組建會一併安裝選用相依套件，因此錄製、OCR 與 QR 解碼都能直接使用。",
       "opensuse": "重新整理時 zypper 會要求你接受軟體庫的簽署金鑰。",
       "arch": "openSUSE Build Service 上的已簽署 pacman 軟體庫——不需要 AUR。",
-      "appimage": "通用格式——可在任何發行版上執行。應用程式會自行更新：下載新的 AppImage 並就地替換，閒置時重新啟動。"
+      "appimage": "通用格式——可在任何發行版上執行。透過內嵌的 zsync 自行更新：只下載有變動的區塊並就地替換，閒置時重新啟動。"
     },
     "downloadBtn": "下載",
     "checking": "正在查看最新版本",
@@ -102,8 +106,8 @@ export const zhHant: Dictionary = {
     "fallbackBtn": "從 GitHub Releases 取得",
     "fallbackNote": "目前無法連上 GitHub，但每個組建版本都在那裡。",
     "allReleases": "所有版本與較舊的組建",
-    "earlyAccess": "Unisic 正處於早期開發者搶先體驗階段：它可以運作，但在冷門的合成器上可能會有些粗糙。你在 {link} 提出的每則回報都有幫助。",
-    "earlyAccessLink": "Issues"
+    "stability": "Unisic 0.7 是第一個穩定版本。如果你的合成器仍然有辦法讓它出乎意料，你在 {link} 提出的每則回報都有幫助。",
+    "stabilityLink": "Issues"
   },
   "hotkeys": {
     "caption": "預設熱鍵",
@@ -113,8 +117,12 @@ export const zhHant: Dictionary = {
       "full": "擷取整個螢幕",
       "region": "擷取區域",
       "window": "擷取使用中的視窗",
-      "gif": "錄製 GIF（區域）",
-      "video": "錄製影片（區域）",
+      "gif": "錄製 GIF（開始／停止）",
+      "video": "錄製影片（開始／停止）",
+      "ocr": "OCR 區域（複製文字）",
+      "copyLast": "複製最近一次擷取",
+      "quickTask": "開啟快速任務選擇器",
+      "replay": "開始／儲存即時重播",
       "stop": "停止錄製（固定）"
     },
     "tryHint": "這張表是即時的：在鍵盤上按住某個快捷鍵，對應的按鍵便會亮起。",
@@ -139,13 +147,14 @@ export const zhHant: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "Unisic 主視窗：側邊欄含擷取、錄製、GIF、歷史記錄、目的地與設定等頁面，以及擷取頁面，內含整個螢幕、區域與視窗動作，還有擷取後的切換選項。",
+    "ariaLabel": "Unisic 主視窗：側邊欄含擷取、錄製、GIF、編輯、歷史記錄、伺服器與設定等頁面，以及擷取頁面，內含整個螢幕、區域與視窗動作，還有擷取後的切換選項。",
     "nav": {
       "capture": "擷取",
       "record": "錄製",
       "gif": "GIF",
+      "edit": "編輯",
       "history": "歷史記錄",
-      "destinations": "目的地",
+      "servers": "伺服器",
       "settings": "設定"
     },
     "pageTitle": "擷取",
@@ -173,7 +182,7 @@ export const zhHant: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "Unisic 編輯器視窗：工具列含十二種標註工具、一張以箭頭、螢光標記與編號步驟標註過的截圖，以及複製、儲存與上傳動作。",
+    "ariaLabel": "Unisic 編輯器視窗：工具列含十五種標註工具、一張以箭頭、螢光標記與編號步驟標註過的截圖，以及複製、儲存與上傳動作。",
     "title": "Unisic 編輯器",
     "copy": "複製",
     "save": "儲存",

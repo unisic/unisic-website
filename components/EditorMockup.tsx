@@ -3,13 +3,16 @@ import { SWATCHES } from "../lib/themes";
 import {
   ArrowIcon,
   BlurIcon,
+  CalloutIcon,
   CloseIcon,
   CopyIcon,
   CropIcon,
+  EditShapesIcon,
   EllipseIcon,
   EraserIcon,
   HighlightIcon,
   LineIcon,
+  MeasureIcon,
   MinusIcon,
   PenIcon,
   PixelateIcon,
@@ -26,17 +29,21 @@ import type { Dictionary } from "../lib/i18n";
 
 /*
  * Faithful mini-recreation of the real post-capture editor
- * (unisic/qml/EditorWindow.qml): title bar, pill toolbar with the 12 tools,
+ * (unisic/qml/EditorWindow.qml): title bar, pill toolbar with the 15 tools
+ * (flattened — the real toolbar clusters the shape tools behind one chip),
  * canvas with live annotations, bottom action bar. Sized in design units
  * (--u) driven by container queries so it scales as one picture.
  */
 
 const TOOLS = [
+  { icon: EditShapesIcon, active: false },
   { icon: PenIcon, active: false },
   { icon: LineIcon, active: false },
   { icon: ArrowIcon, active: true },
+  { icon: MeasureIcon, active: false },
   { icon: RectangleIcon, active: false },
   { icon: EllipseIcon, active: false },
+  { icon: CalloutIcon, active: false },
   { icon: TextIcon, active: false },
   { icon: HighlightIcon, active: false },
   { icon: BlurIcon, active: false },

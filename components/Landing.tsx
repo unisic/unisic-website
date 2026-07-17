@@ -95,10 +95,10 @@ export function Landing({
             <DistroInstall dict={dict} />
           </Reveal>
           <p className={styles.earlyAccess}>
-            {template(d.earlyAccess, {
+            {template(d.stability, {
               link: (
                 <a href="https://github.com/unisic/unisic/issues">
-                  {d.earlyAccessLink}
+                  {d.stabilityLink}
                 </a>
               ),
             })}

@@ -56,6 +56,39 @@ export function PenIcon(p: IconProps) {
   );
 }
 
+export function EditShapesIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <Stroke>
+        <path d="M6 3 L18 12 L12.5 13.5 L15.5 20 L12.8 21.2 L9.8 14.6 L6 18 Z" />
+      </Stroke>
+    </Svg>
+  );
+}
+
+export function MeasureIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <Stroke>
+        <rect x="1.5" y="13" width="21" height="7" rx="1.5" transform="rotate(-45 12 16.5)" />
+        <path d="M8.5 13.5 L10 15" />
+        <path d="M11.5 10.5 L13 12" />
+        <path d="M14.5 7.5 L16 9" />
+      </Stroke>
+    </Svg>
+  );
+}
+
+export function CalloutIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <Stroke>
+        <path d="M4 5 H20 V16 H12 L8 20 V16 H4 Z" />
+      </Stroke>
+    </Svg>
+  );
+}
+
 export function LineIcon(p: IconProps) {
   return (
     <Svg {...p}>

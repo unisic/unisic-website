@@ -5,7 +5,7 @@ order: 6
 group: "Sharing"
 ---
 
-Uploading a capture sends it to a remote host and hands you back the resulting link, ready to paste. This page covers the destination types Unisic supports and where their configuration is stored.
+Uploading a capture sends it to a remote host and hands you back the resulting link, ready to paste. Destinations are managed on the **Servers** page in the app. This page covers the destination types Unisic supports and where their configuration is stored.
 
 Uploading is one of the export options for a finished capture, alongside copying to the clipboard or saving to disk. Once a capture is ready — straight from the overlay or after you refine it in the [editor](/docs/editor) — you can push it to an upload destination.
 
@@ -27,7 +27,7 @@ Upload to an FTP or SFTP server. These transfers run through curl.
 
 ### Built-in hosts
 
-Ready-to-use destinations are included for catbox, 0x0.st, and Imgur.
+Ready-to-use destinations are included for catbox.moe (the default) and the expiring hosts uguu.se (48 h), litterbox (72 h), and tmpfiles.org (1 h).
 
 ## Link auto-copied
 

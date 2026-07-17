@@ -13,6 +13,10 @@ const HOTKEY_KEYS: Array<{ id: keyof Dictionary["hotkeys"]["rows"]; keys: string
   { id: "window", keys: ["Meta", "Shift", "3"] },
   { id: "gif", keys: ["Meta", "Shift", "G"] },
   { id: "video", keys: ["Meta", "Shift", "R"] },
+  { id: "ocr", keys: ["Meta", "Shift", "T"] },
+  { id: "copyLast", keys: ["Meta", "Shift", "C"] },
+  { id: "quickTask", keys: ["Meta", "Shift", "Space"] },
+  { id: "replay", keys: ["Meta", "Shift", "I"] },
   { id: "stop", keys: ["Ctrl", "Esc"] },
 ];
 
@@ -21,6 +25,7 @@ const HOTKEY_KEYS: Array<{ id: keyof Dictionary["hotkeys"]["rows"]; keys: string
 function normalize(e: KeyboardEvent): string | null {
   if (e.key === "Control") return "Ctrl";
   if (e.key === "Escape") return "Esc";
+  if (e.code === "Space") return "Space";
   if (e.key === "Shift" || e.key === "Meta") return e.key;
   const m = /^(?:Key([A-Z])|Digit([0-9]))$/.exec(e.code);
   if (m) return m[1] ?? m[2];

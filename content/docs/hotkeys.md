@@ -16,15 +16,35 @@ Unisic ships with the following default keyboard shortcuts:
 | Capture full screen | `Meta+Shift+1` |
 | Capture region | `Meta+Shift+2` |
 | Capture active window | `Meta+Shift+3` |
-| Record GIF (region) | `Meta+Shift+G` |
-| Record video (region) | `Meta+Shift+R` |
+| Record GIF (start/stop) | `Meta+Shift+G` |
+| Record video (start/stop) | `Meta+Shift+R` |
+| OCR region (copy text) | `Meta+Shift+T` |
+| Copy last capture | `Meta+Shift+C` |
+| Open quick task chooser | `Meta+Shift+Space` |
+| Start/save instant replay | `Meta+Shift+I` |
 | Stop recording (fixed) | `Ctrl+Esc` |
 
 For what each capture action does, see [Capture](/docs/capture); for the recording shortcuts, see [Recording](/docs/recording).
 
+## In the main window
+
+The main window has its own shortcuts, listed in-app under `Ctrl+/`:
+
+| Action | Shortcut |
+| --- | --- |
+| Show / hide the shortcut list | `Ctrl+/` |
+| Jump to a page | `Ctrl+1` … `Ctrl+7` |
+| Open Settings | `Ctrl+,` |
+| Hide the window to the tray | `Ctrl+W` |
+| Quit Unisic | `Ctrl+Q` |
+
+`Ctrl+W` also closes the editor and the trim window.
+
 ## Editing hotkeys
 
-Every shortcut except the fixed stop key is editable. Change them in **Settings -> Hotkeys** — new bindings are applied to the system immediately — or in KDE's Shortcuts KCM.
+Every shortcut except the fixed stop key is editable. Change them in **Settings -> Hotkeys** — new bindings are applied to the system immediately — or in KDE's Shortcuts KCM. Every action can carry a second, alternative binding.
+
+Screenshot hotkeys can also carry their own task preset — after-capture actions and an upload destination for just that key — so different keys route captures differently.
 
 ## The fixed stop key
 
@@ -37,7 +57,7 @@ On niri and other wlroots compositors there is no KGlobalAccel / GlobalShortcuts
 Each capture entry point has a CLI flag you can spawn from a binding:
 
 ```sh
-unisic --fullscreen | --region | --window | --gif
+unisic --fullscreen | --region | --window | --gif | --measure
 ```
 
 In niri's `config.kdl`:
