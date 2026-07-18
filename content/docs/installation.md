@@ -9,7 +9,7 @@ This page covers how to install Unisic: the distribution repositories (recommend
 
 ## Requirements
 
-Unisic runs on Linux. You need a Wayland session with `xdg-desktop-portal` and a backend installed. Recording additionally needs PipeWire and `ffmpeg`. The app is built with C++20 / Qt 6 / QML.
+Unisic runs on Linux. You need a Wayland session with `xdg-desktop-portal` and a backend installed. Recording additionally needs PipeWire and `ffmpeg`, and text recognition (OCR) needs Tesseract with a language pack — all optional. See [Optional dependencies](/docs/dependencies) for the per-distribution packages. The app is built with C++20 / Qt 6 / QML.
 
 For compositor-specific setup (for example wlroots compositors like niri, which need `grim` for screenshots and compositor-side keybinds), see [Compositors](/docs/compositors).
 
@@ -58,7 +58,7 @@ Then install Unisic:
 sudo dnf install unisic
 ```
 
-Builds are provided for Fedora 43, 44, and Rawhide. The COPR build pulls in the optional deps (PipeWire, Tesseract, onnxruntime) so recording, OCR and U-2-Net background removal all work out of the box.
+Builds are provided for Fedora 43, 44, and Rawhide. The COPR build pulls in the optional deps (PipeWire, Tesseract) so recording and OCR work out of the box. To add OCR language packs, see [Optional dependencies](/docs/dependencies).
 
 ### openSUSE
 
@@ -147,7 +147,7 @@ cmake --build build
 ./build/unisic
 ```
 
-PipeWire, Tesseract and onnxruntime dev packages are optional at build time — without them the app builds with recording / OCR / U-2-Net background removal disabled (the dependency-free heuristic object cutout still works). To enable AI background removal install `onnxruntime-devel` (Fedora) or `onnxruntime` (Arch) and rebuild; the ~4.5 MB U-2-Net model is fetched on first use.
+PipeWire and Tesseract dev packages are optional at build time — without them the app builds with recording / OCR disabled. `zxing-cpp` additionally enables reading QR and bar codes inside the OCR path. For the runtime tools and OCR language packs, see [Optional dependencies](/docs/dependencies).
 
 ## Run
 
