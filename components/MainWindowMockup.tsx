@@ -9,6 +9,7 @@ import {
   Logo,
   MinusIcon,
   MonitorIcon,
+  PenIcon,
   RecordIcon,
   RegionIcon,
   WindowIcon,
@@ -17,7 +18,7 @@ import type { Dictionary } from "../lib/i18n";
 
 /*
  * Faithful mini-recreation of the main window (unisic/qml/Main.qml,
- * 1060x700): 38px title bar, 224px sidebar with six nav items (Capture
+ * 1060x700): 38px title bar, 224px sidebar with seven nav items (Capture
  * active as solid tertiary fill, SidebarItem.qml), and the Capture page
  * (CapturePage.qml): title, subtitle, three 218x172 radius-26 action
  * cards with hotkey chips, "After capture" card with toggle rows.
@@ -29,8 +30,9 @@ export function MainWindowMockup({ dict }: { dict: Dictionary }) {
     { icon: CameraIcon, label: m.nav.capture, active: true },
     { icon: RecordIcon, label: m.nav.record, active: false },
     { icon: GifIcon, label: m.nav.gif, active: false },
+    { icon: PenIcon, label: m.nav.edit, active: false },
     { icon: HistoryIcon, label: m.nav.history, active: false },
-    { icon: FolderCloudIcon, label: m.nav.destinations, active: false },
+    { icon: FolderCloudIcon, label: m.nav.servers, active: false },
     { icon: ConfigureIcon, label: m.nav.settings, active: false },
   ];
 

@@ -3,11 +3,14 @@ import { SWATCHES } from "../lib/themes";
 import {
   ArrowIcon,
   BlurIcon,
+  CalloutIcon,
   CropIcon,
+  EditShapesIcon,
   EllipseIcon,
   EraserIcon,
   HighlightIcon,
   LineIcon,
+  MeasureIcon,
   PenIcon,
   PixelateIcon,
   RectangleIcon,
@@ -20,19 +23,23 @@ import {
 /*
  * Static stand-in for the former interactive editor demo. It shows the app's
  * signature floating annotation toolbar (EditorWindow.qml:179-308) over an
- * abstract capture: the twelve tool chips, undo/redo, and the fixed 7-color
- * stroke palette (Theme.qml:102). Pure server markup, no client JS. Geometry
- * is shared with EditorMockup so the flagship cell and the hero read as one
- * product. Decorative, hence aria-hidden — the cell's heading and body carry
- * the meaning.
+ * abstract capture: the fifteen tool chips (flattened — the real toolbar
+ * clusters the shape tools behind one chip), undo/redo, and the fixed
+ * 7-color stroke palette (Theme.qml:102). Pure server markup, no client JS.
+ * Geometry is shared with EditorMockup so the flagship cell and the hero
+ * read as one product. Decorative, hence aria-hidden — the cell's heading
+ * and body carry the meaning.
  */
 
 const TOOLS = [
+  EditShapesIcon,
   PenIcon,
   LineIcon,
   ArrowIcon,
+  MeasureIcon,
   RectangleIcon,
   EllipseIcon,
+  CalloutIcon,
   TextIcon,
   HighlightIcon,
   BlurIcon,
@@ -44,7 +51,7 @@ const TOOLS = [
 
 /* highlighter is the active tool, matching the yellow highlight mark it
    draws on the canvas (and the yellow swatch selected below) */
-const ACTIVE = 6;
+const ACTIVE = 9;
 
 export function EditorPreview() {
   return (

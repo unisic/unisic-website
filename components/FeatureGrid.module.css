@@ -5,7 +5,7 @@
   grid-template-areas:
     "editor editor upload"
     "editor editor history"
-    "silent telemetry telemetry";
+    "silent ocr telemetry";
   gap: 16px;
 }
 
@@ -13,7 +13,8 @@
 .grid > :nth-child(2) { grid-area: upload; }
 .grid > :nth-child(3) { grid-area: history; }
 .grid > :nth-child(4) { grid-area: silent; }
-.grid > :nth-child(5) { grid-area: telemetry; }
+.grid > :nth-child(5) { grid-area: ocr; }
+.grid > :nth-child(6) { grid-area: telemetry; }
 
 .cell {
   position: relative;
@@ -189,7 +190,8 @@
     grid-template-areas:
       "editor editor"
       "upload history"
-      "silent telemetry";
+      "silent ocr"
+      "telemetry telemetry";
   }
 }
 
@@ -201,6 +203,7 @@
       "upload"
       "history"
       "silent"
+      "ocr"
       "telemetry";
   }
 }

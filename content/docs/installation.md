@@ -58,7 +58,7 @@ Then install Unisic:
 sudo dnf install unisic
 ```
 
-Builds are provided for Fedora 43, 44, and Rawhide. The COPR build pulls in the optional deps (PipeWire, Tesseract) so recording and OCR work out of the box. To add OCR language packs, see [Optional dependencies](/docs/dependencies).
+Builds are provided for Fedora 43, 44, and Rawhide. The COPR build pulls in the optional deps (PipeWire, Tesseract, zxing-cpp) so recording, OCR, and QR/barcode decoding all work out of the box.
 
 ### openSUSE
 
@@ -107,7 +107,7 @@ sudo pacman -Syu unisic
 
 ## Direct downloads
 
-The [Releases](https://github.com/unisic/unisic/releases/latest) page has a standalone **AppImage** that updates itself in-app. Every packaged format (deb, rpm, Arch, openSUSE) ships through the repositories above.
+The [Releases](https://github.com/unisic/unisic/releases/latest) page carries every format: the self-updating **AppImage**, plus one-off **.deb**, Fedora **.rpm**, and Arch **.pkg.tar.zst** packages that register their repository on first install — from then on updates arrive through `apt upgrade` / `dnf upgrade` / `pacman -Syu` like any other package. openSUSE has no release package (a binary rpm is pinned to the exact Qt it was built against); use the repository above.
 
 ## Build from source
 
@@ -147,14 +147,14 @@ cmake --build build
 ./build/unisic
 ```
 
-PipeWire and Tesseract dev packages are optional at build time — without them the app builds with recording / OCR disabled. `zxing-cpp` additionally enables reading QR and bar codes inside the OCR path. For the runtime tools and OCR language packs, see [Optional dependencies](/docs/dependencies).
+PipeWire, Tesseract (with Leptonica), and zxing-cpp dev packages are optional at build time — without them the app builds with recording, OCR, or QR/barcode decoding disabled.
 
 ## Run
 
 Starting Unisic with no arguments does a background start with the tray and main window. You can also drive it from the command line:
 
 ```sh
-unisic --fullscreen | --region | --window | --gif
+unisic --fullscreen | --region | --window | --gif | --measure
 unisic --export-settings <file> | --import-settings <file>
 ```
 
@@ -162,6 +162,6 @@ A second invocation forwards the command to the running instance — that is how
 
 ## First run
 
-On first run, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications` (it declares `X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2`), which authorizes the silent KWin path. Without it, captures still work through the portal.
+On first run in a KDE session, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications` (it declares `X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2`), which authorizes the silent KWin path. AppImage runs skip this and capture through the portal — see [Configuration](/docs/configuration). Without the desktop file, captures still work through the portal.
 
 After installing, see [Configuration](/docs/configuration) for settings, destinations, and filename templates.
