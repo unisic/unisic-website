@@ -6,7 +6,13 @@
  * Distro and version names are proper nouns and stay untranslated here.
  */
 
-export type DistroId = "ubuntu" | "debian" | "fedora" | "opensuse" | "arch";
+export type DistroId =
+  | "ubuntu"
+  | "debian"
+  | "fedora"
+  | "opensuse"
+  | "arch"
+  | "nix";
 
 /* Direct-download formats that sit in the same picker row as the distros;
    their ids double as lib/releases.ts asset formats. */
@@ -119,6 +125,15 @@ export const DISTROS: Distro[] = [
           "  | sudo tee -a /etc/pacman.conf",
       },
       { key: "install", command: "sudo pacman -Syu unisic" },
+    ],
+  },
+  {
+    id: "nix",
+    name: "Nix",
+    /* Flake on the default branch; installs the package into the profile.
+       The portal/PipeWire note in download.lede already covers the runtime. */
+    steps: () => [
+      { key: "install", command: "nix profile install github:unisic/unisic" },
     ],
   },
 ];
