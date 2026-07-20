@@ -24,7 +24,7 @@ For what each capture action does, see [Capture](/docs/capture); for the recordi
 
 ## Editing hotkeys
 
-Every shortcut except the fixed stop key is editable. Change them in **Settings -> Hotkeys** — new bindings are applied to the system immediately — or in KDE's Shortcuts KCM.
+Every shortcut except the fixed stop key is editable. Change them in **Settings -> Hotkeys** - new bindings are applied to the system immediately - or in KDE's Shortcuts KCM.
 
 ## The fixed stop key
 

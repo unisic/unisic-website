@@ -94,6 +94,7 @@ export const pl: Dictionary = {
       "fedora": "Kompilacje dla Fedory 43, 44 i Rawhide. Pakiet z COPR dociąga opcjonalne zależności, więc nagrywanie, OCR i usuwanie tła działają od razu.",
       "opensuse": "Podczas odświeżania zypper poprosi o zaakceptowanie klucza podpisującego repozytorium.",
       "arch": "Podpisane repozytorium pacmana na openSUSE Build Service — AUR nie jest potrzebny.",
+      "nix": "Działa wszędzie tam, gdzie Nix, także na NixOS. Wypróbuj przez nix run albo dodaj flake jako wejście do konfiguracji deklaratywnej; na NixOS włącz xdg.portal i PipeWire.",
       "appimage": "Uniwersalny — działa na każdej dystrybucji. Aplikacja aktualizuje się sama: pobiera nowy AppImage, podmienia się w miejscu i restartuje przy bezczynności.",
     },
     "downloadBtn": "Pobierz",

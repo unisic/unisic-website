@@ -94,6 +94,7 @@ export const nl: Dictionary = {
       "fedora": "Builds voor Fedora 43, 44 en Rawhide. De COPR-build installeert de optionele afhankelijkheden mee, dus opnemen, OCR en achtergrondverwijdering werken meteen.",
       "opensuse": "zypper vraagt je tijdens het verversen om de ondertekeningssleutel van de repository te accepteren.",
       "arch": "Een ondertekende pacman-repository op de openSUSE Build Service — geen AUR nodig.",
+      "nix": "Draait overal waar Nix draait, ook op NixOS. Probeer het met nix run of voeg de flake toe als input voor een declaratieve configuratie; schakel op NixOS xdg.portal en PipeWire in.",
       "appimage": "Universeel — draait op elke distributie. De app werkt zichzelf bij: hij downloadt de nieuwe AppImage, wisselt zichzelf ter plekke om en herstart bij inactiviteit."
     },
     "downloadBtn": "Downloaden",

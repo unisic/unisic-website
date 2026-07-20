@@ -34,7 +34,7 @@ Images can be exported as PNG, JPG, or WebP. Object cutouts made with the *Pick 
 
 ## Export and import settings
 
-Your entire configuration can be saved to, or restored from, a single JSON file — useful for backups or for moving your setup between machines.
+Your entire configuration can be saved to, or restored from, a single JSON file - useful for backups or for moving your setup between machines.
 
 ```sh
 unisic --export-settings <file>
@@ -50,7 +50,7 @@ unisic --fullscreen | --region | --window | --gif
 unisic --export-settings <file> | --import-settings <file>
 ```
 
-Running `unisic` with no arguments starts it in the background with the tray icon and main window. A second invocation does not launch another copy — it forwards the command to the already-running instance. This is how compositor-side keybinds work: your keybind runs `unisic --region` (or another flag), and the running instance carries out the command. See [Compositors](/docs/compositors) for binding these commands in compositors without a global-shortcuts portal.
+Running `unisic` with no arguments starts it in the background with the tray icon and main window. A second invocation does not launch another copy - it forwards the command to the already-running instance. This is how compositor-side keybinds work: your keybind runs `unisic --region` (or another flag), and the running instance carries out the command. See [Compositors](/docs/compositors) for binding these commands in compositors without a global-shortcuts portal.
 
 ## Appearance
 
@@ -76,4 +76,4 @@ On first run, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/a
 X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2
 ```
 
-That declaration authorizes the silent KWin ScreenShot2 path on KDE Plasma. Without it, captures still work through the xdg-desktop-portal path — you just lose the fully silent native capture on Plasma.
+That declaration authorizes the silent KWin ScreenShot2 path on KDE Plasma. Without it, captures still work through the xdg-desktop-portal path - you just lose the fully silent native capture on Plasma.

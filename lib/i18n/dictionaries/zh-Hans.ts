@@ -94,6 +94,7 @@ export const zhHans: Dictionary = {
       "fedora": "提供面向 Fedora 43、44 和 Rawhide 的构建。COPR 构建会一并安装可选依赖，因此录制、OCR 和背景移除开箱即用。",
       "opensuse": "刷新时 zypper 会请求你接受该软件仓库的签名密钥。",
       "arch": "openSUSE Build Service 上的已签名 pacman 仓库——无需 AUR。",
+      "nix": "只要有 Nix 就能运行，包括 NixOS。可用 nix run 直接试用，或把 flake 作为 input 加入配置进行声明式安装；在 NixOS 上请启用 xdg.portal 与 PipeWire。",
       "appimage": "通用格式——可在任何发行版上运行。应用会自动更新：下载新的 AppImage 并原地替换，空闲时重启。"
     },
     "downloadBtn": "下载",

@@ -94,6 +94,7 @@ export const zhHant: Dictionary = {
       "fedora": "提供 Fedora 43、44 與 Rawhide 的組建。COPR 組建會一併安裝選用相依套件，因此錄製、OCR 與背景移除都能直接使用。",
       "opensuse": "重新整理時 zypper 會要求你接受軟體庫的簽署金鑰。",
       "arch": "openSUSE Build Service 上的已簽署 pacman 軟體庫——不需要 AUR。",
+      "nix": "只要有 Nix 就能執行，包含 NixOS。可用 nix run 直接試用，或把 flake 作為 input 加入設定進行宣告式安裝；在 NixOS 上請啟用 xdg.portal 與 PipeWire。",
       "appimage": "通用格式——可在任何發行版上執行。應用程式會自行更新：下載新的 AppImage 並就地替換，閒置時重新啟動。"
     },
     "downloadBtn": "下載",

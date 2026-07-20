@@ -116,6 +116,7 @@ export const en = {
       opensuse:
         "zypper asks you to accept the repository signing key during the refresh.",
       arch: "A signed pacman repository on the openSUSE Build Service — no AUR needed.",
+      nix: "Runs anywhere Nix does, including NixOS. Try it with nix run, or add the flake as an input for a declarative setup; enable xdg.portal and PipeWire on NixOS.",
       appimage:
         "Universal — runs on any distribution. The app updates itself: it downloads the new AppImage and swaps in place, then restarts when idle.",
     },

@@ -25,7 +25,7 @@ This path requires a Wayland session with `xdg-desktop-portal` and a backend. Re
 
 ### Screenshots
 
-Install `grim`. niri's screenshot D-Bus API (which the GNOME portal proxies) fails with `internal error` on multi-monitor setups ([niri #117](https://github.com/niri-wm/niri/issues/117)). Unisic detects niri and captures through wlr-screencopy via `grim` — silent and multi-monitor-safe.
+Install `grim`. niri's screenshot D-Bus API (which the GNOME portal proxies) fails with `internal error` on multi-monitor setups ([niri #117](https://github.com/niri-wm/niri/issues/117)). Unisic detects niri and captures through wlr-screencopy via `grim` - silent and multi-monitor-safe.
 
 ### Hotkeys
 

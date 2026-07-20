@@ -94,6 +94,7 @@ export const fr: Dictionary = {
       "fedora": "Builds pour Fedora 43, 44 et Rawhide. Le paquet COPR installe les dépendances optionnelles : l'enregistrement, l'OCR et la suppression d'arrière-plan fonctionnent d'emblée.",
       "opensuse": "zypper vous demandera d'accepter la clé de signature du dépôt lors du rafraîchissement.",
       "arch": "Un dépôt pacman signé sur l'openSUSE Build Service — pas besoin d'AUR.",
+      "nix": "Fonctionne partout où Nix fonctionne, y compris NixOS. Essayez-le avec nix run ou ajoutez le flake comme entrée pour une configuration déclarative ; sur NixOS, activez xdg.portal et PipeWire.",
       "appimage": "Universel — fonctionne sur toutes les distributions. L'application se met à jour toute seule : elle télécharge le nouvel AppImage, se remplace sur place et redémarre quand elle est inactive."
     },
     "downloadBtn": "Télécharger",

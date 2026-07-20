@@ -6,7 +6,13 @@
  * Distro and version names are proper nouns and stay untranslated here.
  */
 
-export type DistroId = "ubuntu" | "debian" | "fedora" | "opensuse" | "arch";
+export type DistroId =
+  | "ubuntu"
+  | "debian"
+  | "fedora"
+  | "opensuse"
+  | "arch"
+  | "nix";
 
 /* Direct-download formats that sit in the same picker row as the distros;
    their ids double as lib/releases.ts asset formats. */
@@ -119,6 +125,16 @@ export const DISTROS: Distro[] = [
           "  | sudo tee -a /etc/pacman.conf",
       },
       { key: "install", command: "sudo pacman -Syu unisic" },
+    ],
+  },
+  {
+    /* Not a distro, but a cross-distro install path via the project flake;
+       sits in the same picker row. Updates come from the flake, not an OBS
+       repo, so a single profile-install step plus the note covers it. */
+    id: "nix",
+    name: "Nix",
+    steps: () => [
+      { key: "install", command: "nix profile install github:unisic/unisic" },
     ],
   },
 ];

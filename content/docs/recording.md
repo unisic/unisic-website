@@ -11,8 +11,8 @@ Unisic records your screen as an animated GIF or as MP4/WebM video, using the sa
 
 Unisic produces two kinds of recording:
 
-- **GIF** — encoded with a two-pass palette: the first pass analyzes the frames to build an optimized color palette, and the second pass encodes against it.
-- **MP4 / WebM** — standard video output.
+- **GIF** - encoded with a two-pass palette: the first pass analyzes the frames to build an optimized color palette, and the second pass encodes against it.
+- **MP4 / WebM** - standard video output.
 
 ## How recording works
 
@@ -53,4 +53,4 @@ If Unisic is built from source without the PipeWire development packages, it bui
 unisic --gif
 ```
 
-For the full list of shortcuts and how to rebind them, see [Hotkeys](/docs/hotkeys). Output formats and file locations are managed with the rest of your settings — see [Configuration](/docs/configuration).
+For the full list of shortcuts and how to rebind them, see [Hotkeys](/docs/hotkeys). Output formats and file locations are managed with the rest of your settings - see [Configuration](/docs/configuration).

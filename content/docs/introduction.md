@@ -11,7 +11,7 @@ This page introduces Unisic: what it is, the capture-to-upload workflow it cover
 
 Unisic is an open-source, zero-telemetry screenshot and screen recorder for Linux, licensed under the GNU GPL v3. Most snipping tools stop at a rectangle of pixels and walk away. Unisic covers everything that should happen *after* you press the hotkey.
 
-The moment you trigger a capture, Unisic gives you the whole workflow: annotate on the selection overlay before the shot is even taken, edit afterwards, cut objects out of their background, record the same region as a GIF or video, and push the result wherever it belongs — clipboard, disk, or a custom upload destination with the link ready to paste.
+The moment you trigger a capture, Unisic gives you the whole workflow: annotate on the selection overlay before the shot is even taken, edit afterwards, cut objects out of their background, record the same region as a GIF or video, and push the result wherever it belongs - clipboard, disk, or a custom upload destination with the link ready to paste.
 
 It is built for Linux on legitimate APIs only (`xdg-desktop-portal`, KWin ScreenShot2, PipeWire, KGlobalAccel, `wlr-screencopy`), and is written in C++20 / Qt 6 / QML with a fully custom UI.
 
@@ -21,7 +21,7 @@ Unisic treats a screenshot as the start of a task, not the end of one.
 
 ### Annotate before the shot
 
-Draw directly on the frozen capture overlay — pen, arrow, shapes, text, blur, steps — and the annotations are burnt into the final crop. Enter or double-click captures; Esc cancels.
+Draw directly on the frozen capture overlay - pen, arrow, shapes, text, blur, steps - and the annotations are burnt into the final crop. Enter or double-click captures; Esc cancels.
 
 ### Edit afterwards
 
@@ -37,7 +37,7 @@ Capture a region, the full screen, or a window as a GIF or as MP4/WebM video. `C
 
 ### Upload
 
-Send the result to a custom HTTP destination, an imported `.sxcu` (ShareX) uploader, FTP/SFTP, or one of the built-in hosts (catbox, 0x0.st, Imgur) — and the resulting link is copied to your clipboard automatically.
+Send the result to a custom HTTP destination, an imported `.sxcu` (ShareX) uploader, FTP/SFTP, or one of the built-in hosts (catbox, 0x0.st, Imgur) - and the resulting link is copied to your clipboard automatically.
 
 ### History
 
@@ -59,10 +59,10 @@ See [Installation](/docs/installation) for the distro repositories and build ins
 
 ## Early developer access
 
-Unisic is in early developer access. It works, but you will run into rough edges — capture quirks on exotic compositors, hotkey oddities, UI glitches. Every report helps: please file bugs, ideally with your desktop, compositor, GPU, and logs, in [Issues](https://github.com/unisic/unisic/issues). Feature requests are welcome there too.
+Unisic is in early developer access. It works, but you will run into rough edges - capture quirks on exotic compositors, hotkey oddities, UI glitches. Every report helps: please file bugs, ideally with your desktop, compositor, GPU, and logs, in [Issues](https://github.com/unisic/unisic/issues). Feature requests are welcome there too.
 
 ## Where to next
 
-- [Installation](/docs/installation) — install from your distro's repository or build from source.
-- [Capture](/docs/capture) — full screen, region, and active-window captures.
-- [Hotkeys](/docs/hotkeys) — the default shortcuts and how to change them.
+- [Installation](/docs/installation) - install from your distro's repository or build from source.
+- [Capture](/docs/capture) - full screen, region, and active-window captures.
+- [Hotkeys](/docs/hotkeys) - the default shortcuts and how to change them.

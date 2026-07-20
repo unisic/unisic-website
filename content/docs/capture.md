@@ -27,7 +27,7 @@ Captures the currently focused window on its own, without you having to trace it
 
 Unisic lets you draw on the frozen overlay *before* the capture is taken, so the marks are part of the shot rather than a separate editing pass. The available tools are pen, arrow, shapes, text, blur, and steps. Anything you draw inside the selection is burnt into the final crop.
 
-As with a plain region capture, `Enter` or a double-click captures the annotated selection and `Esc` cancels. For the full tool set and post-capture editing, the editor opens afterwards — see [the editor](/docs/editor).
+As with a plain region capture, `Enter` or a double-click captures the annotated selection and `Esc` cancels. For the full tool set and post-capture editing, the editor opens afterwards - see [the editor](/docs/editor).
 
 ## Object cutout
 
@@ -37,16 +37,16 @@ The *Pick object* tool segments the subject inside your selection and removes th
 
 Two capture options are configurable:
 
-- **Delay** — set a timer before the shot fires, useful for opening menus or hovering states that would otherwise close.
-- **Cursor** — optionally include the mouse cursor in the captured image.
+- **Delay** - set a timer before the shot fires, useful for opening menus or hovering states that would otherwise close.
+- **Cursor** - optionally include the mouse cursor in the captured image.
 
 ## How the pixels are captured
 
 Unisic grabs the screen through legitimate Wayland APIs only and picks the right path for your compositor automatically:
 
-- **KDE Plasma** — the fully silent native KWin ScreenShot2 path.
-- **Other desktops** — the `xdg-desktop-portal` route, through your installed portal backend.
-- **wlroots compositors** — capture via wlr-screencopy using `grim` (install `grim`).
+- **KDE Plasma** - the fully silent native KWin ScreenShot2 path.
+- **Other desktops** - the `xdg-desktop-portal` route, through your installed portal backend.
+- **wlroots compositors** - capture via wlr-screencopy using `grim` (install `grim`).
 
 On first run, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications`, declaring `X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2` to authorize the silent KWin path. Without it, captures still work through the portal.
 
@@ -62,7 +62,7 @@ The default capture hotkeys are:
 | Capture region | `Meta+Shift+2` |
 | Capture active window | `Meta+Shift+3` |
 
-These are editable in Settings -> Hotkeys — see [hotkeys](/docs/hotkeys).
+These are editable in Settings -> Hotkeys - see [hotkeys](/docs/hotkeys).
 
 You can also trigger a capture directly:
 
