@@ -14,7 +14,7 @@ export const en = {
       "Open-source screenshot and screen recorder for Linux. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
     ogTitle: "Unisic — Screenshots done right on Linux",
     ogDescription:
-      "Silent capture, annotation before the shot, a 12-tool editor, GIF and video recording, instant upload. Zero telemetry, GPLv3.",
+      "Silent capture, annotation before the shot, a 15-tool editor, GIF and video recording, OCR, instant upload. Zero telemetry, GPLv3.",
     ogImageAlt: "Unisic screenshot editor on Linux",
   },
 
@@ -29,7 +29,7 @@ export const en = {
 
   hero: {
     headline: "Screenshots done right on Linux.",
-    sub: "Silent capture, annotation before the shot, a 12-tool editor, GIF and video recording, instant upload. Zero telemetry. GPLv3.",
+    sub: "Silent capture, annotation before the shot, a 15-tool editor, GIF and video recording, OCR, instant upload. Zero telemetry. GPLv3.",
     download: "Download",
     github: "View on GitHub",
   },
@@ -50,7 +50,11 @@ export const en = {
     lede: "Most tools hand you a rectangle of pixels and walk away. Unisic covers the rest of the workflow.",
     editor: {
       title: "A real editor, not a crop box",
-      body: "Twelve tools including highlight, pixelate, smart eraser, numbered steps and crop. Undo, redo, zoom, all in image-pixel space.",
+      body: "Fifteen tools including highlight, pixelate, smart eraser, callout, measure, numbered steps and crop. Undo, redo, zoom, all in image-pixel space.",
+    },
+    ocr: {
+      title: "Text out of pixels",
+      body: "OCR a region straight to your clipboard, or pick single words in the editor to copy, highlight or redact. QR codes decode to their payload.",
     },
     upload: {
       title: "Upload anywhere",
@@ -73,7 +77,7 @@ export const en = {
 
   recording: {
     title: "The same region, as GIF or video",
-    lede: "GIF with a two-pass palette for crisp colors, or MP4 and WebM through the ScreenCast portal, PipeWire and ffmpeg. Record a region, the full screen, or a window.",
+    lede: "GIF with a two-pass palette for crisp colors, or MP4 and WebM with optional system, microphone, or single-app audio — through the ScreenCast portal, PipeWire and ffmpeg. Record a region, the full screen, or a window, let instant replay buffer the last 30 seconds, and trim the result right from the notification card.",
     note: "{keys} always stops a recording, no matter what has focus.",
     caption:
       "A screen region being recorded: Unisic draws an accent-colored frame around the region with a REC badge and elapsed timer.",
@@ -95,7 +99,7 @@ export const en = {
     title: "Install Unisic",
     lede: "Needs a Wayland session with xdg-desktop-portal. Recording also wants PipeWire and ffmpeg.",
     repoLede:
-      "Pick your distribution — the repository keeps Unisic updated through your package manager. AppImage is a direct download.",
+      "Pick your distribution — the repository keeps Unisic updated through your package manager. AppImage is a direct download, and the release also carries one-off .deb, .rpm and Arch packages that hook up the repository on first install.",
     distroListLabel: "Choose your distribution or package format",
     versionLabel: "Version",
     copyCmd: "Copy commands",
@@ -112,13 +116,13 @@ export const en = {
         "Ubuntu 25.10 reaches end of life in July 2026 — prefer 26.04. Both need Qt 6.5+, which older releases don’t ship.",
       debian: "Needs Debian 13 (trixie) or newer for Qt 6.5+.",
       fedora:
-        "Builds for Fedora 43, 44 and Rawhide. The COPR build pulls in the optional dependencies, so recording, OCR and background removal work out of the box.",
+        "Builds for Fedora 43, 44 and Rawhide. The COPR build pulls in the optional dependencies, so recording, OCR and QR decoding work out of the box.",
       opensuse:
         "zypper asks you to accept the repository signing key during the refresh.",
       arch: "A signed pacman repository on the openSUSE Build Service — no AUR needed.",
       nix: "Runs anywhere Nix does, including NixOS. Try it with nix run, or add the flake as an input for a declarative setup; enable xdg.portal and PipeWire on NixOS.",
       appimage:
-        "Universal — runs on any distribution. The app updates itself: it downloads the new AppImage and swaps in place, then restarts when idle.",
+        "Universal — runs on any distribution. Updates itself via embedded zsync: only the changed blocks are downloaded and swapped in place, and it restarts when idle.",
     },
     downloadBtn: "Download",
     checking: "Checking the latest release",
@@ -126,9 +130,9 @@ export const en = {
     fallbackBtn: "Get it from GitHub Releases",
     fallbackNote: "Couldn’t reach GitHub just now, but every build lives there.",
     allReleases: "All releases and older builds",
-    earlyAccess:
-      "Unisic is in early developer access: it works, but expect rough edges on exotic compositors. Every report in {link} helps.",
-    earlyAccessLink: "Issues",
+    stability:
+      "Unisic 0.7 is the first stable release. If your compositor still finds a way to surprise it, every report in {link} helps.",
+    stabilityLink: "Issues",
   },
 
   hotkeys: {
@@ -139,8 +143,12 @@ export const en = {
       full: "Capture full screen",
       region: "Capture region",
       window: "Capture active window",
-      gif: "Record GIF (region)",
-      video: "Record video (region)",
+      gif: "Record GIF (start/stop)",
+      video: "Record video (start/stop)",
+      ocr: "OCR region (copy text)",
+      copyLast: "Copy last capture",
+      quickTask: "Open quick task chooser",
+      replay: "Start/save instant replay",
       stop: "Stop recording (fixed)",
     },
     tryHint:
@@ -170,13 +178,14 @@ export const en = {
 
   mainWindow: {
     ariaLabel:
-      "The Unisic main window: a sidebar with Capture, Record, GIF, History, Destinations and Settings pages, and the Capture page with full screen, region and window actions plus after-capture toggles.",
+      "The Unisic main window: a sidebar with Capture, Record, GIF, Edit, History, Servers and Settings pages, and the Capture page with full screen, region and window actions plus after-capture toggles.",
     nav: {
       capture: "Capture",
       record: "Record",
       gif: "GIF",
+      edit: "Edit",
       history: "History",
-      destinations: "Destinations",
+      servers: "Servers",
       settings: "Settings",
     },
     pageTitle: "Capture",
@@ -198,7 +207,7 @@ export const en = {
 
   editorMockup: {
     ariaLabel:
-      "The Unisic editor window: a toolbar with twelve annotation tools, a screenshot annotated with an arrow, a highlight and numbered steps, and copy, save and upload actions.",
+      "The Unisic editor window: a toolbar with fifteen annotation tools, a screenshot annotated with an arrow, a highlight and numbered steps, and copy, save and upload actions.",
     title: "Unisic Editor",
     copy: "Copy",
     save: "Save",

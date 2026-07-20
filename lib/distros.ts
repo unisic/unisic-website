@@ -128,11 +128,10 @@ export const DISTROS: Distro[] = [
     ],
   },
   {
-    /* Not a distro, but a cross-distro install path via the project flake;
-       sits in the same picker row. Updates come from the flake, not an OBS
-       repo, so a single profile-install step plus the note covers it. */
     id: "nix",
     name: "Nix",
+    /* Flake on the default branch; installs the package into the profile.
+       The portal/PipeWire note in download.lede already covers the runtime. */
     steps: () => [
       { key: "install", command: "nix profile install github:unisic/unisic" },
     ],

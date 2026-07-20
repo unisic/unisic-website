@@ -7,7 +7,7 @@ export const nl: Dictionary = {
     "title": "Unisic — Screenshot- en schermrecorder voor Linux",
     "description": "Open-source screenshot- en schermrecorder voor Linux. Annoteer vóór de opname, bewerk erna, neem GIF en video op, upload overal. Geen telemetrie, GPLv3.",
     "ogTitle": "Unisic — Screenshots zoals het hoort op Linux",
-    "ogDescription": "Geruisloos vastleggen, annotatie vóór de opname, een editor met 12 gereedschappen, GIF- en video-opname, direct uploaden. Geen telemetrie, GPLv3.",
+    "ogDescription": "Geruisloos vastleggen, annotatie vóór de opname, een editor met 15 gereedschappen, GIF- en video-opname, OCR, direct uploaden. Geen telemetrie, GPLv3.",
     "ogImageAlt": "Unisic screenshot-editor op Linux"
   },
   "nav": {
@@ -20,7 +20,7 @@ export const nl: Dictionary = {
   },
   "hero": {
     "headline": "Screenshots zoals het hoort op Linux.",
-    "sub": "Geruisloos vastleggen, annotatie vóór de opname, een editor met 12 gereedschappen, GIF- en video-opname, direct uploaden. Geen telemetrie. GPLv3.",
+    "sub": "Geruisloos vastleggen, annotatie vóór de opname, een editor met 15 gereedschappen, GIF- en video-opname, OCR, direct uploaden. Geen telemetrie. GPLv3.",
     "download": "Downloaden",
     "github": "Bekijk op GitHub"
   },
@@ -37,7 +37,11 @@ export const nl: Dictionary = {
     "lede": "De meeste tools geven je een rechthoek met pixels en laten je vervolgens in de steek. Unisic dekt de rest van de workflow.",
     "editor": {
       "title": "Een echte editor, geen bijsnijkader",
-      "body": "Twaalf gereedschappen, waaronder markeren, pixeleren, slimme gum, genummerde stappen en bijsnijden. Ongedaan maken, opnieuw, zoomen, allemaal in beeldpixels."
+      "body": "Vijftien gereedschappen, waaronder markeren, pixeleren, slimme gum, tekstballon, meten, genummerde stappen en bijsnijden. Ongedaan maken, opnieuw, zoomen, allemaal in beeldpixels."
+    },
+    "ocr": {
+      "title": "Tekst uit pixels",
+      "body": "OCR een gebied rechtstreeks naar je klembord, of kies losse woorden in de editor om ze te kopiëren, te markeren of onleesbaar te maken. QR-codes worden gedecodeerd naar hun inhoud."
     },
     "upload": {
       "title": "Overal uploaden",
@@ -59,7 +63,7 @@ export const nl: Dictionary = {
   },
   "recording": {
     "title": "Hetzelfde gebied, als GIF of video",
-    "lede": "GIF met een tweefasig palet voor scherpe kleuren, of MP4 en WebM via de ScreenCast-portal, PipeWire en ffmpeg. Neem een gebied, het volledige scherm of een venster op.",
+    "lede": "GIF met een tweefasig palet voor scherpe kleuren, of MP4 en WebM met optioneel geluid van het systeem, de microfoon of één enkele app — via de ScreenCast-portal, PipeWire en ffmpeg. Neem een gebied, het volledige scherm of een venster op, laat instant replay de laatste 30 seconden bufferen en knip het resultaat direct bij vanuit de meldingskaart.",
     "note": "{keys} stopt altijd een opname, ongeacht wat de focus heeft.",
     "caption": "Een schermgebied dat wordt opgenomen: Unisic tekent een kader in accentkleur rond het gebied met een REC-badge en een verstreken tijd."
   },
@@ -76,7 +80,7 @@ export const nl: Dictionary = {
   "download": {
     "title": "Unisic installeren",
     "lede": "Vereist een Wayland-sessie met xdg-desktop-portal. Voor opnemen zijn ook PipeWire en ffmpeg nodig.",
-    "repoLede": "Kies je distributie — de repository houdt Unisic up-to-date via je pakketbeheerder. AppImage is een directe download.",
+    "repoLede": "Kies je distributie — de repository houdt Unisic up-to-date via je pakketbeheerder. AppImage is een directe download, en de release bevat ook losse .deb-, .rpm- en Arch-pakketten die bij de eerste installatie de repository instellen.",
     "distroListLabel": "Kies je distributie of pakketformaat",
     "versionLabel": "Versie",
     "copyCmd": "Commando's kopiëren",
@@ -91,11 +95,10 @@ export const nl: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 bereikt in juli 2026 het einde van de ondersteuning — kies bij voorkeur 26.04. Beide vereisen Qt 6.5+, dat oudere uitgaven niet meeleveren.",
       "debian": "Vereist Debian 13 (trixie) of nieuwer vanwege Qt 6.5+.",
-      "fedora": "Builds voor Fedora 43, 44 en Rawhide. De COPR-build installeert de optionele afhankelijkheden mee, dus opnemen, OCR en achtergrondverwijdering werken meteen.",
+      "fedora": "Builds voor Fedora 43, 44 en Rawhide. De COPR-build installeert de optionele afhankelijkheden mee, dus opnemen, OCR en QR-decodering werken meteen.",
       "opensuse": "zypper vraagt je tijdens het verversen om de ondertekeningssleutel van de repository te accepteren.",
       "arch": "Een ondertekende pacman-repository op de openSUSE Build Service — geen AUR nodig.",
-      "nix": "Draait overal waar Nix draait, ook op NixOS. Probeer het met nix run of voeg de flake toe als input voor een declaratieve configuratie; schakel op NixOS xdg.portal en PipeWire in.",
-      "appimage": "Universeel — draait op elke distributie. De app werkt zichzelf bij: hij downloadt de nieuwe AppImage, wisselt zichzelf ter plekke om en herstart bij inactiviteit."
+      "appimage": "Universeel — draait op elke distributie. De app werkt zichzelf bij via ingebouwde zsync: alleen de gewijzigde blokken worden gedownload en ter plekke omgewisseld, en hij herstart bij inactiviteit."
     },
     "downloadBtn": "Downloaden",
     "checking": "De nieuwste release controleren",
@@ -103,8 +106,8 @@ export const nl: Dictionary = {
     "fallbackBtn": "Download via GitHub Releases",
     "fallbackNote": "GitHub was zojuist niet bereikbaar, maar elke build staat daar.",
     "allReleases": "Alle releases en oudere builds",
-    "earlyAccess": "Unisic bevindt zich in vroege ontwikkelaarstoegang: het werkt, maar verwacht ruwe randjes op exotische compositors. Elke melding in {link} helpt.",
-    "earlyAccessLink": "Issues"
+    "stability": "Unisic 0.7 is de eerste stabiele release. Als je compositor toch nog een manier vindt om hem te verrassen, helpt elke melding in {link}.",
+    "stabilityLink": "Issues"
   },
   "hotkeys": {
     "caption": "Standaardsneltoetsen",
@@ -114,8 +117,12 @@ export const nl: Dictionary = {
       "full": "Volledig scherm vastleggen",
       "region": "Gebied vastleggen",
       "window": "Actief venster vastleggen",
-      "gif": "GIF opnemen (gebied)",
-      "video": "Video opnemen (gebied)",
+      "gif": "GIF opnemen (starten/stoppen)",
+      "video": "Video opnemen (starten/stoppen)",
+      "ocr": "OCR op gebied (tekst kopiëren)",
+      "copyLast": "Laatste opname kopiëren",
+      "quickTask": "Kiezer voor snelle taken openen",
+      "replay": "Instant replay starten/opslaan",
       "stop": "Opname stoppen (vast)"
     },
     "tryHint": "Deze tabel is live: houd een sneltoets op je toetsenbord ingedrukt en de toetsen lichten op.",
@@ -140,13 +147,14 @@ export const nl: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "Het Unisic-hoofdvenster: een zijbalk met de pagina's Vastleggen, Opnemen, GIF, Geschiedenis, Bestemmingen en Instellingen, en de pagina Vastleggen met acties voor volledig scherm, gebied en venster plus schakelaars voor na het vastleggen.",
+    "ariaLabel": "Het Unisic-hoofdvenster: een zijbalk met de pagina's Vastleggen, Opnemen, GIF, Bewerken, Geschiedenis, Servers en Instellingen, en de pagina Vastleggen met acties voor volledig scherm, gebied en venster plus schakelaars voor na het vastleggen.",
     "nav": {
       "capture": "Vastleggen",
       "record": "Opnemen",
       "gif": "GIF",
+      "edit": "Bewerken",
       "history": "Geschiedenis",
-      "destinations": "Bestemmingen",
+      "servers": "Servers",
       "settings": "Instellingen"
     },
     "pageTitle": "Vastleggen",
@@ -174,7 +182,7 @@ export const nl: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "Het Unisic-editorvenster: een werkbalk met twaalf annotatiegereedschappen, een screenshot geannoteerd met een pijl, een markering en genummerde stappen, en acties voor kopiëren, opslaan en uploaden.",
+    "ariaLabel": "Het Unisic-editorvenster: een werkbalk met vijftien annotatiegereedschappen, een screenshot geannoteerd met een pijl, een markering en genummerde stappen, en acties voor kopiëren, opslaan en uploaden.",
     "title": "Unisic Editor",
     "copy": "Kopiëren",
     "save": "Opslaan",

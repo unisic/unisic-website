@@ -1,6 +1,6 @@
 import styles from "./FeatureGrid.module.css";
 import { EditorPreview } from "./EditorPreview";
-import { CheckmarkIcon, ImageIcon, LockIcon, MonitorIcon } from "./icons";
+import { CheckmarkIcon, ImageIcon, LockIcon, MonitorIcon, TextIcon } from "./icons";
 import type { Dictionary } from "../lib/i18n";
 
 /* Fully static server component: every cell, its icons and the editor
@@ -47,6 +47,14 @@ export function FeatureGrid({ dict }: { dict: Dictionary }) {
         </span>
         <h3 className={styles.cellTitle}>{f.silent.title}</h3>
         <p className={styles.cellBody}>{f.silent.body}</p>
+      </article>
+
+      <article className={styles.cell}>
+        <span className={styles.cellIcon} aria-hidden="true">
+          <TextIcon size={20} />
+        </span>
+        <h3 className={styles.cellTitle}>{f.ocr.title}</h3>
+        <p className={styles.cellBody}>{f.ocr.body}</p>
       </article>
 
       <article className={styles.cell}>

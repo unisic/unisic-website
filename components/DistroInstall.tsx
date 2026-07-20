@@ -139,7 +139,9 @@ export function DistroInstall({ dict }: { dict: Dictionary }) {
                 key={`note:${distro.id}:${variantId ?? ""}`}
                 className={styles.note}
               >
-                {d.notes[distro.id]}
+                {/* Nix has no per-distro note; the portal/PipeWire runtime is
+                    covered by download.lede above. */}
+                {(d.notes as Partial<Record<DistroId, string>>)[distro.id]}
               </p>
             </>
           )}
