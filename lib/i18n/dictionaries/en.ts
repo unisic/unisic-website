@@ -9,7 +9,7 @@
 
 export const en = {
   meta: {
-    title: "Unisic — Screenshots done right on Linux",
+    title: "Unisic — Linux Screenshot Tool & Screen Recorder",
     description:
       "Open-source screenshot and screen recorder for Linux. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
     ogTitle: "Unisic — Screenshots done right on Linux",
@@ -120,6 +120,7 @@ export const en = {
       opensuse:
         "zypper asks you to accept the repository signing key during the refresh.",
       arch: "A signed pacman repository on the openSUSE Build Service — no AUR needed.",
+      nix: "Runs anywhere Nix does, including NixOS. Try it with nix run, or add the flake as an input for a declarative setup; enable xdg.portal and PipeWire on NixOS.",
       appimage:
         "Universal — runs on any distribution. Updates itself via embedded zsync: only the changed blocks are downloaded and swapped in place, and it restarts when idle.",
     },

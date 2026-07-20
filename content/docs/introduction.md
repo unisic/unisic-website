@@ -67,6 +67,6 @@ Unisic is stable as of 0.7, but no screenshot tool survives contact with every c
 
 ## Where to next
 
-- [Installation](/docs/installation) — install from your distro's repository or build from source.
-- [Capture](/docs/capture) — full screen, region, and active-window captures.
-- [Hotkeys](/docs/hotkeys) — the default shortcuts and how to change them.
+- [Installation](/docs/installation) - install from your distro's repository or build from source.
+- [Capture](/docs/capture) - full screen, region, and active-window captures.
+- [Hotkeys](/docs/hotkeys) - the default shortcuts and how to change them.

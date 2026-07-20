@@ -1,11 +1,11 @@
 ---
 title: "Installation"
-description: "Install from a distribution repository (OBS / COPR), grab a direct download, or build from source."
+description: "Install from a distribution repository (OBS / COPR), with Nix, grab a direct download, or build from source."
 order: 2
 group: "Getting started"
 ---
 
-This page covers how to install Unisic: the distribution repositories (recommended), direct downloads from GitHub Releases, and building from source.
+This page covers how to install Unisic: the distribution repositories (recommended), Nix, direct downloads from GitHub Releases, and building from source.
 
 ## Requirements
 
@@ -19,7 +19,7 @@ Install from a repository and updates arrive automatically through your package 
 
 ### Debian / Ubuntu
 
-An auto-updating signed repository built on the [openSUSE Build Service](https://software.opensuse.org/download.html?project=home:unisic&package=unisic). Needs a release with Qt 6.5+: Debian 13, Ubuntu 25.10 / 26.04 (25.10 reaches EOL in July 2026 — prefer 26.04).
+An auto-updating signed repository built on the [openSUSE Build Service](https://software.opensuse.org/download.html?project=home:unisic&package=unisic). Needs a release with Qt 6.5+: Debian 13, Ubuntu 25.10 / 26.04 (25.10 reaches EOL in July 2026 - prefer 26.04).
 
 First, pick your repo name and import the repository signing key (run both steps in the same shell so `$REPO` carries over):
 
@@ -105,6 +105,39 @@ Finally, install Unisic:
 sudo pacman -Syu unisic
 ```
 
+## Install with Nix
+
+Unisic ships a flake, so it runs on any distribution that has Nix, and on NixOS. Only Unisic itself compiles; its Qt/KDE dependencies come from the nixpkgs binary cache.
+
+Run it once without installing:
+
+```sh
+nix run github:unisic/unisic -- --region
+```
+
+Install it into your profile:
+
+```sh
+nix profile install github:unisic/unisic
+```
+
+For a declarative setup, add the flake as an input and pull the package into your NixOS or home-manager configuration:
+
+```nix
+{
+  inputs.unisic.url = "github:unisic/unisic";
+  # then in your modules:
+  # environment.systemPackages = [ inputs.unisic.packages.${pkgs.system}.default ];
+}
+```
+
+On NixOS, enable the portal and PipeWire so capture and recording work:
+
+```nix
+xdg.portal.enable = true;
+services.pipewire.enable = true;
+```
+
 ## Direct downloads
 
 The [Releases](https://github.com/unisic/unisic/releases/latest) page carries every format: the self-updating **AppImage**, plus one-off **.deb**, Fedora **.rpm**, and Arch **.pkg.tar.zst** packages that register their repository on first install — from then on updates arrive through `apt upgrade` / `dnf upgrade` / `pacman -Syu` like any other package. openSUSE has no release package (a binary rpm is pinned to the exact Qt it was built against); use the repository above.
@@ -158,7 +191,7 @@ unisic --fullscreen | --region | --window | --gif | --measure
 unisic --export-settings <file> | --import-settings <file>
 ```
 
-A second invocation forwards the command to the running instance — that is how compositor-side keybinds work (see [Compositors](/docs/compositors)).
+A second invocation forwards the command to the running instance - that is how compositor-side keybinds work (see [Compositors](/docs/compositors)).
 
 ## First run
 

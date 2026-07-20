@@ -46,7 +46,7 @@ Hand every capture to a command of your choice, with `$input` standing for the c
 
 ## Export and import settings
 
-Your entire configuration can be saved to, or restored from, a single JSON file — useful for backups or for moving your setup between machines.
+Your entire configuration can be saved to, or restored from, a single JSON file - useful for backups or for moving your setup between machines.
 
 ```sh
 unisic --export-settings <file>
@@ -109,4 +109,4 @@ On first run in a KDE session, Unisic installs `app.unisic.Unisic.desktop` into 
 X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2
 ```
 
-That declaration authorizes the silent KWin ScreenShot2 path on KDE Plasma. Without it, captures still work through the xdg-desktop-portal path — you just lose the fully silent native capture on Plasma.
+That declaration authorizes the silent KWin ScreenShot2 path on KDE Plasma. Without it, captures still work through the xdg-desktop-portal path - you just lose the fully silent native capture on Plasma.

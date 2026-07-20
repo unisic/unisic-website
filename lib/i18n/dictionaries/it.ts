@@ -4,7 +4,7 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const it: Dictionary = {
   "meta": {
-    "title": "Unisic — Screenshot fatti bene su Linux",
+    "title": "Unisic — Screenshot e registrazione schermo su Linux",
     "description": "Strumento open-source di screenshot e registrazione schermo per Linux. Annota prima dello scatto, modifica dopo, registra GIF e video, carica ovunque. Zero telemetria, GPLv3.",
     "ogTitle": "Unisic — Screenshot fatti bene su Linux",
     "ogDescription": "Cattura silenziosa, annotazione prima dello scatto, un editor con 15 strumenti, registrazione GIF e video, OCR, caricamento istantaneo. Zero telemetria, GPLv3.",

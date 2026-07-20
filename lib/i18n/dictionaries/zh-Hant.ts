@@ -4,7 +4,7 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const zhHant: Dictionary = {
   "meta": {
-    "title": "Unisic — 在 Linux 上把截圖做對",
+    "title": "Unisic — Linux 螢幕截圖與螢幕錄影工具",
     "description": "適用於 Linux 的開源截圖與螢幕錄影工具。截圖前先標註，事後再編輯，錄製 GIF 與影片，隨處上傳。零遙測，GPLv3。",
     "ogTitle": "Unisic — 在 Linux 上把截圖做對",
     "ogDescription": "靜默擷取、截圖前標註、15 種工具的編輯器、GIF 與影片錄製、OCR、即時上傳。零遙測，GPLv3。",

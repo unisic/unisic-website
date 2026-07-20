@@ -45,9 +45,9 @@ For picking individual words out of a finished capture — to copy, highlight, o
 
 Unisic grabs the screen through legitimate Wayland APIs only and picks the right path for your compositor automatically:
 
-- **KDE Plasma** — the fully silent native KWin ScreenShot2 path.
-- **Other desktops** — the `xdg-desktop-portal` route, through your installed portal backend.
-- **wlroots compositors** — capture via wlr-screencopy using `grim` (install `grim`).
+- **KDE Plasma** - the fully silent native KWin ScreenShot2 path.
+- **Other desktops** - the `xdg-desktop-portal` route, through your installed portal backend.
+- **wlroots compositors** - capture via wlr-screencopy using `grim` (install `grim`).
 
 On first run in a KDE session, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications`, declaring `X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2` to authorize the silent KWin path (AppImage runs skip this). Without it, captures still work through the portal.
 
@@ -68,7 +68,7 @@ The default capture hotkeys are:
 
 The quick task chooser picks a capture or recording mode (full screen, region, window, GIF, video). For the screenshot modes it can also apply a one-off action to that single result — copy only, edit only, save only, or upload only — without touching your global after-capture settings; GIF and video runs use the normal recording flow.
 
-These are editable in Settings -> Hotkeys — see [hotkeys](/docs/hotkeys).
+These are editable in Settings -> Hotkeys - see [hotkeys](/docs/hotkeys).
 
 You can also trigger a capture directly:
 

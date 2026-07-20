@@ -46,7 +46,7 @@ The editor offers seven stroke color swatches: Red, Yellow, Green, Blue, Lilac, 
 
 ## Zoom, undo, and redo
 
-Zoom in and out with `Ctrl+scroll`. Because edits live in image-pixel space, zooming only changes your view — it does not affect where strokes and shapes land. Undo and redo let you step back and forth through your edits.
+Zoom in and out with `Ctrl+scroll`. Because edits live in image-pixel space, zooming only changes your view - it does not affect where strokes and shapes land. Undo and redo let you step back and forth through your edits.
 
 ## Editor shortcuts
 
@@ -67,6 +67,6 @@ Tools also switch with single keys — `T` text, `P` pen, `L` line, `A` arrow, `
 
 When the image is ready, send it to any of the following:
 
-- **Copy to clipboard** — puts the composited image on the clipboard, ready to paste.
-- **Save to disk** — writes the file using the configured filename template and format (PNG, JPG, or WebP). See [Configuration](/docs/configuration).
-- **Upload** — pushes the result to a custom or built-in destination and auto-copies the resulting link. See [Upload destinations](/docs/upload-destinations).
+- **Copy to clipboard** - puts the composited image on the clipboard, ready to paste.
+- **Save to disk** - writes the file using the configured filename template and format (PNG, JPG, or WebP). See [Configuration](/docs/configuration).
+- **Upload** - pushes the result to a custom or built-in destination and auto-copies the resulting link. See [Upload destinations](/docs/upload-destinations).
