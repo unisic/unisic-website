@@ -15,6 +15,21 @@ export function CompositorNotes({ dict }: { dict: Dictionary }) {
           </div>
         ))}
       </dl>
+      {/* Uni, the mascot: signs off from the corner beneath the compositor
+          notes. Purely decorative, so hidden from assistive tech. Plain <img>
+          is deliberate — the static export runs images unoptimized, so
+          next/image would add no sizing/format gain here, only weight. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/uni.png"
+        alt=""
+        aria-hidden="true"
+        width={306}
+        height={527}
+        loading="lazy"
+        decoding="async"
+        className={styles.mascot}
+      />
     </div>
   );
 }
