@@ -98,6 +98,7 @@ export const de: Dictionary = {
       "fedora": "Builds für Fedora 43, 44 und Rawhide. Der COPR-Build installiert die optionalen Abhängigkeiten mit, sodass Aufnahme, OCR und QR-Dekodierung sofort funktionieren.",
       "opensuse": "zypper bittet beim Aktualisieren darum, den Signaturschlüssel des Repositorys zu akzeptieren.",
       "arch": "Ein signiertes pacman-Repository auf dem openSUSE Build Service — kein AUR nötig.",
+      "nix": "Läuft überall, wo Nix läuft, auch auf NixOS. Probieren Sie es mit nix run oder fügen Sie das Flake als Input für eine deklarative Konfiguration hinzu; aktivieren Sie unter NixOS xdg.portal und PipeWire.",
       "appimage": "Universell — läuft auf jeder Distribution. Die App aktualisiert sich selbst per eingebettetem zsync: Nur die geänderten Blöcke werden heruntergeladen und an Ort und Stelle ausgetauscht, und bei Leerlauf startet sie neu."
     },
     "downloadBtn": "Herunterladen",

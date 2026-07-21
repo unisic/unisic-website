@@ -98,6 +98,7 @@ export const es: Dictionary = {
       "fedora": "Compilaciones para Fedora 43, 44 y Rawhide. El paquete de COPR incluye las dependencias opcionales, así que la grabación, el OCR y la decodificación de QR funcionan desde el primer momento.",
       "opensuse": "zypper te pedirá aceptar la clave de firma del repositorio durante el refresco.",
       "arch": "Un repositorio pacman firmado en openSUSE Build Service: no hace falta AUR.",
+      "nix": "Funciona en cualquier sistema con Nix, incluido NixOS. Pruébalo con nix run o añade el flake como input para una configuración declarativa; en NixOS activa xdg.portal y PipeWire.",
       "appimage": "Universal: funciona en cualquier distribución. La aplicación se actualiza sola mediante zsync integrado: solo se descargan los bloques modificados y se sustituyen en el sitio, y se reinicia cuando está inactiva."
     },
     "downloadBtn": "Descargar",
