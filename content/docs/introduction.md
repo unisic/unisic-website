@@ -1,11 +1,11 @@
 ---
 title: "Introduction"
-description: "What Unisic is, the capture-to-upload workflow, and what you need to run it."
+description: "What Unisic is, the capture-to-upload workflow, what you need to run it, privacy, and licensing."
 order: 1
 group: "Getting started"
 ---
 
-This page introduces Unisic: what it is, the capture-to-upload workflow it covers, how it captures on different Wayland sessions, and what you need to run it.
+This page introduces Unisic: what it is, the capture-to-upload workflow it covers, how it captures on different Wayland sessions, what you need to run it, and where it stands on privacy and licensing.
 
 ## What is Unisic
 
@@ -60,6 +60,20 @@ Unisic uses the right Wayland path for your session:
 You need a Wayland session with `xdg-desktop-portal` and a backend. Recording additionally needs PipeWire and `ffmpeg`.
 
 See [Installation](/docs/installation) for the distro repositories and build instructions, and [Compositors](/docs/compositors) for backend-specific setup.
+
+## Privacy
+
+Unisic collects nothing: no telemetry, no crash reporting, no analytics, no account. The only network requests it makes on its own are to `api.github.com` and `github.com` to check for a newer release — only the latest version tag is fetched, and nothing about you is sent. Uploads happen only when you trigger them, to destinations you configured.
+
+## License
+
+Unisic is free software under the **GNU GPL v3**. You are free to use, study, modify, and redistribute it — including commercially — but any distributed derivative must also be released under GPL v3 with full source. This keeps the project and every fork of it open, forever.
+
+## Development
+
+Unisic is developed with agentic AI assistance (see [`AGENTS.md`](https://github.com/unisic/unisic/blob/main/AGENTS.md) for the contributor guide those agents follow). Every generated change is read line by line and reviewed by the maintainer before it lands — the tooling speeds things up, but nothing merges unread, so the codebase stays free of unreviewed machine output and its usual mistakes. Bug reports are still the best safety net: if something slipped through, please [file an issue](https://github.com/unisic/unisic/issues).
+
+Unisic is built by [@DeBondor](https://github.com/DeBondor) and [@D3anDark](https://github.com/D3anDark), and inspired by [Flameshot](https://flameshot.org/) and [Spectacle](https://apps.kde.org/spectacle/).
 
 ## Reporting issues
 
