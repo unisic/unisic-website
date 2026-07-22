@@ -47,7 +47,7 @@ export default async function DocPage({ params }: Params) {
   const next = index < all.length - 1 ? all[index + 1] : null;
 
   return (
-    <div className={styles.docPage}>
+    <div className={`${styles.docPage} ${styles.segmentTop}`}>
       <article className={styles.articleCol}>
         <header className={styles.articleHeader}>
           {doc.group && <p className={styles.kicker}>{doc.group}</p>}

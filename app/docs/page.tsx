@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function DocsIndex() {
   const groups = getDocGroups();
   return (
-    <article>
+    <article className={styles.segmentTop}>
       <div className={styles.overview}>
         <p className={styles.eyebrow}>Documentation</p>
         <h1 className={styles.overviewTitle}>Everything after the hotkey</h1>

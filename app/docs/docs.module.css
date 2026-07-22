@@ -212,6 +212,18 @@
   box-shadow: inset 2px 0 0 var(--accent);
 }
 
+/* Next's app router skips its scroll-to-top when the changed segment's top
+   edge is already inside the viewport — scrolled ~100px, the doc title sits
+   half under the sticky glass header, and a sidebar click keeps that offset.
+   Pull the segment's border box up to document y=0 and pad the same amount
+   back (nothing moves visually): at any scroll offset the segment top is now
+   above the viewport, so the router always resets to the very top. The value
+   is header height + .shell top padding. */
+.segmentTop {
+  margin-top: -104px;
+  padding-top: 104px;
+}
+
 /* ---- doc page: article + on-this-page ---- */
 .docPage {
   display: grid;
@@ -437,6 +449,11 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
     padding-top: 24px;
+  }
+
+  .segmentTop {
+    margin-top: -88px;
+    padding-top: 88px;
   }
 
   .sidebar {
