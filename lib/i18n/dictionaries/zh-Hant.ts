@@ -74,7 +74,7 @@ export const zhHant: Dictionary = {
     "reset": "重設為 Unisic",
     "note": "每個色塊都會即時重繪上方的視窗。第九種主題是你的系統：它會跟隨桌面的淺色或深色配置與強調色。",
     "system": "系統",
-    "systemLabel": "系統 — 跟隨你桌面的淺色或深色配置；此處無法預覽",
+    "systemLabel": "系統：跟隨你桌面的淺色或深色配置；此處無法預覽",
     "previewLabel": "採用 {theme} 主題的 Unisic 主視窗"
   },
   "download": {

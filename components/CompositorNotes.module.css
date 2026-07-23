@@ -35,9 +35,9 @@
    so it never extends the horizontal scroll area. */
 .mascot {
   display: block;
-  width: 138px;
+  width: 200px;
   height: auto;
-  margin: 20px auto 0;
+  margin: 24px auto 0;
   pointer-events: none;
   filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.4));
 }

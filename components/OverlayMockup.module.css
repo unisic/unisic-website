@@ -32,7 +32,7 @@
   background:
     radial-gradient(70% 110% at 10% 0%, rgba(67, 61, 139, 0.5), transparent 60%),
     radial-gradient(60% 100% at 90% 100%, rgba(46, 35, 108, 0.65), transparent 60%),
-    linear-gradient(150deg, #181440, #0d0b26);
+    linear-gradient(150deg, var(--wallpaper-hi), var(--wallpaper-lo));
 }
 
 .ghostCardA,
@@ -270,7 +270,7 @@
   line-height: 1;
   white-space: nowrap;
   flex: none;
-  box-shadow: 0 calc(3 * var(--u)) calc(8 * var(--u)) rgba(200, 172, 214, 0.35);
+  box-shadow: 0 calc(3 * var(--u)) calc(8 * var(--u)) var(--accent-glow-strong);
 }
 
 .captureIcon {

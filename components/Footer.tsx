@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./Footer.module.css";
 import { Logo } from "./icons";
 import type { Dictionary } from "../lib/i18n";
@@ -12,6 +13,11 @@ export function Footer({ dict }: { dict: Dictionary }) {
           <span className={styles.license}>{dict.footer.license}</span>
         </div>
         <nav className={styles.links} aria-label={dict.footer.nav}>
+          {/* the one internal next step: a reader finishing the page should
+              not have to scroll back to the header to reach the docs */}
+          <Link href="/docs" className={styles.link}>
+            {dict.nav.docs}
+          </Link>
           <a href="https://github.com/unisic/unisic" className={styles.link}>
             {dict.footer.github}
           </a>

@@ -12,13 +12,18 @@
   min-width: 0;
 }
 
+/* the page's single display-level heading: a clear step above the section
+   h2 scale (max 2.4rem) in both size and weight, so the hero reads as its
+   own level rather than the first of seven equal sections */
 .headline {
-  font-size: clamp(2.05rem, 1.2rem + 2.7vw, 2.85rem);
+  font-size: clamp(2.4rem, 1.35rem + 3.4vw, 3.55rem);
+  font-weight: 700;
+  letter-spacing: -0.028em;
   line-height: 1.08;
 }
 
 .sub {
-  margin-top: 20px;
+  margin-top: 22px;
   font-size: 17px;
   color: var(--text-secondary);
   max-width: 46ch;
@@ -52,11 +57,20 @@
 .primary {
   background: var(--accent);
   color: var(--text-on-accent);
-  box-shadow: 0 6px 22px rgba(200, 172, 214, 0.28);
+  box-shadow: 0 6px 22px var(--accent-glow);
 }
 
 .primary:hover {
   background: var(--accent-bright);
+}
+
+/* shared hover vocabulary: accent pills recolor plus a 1px lift (motion,
+   so only when hover is real and motion is welcome); ghost pills recolor
+   only. The :active press stays ungated as feedback. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .primary:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .primary:active,
@@ -71,6 +85,7 @@
 }
 
 .secondary:hover {
+  background: var(--surface-hi);
   border-color: rgba(243, 240, 250, 0.3);
 }
 
@@ -175,5 +190,23 @@
 
   .sub {
     font-size: 16px;
+  }
+}
+
+/* on phones the overlapped pair renders the 1060px main window at ~0.3
+   scale with the editor smeared on top: show one legible window instead.
+   Pure display rules, so the load choreography simply skips the hidden
+   editor and no-JS/reduced-motion paths are unaffected. */
+@media (max-width: 599px) {
+  .editorWin {
+    display: none;
+  }
+
+  .mainWin {
+    width: 100%;
+  }
+
+  .stack {
+    padding-bottom: 0;
   }
 }

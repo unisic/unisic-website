@@ -14,7 +14,9 @@ export function Nav({
   return (
     <header className={styles.header}>
       <nav className={styles.nav} aria-label="Main">
-        <a href="#top" className={styles.brand}>
+        {/* aria-label keeps the brand link named for screen readers below
+            480px, where .wordmark is hidden and the Logo svg is aria-hidden */}
+        <a href="#top" className={styles.brand} aria-label="Unisic">
           <Logo size={30} />
           <span className={styles.wordmark}>Unisic</span>
         </a>
@@ -25,7 +27,7 @@ export function Nav({
           <a href="#recording" className={styles.link}>
             {dict.nav.recording}
           </a>
-          <Link href="/docs" className={styles.link}>
+          <Link href="/docs" className={`${styles.link} ${styles.linkDocs}`}>
             {dict.nav.docs}
           </Link>
           <a

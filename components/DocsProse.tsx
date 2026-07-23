@@ -24,6 +24,14 @@ export function DocsProse({ html }: { html: string }) {
     const cleanups: Array<() => void> = [];
 
     root.querySelectorAll("pre").forEach((pre) => {
+      // Overflowing blocks scroll horizontally; without a tabindex a <pre>
+      // can never take focus, so keyboard users could not scroll them
+      // (WCAG 2.1.1). The global :focus-visible outline covers the ring.
+      if (pre.scrollWidth > pre.clientWidth) {
+        pre.tabIndex = 0;
+        cleanups.push(() => pre.removeAttribute("tabindex"));
+      }
+
       const code = pre.querySelector("code") ?? pre;
       const text = (code.textContent ?? "").replace(/\n+$/, "");
       if (!text.trim()) return;

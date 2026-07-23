@@ -26,7 +26,7 @@
   background:
     radial-gradient(90% 130% at 12% 0%, rgba(67, 61, 139, 0.55), transparent 60%),
     radial-gradient(70% 110% at 92% 100%, rgba(46, 35, 108, 0.7), transparent 65%),
-    linear-gradient(160deg, #191542, #0d0b26);
+    linear-gradient(160deg, var(--wallpaper-hi), var(--wallpaper-lo));
   box-shadow: 0 calc(16 * var(--u)) calc(40 * var(--u)) rgba(0, 0, 0, 0.4);
 }
 

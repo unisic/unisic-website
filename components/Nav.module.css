@@ -76,6 +76,14 @@
   background: var(--accent-bright);
 }
 
+/* accent pills share one hover: recolor plus a 1px lift, lift only when
+   hover is real and motion is welcome (matches the hero primary CTA) */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .cta:hover {
+    transform: translateY(-1px);
+  }
+}
+
 .cta:active {
   transform: scale(0.96);
 }
@@ -117,7 +125,26 @@
     display: none;
   }
 
+  /* the anchor links can go on phones, but Docs is the site's only other
+     page and the footer must not be the sole path to it */
+  .linkDocs {
+    display: inline;
+  }
+
   .links {
-    gap: 16px;
+    gap: 14px;
+  }
+
+  .cta {
+    padding: 0 16px;
+  }
+}
+
+/* below ~480px the longest translated Download labels (de, fr, es) would
+   overflow the row now that Docs stays visible; the logo alone carries the
+   brand and the wordmark yields the space */
+@media (max-width: 479px) {
+  .wordmark {
+    display: none;
   }
 }

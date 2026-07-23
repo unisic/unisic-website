@@ -10,6 +10,8 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
+  /* page scrollbar in brand tones on engines with scrollbar-color */
+  scrollbar-color: var(--tertiary) var(--bg-deep);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -44,6 +46,19 @@ h3 {
   text-wrap: balance;
 }
 
+/* headings balance; paragraphs avoid single-word orphan lines (progressive
+   enhancement, ignored where unsupported) */
+p {
+  text-wrap: pretty;
+}
+
+/* horizontal-scroll code blocks: thin brand scrollbar instead of the stock
+   track interrupting the rounded surface language */
+pre {
+  scrollbar-width: thin;
+  scrollbar-color: var(--tertiary) transparent;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -68,15 +83,30 @@ table {
   border-collapse: collapse;
 }
 
+/* outline follows each element's own border-radius; forcing a radius here
+   used to snap 999px pills to 2px corners on keyboard focus */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-  border-radius: 2px;
 }
 
 ::selection {
   background: var(--tertiary);
   color: var(--text);
+}
+
+/* Visually hidden but exposed to assistive tech (live-region status text,
+   etc.); the standard clip pattern. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .skip-link {
@@ -100,7 +130,7 @@ table {
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 96px 24px 0;
+  padding: var(--space-section) 24px 0;
   /* keep in-page jump targets clear of the 64px sticky nav */
   scroll-margin-top: 80px;
 }
@@ -116,10 +146,14 @@ table {
   max-width: 22ch;
 }
 
+/* the lede is the second most important text in every section; one clear
+   step above body size, matching the hero sub register */
 .section-lede {
   margin-top: 14px;
   color: var(--text-secondary);
   max-width: 58ch;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 @media (max-width: 767px) {
@@ -236,6 +270,27 @@ table {
   scroll-margin-top: 88px;
 }
 
+/* Hover anchor injected after every h2/h3 by lib/docs.ts, for grabbing a
+   section link (doc links get pasted into issues). Revealed on heading
+   hover and on its own keyboard focus. */
+.docs-prose .heading-anchor {
+  margin-left: 0.4em;
+  color: var(--text-tertiary);
+  opacity: 0;
+  text-decoration: none;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.docs-prose h2:hover .heading-anchor,
+.docs-prose h3:hover .heading-anchor,
+.docs-prose .heading-anchor:focus-visible {
+  opacity: 1;
+}
+
+.docs-prose .heading-anchor:hover {
+  color: var(--accent);
+}
+
 .docs-prose p {
   margin: 0.95em 0;
 }
@@ -251,6 +306,16 @@ table {
 .docs-prose a:hover {
   color: var(--accent-bright);
   text-decoration-color: currentColor;
+}
+
+/* External links (marked with class="ext" by lib/docs.ts) get a north-east
+   arrow; the FE0E variation selector forces the text glyph, never an emoji. */
+.docs-prose a.ext::after {
+  content: "\2197\FE0E";
+  font-size: 0.72em;
+  margin-left: 2px;
+  vertical-align: super;
+  opacity: 0.7;
 }
 
 .docs-prose ul,
@@ -283,12 +348,32 @@ table {
 }
 
 .docs-prose pre {
+  position: relative;
   margin: 1.3em 0;
   padding: 18px 20px;
   background: var(--surface);
   border: 1px solid var(--divider);
   border-radius: var(--radius-m);
   overflow-x: auto;
+}
+
+/* The fence language, surfaced as a top-left label so sh / nix / kdl blocks
+   are tellable apart before pasting. Sits opposite the copy button. */
+.docs-prose pre[data-lang] {
+  padding-top: 34px;
+}
+
+.docs-prose pre[data-lang]::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  /* secondary, not tertiary: 11px clears WCAG AA only above ~4.5:1 */
+  color: var(--text-secondary);
 }
 
 .docs-prose pre code {
@@ -301,9 +386,30 @@ table {
   word-break: normal;
 }
 
+/* Build-time syntax highlighting (lib/docs.ts). Four token classes, all
+   drawn from existing tokens - no new hues. Comments use text-secondary,
+   not tertiary: they are content the reader must act on and tertiary's
+   ~3.4:1 over the code surface fails WCAG AA. */
+.docs-prose .tok-c {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.docs-prose .tok-s {
+  color: var(--accent);
+}
+
+.docs-prose .tok-v {
+  color: var(--accent-bright);
+}
+
+.docs-prose .tok-k {
+  color: var(--text);
+  font-weight: 650;
+}
+
 /* Copy-to-clipboard button injected into each code block by DocsProse. */
 .docs-prose pre.has-copy {
-  position: relative;
   padding-right: 52px;
 }
 
@@ -341,10 +447,32 @@ table {
   transform: scale(0.92);
 }
 
+/* Keep the visual at 32px but extend the hit area to 48px; the pseudo
+   element is invisible and adds no layout. */
+.docs-copy::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+}
+
 .docs-copy.copied {
   opacity: 1;
   color: var(--success);
   border-color: color-mix(in srgb, var(--success) 40%, var(--divider));
+}
+
+/* One-shot confirmation beat when the checkmark swaps in. */
+@media (prefers-reduced-motion: no-preference) {
+  .docs-copy.copied svg {
+    animation: check-pop 0.3s var(--ease-out);
+  }
+}
+
+@keyframes check-pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
 }
 
 /* Touch devices don't hover, so keep the button fully visible there. */
@@ -354,10 +482,15 @@ table {
   }
 }
 
-/* Tables can be wider than the column on small screens; let them scroll. */
+/* Tables can be wider than the column on small screens; let them scroll.
+   The wrapper doubles as a bounded card so reference tables read as one
+   surface (and the scroll container is visible on mobile). */
 .docs-prose .table-scroll {
   overflow-x: auto;
   margin: 1.4em 0;
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-m);
+  background: var(--surface);
 }
 
 .docs-prose table {
@@ -369,7 +502,7 @@ table {
 .docs-prose th,
 .docs-prose td {
   text-align: left;
-  padding: 10px 14px;
+  padding: 10px 16px;
   border-bottom: 1px solid var(--divider);
   vertical-align: top;
 }
@@ -377,7 +510,7 @@ table {
 .docs-prose thead th {
   color: var(--text-secondary);
   font-weight: 650;
-  border-bottom-color: var(--tertiary);
+  background: var(--surface-hi);
 }
 
 .docs-prose tbody tr:last-child td {
@@ -389,6 +522,56 @@ table {
   padding: 2px 18px;
   border-left: 3px solid var(--tertiary);
   color: var(--text-secondary);
+}
+
+/* Callouts, from GitHub alert syntax in the Markdown ([!NOTE] / [!TIP] /
+   [!WARNING], see lib/docs.ts). One layout, three token-derived tints:
+   accent for notes, success for tips, danger for warnings. */
+.docs-prose .callout {
+  margin: 1.3em 0;
+  padding: 14px 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--divider));
+  border-left-width: 3px;
+  border-left-color: var(--accent);
+  border-radius: var(--radius-m);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+}
+
+.docs-prose .callout > p {
+  margin: 0.4em 0;
+}
+
+.docs-prose .callout > p:last-child {
+  margin-bottom: 0;
+}
+
+.docs-prose .callout > .callout-label {
+  font-size: 12px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px;
+  color: var(--accent);
+}
+
+.docs-prose .callout-tip {
+  border-color: color-mix(in srgb, var(--success) 30%, var(--divider));
+  border-left-color: var(--success);
+  background: color-mix(in srgb, var(--success) 6%, var(--surface));
+}
+
+.docs-prose .callout-tip > .callout-label {
+  color: var(--success);
+}
+
+.docs-prose .callout-warning {
+  border-color: color-mix(in srgb, var(--danger) 30%, var(--divider));
+  border-left-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 6%, var(--surface));
+}
+
+.docs-prose .callout-warning > .callout-label {
+  color: var(--danger);
 }
 
 .docs-prose hr {

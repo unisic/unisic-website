@@ -63,7 +63,7 @@ export const it: Dictionary = {
   },
   "recording": {
     "title": "La stessa regione, in GIF o video",
-    "lede": "GIF con palette a due passaggi per colori nitidi, oppure MP4 e WebM con audio opzionale di sistema, del microfono o di una singola app — tramite il portale ScreenCast, PipeWire e ffmpeg. Registra una regione, l'intero schermo o una finestra, lascia che il replay istantaneo memorizzi gli ultimi 30 secondi e taglia il risultato direttamente dalla scheda di notifica.",
+    "lede": "GIF con palette a due passaggi per colori nitidi, oppure MP4 e WebM con audio opzionale di sistema, del microfono o di una singola app, tramite il portale ScreenCast, PipeWire e ffmpeg. Registra una regione, l'intero schermo o una finestra, lascia che il replay istantaneo memorizzi gli ultimi 30 secondi e taglia il risultato direttamente dalla scheda di notifica.",
     "note": "{keys} interrompe sempre una registrazione, indipendentemente da cosa ha il focus.",
     "caption": "Una regione dello schermo in fase di registrazione: Unisic disegna una cornice con il colore d'accento attorno alla regione con un badge REC e un timer del tempo trascorso."
   },
@@ -74,13 +74,13 @@ export const it: Dictionary = {
     "reset": "Ripristina su Unisic",
     "note": "Ogni chip ridipinge la finestra qui sopra in tempo reale. Il nono tema è il tuo sistema: segue lo schema chiaro o scuro del desktop e il colore d'accento.",
     "system": "Sistema",
-    "systemLabel": "Sistema — segue lo schema chiaro o scuro del tuo desktop; non visualizzabile in anteprima qui",
+    "systemLabel": "Sistema: segue lo schema chiaro o scuro del tuo desktop; non visualizzabile in anteprima qui",
     "previewLabel": "La finestra principale di Unisic nel tema {theme}"
   },
   "download": {
     "title": "Installa Unisic",
     "lede": "Richiede una sessione Wayland con xdg-desktop-portal. Per la registrazione servono anche PipeWire e ffmpeg.",
-    "repoLede": "Scegli la tua distribuzione — il repository mantiene Unisic aggiornato tramite il gestore di pacchetti. AppImage è un download diretto, e la release include anche pacchetti una tantum .deb, .rpm e Arch che configurano il repository alla prima installazione.",
+    "repoLede": "Scegli la tua distribuzione: il repository mantiene Unisic aggiornato tramite il gestore di pacchetti. AppImage è un download diretto, e la release include anche pacchetti una tantum .deb, .rpm e Arch che configurano il repository alla prima installazione.",
     "distroListLabel": "Scegli la tua distribuzione o il formato di pacchetto",
     "versionLabel": "Versione",
     "copyCmd": "Copia comandi",
@@ -93,13 +93,13 @@ export const it: Dictionary = {
       "install": "Installa Unisic:"
     },
     "notes": {
-      "ubuntu": "Ubuntu 25.10 raggiunge il fine supporto a luglio 2026 — meglio scegliere la 26.04. Entrambe richiedono Qt 6.5+, assente nelle versioni più vecchie.",
+      "ubuntu": "Ubuntu 25.10 raggiunge il fine supporto a luglio 2026, quindi meglio scegliere la 26.04. Entrambe richiedono Qt 6.5+, assente nelle versioni più vecchie.",
       "debian": "Richiede Debian 13 (trixie) o più recente per Qt 6.5+.",
       "fedora": "Build per Fedora 43, 44 e Rawhide. Il pacchetto COPR installa anche le dipendenze opzionali, quindi registrazione, OCR e decodifica dei codici QR funzionano subito.",
       "opensuse": "Durante il refresh zypper chiederà di accettare la chiave di firma del repository.",
-      "arch": "Un repository pacman firmato su openSUSE Build Service — niente AUR.",
+      "arch": "Un repository pacman firmato su openSUSE Build Service. Niente AUR.",
       "nix": "Funziona ovunque ci sia Nix, incluso NixOS. Provalo con nix run oppure aggiungi il flake come input per una configurazione dichiarativa; su NixOS abilita xdg.portal e PipeWire.",
-      "appimage": "Universale — funziona su qualsiasi distribuzione. L'app si aggiorna da sola tramite zsync integrato: vengono scaricati e sostituiti sul posto solo i blocchi modificati, e si riavvia quando è inattiva."
+      "appimage": "Universale: funziona su qualsiasi distribuzione. L'app si aggiorna da sola tramite zsync integrato: vengono scaricati e sostituiti sul posto solo i blocchi modificati, e si riavvia quando è inattiva."
     },
     "downloadBtn": "Scarica",
     "checking": "Verifica dell'ultima release",

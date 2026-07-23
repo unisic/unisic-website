@@ -63,7 +63,7 @@ export const nl: Dictionary = {
   },
   "recording": {
     "title": "Hetzelfde gebied, als GIF of video",
-    "lede": "GIF met een tweefasig palet voor scherpe kleuren, of MP4 en WebM met optioneel geluid van het systeem, de microfoon of één enkele app — via de ScreenCast-portal, PipeWire en ffmpeg. Neem een gebied, het volledige scherm of een venster op, laat instant replay de laatste 30 seconden bufferen en knip het resultaat direct bij vanuit de meldingskaart.",
+    "lede": "GIF met een tweefasig palet voor scherpe kleuren, of MP4 en WebM met optioneel geluid van het systeem, de microfoon of één enkele app, via de ScreenCast-portal, PipeWire en ffmpeg. Neem een gebied, het volledige scherm of een venster op, laat instant replay de laatste 30 seconden bufferen en knip het resultaat direct bij vanuit de meldingskaart.",
     "note": "{keys} stopt altijd een opname, ongeacht wat de focus heeft.",
     "caption": "Een schermgebied dat wordt opgenomen: Unisic tekent een kader in accentkleur rond het gebied met een REC-badge en een verstreken tijd."
   },
@@ -74,13 +74,13 @@ export const nl: Dictionary = {
     "reset": "Terug naar Unisic",
     "note": "Elke chip kleurt het venster hierboven live opnieuw in. Het negende thema is je systeem: het volgt het lichte of donkere schema en de accentkleur van je bureaublad.",
     "system": "Systeem",
-    "systemLabel": "Systeem — volgt het lichte of donkere schema van je bureaublad; hier niet als voorbeeld te bekijken",
+    "systemLabel": "Systeem: volgt het lichte of donkere schema van je bureaublad; hier niet als voorbeeld te bekijken",
     "previewLabel": "Het Unisic-hoofdvenster in het thema {theme}"
   },
   "download": {
     "title": "Unisic installeren",
     "lede": "Vereist een Wayland-sessie met xdg-desktop-portal. Voor opnemen zijn ook PipeWire en ffmpeg nodig.",
-    "repoLede": "Kies je distributie — de repository houdt Unisic up-to-date via je pakketbeheerder. AppImage is een directe download, en de release bevat ook losse .deb-, .rpm- en Arch-pakketten die bij de eerste installatie de repository instellen.",
+    "repoLede": "Kies je distributie: de repository houdt Unisic up-to-date via je pakketbeheerder. AppImage is een directe download, en de release bevat ook losse .deb-, .rpm- en Arch-pakketten die bij de eerste installatie de repository instellen.",
     "distroListLabel": "Kies je distributie of pakketformaat",
     "versionLabel": "Versie",
     "copyCmd": "Commando's kopiëren",
@@ -93,13 +93,13 @@ export const nl: Dictionary = {
       "install": "Installeer Unisic:"
     },
     "notes": {
-      "ubuntu": "Ubuntu 25.10 bereikt in juli 2026 het einde van de ondersteuning — kies bij voorkeur 26.04. Beide vereisen Qt 6.5+, dat oudere uitgaven niet meeleveren.",
+      "ubuntu": "Ubuntu 25.10 bereikt in juli 2026 het einde van de ondersteuning, kies dus bij voorkeur 26.04. Beide vereisen Qt 6.5+, dat oudere uitgaven niet meeleveren.",
       "debian": "Vereist Debian 13 (trixie) of nieuwer vanwege Qt 6.5+.",
       "fedora": "Builds voor Fedora 43, 44 en Rawhide. De COPR-build installeert de optionele afhankelijkheden mee, dus opnemen, OCR en QR-decodering werken meteen.",
       "opensuse": "zypper vraagt je tijdens het verversen om de ondertekeningssleutel van de repository te accepteren.",
-      "arch": "Een ondertekende pacman-repository op de openSUSE Build Service — geen AUR nodig.",
+      "arch": "Een ondertekende pacman-repository op de openSUSE Build Service. Geen AUR nodig.",
       "nix": "Draait overal waar Nix draait, ook op NixOS. Probeer het met nix run of voeg de flake toe als input voor een declaratieve configuratie; schakel op NixOS xdg.portal en PipeWire in.",
-      "appimage": "Universeel — draait op elke distributie. De app werkt zichzelf bij via ingebouwde zsync: alleen de gewijzigde blokken worden gedownload en ter plekke omgewisseld, en hij herstart bij inactiviteit."
+      "appimage": "Universeel: draait op elke distributie. De app werkt zichzelf bij via ingebouwde zsync: alleen de gewijzigde blokken worden gedownload en ter plekke omgewisseld, en hij herstart bij inactiviteit."
     },
     "downloadBtn": "Downloaden",
     "checking": "De nieuwste release controleren",

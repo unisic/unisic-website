@@ -2,6 +2,16 @@
   margin-top: var(--space-lede);
 }
 
+/* the differentiator visual breaks out wider than the text column on large
+   screens. Fixed negative margins behind a min-width gate, never 100vw math:
+   1160px content + 2x60px stays inside a 1320px viewport even with a
+   scrollbar, so the page can never scroll horizontally. */
+@media (min-width: 1320px) {
+  .uspVisual {
+    margin-inline: -60px;
+  }
+}
+
 .recSplit {
   display: grid;
   grid-template-columns: 5fr 6fr;
@@ -22,6 +32,42 @@
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+/* full-bleed wash behind the themes section. The gradient is drawn by a
+   ::before pinned to inset 0, never oversized or transformed, because
+   decorative layers that outgrow their box extend the document's
+   scrollable area (see the repo's overflow rule). */
+.themesGlow {
+  position: relative;
+  isolation: isolate;
+}
+
+.themesGlow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    60% 40% at 50% 0%,
+    color-mix(in srgb, var(--tertiary) 18%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* full-bleed band under the download section: the conversion moment gets a
+   deeper stage that fades back into the page background */
+.downloadBand {
+  margin-top: var(--space-section);
+  background: linear-gradient(var(--bg-deep), var(--bg));
+  border-top: 1px solid var(--divider);
+}
+
+/* the band's own top edge already provides the section break, so the inner
+   section beat shrinks to the mobile rhythm */
+.downloadBand .download {
+  padding-top: 72px;
 }
 
 .download {
@@ -80,6 +126,27 @@
 
 .coprCopy:active {
   transform: scale(0.92);
+}
+
+/* success beat matching the docs copy button: the whole control goes
+   success-green while the checkmark pops in (motion gated; the color
+   confirmation alone still lands under reduced motion) */
+.coprCopy[data-copied] {
+  color: var(--success);
+  border-color: color-mix(in srgb, var(--success) 40%, var(--divider));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .coprCopy[data-copied] .coprCopyIcon {
+    animation: check-pop 0.3s var(--ease-out);
+  }
+}
+
+@keyframes check-pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
 }
 
 .coprCopyIcon {

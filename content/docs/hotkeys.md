@@ -48,7 +48,8 @@ Screenshot hotkeys can also carry their own task preset — after-capture action
 
 ## The fixed stop key
 
-`Ctrl+Esc` is a fixed emergency stop for recording. It cannot be reassigned, so you always have a reliable way to end a GIF or video capture.
+> [!TIP]
+> `Ctrl+Esc` is a fixed emergency stop for recording. It cannot be reassigned, so you always have a reliable way to end a GIF or video capture.
 
 ## niri and other wlroots compositors
 

@@ -37,7 +37,7 @@ export const de: Dictionary = {
     "lede": "Die meisten Tools liefern Ihnen ein Rechteck aus Pixeln und lassen Sie dann allein. Unisic deckt den Rest des Arbeitsablaufs ab.",
     "editor": {
       "title": "Ein echter Editor, keine Zuschneidebox",
-      "body": "Fünfzehn Werkzeuge, darunter Hervorheben, Verpixeln, intelligenter Radierer, Sprechblase, Messwerkzeug, nummerierte Schritte und Zuschneiden. Rückgängig, Wiederholen, Zoom – alles im Bildpixel-Raum."
+      "body": "Fünfzehn Werkzeuge, darunter Hervorheben, Verpixeln, intelligenter Radierer, Sprechblase, Messwerkzeug, nummerierte Schritte und Zuschneiden. Rückgängig, Wiederholen, Zoom, alles im Bildpixel-Raum."
     },
     "ocr": {
       "title": "Text aus Pixeln",
@@ -50,7 +50,7 @@ export const de: Dictionary = {
     },
     "history": {
       "title": "Verlauf mit Miniaturansichten",
-      "body": "Jede Aufnahme nur ein Raster entfernt. Beim Löschen wandert die Datei in den Papierkorb – niemals darüber hinaus."
+      "body": "Jede Aufnahme nur ein Raster entfernt. Beim Löschen wandert die Datei in den Papierkorb, niemals darüber hinaus."
     },
     "silent": {
       "title": "Lautlose Aufnahme",
@@ -63,7 +63,7 @@ export const de: Dictionary = {
   },
   "recording": {
     "title": "Derselbe Bereich, als GIF oder Video",
-    "lede": "GIF mit einer Zwei-Pass-Palette für klare Farben oder MP4 und WebM mit optionalem Ton von System, Mikrofon oder einer einzelnen App – über das ScreenCast-Portal, PipeWire und ffmpeg. Nehmen Sie einen Bereich, den gesamten Bildschirm oder ein Fenster auf, lassen Sie die Sofortwiederholung die letzten 30 Sekunden puffern und schneiden Sie das Ergebnis direkt aus der Benachrichtigungskarte zu.",
+    "lede": "GIF mit einer Zwei-Pass-Palette für klare Farben oder MP4 und WebM mit optionalem Ton von System, Mikrofon oder einer einzelnen App, über das ScreenCast-Portal, PipeWire und ffmpeg. Nehmen Sie einen Bereich, den gesamten Bildschirm oder ein Fenster auf, lassen Sie die Sofortwiederholung die letzten 30 Sekunden puffern und schneiden Sie das Ergebnis direkt aus der Benachrichtigungskarte zu.",
     "note": "{keys} stoppt immer eine Aufzeichnung, egal was gerade den Fokus hat.",
     "caption": "Ein Bildschirmbereich wird aufgezeichnet: Unisic zeichnet einen akzentfarbenen Rahmen um den Bereich mit einem REC-Symbol und einem laufenden Timer."
   },
@@ -74,13 +74,13 @@ export const de: Dictionary = {
     "reset": "Auf Unisic zurücksetzen",
     "note": "Jeder Chip färbt das Fenster oben live neu. Das neunte Theme ist Ihr System: Es folgt dem hellen oder dunklen Schema und der Akzentfarbe des Desktops.",
     "system": "System",
-    "systemLabel": "System — folgt dem hellen oder dunklen Schema Ihres Desktops; hier nicht in der Vorschau verfügbar",
+    "systemLabel": "System: folgt dem hellen oder dunklen Schema Ihres Desktops; hier nicht in der Vorschau verfügbar",
     "previewLabel": "Das Unisic-Hauptfenster im Theme {theme}"
   },
   "download": {
     "title": "Unisic installieren",
     "lede": "Benötigt eine Wayland-Sitzung mit xdg-desktop-portal. Für Aufzeichnungen sind zudem PipeWire und ffmpeg erforderlich.",
-    "repoLede": "Wählen Sie Ihre Distribution — das Repository hält Unisic über die Paketverwaltung aktuell. AppImage ist ein Direktdownload, und das Release enthält zudem einmalige .deb-, .rpm- und Arch-Pakete, die bei der Erstinstallation das Repository einrichten.",
+    "repoLede": "Wählen Sie Ihre Distribution: Das Repository hält Unisic über die Paketverwaltung aktuell. AppImage ist ein Direktdownload, und das Release enthält zudem einmalige .deb-, .rpm- und Arch-Pakete, die bei der Erstinstallation das Repository einrichten.",
     "distroListLabel": "Distribution oder Paketformat wählen",
     "versionLabel": "Version",
     "copyCmd": "Befehle kopieren",
@@ -93,13 +93,13 @@ export const de: Dictionary = {
       "install": "Installieren Sie Unisic:"
     },
     "notes": {
-      "ubuntu": "Ubuntu 25.10 erreicht im Juli 2026 das Supportende — bevorzugen Sie 26.04. Beide benötigen Qt 6.5+, das ältere Versionen nicht mitbringen.",
+      "ubuntu": "Ubuntu 25.10 erreicht im Juli 2026 das Supportende, bevorzugen Sie daher 26.04. Beide benötigen Qt 6.5+, das ältere Versionen nicht mitbringen.",
       "debian": "Benötigt Debian 13 (trixie) oder neuer für Qt 6.5+.",
       "fedora": "Builds für Fedora 43, 44 und Rawhide. Der COPR-Build installiert die optionalen Abhängigkeiten mit, sodass Aufnahme, OCR und QR-Dekodierung sofort funktionieren.",
       "opensuse": "zypper bittet beim Aktualisieren darum, den Signaturschlüssel des Repositorys zu akzeptieren.",
-      "arch": "Ein signiertes pacman-Repository auf dem openSUSE Build Service — kein AUR nötig.",
+      "arch": "Ein signiertes pacman-Repository auf dem openSUSE Build Service. Kein AUR nötig.",
       "nix": "Läuft überall, wo Nix läuft, auch auf NixOS. Probieren Sie es mit nix run oder fügen Sie das Flake als Input für eine deklarative Konfiguration hinzu; aktivieren Sie unter NixOS xdg.portal und PipeWire.",
-      "appimage": "Universell — läuft auf jeder Distribution. Die App aktualisiert sich selbst per eingebettetem zsync: Nur die geänderten Blöcke werden heruntergeladen und an Ort und Stelle ausgetauscht, und bei Leerlauf startet sie neu."
+      "appimage": "Universell: läuft auf jeder Distribution. Die App aktualisiert sich selbst per eingebettetem zsync: Nur die geänderten Blöcke werden heruntergeladen und an Ort und Stelle ausgetauscht, und bei Leerlauf startet sie neu."
     },
     "downloadBtn": "Herunterladen",
     "checking": "Neueste Version wird geprüft",
@@ -144,7 +144,7 @@ export const de: Dictionary = {
     },
     "wlroots": {
       "name": "niri und wlroots-Compositoren",
-      "body": "Unisic nimmt über wlr-screencopy mittels grim auf – lautlos und für mehrere Monitore geeignet. Binden Sie Tastenkürzel in Ihrer Compositor-Konfiguration; eine laufende Instanz übernimmt den Befehl."
+      "body": "Unisic nimmt über wlr-screencopy mittels grim auf, lautlos und für mehrere Monitore geeignet. Binden Sie Tastenkürzel in Ihrer Compositor-Konfiguration; eine laufende Instanz übernimmt den Befehl."
     }
   },
   "mainWindow": {
