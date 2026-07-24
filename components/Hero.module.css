@@ -6,24 +6,6 @@
   grid-template-columns: 11fr 12fr;
   gap: 48px;
   align-items: center;
-  position: relative;
-}
-
-/* Uni sits in normal flow below the CTAs — no overlap with the buttons. */
-.mascot {
-  display: block;
-  margin-top: 28px;
-  margin-left: -6px;
-  width: 140px;
-  height: auto;
-  pointer-events: none;
-  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.4));
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .mascot {
-    animation: rise 0.7s var(--ease-out) 0.6s both;
-  }
 }
 
 .copy {
@@ -193,11 +175,5 @@
 
   .sub {
     font-size: 16px;
-  }
-
-  /* in-flow below the CTAs — safe on mobile too, just a touch smaller */
-  .mascot {
-    width: 120px;
-    margin-top: 24px;
   }
 }
