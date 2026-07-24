@@ -24,8 +24,8 @@ export function CompositorNotes({ dict }: { dict: Dictionary }) {
         src="/uni.png"
         alt=""
         aria-hidden="true"
-        width={306}
-        height={527}
+        width={536}
+        height={906}
         loading="lazy"
         decoding="async"
         className={styles.mascot}
