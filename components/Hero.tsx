@@ -19,6 +19,16 @@ export function Hero({ dict }: { dict: Dictionary }) {
             {dict.hero.github}
           </a>
         </div>
+        {/* Uni, the mascot — sits in normal flow below the buttons, so it can
+            never overlap them. */}
+        <img
+          className={styles.mascot}
+          src="/uni-mascot.png"
+          alt="Uni, the Unisic mascot"
+          width={526}
+          height={898}
+          aria-hidden="true"
+        />
       </div>
       <div className={styles.visual}>
         <div className={styles.stack}>
