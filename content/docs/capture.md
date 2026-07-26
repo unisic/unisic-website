@@ -1,5 +1,6 @@
 ---
 title: "Capturing"
+seoTitle: "How to take a screenshot on Linux"
 description: "The three capture modes, annotating before the shot, and OCR text extraction."
 order: 3
 group: "Capturing & editing"

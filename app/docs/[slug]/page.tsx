@@ -20,7 +20,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const doc = getDoc(slug);
   if (!doc) return {};
-  const title = `${doc.title} — Unisic Docs`;
+  /* seoTitle is the query-shaped title ("Install Unisic on Linux"), doc.title
+     stays the sidebar label. Suffix is just the brand: " — Unisic Docs" spent
+     14 characters of the ~60 Google shows before truncating. */
+  const title = `${doc.seoTitle} — Unisic`;
   return {
     title,
     description: doc.description,
@@ -32,7 +35,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       type: "article",
       url: `/docs/${slug}`,
       siteName: "Unisic",
-      images: [{ url: "/social-preview.png", width: 1200, height: 630 }],
+      images: [{ url: "/social-preview.png", width: 1280, height: 640 }],
     },
   };
 }
@@ -47,8 +50,29 @@ export default async function DocPage({ params }: Params) {
   const prev = index > 0 ? all[index - 1] : null;
   const next = index < all.length - 1 ? all[index + 1] : null;
 
+  /* Mirrors the visible Docs / group trail above the heading. The current
+     page is the last item and carries no `item` URL, per Google's spec. */
+  const breadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Unisic", item: `${SITE_URL}/` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Documentation",
+        item: `${SITE_URL}/docs/`,
+      },
+      { "@type": "ListItem", position: 3, name: doc.title },
+    ],
+  };
+
   return (
     <div className={`${styles.docPage} ${styles.segmentTop}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
       <article className={styles.articleCol}>
         <header className={styles.articleHeader}>
           {doc.group && (
@@ -62,7 +86,7 @@ export default async function DocPage({ params }: Params) {
               {doc.group}
             </p>
           )}
-          <h1 className={styles.docTitle}>{doc.title}</h1>
+          <h1 className={styles.docTitle}>{doc.seoTitle}</h1>
           {doc.description && <p className={styles.docDesc}>{doc.description}</p>}
         </header>
 

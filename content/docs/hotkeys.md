@@ -1,6 +1,7 @@
 ---
 title: "Keyboard shortcuts"
-description: "The default global shortcuts and how to change them."
+seoTitle: "Screenshot keyboard shortcuts on Linux"
+description: "The default global shortcuts for capture, recording and instant replay, how to rebind them, and what to do when your desktop already owns the key."
 order: 7
 group: "Reference"
 ---

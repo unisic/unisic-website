@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "/docs",
     siteName: "Unisic",
-    images: [{ url: "/social-preview.png", width: 1200, height: 630 }],
+    images: [{ url: "/social-preview.png", width: 1280, height: 640 }],
   },
 };
 

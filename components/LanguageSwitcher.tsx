@@ -12,6 +12,13 @@ import { GlobeIcon } from "./icons";
  * (localePath: "/" for English, "/de" … for the rest), so switching is a
  * plain navigation that works with the static export. Keyboard: Enter/Space
  * opens, Escape closes, outside click dismisses.
+ *
+ * The menu is always in the markup and hidden with the `hidden` attribute
+ * rather than mounted on open: this switcher is the only link to the eight
+ * translated pages, and while it was conditionally rendered no crawler ever
+ * saw one — the locale pages were reachable only from the sitemap. `hidden`
+ * keeps them out of the layout (so next/link still does not prefetch them)
+ * while leaving them in the HTML.
  */
 export function LanguageSwitcher({
   current,
@@ -57,29 +64,27 @@ export function LanguageSwitcher({
         <span className={styles.chevron} data-open={open ? "" : undefined} aria-hidden="true" />
       </button>
 
-      {open && (
-        <ul className={styles.menu} id={menuId} role="menu">
-          {LANGUAGES.map((lang) => {
-            const isCurrent = lang.code === current;
-            return (
-              <li key={lang.code} role="none">
-                <Link
-                  href={localePath(lang.code)}
-                  className={styles.item}
-                  role="menuitem"
-                  lang={lang.code}
-                  hrefLang={lang.code}
-                  aria-current={isCurrent ? "true" : undefined}
-                  onClick={() => setOpen(false)}
-                >
-                  <span className={styles.itemNative}>{lang.native}</span>
-                  <span className={styles.itemEnglish}>{lang.english}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      <ul className={styles.menu} id={menuId} role="menu" hidden={!open}>
+        {LANGUAGES.map((lang) => {
+          const isCurrent = lang.code === current;
+          return (
+            <li key={lang.code} role="none">
+              <Link
+                href={localePath(lang.code)}
+                className={styles.item}
+                role="menuitem"
+                lang={lang.code}
+                hrefLang={lang.code}
+                aria-current={isCurrent ? "true" : undefined}
+                onClick={() => setOpen(false)}
+              >
+                <span className={styles.itemNative}>{lang.native}</span>
+                <span className={styles.itemEnglish}>{lang.english}</span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

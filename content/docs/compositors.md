@@ -1,5 +1,6 @@
 ---
 title: "Compositor support"
+seoTitle: "Wayland screenshot support: KDE, GNOME, wlroots"
 description: "How capture and hotkeys behave on Plasma, GNOME, and wlroots."
 order: 9
 group: "Reference"

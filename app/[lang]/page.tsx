@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Landing } from "../../components/Landing";
-import { LangSetter } from "../../components/LangSetter";
 import { getDictionary } from "../../lib/i18n";
 import { buildMetadata } from "../../lib/i18n/metadata";
 import {
@@ -31,9 +30,17 @@ export default async function LocalePage({ params }: Params) {
   const { lang } = await params;
   if (!isLocale(lang) || lang === DEFAULT_LOCALE) notFound();
   const dict = await getDictionary(lang);
+  /* The root layout owns <html> and cannot read the [lang] param, so the
+     static export ships every locale with lang="en". This corrects it during
+     HTML parse — a client component did the same in an effect, one hydration
+     boundary later. `lang` is already validated against the locale list. */
   return (
     <>
-      <LangSetter locale={lang} />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.documentElement.lang=${JSON.stringify(lang)}`,
+        }}
+      />
       <Landing dict={dict} locale={lang} />
     </>
   );

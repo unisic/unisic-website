@@ -1,5 +1,6 @@
 ---
 title: "Introduction"
+seoTitle: "What is Unisic? A Linux screenshot tool"
 description: "What Unisic is, the capture-to-upload workflow, what you need to run it, privacy, and licensing."
 order: 1
 group: "Getting started"

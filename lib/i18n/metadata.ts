@@ -44,8 +44,8 @@ export function buildMetadata(locale: Locale, dict: Dictionary): Metadata {
       images: [
         {
           url: "/social-preview.png",
-          width: 1200,
-          height: 630,
+          width: 1280,
+          height: 640,
           alt: dict.meta.ogImageAlt,
         },
       ],

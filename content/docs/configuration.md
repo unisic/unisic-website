@@ -1,5 +1,6 @@
 ---
 title: "Configuration"
+seoTitle: "Configure Unisic: paths, filenames, watermarks"
 description: "File locations, filename tokens, watermarks, sound cues, the notification card, updates, the CLI, themes, and settings export."
 order: 8
 group: "Reference"

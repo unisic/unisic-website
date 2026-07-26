@@ -1,5 +1,6 @@
 ---
 title: "Optional dependencies"
+seoTitle: "Optional dependencies for recording and OCR"
 description: "Enable recording, the reliable clipboard, and OCR (with language packs) — the extra tools per distribution."
 order: 2
 group: "Getting started"

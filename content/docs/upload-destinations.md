@@ -1,6 +1,7 @@
 ---
 title: "Upload destinations"
-description: "Custom HTTP, ShareX .sxcu, FTP/SFTP, and built-in hosts."
+seoTitle: "Upload screenshots: HTTP, ShareX, FTP and SFTP"
+description: "Send a capture straight to a custom HTTP endpoint, an imported ShareX .sxcu uploader, FTP or SFTP, or a built-in host, with the link copied to your clipboard."
 order: 6
 group: "Sharing"
 ---

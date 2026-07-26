@@ -60,14 +60,23 @@
   box-shadow: 0 18px 46px var(--shadow-color);
   max-height: min(70vh, 460px);
   overflow-y: auto;
-  /* the panel grows from its trigger on mount; @starting-style fires on
-     the conditional render, so no TSX change is needed. Exit stays
-     instant, which is correct for dismissing a menu. Browsers without
-     @starting-style keep the old instant appearance. */
+  /* the panel grows from its trigger as it opens. The menu stays in the DOM
+     and toggles the `hidden` attribute (see LanguageSwitcher.tsx), so
+     @starting-style only fires if `display` itself is transitioned with
+     allow-discrete. Browsers without either keep the old instant appearance. */
   transform-origin: top right;
   transition:
     opacity var(--dur-fast) var(--ease-out),
-    transform var(--dur) var(--ease-out);
+    transform var(--dur) var(--ease-out),
+    display var(--dur) allow-discrete;
+}
+
+/* `hidden` loses to the display: flex above without this. Killing the
+   transition in the closed state is what keeps dismissal instant — otherwise
+   the discrete display change would hold the panel open for a full --dur. */
+.menu[hidden] {
+  display: none;
+  transition: none;
 }
 
 @starting-style {

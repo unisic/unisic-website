@@ -16,7 +16,12 @@ const DOCS_DIR = path.join(process.cwd(), "content", "docs");
 
 export type DocMeta = {
   slug: string;
+  /* Nav label: what the sidebar, prev/next and breadcrumb leaf show. */
   title: string;
+  /* Page heading and <title>. Front matter `seoTitle` lets a page be
+     "Installation" in the sidebar and "Install Unisic on Linux" in the SERP;
+     falls back to title when absent. */
+  seoTitle: string;
   description: string;
   order: number;
   group: string;
@@ -255,6 +260,20 @@ function highlightCode(code: string, lang: string): string {
   return escaped;
 }
 
+/* next.config.ts sets trailingSlash, so /docs/capture is a second, non-canonical
+   spelling of /docs/capture/. Markdown is written without the slash, so
+   normalise every root-relative link here instead of in every .md file.
+   Query and fragment survive; anything ending in a file extension is left
+   alone, as is "/#download" (its path is already "/"). */
+function withTrailingSlash(href: string): string {
+  if (!href.startsWith("/")) return href;
+  const url = new URL(href, SITE_URL);
+  if (!url.pathname.endsWith("/") && !/\.[a-z0-9]+$/i.test(url.pathname)) {
+    url.pathname += "/";
+  }
+  return `${url.pathname}${url.search}${url.hash}`;
+}
+
 /* Render Markdown to HTML, injecting an id onto every heading so the
    table of contents can link to it. */
 function renderMarkdown(md: string): string {
@@ -298,7 +317,9 @@ function renderMarkdown(md: string): string {
       },
       link(token) {
         /* External links open in a new tab and get a marker glyph (CSS on
-           .ext); internal links keep marked's default rendering. */
+           .ext); internal links keep marked's default rendering, but first
+           get the trailing slash the site actually serves (see below). */
+        token.href = withTrailingSlash(token.href);
         const href = token.href;
         if (!/^https?:\/\//.test(href) || href.startsWith(SITE_URL)) return false;
         const inner = this.parser.parseInline(token.tokens);
@@ -337,6 +358,7 @@ function toMeta(slug: string, data: Record<string, unknown>): DocMeta {
   return {
     slug,
     title: String(data.title ?? slug),
+    seoTitle: String(data.seoTitle ?? data.title ?? slug),
     description: String(data.description ?? ""),
     order: Number(data.order ?? 999),
     group: String(data.group ?? ""),

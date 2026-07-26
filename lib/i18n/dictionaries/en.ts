@@ -29,7 +29,7 @@ export const en = {
 
   hero: {
     headline: "Screenshots done right on Linux.",
-    sub: "Silent capture, annotation before the shot, a 15-tool editor, GIF and video recording, OCR, instant upload. Zero telemetry. GPLv3.",
+    sub: "An open-source screenshot tool and screen recorder for Linux, built for Wayland. Silent capture, annotation before the shot, a 15-tool editor, GIF and video recording, OCR, instant upload. Zero telemetry. GPLv3.",
     download: "Download",
     github: "View on GitHub",
   },
@@ -76,7 +76,7 @@ export const en = {
   },
 
   recording: {
-    title: "The same region, as GIF or video",
+    title: "Screen recording: the same region, as GIF or video",
     lede: "GIF with a two-pass palette for crisp colors, or MP4 and WebM with optional system, microphone, or single-app audio, through the ScreenCast portal, PipeWire and ffmpeg. Record a region, the full screen, or a window, let instant replay buffer the last 30 seconds, and trim the result right from the notification card.",
     note: "{keys} always stops a recording, no matter what has focus.",
     caption:
@@ -161,7 +161,7 @@ export const en = {
   },
 
   compositors: {
-    title: "Works with your compositor",
+    title: "Works with your Wayland compositor",
     plasma: {
       name: "KDE Plasma",
       body: "The fully silent path: native KWin ScreenShot2 with KGlobalAccel hotkeys. No portal dialogs at all.",

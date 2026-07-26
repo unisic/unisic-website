@@ -1,5 +1,6 @@
 ---
 title: "Recording"
+seoTitle: "Record your screen on Linux as GIF or MP4"
 description: "Record a region, screen, or window as a GIF or MP4/WebM video, with audio, instant replay, and trimming."
 order: 5
 group: "Capturing & editing"

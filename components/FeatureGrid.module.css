@@ -63,6 +63,12 @@
   letter-spacing: -0.01em;
 }
 
+/* Four of the titles link into /docs. The global reset already drops the
+   underline and inherits the color, so hover is the only affordance to add. */
+.cellTitle a:hover {
+  text-decoration: underline;
+}
+
 .cellBody {
   color: var(--text-secondary);
   font-size: 14.5px;
