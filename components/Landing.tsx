@@ -76,34 +76,42 @@ export function Landing({
           </Reveal>
         </section>
 
-        <section className="section" aria-labelledby="themes-title">
-          <h2 id="themes-title">{dict.themes.title}</h2>
-          <p className="section-lede">{dict.themes.lede}</p>
-          <Reveal>
-            <ThemeShowcase dict={dict} />
-          </Reveal>
-        </section>
+        {/* full-bleed wrapper: a quiet radial wash behind the themes section,
+            drawn entirely inside the box (see .themesGlow) */}
+        <div className={styles.themesGlow}>
+          <section className="section" aria-labelledby="themes-title">
+            <h2 id="themes-title">{dict.themes.title}</h2>
+            <p className="section-lede">{dict.themes.lede}</p>
+            <Reveal>
+              <ThemeShowcase dict={dict} />
+            </Reveal>
+          </section>
+        </div>
 
-        <section
-          className={`section ${styles.download}`}
-          id="download"
-          aria-labelledby="download-title"
-        >
-          <h2 id="download-title">{d.title}</h2>
-          <p className="section-lede">{d.lede}</p>
-          <Reveal>
-            <DistroInstall dict={dict} />
-          </Reveal>
-          <p className={styles.earlyAccess}>
-            {template(d.stability, {
-              link: (
-                <a href="https://github.com/unisic/unisic/issues">
-                  {d.stabilityLink}
-                </a>
-              ),
-            })}
-          </p>
-        </section>
+        {/* full-bleed band: the download moment gets its own stage instead of
+            sitting on the same flat page background as every other section */}
+        <div className={styles.downloadBand}>
+          <section
+            className={`section ${styles.download}`}
+            id="download"
+            aria-labelledby="download-title"
+          >
+            <h2 id="download-title">{d.title}</h2>
+            <p className="section-lede">{d.lede}</p>
+            <Reveal>
+              <DistroInstall dict={dict} />
+            </Reveal>
+            <p className={styles.earlyAccess}>
+              {template(d.stability, {
+                link: (
+                  <a href="https://github.com/unisic/unisic/issues">
+                    {d.stabilityLink}
+                  </a>
+                ),
+              })}
+            </p>
+          </section>
+        </div>
 
         <section className="section" aria-labelledby="reference-title">
           <h2 id="reference-title">{dict.reference.title}</h2>

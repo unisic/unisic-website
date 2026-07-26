@@ -37,11 +37,11 @@ export const pl: Dictionary = {
     "lede": "Większość narzędzi podaje ci prostokąt pikseli i odchodzi. Unisic zajmuje się resztą procesu.",
     "editor": {
       "title": "Prawdziwy edytor, a nie ramka do kadrowania",
-      "body": "Piętnaście narzędzi, w tym wyróżnienie, pikselizacja, inteligentna gumka, dymek, miarka, ponumerowane kroki i kadrowanie. Cofanie, ponawianie, powiększanie — wszystko w przestrzeni pikseli obrazu."
+      "body": "Piętnaście narzędzi, w tym wyróżnienie, pikselizacja, inteligentna gumka, dymek, miarka, ponumerowane kroki i kadrowanie. Cofanie, ponawianie, powiększanie, wszystko w przestrzeni pikseli obrazu."
     },
     "ocr": {
       "title": "Tekst prosto z pikseli",
-      "body": "Wykonaj OCR obszaru — rozpoznany tekst trafia prosto do schowka — albo wskaż pojedyncze słowa w edytorze, aby je skopiować, wyróżnić lub zaczernić. Kody QR od razu dekodują się do swojej zawartości."
+      "body": "Wykonaj OCR obszaru (rozpoznany tekst trafia prosto do schowka) albo wskaż pojedyncze słowa w edytorze, aby je skopiować, wyróżnić lub zaczernić. Kody QR od razu dekodują się do swojej zawartości."
     },
     "upload": {
       "title": "Przesyłaj wszędzie",
@@ -63,7 +63,7 @@ export const pl: Dictionary = {
   },
   "recording": {
     "title": "Ten sam obszar jako GIF lub wideo",
-    "lede": "GIF z dwuprzebiegową paletą dla wyrazistych kolorów albo MP4 i WebM z opcjonalnym dźwiękiem z systemu, mikrofonu lub pojedynczej aplikacji — przez portal ScreenCast, PipeWire i ffmpeg. Nagrywaj obszar, cały ekran lub okno, pozwól natychmiastowej powtórce buforować ostatnie 30 sekund i przytnij nagranie prosto z karty powiadomienia.",
+    "lede": "GIF z dwuprzebiegową paletą dla wyrazistych kolorów albo MP4 i WebM z opcjonalnym dźwiękiem z systemu, mikrofonu lub pojedynczej aplikacji, przez portal ScreenCast, PipeWire i ffmpeg. Nagrywaj obszar, cały ekran lub okno, pozwól natychmiastowej powtórce buforować ostatnie 30 sekund i przytnij nagranie prosto z karty powiadomienia.",
     "note": "{keys} zawsze zatrzymuje nagrywanie, niezależnie od tego, co ma fokus.",
     "caption": "Nagrywany obszar ekranu: Unisic rysuje wokół obszaru ramkę w kolorze akcentu z plakietką REC i licznikiem czasu."
   },
@@ -74,13 +74,13 @@ export const pl: Dictionary = {
     "reset": "Przywróć Unisic",
     "note": "Każdy kafelek na żywo przemalowuje okno powyżej. Dziewiąty motyw to twój system: podąża za jasnym lub ciemnym schematem pulpitu i kolorem akcentu.",
     "system": "System",
-    "systemLabel": "System — podąża za jasnym lub ciemnym schematem pulpitu; niedostępny do podglądu tutaj",
+    "systemLabel": "System: podąża za jasnym lub ciemnym schematem pulpitu; niedostępny do podglądu tutaj",
     "previewLabel": "Główne okno Unisic w motywie {theme}"
   },
   "download": {
     "title": "Zainstaluj Unisic",
     "lede": "Wymaga sesji Wayland z xdg-desktop-portal. Nagrywanie potrzebuje też PipeWire i ffmpeg.",
-    "repoLede": "Wybierz swoją dystrybucję — repozytorium aktualizuje Unisic przez menedżera pakietów. AppImage to pobranie bezpośrednie, a w wydaniu znajdziesz też pojedyncze pakiety .deb i .rpm oraz pakiet dla Archa, które przy pierwszej instalacji podpinają repozytorium.",
+    "repoLede": "Wybierz swoją dystrybucję: repozytorium aktualizuje Unisic przez menedżera pakietów. AppImage to pobranie bezpośrednie, a w wydaniu znajdziesz też pojedyncze pakiety .deb i .rpm oraz pakiet dla Archa, które przy pierwszej instalacji podpinają repozytorium.",
     "distroListLabel": "Wybierz dystrybucję lub format pakietu",
     "versionLabel": "Wersja",
     "copyCmd": "Kopiuj komendy",
@@ -93,13 +93,13 @@ export const pl: Dictionary = {
       "install": "Zainstaluj Unisic:"
     },
     "notes": {
-      "ubuntu": "Ubuntu 25.10 traci wsparcie w lipcu 2026 — lepiej wybrać 26.04. Obie wersje wymagają Qt 6.5+, którego starsze wydania nie mają.",
+      "ubuntu": "Ubuntu 25.10 traci wsparcie w lipcu 2026, więc lepiej wybrać 26.04. Obie wersje wymagają Qt 6.5+, którego starsze wydania nie mają.",
       "debian": "Wymaga Debiana 13 (trixie) lub nowszego ze względu na Qt 6.5+.",
       "fedora": "Kompilacje dla Fedory 43, 44 i Rawhide. Pakiet z COPR dociąga opcjonalne zależności, więc nagrywanie, OCR i dekodowanie kodów QR działają od razu.",
       "opensuse": "Podczas odświeżania zypper poprosi o zaakceptowanie klucza podpisującego repozytorium.",
-      "arch": "Podpisane repozytorium pacmana na openSUSE Build Service — AUR nie jest potrzebny.",
+      "arch": "Podpisane repozytorium pacmana na openSUSE Build Service. AUR nie jest potrzebny.",
       "nix": "Działa wszędzie tam, gdzie Nix, także na NixOS. Wypróbuj przez nix run albo dodaj flake jako wejście do konfiguracji deklaratywnej; na NixOS włącz xdg.portal i PipeWire.",
-      "appimage": "Uniwersalny — działa na każdej dystrybucji. Aktualizuje się sam przez wbudowany zsync: pobiera tylko zmienione bloki i podmienia je na miejscu, a restartuje się, gdy aplikacja jest bezczynna.",
+      "appimage": "Uniwersalny: działa na każdej dystrybucji. Aktualizuje się sam przez wbudowany zsync: pobiera tylko zmienione bloki i podmienia je na miejscu, a restartuje się, gdy aplikacja jest bezczynna.",
     },
     "downloadBtn": "Pobierz",
     "checking": "Sprawdzanie najnowszego wydania",

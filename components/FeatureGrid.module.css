@@ -172,7 +172,7 @@
 }
 
 .thumbC {
-  background: linear-gradient(160deg, #35306f, #14113a);
+  background: linear-gradient(160deg, var(--secondary), var(--primary));
 }
 
 .thumbD {

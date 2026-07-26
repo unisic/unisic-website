@@ -1,5 +1,5 @@
 .wrap {
-  margin: 40px auto 0;
+  margin: var(--space-lede) auto 0;
   max-width: 720px;
   text-align: left;
 }
@@ -37,10 +37,11 @@
     transform var(--dur-fast) var(--ease-out);
 }
 
+/* ghost pills recolor only on hover, like .variantBtn and the theme chips;
+   the :active press below is the motion vocabulary for this control */
 .distroBtn:hover {
   color: var(--text);
   border-color: rgba(243, 240, 250, 0.3);
-  transform: translateY(-1px);
 }
 
 .distroBtn:active {
@@ -233,7 +234,7 @@
 
 .downloadBtn {
   background: var(--accent);
-  box-shadow: 0 6px 22px rgba(200, 172, 214, 0.25);
+  box-shadow: 0 6px 22px var(--accent-glow);
   transition:
     background var(--dur-fast) var(--ease-out),
     transform var(--dur-fast) var(--ease-out);
@@ -241,7 +242,14 @@
 
 .downloadBtn:hover {
   background: var(--accent-bright);
-  transform: translateY(-2px);
+}
+
+/* accent pills share one hover: recolor plus a 1px lift, lift only when
+   hover is real and motion is welcome (matches hero primary and nav CTA) */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .downloadBtn:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .downloadBtn:active {

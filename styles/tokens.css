@@ -67,4 +67,15 @@
   --max-width: 1160px;
   --accent-bright: #e2cfee;
   --space-lede: 44px; /* gap from a section lede to the block below it */
+  --space-section: 96px; /* vertical beat between landing sections */
+
+  /* accent-tinted CTA glow, one hue two strengths (previously four hand-tuned
+     rgba(200,172,214,*) literals drifting across components) */
+  --accent-glow: rgba(200, 172, 214, 0.28);
+  --accent-glow-strong: rgba(200, 172, 214, 0.35);
+
+  /* shared "abstract desktop" wallpaper gradient endpoints used by every
+     mockup (previously re-declared with slightly different hexes per module) */
+  --wallpaper-hi: #191542;
+  --wallpaper-lo: #0d0b26;
 }

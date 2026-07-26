@@ -19,7 +19,10 @@ Install from a repository and updates arrive automatically through your package 
 
 ### Debian / Ubuntu
 
-An auto-updating signed repository built on the [openSUSE Build Service](https://software.opensuse.org/download.html?project=home:unisic&package=unisic). Needs a release with Qt 6.5+: Debian 13, Ubuntu 25.10 / 26.04 (25.10 reaches EOL in July 2026 - prefer 26.04).
+An auto-updating signed repository built on the [openSUSE Build Service](https://software.opensuse.org/download.html?project=home:unisic&package=unisic). Needs a release with Qt 6.5+: Debian 13, Ubuntu 25.10 / 26.04.
+
+> [!WARNING]
+> Ubuntu 25.10 reaches EOL in July 2026, so prefer 26.04.
 
 First, pick your repo name and import the repository signing key (run both steps in the same shell so `$REPO` carries over):
 
@@ -195,6 +198,9 @@ A second invocation forwards the command to the running instance - that is how c
 
 ## First run
 
-On first run in a KDE session, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications` (it declares `X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2`), which authorizes the silent KWin path. AppImage runs skip this and capture through the portal — see [Configuration](/docs/configuration). Without the desktop file, captures still work through the portal.
+On first run in a KDE session, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications` (it declares `X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2`), which authorizes the silent KWin path.
+
+> [!NOTE]
+> AppImage runs skip this and capture through the portal instead; see [Configuration](/docs/configuration). Without the desktop file, captures still work through the portal.
 
 After installing, see [Configuration](/docs/configuration) for settings, destinations, and filename templates.

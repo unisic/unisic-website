@@ -74,7 +74,7 @@ export const es: Dictionary = {
     "reset": "Restablecer a Unisic",
     "note": "Cada ficha repinta la ventana de arriba en vivo. El noveno tema es tu sistema: sigue el esquema claro u oscuro del escritorio y el color de acento.",
     "system": "Sistema",
-    "systemLabel": "Sistema — sigue el esquema claro u oscuro de tu escritorio; no se puede previsualizar aquí",
+    "systemLabel": "Sistema: sigue el esquema claro u oscuro de tu escritorio; no se puede previsualizar aquí",
     "previewLabel": "La ventana principal de Unisic con el tema {theme}"
   },
   "download": {

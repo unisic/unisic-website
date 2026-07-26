@@ -41,7 +41,7 @@ const jsonLd = {
   featureList: [
     "Region, full-screen and window capture",
     "Annotate the selection before the shot is taken",
-    "12-tool post-capture editor (arrows, blur, pixelate, numbered steps, crop)",
+    "15-tool post-capture editor (arrows, blur, pixelate, numbered steps, crop)",
     "GIF and MP4/WebM screen recording",
     "Upload to custom HTTP, FTP, SFTP and ShareX destinations",
     "Capture history with thumbnails",
@@ -67,6 +67,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${outfit.variable} ${jetbrainsMono.variable}`}
+      // Next 16 no longer auto-suppresses CSS smooth scrolling during route
+      // navigation; this attribute opts back into the smart handling (instant
+      // scroll reset on nav, smooth for in-page anchors).
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body>

@@ -40,6 +40,7 @@ export function CopyCommand({
         className={styles.coprCopy}
         onClick={copy}
         aria-label={copied ? copiedLabel : copyLabel}
+        data-copied={copied ? "" : undefined}
       >
         {copied ? (
           <CheckmarkIcon className={styles.coprCopyIcon} />

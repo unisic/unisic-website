@@ -1,8 +1,18 @@
-.chips {
+.showcase {
   margin-top: var(--space-lede);
+}
+
+.chips {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+/* layout-transparent: the radiogroup wraps only the 8 selectable palettes
+   (the System chip stays outside its semantics) while .chips keeps laying
+   out all nine pills as one flow */
+.chipGroup {
+  display: contents;
 }
 
 .chip,
@@ -19,10 +29,14 @@
   background: var(--surface);
   border: 1px solid var(--divider);
   cursor: pointer;
+  /* the active ring is a box-shadow, so it must ride the same transition
+     as the border it doubles, or it pops in one frame late */
+  box-shadow: 0 0 0 0 transparent;
   transition:
     border-color var(--dur-fast) var(--ease-out),
     color var(--dur-fast) var(--ease-out),
-    transform var(--dur-fast) var(--ease-out);
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
 }
 
 .chip:hover {
@@ -135,6 +149,8 @@
   place-items: center;
   color: var(--p-text);
   opacity: 0.55;
+  /* keep the window buttons inside the uniform 220ms theme crossfade */
+  transition: color var(--dur) var(--ease-out);
 }
 
 .winGlyph {
@@ -271,12 +287,17 @@
   cursor: pointer;
   transition:
     color var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out);
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
 }
 
 .reset:hover {
   color: var(--text);
   border-color: var(--accent);
+}
+
+.reset:active {
+  transform: scale(0.96);
 }
 
 .resetIcon {
@@ -288,4 +309,29 @@
   margin-top: 20px;
   color: var(--text-secondary);
   font-size: 14.5px;
+}
+
+/* Desktop split: the palettes become a vertical rail beside the preview,
+   breaking the page's repeated "heading, lede, full-width visual" stack.
+   Below 900px the original stacked flow remains. */
+@media (min-width: 900px) {
+  .showcase {
+    display: grid;
+    grid-template-columns: minmax(200px, 3fr) 7fr;
+    column-gap: 40px;
+    align-items: start;
+  }
+
+  .chips {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .previewFrame {
+    margin-top: 0;
+  }
+
+  .note {
+    grid-column: 1 / -1;
+  }
 }

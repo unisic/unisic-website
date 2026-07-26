@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "../docs.module.css";
 import { DocsProse } from "../../../components/DocsProse";
+import { DocsToc } from "../../../components/DocsToc";
 import { getAllDocs, getDoc, getDocSlugs } from "../../../lib/docs";
 import { SITE_URL } from "../../../lib/site";
 
@@ -50,12 +51,55 @@ export default async function DocPage({ params }: Params) {
     <div className={`${styles.docPage} ${styles.segmentTop}`}>
       <article className={styles.articleCol}>
         <header className={styles.articleHeader}>
-          {doc.group && <p className={styles.kicker}>{doc.group}</p>}
+          {doc.group && (
+            <p className={styles.kicker}>
+              <Link href="/docs" className={styles.kickerLink}>
+                Docs
+              </Link>
+              <span aria-hidden="true" className={styles.kickerSep}>
+                /
+              </span>
+              {doc.group}
+            </p>
+          )}
           <h1 className={styles.docTitle}>{doc.title}</h1>
           {doc.description && <p className={styles.docDesc}>{doc.description}</p>}
         </header>
 
+        {/* Below 1100px the sticky TOC rail is hidden, so long pages keep a
+            jump affordance as a native disclosure: zero JS, zero motion. */}
+        {doc.toc.length > 0 && (
+          <details className={styles.tocMobile}>
+            <summary>On this page</summary>
+            <ul className={styles.tocList}>
+              {doc.toc.map((entry) => (
+                <li key={entry.id}>
+                  <a
+                    href={`#${entry.id}`}
+                    className={
+                      entry.depth === 3
+                        ? `${styles.tocLink} ${styles.tocLinkSub}`
+                        : styles.tocLink
+                    }
+                  >
+                    {entry.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
+
         <DocsProse html={doc.html} />
+
+        <a
+          href={`https://github.com/unisic/unisic-website/edit/main/content/docs/${slug}.md`}
+          className={styles.editLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Edit this page on GitHub
+        </a>
 
         <nav className={styles.prevNext} aria-label="Pagination">
           {prev ? (
@@ -80,27 +124,7 @@ export default async function DocPage({ params }: Params) {
         </nav>
       </article>
 
-      {doc.toc.length > 0 && (
-        <aside className={styles.toc} aria-label="On this page">
-          <p className={styles.tocTitle}>On this page</p>
-          <ul className={styles.tocList}>
-            {doc.toc.map((entry) => (
-              <li key={entry.id}>
-                <a
-                  href={`#${entry.id}`}
-                  className={
-                    entry.depth === 3
-                      ? `${styles.tocLink} ${styles.tocLinkSub}`
-                      : styles.tocLink
-                  }
-                >
-                  {entry.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </aside>
-      )}
+      {doc.toc.length > 0 && <DocsToc toc={doc.toc} />}
     </div>
   );
 }

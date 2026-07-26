@@ -63,7 +63,7 @@ export const fr: Dictionary = {
   },
   "recording": {
     "title": "La même région, en GIF ou en vidéo",
-    "lede": "GIF avec une palette en deux passes pour des couleurs nettes, ou MP4 et WebM avec, en option, l'audio du système, du microphone ou d'une seule application — via le portail ScreenCast, PipeWire et ffmpeg. Enregistrez une région, l'écran entier ou une fenêtre, laissez la relecture instantanée garder en mémoire les 30 dernières secondes et découpez le résultat directement depuis la carte de notification.",
+    "lede": "GIF avec une palette en deux passes pour des couleurs nettes, ou MP4 et WebM avec, en option, l'audio du système, du microphone ou d'une seule application, via le portail ScreenCast, PipeWire et ffmpeg. Enregistrez une région, l'écran entier ou une fenêtre, laissez la relecture instantanée garder en mémoire les 30 dernières secondes et découpez le résultat directement depuis la carte de notification.",
     "note": "{keys} arrête toujours un enregistrement, quel que soit l'élément actif.",
     "caption": "Une région de l'écran en cours d'enregistrement : Unisic dessine un cadre de la couleur d'accentuation autour de la région, avec un badge REC et un minuteur du temps écoulé."
   },
@@ -74,13 +74,13 @@ export const fr: Dictionary = {
     "reset": "Réinitialiser sur Unisic",
     "note": "Chaque pastille repeint la fenêtre ci-dessus en temps réel. Le neuvième thème est votre système : il suit le schéma clair ou sombre du bureau et la couleur d'accentuation.",
     "system": "Système",
-    "systemLabel": "Système — suit le schéma clair ou sombre de votre bureau ; non prévisualisable ici",
+    "systemLabel": "Système : suit le schéma clair ou sombre de votre bureau ; non prévisualisable ici",
     "previewLabel": "La fenêtre principale d'Unisic dans le thème {theme}"
   },
   "download": {
     "title": "Installer Unisic",
     "lede": "Nécessite une session Wayland avec xdg-desktop-portal. L'enregistrement requiert également PipeWire et ffmpeg.",
-    "repoLede": "Choisissez votre distribution — le dépôt maintient Unisic à jour via votre gestionnaire de paquets. AppImage est un téléchargement direct, et la release contient aussi des paquets .deb, .rpm et Arch ponctuels qui configurent le dépôt dès la première installation.",
+    "repoLede": "Choisissez votre distribution : le dépôt maintient Unisic à jour via votre gestionnaire de paquets. AppImage est un téléchargement direct, et la release contient aussi des paquets .deb, .rpm et Arch ponctuels qui configurent le dépôt dès la première installation.",
     "distroListLabel": "Choisissez votre distribution ou votre format de paquet",
     "versionLabel": "Version",
     "copyCmd": "Copier les commandes",
@@ -93,13 +93,13 @@ export const fr: Dictionary = {
       "install": "Installez Unisic :"
     },
     "notes": {
-      "ubuntu": "Ubuntu 25.10 atteint sa fin de vie en juillet 2026 — préférez 26.04. Les deux nécessitent Qt 6.5+, absent des versions plus anciennes.",
+      "ubuntu": "Ubuntu 25.10 atteint sa fin de vie en juillet 2026, préférez donc 26.04. Les deux nécessitent Qt 6.5+, absent des versions plus anciennes.",
       "debian": "Nécessite Debian 13 (trixie) ou plus récent pour Qt 6.5+.",
       "fedora": "Builds pour Fedora 43, 44 et Rawhide. Le paquet COPR installe les dépendances optionnelles : l'enregistrement, l'OCR et le décodage des codes QR fonctionnent d'emblée.",
       "opensuse": "zypper vous demandera d'accepter la clé de signature du dépôt lors du rafraîchissement.",
-      "arch": "Un dépôt pacman signé sur l'openSUSE Build Service — pas besoin d'AUR.",
+      "arch": "Un dépôt pacman signé sur l'openSUSE Build Service. Pas besoin d'AUR.",
       "nix": "Fonctionne partout où Nix fonctionne, y compris NixOS. Essayez-le avec nix run ou ajoutez le flake comme entrée pour une configuration déclarative ; sur NixOS, activez xdg.portal et PipeWire.",
-      "appimage": "Universel — fonctionne sur toutes les distributions. L'application se met à jour toute seule via zsync embarqué : seuls les blocs modifiés sont téléchargés et remplacés sur place, puis elle redémarre quand elle est inactive."
+      "appimage": "Universel : fonctionne sur toutes les distributions. L'application se met à jour toute seule via zsync embarqué : seuls les blocs modifiés sont téléchargés et remplacés sur place, puis elle redémarre quand elle est inactive."
     },
     "downloadBtn": "Télécharger",
     "checking": "Recherche de la dernière version",

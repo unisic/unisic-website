@@ -147,7 +147,7 @@
   background:
     radial-gradient(90% 120% at 15% 0%, rgba(67, 61, 139, 0.55), transparent 60%),
     radial-gradient(70% 100% at 95% 100%, rgba(46, 35, 108, 0.7), transparent 65%),
-    linear-gradient(160deg, #191542, #0d0b26);
+    linear-gradient(160deg, var(--wallpaper-hi), var(--wallpaper-lo));
 }
 
 .ghostCardA,
@@ -251,9 +251,12 @@
     animation-delay: 1.95s;
   }
 
+  /* start at half size, never scale(0): scaling up from nothing renders a
+     blurry sub-pixel dot on the first frames */
   .stepOne,
   .stepTwo {
-    scale: 0;
+    scale: 0.5;
+    opacity: 0;
     animation: pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
 
@@ -275,6 +278,7 @@
 @keyframes pop {
   to {
     scale: 1;
+    opacity: 1;
   }
 }
 
@@ -355,7 +359,7 @@
 .fillBtn {
   color: var(--text-on-accent);
   background: var(--accent);
-  box-shadow: 0 calc(4 * var(--u)) calc(12 * var(--u)) rgba(200, 172, 214, 0.35);
+  box-shadow: 0 calc(4 * var(--u)) calc(12 * var(--u)) var(--accent-glow-strong);
 }
 
 .btnIcon {

@@ -74,7 +74,7 @@ export const zhHans: Dictionary = {
     "reset": "重置为 Unisic",
     "note": "每个色块都会实时重绘上方的窗口。第九种主题就是你的系统：它会跟随桌面的浅色或深色方案和强调色。",
     "system": "系统",
-    "systemLabel": "系统 — 跟随你桌面的浅色或深色方案；此处无法预览",
+    "systemLabel": "系统：跟随你桌面的浅色或深色方案；此处无法预览",
     "previewLabel": "{theme}主题下的 Unisic 主窗口"
   },
   "download": {

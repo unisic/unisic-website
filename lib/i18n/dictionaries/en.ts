@@ -77,7 +77,7 @@ export const en = {
 
   recording: {
     title: "The same region, as GIF or video",
-    lede: "GIF with a two-pass palette for crisp colors, or MP4 and WebM with optional system, microphone, or single-app audio — through the ScreenCast portal, PipeWire and ffmpeg. Record a region, the full screen, or a window, let instant replay buffer the last 30 seconds, and trim the result right from the notification card.",
+    lede: "GIF with a two-pass palette for crisp colors, or MP4 and WebM with optional system, microphone, or single-app audio, through the ScreenCast portal, PipeWire and ffmpeg. Record a region, the full screen, or a window, let instant replay buffer the last 30 seconds, and trim the result right from the notification card.",
     note: "{keys} always stops a recording, no matter what has focus.",
     caption:
       "A screen region being recorded: Unisic draws an accent-colored frame around the region with a REC badge and elapsed timer.",
@@ -91,7 +91,7 @@ export const en = {
     note: "Every chip repaints the window above live. The ninth theme is your system: it follows the desktop light or dark scheme and accent color.",
     system: "System",
     systemLabel:
-      "System — follows your desktop light or dark scheme; not previewable here",
+      "System: follows your desktop light or dark scheme; not previewable here",
     previewLabel: "The Unisic main window in the {theme} theme",
   },
 
@@ -99,7 +99,7 @@ export const en = {
     title: "Install Unisic",
     lede: "Needs a Wayland session with xdg-desktop-portal. Recording also wants PipeWire and ffmpeg.",
     repoLede:
-      "Pick your distribution — the repository keeps Unisic updated through your package manager. AppImage is a direct download, and the release also carries one-off .deb, .rpm and Arch packages that hook up the repository on first install.",
+      "Pick your distribution: the repository keeps Unisic updated through your package manager. AppImage is a direct download, and the release also carries one-off .deb, .rpm and Arch packages that hook up the repository on first install.",
     distroListLabel: "Choose your distribution or package format",
     versionLabel: "Version",
     copyCmd: "Copy commands",
@@ -113,16 +113,16 @@ export const en = {
     },
     notes: {
       ubuntu:
-        "Ubuntu 25.10 reaches end of life in July 2026 — prefer 26.04. Both need Qt 6.5+, which older releases don’t ship.",
+        "Ubuntu 25.10 reaches end of life in July 2026, so prefer 26.04. Both need Qt 6.5+, which older releases don’t ship.",
       debian: "Needs Debian 13 (trixie) or newer for Qt 6.5+.",
       fedora:
         "Builds for Fedora 43, 44 and Rawhide. The COPR build pulls in the optional dependencies, so recording, OCR and QR decoding work out of the box.",
       opensuse:
         "zypper asks you to accept the repository signing key during the refresh.",
-      arch: "A signed pacman repository on the openSUSE Build Service — no AUR needed.",
+      arch: "A signed pacman repository on the openSUSE Build Service. No AUR needed.",
       nix: "Runs anywhere Nix does, including NixOS. Try it with nix run, or add the flake as an input for a declarative setup; enable xdg.portal and PipeWire on NixOS.",
       appimage:
-        "Universal — runs on any distribution. Updates itself via embedded zsync: only the changed blocks are downloaded and swapped in place, and it restarts when idle.",
+        "Universal: runs on any distribution. Updates itself via embedded zsync: only the changed blocks are downloaded and swapped in place, and it restarts when idle.",
     },
     downloadBtn: "Download",
     checking: "Checking the latest release",

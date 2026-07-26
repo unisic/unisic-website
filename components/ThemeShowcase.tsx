@@ -78,35 +78,55 @@ export function ThemeShowcase({ dict }: { dict: Dictionary }) {
   };
 
   return (
-    <div>
-      <div
-        className={styles.chips}
-        role="radiogroup"
-        aria-label={tx.groupLabel}
-        data-stagger=""
-      >
-        {THEMES.map((theme, i) => (
-          <button
-            key={theme.name}
-            type="button"
-            ref={(el) => {
-              chipRefs.current[i] = el;
-            }}
-            className={i === active ? styles.chipActive : styles.chip}
-            role="radio"
-            aria-checked={i === active}
-            tabIndex={i === active ? 0 : -1}
-            onClick={() => selectChip(i)}
-            onKeyDown={(e) => onChipKeyDown(e, i)}
+    <div className={styles.showcase}>
+      <div className={styles.chips}>
+        {/* display: contents wrapper keeps the radiogroup semantics on the
+            8 real palettes only; the System chip below sits outside it */}
+        <div
+          className={styles.chipGroup}
+          role="radiogroup"
+          aria-label={tx.groupLabel}
+          data-stagger=""
+        >
+          {THEMES.map((theme, i) => (
+            <button
+              key={theme.name}
+              type="button"
+              ref={(el) => {
+                chipRefs.current[i] = el;
+              }}
+              className={i === active ? styles.chipActive : styles.chip}
+              role="radio"
+              aria-checked={i === active}
+              tabIndex={i === active ? 0 : -1}
+              onClick={() => selectChip(i)}
+              onKeyDown={(e) => onChipKeyDown(e, i)}
+            >
+              <span className={styles.trio} aria-hidden="true">
+                <span style={{ background: theme.bg }} />
+                <span style={{ background: theme.surface }} />
+                <span style={{ background: theme.accent }} />
+              </span>
+              {theme.label}
+            </button>
+          ))}
+        </div>
+        {/* the ninth theme: follows the desktop scheme, so it cannot be
+            previewed here and is not part of the radio interaction */}
+        <span
+          className={`${styles.chip} ${styles.chipSystem}`}
+          aria-label={tx.systemLabel}
+        >
+          <span
+            className={`${styles.trio} ${styles.trioAuto}`}
+            aria-hidden="true"
           >
-            <span className={styles.trio} aria-hidden="true">
-              <span style={{ background: theme.bg }} />
-              <span style={{ background: theme.surface }} />
-              <span style={{ background: theme.accent }} />
-            </span>
-            {theme.label}
-          </button>
-        ))}
+            <span />
+            <span />
+            <span />
+          </span>
+          {tx.system}
+        </span>
       </div>
 
       <figure
