@@ -26,7 +26,7 @@ Everything core works on GNOME, but Mutter exposes less to applications than oth
 
 ## niri and other wlroots compositors
 
-On wlroots compositors (Sway, Hyprland, river, Wayfire, labwc, niri …) Unisic is nearly complete: layer-shell surfaces work as they do on Plasma.
+On wlroots compositors (Sway, Hyprland, river, Wayfire, labwc, niri ...) Unisic is nearly complete: layer-shell surfaces work as they do on Plasma.
 
 ### Screenshots
 

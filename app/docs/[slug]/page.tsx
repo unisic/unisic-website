@@ -21,9 +21,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const doc = getDoc(slug);
   if (!doc) return {};
   /* seoTitle is the query-shaped title ("Install Unisic on Linux"), doc.title
-     stays the sidebar label. Suffix is just the brand: " — Unisic Docs" spent
+     stays the sidebar label. Suffix is just the brand: " - Unisic Docs" spent
      14 characters of the ~60 Google shows before truncating. */
-  const title = `${doc.seoTitle} — Unisic`;
+  const title = `${doc.seoTitle} - Unisic`;
   return {
     title,
     description: doc.description,

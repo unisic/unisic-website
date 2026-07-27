@@ -12,7 +12,7 @@ This page introduces Unisic: what it is, the capture-to-upload workflow it cover
 
 Unisic is an open-source, zero-telemetry screenshot and screen recorder for Linux, licensed under the GNU GPL v3. Most snipping tools stop at a rectangle of pixels and walk away. Unisic covers everything that should happen *after* you press the hotkey.
 
-The moment you trigger a capture, Unisic gives you the whole workflow: annotate on the selection overlay before the shot is even taken, edit afterwards, copy text out of any region with OCR, record the same region as a GIF or video, and push the result wherever it belongs — clipboard, disk, or a custom upload destination with the link ready to paste.
+The moment you trigger a capture, Unisic gives you the whole workflow: annotate on the selection overlay before the shot is even taken, edit afterwards, copy text out of any region with OCR, record the same region as a GIF or video, and push the result wherever it belongs - clipboard, disk, or a custom upload destination with the link ready to paste.
 
 It is built for Linux on legitimate APIs only (`xdg-desktop-portal`, KWin ScreenShot2, PipeWire, KGlobalAccel, `wlr-screencopy`), and is written in C++20 / Qt 6 / QML with a fully custom UI.
 
@@ -22,7 +22,7 @@ Unisic treats a screenshot as the start of a task, not the end of one.
 
 ### Annotate before the shot
 
-Draw directly on the frozen capture overlay with nearly the whole editor tool set — pen, arrow, shapes, callout, text, highlight, blur, measure, steps and more — and the annotations are burnt into the final crop. Enter, Space, or a double-click captures; Esc cancels.
+Draw directly on the frozen capture overlay with nearly the whole editor tool set - pen, arrow, shapes, callout, text, highlight, blur, measure, steps and more - and the annotations are burnt into the final crop. Enter, Space, or a double-click captures; Esc cancels.
 
 ### Edit afterwards
 
@@ -42,7 +42,7 @@ The Edit page opens images and recordings that didn't come from a capture: image
 
 ### Upload
 
-Send the result to a custom HTTP destination, an imported `.sxcu` (ShareX) uploader, FTP/SFTP, or one of the built-in hosts (catbox.moe and expiring hosts like uguu.se) — and the resulting link is copied to your clipboard automatically.
+Send the result to a custom HTTP destination, an imported `.sxcu` (ShareX) uploader, FTP/SFTP, or one of the built-in hosts (catbox.moe and expiring hosts like uguu.se) - and the resulting link is copied to your clipboard automatically.
 
 ### History
 
@@ -64,15 +64,15 @@ See [Installation](/docs/installation) for the distro repositories and build ins
 
 ## Privacy
 
-Unisic collects nothing: no telemetry, no crash reporting, no analytics, no account. The only network requests it makes on its own are to `api.github.com` and `github.com` to check for a newer release — only the latest version tag is fetched, and nothing about you is sent. Uploads happen only when you trigger them, to destinations you configured.
+Unisic collects nothing: no telemetry, no crash reporting, no analytics, no account. The only network requests it makes on its own are to `api.github.com` and `github.com` to check for a newer release - only the latest version tag is fetched, and nothing about you is sent. Uploads happen only when you trigger them, to destinations you configured.
 
 ## License
 
-Unisic is free software under the **GNU GPL v3**. You are free to use, study, modify, and redistribute it — including commercially — but any distributed derivative must also be released under GPL v3 with full source. This keeps the project and every fork of it open, forever.
+Unisic is free software under the **GNU GPL v3**. You are free to use, study, modify, and redistribute it - including commercially - but any distributed derivative must also be released under GPL v3 with full source. This keeps the project and every fork of it open, forever.
 
 ## Development
 
-Unisic is developed with agentic AI assistance (see [`AGENTS.md`](https://github.com/unisic/unisic/blob/main/AGENTS.md) for the contributor guide those agents follow). Every generated change is read line by line and reviewed by the maintainer before it lands — the tooling speeds things up, but nothing merges unread, so the codebase stays free of unreviewed machine output and its usual mistakes. Bug reports are still the best safety net: if something slipped through, please [file an issue](https://github.com/unisic/unisic/issues).
+Unisic is developed with agentic AI assistance (see [`AGENTS.md`](https://github.com/unisic/unisic/blob/main/AGENTS.md) for the contributor guide those agents follow). Every generated change is read line by line and reviewed by the maintainer before it lands - the tooling speeds things up, but nothing merges unread, so the codebase stays free of unreviewed machine output and its usual mistakes. Bug reports are still the best safety net: if something slipped through, please [file an issue](https://github.com/unisic/unisic/issues).
 
 Unisic is built by [@DeBondor](https://github.com/DeBondor) and [@D3anDark](https://github.com/D3anDark), and inspired by [Flameshot](https://flameshot.org/) and [Spectacle](https://apps.kde.org/spectacle/).
 

@@ -1,7 +1,7 @@
 /*
  * Docs content layer. Every page under /docs is a Markdown file in
  * content/docs/*.md with front matter (title, description, order, group).
- * Files are read and rendered to HTML at build time — this whole module runs
+ * Files are read and rendered to HTML at build time - this whole module runs
  * during `next build` only (static export), never in the browser, so Node's
  * fs is fine here. To add or edit a page, touch the Markdown; nothing here
  * needs to change.

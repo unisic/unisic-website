@@ -13,7 +13,7 @@ export type ThemePalette = {
   textOnAccent: string;
 };
 
-/* Stroke swatches — a fixed annotation palette (Theme.qml:102), independent
+/* Stroke swatches - a fixed annotation palette (Theme.qml:102), independent
    of the app theme. Values map to the --swatch-N tokens in tokens.css. */
 export const SWATCHES = [1, 2, 3, 4, 5, 6, 7].map((n) => `var(--swatch-${n})`);
 

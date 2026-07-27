@@ -12,8 +12,8 @@ Unisic records your screen as an animated GIF or as MP4/WebM video, using the sa
 
 Unisic produces two kinds of recording:
 
-- **GIF** — encoded with a two-pass palette: the first pass analyzes the frames to build an optimized color palette, and the second pass encodes against it.
-- **MP4 / WebM** — standard video output, with optional **system audio** and **microphone** tracks (both off by default) — or the sound of a **single application**, alone or mixed with the microphone.
+- **GIF** - encoded with a two-pass palette: the first pass analyzes the frames to build an optimized color palette, and the second pass encodes against it.
+- **MP4 / WebM** - standard video output, with optional **system audio** and **microphone** tracks (both off by default) - or the sound of a **single application**, alone or mixed with the microphone.
 
 An optional countdown delays the start of a recording.
 
@@ -31,7 +31,7 @@ You can record any of three areas:
 
 ## Instant replay
 
-Instant replay records into a rolling buffer instead of a file: start it, forget it, and when something worth keeping happens press **Save replay** (or `Meta+Shift+I`) to write out the last stretch — 30 seconds by default, configurable on the Record page.
+Instant replay records into a rolling buffer instead of a file: start it, forget it, and when something worth keeping happens press **Save replay** (or `Meta+Shift+I`) to write out the last stretch - 30 seconds by default, configurable on the Record page.
 
 ## Trimming a recording
 

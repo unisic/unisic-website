@@ -26,21 +26,21 @@ Captures the currently focused window on its own, without you having to trace it
 
 ## Annotate before the shot
 
-Unisic lets you draw on the frozen overlay *before* the capture is taken, so the marks are part of the shot rather than a separate editing pass. Nearly the whole editor tool set is available on the overlay — pen, line, arrow, shapes, callout, text, highlight, blur, pixelate, smart eraser, measure, and numbered steps. Anything you draw inside the selection is burnt into the final crop.
+Unisic lets you draw on the frozen overlay *before* the capture is taken, so the marks are part of the shot rather than a separate editing pass. Nearly the whole editor tool set is available on the overlay - pen, line, arrow, shapes, callout, text, highlight, blur, pixelate, smart eraser, measure, and numbered steps. Anything you draw inside the selection is burnt into the final crop.
 
-As with a plain region capture, `Enter`, `Space`, or a double-click captures the annotated selection and `Esc` cancels. `Ctrl+drag` moves the selected region, `Ctrl+A` selects the whole screen, and `Ctrl+C` confirms and copies the result even when auto-copy is off. For the full tool set and post-capture editing, the editor opens afterwards — see [the editor](/docs/editor).
+As with a plain region capture, `Enter`, `Space`, or a double-click captures the annotated selection and `Esc` cancels. `Ctrl+drag` moves the selected region, `Ctrl+A` selects the whole screen, and `Ctrl+C` confirms and copies the result even when auto-copy is off. For the full tool set and post-capture editing, the editor opens afterwards - see [the editor](/docs/editor).
 
 ## Copy text out of a region (OCR)
 
 `Meta+Shift+T` opens the same region selection, but instead of an image you get text: the region is OCR'd and the recognized text lands on your clipboard. Point it at a QR code or barcode and the decoded payload is copied instead.
 
-For picking individual words out of a finished capture — to copy, highlight, or redact them — see [the editor](/docs/editor).
+For picking individual words out of a finished capture - to copy, highlight, or redact them - see [the editor](/docs/editor).
 
 ## Capture options
 
-- **Delay** — set a timer before the shot fires, useful for opening menus or hovering states that would otherwise close.
-- **Cursor** — optionally include the mouse cursor in the captured image.
-- **Do not disturb** — pauses desktop notifications while the capture runs, so they never land in the screenshot (KDE Plasma).
+- **Delay** - set a timer before the shot fires, useful for opening menus or hovering states that would otherwise close.
+- **Cursor** - optionally include the mouse cursor in the captured image.
+- **Do not disturb** - pauses desktop notifications while the capture runs, so they never land in the screenshot (KDE Plasma).
 
 ## How the pixels are captured
 
@@ -67,7 +67,7 @@ The default capture hotkeys are:
 | Copy last capture | `Meta+Shift+C` |
 | Open quick task chooser | `Meta+Shift+Space` |
 
-The quick task chooser picks a capture or recording mode (full screen, region, window, GIF, video). For the screenshot modes it can also apply a one-off action to that single result — copy only, edit only, save only, or upload only — without touching your global after-capture settings; GIF and video runs use the normal recording flow.
+The quick task chooser picks a capture or recording mode (full screen, region, window, GIF, video). For the screenshot modes it can also apply a one-off action to that single result - copy only, edit only, save only, or upload only - without touching your global after-capture settings; GIF and video runs use the normal recording flow.
 
 These are editable in Settings -> Hotkeys - see [hotkeys](/docs/hotkeys).
 
@@ -80,6 +80,6 @@ unisic --window
 unisic --measure   # on-screen measure overlay
 ```
 
-The capture flags accept modifiers: `--delay <seconds>` (0–60) waits before the shot, `--output <path>` saves to an explicit file (`-` streams the image to stdout), and `--format png|jpg|webp` picks the format for `--output`.
+The capture flags accept modifiers: `--delay <seconds>` (0-60) waits before the shot, `--output <path>` saves to an explicit file (`-` streams the image to stdout), and `--format png|jpg|webp` picks the format for `--output`.
 
 If Unisic is already running, a second invocation forwards the command to the running instance, which is how compositor-side keybinds drive captures.

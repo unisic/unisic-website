@@ -12,7 +12,7 @@ This page covers the post-capture editor: how it opens, its 15 tools, OCR text p
 
 The editor opens automatically after a [capture](/docs/capture). This is optional and can be turned off.
 
-It also opens for files that never came from a capture: the **Edit** page in the main window (`Ctrl+4`) opens any image in the editor — and any video or GIF in the trim window — regardless of where the file came from.
+It also opens for files that never came from a capture: the **Edit** page in the main window (`Ctrl+4`) opens any image in the editor - and any video or GIF in the trim window - regardless of where the file came from.
 
 `Ctrl+W` closes the editor (and the trim window).
 
@@ -38,8 +38,8 @@ The editor provides 15 tools, including:
 
 The editor's **More** menu reads text straight out of the capture:
 
-- **Copy all text** — OCR the whole image and copy everything recognized.
-- **Select text** — recognized words appear as selectable regions; select a subset, then copy it, make the highlight permanent, or **redact** it (an opaque black bar is painted over the selected words — never a blur, which can be recovered).
+- **Copy all text** - OCR the whole image and copy everything recognized.
+- **Select text** - recognized words appear as selectable regions; select a subset, then copy it, make the highlight permanent, or **redact** it (an opaque black bar is painted over the selected words - never a blur, which can be recovered).
 
 ## Stroke colors
 
@@ -62,7 +62,7 @@ Zoom in and out with `Ctrl+scroll`. Because edits live in image-pixel space, zoo
 | Zoom in / out / reset | `Ctrl++` / `Ctrl+-` / `Ctrl+0` |
 | Close the editor | `Ctrl+W` |
 
-Tools also switch with single keys — `T` text, `P` pen, `L` line, `A` arrow, `R` rectangle, `E` ellipse, `B` blur, `H` highlight, `M` measure, `C` crop. With the Edit shapes tool, `Delete` removes the selected shape and the arrow keys nudge it (`Shift` for ×10).
+Tools also switch with single keys - `T` text, `P` pen, `L` line, `A` arrow, `R` rectangle, `E` ellipse, `B` blur, `H` highlight, `M` measure, `C` crop. With the Edit shapes tool, `Delete` removes the selected shape and the arrow keys nudge it (`Shift` for ×10).
 
 ## Output actions
 

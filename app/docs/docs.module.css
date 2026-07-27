@@ -307,7 +307,7 @@
 }
 
 /* Next's app router skips its scroll-to-top when the changed segment's top
-   edge is already inside the viewport — scrolled ~100px, the doc title sits
+   edge is already inside the viewport - scrolled ~100px, the doc title sits
    half under the sticky glass header, and a sidebar click keeps that offset.
    Pull the segment's border box up to document y=0 and pad the same amount
    back (nothing moves visually): at any scroll offset the segment top is now

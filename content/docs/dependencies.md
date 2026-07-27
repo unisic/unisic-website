@@ -1,14 +1,14 @@
 ---
 title: "Optional dependencies"
 seoTitle: "Optional dependencies for recording and OCR"
-description: "Enable recording, the reliable clipboard, and OCR (with language packs) — the extra tools per distribution."
+description: "Enable recording, the reliable clipboard, and OCR (with language packs) - the extra tools per distribution."
 order: 2
 group: "Getting started"
 ---
 
 Unisic works out of the box on the built-in Wayland APIs. A handful of **optional** external tools unlock more: screen recording, the most reliable clipboard copy, and text recognition (OCR). None of them are required to take, annotate, and share screenshots.
 
-If you installed Unisic from a [distribution repository](/docs/installation#install-from-a-repository-recommended), the recording tools are already pulled in as dependencies — you only need this page to add **OCR language packs**, or if you run the AppImage or a source build. The app's own **Settings → General → Diagnostics → Run system check** lists exactly what is present on your machine and what is missing.
+If you installed Unisic from a [distribution repository](/docs/installation#install-from-a-repository-recommended), the recording tools are already pulled in as dependencies - you only need this page to add **OCR language packs**, or if you run the AppImage or a source build. The app's own **Settings → General → Diagnostics → Run system check** lists exactly what is present on your machine and what is missing.
 
 ## What each tool unlocks
 
@@ -17,7 +17,7 @@ If you installed Unisic from a [distribution repository](/docs/installation#inst
 | `ffmpeg` | Screen recording and GIF export | Recording and GIF are unavailable |
 | PipeWire | The screen-cast backend recording needs | Recording is unavailable |
 | `wl-clipboard` | The most reliable copy-to-clipboard on Wayland | Copy still works, less reliably in some apps |
-| Tesseract + a language pack | Text recognition (OCR) — copy text out of a capture | The OCR action recognizes nothing |
+| Tesseract + a language pack | Text recognition (OCR) - copy text out of a capture | The OCR action recognizes nothing |
 | Tesseract `osd` pack | OCR auto-detects the script of each capture | OCR loads every installed pack instead (slower) |
 | `grim` | Screenshots on wlroots compositors (niri, sway, Hyprland) | See [Compositors](/docs/compositors) |
 
@@ -76,7 +76,7 @@ For example, to add English and Polish on Fedora:
 sudo dnf install tesseract-langpack-eng tesseract-langpack-pol
 ```
 
-The same pattern applies on the other distributions — swap in the package name from the table and the language code you need.
+The same pattern applies on the other distributions - swap in the package name from the table and the language code you need.
 
 ## Verify
 

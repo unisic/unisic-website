@@ -17,7 +17,7 @@ Unisic keeps configuration separate from generated data.
 | Settings and upload destinations | `~/.config/unisic/` |
 | Capture history | `~/.local/share/unisic/` |
 
-Your custom [upload destinations](/docs/upload-destinations) — the app's **Servers** page — are part of the settings stored under `~/.config/unisic/`.
+Your custom [upload destinations](/docs/upload-destinations) - the app's **Servers** page - are part of the settings stored under `~/.config/unisic/`.
 
 ## Filename templates and formats
 
@@ -39,11 +39,11 @@ With **date subfolders** enabled, saved screenshots and recordings are organized
 
 ## Watermark
 
-Stamp every screenshot with a text or logo-image watermark — position and opacity are adjustable in Settings.
+Stamp every screenshot with a text or logo-image watermark - position and opacity are adjustable in Settings.
 
 ## Run a program after capture
 
-Hand every capture to a command of your choice, with `$input` standing for the capture file and `$output` for an optional result file — for example `oxipng -o 4 $input --out $output`. Commands are launched directly, without a shell.
+Hand every capture to a command of your choice, with `$input` standing for the capture file and `$output` for an optional result file - for example `oxipng -o 4 $input --out $output`. Commands are launched directly, without a shell.
 
 ## Export and import settings
 
@@ -63,9 +63,9 @@ unisic --fullscreen | --region | --window | --gif | --measure
 unisic --export-settings <file> | --import-settings <file>
 ```
 
-The `--fullscreen`, `--region`, `--window`, and `--measure` flags take modifiers (`--gif` does not): `--delay <seconds>` (0–60), `--output <path>` (`-` for stdout), and `--format png|jpg|webp`. `--tray-only` starts the app in the tray without raising the main window — meant for autostart entries.
+The `--fullscreen`, `--region`, `--window`, and `--measure` flags take modifiers (`--gif` does not): `--delay <seconds>` (0-60), `--output <path>` (`-` for stdout), and `--format png|jpg|webp`. `--tray-only` starts the app in the tray without raising the main window - meant for autostart entries.
 
-Running `unisic` with no arguments starts it in the background with the tray icon and main window. A second invocation does not launch another copy — it forwards the command to the already-running instance. This is how compositor-side keybinds work: your keybind runs `unisic --region` (or another flag), and the running instance carries out the command. See [Compositors](/docs/compositors) for binding these commands in compositors without a global-shortcuts portal.
+Running `unisic` with no arguments starts it in the background with the tray icon and main window. A second invocation does not launch another copy - it forwards the command to the already-running instance. This is how compositor-side keybinds work: your keybind runs `unisic --region` (or another flag), and the running instance carries out the command. See [Compositors](/docs/compositors) for binding these commands in compositors without a global-shortcuts portal.
 
 ## Appearance
 
@@ -83,7 +83,7 @@ Unisic ships with 9 themes:
 
 The System option follows the desktop's light/dark scheme and accent color, so Unisic matches the rest of your session automatically. Icons are themable per tool.
 
-Unisic's own interface speaks English, Polish, Spanish, and Italian — it follows the system locale, or pick a language in Settings.
+Unisic's own interface speaks English, Polish, Spanish, and Italian - it follows the system locale, or pick a language in Settings.
 
 ## Sound cues
 
@@ -93,10 +93,10 @@ Capture and recording play optional sound cues: a shutter on capture, a cue when
 
 The card that pops up after a capture is configurable in **Settings -> Notifications**:
 
-- **Actions** — every button on the card (edit, copy, link, QR, folder, upload, OCR, trim, delete) has a switch. Turning one off only hides it; buttons still appear only when the capture supports them.
-- **Trim from the card** — a recording's card offers Trim directly, opening the same trim window History uses.
-- **Position and distance** — the card's style, screen corner, and distance from the screen edge are adjustable, with a live preview of the real card while you pick.
-- **Style and timing** — five card styles (casual, compact, small, minimal, thumbnail), an auto-hide duration (0 keeps the card open), and an option to mute the card over full-screen apps.
+- **Actions** - every button on the card (edit, copy, link, QR, folder, upload, OCR, trim, delete) has a switch. Turning one off only hides it; buttons still appear only when the capture supports them.
+- **Trim from the card** - a recording's card offers Trim directly, opening the same trim window History uses.
+- **Position and distance** - the card's style, screen corner, and distance from the screen edge are adjustable, with a live preview of the real card while you pick.
+- **Style and timing** - five card styles (casual, compact, small, minimal, thumbnail), an auto-hide duration (0 keeps the card open), and an option to mute the card over full-screen apps.
 
 ## Updates
 
@@ -104,7 +104,7 @@ The AppImage updates itself in the background from GitHub releases; repo install
 
 ## First-run desktop file
 
-On first run in a KDE session, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications` (AppImage runs skip this — the AppImage mount path changes every run, so they capture through the portal instead). The desktop file declares:
+On first run in a KDE session, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications` (AppImage runs skip this - the AppImage mount path changes every run, so they capture through the portal instead). The desktop file declares:
 
 ```ini
 X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2

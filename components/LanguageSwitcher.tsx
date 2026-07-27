@@ -9,7 +9,7 @@ import { GlobeIcon } from "./icons";
 
 /*
  * Nav language picker. Each entry links to that locale's static page
- * (localePath: "/" for English, "/de" … for the rest), so switching is a
+ * (localePath: "/" for English, "/de" ... for the rest), so switching is a
  * plain navigation that works with the static export. Keyboard: Enter/Space
  * opens, Escape closes, outside click dismisses.
  *

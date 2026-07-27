@@ -4,9 +4,9 @@ import styles from "./docs.module.css";
 import { getDocGroups } from "../../lib/docs";
 import { SITE_URL } from "../../lib/site";
 
-const TITLE = "Documentation — Unisic";
+const TITLE = "Documentation - Unisic";
 const DESCRIPTION =
-  "Guides for installing, configuring and using Unisic — the open-source screenshot and screen recorder for Linux.";
+  "Guides for installing, configuring and using Unisic - the open-source screenshot and screen recorder for Linux.";
 
 export const metadata: Metadata = {
   title: TITLE,

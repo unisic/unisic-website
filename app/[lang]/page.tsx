@@ -9,7 +9,7 @@ import {
   DEFAULT_LOCALE,
 } from "../../lib/i18n/config";
 
-/* One static page per non-default locale ("/de", "/zh-Hant", …). English
+/* One static page per non-default locale ("/de", "/zh-Hant", ...). English
    lives at the apex, so it is excluded here; unlisted paths 404. */
 export function generateStaticParams() {
   return PREFIXED_LOCALES.map((lang) => ({ lang }));

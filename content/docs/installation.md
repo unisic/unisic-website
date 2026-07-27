@@ -10,7 +10,7 @@ This page covers how to install Unisic: the distribution repositories (recommend
 
 ## Requirements
 
-Unisic runs on Linux. You need a Wayland session with `xdg-desktop-portal` and a backend installed. Recording additionally needs PipeWire and `ffmpeg`, and text recognition (OCR) needs Tesseract with a language pack — all optional. See [Optional dependencies](/docs/dependencies) for the per-distribution packages. The app is built with C++20 / Qt 6 / QML.
+Unisic runs on Linux. You need a Wayland session with `xdg-desktop-portal` and a backend installed. Recording additionally needs PipeWire and `ffmpeg`, and text recognition (OCR) needs Tesseract with a language pack - all optional. See [Optional dependencies](/docs/dependencies) for the per-distribution packages. The app is built with C++20 / Qt 6 / QML.
 
 For compositor-specific setup (for example wlroots compositors like niri, which need `grim` for screenshots and compositor-side keybinds), see [Compositors](/docs/compositors).
 
@@ -144,7 +144,7 @@ services.pipewire.enable = true;
 
 ## Direct downloads
 
-The [Releases](https://github.com/unisic/unisic/releases/latest) page carries every format: the self-updating **AppImage**, plus one-off **.deb**, Fedora **.rpm**, and Arch **.pkg.tar.zst** packages that register their repository on first install — from then on updates arrive through `apt upgrade` / `dnf upgrade` / `pacman -Syu` like any other package. openSUSE has no release package (a binary rpm is pinned to the exact Qt it was built against); use the repository above.
+The [Releases](https://github.com/unisic/unisic/releases/latest) page carries every format: the self-updating **AppImage**, plus one-off **.deb**, Fedora **.rpm**, and Arch **.pkg.tar.zst** packages that register their repository on first install - from then on updates arrive through `apt upgrade` / `dnf upgrade` / `pacman -Syu` like any other package. openSUSE has no release package (a binary rpm is pinned to the exact Qt it was built against); use the repository above.
 
 ## Build from source
 
@@ -184,7 +184,7 @@ cmake --build build
 ./build/unisic
 ```
 
-PipeWire, Tesseract (with Leptonica), and zxing-cpp dev packages are optional at build time — without them the app builds with recording, OCR, or QR/barcode decoding disabled.
+PipeWire, Tesseract (with Leptonica), and zxing-cpp dev packages are optional at build time - without them the app builds with recording, OCR, or QR/barcode decoding disabled.
 
 ## Run
 

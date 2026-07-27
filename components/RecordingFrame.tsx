@@ -4,7 +4,7 @@ import type { Dictionary } from "../lib/i18n";
 /*
  * Static illustration of Unisic's recording overlay (RecordBorder.qml): an
  * accent-colored frame drawn around a screen region, with a "REC 0:42" badge
- * and a pulsing dot. Replaces the former interactive demo — pure server
+ * and a pulsing dot. Replaces the former interactive demo - pure server
  * markup, no timer and no client JS. The dot's pulse is CSS-only and stops
  * under prefers-reduced-motion (RecordingFrame.module.css).
  */

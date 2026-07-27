@@ -28,7 +28,7 @@ type ReleaseState =
 const isAsset = (sel: Selection): sel is AssetId => sel === "appimage";
 
 /*
- * Install picker: nothing is preselected. One row of buttons — the distros
+ * Install picker: nothing is preselected. One row of buttons - the distros
  * plus the AppImage direct download. Picking a distro animates in
  * either its install steps, or first a version switch (Ubuntu, openSUSE)
  * whose pick then animates in the steps. Picking a format animates in a

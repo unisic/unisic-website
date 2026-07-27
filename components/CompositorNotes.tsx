@@ -17,7 +17,7 @@ export function CompositorNotes({ dict }: { dict: Dictionary }) {
       </dl>
       {/* Uni, the mascot: signs off from the corner beneath the compositor
           notes. Purely decorative, so hidden from assistive tech. Plain <img>
-          is deliberate — the static export runs images unoptimized, so
+          is deliberate - the static export runs images unoptimized, so
           next/image would add no sizing/format gain here, only weight. Which
           is also why the source is a 400px WebP: it fills a 200px slot, and
           the 536px PNG it replaced was 588 KB of the landing page. */}

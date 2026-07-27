@@ -34,7 +34,7 @@ The main window has its own shortcuts, listed in-app under `Ctrl+/`:
 | Action | Shortcut |
 | --- | --- |
 | Show / hide the shortcut list | `Ctrl+/` |
-| Jump to a page | `Ctrl+1` … `Ctrl+7` |
+| Jump to a page | `Ctrl+1` ... `Ctrl+7` |
 | Open Settings | `Ctrl+,` |
 | Hide the window to the tray | `Ctrl+W` |
 | Quit Unisic | `Ctrl+Q` |
@@ -43,9 +43,9 @@ The main window has its own shortcuts, listed in-app under `Ctrl+/`:
 
 ## Editing hotkeys
 
-Every shortcut except the fixed stop key is editable. Change them in **Settings -> Hotkeys** — new bindings are applied to the system immediately — or in KDE's Shortcuts KCM. Every action can carry a second, alternative binding.
+Every shortcut except the fixed stop key is editable. Change them in **Settings -> Hotkeys** - new bindings are applied to the system immediately - or in KDE's Shortcuts KCM. Every action can carry a second, alternative binding.
 
-Screenshot hotkeys can also carry their own task preset — after-capture actions and an upload destination for just that key — so different keys route captures differently.
+Screenshot hotkeys can also carry their own task preset - after-capture actions and an upload destination for just that key - so different keys route captures differently.
 
 ## The fixed stop key
 
