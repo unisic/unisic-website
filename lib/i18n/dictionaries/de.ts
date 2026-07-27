@@ -4,9 +4,9 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const de: Dictionary = {
   "meta": {
-    "title": "Unisic — Screenshot-Tool & Bildschirmrekorder für Linux",
+    "title": "Unisic - Screenshot-Tool & Bildschirmrekorder für Linux",
     "description": "Open-Source-Screenshot-Tool und Bildschirmrekorder für Linux. Kommentieren vor der Aufnahme, bearbeiten danach, GIF und Video aufnehmen, überall hochladen. Keine Telemetrie, GPLv3.",
-    "ogTitle": "Unisic — Screenshots richtig gemacht unter Linux",
+    "ogTitle": "Unisic - Screenshots richtig gemacht unter Linux",
     "ogDescription": "Lautlose Aufnahme, Kommentieren vor der Aufnahme, ein Editor mit 15 Werkzeugen, GIF- und Videoaufnahme, OCR, sofortiges Hochladen. Keine Telemetrie, GPLv3.",
     "ogImageAlt": "Unisic Screenshot-Editor unter Linux"
   },
@@ -148,16 +148,15 @@ export const de: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "Das Unisic-Hauptfenster: eine Seitenleiste mit den Seiten Aufnehmen, Aufzeichnen, GIF, Bearbeiten, Verlauf, Server und Einstellungen sowie die Seite Aufnehmen mit Aktionen für Vollbild, Bereich und Fenster plus Umschaltern für die Aktionen nach der Aufnahme.",
+    "ariaLabel": "Das Unisic-Hauptfenster: eine Seitenleiste mit den Seiten Aufnehmen, Aufzeichnen und Bearbeiten über einer Bibliothek aus Verlauf und Server sowie die Seite Aufnehmen mit Aktionen für Vollbild, Bereich und Fenster plus dem Raster der Aufnahmeoptionen.",
     "nav": {
       "capture": "Aufnehmen",
       "record": "Aufzeichnen",
-      "gif": "GIF",
       "edit": "Bearbeiten",
       "history": "Verlauf",
-      "servers": "Server",
-      "settings": "Einstellungen"
+      "servers": "Server"
     },
+    "library": "Bibliothek",
     "pageTitle": "Aufnehmen",
     "pageSub": "Screenshots landen im Editor, wo Sie sie kommentieren und dann speichern, kopieren oder hochladen können.",
     "cards": {
@@ -174,8 +173,13 @@ export const de: Dictionary = {
         "sub": "Aktives Fenster"
       }
     },
-    "afterCapture": "Nach der Aufnahme",
-    "toggles": {
+    "options": {
+      "title": "Aufnahmeoptionen",
+      "delay": "Aufnahmeverzögerung",
+      "repeat": "Letzten Bereich wiederholen",
+      "repeatAction": "Wiederholen",
+      "server": "Upload-Server",
+      "cursor": "Mauszeiger einbeziehen",
       "editor": "Editor öffnen",
       "clipboard": "Bild in die Zwischenablage kopieren",
       "disk": "Automatisch auf Datenträger speichern",
@@ -183,11 +187,13 @@ export const de: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "Das Unisic-Editorfenster: eine Werkzeugleiste mit fünfzehn Anmerkungswerkzeugen, ein mit einem Pfeil, einer Hervorhebung und nummerierten Schritten kommentierter Screenshot sowie Aktionen zum Kopieren, Speichern und Hochladen.",
+    "ariaLabel": "Das Unisic-Editorfenster: eine Werkzeugkarte mit den Anmerkungswerkzeugen über der geöffneten Formen-Gruppe und ihren Strichoptionen, ein Screenshot mit Pfeil, Hervorhebung und nummerierten Schritten sowie Aktionen zum Kopieren, Speichern und Hochladen.",
     "title": "Unisic Editor",
+    "stroke": "Strich",
     "copy": "Kopieren",
     "save": "Speichern",
-    "upload": "Hochladen"
+    "upload": "Hochladen",
+    "more": "Mehr"
   },
   "footer": {
     "license": "Frei und quelloffen, GPL-3.0",

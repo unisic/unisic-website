@@ -4,9 +4,9 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const es: Dictionary = {
   "meta": {
-    "title": "Unisic — Captura de pantalla y grabador para Linux",
+    "title": "Unisic - Captura de pantalla y grabador para Linux",
     "description": "Capturador de pantalla y grabador de código abierto para Linux. Anota antes de capturar, edita después, graba GIF y vídeo, sube a cualquier sitio. Cero telemetría, GPLv3.",
-    "ogTitle": "Unisic — Capturas de pantalla bien hechas en Linux",
+    "ogTitle": "Unisic - Capturas de pantalla bien hechas en Linux",
     "ogDescription": "Captura silenciosa, anotación antes de disparar, un editor con 15 herramientas, grabación de GIF y vídeo, OCR, subida instantánea. Cero telemetría, GPLv3.",
     "ogImageAlt": "Editor de capturas Unisic en Linux"
   },
@@ -148,16 +148,15 @@ export const es: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "La ventana principal de Unisic: una barra lateral con las páginas Capturar, Grabar, GIF, Editar, Historial, Servidores y Ajustes, y la página Capturar con las acciones de pantalla completa, región y ventana, además de opciones posteriores a la captura.",
+    "ariaLabel": "La ventana principal de Unisic: una barra lateral con las páginas Capturar, Grabar y Editar sobre una biblioteca de Historial y Servidores, y la página Capturar con las acciones de pantalla completa, región y ventana, además de la cuadrícula de opciones de captura.",
     "nav": {
       "capture": "Capturar",
       "record": "Grabar",
-      "gif": "GIF",
       "edit": "Editar",
       "history": "Historial",
-      "servers": "Servidores",
-      "settings": "Ajustes"
+      "servers": "Servidores"
     },
+    "library": "Biblioteca",
     "pageTitle": "Capturar",
     "pageSub": "Las capturas llegan al editor, donde puedes anotar y luego guardar, copiar o subir.",
     "cards": {
@@ -174,8 +173,13 @@ export const es: Dictionary = {
         "sub": "Ventana activa"
       }
     },
-    "afterCapture": "Después de capturar",
-    "toggles": {
+    "options": {
+      "title": "Opciones de captura",
+      "delay": "Retardo de captura",
+      "repeat": "Repetir la última región",
+      "repeatAction": "Repetir",
+      "server": "Servidor de subida",
+      "cursor": "Incluir el cursor del ratón",
       "editor": "Abrir el editor",
       "clipboard": "Copiar imagen al portapapeles",
       "disk": "Guardar en disco automáticamente",
@@ -183,11 +187,13 @@ export const es: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "La ventana del editor de Unisic: una barra de herramientas con quince herramientas de anotación, una captura anotada con una flecha, un resaltado y pasos numerados, y acciones de copiar, guardar y subir.",
+    "ariaLabel": "La ventana del editor de Unisic: una tarjeta de herramientas con las herramientas de anotación sobre el grupo de formas abierto y sus opciones de trazo, una captura anotada con una flecha, un resaltado y pasos numerados, y las acciones de copiar, guardar y subir.",
     "title": "Editor de Unisic",
+    "stroke": "Trazo",
     "copy": "Copiar",
     "save": "Guardar",
-    "upload": "Subir"
+    "upload": "Subir",
+    "more": "Más"
   },
   "footer": {
     "license": "Libre y de código abierto, GPL-3.0",

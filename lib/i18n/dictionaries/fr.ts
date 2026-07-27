@@ -4,9 +4,9 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const fr: Dictionary = {
   "meta": {
-    "title": "Unisic — Capture d'écran et enregistreur pour Linux",
+    "title": "Unisic - Capture d'écran et enregistreur pour Linux",
     "description": "Capture d'écran et enregistreur d'écran open source pour Linux. Annotez avant la prise, retouchez après, enregistrez en GIF et en vidéo, envoyez partout. Zéro télémétrie, GPLv3.",
-    "ogTitle": "Unisic — Les captures d'écran bien faites sur Linux",
+    "ogTitle": "Unisic - Les captures d'écran bien faites sur Linux",
     "ogDescription": "Capture silencieuse, annotation avant la prise, un éditeur à 15 outils, enregistrement GIF et vidéo, OCR, envoi instantané. Zéro télémétrie, GPLv3.",
     "ogImageAlt": "L'éditeur de captures d'écran Unisic sur Linux"
   },
@@ -148,16 +148,15 @@ export const fr: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "La fenêtre principale d'Unisic : une barre latérale avec les pages Capture, Enregistrement, GIF, Édition, Historique, Serveurs et Paramètres, et la page Capture avec les actions écran entier, région et fenêtre ainsi que les options après capture.",
+    "ariaLabel": "La fenêtre principale d'Unisic : une barre latérale avec les pages Capture, Enregistrement et Édition au-dessus d'une bibliothèque Historique et Serveurs, et la page Capture avec les actions écran entier, région et fenêtre ainsi que la grille des options de capture.",
     "nav": {
       "capture": "Capture",
       "record": "Enregistrement",
-      "gif": "GIF",
       "edit": "Édition",
       "history": "Historique",
-      "servers": "Serveurs",
-      "settings": "Paramètres"
+      "servers": "Serveurs"
     },
+    "library": "Bibliothèque",
     "pageTitle": "Capture",
     "pageSub": "Les captures d'écran arrivent dans l'éditeur, où vous pouvez les annoter, puis les enregistrer, les copier ou les envoyer.",
     "cards": {
@@ -174,8 +173,13 @@ export const fr: Dictionary = {
         "sub": "Fenêtre active"
       }
     },
-    "afterCapture": "Après la capture",
-    "toggles": {
+    "options": {
+      "title": "Options de capture",
+      "delay": "Délai de capture",
+      "repeat": "Répéter la dernière région",
+      "repeatAction": "Répéter",
+      "server": "Serveur de téléversement",
+      "cursor": "Inclure le curseur de la souris",
       "editor": "Ouvrir l'éditeur",
       "clipboard": "Copier l'image dans le presse-papiers",
       "disk": "Enregistrer automatiquement sur le disque",
@@ -183,11 +187,13 @@ export const fr: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "La fenêtre de l'éditeur Unisic : une barre d'outils avec quinze outils d'annotation, une capture d'écran annotée d'une flèche, d'un surlignage et d'étapes numérotées, ainsi que les actions copier, enregistrer et envoyer.",
+    "ariaLabel": "La fenêtre de l'éditeur Unisic : une carte d'outils avec les outils d'annotation au-dessus du groupe de formes ouvert et de ses options de trait, une capture annotée d'une flèche, d'un surlignage et d'étapes numérotées, et les actions copier, enregistrer et envoyer.",
     "title": "Éditeur Unisic",
+    "stroke": "Trait",
     "copy": "Copier",
     "save": "Enregistrer",
-    "upload": "Envoyer"
+    "upload": "Envoyer",
+    "more": "Plus"
   },
   "footer": {
     "license": "Libre et open source, GPL-3.0",

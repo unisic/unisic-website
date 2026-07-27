@@ -1,8 +1,8 @@
 /*
- * The floating annotation toolbar over an abstract capture. Design canvas is
- * 720 x 300; --u = one design pixel resolved via container queries, so the
- * whole picture scales as one unit and the 21-item toolbar always fits its
- * canvas. Toolbar geometry mirrors EditorMockup (chip 32, dot 20, divider 24).
+ * The floating annotation tool card over an abstract capture. Design canvas
+ * is 720 x 300; --u = one design pixel resolved via container queries, so the
+ * whole picture scales as one unit and the two-row card always fits its
+ * canvas. Card geometry mirrors EditorMockup (chip 32, dot 20, divider 24).
  */
 
 .preview {
@@ -100,7 +100,7 @@
   }
 }
 
-/* ---- floating toolbar (EditorWindow.qml:179-308) ---- */
+/* ---- floating tool card (EditorWindow.qml:347-545) ---- */
 
 .toolbar {
   position: absolute;
@@ -108,13 +108,28 @@
   top: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  align-items: center;
-  gap: calc(4 * var(--u));
-  padding: calc(8 * var(--u)) calc(10 * var(--u));
+  flex-direction: column;
+  gap: calc(6 * var(--u));
+  padding: calc(9 * var(--u)) calc(12 * var(--u));
   border-radius: calc(18 * var(--u));
   background: linear-gradient(var(--chrome-liter), var(--primary));
   border: 1px solid var(--divider);
   box-shadow: 0 calc(10 * var(--u)) calc(24 * var(--u)) var(--shadow-color);
+}
+
+.toolRow {
+  display: flex;
+  align-items: center;
+  gap: calc(4 * var(--u));
+}
+
+/* the sub-bar slot the app always reserves, here holding the active tool's
+   color strip (EditorWindow.qml:453-459) */
+.subRow {
+  height: calc(34 * var(--u));
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
 }
 
 .chip,
@@ -158,8 +173,24 @@
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-/* selected dot: white ring + 1.12 scale, as ColorDot.qml */
+/* selected dot: accent ring, as ColorDot.qml:32-33 */
 .swatchSelected {
-  border: calc(2 * var(--u)) solid #fff;
+  border: calc(2 * var(--u)) solid var(--accent);
   transform: scale(1.12);
+}
+
+/* "More colors" (ToolPropsBar.qml:444-453) */
+.dotBtn {
+  width: calc(26 * var(--u));
+  height: calc(26 * var(--u));
+  border-radius: calc(8 * var(--u));
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  flex: none;
+}
+
+.dotGlyph {
+  width: calc(13 * var(--u));
+  height: calc(13 * var(--u));
 }

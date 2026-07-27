@@ -484,6 +484,63 @@ export function ConfigureIcon(p: IconProps) {
   );
 }
 
+/* The "Shapes" group chip: line, arrow, measure, rectangle, ellipse and
+   callout collapse behind this one glyph (EditorWindow.qml:143-161). */
+export function ShapesIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <Stroke>
+        <rect x="3.5" y="3.5" width="11" height="11" rx="1.5" />
+        <circle cx="15.5" cy="15.5" r="5" />
+      </Stroke>
+    </Svg>
+  );
+}
+
+export function MagnifyIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M10.5 3a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15Zm0 2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm-1 2.5h2V10H14v2h-2.5v2.5h-2V12H7v-2h2.5V7.5Zm6.1 9.5 1.4-1.4 4.3 4.3a1 1 0 0 1-1.4 1.4l-4.3-4.3Z"
+      />
+    </Svg>
+  );
+}
+
+export function EyedropperIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <Stroke>
+        <path d="M15.5 3.5 A4.5 4.5 0 0 1 21.5 9.5 L18 13 L11.5 6.5 Z" />
+        <path d="M9.5 4.5 L12.5 7.5 M11.5 6.5 L4 14 V20 H10 L17.5 12.5" />
+      </Stroke>
+    </Svg>
+  );
+}
+
+export function ChevronDownIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <Stroke>
+        <path d="M6 9 L12 15 L18 9" />
+      </Stroke>
+    </Svg>
+  );
+}
+
+export function RepeatIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path
+        fill="currentColor"
+        d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"
+      />
+    </Svg>
+  );
+}
+
 /* GitHub mark, official path from Simple Icons (CC0). */
 export function GitHubIcon(p: IconProps) {
   return (

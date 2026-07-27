@@ -4,9 +4,9 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const nl: Dictionary = {
   "meta": {
-    "title": "Unisic — Screenshot- en schermrecorder voor Linux",
+    "title": "Unisic - Screenshot- en schermrecorder voor Linux",
     "description": "Open-source screenshot- en schermrecorder voor Linux. Annoteer vóór de opname, bewerk erna, neem GIF en video op, upload overal. Geen telemetrie, GPLv3.",
-    "ogTitle": "Unisic — Screenshots zoals het hoort op Linux",
+    "ogTitle": "Unisic - Screenshots zoals het hoort op Linux",
     "ogDescription": "Geruisloos vastleggen, annotatie vóór de opname, een editor met 15 gereedschappen, GIF- en video-opname, OCR, direct uploaden. Geen telemetrie, GPLv3.",
     "ogImageAlt": "Unisic screenshot-editor op Linux"
   },
@@ -148,16 +148,15 @@ export const nl: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "Het Unisic-hoofdvenster: een zijbalk met de pagina's Vastleggen, Opnemen, GIF, Bewerken, Geschiedenis, Servers en Instellingen, en de pagina Vastleggen met acties voor volledig scherm, gebied en venster plus schakelaars voor na het vastleggen.",
+    "ariaLabel": "Het Unisic-hoofdvenster: een zijbalk met de pagina's Vastleggen, Opnemen en Bewerken boven een bibliotheek met Geschiedenis en Servers, en de pagina Vastleggen met acties voor volledig scherm, gebied en venster plus het raster met opnameopties.",
     "nav": {
       "capture": "Vastleggen",
       "record": "Opnemen",
-      "gif": "GIF",
       "edit": "Bewerken",
       "history": "Geschiedenis",
-      "servers": "Servers",
-      "settings": "Instellingen"
+      "servers": "Servers"
     },
+    "library": "Bibliotheek",
     "pageTitle": "Vastleggen",
     "pageSub": "Screenshots belanden in de editor, waar je kunt annoteren en vervolgens opslaan, kopiëren of uploaden.",
     "cards": {
@@ -174,8 +173,13 @@ export const nl: Dictionary = {
         "sub": "Actief venster"
       }
     },
-    "afterCapture": "Na het vastleggen",
-    "toggles": {
+    "options": {
+      "title": "Opname-opties",
+      "delay": "Opnamevertraging",
+      "repeat": "Laatste gebied herhalen",
+      "repeatAction": "Herhalen",
+      "server": "Uploadserver",
+      "cursor": "Muisaanwijzer meenemen",
       "editor": "Open de editor",
       "clipboard": "Afbeelding naar klembord kopiëren",
       "disk": "Automatisch naar schijf opslaan",
@@ -183,11 +187,13 @@ export const nl: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "Het Unisic-editorvenster: een werkbalk met vijftien annotatiegereedschappen, een screenshot geannoteerd met een pijl, een markering en genummerde stappen, en acties voor kopiëren, opslaan en uploaden.",
+    "ariaLabel": "Het Unisic-editorvenster: een gereedschapskaart met de annotatiegereedschappen boven de geopende vormengroep en de lijnopties, een screenshot met een pijl, een markering en genummerde stappen, en de acties kopiëren, opslaan en uploaden.",
     "title": "Unisic Editor",
+    "stroke": "Lijn",
     "copy": "Kopiëren",
     "save": "Opslaan",
-    "upload": "Uploaden"
+    "upload": "Uploaden",
+    "more": "Meer"
   },
   "footer": {
     "license": "Gratis en open source, GPL-3.0",

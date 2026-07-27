@@ -1,18 +1,18 @@
 /*
- * English master dictionary — the source of truth for every user-facing
+ * English master dictionary - the source of truth for every user-facing
  * string on the site, and the shape (`Dictionary`) every translation must
  * match. Brand names ("Unisic"), hotkey combos ("Meta+Shift+1"), format
- * labels (AppImage, .deb …), code snippets, URLs and version tags are NOT
+ * labels (AppImage, .deb ...), code snippets, URLs and version tags are NOT
  * here: they stay verbatim in the components. Tokens in braces ({keys},
  * {corner}, {color}, {theme}, {code}, {link}, {tag}) are filled at render.
  */
 
 export const en = {
   meta: {
-    title: "Unisic — Linux Screenshot Tool & Screen Recorder",
+    title: "Unisic - Linux Screenshot Tool & Screen Recorder",
     description:
       "Open-source screenshot and screen recorder for Linux. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
-    ogTitle: "Unisic — Screenshots done right on Linux",
+    ogTitle: "Unisic - Screenshots done right on Linux",
     ogDescription:
       "Silent capture, annotation before the shot, a 15-tool editor, GIF and video recording, OCR, instant upload. Zero telemetry, GPLv3.",
     ogImageAlt: "Unisic screenshot editor on Linux",
@@ -128,7 +128,7 @@ export const en = {
     checking: "Checking the latest release",
     latest: "Latest release {tag}",
     fallbackBtn: "Get it from GitHub Releases",
-    fallbackNote: "Couldn’t reach GitHub just now, but every build lives there.",
+    fallbackNote: "Couldn't reach GitHub just now, but every build lives there.",
     allReleases: "All releases and older builds",
     stability:
       "Unisic 0.7 is the first stable release. If your compositor still finds a way to surprise it, every report in {link} helps.",
@@ -178,16 +178,15 @@ export const en = {
 
   mainWindow: {
     ariaLabel:
-      "The Unisic main window: a sidebar with Capture, Record, GIF, Edit, History, Servers and Settings pages, and the Capture page with full screen, region and window actions plus after-capture toggles.",
+      "The Unisic main window: a sidebar with the Capture, Record and Edit pages above a History and Servers library, and the Capture page with full screen, region and window actions plus the capture options grid.",
     nav: {
       capture: "Capture",
       record: "Record",
-      gif: "GIF",
       edit: "Edit",
       history: "History",
       servers: "Servers",
-      settings: "Settings",
     },
+    library: "Library",
     pageTitle: "Capture",
     pageSub:
       "Screenshots land in the editor, where you can annotate, then save, copy or upload.",
@@ -196,8 +195,13 @@ export const en = {
       region: { title: "Region", sub: "Select + annotate live" },
       window: { title: "Window", sub: "Active window" },
     },
-    afterCapture: "After capture",
-    toggles: {
+    options: {
+      title: "Capture options",
+      delay: "Capture delay",
+      repeat: "Repeat last region",
+      repeatAction: "Repeat",
+      server: "Upload server",
+      cursor: "Include mouse cursor",
       editor: "Open the editor",
       clipboard: "Copy image to clipboard",
       disk: "Save to disk automatically",
@@ -207,11 +211,13 @@ export const en = {
 
   editorMockup: {
     ariaLabel:
-      "The Unisic editor window: a toolbar with fifteen annotation tools, a screenshot annotated with an arrow, a highlight and numbered steps, and copy, save and upload actions.",
+      "The Unisic editor window: a tool card with the annotation tools above the open shapes group and its stroke options, a screenshot annotated with an arrow, a highlight and numbered steps, and copy, save and upload actions.",
     title: "Unisic Editor",
+    stroke: "Stroke",
     copy: "Copy",
     save: "Save",
     upload: "Upload",
+    more: "More",
   },
 
   footer: {

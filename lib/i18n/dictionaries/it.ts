@@ -4,9 +4,9 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const it: Dictionary = {
   "meta": {
-    "title": "Unisic — Screenshot e registrazione schermo su Linux",
+    "title": "Unisic - Screenshot e registrazione schermo su Linux",
     "description": "Strumento open-source di screenshot e registrazione schermo per Linux. Annota prima dello scatto, modifica dopo, registra GIF e video, carica ovunque. Zero telemetria, GPLv3.",
-    "ogTitle": "Unisic — Screenshot fatti bene su Linux",
+    "ogTitle": "Unisic - Screenshot fatti bene su Linux",
     "ogDescription": "Cattura silenziosa, annotazione prima dello scatto, un editor con 15 strumenti, registrazione GIF e video, OCR, caricamento istantaneo. Zero telemetria, GPLv3.",
     "ogImageAlt": "Editor di screenshot Unisic su Linux"
   },
@@ -148,16 +148,15 @@ export const it: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "La finestra principale di Unisic: una barra laterale con le pagine Cattura, Registra, GIF, Modifica, Cronologia, Server e Impostazioni, e la pagina Cattura con le azioni schermo intero, regione e finestra più gli interruttori post-cattura.",
+    "ariaLabel": "La finestra principale di Unisic: una barra laterale con le pagine Cattura, Registra e Modifica sopra una libreria con Cronologia e Server, e la pagina Cattura con le azioni schermo intero, regione e finestra più la griglia delle opzioni di cattura.",
     "nav": {
       "capture": "Cattura",
       "record": "Registra",
-      "gif": "GIF",
       "edit": "Modifica",
       "history": "Cronologia",
-      "servers": "Server",
-      "settings": "Impostazioni"
+      "servers": "Server"
     },
+    "library": "Libreria",
     "pageTitle": "Cattura",
     "pageSub": "Gli screenshot arrivano nell'editor, dove puoi annotare, poi salvare, copiare o caricare.",
     "cards": {
@@ -174,8 +173,13 @@ export const it: Dictionary = {
         "sub": "Finestra attiva"
       }
     },
-    "afterCapture": "Dopo la cattura",
-    "toggles": {
+    "options": {
+      "title": "Opzioni di cattura",
+      "delay": "Ritardo di cattura",
+      "repeat": "Ripeti l'ultima regione",
+      "repeatAction": "Ripeti",
+      "server": "Server di caricamento",
+      "cursor": "Includi il cursore del mouse",
       "editor": "Apri l'editor",
       "clipboard": "Copia l'immagine negli appunti",
       "disk": "Salva su disco automaticamente",
@@ -183,11 +187,13 @@ export const it: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "La finestra dell'editor di Unisic: una barra degli strumenti con quindici strumenti di annotazione, uno screenshot annotato con una freccia, un'evidenziazione e passaggi numerati, e le azioni copia, salva e carica.",
+    "ariaLabel": "La finestra dell'editor di Unisic: una scheda strumenti con gli strumenti di annotazione sopra il gruppo forme aperto e le sue opzioni di tratto, uno screenshot annotato con una freccia, un'evidenziazione e passaggi numerati, e le azioni copia, salva e carica.",
     "title": "Editor Unisic",
+    "stroke": "Tratto",
     "copy": "Copia",
     "save": "Salva",
-    "upload": "Carica"
+    "upload": "Carica",
+    "more": "Altro"
   },
   "footer": {
     "license": "Gratuito e open source, GPL-3.0",

@@ -12,9 +12,9 @@ import { interpolate, type Dictionary } from "../lib/i18n";
 import {
   CameraIcon,
   CloseIcon,
-  ConfigureIcon,
   MinusIcon,
   MonitorIcon,
+  PenIcon,
   RecordIcon,
   RegionIcon,
   WindowIcon,
@@ -22,7 +22,7 @@ import {
 
 /*
  * Interactive theme picker: each chip repaints only the miniature main
- * window below with the real palette values from Theme.qml — the rest of
+ * window below with the real palette values from Theme.qml - the rest of
  * the landing page keeps its own "unisic" skin. "Unisic" is the default.
  * The palette values feed the preview through the local --p-* vars set on
  * the figure, so nothing leaks onto <html> and the surrounding page never
@@ -161,8 +161,8 @@ export function ThemeShowcase({ dict }: { dict: Dictionary }) {
                 Record
               </span>
               <span className={styles.nav}>
-                <ConfigureIcon className={styles.navIcon} />
-                Settings
+                <PenIcon className={styles.navIcon} />
+                Edit
               </span>
             </div>
             <div className={styles.content}>
@@ -176,8 +176,19 @@ export function ThemeShowcase({ dict }: { dict: Dictionary }) {
                   <RegionIcon className={styles.cardIcon} />
                   Region
                 </span>
+                <span className={styles.card}>
+                  <WindowIcon className={styles.cardIcon} />
+                  Window
+                </span>
               </div>
-              <span className={styles.accentBtn}>Capture region</span>
+              {/* one capture-option row: the accent lives in the switch,
+                  as it does on the real Capture page */}
+              <span className={styles.optRow}>
+                Open the editor
+                <span className={styles.switchOn}>
+                  <span className={styles.knob} />
+                </span>
+              </span>
             </div>
           </div>
         </div>

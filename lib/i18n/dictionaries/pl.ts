@@ -4,9 +4,9 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const pl: Dictionary = {
   "meta": {
-    "title": "Unisic — Zrzuty ekranu i nagrywanie ekranu na Linux",
+    "title": "Unisic - Zrzuty ekranu i nagrywanie ekranu na Linux",
     "description": "Otwartoźródłowy program do zrzutów ekranu i nagrywania ekranu dla Linux. Adnotacje przed zrzutem, edycja po nim, nagrywanie GIF-ów i wideo, przesyłanie wszędzie. Zero telemetrii, GPLv3.",
-    "ogTitle": "Unisic — Zrzuty ekranu zrobione jak należy na Linux",
+    "ogTitle": "Unisic - Zrzuty ekranu zrobione jak należy na Linux",
     "ogDescription": "Ciche przechwytywanie, adnotacje przed zrzutem, edytor z 15 narzędziami, nagrywanie GIF-ów i wideo, OCR, natychmiastowe przesyłanie. Zero telemetrii, GPLv3.",
     "ogImageAlt": "Edytor zrzutów ekranu Unisic na Linux"
   },
@@ -148,16 +148,15 @@ export const pl: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "Główne okno Unisic: pasek boczny ze stronami Przechwyć, Nagraj, GIF, Edytuj, Historia, Serwery i Ustawienia oraz strona Przechwyć z akcjami dla całego ekranu, obszaru i okna oraz przełącznikami działań po przechwyceniu.",
+    "ariaLabel": "Główne okno Unisic: pasek boczny ze stronami Przechwyć, Nagraj i Edytuj nad biblioteką Historia i Serwery oraz strona Przechwyć z akcjami dla całego ekranu, obszaru i okna oraz siatką opcji przechwytywania.",
     "nav": {
       "capture": "Przechwyć",
       "record": "Nagraj",
-      "gif": "GIF",
       "edit": "Edytuj",
       "history": "Historia",
-      "servers": "Serwery",
-      "settings": "Ustawienia"
+      "servers": "Serwery"
     },
+    "library": "Biblioteka",
     "pageTitle": "Przechwyć",
     "pageSub": "Zrzuty ekranu lądują w edytorze, gdzie możesz dodać adnotacje, a następnie zapisać, skopiować lub przesłać.",
     "cards": {
@@ -174,8 +173,13 @@ export const pl: Dictionary = {
         "sub": "Aktywne okno"
       }
     },
-    "afterCapture": "Po przechwyceniu",
-    "toggles": {
+    "options": {
+      "title": "Opcje przechwytywania",
+      "delay": "Opóźnienie przechwytywania",
+      "repeat": "Powtórz ostatni obszar",
+      "repeatAction": "Powtórz",
+      "server": "Serwer wysyłki",
+      "cursor": "Dołącz kursor myszy",
       "editor": "Otwórz edytor",
       "clipboard": "Kopiuj obraz do schowka",
       "disk": "Zapisz na dysku automatycznie",
@@ -183,11 +187,13 @@ export const pl: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "Okno edytora Unisic: pasek narzędzi z piętnastoma narzędziami do adnotacji, zrzut ekranu opatrzony strzałką, wyróżnieniem i ponumerowanymi krokami oraz akcje kopiowania, zapisu i przesyłania.",
+    "ariaLabel": "Okno edytora Unisic: karta narzędzi z narzędziami adnotacji nad otwartą grupą kształtów i jej opcjami kreski, zrzut ekranu z adnotacjami w postaci strzałki, zakreślenia i numerowanych kroków oraz akcje kopiowania, zapisu i przesyłania.",
     "title": "Edytor Unisic",
+    "stroke": "Grubość",
     "copy": "Kopiuj",
     "save": "Zapisz",
-    "upload": "Prześlij"
+    "upload": "Prześlij",
+    "more": "Więcej"
   },
   "footer": {
     "license": "Wolne i otwartoźródłowe, GPL-3.0",

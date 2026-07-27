@@ -4,9 +4,9 @@ import { type Dictionary } from "./en";
 // Structure validated against en.ts.
 export const zhHant: Dictionary = {
   "meta": {
-    "title": "Unisic — Linux 螢幕截圖與螢幕錄影工具",
+    "title": "Unisic - Linux 螢幕截圖與螢幕錄影工具",
     "description": "適用於 Linux 的開源截圖與螢幕錄影工具。截圖前先標註，事後再編輯，錄製 GIF 與影片，隨處上傳。零遙測，GPLv3。",
-    "ogTitle": "Unisic — 在 Linux 上把截圖做對",
+    "ogTitle": "Unisic - 在 Linux 上把截圖做對",
     "ogDescription": "靜默擷取、截圖前標註、15 種工具的編輯器、GIF 與影片錄製、OCR、即時上傳。零遙測，GPLv3。",
     "ogImageAlt": "Linux 上的 Unisic 截圖編輯器"
   },
@@ -63,7 +63,7 @@ export const zhHant: Dictionary = {
   },
   "recording": {
     "title": "同一塊區域，錄成 GIF 或影片",
-    "lede": "GIF 採用兩階段調色盤帶來鮮明色彩；MP4 與 WebM 則可選擇收錄系統、麥克風或單一應用程式的音訊——皆透過 ScreenCast portal、PipeWire 與 ffmpeg。可錄製一塊區域、整個螢幕或單一視窗，也可以讓即時重播緩衝最後 30 秒，並直接從通知卡片修剪成品。",
+    "lede": "GIF 採用兩階段調色盤帶來鮮明色彩；MP4 與 WebM 則可選擇收錄系統、麥克風或單一應用程式的音訊--皆透過 ScreenCast portal、PipeWire 與 ffmpeg。可錄製一塊區域、整個螢幕或單一視窗，也可以讓即時重播緩衝最後 30 秒，並直接從通知卡片修剪成品。",
     "note": "無論焦點在哪裡，{keys} 都能停止錄製。",
     "caption": "正在錄製的一塊螢幕區域：Unisic 在區域四周畫出強調色邊框，並附上 REC 標記與計時器。"
   },
@@ -80,7 +80,7 @@ export const zhHant: Dictionary = {
   "download": {
     "title": "安裝 Unisic",
     "lede": "需要具備 xdg-desktop-portal 的 Wayland 工作階段。錄製功能另需 PipeWire 與 ffmpeg。",
-    "repoLede": "選擇你的發行版——軟體庫會透過套件管理器讓 Unisic 保持最新。AppImage 為直接下載，發佈版本中也附有一次性的 .deb、.rpm 與 Arch 套件，首次安裝時就會設定好軟體庫。",
+    "repoLede": "選擇你的發行版--軟體庫會透過套件管理器讓 Unisic 保持最新。AppImage 為直接下載，發佈版本中也附有一次性的 .deb、.rpm 與 Arch 套件，首次安裝時就會設定好軟體庫。",
     "distroListLabel": "選擇發行版或軟體套件格式",
     "versionLabel": "版本",
     "copyCmd": "複製命令",
@@ -93,13 +93,13 @@ export const zhHant: Dictionary = {
       "install": "安裝 Unisic："
     },
     "notes": {
-      "ubuntu": "Ubuntu 25.10 將於 2026 年 7 月結束支援——建議選擇 26.04。兩者都需要 Qt 6.5+，較舊的版本並未提供。",
+      "ubuntu": "Ubuntu 25.10 將於 2026 年 7 月結束支援--建議選擇 26.04。兩者都需要 Qt 6.5+，較舊的版本並未提供。",
       "debian": "因需要 Qt 6.5+，須使用 Debian 13（trixie）或更新版本。",
       "fedora": "提供 Fedora 43、44 與 Rawhide 的組建。COPR 組建會一併安裝選用相依套件，因此錄製、OCR 與 QR 解碼都能直接使用。",
       "opensuse": "重新整理時 zypper 會要求你接受軟體庫的簽署金鑰。",
-      "arch": "openSUSE Build Service 上的已簽署 pacman 軟體庫——不需要 AUR。",
+      "arch": "openSUSE Build Service 上的已簽署 pacman 軟體庫--不需要 AUR。",
       "nix": "只要有 Nix 就能執行，包含 NixOS。可用 nix run 直接試用，或把 flake 作為 input 加入設定進行宣告式安裝；在 NixOS 上請啟用 xdg.portal 與 PipeWire。",
-      "appimage": "通用格式——可在任何發行版上執行。透過內嵌的 zsync 自行更新：只下載有變動的區塊並就地替換，閒置時重新啟動。"
+      "appimage": "通用格式--可在任何發行版上執行。透過內嵌的 zsync 自行更新：只下載有變動的區塊並就地替換，閒置時重新啟動。"
     },
     "downloadBtn": "下載",
     "checking": "正在查看最新版本",
@@ -148,16 +148,15 @@ export const zhHant: Dictionary = {
     }
   },
   "mainWindow": {
-    "ariaLabel": "Unisic 主視窗：側邊欄含擷取、錄製、GIF、編輯、歷史記錄、伺服器與設定等頁面，以及擷取頁面，內含整個螢幕、區域與視窗動作，還有擷取後的切換選項。",
+    "ariaLabel": "Unisic 主視窗：側邊欄上方是擷取、錄製與編輯頁面，下方是歷史記錄與伺服器組成的資料庫；擷取頁面提供整個螢幕、區域與視窗動作，以及擷取選項格線。",
     "nav": {
       "capture": "擷取",
       "record": "錄製",
-      "gif": "GIF",
       "edit": "編輯",
       "history": "歷史記錄",
-      "servers": "伺服器",
-      "settings": "設定"
+      "servers": "伺服器"
     },
+    "library": "資料庫",
     "pageTitle": "擷取",
     "pageSub": "截圖會進到編輯器，你可以在其中標註，然後儲存、複製或上傳。",
     "cards": {
@@ -174,8 +173,13 @@ export const zhHant: Dictionary = {
         "sub": "使用中的視窗"
       }
     },
-    "afterCapture": "擷取後",
-    "toggles": {
+    "options": {
+      "title": "擷取選項",
+      "delay": "擷取延遲",
+      "repeat": "重複上次區域",
+      "repeatAction": "重複",
+      "server": "上傳伺服器",
+      "cursor": "包含滑鼠游標",
       "editor": "開啟編輯器",
       "clipboard": "將影像複製到剪貼簿",
       "disk": "自動儲存到磁碟",
@@ -183,11 +187,13 @@ export const zhHant: Dictionary = {
     }
   },
   "editorMockup": {
-    "ariaLabel": "Unisic 編輯器視窗：工具列含十五種標註工具、一張以箭頭、螢光標記與編號步驟標註過的截圖，以及複製、儲存與上傳動作。",
+    "ariaLabel": "Unisic 編輯器視窗：工具卡片上方是標註工具，下方是展開的形狀群組及其筆畫選項；截圖上有箭頭、螢光標示與編號步驟標註，還有複製、儲存與上傳動作。",
     "title": "Unisic 編輯器",
+    "stroke": "筆畫",
     "copy": "複製",
     "save": "儲存",
-    "upload": "上傳"
+    "upload": "上傳",
+    "more": "更多"
   },
   "footer": {
     "license": "自由且開放原始碼，GPL-3.0",

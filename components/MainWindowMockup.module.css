@@ -1,8 +1,10 @@
 /*
  * Design canvas: 1060 x 700 (Main.qml:10-13). --u = one design pixel.
- * Title bar 38px + sidebar 224px, both lighter(primary,1.12) gradients
- * (Main.qml:84-87, 148-151); window backdrop background -> backgroundDeep
- * (Main.qml:70-73); Capture page per CapturePage.qml.
+ * Flat backgroundDeep backdrop (Main.qml:213-216) carrying a 38px title bar
+ * and a 224px sidebar with no chrome of its own; the page rides a rounded
+ * `background` card inset by spacingM (Main.qml:674-709) with the accent glow
+ * bleeding 230px down from its top edge. Capture page per CapturePage.qml,
+ * rows per unisic-kit USettingRow (56px, radiusM, surface + divider).
  */
 
 .frame {
@@ -17,7 +19,7 @@
   display: flex;
   flex-direction: column;
   border-radius: calc(18 * var(--u));
-  background: linear-gradient(var(--bg), var(--bg-deep));
+  background: var(--bg-deep);
   border: 1px solid var(--divider);
   box-shadow:
     0 calc(28 * var(--u)) calc(70 * var(--u)) rgba(0, 0, 0, 0.55),
@@ -25,19 +27,23 @@
   overflow: hidden;
 }
 
-/* ---- title bar (Main.qml:76-141) ---- */
+/* ---- title bar (Main.qml:218-276) ---- */
 
 .titlebar {
   height: calc(38 * var(--u));
   flex: none;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 calc(6 * var(--u)) 0 calc(20 * var(--u));
-  background: linear-gradient(var(--chrome-lite), var(--primary));
+  justify-content: flex-end;
+  padding-right: calc(7 * var(--u));
 }
 
 .title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
   font-size: calc(14 * var(--u));
   font-weight: 600;
   color: var(--text);
@@ -46,7 +52,7 @@
 
 .winControls {
   display: flex;
-  gap: calc(2 * var(--u));
+  gap: calc(1 * var(--u));
 }
 
 .winBtn {
@@ -63,7 +69,7 @@
   height: calc(14 * var(--u));
 }
 
-/* ---- sidebar (Main.qml:143-268) ---- */
+/* ---- sidebar (Main.qml:279-440) ---- */
 
 .body {
   flex: 1;
@@ -74,46 +80,37 @@
 .sidebar {
   width: calc(224 * var(--u));
   flex: none;
-  background: linear-gradient(var(--chrome-lite), var(--primary));
-  box-shadow: calc(3 * var(--u)) 0 calc(12 * var(--u)) rgba(0, 0, 0, 0.35);
-  padding: calc(32 * var(--u)) calc(12 * var(--u)) calc(20 * var(--u));
-  display: flex;
-  flex-direction: column;
-}
-
-.brandRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: calc(10 * var(--u));
-  margin-bottom: calc(32 * var(--u));
-}
-
-.brandLogo svg {
-  width: calc(34 * var(--u));
-  height: calc(34 * var(--u));
-}
-
-.brandName {
-  font-size: calc(22 * var(--u));
-  font-weight: 700;
-  line-height: 1;
-}
-
-.navList {
+  padding: calc(12 * var(--u));
   display: flex;
   flex-direction: column;
   gap: calc(4 * var(--u));
 }
 
+/* Section headers, like the app-name row in a music player (Main.qml:302). */
+.groupLabel,
+.groupLabelGap {
+  padding-left: calc(11 * var(--u));
+  font-size: calc(12 * var(--u));
+  font-weight: 600;
+  color: var(--text-tertiary);
+  line-height: calc(21 * var(--u));
+}
+
+/* The spacer Item between the two groups (Main.qml:315). */
+.groupLabelGap {
+  margin-top: calc(12 * var(--u));
+}
+
+/* SidebarItem.qml: 38px, radiusS, 11px inset, 17px icon, 10px gap */
 .navItem,
 .navItemActive {
-  height: calc(44 * var(--u));
-  border-radius: calc(12 * var(--u));
+  height: calc(38 * var(--u));
+  flex: none;
+  border-radius: calc(8 * var(--u));
   display: flex;
   align-items: center;
-  gap: calc(12 * var(--u));
-  padding-left: calc(14 * var(--u));
+  gap: calc(10 * var(--u));
+  padding-left: calc(11 * var(--u));
   font-size: calc(14 * var(--u));
   line-height: 1;
   color: var(--text-secondary);
@@ -126,17 +123,96 @@
 }
 
 .navIcon {
-  width: calc(18 * var(--u));
-  height: calc(18 * var(--u));
+  width: calc(17 * var(--u));
+  height: calc(17 * var(--u));
   flex: none;
 }
 
-/* ---- Capture page (CapturePage.qml) ---- */
+/* App card at the bottom: identity + version left, Settings gear right
+   (Main.qml:333-434). */
+.appCard {
+  margin-top: auto;
+  height: calc(56 * var(--u));
+  flex: none;
+  border-radius: calc(12 * var(--u));
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  display: flex;
+  align-items: center;
+  padding: 0 calc(8 * var(--u)) 0 calc(11 * var(--u));
+  gap: calc(10 * var(--u));
+}
+
+.appIcon svg {
+  width: calc(32 * var(--u));
+  height: calc(32 * var(--u));
+}
+
+.appText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(1 * var(--u));
+}
+
+.appName {
+  font-size: calc(14 * var(--u));
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.appVersion {
+  font-size: calc(12 * var(--u));
+  color: var(--text-tertiary);
+  line-height: 1.3;
+}
+
+.gearBtn {
+  width: calc(30 * var(--u));
+  height: calc(30 * var(--u));
+  flex: none;
+  border-radius: calc(8 * var(--u));
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+}
+
+.gearGlyph {
+  width: calc(17 * var(--u));
+  height: calc(17 * var(--u));
+}
+
+/* ---- content card (Main.qml:674-709) ---- */
 
 .content {
   flex: 1;
   min-width: 0;
-  padding: calc(32 * var(--u)) calc(32 * var(--u)) calc(20 * var(--u));
+  margin: calc(12 * var(--u)) calc(12 * var(--u)) calc(12 * var(--u)) 0;
+  border-radius: calc(18 * var(--u));
+  background: var(--bg);
+  border: 1px solid var(--edge-light);
+  position: relative;
+  overflow: hidden;
+}
+
+/* accent wash bleeding down from the card's top edge */
+.glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(230 * var(--u));
+  background: linear-gradient(rgba(200, 172, 214, 0.14), rgba(200, 172, 214, 0));
+  border-radius: calc(17 * var(--u)) calc(17 * var(--u)) 0 0;
+}
+
+/* ---- Capture page (CapturePage.qml) ---- */
+
+.page {
+  position: relative;
+  height: 100%;
+  padding: calc(32 * var(--u));
   display: flex;
   flex-direction: column;
 }
@@ -144,37 +220,37 @@
 .pageTitle {
   font-size: calc(28 * var(--u));
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .pageSub {
-  margin-top: calc(20 * var(--u));
+  margin-top: calc(3 * var(--u));
   font-size: calc(14 * var(--u));
   color: var(--text-secondary);
-  line-height: 1.4;
+  line-height: 1.35;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .cardRow {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: calc(20 * var(--u));
-  margin-top: calc(46 * var(--u));
+  margin-top: calc(12 * var(--u));
 }
 
 .card {
-  width: calc(218 * var(--u));
-  height: calc(172 * var(--u));
+  height: calc(140 * var(--u));
   border-radius: calc(26 * var(--u));
   background: linear-gradient(var(--surface-top), var(--surface-bottom));
   border: 1px solid var(--divider);
-  box-shadow: 0 calc(5 * var(--u)) calc(14 * var(--u)) var(--shadow-color);
+  box-shadow: 0 calc(4 * var(--u)) calc(14 * var(--u)) var(--shadow-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(10 * var(--u));
+  gap: calc(8 * var(--u));
 }
 
 .cardIcon {
@@ -196,45 +272,108 @@
 }
 
 .cardChip {
-  padding: calc(4 * var(--u)) calc(10 * var(--u));
+  height: calc(22 * var(--u));
+  padding: 0 calc(9 * var(--u));
   border-radius: calc(11 * var(--u));
   background: var(--primary);
   color: var(--accent);
   font-family: var(--font-mono), monospace;
   font-size: calc(11 * var(--u));
-  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
 }
 
-/* "After capture" UCard (CapturePage.qml:137-176) */
+/* ---- "Capture options" grid (CapturePage.qml:221-303) ---- */
 
-.afterCard {
-  margin-top: calc(20 * var(--u));
-  max-width: calc(694 * var(--u));
-  border-radius: calc(18 * var(--u));
-  background: linear-gradient(var(--surface-top), var(--surface-bottom));
-  border: 1px solid var(--divider);
-  padding: calc(16 * var(--u)) calc(20 * var(--u));
-  display: flex;
-  flex-direction: column;
-}
-
-.afterTitle {
+.sectionTitle {
+  margin-top: calc(18 * var(--u)); /* spacingM + the header's 6px topPadding */
   font-size: calc(17 * var(--u));
-  font-weight: 600;
-  margin-bottom: calc(6 * var(--u));
+  font-weight: 700;
+  line-height: 1.3;
 }
 
-.toggleRow {
-  height: calc(36 * var(--u));
+.optionGrid {
+  margin-top: calc(12 * var(--u));
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(12 * var(--u));
+}
+
+/* USettingRow.qml: 40px head + 16px padding, radiusM, surface + divider */
+.optRow {
+  height: calc(56 * var(--u));
+  border-radius: calc(12 * var(--u));
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  padding: 0 calc(12 * var(--u));
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: calc(12 * var(--u));
 }
 
-.toggleLabel {
+.optLabel {
   font-size: calc(14 * var(--u));
   color: var(--text);
+  line-height: 1.3;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* UComboBox.qml / UValueCombo.qml: 40px, radiusM, surfaceHi, 14px inset */
+.comboShort,
+.comboWide {
+  height: calc(40 * var(--u));
+  flex: none;
+  border-radius: calc(12 * var(--u));
+  background: var(--surface-hi);
+  border: 1px solid var(--divider);
+  padding: 0 calc(10 * var(--u)) 0 calc(14 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(8 * var(--u));
+  font-size: calc(14 * var(--u));
   line-height: 1;
+}
+
+.comboShort {
+  width: calc(130 * var(--u));
+}
+
+.comboWide {
+  width: calc(190 * var(--u));
+}
+
+.comboChevron {
+  width: calc(16 * var(--u));
+  height: calc(16 * var(--u));
+  flex: none;
+  color: var(--text-secondary);
+}
+
+/* UButton.qml, variant "tonal" + compact: 34px pill on tertiary */
+.tonalBtn {
+  height: calc(34 * var(--u));
+  flex: none;
+  border-radius: calc(17 * var(--u));
+  background: var(--tertiary);
+  border: 1px solid var(--divider);
+  padding: 0 calc(14 * var(--u));
+  display: flex;
+  align-items: center;
+  gap: calc(7 * var(--u));
+  font-size: calc(14 * var(--u));
+  font-weight: 600;
+  line-height: 1;
+}
+
+.btnGlyph {
+  width: calc(16 * var(--u));
+  height: calc(16 * var(--u));
+  flex: none;
 }
 
 /* USwitch.qml: 50x30 track, radius 15, 24px always-white gradient knob */

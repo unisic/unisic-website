@@ -1,8 +1,10 @@
 /*
  * Design canvas: 720 x 450 (16/10). --u = one design pixel, resolved via
  * container queries so the whole window scales as a single picture.
- * Geometry mirrors EditorWindow.qml: 38px title bar, radius-18 pill
- * toolbar, canvas frame, 64px bottom bar.
+ * Geometry mirrors EditorWindow.qml: 38px title bar on the `background`
+ * backdrop, the radius-18 tool card with its main row and its
+ * always-reserved sub-bar row (:347-545), the canvas frame, and the 64px
+ * bottom bar (:866-960).
  */
 
 .frame {
@@ -17,7 +19,7 @@
   display: flex;
   flex-direction: column;
   border-radius: calc(18 * var(--u));
-  background: var(--primary);
+  background: var(--bg);
   border: 1px solid var(--divider);
   box-shadow:
     0 calc(24 * var(--u)) calc(60 * var(--u)) rgba(0, 0, 0, 0.5),
@@ -35,7 +37,6 @@
   justify-content: space-between;
   padding: 0 calc(12 * var(--u));
   background: linear-gradient(var(--chrome-lite), var(--primary));
-  border-bottom: 1px solid var(--divider);
 }
 
 .title {
@@ -71,14 +72,29 @@
 .toolbar {
   flex: none;
   display: flex;
-  align-items: center;
-  gap: calc(4 * var(--u));
+  flex-direction: column;
+  gap: calc(6 * var(--u));
   margin: calc(10 * var(--u)) calc(10 * var(--u)) 0;
-  padding: calc(8 * var(--u)) calc(10 * var(--u));
+  padding: calc(9 * var(--u)) calc(12 * var(--u));
   border-radius: calc(18 * var(--u));
   background: linear-gradient(var(--chrome-liter), var(--primary));
   border: 1px solid var(--divider);
   box-shadow: 0 calc(4 * var(--u)) calc(12 * var(--u)) var(--shadow-color);
+}
+
+.toolRow {
+  display: flex;
+  align-items: center;
+  gap: calc(4 * var(--u));
+}
+
+/* The sub-bar slot is always reserved at one row height, so switching tools
+   never shifts the canvas below (EditorWindow.qml:453-459). */
+.subRow {
+  height: calc(34 * var(--u));
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
 }
 
 .chip,
@@ -122,10 +138,61 @@
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-/* selected dot: white ring + 1.12 scale, as ColorDot.qml */
+/* selected dot: accent ring, as ColorDot.qml:32-33 */
 .swatchSelected {
-  border: calc(2 * var(--u)) solid #fff;
+  border: calc(2 * var(--u)) solid var(--accent);
   transform: scale(1.12);
+}
+
+/* "More colors" (ToolPropsBar.qml:444-453) */
+.dotBtn {
+  width: calc(26 * var(--u));
+  height: calc(26 * var(--u));
+  border-radius: calc(8 * var(--u));
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  flex: none;
+}
+
+.dotGlyph {
+  width: calc(13 * var(--u));
+  height: calc(13 * var(--u));
+}
+
+/* labelled value combo in the props strip (ToolPropsBar.qml:466-489) */
+.propCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(2 * var(--u));
+  flex: none;
+}
+
+.propLabel {
+  font-size: calc(9 * var(--u));
+  color: var(--text-tertiary);
+  line-height: 1;
+}
+
+.propCombo {
+  width: calc(76 * var(--u));
+  height: calc(22 * var(--u));
+  border-radius: calc(8 * var(--u));
+  background: var(--surface-hi);
+  border: 1px solid var(--divider);
+  padding: 0 calc(5 * var(--u)) 0 calc(8 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(11 * var(--u));
+  line-height: 1;
+}
+
+.propChevron {
+  width: calc(11 * var(--u));
+  height: calc(11 * var(--u));
+  color: var(--text-secondary);
 }
 
 /* ---- canvas (EditorWindow.qml:311-492) ---- */
@@ -336,8 +403,10 @@
   align-items: center;
 }
 
-.ghostBtn,
-.fillBtn {
+/* Copy, Save, Upload and More are all UButton variant "tonal" - the bar
+   carries no accent fill (EditorWindow.qml:915-948). */
+.tonalBtn,
+.moreBtn {
   display: inline-flex;
   align-items: center;
   gap: calc(6 * var(--u));
@@ -348,21 +417,23 @@
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
-}
-
-.ghostBtn {
   color: var(--text);
   background: var(--tertiary);
   border: 1px solid var(--divider);
 }
 
-.fillBtn {
-  color: var(--text-on-accent);
-  background: var(--accent);
-  box-shadow: 0 calc(4 * var(--u)) calc(12 * var(--u)) var(--accent-glow-strong);
+.closeBtn {
+  width: calc(30 * var(--u));
+  height: calc(30 * var(--u));
+  border-radius: calc(10 * var(--u));
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  flex: none;
 }
 
 .btnIcon {
   width: calc(14 * var(--u));
   height: calc(14 * var(--u));
+  flex: none;
 }

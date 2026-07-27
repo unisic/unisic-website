@@ -68,7 +68,7 @@
 }
 
 /* The ninth "System" chip: not a real palette, so it can't be selected or
-   previewed — a dashed pill plus a light/split/dark swatch reads as "auto". */
+   previewed - a dashed pill plus a light/split/dark swatch reads as "auto". */
 .chipSystem {
   cursor: default;
   border-style: dashed;
@@ -225,13 +225,13 @@
 
 .cards {
   display: flex;
-  gap: calc(14 * var(--u));
+  gap: calc(10 * var(--u));
   margin-top: calc(14 * var(--u));
 }
 
 .card {
-  width: calc(150 * var(--u));
-  height: calc(96 * var(--u));
+  width: calc(128 * var(--u));
+  height: calc(84 * var(--u));
   border-radius: calc(16 * var(--u));
   background: var(--p-surface);
   color: var(--p-text);
@@ -254,21 +254,45 @@
   height: calc(24 * var(--u));
 }
 
-.accentBtn {
-  margin-top: calc(18 * var(--u));
-  height: calc(34 * var(--u));
-  display: inline-flex;
+/* one USettingRow with its USwitch on: on the real Capture page the accent
+   shows up in the switch track, not in a button (USwitch.qml:19-33) */
+.optRow {
+  margin-top: calc(10 * var(--u));
+  width: calc(404 * var(--u));
+  height: calc(40 * var(--u));
+  display: flex;
   align-items: center;
-  padding: 0 calc(18 * var(--u));
-  border-radius: calc(17 * var(--u));
-  background: var(--p-accent);
-  color: var(--p-text-on-accent);
-  font-size: calc(13 * var(--u));
-  font-weight: 650;
+  justify-content: space-between;
+  padding: 0 calc(12 * var(--u));
+  border-radius: calc(12 * var(--u));
+  background: var(--p-surface);
+  color: var(--p-text);
+  border: 1px solid rgba(128, 128, 128, 0.22);
+  font-size: calc(12.5 * var(--u));
   line-height: 1;
   transition:
     background var(--dur) var(--ease-out),
     color var(--dur) var(--ease-out);
+}
+
+.switchOn {
+  width: calc(38 * var(--u));
+  height: calc(23 * var(--u));
+  border-radius: calc(11.5 * var(--u));
+  background: var(--p-accent);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 calc(2.5 * var(--u));
+  flex: none;
+  transition: background var(--dur) var(--ease-out);
+}
+
+.knob {
+  width: calc(18 * var(--u));
+  height: calc(18 * var(--u));
+  border-radius: 50%;
+  background: linear-gradient(#fdfdff, #d9d7e4);
 }
 
 .reset {
