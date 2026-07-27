@@ -12,7 +12,7 @@ export const dynamic = "force-static";
    non-canonical spelling of every URL.
    No lastmod, changefreq or priority: Google has ignored the latter two for
    over a decade, and a lastmod stamped with the build time would claim every
-   page changed on every deploy — which makes Google discard the signal for
+   page changed on every deploy - which makes Google discard the signal for
    the whole site. Add a real lastmod only when there is a real date. */
 const abs = (path: string) => `${SITE_URL}${path.replace(/\/?$/, "/")}`;
 

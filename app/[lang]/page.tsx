@@ -32,7 +32,7 @@ export default async function LocalePage({ params }: Params) {
   const dict = await getDictionary(lang);
   /* The root layout owns <html> and cannot read the [lang] param, so the
      static export ships every locale with lang="en". This corrects it during
-     HTML parse — a client component did the same in an effect, one hydration
+     HTML parse - a client component did the same in an effect, one hydration
      boundary later. `lang` is already validated against the locale list. */
   return (
     <>

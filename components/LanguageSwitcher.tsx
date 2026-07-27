@@ -16,7 +16,7 @@ import { GlobeIcon } from "./icons";
  * The menu is always in the markup and hidden with the `hidden` attribute
  * rather than mounted on open: this switcher is the only link to the eight
  * translated pages, and while it was conditionally rendered no crawler ever
- * saw one — the locale pages were reachable only from the sitemap. `hidden`
+ * saw one - the locale pages were reachable only from the sitemap. `hidden`
  * keeps them out of the layout (so next/link still does not prefetch them)
  * while leaving them in the HTML.
  */

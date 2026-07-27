@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
    description and canonical; these two only ever fall through.
    max-image-preview:large opts the social card into large thumbnails in
    Search and Discover, max-snippet:-1 lifts the snippet length cap. Index
-   and follow are deliberately NOT restated here — spelling them out would
+   and follow are deliberately NOT restated here - spelling them out would
    emit "index, follow" onto the 404 page too. */
 export const metadata: Metadata = {
   robots: { "max-image-preview": "large", "max-snippet": -1 },
@@ -38,11 +38,11 @@ export const viewport: Viewport = {
 /* One @graph so the app, the publisher and the site are a single reconciled
    set of entities rather than three anonymous nodes. The Organization is the
    thing Google attaches the brand to, so it gets a stable @id that the app
-   node points back at — an inline author with url: github.com would instead
+   node points back at - an inline author with url: github.com would instead
    tell Google the entity behind this site lives on someone else's domain.
    No screenshot property: social-preview.png is a marketing card, not app
    UI, and that is the one image property Google renders literally. No
-   softwareVersion either — a static export has no build-time source for it,
+   softwareVersion either - a static export has no build-time source for it,
    so it can only ever be stale. */
 const org = {
   "@type": "Organization",

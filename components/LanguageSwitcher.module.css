@@ -72,7 +72,7 @@
 }
 
 /* `hidden` loses to the display: flex above without this. Killing the
-   transition in the closed state is what keeps dismissal instant — otherwise
+   transition in the closed state is what keeps dismissal instant - otherwise
    the discrete display change would hold the panel open for a full --dur. */
 .menu[hidden] {
   display: none;
