@@ -122,7 +122,7 @@ nix run github:unisic/unisic -- --region
 Install it into your profile:
 
 ```sh
-nix profile install github:unisic/unisic
+nix profile add github:unisic/unisic
 ```
 
 For a declarative setup, add the flake as an input and pull the package into your NixOS or home-manager configuration:

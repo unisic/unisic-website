@@ -133,7 +133,7 @@ export const DISTROS: Distro[] = [
     /* Flake on the default branch; installs the package into the profile.
        The portal/PipeWire note in download.lede already covers the runtime. */
     steps: () => [
-      { key: "install", command: "nix profile install github:unisic/unisic" },
+      { key: "install", command: "nix profile add github:unisic/unisic" },
     ],
   },
 ];
