@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import styles from "../app/docs/docs.module.css";
 
@@ -23,6 +23,14 @@ export type SearchDoc = {
 
 type Result = { href: string; text: string; crumb?: string };
 
+/* "Am I hydrated yet?" without a setState in an effect: the server snapshot
+   is false, the client one true, and React re-renders once hydration is
+   done. Nothing external to subscribe to, so subscribe is a no-op - but it
+   must be module level, or every render would resubscribe. */
+const noSubscribe = () => () => {};
+const clientSnapshot = () => true;
+const serverSnapshot = () => false;
+
 export function DocsSearch({
   index,
   onActiveChange,
@@ -32,11 +40,13 @@ export function DocsSearch({
   onActiveChange: (active: boolean) => void;
   onNavigate: () => void;
 }) {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    noSubscribe,
+    clientSnapshot,
+    serverSnapshot,
+  );
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
