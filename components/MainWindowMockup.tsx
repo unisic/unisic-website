@@ -41,9 +41,9 @@ export function MainWindowMockup({ dict }: { dict: Dictionary }) {
   ];
 
   const cards = [
-    { icon: MonitorIcon, title: m.cards.fullScreen.title, sub: m.cards.fullScreen.sub, keys: "Meta+Shift+F" },
-    { icon: RegionIcon, title: m.cards.region.title, sub: m.cards.region.sub, keys: "Print" },
-    { icon: WindowIcon, title: m.cards.window.title, sub: m.cards.window.sub, keys: "Meta+Shift+W" },
+    { icon: MonitorIcon, title: m.cards.fullScreen.title, sub: m.cards.fullScreen.sub, keys: "Meta+Shift+1" },
+    { icon: RegionIcon, title: m.cards.region.title, sub: m.cards.region.sub, keys: "Meta+Shift+2" },
+    { icon: WindowIcon, title: m.cards.window.title, sub: m.cards.window.sub, keys: "Meta+Shift+3" },
   ];
 
   /* Same eight cells in the same order as CapturePage.qml's toggleFlow, so

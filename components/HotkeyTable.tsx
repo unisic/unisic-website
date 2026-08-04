@@ -15,7 +15,6 @@ const HOTKEY_KEYS: Array<{ id: keyof Dictionary["hotkeys"]["rows"]; keys: string
   { id: "video", keys: ["Meta", "Shift", "R"] },
   { id: "ocr", keys: ["Meta", "Shift", "T"] },
   { id: "copyLast", keys: ["Meta", "Shift", "C"] },
-  { id: "quickTask", keys: ["Meta", "Shift", "Space"] },
   { id: "replay", keys: ["Meta", "Shift", "I"] },
   { id: "stop", keys: ["Ctrl", "Esc"] },
 ];

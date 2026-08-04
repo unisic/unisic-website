@@ -6,7 +6,7 @@ order: 4
 group: "Capturing & editing"
 ---
 
-This page covers the post-capture editor: how it opens, its 15 tools, OCR text picking, the stroke colors, zoom and undo/redo, and the ways to send your finished image to the clipboard, disk, or an upload destination. For the frozen selection overlay and the annotate-before-the-shot workflow, see [Capture](/docs/capture).
+This page covers the post-capture editor: how it opens, its 17 tools, OCR text picking, the stroke colors, zoom and undo/redo, and the ways to send your finished image to the clipboard, disk, or an upload destination. For the frozen selection overlay and the annotate-before-the-shot workflow, see [Capture](/docs/capture).
 
 ## Opening the editor
 
@@ -20,7 +20,7 @@ Everything you do in the editor is composited in image-pixel space: annotations 
 
 ## Tools
 
-The editor provides 15 tools, including:
+The editor provides 17 tools, including:
 
 | Tool | What it does |
 | --- | --- |
@@ -31,6 +31,8 @@ The editor provides 15 tools, including:
 | Numbered steps | Place sequential numbered markers. |
 | Callout | A labeled pointer for annotations that need words. |
 | Measure | Measure on-image distances. |
+| Magnifier | A loupe: an enlarged copy of a source region, drawn into the image. |
+| Eyedropper | Click a pixel to adopt its color as the stroke color. |
 | Edit shapes | Select and rework annotations you already placed. |
 | Crop | Trim the image to a region. |
 

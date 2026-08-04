@@ -26,7 +26,7 @@ Draw directly on the frozen capture overlay with nearly the whole editor tool se
 
 ### Edit afterwards
 
-An optional post-capture editor opens automatically, with 15 tools including highlight, pixelate, smart eraser, callout, measure, numbered steps, and crop. You can zoom (`Ctrl+scroll`), undo, and redo, and everything is composited in image-pixel space.
+An optional post-capture editor opens automatically, with 17 tools including highlight, pixelate, smart eraser, magnifier, callout, measure, numbered steps, and crop. You can zoom (`Ctrl+scroll`), undo, and redo, and everything is composited in image-pixel space.
 
 ### Extract text and codes
 

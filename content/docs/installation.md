@@ -155,7 +155,8 @@ Building needs **Qt 6.5+**, CMake, and Ninja.
 ```sh
 sudo dnf install -y cmake ninja-build gcc-c++ \
     qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qtsvg-devel qt6-qtwayland \
-    pipewire-devel ffmpeg wl-clipboard xdg-desktop-portal
+    pipewire-devel libinput-devel systemd-devel \
+    ffmpeg wl-clipboard xdg-desktop-portal
 ```
 
 ### Debian / Ubuntu
@@ -165,14 +166,15 @@ Needs a release with Qt 6.5+ (trixie / 24.10+):
 ```sh
 sudo apt install cmake ninja-build g++ pkg-config \
     qt6-base-dev qt6-declarative-dev libqt6svg6-dev qt6-wayland \
-    libpipewire-0.3-dev ffmpeg wl-clipboard xdg-desktop-portal
+    libpipewire-0.3-dev libinput-dev libudev-dev \
+    ffmpeg wl-clipboard xdg-desktop-portal
 ```
 
 ### Arch
 
 ```sh
 sudo pacman -S --needed base-devel qt6-base qt6-declarative qt6-svg qt6-wayland \
-    pipewire ffmpeg wl-clipboard xdg-desktop-portal cmake ninja pkgconf
+    pipewire libinput ffmpeg wl-clipboard xdg-desktop-portal cmake ninja pkgconf
 cd packaging/arch && makepkg -si   # or use the common build below
 ```
 
@@ -184,7 +186,7 @@ cmake --build build
 ./build/unisic
 ```
 
-PipeWire, Tesseract (with Leptonica), and zxing-cpp dev packages are optional at build time - without them the app builds with recording, OCR, or QR/barcode decoding disabled.
+PipeWire, Tesseract (with Leptonica), zxing-cpp and libinput dev packages are optional at build time - without them the app builds with recording, OCR, QR/barcode decoding, or the pressed-key badge and click ripple disabled. libinput needs its own dev package **and** libudev's (`systemd-devel` on Fedora, `libudev-dev` on Debian); one without the other counts as neither.
 
 ## Run
 

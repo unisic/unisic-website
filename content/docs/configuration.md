@@ -83,7 +83,7 @@ Unisic ships with 9 themes:
 
 The System option follows the desktop's light/dark scheme and accent color, so Unisic matches the rest of your session automatically. Icons are themable per tool.
 
-Unisic's own interface speaks English, Polish, Spanish, and Italian - it follows the system locale, or pick a language in Settings.
+Unisic's own interface speaks English, Polish, Spanish, Italian, French, Russian, and German - it follows the system locale, or pick a language in Settings.
 
 ## Sound cues
 

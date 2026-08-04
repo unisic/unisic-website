@@ -20,6 +20,8 @@ Captures everything at once, with all monitors stitched into a single image. Use
 
 Opens a frozen, per-monitor overlay so you can drag out exactly the rectangle you want. The selection shows live dimensions as you resize it, and because the overlay is frozen you can line up moving content without it shifting under you. Press `Enter` or double-click inside the selection to capture, or `Esc` to cancel.
 
+On Plasma, `W` fills the selection with the area of the window you were working in: Unisic asks KWin where that window is and selects exactly its rectangle, ready to nudge, resize or simply confirm. It selects the area, not the window, so anything drawn over that area is captured too. The same key works in the OCR, GIF and recording selectors. No other compositor tells an application where another window is, so the `W` hint does not appear outside KWin.
+
 ### Active window
 
 Captures the currently focused window on its own, without you having to trace its bounds by hand.
@@ -65,9 +67,6 @@ The default capture hotkeys are:
 | Capture active window | `Meta+Shift+3` |
 | OCR region (copy text) | `Meta+Shift+T` |
 | Copy last capture | `Meta+Shift+C` |
-| Open quick task chooser | `Meta+Shift+Space` |
-
-The quick task chooser picks a capture or recording mode (full screen, region, window, GIF, video). For the screenshot modes it can also apply a one-off action to that single result - copy only, edit only, save only, or upload only - without touching your global after-capture settings; GIF and video runs use the normal recording flow.
 
 These are editable in Settings -> Hotkeys - see [hotkeys](/docs/hotkeys).
 

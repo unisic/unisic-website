@@ -29,6 +29,8 @@ You can record any of three areas:
 - the **full screen**, or
 - a single **window**.
 
+On Plasma the active window's area is one key away while you select: press `W` in the region selector and Unisic asks KWin where the window you were working in is, then selects exactly that rectangle - ready to nudge, resize or simply confirm, for a recording as much as for a screenshot or a text read. It selects the area rather than the window, so the frame stays where it started: move the window afterwards and it leaves the shot, and anything pulled over that area (a menu, a dialog) is recorded too. This needs KWin, because no other compositor tells an application where another window is; elsewhere the `W` hint does not appear at all.
+
 ## Instant replay
 
 Instant replay records into a rolling buffer instead of a file: start it, forget it, and when something worth keeping happens press **Save replay** (or `Meta+Shift+I`) to write out the last stretch - 30 seconds by default, configurable on the Record page.

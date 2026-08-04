@@ -21,7 +21,6 @@ Unisic ships with the following default keyboard shortcuts:
 | Record video (start/stop) | `Meta+Shift+R` |
 | OCR region (copy text) | `Meta+Shift+T` |
 | Copy last capture | `Meta+Shift+C` |
-| Open quick task chooser | `Meta+Shift+Space` |
 | Start/save instant replay | `Meta+Shift+I` |
 | Stop recording (fixed) | `Ctrl+Esc` |
 
