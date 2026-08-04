@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "./Footer.module.css";
 import { Logo } from "./icons";
 import type { Dictionary } from "../lib/i18n";
+import { DISCORD_URL } from "../lib/site";
 
 export function Footer({ dict }: { dict: Dictionary }) {
   return (
@@ -32,6 +33,10 @@ export function Footer({ dict }: { dict: Dictionary }) {
             className={styles.link}
           >
             {dict.footer.issues}
+          </a>
+          {/* brand name, so the label is the same in every locale */}
+          <a href={DISCORD_URL} className={styles.link}>
+            Discord
           </a>
           <a
             href="https://github.com/unisic/unisic/blob/main/LICENSE"

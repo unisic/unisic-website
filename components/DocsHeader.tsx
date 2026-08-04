@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "../app/docs/docs.module.css";
-import { GitHubIcon, Logo } from "./icons";
+import { DiscordIcon, GitHubIcon, Logo } from "./icons";
+import { DISCORD_URL } from "../lib/site";
 
 /*
  * Docs section header. Mirrors the landing Nav's sticky glass bar, but its
@@ -26,6 +27,13 @@ export function DocsHeader() {
             aria-label="Unisic on GitHub"
           >
             <GitHubIcon size={20} />
+          </a>
+          <a
+            href={DISCORD_URL}
+            className={styles.iconLink}
+            aria-label="Unisic on Discord"
+          >
+            <DiscordIcon size={20} />
           </a>
           <Link href="/#download" className={`${styles.cta} shine`}>
             Download

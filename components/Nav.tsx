@@ -1,7 +1,8 @@
 import Link from "next/link";
 import styles from "./Nav.module.css";
-import { GitHubIcon, Logo } from "./icons";
+import { DiscordIcon, GitHubIcon, Logo } from "./icons";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { DISCORD_URL } from "../lib/site";
 import type { Dictionary } from "../lib/i18n";
 
 export function Nav({
@@ -36,6 +37,10 @@ export function Nav({
             aria-label={dict.nav.github}
           >
             <GitHubIcon size={20} />
+          </a>
+          {/* "Discord" is a brand name, so it stays out of the dictionary */}
+          <a href={DISCORD_URL} className={styles.iconLink} aria-label="Discord">
+            <DiscordIcon size={20} />
           </a>
           <LanguageSwitcher
             current={locale}
