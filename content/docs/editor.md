@@ -29,7 +29,7 @@ The editor provides 17 tools, including:
 | Pixelate | Pixelate a region. |
 | Smart eraser | Erase content from the image. |
 | Numbered steps | Place sequential numbered markers. |
-| Callout | A labeled pointer for annotations that need words. |
+| Callout | A speech bubble that holds its own text. Click where it should point (or drag a bubble out) and type in place; the bubble grows around the text as you type it. Double-click it with Edit shapes to change the words later. The text moves, resizes and rotates with the bubble. |
 | Measure | Measure on-image distances. |
 | Magnifier | A loupe: an enlarged copy of a source region, drawn into the image. |
 | Eyedropper | Click a pixel to adopt its color as the stroke color. |
