@@ -80,7 +80,7 @@ export const de: Dictionary = {
   "download": {
     "title": "Unisic installieren",
     "lede": "Benötigt eine Wayland-Sitzung mit xdg-desktop-portal. Für Aufzeichnungen sind zudem PipeWire und ffmpeg erforderlich.",
-    "repoLede": "Wählen Sie Ihre Distribution: Das Repository hält Unisic über die Paketverwaltung aktuell. AppImage ist ein Direktdownload, und das Release enthält zudem einmalige .deb-, .rpm- und Arch-Pakete, die bei der Erstinstallation das Repository einrichten.",
+    "repoLede": "AppImage ist der empfohlene Weg: eine Datei, kein Root, und bei einer neuen Version ersetzt sie sich selbst. Wählen Sie stattdessen Ihre Distribution, dann hält das Repository Unisic über die Paketverwaltung aktuell; das Release enthält zudem einmalige .deb-, .rpm- und Arch-Pakete, die bei der Erstinstallation das Repository einrichten.",
     "distroListLabel": "Distribution oder Paketformat wählen",
     "versionLabel": "Version",
     "copyCmd": "Befehle kopieren",
@@ -99,7 +99,7 @@ export const de: Dictionary = {
       "opensuse": "zypper bittet beim Aktualisieren darum, den Signaturschlüssel des Repositorys zu akzeptieren.",
       "arch": "Ein signiertes pacman-Repository auf dem openSUSE Build Service. Kein AUR nötig.",
       "nix": "Läuft überall, wo Nix läuft, auch auf NixOS. Probieren Sie es mit nix run oder fügen Sie das Flake als Input für eine deklarative Konfiguration hinzu; aktivieren Sie unter NixOS xdg.portal und PipeWire.",
-      "appimage": "Universell: läuft auf jeder Distribution. Die App aktualisiert sich selbst per eingebettetem zsync: Nur die geänderten Blöcke werden heruntergeladen und an Ort und Stelle ausgetauscht, und bei Leerlauf startet sie neu."
+      "appimage": "Empfohlen. Universell: läuft auf jeder Distribution, benötigt kein Root und installiert nichts in Ihr System. Die App aktualisiert sich selbst: Das neue Release wird heruntergeladen, gegen die dafür veröffentlichte SHA-256-Summe geprüft und an Ort und Stelle ausgetauscht, und Unisic startet neu, sobald Sie untätig sind."
     },
     "downloadBtn": "Herunterladen",
     "checking": "Neueste Version wird geprüft",

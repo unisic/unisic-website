@@ -80,7 +80,7 @@ export const pl: Dictionary = {
   "download": {
     "title": "Zainstaluj Unisic",
     "lede": "Wymaga sesji Wayland z xdg-desktop-portal. Nagrywanie potrzebuje też PipeWire i ffmpeg.",
-    "repoLede": "Wybierz swoją dystrybucję: repozytorium aktualizuje Unisic przez menedżera pakietów. AppImage to pobranie bezpośrednie, a w wydaniu znajdziesz też pojedyncze pakiety .deb i .rpm oraz pakiet dla Archa, które przy pierwszej instalacji podpinają repozytorium.",
+    "repoLede": "AppImage to zalecany sposób: jeden plik, bez roota, a gdy pojawi się nowa wersja, podmienia sam siebie. Możesz zamiast tego wybrać swoją dystrybucję - repozytorium aktualizuje Unisic przez menedżera pakietów; w wydaniu znajdziesz też pojedyncze pakiety .deb i .rpm oraz pakiet dla Archa, które przy pierwszej instalacji podpinają repozytorium.",
     "distroListLabel": "Wybierz dystrybucję lub format pakietu",
     "versionLabel": "Wersja",
     "copyCmd": "Kopiuj komendy",
@@ -99,7 +99,7 @@ export const pl: Dictionary = {
       "opensuse": "Podczas odświeżania zypper poprosi o zaakceptowanie klucza podpisującego repozytorium.",
       "arch": "Podpisane repozytorium pacmana na openSUSE Build Service. AUR nie jest potrzebny.",
       "nix": "Działa wszędzie tam, gdzie Nix, także na NixOS. Wypróbuj przez nix run albo dodaj flake jako wejście do konfiguracji deklaratywnej; na NixOS włącz xdg.portal i PipeWire.",
-      "appimage": "Uniwersalny: działa na każdej dystrybucji. Aktualizuje się sam przez wbudowany zsync: pobiera tylko zmienione bloki i podmienia je na miejscu, a restartuje się, gdy aplikacja jest bezczynna.",
+      "appimage": "Zalecane. Uniwersalny: działa na każdej dystrybucji, nie wymaga roota i nic nie instaluje w systemie. Aktualizuje się sam: pobiera nowe wydanie, sprawdza je z opublikowaną dla niego sumą SHA-256, podmienia na miejscu i restartuje Unisic, gdy jesteś bezczynny.",
     },
     "downloadBtn": "Pobierz",
     "checking": "Sprawdzanie najnowszego wydania",

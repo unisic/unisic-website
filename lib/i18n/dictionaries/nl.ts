@@ -80,7 +80,7 @@ export const nl: Dictionary = {
   "download": {
     "title": "Unisic installeren",
     "lede": "Vereist een Wayland-sessie met xdg-desktop-portal. Voor opnemen zijn ook PipeWire en ffmpeg nodig.",
-    "repoLede": "Kies je distributie: de repository houdt Unisic up-to-date via je pakketbeheerder. AppImage is een directe download, en de release bevat ook losse .deb-, .rpm- en Arch-pakketten die bij de eerste installatie de repository instellen.",
+    "repoLede": "AppImage is de aanbevolen weg: één bestand, geen root, en het vervangt zichzelf zodra er een nieuwe versie is. Kies anders je distributie: de repository houdt Unisic up-to-date via je pakketbeheerder; de release bevat ook losse .deb-, .rpm- en Arch-pakketten die bij de eerste installatie de repository instellen.",
     "distroListLabel": "Kies je distributie of pakketformaat",
     "versionLabel": "Versie",
     "copyCmd": "Commando's kopiëren",
@@ -99,7 +99,7 @@ export const nl: Dictionary = {
       "opensuse": "zypper vraagt je tijdens het verversen om de ondertekeningssleutel van de repository te accepteren.",
       "arch": "Een ondertekende pacman-repository op de openSUSE Build Service. Geen AUR nodig.",
       "nix": "Draait overal waar Nix draait, ook op NixOS. Probeer het met nix run of voeg de flake toe als input voor een declaratieve configuratie; schakel op NixOS xdg.portal en PipeWire in.",
-      "appimage": "Universeel: draait op elke distributie. De app werkt zichzelf bij via ingebouwde zsync: alleen de gewijzigde blokken worden gedownload en ter plekke omgewisseld, en hij herstart bij inactiviteit."
+      "appimage": "Aanbevolen. Universeel: draait op elke distributie, heeft geen root nodig en installeert niets in je systeem. De app werkt zichzelf bij: de nieuwe release wordt gedownload, gecontroleerd tegen de SHA-256 die ervoor is gepubliceerd en ter plekke omgewisseld, en Unisic herstart zodra je inactief bent."
     },
     "downloadBtn": "Downloaden",
     "checking": "De nieuwste release controleren",

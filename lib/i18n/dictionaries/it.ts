@@ -80,7 +80,7 @@ export const it: Dictionary = {
   "download": {
     "title": "Installa Unisic",
     "lede": "Richiede una sessione Wayland con xdg-desktop-portal. Per la registrazione servono anche PipeWire e ffmpeg.",
-    "repoLede": "Scegli la tua distribuzione: il repository mantiene Unisic aggiornato tramite il gestore di pacchetti. AppImage è un download diretto, e la release include anche pacchetti una tantum .deb, .rpm e Arch che configurano il repository alla prima installazione.",
+    "repoLede": "AppImage è la via consigliata: un solo file, senza root, e si sostituisce da solo quando esce una nuova versione. In alternativa scegli la tua distribuzione: il repository mantiene Unisic aggiornato tramite il gestore di pacchetti; la release include anche pacchetti una tantum .deb, .rpm e Arch che configurano il repository alla prima installazione.",
     "distroListLabel": "Scegli la tua distribuzione o il formato di pacchetto",
     "versionLabel": "Versione",
     "copyCmd": "Copia comandi",
@@ -99,7 +99,7 @@ export const it: Dictionary = {
       "opensuse": "Durante il refresh zypper chiederà di accettare la chiave di firma del repository.",
       "arch": "Un repository pacman firmato su openSUSE Build Service. Niente AUR.",
       "nix": "Funziona ovunque ci sia Nix, incluso NixOS. Provalo con nix run oppure aggiungi il flake come input per una configurazione dichiarativa; su NixOS abilita xdg.portal e PipeWire.",
-      "appimage": "Universale: funziona su qualsiasi distribuzione. L'app si aggiorna da sola tramite zsync integrato: vengono scaricati e sostituiti sul posto solo i blocchi modificati, e si riavvia quando è inattiva."
+      "appimage": "Consigliato. Universale: funziona su qualsiasi distribuzione, non richiede root e non installa nulla nel sistema. Si aggiorna da solo: la nuova release viene scaricata, verificata con lo SHA-256 pubblicato per essa e sostituita sul posto, e Unisic si riavvia quando sei inattivo."
     },
     "downloadBtn": "Scarica",
     "checking": "Verifica dell'ultima release",

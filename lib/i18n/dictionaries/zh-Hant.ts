@@ -80,7 +80,7 @@ export const zhHant: Dictionary = {
   "download": {
     "title": "安裝 Unisic",
     "lede": "需要具備 xdg-desktop-portal 的 Wayland 工作階段。錄製功能另需 PipeWire 與 ffmpeg。",
-    "repoLede": "選擇你的發行版--軟體庫會透過套件管理器讓 Unisic 保持最新。AppImage 為直接下載，發佈版本中也附有一次性的 .deb、.rpm 與 Arch 套件，首次安裝時就會設定好軟體庫。",
+    "repoLede": "建議使用 AppImage：單一檔案，不需 root，有新版本時會自行替換。也可以改為選擇你的發行版--軟體庫會透過套件管理器讓 Unisic 保持最新；發佈版本中也附有一次性的 .deb、.rpm 與 Arch 套件，首次安裝時就會設定好軟體庫。",
     "distroListLabel": "選擇發行版或軟體套件格式",
     "versionLabel": "版本",
     "copyCmd": "複製命令",
@@ -99,7 +99,7 @@ export const zhHant: Dictionary = {
       "opensuse": "重新整理時 zypper 會要求你接受軟體庫的簽署金鑰。",
       "arch": "openSUSE Build Service 上的已簽署 pacman 軟體庫--不需要 AUR。",
       "nix": "只要有 Nix 就能執行，包含 NixOS。可用 nix run 直接試用，或把 flake 作為 input 加入設定進行宣告式安裝；在 NixOS 上請啟用 xdg.portal 與 PipeWire。",
-      "appimage": "通用格式--可在任何發行版上執行。透過內嵌的 zsync 自行更新：只下載有變動的區塊並就地替換，閒置時重新啟動。"
+      "appimage": "建議。通用格式--可在任何發行版上執行，不需 root，也不會在系統中安裝任何東西。它會自行更新：下載新版本，以發佈時公布的 SHA-256 校驗，就地替換，並在你閒置時重新啟動 Unisic。"
     },
     "downloadBtn": "下載",
     "checking": "正在查看最新版本",

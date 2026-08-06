@@ -80,7 +80,7 @@ export const es: Dictionary = {
   "download": {
     "title": "Instala Unisic",
     "lede": "Necesita una sesión Wayland con xdg-desktop-portal. La grabación también requiere PipeWire y ffmpeg.",
-    "repoLede": "Elige tu distribución: el repositorio mantiene Unisic actualizado a través del gestor de paquetes. AppImage es una descarga directa, y la versión publicada también incluye paquetes sueltos .deb, .rpm y Arch que configuran el repositorio en la primera instalación.",
+    "repoLede": "AppImage es la vía recomendada: un solo archivo, sin root, y se reemplaza a sí mismo cuando aparece una versión nueva. Si lo prefieres, elige tu distribución: el repositorio mantiene Unisic actualizado a través del gestor de paquetes; la versión publicada también incluye paquetes sueltos .deb, .rpm y Arch que configuran el repositorio en la primera instalación.",
     "distroListLabel": "Elige tu distribución o formato de paquete",
     "versionLabel": "Versión",
     "copyCmd": "Copiar comandos",
@@ -99,7 +99,7 @@ export const es: Dictionary = {
       "opensuse": "zypper te pedirá aceptar la clave de firma del repositorio durante el refresco.",
       "arch": "Un repositorio pacman firmado en openSUSE Build Service: no hace falta AUR.",
       "nix": "Funciona en cualquier sistema con Nix, incluido NixOS. Pruébalo con nix run o añade el flake como input para una configuración declarativa; en NixOS activa xdg.portal y PipeWire.",
-      "appimage": "Universal: funciona en cualquier distribución. La aplicación se actualiza sola mediante zsync integrado: solo se descargan los bloques modificados y se sustituyen en el sitio, y se reinicia cuando está inactiva."
+      "appimage": "Recomendado. Universal: funciona en cualquier distribución, no necesita root y no instala nada en tu sistema. Se actualiza solo: descarga la nueva versión, la comprueba con el SHA-256 publicado para ella, la sustituye en el sitio y reinicia Unisic cuando estás inactivo."
     },
     "downloadBtn": "Descargar",
     "checking": "Comprobando la última versión",

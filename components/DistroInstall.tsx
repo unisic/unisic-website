@@ -28,9 +28,9 @@ type ReleaseState =
 const isAsset = (sel: Selection): sel is AssetId => sel === "appimage";
 
 /*
- * Install picker: nothing is preselected. One row of buttons - the distros
- * plus the AppImage direct download. Picking a distro animates in
- * either its install steps, or first a version switch (Ubuntu, openSUSE)
+ * Install picker: nothing is preselected. One row of buttons - the AppImage
+ * direct download first (the recommended way in), then the distros. Picking a
+ * distro animates in either its install steps, or first a version switch (Ubuntu, openSUSE)
  * whose pick then animates in the steps. Picking a format animates in a
  * download button for the latest release (fetched lazily on first pick).
  * Every switch replays the reveal via key remounts; each distro remembers
@@ -76,7 +76,7 @@ export function DistroInstall({ dict }: { dict: Dictionary }) {
         role="group"
         aria-label={d.distroListLabel}
       >
-        {[...DISTROS, ...DIRECT_ASSETS].map((x) => (
+        {[...DIRECT_ASSETS, ...DISTROS].map((x) => (
           <button
             key={x.id}
             type="button"

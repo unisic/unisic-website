@@ -6,7 +6,7 @@ order: 2
 group: "Getting started"
 ---
 
-This page covers how to install Unisic: the distribution repositories (recommended), Nix, direct downloads from GitHub Releases, and building from source.
+This page covers how to install Unisic: the AppImage (recommended), the distribution repositories, Nix, direct downloads from GitHub Releases, and building from source.
 
 ## Requirements
 
@@ -14,9 +14,30 @@ Unisic runs on Linux. You need a Wayland session with `xdg-desktop-portal` and a
 
 For compositor-specific setup (for example wlroots compositors like niri, which need `grim` for screenshots and compositor-side keybinds), see [Compositors](/docs/compositors).
 
-## Install from a repository (recommended)
+## Install the AppImage (recommended)
 
-Install from a repository and updates arrive automatically through your package manager, like any other package. The [website download section](/#download) has the same snippets with a distro picker and copy buttons.
+One file, no root, and it keeps itself up to date: when a new release appears Unisic downloads it, checks it against the SHA-256 the release published for that file, replaces itself in place and restarts once you are idle. Nothing to add to your system, nothing to build.
+
+The installer script does it for you, and also adds Unisic to your applications menu with its icon:
+
+```sh
+bash -c "$(curl -fsSL https://github.com/unisic/unisic/releases/latest/download/install.sh)"
+```
+
+An arrow-key menu opens and its first entry is this AppImage install, into `~/.local`; the second installs your distribution's package instead. Whatever you already have installed is updated where it is, never duplicated, and the same menu uninstalls, installs an older version and toggles automatic updates.
+
+By hand instead, take `Unisic-<version>-x86_64.AppImage` from the [latest release](https://github.com/unisic/unisic/releases/latest) (the asset name carries the version, so there is no version-less URL for it), then:
+
+```sh
+chmod +x ~/Downloads/Unisic-*-x86_64.AppImage
+~/Downloads/Unisic-*-x86_64.AppImage
+```
+
+The AppImage needs `fuse` (`/dev/fuse` plus a `fusermount` binary), which every desktop distribution ships; where it is genuinely missing, the installer falls back to the unpacked `.tar.gz` of the same build.
+
+## Install from a distribution repository
+
+Install from a repository and updates arrive automatically through your package manager, like any other package - the right choice if you would rather one program managed everything on the machine. The [website download section](/#download) has the same snippets with a distro picker and copy buttons.
 
 ### Debian / Ubuntu
 

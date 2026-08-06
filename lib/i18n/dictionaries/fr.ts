@@ -80,7 +80,7 @@ export const fr: Dictionary = {
   "download": {
     "title": "Installer Unisic",
     "lede": "Nécessite une session Wayland avec xdg-desktop-portal. L'enregistrement requiert également PipeWire et ffmpeg.",
-    "repoLede": "Choisissez votre distribution : le dépôt maintient Unisic à jour via votre gestionnaire de paquets. AppImage est un téléchargement direct, et la release contient aussi des paquets .deb, .rpm et Arch ponctuels qui configurent le dépôt dès la première installation.",
+    "repoLede": "AppImage est la voie recommandée : un seul fichier, sans root, et il se remplace lui-même dès qu'une nouvelle version paraît. Choisissez plutôt votre distribution et le dépôt maintiendra Unisic à jour via votre gestionnaire de paquets ; la release contient aussi des paquets .deb, .rpm et Arch ponctuels qui configurent le dépôt dès la première installation.",
     "distroListLabel": "Choisissez votre distribution ou votre format de paquet",
     "versionLabel": "Version",
     "copyCmd": "Copier les commandes",
@@ -99,7 +99,7 @@ export const fr: Dictionary = {
       "opensuse": "zypper vous demandera d'accepter la clé de signature du dépôt lors du rafraîchissement.",
       "arch": "Un dépôt pacman signé sur l'openSUSE Build Service. Pas besoin d'AUR.",
       "nix": "Fonctionne partout où Nix fonctionne, y compris NixOS. Essayez-le avec nix run ou ajoutez le flake comme entrée pour une configuration déclarative ; sur NixOS, activez xdg.portal et PipeWire.",
-      "appimage": "Universel : fonctionne sur toutes les distributions. L'application se met à jour toute seule via zsync embarqué : seuls les blocs modifiés sont téléchargés et remplacés sur place, puis elle redémarre quand elle est inactive."
+      "appimage": "Recommandé. Universel : fonctionne sur toutes les distributions, ne nécessite pas de root et n'installe rien dans votre système. L'application se met à jour toute seule : la nouvelle version est téléchargée, vérifiée avec l'empreinte SHA-256 publiée pour elle et remplacée sur place, puis Unisic redémarre dès que vous êtes inactif."
     },
     "downloadBtn": "Télécharger",
     "checking": "Recherche de la dernière version",

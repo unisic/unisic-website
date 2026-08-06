@@ -99,7 +99,7 @@ export const en = {
     title: "Install Unisic",
     lede: "Needs a Wayland session with xdg-desktop-portal. Recording also wants PipeWire and ffmpeg.",
     repoLede:
-      "Pick your distribution: the repository keeps Unisic updated through your package manager. AppImage is a direct download, and the release also carries one-off .deb, .rpm and Arch packages that hook up the repository on first install.",
+      "AppImage is the recommended way in: one file, no root, and it replaces itself when a new version appears. Pick your distribution instead and the repository keeps Unisic updated through your package manager; the release also carries one-off .deb, .rpm and Arch packages that hook up the repository on first install.",
     distroListLabel: "Choose your distribution or package format",
     versionLabel: "Version",
     copyCmd: "Copy commands",
@@ -122,7 +122,7 @@ export const en = {
       arch: "A signed pacman repository on the openSUSE Build Service. No AUR needed.",
       nix: "Runs anywhere Nix does, including NixOS. Try it with nix run, or add the flake as an input for a declarative setup; enable xdg.portal and PipeWire on NixOS.",
       appimage:
-        "Universal: runs on any distribution. Updates itself via embedded zsync: only the changed blocks are downloaded and swapped in place, and it restarts when idle.",
+        "Recommended. Universal: runs on any distribution, needs no root and installs nothing into your system. It updates itself: the new release is downloaded, checked against the SHA-256 published for it, swapped in place, and Unisic restarts once you are idle.",
     },
     downloadBtn: "Download",
     checking: "Checking the latest release",

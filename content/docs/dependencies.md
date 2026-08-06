@@ -8,7 +8,7 @@ group: "Getting started"
 
 Unisic works out of the box on the built-in Wayland APIs. A handful of **optional** external tools unlock more: screen recording, the most reliable clipboard copy, and text recognition (OCR). None of them are required to take, annotate, and share screenshots.
 
-If you installed Unisic from a [distribution repository](/docs/installation#install-from-a-repository-recommended), the recording tools are already pulled in as dependencies - you only need this page to add **OCR language packs**, or if you run the AppImage or a source build. The app's own **Settings → General → Diagnostics → Run system check** lists exactly what is present on your machine and what is missing.
+If you installed Unisic from a [distribution repository](/docs/installation#install-from-a-distribution-repository), the recording tools are already pulled in as dependencies - you only need this page to add **OCR language packs**, or if you run the AppImage or a source build. The app's own **Settings → General → Diagnostics → Run system check** lists exactly what is present on your machine and what is missing.
 
 ## What each tool unlocks
 

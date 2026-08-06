@@ -80,7 +80,7 @@ export const zhHans: Dictionary = {
   "download": {
     "title": "安装 Unisic",
     "lede": "需要带 xdg-desktop-portal 的 Wayland 会话。录制还需要 PipeWire 和 ffmpeg。",
-    "repoLede": "选择你的发行版--软件仓库会通过包管理器让 Unisic 保持最新。AppImage 为直接下载，发布版本中还附带一次性的 .deb、.rpm 和 Arch 软件包，首次安装时会自动配置好软件仓库。",
+    "repoLede": "推荐使用 AppImage：单个文件，无需 root，有新版本时会自行替换。也可以改为选择你的发行版--软件仓库会通过包管理器让 Unisic 保持最新；发布版本中还附带一次性的 .deb、.rpm 和 Arch 软件包，首次安装时会自动配置好软件仓库。",
     "distroListLabel": "选择发行版或软件包格式",
     "versionLabel": "版本",
     "copyCmd": "复制命令",
@@ -99,7 +99,7 @@ export const zhHans: Dictionary = {
       "opensuse": "刷新时 zypper 会请求你接受该软件仓库的签名密钥。",
       "arch": "openSUSE Build Service 上的已签名 pacman 仓库--无需 AUR。",
       "nix": "只要有 Nix 就能运行，包括 NixOS。可用 nix run 直接试用，或把 flake 作为 input 加入配置进行声明式安装；在 NixOS 上请启用 xdg.portal 与 PipeWire。",
-      "appimage": "通用格式--可在任何发行版上运行。通过内嵌的 zsync 自动更新：只下载有变化的数据块并原地替换，空闲时重启。"
+      "appimage": "推荐。通用格式--可在任何发行版上运行，无需 root，也不会在系统中安装任何东西。它会自行更新：下载新版本，用发布时公布的 SHA-256 校验，原地替换，并在你空闲时重启 Unisic。"
     },
     "downloadBtn": "下载",
     "checking": "正在检查最新版本",
