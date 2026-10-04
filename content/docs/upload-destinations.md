@@ -28,7 +28,7 @@ Upload to an FTP or SFTP server. These transfers run through curl.
 
 ### Built-in hosts
 
-Ready-to-use destinations are included for catbox.moe (the default) and the expiring hosts uguu.se (48 h), litterbox (72 h), and tmpfiles.org (1 h).
+Ready-to-use destinations are included for catbox.moe (the default), buzzheavier.com, and the expiring hosts uguu.se (48 h), litterbox (72 h), and tmpfiles.org (1 h). Two more need your own credential before they upload: Imgur takes a Client-ID from an application you register, and vgy.me takes the user key from your vgy.me account (paste it into the destination's settings).
 
 ## Link auto-copied
 
