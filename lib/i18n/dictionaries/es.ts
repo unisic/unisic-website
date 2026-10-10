@@ -68,11 +68,11 @@ export const es: Dictionary = {
     "caption": "Una región de pantalla en grabación: Unisic dibuja un marco con color de acento alrededor de la región, con una insignia REC y un temporizador."
   },
   "themes": {
-    "title": "Nueve temas, incluido el tuyo",
+    "title": "Temas, incluido el tuyo",
     "lede": "Elige una paleta abajo y mira cómo la app se la pone.",
     "groupLabel": "Previsualiza un tema en la ventana de la app",
     "reset": "Restablecer a Unisic",
-    "note": "Cada ficha repinta la ventana de arriba en vivo. El noveno tema es tu sistema: sigue el esquema claro u oscuro del escritorio y el color de acento.",
+    "note": "Cada ficha repinta la ventana de arriba en vivo. Un tema es tu sistema: sigue el esquema claro u oscuro del escritorio y el color de acento.",
     "system": "Sistema",
     "systemLabel": "Sistema: sigue el esquema claro u oscuro de tu escritorio; no se puede previsualizar aquí",
     "previewLabel": "La ventana principal de Unisic con el tema {theme}"
@@ -95,7 +95,7 @@ export const es: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 llega al final de su soporte en julio de 2026: mejor elige 26.04. Ambas necesitan Qt 6.5+, que las versiones más antiguas no incluyen.",
       "debian": "Necesita Debian 13 (trixie) o más reciente por Qt 6.5+.",
-      "fedora": "Compilaciones para Fedora 43, 44 y Rawhide. El paquete de COPR incluye las dependencias opcionales, así que la grabación, el OCR y la decodificación de QR funcionan desde el primer momento.",
+      "fedora": "Compilaciones para Fedora 43, 44 y Rawhide. Todas las dependencias necesarias se instalan con el paquete, así que la grabación, el OCR y la decodificación de QR funcionan desde el primer momento.",
       "opensuse": "zypper te pedirá aceptar la clave de firma del repositorio durante el refresco.",
       "arch": "Un repositorio pacman firmado en openSUSE Build Service: no hace falta AUR.",
       "nix": "Funciona en cualquier sistema con Nix, incluido NixOS. Pruébalo con nix run o añade el flake como input para una configuración declarativa; en NixOS activa xdg.portal y PipeWire.",

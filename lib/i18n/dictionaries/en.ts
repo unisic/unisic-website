@@ -84,11 +84,11 @@ export const en = {
   },
 
   themes: {
-    title: "Nine themes, including yours",
+    title: "Themes, including yours",
     lede: "Pick a palette below and watch the app wear it.",
     groupLabel: "Preview a theme in the app window",
     reset: "Reset to Unisic",
-    note: "Every chip repaints the window above live. The ninth theme is your system: it follows the desktop light or dark scheme and accent color.",
+    note: "Every chip repaints the window above live. One theme is your system: it follows the desktop light or dark scheme and accent color.",
     system: "System",
     systemLabel:
       "System: follows your desktop light or dark scheme; not previewable here",
@@ -116,7 +116,7 @@ export const en = {
         "Ubuntu 25.10 reaches end of life in July 2026, so prefer 26.04. Both need Qt 6.5+, which older releases don’t ship.",
       debian: "Needs Debian 13 (trixie) or newer for Qt 6.5+.",
       fedora:
-        "Builds for Fedora 43, 44 and Rawhide. The COPR build pulls in the optional dependencies, so recording, OCR and QR decoding work out of the box.",
+        "Builds for Fedora 43, 44 and Rawhide. Every required dependency is installed with the package, so recording, OCR and QR decoding work out of the box.",
       opensuse:
         "zypper asks you to accept the repository signing key during the refresh.",
       arch: "A signed pacman repository on the openSUSE Build Service. No AUR needed.",

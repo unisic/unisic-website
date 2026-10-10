@@ -68,11 +68,11 @@ export const it: Dictionary = {
     "caption": "Una regione dello schermo in fase di registrazione: Unisic disegna una cornice con il colore d'accento attorno alla regione con un badge REC e un timer del tempo trascorso."
   },
   "themes": {
-    "title": "Nove temi, incluso il tuo",
+    "title": "Temi, incluso il tuo",
     "lede": "Scegli una palette qui sotto e guarda l'app indossarla.",
     "groupLabel": "Anteprima di un tema nella finestra dell'app",
     "reset": "Ripristina su Unisic",
-    "note": "Ogni chip ridipinge la finestra qui sopra in tempo reale. Il nono tema è il tuo sistema: segue lo schema chiaro o scuro del desktop e il colore d'accento.",
+    "note": "Ogni chip ridipinge la finestra qui sopra in tempo reale. Un tema è il tuo sistema: segue lo schema chiaro o scuro del desktop e il colore d'accento.",
     "system": "Sistema",
     "systemLabel": "Sistema: segue lo schema chiaro o scuro del tuo desktop; non visualizzabile in anteprima qui",
     "previewLabel": "La finestra principale di Unisic nel tema {theme}"
@@ -95,7 +95,7 @@ export const it: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 raggiunge il fine supporto a luglio 2026, quindi meglio scegliere la 26.04. Entrambe richiedono Qt 6.5+, assente nelle versioni più vecchie.",
       "debian": "Richiede Debian 13 (trixie) o più recente per Qt 6.5+.",
-      "fedora": "Build per Fedora 43, 44 e Rawhide. Il pacchetto COPR installa anche le dipendenze opzionali, quindi registrazione, OCR e decodifica dei codici QR funzionano subito.",
+      "fedora": "Build per Fedora 43, 44 e Rawhide. Tutte le dipendenze richieste vengono installate con il pacchetto, quindi registrazione, OCR e decodifica dei codici QR funzionano subito.",
       "opensuse": "Durante il refresh zypper chiederà di accettare la chiave di firma del repository.",
       "arch": "Un repository pacman firmato su openSUSE Build Service. Niente AUR.",
       "nix": "Funziona ovunque ci sia Nix, incluso NixOS. Provalo con nix run oppure aggiungi il flake come input per una configurazione dichiarativa; su NixOS abilita xdg.portal e PipeWire.",

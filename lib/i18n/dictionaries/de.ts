@@ -68,11 +68,11 @@ export const de: Dictionary = {
     "caption": "Ein Bildschirmbereich wird aufgezeichnet: Unisic zeichnet einen akzentfarbenen Rahmen um den Bereich mit einem REC-Symbol und einem laufenden Timer."
   },
   "themes": {
-    "title": "Neun Themes, darunter Ihr eigenes",
+    "title": "Themes, darunter Ihr eigenes",
     "lede": "Wählen Sie unten eine Palette und sehen Sie zu, wie die App sie trägt.",
     "groupLabel": "Ein Theme im App-Fenster in der Vorschau ansehen",
     "reset": "Auf Unisic zurücksetzen",
-    "note": "Jeder Chip färbt das Fenster oben live neu. Das neunte Theme ist Ihr System: Es folgt dem hellen oder dunklen Schema und der Akzentfarbe des Desktops.",
+    "note": "Jeder Chip färbt das Fenster oben live neu. Ein Theme ist Ihr System: Es folgt dem hellen oder dunklen Schema und der Akzentfarbe des Desktops.",
     "system": "System",
     "systemLabel": "System: folgt dem hellen oder dunklen Schema Ihres Desktops; hier nicht in der Vorschau verfügbar",
     "previewLabel": "Das Unisic-Hauptfenster im Theme {theme}"
@@ -95,7 +95,7 @@ export const de: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 erreicht im Juli 2026 das Supportende, bevorzugen Sie daher 26.04. Beide benötigen Qt 6.5+, das ältere Versionen nicht mitbringen.",
       "debian": "Benötigt Debian 13 (trixie) oder neuer für Qt 6.5+.",
-      "fedora": "Builds für Fedora 43, 44 und Rawhide. Der COPR-Build installiert die optionalen Abhängigkeiten mit, sodass Aufnahme, OCR und QR-Dekodierung sofort funktionieren.",
+      "fedora": "Builds für Fedora 43, 44 und Rawhide. Alle erforderlichen Abhängigkeiten werden mit dem Paket installiert, sodass Aufnahme, OCR und QR-Dekodierung sofort funktionieren.",
       "opensuse": "zypper bittet beim Aktualisieren darum, den Signaturschlüssel des Repositorys zu akzeptieren.",
       "arch": "Ein signiertes pacman-Repository auf dem openSUSE Build Service. Kein AUR nötig.",
       "nix": "Läuft überall, wo Nix läuft, auch auf NixOS. Probieren Sie es mit nix run oder fügen Sie das Flake als Input für eine deklarative Konfiguration hinzu; aktivieren Sie unter NixOS xdg.portal und PipeWire.",

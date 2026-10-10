@@ -1,61 +1,27 @@
 ---
-title: "Optional dependencies"
-seoTitle: "Optional dependencies for recording and OCR"
-description: "Enable recording, the reliable clipboard, and OCR (with language packs) - the extra tools per distribution."
+title: "Dependencies"
+seoTitle: "Dependencies bundled with Unisic"
+description: "What every Unisic package includes, and how to add more OCR languages."
 order: 2
 group: "Getting started"
 ---
 
-Unisic works out of the box on the built-in Wayland APIs. A handful of **optional** external tools unlock more: screen recording, the most reliable clipboard copy, and text recognition (OCR). None of them are required to take, annotate, and share screenshots.
+Unisic has no optional dependencies and no reduced package variant. Native packages install every linked library, runtime helper and one desktop-specific portal backend as a hard dependency. The AppImage, portable archive and Flatpak carry their own helpers; the desktop session supplies PipeWire and its portal backend. A build missing one compile-time dependency stops at configure time instead of quietly removing the feature.
 
-If you installed Unisic from a [distribution repository](/docs/installation#install-from-a-distribution-repository), the recording tools are already pulled in as dependencies - you only need this page to add **OCR language packs**, or if you run the AppImage or a source build. The app's own **Settings → General → Diagnostics → Run system check** lists exactly what is present on your machine and what is missing.
+Every package includes the same feature tools:
 
-## What each tool unlocks
+| Tool | Used for |
+| --- | --- |
+| `ffmpeg` + `ffprobe` | Screen recording, GIF export, conversion and trimming |
+| PipeWire + `pw-record` / `pw-dump` / `pw-play` | Frames, audio sources, application audio and sound cues |
+| `wl-copy` | Keeping image clipboard offers alive on Wayland |
+| Tesseract + `eng` / `pol` / `osd` data | OCR and script detection |
+| zxing-cpp | QR and barcode payloads inside OCR |
+| `curl` | FTP, FTPS, SFTP and SCP upload destinations |
+| `zip` | Diagnostics and ZIP export |
+| `grim` | Silent, multi-monitor-safe screenshots on niri and wlroots compositors |
 
-| Tool | Unlocks | Without it |
-| --- | --- | --- |
-| `ffmpeg` | Screen recording and GIF export | Recording and GIF are unavailable |
-| PipeWire | The screen-cast backend recording needs | Recording is unavailable |
-| `wl-clipboard` | The most reliable copy-to-clipboard on Wayland | Copy still works, less reliably in some apps |
-| Tesseract + a language pack | Text recognition (OCR) - copy text out of a capture | The OCR action recognizes nothing |
-| Tesseract `osd` pack | OCR auto-detects the script of each capture | OCR loads every installed pack instead (slower) |
-| `grim` | Screenshots on wlroots compositors (niri, sway, Hyprland) | See [Compositors](/docs/compositors) |
-
-## Install by distribution
-
-Each block installs the recording tools and the reliable clipboard. OCR language packs are added separately below, because you only want the languages you actually use.
-
-### Fedora
-
-```sh
-sudo dnf install ffmpeg pipewire wl-clipboard tesseract tesseract-langpack-osd
-```
-
-On wlroots compositors, also install `grim`. Full `ffmpeg` comes from [RPM Fusion](https://rpmfusion.org/); Fedora's own `ffmpeg-free` also works.
-
-### Debian / Ubuntu
-
-```sh
-sudo apt install ffmpeg pipewire wl-clipboard tesseract-ocr tesseract-ocr-osd
-```
-
-On wlroots compositors, also install `grim`.
-
-### Arch
-
-```sh
-sudo pacman -S --needed ffmpeg pipewire wl-clipboard tesseract tesseract-data-osd
-```
-
-On wlroots compositors, also install `grim`.
-
-### openSUSE
-
-```sh
-sudo zypper install ffmpeg pipewire wl-clipboard tesseract-ocr tesseract-ocr-traineddata-osd
-```
-
-On wlroots compositors, also install `grim`. Full `ffmpeg` comes from the [Packman](https://en.opensuse.org/Additional_package_repositories#Packman) repository.
+The app's **Settings → General → Diagnostics → Run system check** verifies this runtime set. A missing item means the install was modified or broken, not that an optional feature was omitted.
 
 ## OCR language packs
 
@@ -80,4 +46,4 @@ The same pattern applies on the other distributions - swap in the package name f
 
 ## Verify
 
-After installing, open **Settings → General → Diagnostics → Run system check** in Unisic. Every optional tool shows a tick or an install hint, so you can confirm the ones you added are now detected. The **Copy diagnostics** button next to it copies a plain-text summary of your setup for a bug report.
+After installing, open **Settings → General → Diagnostics → Run system check** in Unisic. Every packaged tool should show a tick. The **Copy diagnostics** button next to it copies a plain-text summary for a bug report.

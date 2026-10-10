@@ -50,7 +50,7 @@ Unisic grabs the screen through legitimate Wayland APIs only and picks the right
 
 - **KDE Plasma** - the fully silent native KWin ScreenShot2 path.
 - **Other desktops** - the `xdg-desktop-portal` route, through your installed portal backend.
-- **wlroots compositors** - capture via wlr-screencopy using `grim` (install `grim`).
+- **wlroots compositors** - capture via wlr-screencopy using the packaged `grim`.
 
 On first run in a KDE session, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications`, declaring `X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2` to authorize the silent KWin path (AppImage runs skip this). Without it, captures still work through the portal.
 

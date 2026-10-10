@@ -69,7 +69,7 @@ Running `unisic` with no arguments starts it in the background with the tray ico
 
 ## Appearance
 
-Unisic ships with 9 themes:
+Unisic ships with these themes:
 
 - Unisic
 - Dark

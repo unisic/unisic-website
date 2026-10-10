@@ -68,11 +68,11 @@ export const nl: Dictionary = {
     "caption": "Een schermgebied dat wordt opgenomen: Unisic tekent een kader in accentkleur rond het gebied met een REC-badge en een verstreken tijd."
   },
   "themes": {
-    "title": "Negen thema's, waaronder dat van jou",
+    "title": "Thema's, waaronder dat van jou",
     "lede": "Kies hieronder een palet en zie hoe de app het draagt.",
     "groupLabel": "Bekijk een thema in het app-venster",
     "reset": "Terug naar Unisic",
-    "note": "Elke chip kleurt het venster hierboven live opnieuw in. Het negende thema is je systeem: het volgt het lichte of donkere schema en de accentkleur van je bureaublad.",
+    "note": "Elke chip kleurt het venster hierboven live opnieuw in. Eén thema is je systeem: het volgt het lichte of donkere schema en de accentkleur van je bureaublad.",
     "system": "Systeem",
     "systemLabel": "Systeem: volgt het lichte of donkere schema van je bureaublad; hier niet als voorbeeld te bekijken",
     "previewLabel": "Het Unisic-hoofdvenster in het thema {theme}"
@@ -95,7 +95,7 @@ export const nl: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 bereikt in juli 2026 het einde van de ondersteuning, kies dus bij voorkeur 26.04. Beide vereisen Qt 6.5+, dat oudere uitgaven niet meeleveren.",
       "debian": "Vereist Debian 13 (trixie) of nieuwer vanwege Qt 6.5+.",
-      "fedora": "Builds voor Fedora 43, 44 en Rawhide. De COPR-build installeert de optionele afhankelijkheden mee, dus opnemen, OCR en QR-decodering werken meteen.",
+      "fedora": "Builds voor Fedora 43, 44 en Rawhide. Alle vereiste afhankelijkheden worden met het pakket geïnstalleerd, dus opnemen, OCR en QR-decodering werken meteen.",
       "opensuse": "zypper vraagt je tijdens het verversen om de ondertekeningssleutel van de repository te accepteren.",
       "arch": "Een ondertekende pacman-repository op de openSUSE Build Service. Geen AUR nodig.",
       "nix": "Draait overal waar Nix draait, ook op NixOS. Probeer het met nix run of voeg de flake toe als input voor een declaratieve configuratie; schakel op NixOS xdg.portal en PipeWire in.",

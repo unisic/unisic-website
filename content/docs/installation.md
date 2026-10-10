@@ -10,13 +10,13 @@ This page covers how to install Unisic: the AppImage (recommended), the distribu
 
 ## Requirements
 
-Unisic runs on Linux. You need a Wayland session with `xdg-desktop-portal` and a backend installed. Recording additionally needs PipeWire and `ffmpeg`, and text recognition (OCR) needs Tesseract with a language pack - all optional. See [Optional dependencies](/docs/dependencies) for the per-distribution packages. The app is built with C++20 / Qt 6 / QML.
+Unisic runs on Linux. Native packages include every application dependency and helper, including ffmpeg, the PipeWire command-line tools, Tesseract data, grim and one portal backend chosen for the desktop. Portable bundles carry the helpers but still use the desktop's running PipeWire and portal services. See [Dependencies](/docs/dependencies) for the complete package contract. The app is built with C++20 / Qt 6 / QML.
 
-For compositor-specific setup (for example wlroots compositors like niri, which need `grim` for screenshots and compositor-side keybinds), see [Compositors](/docs/compositors).
+For compositor-specific setup, including compositor-side keybinds on wlroots, see [Compositors](/docs/compositors).
 
 ## Install the AppImage (recommended)
 
-One file, no root, and it keeps itself up to date: when a new release appears Unisic downloads it, checks it against the SHA-256 the release published for that file, replaces itself in place and restarts once you are idle. Nothing to add to your system, nothing to build.
+One file, no root, and it keeps itself up to date: when a new release appears Unisic downloads it, checks it against the SHA-256 the release published for that file, replaces itself in place and restarts once you are idle. It bundles the application libraries, QtMultimedia, OCR data and every helper Unisic invokes. Nothing to add to your system, nothing to build.
 
 The installer script does it for you, and also adds Unisic to your applications menu with its icon:
 
@@ -83,7 +83,7 @@ Then install Unisic:
 sudo dnf install unisic
 ```
 
-Builds are provided for Fedora 43, 44, and Rawhide. The COPR build pulls in the optional deps (PipeWire, Tesseract, zxing-cpp) so recording, OCR, and QR/barcode decoding all work out of the box.
+Builds are provided for Fedora 43, 44, and Rawhide. The COPR package has the same complete dependency set as every other channel, so recording, OCR and QR/barcode decoding work out of the box.
 
 ### openSUSE
 
@@ -171,13 +171,20 @@ The [Releases](https://github.com/unisic/unisic/releases/latest) page carries ev
 
 Building needs **Qt 6.5+**, CMake, and Ninja.
 
+Set `PORTAL_BACKEND` to the package for your desktop (`-kde`, `-gnome`, or `-wlr`) before running the matching block.
+
 ### Fedora
 
 ```sh
+PORTAL_BACKEND=xdg-desktop-portal-kde
 sudo dnf install -y cmake ninja-build gcc-c++ \
     qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qtsvg-devel qt6-qtwayland \
-    pipewire-devel libinput-devel systemd-devel \
-    ffmpeg wl-clipboard xdg-desktop-portal
+    qt6-qtwayland-devel qt6-qtbase-private-devel qt6-qttools-devel \
+    plasma-wayland-protocols-devel pipewire-devel tesseract-devel leptonica-devel \
+    zxing-cpp-devel layer-shell-qt-devel wayland-devel kf6-kguiaddons-devel \
+    libinput-devel systemd-devel libX11-devel libXext-devel libXfixes-devel libxcb-devel \
+    ffmpeg-free curl grim pipewire-utils zip wl-clipboard xdg-desktop-portal \
+    "$PORTAL_BACKEND" tesseract-langpack-eng tesseract-langpack-pol tesseract-osd
 ```
 
 ### Debian / Ubuntu
@@ -185,17 +192,27 @@ sudo dnf install -y cmake ninja-build gcc-c++ \
 Needs a release with Qt 6.5+ (trixie / 24.10+):
 
 ```sh
+PORTAL_BACKEND=xdg-desktop-portal-kde
 sudo apt install cmake ninja-build g++ pkg-config \
-    qt6-base-dev qt6-declarative-dev libqt6svg6-dev qt6-wayland \
-    libpipewire-0.3-dev libinput-dev libudev-dev \
-    ffmpeg wl-clipboard xdg-desktop-portal
+    qt6-base-dev qt6-declarative-dev qt6-svg-dev qt6-wayland \
+    qt6-wayland-dev qt6-base-private-dev qt6-tools-dev qt6-l10n-tools \
+    plasma-wayland-protocols libpipewire-0.3-dev libtesseract-dev libleptonica-dev \
+    libzxing-dev liblayershellqtinterface-dev libwayland-dev libkf6guiaddons-dev \
+    libinput-dev libudev-dev libx11-dev libxext-dev libxfixes-dev libxcb1-dev \
+    ffmpeg curl grim pipewire-bin zip wl-clipboard xdg-desktop-portal \
+    "$PORTAL_BACKEND" tesseract-ocr-eng tesseract-ocr-pol tesseract-ocr-osd
 ```
 
 ### Arch
 
 ```sh
+PORTAL_BACKEND=xdg-desktop-portal-kde
 sudo pacman -S --needed base-devel qt6-base qt6-declarative qt6-svg qt6-wayland \
-    pipewire libinput ffmpeg wl-clipboard xdg-desktop-portal cmake ninja pkgconf
+    qt6-tools plasma-wayland-protocols pipewire tesseract leptonica zxing-cpp \
+    layer-shell-qt wayland kguiaddons libinput libx11 libxext libxfixes libxcb \
+    ffmpeg curl grim pipewire-audio zip wl-clipboard xdg-desktop-portal \
+    "$PORTAL_BACKEND" tesseract-data-eng tesseract-data-pol tesseract-data-osd \
+    cmake ninja pkgconf
 cd packaging/arch && makepkg -si   # or use the common build below
 ```
 
@@ -207,7 +224,7 @@ cmake --build build
 ./build/unisic
 ```
 
-PipeWire, Tesseract (with Leptonica), zxing-cpp and libinput dev packages are optional at build time - without them the app builds with recording, OCR, QR/barcode decoding, or the pressed-key badge and click ripple disabled. libinput needs its own dev package **and** libudev's (`systemd-devel` on Fedora, `libudev-dev` on Debian); one without the other counts as neither.
+Every package above is required. Missing build libraries stop CMake at configure time with the distro package name instead of producing a reduced binary. Runtime helpers are hard dependencies too. libinput needs its own development package **and** libudev's (`systemd-devel` on Fedora, `libudev-dev` on Debian); one without the other fails the build.
 
 ## Run
 

@@ -1,4 +1,4 @@
-/* The app's 8 named palettes, values from unisic/qml/Theme.qml:17-62. */
+/* The app's named palettes, values from unisic/qml/Theme.qml:17-62. */
 
 export type ThemePalette = {
   name: string;

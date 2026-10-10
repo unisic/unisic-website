@@ -68,11 +68,11 @@ export const fr: Dictionary = {
     "caption": "Une région de l'écran en cours d'enregistrement : Unisic dessine un cadre de la couleur d'accentuation autour de la région, avec un badge REC et un minuteur du temps écoulé."
   },
   "themes": {
-    "title": "Neuf thèmes, dont le vôtre",
+    "title": "Des thèmes, dont le vôtre",
     "lede": "Choisissez une palette ci-dessous et regardez l'application l'adopter.",
     "groupLabel": "Prévisualiser un thème dans la fenêtre de l'application",
     "reset": "Réinitialiser sur Unisic",
-    "note": "Chaque pastille repeint la fenêtre ci-dessus en temps réel. Le neuvième thème est votre système : il suit le schéma clair ou sombre du bureau et la couleur d'accentuation.",
+    "note": "Chaque pastille repeint la fenêtre ci-dessus en temps réel. Un thème est votre système : il suit le schéma clair ou sombre du bureau et la couleur d'accentuation.",
     "system": "Système",
     "systemLabel": "Système : suit le schéma clair ou sombre de votre bureau ; non prévisualisable ici",
     "previewLabel": "La fenêtre principale d'Unisic dans le thème {theme}"
@@ -95,7 +95,7 @@ export const fr: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 atteint sa fin de vie en juillet 2026, préférez donc 26.04. Les deux nécessitent Qt 6.5+, absent des versions plus anciennes.",
       "debian": "Nécessite Debian 13 (trixie) ou plus récent pour Qt 6.5+.",
-      "fedora": "Builds pour Fedora 43, 44 et Rawhide. Le paquet COPR installe les dépendances optionnelles : l'enregistrement, l'OCR et le décodage des codes QR fonctionnent d'emblée.",
+      "fedora": "Builds pour Fedora 43, 44 et Rawhide. Toutes les dépendances requises sont installées avec le paquet : l'enregistrement, l'OCR et le décodage des codes QR fonctionnent d'emblée.",
       "opensuse": "zypper vous demandera d'accepter la clé de signature du dépôt lors du rafraîchissement.",
       "arch": "Un dépôt pacman signé sur l'openSUSE Build Service. Pas besoin d'AUR.",
       "nix": "Fonctionne partout où Nix fonctionne, y compris NixOS. Essayez-le avec nix run ou ajoutez le flake comme entrée pour une configuration déclarative ; sur NixOS, activez xdg.portal et PipeWire.",

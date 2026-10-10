@@ -68,11 +68,11 @@ export const zhHant: Dictionary = {
     "caption": "正在錄製的一塊螢幕區域：Unisic 在區域四周畫出強調色邊框，並附上 REC 標記與計時器。"
   },
   "themes": {
-    "title": "九種主題，包含你自己的",
+    "title": "多種主題，包含你自己的",
     "lede": "在下方挑一種配色，看應用程式換上它。",
     "groupLabel": "在應用程式視窗中預覽主題",
     "reset": "重設為 Unisic",
-    "note": "每個色塊都會即時重繪上方的視窗。第九種主題是你的系統：它會跟隨桌面的淺色或深色配置與強調色。",
+    "note": "每個色塊都會即時重繪上方的視窗。其中一種主題是你的系統：它會跟隨桌面的淺色或深色配置與強調色。",
     "system": "系統",
     "systemLabel": "系統：跟隨你桌面的淺色或深色配置；此處無法預覽",
     "previewLabel": "採用 {theme} 主題的 Unisic 主視窗"
@@ -95,7 +95,7 @@ export const zhHant: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 將於 2026 年 7 月結束支援--建議選擇 26.04。兩者都需要 Qt 6.5+，較舊的版本並未提供。",
       "debian": "因需要 Qt 6.5+，須使用 Debian 13（trixie）或更新版本。",
-      "fedora": "提供 Fedora 43、44 與 Rawhide 的組建。COPR 組建會一併安裝選用相依套件，因此錄製、OCR 與 QR 解碼都能直接使用。",
+      "fedora": "提供 Fedora 43、44 與 Rawhide 的組建。所有必要相依套件都會隨套件一併安裝，因此錄製、OCR 與 QR 解碼都能直接使用。",
       "opensuse": "重新整理時 zypper 會要求你接受軟體庫的簽署金鑰。",
       "arch": "openSUSE Build Service 上的已簽署 pacman 軟體庫--不需要 AUR。",
       "nix": "只要有 Nix 就能執行，包含 NixOS。可用 nix run 直接試用，或把 flake 作為 input 加入設定進行宣告式安裝；在 NixOS 上請啟用 xdg.portal 與 PipeWire。",

@@ -47,12 +47,9 @@ In the trim window: `Space` plays and pauses, `I` and `O` mark the in and out po
 
 ## Requirements
 
-Recording needs more than a normal screenshot. The baseline Unisic requirement is a Wayland session with `xdg-desktop-portal` and a backend; recording additionally needs:
+Every Unisic package includes ffmpeg and the PipeWire command-line tools. On Wayland, recording uses the session's running PipeWire and ScreenCast portal services; on X11, it captures frames through XShm and uses the same packaged encoder. A source build without the PipeWire development library fails at configure time rather than disabling recording.
 
-- **PipeWire**
-- **ffmpeg**
-
-If Unisic is built from source without the PipeWire development packages, it builds with recording disabled. See [Installation](/docs/installation) for packages that ship with recording enabled.
+See [Installation](/docs/installation) for the complete source-build package list.
 
 ## Hotkeys
 

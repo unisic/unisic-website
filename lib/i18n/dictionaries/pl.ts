@@ -68,11 +68,11 @@ export const pl: Dictionary = {
     "caption": "Nagrywany obszar ekranu: Unisic rysuje wokół obszaru ramkę w kolorze akcentu z plakietką REC i licznikiem czasu."
   },
   "themes": {
-    "title": "Dziewięć motywów, w tym twój",
+    "title": "Motywy, w tym twój",
     "lede": "Wybierz poniżej paletę i patrz, jak aplikacja ją zakłada.",
     "groupLabel": "Podejrzyj motyw w oknie aplikacji",
     "reset": "Przywróć Unisic",
-    "note": "Każdy kafelek na żywo przemalowuje okno powyżej. Dziewiąty motyw to twój system: podąża za jasnym lub ciemnym schematem pulpitu i kolorem akcentu.",
+    "note": "Każdy kafelek na żywo przemalowuje okno powyżej. Jeden motyw to twój system: podąża za jasnym lub ciemnym schematem pulpitu i kolorem akcentu.",
     "system": "System",
     "systemLabel": "System: podąża za jasnym lub ciemnym schematem pulpitu; niedostępny do podglądu tutaj",
     "previewLabel": "Główne okno Unisic w motywie {theme}"
@@ -95,7 +95,7 @@ export const pl: Dictionary = {
     "notes": {
       "ubuntu": "Ubuntu 25.10 traci wsparcie w lipcu 2026, więc lepiej wybrać 26.04. Obie wersje wymagają Qt 6.5+, którego starsze wydania nie mają.",
       "debian": "Wymaga Debiana 13 (trixie) lub nowszego ze względu na Qt 6.5+.",
-      "fedora": "Kompilacje dla Fedory 43, 44 i Rawhide. Pakiet z COPR dociąga opcjonalne zależności, więc nagrywanie, OCR i dekodowanie kodów QR działają od razu.",
+      "fedora": "Kompilacje dla Fedory 43, 44 i Rawhide. Wszystkie wymagane zależności instalują się razem z pakietem, więc nagrywanie, OCR i dekodowanie kodów QR działają od razu.",
       "opensuse": "Podczas odświeżania zypper poprosi o zaakceptowanie klucza podpisującego repozytorium.",
       "arch": "Podpisane repozytorium pacmana na openSUSE Build Service. AUR nie jest potrzebny.",
       "nix": "Działa wszędzie tam, gdzie Nix, także na NixOS. Wypróbuj przez nix run albo dodaj flake jako wejście do konfiguracji deklaratywnej; na NixOS włącz xdg.portal i PipeWire.",
