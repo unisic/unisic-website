@@ -22,11 +22,11 @@ export function Nav({
           <span className={styles.wordmark}>Unisic</span>
         </a>
         <div className={styles.links}>
+          <a href="#how" className={styles.link}>
+            {dict.nav.how}
+          </a>
           <a href="#features" className={styles.link}>
             {dict.nav.features}
-          </a>
-          <a href="#recording" className={styles.link}>
-            {dict.nav.recording}
           </a>
           <Link href="/docs" className={`${styles.link} ${styles.linkDocs}`}>
             {dict.nav.docs}

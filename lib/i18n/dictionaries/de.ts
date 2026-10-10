@@ -7,22 +7,51 @@ export const de: Dictionary = {
     "title": "Unisic - Screenshot-Tool & Bildschirmrekorder für Linux",
     "description": "Open-Source-Screenshot-Tool und Bildschirmrekorder für Linux. Kommentieren vor der Aufnahme, bearbeiten danach, GIF und Video aufnehmen, überall hochladen. Keine Telemetrie, GPLv3.",
     "ogTitle": "Unisic - Screenshots richtig gemacht unter Linux",
-    "ogDescription": "Lautlose Aufnahme, Kommentieren vor der Aufnahme, ein Editor mit 15 Werkzeugen, GIF- und Videoaufnahme, OCR, sofortiges Hochladen. Keine Telemetrie, GPLv3.",
+    "ogDescription": "Aufnehmen, kommentieren, bearbeiten, aufzeichnen und teilen mit einem Tastenkürzel. Lautlose Aufnahme unter Wayland, GIF- und Videoaufzeichnung, OCR, sofortiges Hochladen. Keine Telemetrie, GPLv3.",
     "ogImageAlt": "Unisic Screenshot-Editor unter Linux"
   },
   "nav": {
     "docs": "Dokumentation",
     "skip": "Zum Inhalt springen",
+    "how": "So funktioniert's",
     "features": "Funktionen",
-    "recording": "Aufzeichnung",
     "github": "Unisic auf GitHub",
     "download": "Herunterladen"
   },
   "hero": {
-    "headline": "Screenshots richtig gemacht unter Linux.",
-    "sub": "Lautlose Aufnahme, Kommentieren vor der Aufnahme, ein Editor mit 15 Werkzeugen, GIF- und Videoaufnahme, OCR, sofortiges Hochladen. Keine Telemetrie. GPLv3.",
-    "download": "Herunterladen",
-    "github": "Auf GitHub ansehen"
+    "eyebrow": "Screenshots und Bildschirmaufnahme für Linux",
+    "headline": "Ein Screenshot-Tool, das die Arbeit zu Ende bringt.",
+    "sub": "Unisic ist kostenlos und quelloffen. Zeichnen Sie auf den Bildschirm, bevor Sie aufnehmen, bearbeiten Sie danach, nehmen Sie ein GIF oder Video auf und teilen Sie den Link, alles mit einem Tastenkürzel.",
+    "installLabel": "Installation in einer Zeile",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "installNote": "Öffnet ein Menü. Jeder Download wird mit der veröffentlichten SHA-256-Prüfsumme geprüft.",
+    "installRead": "So arbeitet das Installationsskript",
+    "otherWays": "Andere Installationswege",
+    "github": "Auf GitHub ansehen",
+    "trust": {
+      "license": "Kostenlos, GPL-3.0-lizenziert",
+      "privacy": "Keine Telemetrie, kein Konto",
+      "sessions": "Wayland und X11"
+    }
+  },
+  "how": {
+    "title": "So funktioniert's",
+    "lede": "Es gibt keinen Einrichtungsassistenten und kein Konto. Installieren, Tastenkürzel drücken, loslegen.",
+    "steps": {
+      "hotkey": {
+        "title": "Tastenkürzel drücken",
+        "body": "{keys} startet eine Bereichsaufnahme. Vollbild und Fenster haben eigene Tasten, die Sie in den Einstellungen ändern können."
+      },
+      "mark": {
+        "title": "Markieren",
+        "body": "Zeichnen Sie Pfeile, Text, Unschärfe und nummerierte Schritte direkt auf den eingefrorenen Bildschirm und drücken Sie dann die Eingabetaste. Der Editor bietet weitere Werkzeuge."
+      },
+      "share": {
+        "title": "Teilen",
+        "body": "Speichern, kopieren oder hochladen. Nach dem Hochladen liegt der Link bereits in Ihrer Zwischenablage."
+      }
+    }
   },
   "usp": {
     "title": "Kommentieren, bevor die Aufnahme überhaupt gemacht wird",
@@ -34,18 +63,18 @@ export const de: Dictionary = {
   },
   "features": {
     "title": "Alles nach dem Tastenkürzel",
-    "lede": "Die meisten Tools liefern Ihnen ein Rechteck aus Pixeln und lassen Sie dann allein. Unisic deckt den Rest des Arbeitsablaufs ab.",
+    "lede": "Die meisten Screenshot-Tools hören beim Bild auf. Unisic macht weiter.",
     "editor": {
       "title": "Ein echter Editor, keine Zuschneidebox",
-      "body": "Fünfzehn Werkzeuge, darunter Hervorheben, Verpixeln, intelligenter Radierer, Sprechblase, Messwerkzeug, nummerierte Schritte und Zuschneiden. Rückgängig, Wiederholen, Zoom, alles im Bildpixel-Raum."
+      "body": "Pfeile, Formen, Text, Hervorheben, Unschärfe, Verpixeln, nummerierte Schritte, Sprechblasen und Zuschneiden. Rückgängig, Wiederholen und Zoomen, so oft Sie wollen."
     },
     "ocr": {
       "title": "Text aus Pixeln",
-      "body": "Erfassen Sie einen Bereich per OCR direkt in die Zwischenablage, oder wählen Sie einzelne Wörter im Editor aus, um sie zu kopieren, hervorzuheben oder zu schwärzen. QR-Codes werden zu ihrem Inhalt dekodiert."
+      "body": "Kopieren Sie den Text aus jedem Bereich direkt in die Zwischenablage. QR-Codes und Barcodes werden zu ihrem Inhalt dekodiert."
     },
     "upload": {
       "title": "Überall hochladen",
-      "body": "Eigene HTTP-Ziele, Import von ShareX-Uploadern, FTP und SFTP, integrierte Hoster. Der Link landet in Ihrer Zwischenablage.",
+      "body": "Ihr eigener HTTP-Server, ShareX-Uploader-Dateien, FTP, SFTP oder ein integrierter Host. Der Link wird für Sie kopiert.",
       "copied": "Kopiert"
     },
     "history": {
@@ -58,12 +87,12 @@ export const de: Dictionary = {
     },
     "yours": {
       "title": "Ganz und gar Ihres",
-      "body": "Keine Telemetrie, keine Konten, nichts funkt nach Hause. Unter GPL-3.0 lizenziert und offen entwickelt."
+      "body": "Keine Telemetrie, keine Analyse, kein Konto. Die einzige Anfrage, die Unisic von sich aus stellt, ist die Suche nach neuen Versionen. GPL-3.0-lizenziert und offen entwickelt."
     }
   },
   "recording": {
-    "title": "Derselbe Bereich, als GIF oder Video",
-    "lede": "GIF mit einer Zwei-Pass-Palette für klare Farben oder MP4 und WebM mit optionalem Ton von System, Mikrofon oder einer einzelnen App, über das ScreenCast-Portal, PipeWire und ffmpeg. Nehmen Sie einen Bereich, den gesamten Bildschirm oder ein Fenster auf, lassen Sie die Sofortwiederholung die letzten 30 Sekunden puffern und schneiden Sie das Ergebnis direkt aus der Benachrichtigungskarte zu.",
+    "title": "Denselben Bereich als GIF oder Video aufnehmen",
+    "lede": "Nehmen Sie einen Bereich, ein Fenster oder den ganzen Bildschirm auf. Speichern Sie ein GIF mit sauberen Farben oder ein MP4 oder WebM mit System-, Mikrofon- oder Einzel-App-Ton. Die Sofortwiedergabe hält die letzten 30 Sekunden bereit, und den Clip können Sie direkt in der Benachrichtigung kürzen.",
     "note": "{keys} stoppt immer eine Aufzeichnung, egal was gerade den Fokus hat.",
     "caption": "Ein Bildschirmbereich wird aufgezeichnet: Unisic zeichnet einen akzentfarbenen Rahmen um den Bereich mit einem REC-Symbol und einem laufenden Timer."
   },
@@ -79,7 +108,13 @@ export const de: Dictionary = {
   },
   "download": {
     "title": "Unisic installieren",
-    "lede": "Benötigt eine Wayland-Sitzung mit xdg-desktop-portal. Für Aufzeichnungen sind zudem PipeWire und ffmpeg erforderlich.",
+    "lede": "Für Wayland gemacht, läuft aber auch unter X11. Wählen Sie, wie Sie installieren möchten.",
+    "points": {
+      "verify": "Jeder Download wird gegen seine SHA-256-Prüfsumme geprüft",
+      "noRoot": "Das AppImage braucht kein Root und aktualisiert sich selbst",
+      "free": "Kostenlos und quelloffen, GPL-3.0"
+    },
+    "or": "Oder wählen Sie Ihr System",
     "repoLede": "AppImage ist der empfohlene Weg: eine Datei, kein Root, und bei einer neuen Version ersetzt sie sich selbst. Wählen Sie stattdessen Ihre Distribution, dann hält das Repository Unisic über die Paketverwaltung aktuell; das Release enthält zudem einmalige .deb-, .rpm- und Arch-Pakete, die bei der Erstinstallation das Repository einrichten.",
     "distroListLabel": "Distribution oder Paketformat wählen",
     "versionLabel": "Version",
@@ -107,7 +142,7 @@ export const de: Dictionary = {
     "fallbackBtn": "Über GitHub Releases herunterladen",
     "fallbackNote": "GitHub konnte gerade nicht erreicht werden, aber jeder Build ist dort verfügbar.",
     "allReleases": "Alle Versionen und ältere Builds",
-    "stability": "Unisic 0.7 ist die erste stabile Version. Falls Ihr Compositor dennoch einen Weg findet, sie zu überraschen, hilft jede Meldung in {link}.",
+    "stability": "Unisic befindet sich in der Beta. Wenn es auf Ihrem Desktop Probleme macht, hilft ein Bericht unter {link}.",
     "stabilityLink": "Issues"
   },
   "hotkeys": {

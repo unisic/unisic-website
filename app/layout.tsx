@@ -1,19 +1,32 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, JetBrains_Mono } from "next/font/google";
+import {
+  Atkinson_Hyperlegible_Next,
+  Bricolage_Grotesque,
+  JetBrains_Mono,
+} from "next/font/google";
 import { SITE_URL } from "../lib/site";
 import "../styles/tokens.css";
 import "./globals.css";
 
-const outfit = Outfit({
+// Body face: Atkinson Hyperlegible Next, drawn by the Braille Institute so
+// similar letters (I l 1, O 0, a e) stay distinct for low-vision readers.
+// latin-ext is needed for Polish, Czech and the rest of the diacritics the
+// translations use; with latin alone those glyphs fell back to system-ui.
+const body = Atkinson_Hyperlegible_Next({
   variable: "--font-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
 });
 
-// Mono only appears above the fold as a decorative hero chip, so skip
-// preloading it and let Outfit (the LCP font) own the critical path.
+// Display face for headings only (h1-h3, see globals.css).
+const display = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin", "latin-ext"],
+});
+
+// Mono only appears in command snippets and key caps.
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   preload: false,
 });
 
@@ -78,7 +91,7 @@ const app = {
   featureList: [
     "Region, full-screen and window capture",
     "Annotate the selection before the shot is taken",
-    "15-tool post-capture editor (arrows, blur, pixelate, numbered steps, crop)",
+    "Post-capture editor with arrows, shapes, text, blur, pixelate, numbered steps and crop",
     "GIF and MP4/WebM screen recording",
     "Upload to custom HTTP, FTP, SFTP and ShareX destinations",
     "Capture history with thumbnails",
@@ -104,7 +117,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${jetbrainsMono.variable}`}
+      className={`${body.variable} ${display.variable} ${jetbrainsMono.variable}`}
       // Next 16 no longer auto-suppresses CSS smooth scrolling during route
       // navigation; this attribute opts back into the smart handling (instant
       // scroll reset on nav, smooth for in-page anchors).

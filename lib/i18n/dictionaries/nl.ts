@@ -7,22 +7,51 @@ export const nl: Dictionary = {
     "title": "Unisic - Screenshot- en schermrecorder voor Linux",
     "description": "Open-source screenshot- en schermrecorder voor Linux. Annoteer vóór de opname, bewerk erna, neem GIF en video op, upload overal. Geen telemetrie, GPLv3.",
     "ogTitle": "Unisic - Screenshots zoals het hoort op Linux",
-    "ogDescription": "Geruisloos vastleggen, annotatie vóór de opname, een editor met 15 gereedschappen, GIF- en video-opname, OCR, direct uploaden. Geen telemetrie, GPLv3.",
+    "ogDescription": "Leg vast, annoteer, bewerk, neem op en deel met één sneltoets. Geruisloos vastleggen op Wayland, GIF- en video-opname, OCR, direct uploaden. Geen telemetrie, GPLv3.",
     "ogImageAlt": "Unisic screenshot-editor op Linux"
   },
   "nav": {
     "docs": "Documentatie",
     "skip": "Ga naar inhoud",
+    "how": "Hoe het werkt",
     "features": "Functies",
-    "recording": "Opnemen",
     "github": "Unisic op GitHub",
     "download": "Downloaden"
   },
   "hero": {
-    "headline": "Screenshots zoals het hoort op Linux.",
-    "sub": "Geruisloos vastleggen, annotatie vóór de opname, een editor met 15 gereedschappen, GIF- en video-opname, OCR, direct uploaden. Geen telemetrie. GPLv3.",
-    "download": "Downloaden",
-    "github": "Bekijk op GitHub"
+    "eyebrow": "Schermafbeeldingen en schermopname voor Linux",
+    "headline": "Een screenshottool dat de klus afmaakt.",
+    "sub": "Unisic is gratis en open source. Teken op het scherm voordat je het vastlegt, bewerk daarna, neem een GIF of video op en deel de link, alles met één sneltoets.",
+    "installLabel": "Installeer in één regel",
+    "copy": "Kopiëren",
+    "copied": "Gekopieerd",
+    "installNote": "Opent een menu. Elke download wordt gecontroleerd met de gepubliceerde SHA-256.",
+    "installRead": "Hoe het installatiescript werkt",
+    "otherWays": "Andere manieren om te installeren",
+    "github": "Bekijk op GitHub",
+    "trust": {
+      "license": "Gratis, GPL-3.0-licentie",
+      "privacy": "Geen telemetrie, geen account",
+      "sessions": "Wayland en X11"
+    }
+  },
+  "how": {
+    "title": "Hoe het werkt",
+    "lede": "Geen installatiewizard en geen account. Installeer het, druk op een sneltoets en ga aan de slag.",
+    "steps": {
+      "hotkey": {
+        "title": "Druk op een sneltoets",
+        "body": "{keys} start een gebiedsopname. Volledig scherm en venster hebben eigen toetsen, die je in Instellingen kunt wijzigen."
+      },
+      "mark": {
+        "title": "Markeer het",
+        "body": "Teken pijlen, tekst, vervaging en genummerde stappen direct op het bevroren scherm en druk op Enter. De editor heeft meer gereedschappen."
+      },
+      "share": {
+        "title": "Deel het",
+        "body": "Sla het op, kopieer het of upload het. Na een upload staat de link al op je klembord."
+      }
+    }
   },
   "usp": {
     "title": "Annoteer nog voor de opname is gemaakt",
@@ -34,18 +63,18 @@ export const nl: Dictionary = {
   },
   "features": {
     "title": "Alles na de sneltoets",
-    "lede": "De meeste tools geven je een rechthoek met pixels en laten je vervolgens in de steek. Unisic dekt de rest van de workflow.",
+    "lede": "De meeste screenshottools stoppen bij het plaatje. Unisic gaat verder.",
     "editor": {
       "title": "Een echte editor, geen bijsnijkader",
-      "body": "Vijftien gereedschappen, waaronder markeren, pixeleren, slimme gum, tekstballon, meten, genummerde stappen en bijsnijden. Ongedaan maken, opnieuw, zoomen, allemaal in beeldpixels."
+      "body": "Pijlen, vormen, tekst, markeren, vervagen, pixeleren, genummerde stappen, tekstballonnen en bijsnijden. Ongedaan maken, opnieuw en zoomen zo vaak je wilt."
     },
     "ocr": {
       "title": "Tekst uit pixels",
-      "body": "OCR een gebied rechtstreeks naar je klembord, of kies losse woorden in de editor om ze te kopiëren, te markeren of onleesbaar te maken. QR-codes worden gedecodeerd naar hun inhoud."
+      "body": "Kopieer de tekst uit elk gebied rechtstreeks naar je klembord. QR-codes en streepjescodes worden gedecodeerd naar hun inhoud."
     },
     "upload": {
       "title": "Overal uploaden",
-      "body": "Aangepaste HTTP-bestemmingen, import van ShareX-uploaders, FTP en SFTP, ingebouwde hosts. De link belandt op je klembord.",
+      "body": "Je eigen HTTP-server, ShareX-uploaderbestanden, FTP, SFTP of een ingebouwde host. De link wordt voor je gekopieerd.",
       "copied": "Gekopieerd"
     },
     "history": {
@@ -58,12 +87,12 @@ export const nl: Dictionary = {
     },
     "yours": {
       "title": "Helemaal van jou",
-      "body": "Geen telemetrie, geen accounts, niets stuurt gegevens naar huis. Gelicentieerd onder GPL-3.0 en openlijk ontwikkeld."
+      "body": "Geen telemetrie, geen analyse, geen account. Het enige verzoek dat Unisic uit zichzelf doet, is controleren op nieuwe versies. GPL-3.0-licentie en openlijk ontwikkeld."
     }
   },
   "recording": {
-    "title": "Hetzelfde gebied, als GIF of video",
-    "lede": "GIF met een tweefasig palet voor scherpe kleuren, of MP4 en WebM met optioneel geluid van het systeem, de microfoon of één enkele app, via de ScreenCast-portal, PipeWire en ffmpeg. Neem een gebied, het volledige scherm of een venster op, laat instant replay de laatste 30 seconden bufferen en knip het resultaat direct bij vanuit de meldingskaart.",
+    "title": "Neem hetzelfde gebied op als GIF of video",
+    "lede": "Leg een gebied, een venster of het hele scherm vast. Bewaar een GIF met zuivere kleuren, of een MP4 of WebM met systeemgeluid, microfoon of geluid van één app. Direct terugspelen houdt de laatste 30 seconden klaar, en je kunt de clip bijsnijden vanuit de melding.",
     "note": "{keys} stopt altijd een opname, ongeacht wat de focus heeft.",
     "caption": "Een schermgebied dat wordt opgenomen: Unisic tekent een kader in accentkleur rond het gebied met een REC-badge en een verstreken tijd."
   },
@@ -79,7 +108,13 @@ export const nl: Dictionary = {
   },
   "download": {
     "title": "Unisic installeren",
-    "lede": "Vereist een Wayland-sessie met xdg-desktop-portal. Voor opnemen zijn ook PipeWire en ffmpeg nodig.",
+    "lede": "Gemaakt voor Wayland, en het draait ook op X11. Kies hoe je het wilt installeren.",
+    "points": {
+      "verify": "Elke download wordt gecontroleerd met zijn SHA-256",
+      "noRoot": "De AppImage heeft geen root nodig en werkt zichzelf bij",
+      "free": "Gratis en open source, GPL-3.0"
+    },
+    "or": "Of kies je systeem",
     "repoLede": "AppImage is de aanbevolen weg: één bestand, geen root, en het vervangt zichzelf zodra er een nieuwe versie is. Kies anders je distributie: de repository houdt Unisic up-to-date via je pakketbeheerder; de release bevat ook losse .deb-, .rpm- en Arch-pakketten die bij de eerste installatie de repository instellen.",
     "distroListLabel": "Kies je distributie of pakketformaat",
     "versionLabel": "Versie",
@@ -107,7 +142,7 @@ export const nl: Dictionary = {
     "fallbackBtn": "Download via GitHub Releases",
     "fallbackNote": "GitHub was zojuist niet bereikbaar, maar elke build staat daar.",
     "allReleases": "Alle releases en oudere builds",
-    "stability": "Unisic 0.7 is de eerste stabiele release. Als je compositor toch nog een manier vindt om hem te verrassen, helpt elke melding in {link}.",
+    "stability": "Unisic is in bèta. Als het zich op jouw bureaublad misdraagt, helpt een melding in {link}.",
     "stabilityLink": "Issues"
   },
   "hotkeys": {

@@ -1,59 +1,108 @@
 .hero {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 72px 24px 0;
-  display: grid;
-  grid-template-columns: 11fr 12fr;
-  gap: 48px;
+  padding: 64px 24px 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
-.copy {
-  min-width: 0;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--divider));
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  color: var(--accent-bright);
+  font-size: 0.9375rem;
+  font-weight: 600;
 }
 
-/* the page's single display-level heading: a clear step above the section
-   h2 scale (max 2.4rem) in both size and weight, so the hero reads as its
-   own level rather than the first of seven equal sections */
+.eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* the page's single display-level heading, well above the section h2 scale.
+   Sized in em-relative max-width so a longer translation wraps to a third
+   line instead of overflowing. */
 .headline {
-  font-size: clamp(2.4rem, 1.35rem + 3.4vw, 3.55rem);
-  font-weight: 700;
-  letter-spacing: -0.028em;
-  line-height: 1.08;
+  margin-top: 28px;
+  max-width: 13em;
+  font-size: clamp(2.6rem, 1.2rem + 6vw, 5.25rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
 }
 
 .sub {
-  margin-top: 22px;
-  font-size: 17px;
-  color: var(--text-secondary);
-  max-width: 46ch;
+  margin-top: 24px;
+  max-width: 40rem;
+  font-size: clamp(1.0625rem, 1rem + 0.45vw, 1.3125rem);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.install {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 52rem;
+}
+
+.installLabel {
+  margin-bottom: 12px;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.installNote {
+  margin-top: 12px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
+.installNote a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.installNote a:hover {
+  color: var(--accent-bright);
 }
 
 .ctas {
-  margin-top: 32px;
+  margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .primary,
 .secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 9px;
-  height: 46px;
-  padding: 0 26px;
+  min-height: 2.75rem;
+  padding: 0 24px;
   border-radius: 999px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 650;
-  white-space: nowrap;
   transition:
     transform var(--dur-fast) var(--ease-out),
     background var(--dur-fast) var(--ease-out),
     border-color var(--dur-fast) var(--ease-out);
 }
 
+/* .primary is also the 404 page's button (not-found.tsx) */
 .primary {
   background: var(--accent);
   color: var(--text-on-accent);
@@ -64,9 +113,6 @@
   background: var(--accent-bright);
 }
 
-/* shared hover vocabulary: accent pills recolor plus a 1px lift (motion,
-   so only when hover is real and motion is welcome); ghost pills recolor
-   only. The :active press stays ungated as feedback. */
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .primary:hover {
     transform: translateY(-1px);
@@ -80,16 +126,42 @@
 
 .secondary {
   color: var(--text);
-  border: 1px solid var(--divider);
-  background: var(--surface);
+  border: 1px solid rgba(243, 240, 250, 0.3);
+  background: transparent;
 }
 
 .secondary:hover {
-  background: var(--surface-hi);
-  border-color: rgba(243, 240, 250, 0.3);
+  background: var(--surface);
+  border-color: rgba(243, 240, 250, 0.5);
+}
+
+.trust {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 28px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
+.trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trust svg {
+  flex: none;
+  color: var(--success);
 }
 
 .visual {
+  margin-top: 72px;
+  width: 100%;
+  max-width: 1040px;
   min-width: 0;
   position: relative;
 }
@@ -108,6 +180,7 @@
   background-position:
     22% 30%,
     78% 65%;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 45%, transparent 100%);
   pointer-events: none;
 }
 
@@ -140,6 +213,7 @@
 .stack {
   position: relative;
   padding-bottom: 12%;
+  text-align: left;
 }
 
 .mainWin {
@@ -157,16 +231,12 @@
 /* one-shot load-in, motivated: the app opens, then the editor lands on top,
    telling the capture-then-edit story */
 @media (prefers-reduced-motion: no-preference) {
-  .copy {
-    animation: rise 0.7s var(--ease-out) both;
-  }
-
   .mainWin {
-    animation: rise 0.7s var(--ease-out) 0.12s both;
+    animation: rise 0.7s var(--ease-out) 0.1s both;
   }
 
   .editorWin {
-    animation: rise 0.7s var(--ease-out) 0.45s both;
+    animation: rise 0.7s var(--ease-out) 0.4s both;
   }
 }
 
@@ -183,13 +253,11 @@
 
 @media (max-width: 899px) {
   .hero {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding-top: 48px;
+    padding-top: 40px;
   }
 
-  .sub {
-    font-size: 16px;
+  .visual {
+    margin-top: 48px;
   }
 }
 

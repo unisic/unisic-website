@@ -7,22 +7,51 @@ export const pl: Dictionary = {
     "title": "Unisic - Zrzuty ekranu i nagrywanie ekranu na Linux",
     "description": "Otwartoźródłowy program do zrzutów ekranu i nagrywania ekranu dla Linux. Adnotacje przed zrzutem, edycja po nim, nagrywanie GIF-ów i wideo, przesyłanie wszędzie. Zero telemetrii, GPLv3.",
     "ogTitle": "Unisic - Zrzuty ekranu zrobione jak należy na Linux",
-    "ogDescription": "Ciche przechwytywanie, adnotacje przed zrzutem, edytor z 15 narzędziami, nagrywanie GIF-ów i wideo, OCR, natychmiastowe przesyłanie. Zero telemetrii, GPLv3.",
+    "ogDescription": "Rób zrzuty, adnotuj, edytuj, nagrywaj i udostępniaj jednym skrótem. Ciche przechwytywanie na Wayland, nagrywanie GIF-ów i wideo, OCR, natychmiastowe przesyłanie. Zero telemetrii, GPLv3.",
     "ogImageAlt": "Edytor zrzutów ekranu Unisic na Linux"
   },
   "nav": {
     "docs": "Dokumentacja",
     "skip": "Przejdź do treści",
+    "how": "Jak to działa",
     "features": "Funkcje",
-    "recording": "Nagrywanie",
     "github": "Unisic na GitHub",
     "download": "Pobierz"
   },
   "hero": {
-    "headline": "Zrzuty ekranu zrobione jak należy na Linux.",
-    "sub": "Ciche przechwytywanie, adnotacje przed zrzutem, edytor z 15 narzędziami, nagrywanie GIF-ów i wideo, OCR, natychmiastowe przesyłanie. Zero telemetrii. GPLv3.",
-    "download": "Pobierz",
-    "github": "Zobacz na GitHub"
+    "eyebrow": "Zrzuty ekranu i nagrywanie ekranu na Linux",
+    "headline": "Narzędzie do zrzutów, które doprowadza sprawę do końca.",
+    "sub": "Unisic jest darmowy i otwartoźródłowy. Rysuj po ekranie, zanim zrobisz zrzut, edytuj go potem, nagraj GIF-a lub wideo i udostępnij link, wszystko jednym skrótem klawiszowym.",
+    "installLabel": "Instalacja w jednej linii",
+    "copy": "Kopiuj",
+    "copied": "Skopiowano",
+    "installNote": "Otwiera menu. Każde pobranie jest sprawdzane z opublikowaną sumą SHA-256.",
+    "installRead": "Jak działa instalator",
+    "otherWays": "Inne sposoby instalacji",
+    "github": "Zobacz na GitHub",
+    "trust": {
+      "license": "Darmowy, licencja GPL-3.0",
+      "privacy": "Bez telemetrii i bez konta",
+      "sessions": "Wayland i X11"
+    }
+  },
+  "how": {
+    "title": "Jak to działa",
+    "lede": "Bez kreatora konfiguracji i bez konta. Zainstaluj, naciśnij skrót i pracuj.",
+    "steps": {
+      "hotkey": {
+        "title": "Naciśnij skrót",
+        "body": "{keys} uruchamia zrzut obszaru. Pełny ekran i okno mają własne klawisze, które zmienisz w Ustawieniach."
+      },
+      "mark": {
+        "title": "Zaznacz, co trzeba",
+        "body": "Rysuj strzałki, tekst, rozmycie i ponumerowane kroki wprost na zamrożonym ekranie, potem naciśnij Enter. Edytor ma więcej narzędzi."
+      },
+      "share": {
+        "title": "Udostępnij",
+        "body": "Zapisz, skopiuj albo prześlij. Po przesłaniu link jest już w schowku."
+      }
+    }
   },
   "usp": {
     "title": "Dodawaj adnotacje, zanim jeszcze zrobisz zrzut",
@@ -34,18 +63,18 @@ export const pl: Dictionary = {
   },
   "features": {
     "title": "Wszystko po skrócie klawiszowym",
-    "lede": "Większość narzędzi podaje ci prostokąt pikseli i odchodzi. Unisic zajmuje się resztą procesu.",
+    "lede": "Większość narzędzi do zrzutów kończy na obrazku. Unisic idzie dalej.",
     "editor": {
       "title": "Prawdziwy edytor, a nie ramka do kadrowania",
-      "body": "Piętnaście narzędzi, w tym wyróżnienie, pikselizacja, inteligentna gumka, dymek, miarka, ponumerowane kroki i kadrowanie. Cofanie, ponawianie, powiększanie, wszystko w przestrzeni pikseli obrazu."
+      "body": "Strzałki, kształty, tekst, wyróżnienie, rozmycie, pikselizacja, ponumerowane kroki, dymki i kadrowanie. Cofanie, ponawianie i powiększanie bez ograniczeń."
     },
     "ocr": {
       "title": "Tekst prosto z pikseli",
-      "body": "Wykonaj OCR obszaru (rozpoznany tekst trafia prosto do schowka) albo wskaż pojedyncze słowa w edytorze, aby je skopiować, wyróżnić lub zaczernić. Kody QR od razu dekodują się do swojej zawartości."
+      "body": "Skopiuj tekst z dowolnego obszaru prosto do schowka. Kody QR i kody kreskowe od razu zamieniają się w swoją zawartość."
     },
     "upload": {
       "title": "Przesyłaj wszędzie",
-      "body": "Własne cele HTTP, import uploadera ShareX, FTP i SFTP, wbudowane hosty. Link ląduje w twoim schowku.",
+      "body": "Twój własny serwer HTTP, pliki uploadera ShareX, FTP, SFTP albo wbudowany host. Link kopiuje się za ciebie.",
       "copied": "Skopiowano"
     },
     "history": {
@@ -58,12 +87,12 @@ export const pl: Dictionary = {
     },
     "yours": {
       "title": "W całości twój",
-      "body": "Zero telemetrii, brak kont, nic nie wysyła danych na zewnątrz. Na licencji GPL-3.0, tworzony w otwarty sposób."
+      "body": "Bez telemetrii, bez analityki, bez konta. Jedyne zapytanie, jakie Unisic wysyła sam z siebie, to sprawdzenie nowych wydań. Licencja GPL-3.0, tworzony otwarcie."
     }
   },
   "recording": {
-    "title": "Ten sam obszar jako GIF lub wideo",
-    "lede": "GIF z dwuprzebiegową paletą dla wyrazistych kolorów albo MP4 i WebM z opcjonalnym dźwiękiem z systemu, mikrofonu lub pojedynczej aplikacji, przez portal ScreenCast, PipeWire i ffmpeg. Nagrywaj obszar, cały ekran lub okno, pozwól natychmiastowej powtórce buforować ostatnie 30 sekund i przytnij nagranie prosto z karty powiadomienia.",
+    "title": "Nagraj ten sam obszar jako GIF lub wideo",
+    "lede": "Nagrywaj obszar, okno albo cały ekran. Zapisz GIF-a z czystymi kolorami albo MP4 lub WebM z dźwiękiem systemu, mikrofonu lub jednej aplikacji. Natychmiastowa powtórka trzyma ostatnie 30 sekund w gotowości, a klip przytniesz prosto z powiadomienia.",
     "note": "{keys} zawsze zatrzymuje nagrywanie, niezależnie od tego, co ma fokus.",
     "caption": "Nagrywany obszar ekranu: Unisic rysuje wokół obszaru ramkę w kolorze akcentu z plakietką REC i licznikiem czasu."
   },
@@ -79,7 +108,13 @@ export const pl: Dictionary = {
   },
   "download": {
     "title": "Zainstaluj Unisic",
-    "lede": "Wymaga sesji Wayland z xdg-desktop-portal. Nagrywanie potrzebuje też PipeWire i ffmpeg.",
+    "lede": "Stworzony dla Wayland, działa też na X11. Wybierz sposób instalacji.",
+    "points": {
+      "verify": "Każde pobranie jest sprawdzane z sumą SHA-256",
+      "noRoot": "AppImage nie wymaga roota i aktualizuje się samo",
+      "free": "Darmowy i otwartoźródłowy, GPL-3.0"
+    },
+    "or": "Albo wybierz swój system",
     "repoLede": "AppImage to zalecany sposób: jeden plik, bez roota, a gdy pojawi się nowa wersja, podmienia sam siebie. Możesz zamiast tego wybrać swoją dystrybucję - repozytorium aktualizuje Unisic przez menedżera pakietów; w wydaniu znajdziesz też pojedyncze pakiety .deb i .rpm oraz pakiet dla Archa, które przy pierwszej instalacji podpinają repozytorium.",
     "distroListLabel": "Wybierz dystrybucję lub format pakietu",
     "versionLabel": "Wersja",
@@ -99,7 +134,7 @@ export const pl: Dictionary = {
       "opensuse": "Podczas odświeżania zypper poprosi o zaakceptowanie klucza podpisującego repozytorium.",
       "arch": "Podpisane repozytorium pacmana na openSUSE Build Service. AUR nie jest potrzebny.",
       "nix": "Działa wszędzie tam, gdzie Nix, także na NixOS. Wypróbuj przez nix run albo dodaj flake jako wejście do konfiguracji deklaratywnej; na NixOS włącz xdg.portal i PipeWire.",
-      "appimage": "Zalecane. Uniwersalny: działa na każdej dystrybucji, nie wymaga roota i nic nie instaluje w systemie. Aktualizuje się sam: pobiera nowe wydanie, sprawdza je z opublikowaną dla niego sumą SHA-256, podmienia na miejscu i restartuje Unisic, gdy jesteś bezczynny.",
+      "appimage": "Zalecane. Uniwersalny: działa na każdej dystrybucji, nie wymaga roota i nic nie instaluje w systemie. Aktualizuje się sam: pobiera nowe wydanie, sprawdza je z opublikowaną dla niego sumą SHA-256, podmienia na miejscu i restartuje Unisic, gdy jesteś bezczynny."
     },
     "downloadBtn": "Pobierz",
     "checking": "Sprawdzanie najnowszego wydania",
@@ -107,7 +142,7 @@ export const pl: Dictionary = {
     "fallbackBtn": "Pobierz z GitHub Releases",
     "fallbackNote": "Nie udało się teraz połączyć z GitHub, ale każda kompilacja jest tam dostępna.",
     "allReleases": "Wszystkie wydania i starsze kompilacje",
-    "stability": "Unisic 0.7 to pierwsze stabilne wydanie. Jeśli twój kompozytor wciąż potrafi go czymś zaskoczyć, każde zgłoszenie w {link} pomaga.",
+    "stability": "Unisic jest w wersji beta. Jeśli źle działa na twoim pulpicie, pomoże zgłoszenie w {link}.",
     "stabilityLink": "Zgłoszeniach"
   },
   "hotkeys": {

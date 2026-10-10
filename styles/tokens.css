@@ -66,8 +66,12 @@
   /* site-only */
   --max-width: 1160px;
   --accent-bright: #e2cfee;
-  --space-lede: 44px; /* gap from a section lede to the block below it */
-  --space-section: 96px; /* vertical beat between landing sections */
+  --space-lede: 48px; /* gap from a section lede to the block below it */
+  --space-section: 112px; /* vertical beat between landing sections */
+
+  /* running text on the page background: 10.7:1 over --bg, so paragraphs
+     clear WCAG AAA. --text-secondary (6.8:1) stays for small UI labels */
+  --ink-2: rgba(243, 240, 250, 0.78);
 
   /* accent-tinted CTA glow, one hue two strengths (previously four hand-tuned
      rgba(200,172,214,*) literals drifting across components) */

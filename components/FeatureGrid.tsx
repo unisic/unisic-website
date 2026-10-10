@@ -15,7 +15,7 @@ import type { Dictionary } from "../lib/i18n";
 export function FeatureGrid({ dict }: { dict: Dictionary }) {
   const f = dict.features;
   return (
-    <div className={styles.grid} data-stagger="">
+    <div className={styles.grid}>
       <article className={`${styles.cell} ${styles.editor}`}>
         <EditorPreview />
         <h3 className={styles.cellTitle}>

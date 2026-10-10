@@ -1,6 +1,5 @@
 .title {
-  font-size: 18px;
-  font-weight: 650;
+  font-size: 1.25rem;
   letter-spacing: -0.01em;
   padding-bottom: 14px;
 }
@@ -20,15 +19,15 @@
 }
 
 .name {
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 650;
+  font-size: 1.0625rem;
 }
 
 .body {
   margin: 4px 0 0;
-  color: var(--text-secondary);
-  font-size: 14.5px;
-  line-height: 1.55;
+  color: var(--ink-2);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* Sits centered under the notes as a sign-off. In-flow (no absolute offsets)

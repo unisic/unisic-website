@@ -7,22 +7,51 @@ export const zhHant: Dictionary = {
     "title": "Unisic - Linux 螢幕截圖與螢幕錄影工具",
     "description": "適用於 Linux 的開源截圖與螢幕錄影工具。截圖前先標註，事後再編輯，錄製 GIF 與影片，隨處上傳。零遙測，GPLv3。",
     "ogTitle": "Unisic - 在 Linux 上把截圖做對",
-    "ogDescription": "靜默擷取、截圖前標註、15 種工具的編輯器、GIF 與影片錄製、OCR、即時上傳。零遙測，GPLv3。",
+    "ogDescription": "一個快速鍵完成擷圖、標註、編輯、錄製與分享。Wayland 下靜默擷取，GIF 與影片錄製，OCR，即時上傳。零遙測，GPLv3。",
     "ogImageAlt": "Linux 上的 Unisic 截圖編輯器"
   },
   "nav": {
     "docs": "文件",
     "skip": "跳至內容",
+    "how": "使用方式",
     "features": "功能",
-    "recording": "錄製",
     "github": "Unisic 的 GitHub",
     "download": "下載"
   },
   "hero": {
-    "headline": "在 Linux 上把截圖做對。",
-    "sub": "靜默擷取、截圖前標註、15 種工具的編輯器、GIF 與影片錄製、OCR、即時上傳。零遙測。GPLv3。",
-    "download": "下載",
-    "github": "在 GitHub 上查看"
+    "eyebrow": "適用於 Linux 的截圖與螢幕錄影工具",
+    "headline": "把事情一次做完的截圖工具。",
+    "sub": "Unisic 免費且開源。擷取前先在螢幕上標註，擷取後再編輯，錄製 GIF 或影片，然後分享連結，全部從一個快速鍵開始。",
+    "installLabel": "一行指令安裝",
+    "copy": "複製",
+    "copied": "已複製",
+    "installNote": "會開啟一個選單。每個下載都會對照已發布的 SHA-256 驗證。",
+    "installRead": "安裝腳本如何運作",
+    "otherWays": "其他安裝方式",
+    "github": "在 GitHub 上查看",
+    "trust": {
+      "license": "免費，GPL-3.0 授權",
+      "privacy": "零遙測，不需帳號",
+      "sessions": "支援 Wayland 與 X11"
+    }
+  },
+  "how": {
+    "title": "使用方式",
+    "lede": "沒有安裝精靈，也不需要帳號。安裝後按下快速鍵，直接開始。",
+    "steps": {
+      "hotkey": {
+        "title": "按下快速鍵",
+        "body": "{keys} 開始區域擷取。全螢幕與視窗各有自己的按鍵，可在設定中修改。"
+      },
+      "mark": {
+        "title": "直接標註",
+        "body": "在凍結的螢幕上直接畫箭頭、文字、模糊和編號步驟，然後按 Enter。編輯器裡還有更多工具。"
+      },
+      "share": {
+        "title": "分享出去",
+        "body": "儲存、複製或上傳。上傳後，連結已經在你的剪貼簿裡。"
+      }
+    }
   },
   "usp": {
     "title": "在截圖之前就先標註",
@@ -34,18 +63,18 @@ export const zhHant: Dictionary = {
   },
   "features": {
     "title": "熱鍵之後的一切",
-    "lede": "多數工具丟給你一塊矩形像素就走人。Unisic 則涵蓋了工作流程的其餘部分。",
+    "lede": "大多數截圖工具到圖片就結束了。Unisic 繼續往下做。",
     "editor": {
       "title": "真正的編輯器，而非裁切框",
-      "body": "十五種工具，包含螢光標記、像素化、智慧橡皮擦、圖說文字、測量、編號步驟與裁切。復原、重做、縮放，全部在影像像素空間中進行。"
+      "body": "箭頭、形狀、文字、醒目標示、模糊、像素化、編號步驟、標註框與裁切。復原、重做、縮放不限次數。"
     },
     "ocr": {
       "title": "把像素變成文字",
-      "body": "對一塊區域進行 OCR，文字直接進到你的剪貼簿；也可以在編輯器中點選單一字詞來複製、加上螢光標記或遮蔽。QR 碼則會解碼出其中的內容。"
+      "body": "把任意區域的文字直接複製到剪貼簿。QR 碼與條碼會解碼為其內容。"
     },
     "upload": {
       "title": "隨處上傳",
-      "body": "自訂 HTTP 目的地、匯入 ShareX 上傳器、FTP 與 SFTP、內建主機。連結會直接進到你的剪貼簿。",
+      "body": "你自己的 HTTP 伺服器、ShareX 上傳器檔案、FTP、SFTP，或內建主機。連結會自動為你複製。",
       "copied": "已複製"
     },
     "history": {
@@ -58,12 +87,12 @@ export const zhHant: Dictionary = {
     },
     "yours": {
       "title": "完全屬於你",
-      "body": "零遙測、無需帳號、不會回傳任何資料。採用 GPL-3.0 授權，並公開開發。"
+      "body": "零遙測，無分析，不需帳號。Unisic 自己發出的唯一請求是檢查新版本。採用 GPL-3.0 授權，公開開發。"
     }
   },
   "recording": {
-    "title": "同一塊區域，錄成 GIF 或影片",
-    "lede": "GIF 採用兩階段調色盤帶來鮮明色彩；MP4 與 WebM 則可選擇收錄系統、麥克風或單一應用程式的音訊--皆透過 ScreenCast portal、PipeWire 與 ffmpeg。可錄製一塊區域、整個螢幕或單一視窗，也可以讓即時重播緩衝最後 30 秒，並直接從通知卡片修剪成品。",
+    "title": "同一區域，錄成 GIF 或影片",
+    "lede": "錄製區域、視窗或整個螢幕。儲存色彩清晰的 GIF，或帶系統聲音、麥克風或單一應用程式聲音的 MP4 或 WebM。即時回放隨時保留最近 30 秒，你還可以直接在通知裡剪輯片段。",
     "note": "無論焦點在哪裡，{keys} 都能停止錄製。",
     "caption": "正在錄製的一塊螢幕區域：Unisic 在區域四周畫出強調色邊框，並附上 REC 標記與計時器。"
   },
@@ -79,7 +108,13 @@ export const zhHant: Dictionary = {
   },
   "download": {
     "title": "安裝 Unisic",
-    "lede": "需要具備 xdg-desktop-portal 的 Wayland 工作階段。錄製功能另需 PipeWire 與 ffmpeg。",
+    "lede": "為 Wayland 而生，也能在 X11 上執行。選擇你想要的安裝方式。",
+    "points": {
+      "verify": "每個下載都會對照 SHA-256 驗證",
+      "noRoot": "AppImage 不需要 root，並會自行更新",
+      "free": "免費開源，GPL-3.0"
+    },
+    "or": "或選擇你的系統",
     "repoLede": "建議使用 AppImage：單一檔案，不需 root，有新版本時會自行替換。也可以改為選擇你的發行版--軟體庫會透過套件管理器讓 Unisic 保持最新；發佈版本中也附有一次性的 .deb、.rpm 與 Arch 套件，首次安裝時就會設定好軟體庫。",
     "distroListLabel": "選擇發行版或軟體套件格式",
     "versionLabel": "版本",
@@ -107,7 +142,7 @@ export const zhHant: Dictionary = {
     "fallbackBtn": "從 GitHub Releases 取得",
     "fallbackNote": "目前無法連上 GitHub，但每個組建版本都在那裡。",
     "allReleases": "所有版本與較舊的組建",
-    "stability": "Unisic 0.7 是第一個穩定版本。如果你的合成器仍然有辦法讓它出乎意料，你在 {link} 提出的每則回報都有幫助。",
+    "stability": "Unisic 處於測試階段。如果它在你的桌面上出問題，請在 {link} 提出回報。",
     "stabilityLink": "Issues"
   },
   "hotkeys": {

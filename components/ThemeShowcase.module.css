@@ -331,8 +331,8 @@
 
 .note {
   margin-top: 20px;
-  color: var(--text-secondary);
-  font-size: 14.5px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
 }
 
 /* Desktop split: the palettes become a vertical rail beside the preview,

@@ -4,8 +4,9 @@
 
 .caption {
   text-align: left;
-  font-size: 18px;
-  font-weight: 650;
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
   letter-spacing: -0.01em;
   padding-bottom: 14px;
 }
@@ -25,8 +26,8 @@
 
 .action {
   padding: 11px 0;
-  color: var(--text-secondary);
-  font-size: 15px;
+  color: var(--ink-2);
+  font-size: 1rem;
   transition: color var(--dur-fast) var(--ease-out);
 }
 
@@ -43,8 +44,8 @@
 .tryHint {
   display: none;
   margin-top: 14px;
-  color: var(--text-secondary);
-  font-size: 13.5px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
 }
 
 :global(html[data-js]) .tryHint {
@@ -53,6 +54,6 @@
 
 .note {
   margin-top: 6px;
-  color: var(--text-secondary);
-  font-size: 13.5px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
 }

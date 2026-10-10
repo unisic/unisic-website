@@ -1,20 +1,17 @@
 .wrap {
-  margin: var(--space-lede) auto 0;
-  max-width: 720px;
+  margin: 0;
   text-align: left;
 }
 
 .lede {
-  color: var(--text-secondary);
-  font-size: 15px;
-  text-align: center;
+  color: var(--ink-2);
+  font-size: 1rem;
 }
 
 .distros {
-  margin-top: 24px;
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 10px;
 }
 
@@ -29,7 +26,7 @@
   border: 1px solid var(--divider);
   color: var(--text-secondary);
   font-weight: 600;
-  font-size: 14.5px;
+  font-size: 0.9375rem;
   transition:
     color var(--dur-fast) var(--ease-out),
     background var(--dur-fast) var(--ease-out),
@@ -102,7 +99,6 @@
   margin-top: 16px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
 }
@@ -163,8 +159,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--text-secondary);
-  font-size: 14px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
 }
 
 .stepLabel::before {
@@ -186,10 +182,9 @@
 
 .note {
   margin-top: 12px;
-  color: var(--text-secondary);
-  font-size: 13.5px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
   line-height: 1.55;
-  text-align: center;
 }
 
 /* Direct-download panel (AppImage) */
@@ -198,9 +193,8 @@
   margin-top: 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
-  text-align: center;
 }
 
 .assetPanel .note {
@@ -209,8 +203,8 @@
 }
 
 .version {
-  color: var(--text-secondary);
-  font-size: 15px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
 }
 
 .version strong {
@@ -264,9 +258,9 @@
 }
 
 .btnHint {
-  font-size: 12.5px;
+  font-size: 0.8125rem;
   line-height: 1.1;
-  color: rgba(27, 24, 52, 0.72);
+  color: var(--text-on-accent);
 }
 
 .skeleton {
@@ -297,11 +291,11 @@
 }
 
 .allLink {
-  font-size: 14px;
+  font-size: 0.9375rem;
 }
 
 .allLink a {
-  color: var(--text-secondary);
+  color: var(--ink-2);
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color var(--dur-fast) var(--ease-out);

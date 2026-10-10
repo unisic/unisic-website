@@ -7,22 +7,51 @@ export const fr: Dictionary = {
     "title": "Unisic - Capture d'écran et enregistreur pour Linux",
     "description": "Capture d'écran et enregistreur d'écran open source pour Linux. Annotez avant la prise, retouchez après, enregistrez en GIF et en vidéo, envoyez partout. Zéro télémétrie, GPLv3.",
     "ogTitle": "Unisic - Les captures d'écran bien faites sur Linux",
-    "ogDescription": "Capture silencieuse, annotation avant la prise, un éditeur à 15 outils, enregistrement GIF et vidéo, OCR, envoi instantané. Zéro télémétrie, GPLv3.",
+    "ogDescription": "Capturez, annotez, modifiez, enregistrez et partagez avec un seul raccourci. Capture silencieuse sous Wayland, enregistrement GIF et vidéo, OCR, envoi instantané. Zéro télémétrie, GPLv3.",
     "ogImageAlt": "L'éditeur de captures d'écran Unisic sur Linux"
   },
   "nav": {
     "docs": "Documentation",
     "skip": "Aller au contenu",
+    "how": "Comment ça marche",
     "features": "Fonctionnalités",
-    "recording": "Enregistrement",
     "github": "Unisic sur GitHub",
     "download": "Télécharger"
   },
   "hero": {
-    "headline": "Les captures d'écran bien faites sur Linux.",
-    "sub": "Capture silencieuse, annotation avant la prise, un éditeur à 15 outils, enregistrement GIF et vidéo, OCR, envoi instantané. Zéro télémétrie. GPLv3.",
-    "download": "Télécharger",
-    "github": "Voir sur GitHub"
+    "eyebrow": "Captures d'écran et enregistrement d'écran pour Linux",
+    "headline": "Un outil de capture qui va jusqu'au bout.",
+    "sub": "Unisic est gratuit et open source. Dessinez sur l'écran avant de capturer, retouchez ensuite, enregistrez un GIF ou une vidéo et partagez le lien, le tout avec un seul raccourci.",
+    "installLabel": "Installez en une ligne",
+    "copy": "Copier",
+    "copied": "Copié",
+    "installNote": "Ouvre un menu. Chaque téléchargement est vérifié avec son SHA-256 publié.",
+    "installRead": "Comment fonctionne l'installateur",
+    "otherWays": "Autres façons d'installer",
+    "github": "Voir sur GitHub",
+    "trust": {
+      "license": "Gratuit, sous licence GPL-3.0",
+      "privacy": "Sans télémétrie, sans compte",
+      "sessions": "Wayland et X11"
+    }
+  },
+  "how": {
+    "title": "Comment ça marche",
+    "lede": "Pas d'assistant de configuration, pas de compte. Installez, appuyez sur un raccourci et travaillez à partir de là.",
+    "steps": {
+      "hotkey": {
+        "title": "Appuyez sur un raccourci",
+        "body": "{keys} lance une capture de zone. Plein écran et fenêtre ont leurs propres touches, que vous pouvez modifier dans les Paramètres."
+      },
+      "mark": {
+        "title": "Annotez",
+        "body": "Dessinez des flèches, du texte, du flou et des étapes numérotées directement sur l'écran figé, puis appuyez sur Entrée. L'éditeur offre d'autres outils."
+      },
+      "share": {
+        "title": "Partagez",
+        "body": "Enregistrez, copiez ou envoyez. Après un envoi, le lien est déjà dans votre presse-papiers."
+      }
+    }
   },
   "usp": {
     "title": "Annotez avant même d'avoir pris la capture",
@@ -34,18 +63,18 @@ export const fr: Dictionary = {
   },
   "features": {
     "title": "Tout ce qui vient après le raccourci",
-    "lede": "La plupart des outils vous livrent un rectangle de pixels et s'en vont. Unisic prend en charge le reste du flux de travail.",
+    "lede": "La plupart des outils de capture s'arrêtent à l'image. Unisic va plus loin.",
     "editor": {
       "title": "Un vrai éditeur, pas une boîte de recadrage",
-      "body": "Quinze outils, dont surligneur, pixellisation, gomme intelligente, légende, mesure, étapes numérotées et recadrage. Annuler, rétablir, zoomer, le tout à l'échelle du pixel de l'image."
+      "body": "Flèches, formes, texte, surlignage, flou, pixellisation, étapes numérotées, légendes et recadrage. Annuler, rétablir et zoomer autant que vous voulez."
     },
     "ocr": {
       "title": "Des pixels au texte",
-      "body": "Extrayez par OCR le texte d'une région directement dans votre presse-papiers, ou sélectionnez des mots isolés dans l'éditeur pour les copier, les surligner ou les caviarder. Les codes QR sont décodés en leur contenu."
+      "body": "Copiez le texte de n'importe quelle zone directement dans le presse-papiers. Les codes QR et les codes-barres sont décodés en leur contenu."
     },
     "upload": {
       "title": "Envoyez partout",
-      "body": "Destinations HTTP personnalisées, import d'uploaders ShareX, FTP et SFTP, hébergeurs intégrés. Le lien atterrit dans votre presse-papiers.",
+      "body": "Votre propre serveur HTTP, des fichiers d'uploader ShareX, FTP, SFTP ou un hébergeur intégré. Le lien est copié pour vous.",
       "copied": "Copié"
     },
     "history": {
@@ -58,12 +87,12 @@ export const fr: Dictionary = {
     },
     "yours": {
       "title": "Entièrement à vous",
-      "body": "Zéro télémétrie, aucun compte, rien ne communique à l'extérieur. Sous licence GPL-3.0 et développé au grand jour."
+      "body": "Pas de télémétrie, pas d'analyse, pas de compte. La seule requête qu'Unisic envoie de lui-même est la recherche de nouvelles versions. Sous licence GPL-3.0 et développé au grand jour."
     }
   },
   "recording": {
-    "title": "La même région, en GIF ou en vidéo",
-    "lede": "GIF avec une palette en deux passes pour des couleurs nettes, ou MP4 et WebM avec, en option, l'audio du système, du microphone ou d'une seule application, via le portail ScreenCast, PipeWire et ffmpeg. Enregistrez une région, l'écran entier ou une fenêtre, laissez la relecture instantanée garder en mémoire les 30 dernières secondes et découpez le résultat directement depuis la carte de notification.",
+    "title": "Enregistrez la même zone en GIF ou en vidéo",
+    "lede": "Capturez une zone, une fenêtre ou tout l'écran. Enregistrez un GIF aux couleurs nettes, ou un MP4 ou WebM avec le son du système, du micro ou d'une seule application. Le replay instantané garde les 30 dernières secondes prêtes, et vous pouvez couper le clip depuis la notification.",
     "note": "{keys} arrête toujours un enregistrement, quel que soit l'élément actif.",
     "caption": "Une région de l'écran en cours d'enregistrement : Unisic dessine un cadre de la couleur d'accentuation autour de la région, avec un badge REC et un minuteur du temps écoulé."
   },
@@ -79,7 +108,13 @@ export const fr: Dictionary = {
   },
   "download": {
     "title": "Installer Unisic",
-    "lede": "Nécessite une session Wayland avec xdg-desktop-portal. L'enregistrement requiert également PipeWire et ffmpeg.",
+    "lede": "Conçu pour Wayland, il fonctionne aussi sous X11. Choisissez comment l'installer.",
+    "points": {
+      "verify": "Chaque téléchargement est vérifié avec son SHA-256",
+      "noRoot": "L'AppImage n'exige pas root et se met à jour toute seule",
+      "free": "Gratuit et open source, GPL-3.0"
+    },
+    "or": "Ou choisissez votre système",
     "repoLede": "AppImage est la voie recommandée : un seul fichier, sans root, et il se remplace lui-même dès qu'une nouvelle version paraît. Choisissez plutôt votre distribution et le dépôt maintiendra Unisic à jour via votre gestionnaire de paquets ; la release contient aussi des paquets .deb, .rpm et Arch ponctuels qui configurent le dépôt dès la première installation.",
     "distroListLabel": "Choisissez votre distribution ou votre format de paquet",
     "versionLabel": "Version",
@@ -107,7 +142,7 @@ export const fr: Dictionary = {
     "fallbackBtn": "Obtenez-la depuis les Releases GitHub",
     "fallbackNote": "Impossible de joindre GitHub pour le moment, mais tous les builds s'y trouvent.",
     "allReleases": "Toutes les versions et les anciens builds",
-    "stability": "Unisic 0.7 est la première version stable. Si votre compositeur trouve encore le moyen de la surprendre, chaque signalement dans {link} nous aide.",
+    "stability": "Unisic est en bêta. S'il se comporte mal sur votre bureau, un signalement dans {link} aide.",
     "stabilityLink": "Issues"
   },
   "hotkeys": {

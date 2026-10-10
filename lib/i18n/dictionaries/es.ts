@@ -7,22 +7,51 @@ export const es: Dictionary = {
     "title": "Unisic - Captura de pantalla y grabador para Linux",
     "description": "Capturador de pantalla y grabador de código abierto para Linux. Anota antes de capturar, edita después, graba GIF y vídeo, sube a cualquier sitio. Cero telemetría, GPLv3.",
     "ogTitle": "Unisic - Capturas de pantalla bien hechas en Linux",
-    "ogDescription": "Captura silenciosa, anotación antes de disparar, un editor con 15 herramientas, grabación de GIF y vídeo, OCR, subida instantánea. Cero telemetría, GPLv3.",
+    "ogDescription": "Captura, anota, edita, graba y comparte con un solo atajo. Captura silenciosa en Wayland, grabación de GIF y vídeo, OCR, subida instantánea. Cero telemetría, GPLv3.",
     "ogImageAlt": "Editor de capturas Unisic en Linux"
   },
   "nav": {
     "docs": "Documentación",
     "skip": "Saltar al contenido",
+    "how": "Cómo funciona",
     "features": "Funciones",
-    "recording": "Grabación",
     "github": "Unisic en GitHub",
     "download": "Descargar"
   },
   "hero": {
-    "headline": "Capturas de pantalla bien hechas en Linux.",
-    "sub": "Captura silenciosa, anotación antes de disparar, un editor con 15 herramientas, grabación de GIF y vídeo, OCR, subida instantánea. Cero telemetría. GPLv3.",
-    "download": "Descargar",
-    "github": "Ver en GitHub"
+    "eyebrow": "Capturas de pantalla y grabación de pantalla para Linux",
+    "headline": "Una herramienta de capturas que termina el trabajo.",
+    "sub": "Unisic es gratuito y de código abierto. Dibuja sobre la pantalla antes de capturarla, edita después, graba un GIF o un vídeo y comparte el enlace, todo con un solo atajo.",
+    "installLabel": "Instala en una línea",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "installNote": "Abre un menú. Cada descarga se comprueba con su SHA-256 publicado.",
+    "installRead": "Cómo funciona el instalador",
+    "otherWays": "Otras formas de instalar",
+    "github": "Ver en GitHub",
+    "trust": {
+      "license": "Gratis, con licencia GPL-3.0",
+      "privacy": "Sin telemetría, sin cuenta",
+      "sessions": "Wayland y X11"
+    }
+  },
+  "how": {
+    "title": "Cómo funciona",
+    "lede": "No hay asistente de configuración ni cuenta. Instálalo, pulsa un atajo y trabaja desde ahí.",
+    "steps": {
+      "hotkey": {
+        "title": "Pulsa un atajo",
+        "body": "{keys} inicia una captura de región. Pantalla completa y ventana tienen sus propias teclas, y puedes cambiarlas en Ajustes."
+      },
+      "mark": {
+        "title": "Márcalo",
+        "body": "Dibuja flechas, texto, desenfoque y pasos numerados directamente sobre la pantalla congelada y pulsa Intro. El editor tiene más herramientas."
+      },
+      "share": {
+        "title": "Compártelo",
+        "body": "Guárdalo, cópialo o súbelo. Tras subirlo, el enlace ya está en tu portapapeles."
+      }
+    }
   },
   "usp": {
     "title": "Anota antes incluso de tomar la captura",
@@ -34,18 +63,18 @@ export const es: Dictionary = {
   },
   "features": {
     "title": "Todo lo que viene después del atajo",
-    "lede": "La mayoría de las herramientas te entregan un rectángulo de píxeles y se despiden. Unisic cubre el resto del flujo de trabajo.",
+    "lede": "La mayoría de las herramientas de capturas se quedan en la imagen. Unisic sigue adelante.",
     "editor": {
       "title": "Un editor de verdad, no un recuadro de recorte",
-      "body": "Quince herramientas, incluidas resaltado, pixelado, borrador inteligente, llamada, medición, pasos numerados y recorte. Deshacer, rehacer, zoom, todo en el espacio de píxeles de la imagen."
+      "body": "Flechas, formas, texto, resaltado, desenfoque, pixelado, pasos numerados, llamadas y recorte. Deshacer, rehacer y hacer zoom tanto como quieras."
     },
     "ocr": {
       "title": "Texto a partir de píxeles",
-      "body": "Aplica OCR a una región directo a tu portapapeles, o elige palabras sueltas en el editor para copiarlas, resaltarlas o censurarlas. Los códigos QR se decodifican a su contenido."
+      "body": "Copia el texto de cualquier región directamente al portapapeles. Los códigos QR y de barras se decodifican a su contenido."
     },
     "upload": {
       "title": "Sube a cualquier sitio",
-      "body": "Destinos HTTP personalizados, importación del subidor de ShareX, FTP y SFTP, servidores integrados. El enlace acaba en tu portapapeles.",
+      "body": "Tu propio servidor HTTP, archivos de uploader de ShareX, FTP, SFTP o un host integrado. El enlace se copia por ti.",
       "copied": "Copiado"
     },
     "history": {
@@ -58,12 +87,12 @@ export const es: Dictionary = {
     },
     "yours": {
       "title": "Tuyo, por completo",
-      "body": "Cero telemetría, sin cuentas, nada llama a casa. Con licencia GPL-3.0 y desarrollado en abierto."
+      "body": "Sin telemetría, sin analíticas, sin cuenta. La única petición que Unisic hace por sí solo es comprobar si hay versiones nuevas. Con licencia GPL-3.0 y desarrollado abiertamente."
     }
   },
   "recording": {
-    "title": "La misma región, como GIF o vídeo",
-    "lede": "GIF con una paleta de dos pasadas para colores nítidos, o MP4 y WebM con audio opcional del sistema, del micrófono o de una sola aplicación, a través del portal ScreenCast, PipeWire y ffmpeg. Graba una región, la pantalla completa o una ventana, deja que la repetición instantánea retenga los últimos 30 segundos y recorta el resultado directamente desde la tarjeta de notificación.",
+    "title": "Graba la misma región como GIF o vídeo",
+    "lede": "Captura una región, una ventana o toda la pantalla. Guarda un GIF con colores limpios, o un MP4 o WebM con sonido del sistema, del micrófono o de una sola aplicación. La repetición instantánea mantiene listos los últimos 30 segundos, y puedes recortar el clip desde la notificación.",
     "note": "{keys} siempre detiene una grabación, sin importar qué tenga el foco.",
     "caption": "Una región de pantalla en grabación: Unisic dibuja un marco con color de acento alrededor de la región, con una insignia REC y un temporizador."
   },
@@ -79,7 +108,13 @@ export const es: Dictionary = {
   },
   "download": {
     "title": "Instala Unisic",
-    "lede": "Necesita una sesión Wayland con xdg-desktop-portal. La grabación también requiere PipeWire y ffmpeg.",
+    "lede": "Hecho para Wayland, y también funciona en X11. Elige cómo quieres instalarlo.",
+    "points": {
+      "verify": "Cada descarga se comprueba con su SHA-256",
+      "noRoot": "El AppImage no necesita root y se actualiza solo",
+      "free": "Gratis y de código abierto, GPL-3.0"
+    },
+    "or": "O elige tu sistema",
     "repoLede": "AppImage es la vía recomendada: un solo archivo, sin root, y se reemplaza a sí mismo cuando aparece una versión nueva. Si lo prefieres, elige tu distribución: el repositorio mantiene Unisic actualizado a través del gestor de paquetes; la versión publicada también incluye paquetes sueltos .deb, .rpm y Arch que configuran el repositorio en la primera instalación.",
     "distroListLabel": "Elige tu distribución o formato de paquete",
     "versionLabel": "Versión",
@@ -107,7 +142,7 @@ export const es: Dictionary = {
     "fallbackBtn": "Consíguelo en GitHub Releases",
     "fallbackNote": "No se pudo contactar con GitHub ahora mismo, pero todas las compilaciones están allí.",
     "allReleases": "Todas las versiones y compilaciones anteriores",
-    "stability": "Unisic 0.7 es la primera versión estable. Si tu compositor todavía encuentra la forma de sorprenderla, cada informe en {link} ayuda.",
+    "stability": "Unisic está en beta. Si falla en tu escritorio, un informe en {link} ayuda.",
     "stabilityLink": "Incidencias"
   },
   "hotkeys": {

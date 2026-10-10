@@ -7,22 +7,51 @@ export const it: Dictionary = {
     "title": "Unisic - Screenshot e registrazione schermo su Linux",
     "description": "Strumento open-source di screenshot e registrazione schermo per Linux. Annota prima dello scatto, modifica dopo, registra GIF e video, carica ovunque. Zero telemetria, GPLv3.",
     "ogTitle": "Unisic - Screenshot fatti bene su Linux",
-    "ogDescription": "Cattura silenziosa, annotazione prima dello scatto, un editor con 15 strumenti, registrazione GIF e video, OCR, caricamento istantaneo. Zero telemetria, GPLv3.",
+    "ogDescription": "Cattura, annota, modifica, registra e condividi con un solo tasto rapido. Cattura silenziosa su Wayland, registrazione GIF e video, OCR, caricamento istantaneo. Zero telemetria, GPLv3.",
     "ogImageAlt": "Editor di screenshot Unisic su Linux"
   },
   "nav": {
     "docs": "Documentazione",
     "skip": "Vai al contenuto",
+    "how": "Come funziona",
     "features": "Funzionalità",
-    "recording": "Registrazione",
     "github": "Unisic su GitHub",
     "download": "Scarica"
   },
   "hero": {
-    "headline": "Screenshot fatti bene su Linux.",
-    "sub": "Cattura silenziosa, annotazione prima dello scatto, un editor con 15 strumenti, registrazione GIF e video, OCR, caricamento istantaneo. Zero telemetria. GPLv3.",
-    "download": "Scarica",
-    "github": "Vedi su GitHub"
+    "eyebrow": "Screenshot e registrazione dello schermo per Linux",
+    "headline": "Uno strumento per screenshot che porta a termine il lavoro.",
+    "sub": "Unisic è gratuito e open source. Disegna sullo schermo prima di catturarlo, modifica dopo, registra una GIF o un video e condividi il link, tutto con un solo tasto rapido.",
+    "installLabel": "Installa in una riga",
+    "copy": "Copia",
+    "copied": "Copiato",
+    "installNote": "Apre un menu. Ogni download viene verificato con il suo SHA-256 pubblicato.",
+    "installRead": "Come funziona l'installer",
+    "otherWays": "Altri modi per installare",
+    "github": "Vedi su GitHub",
+    "trust": {
+      "license": "Gratuito, con licenza GPL-3.0",
+      "privacy": "Nessuna telemetria, nessun account",
+      "sessions": "Wayland e X11"
+    }
+  },
+  "how": {
+    "title": "Come funziona",
+    "lede": "Nessuna procedura guidata e nessun account. Installalo, premi un tasto rapido e lavora da lì.",
+    "steps": {
+      "hotkey": {
+        "title": "Premi un tasto rapido",
+        "body": "{keys} avvia una cattura di area. Schermo intero e finestra hanno i loro tasti, che puoi cambiare nelle Impostazioni."
+      },
+      "mark": {
+        "title": "Annotalo",
+        "body": "Disegna frecce, testo, sfocatura e passaggi numerati direttamente sullo schermo congelato, poi premi Invio. L'editor ha altri strumenti."
+      },
+      "share": {
+        "title": "Condividilo",
+        "body": "Salvalo, copialo o caricalo. Dopo il caricamento il link è già negli appunti."
+      }
+    }
   },
   "usp": {
     "title": "Annota ancora prima di scattare",
@@ -34,18 +63,18 @@ export const it: Dictionary = {
   },
   "features": {
     "title": "Tutto ciò che viene dopo la scorciatoia",
-    "lede": "La maggior parte degli strumenti ti consegna un rettangolo di pixel e se ne va. Unisic si occupa del resto del flusso di lavoro.",
+    "lede": "La maggior parte degli strumenti per screenshot si ferma all'immagine. Unisic va avanti.",
     "editor": {
       "title": "Un vero editor, non un riquadro di ritaglio",
-      "body": "Quindici strumenti tra cui evidenziatore, pixelatura, gomma intelligente, callout, misura, passaggi numerati e ritaglio. Annulla, ripeti, zoom, tutto nello spazio dei pixel dell'immagine."
+      "body": "Frecce, forme, testo, evidenziatore, sfocatura, pixelatura, passaggi numerati, callout e ritaglio. Annulla, ripeti e ingrandisci quanto vuoi."
     },
     "ocr": {
       "title": "Testo dai pixel",
-      "body": "Esegui l'OCR di una regione direttamente negli appunti, oppure seleziona singole parole nell'editor per copiarle, evidenziarle o oscurarle. I codici QR vengono decodificati nel loro contenuto."
+      "body": "Copia il testo di qualsiasi area direttamente negli appunti. I codici QR e i codici a barre vengono decodificati nel loro contenuto."
     },
     "upload": {
       "title": "Carica ovunque",
-      "body": "Destinazioni HTTP personalizzate, importazione dell'uploader di ShareX, FTP e SFTP, host integrati. Il link finisce nei tuoi appunti.",
+      "body": "Il tuo server HTTP, file uploader di ShareX, FTP, SFTP o un host integrato. Il link viene copiato per te.",
       "copied": "Copiato"
     },
     "history": {
@@ -58,12 +87,12 @@ export const it: Dictionary = {
     },
     "yours": {
       "title": "Tuo, interamente",
-      "body": "Zero telemetria, nessun account, niente che invii dati all'esterno. Licenza GPL-3.0 e sviluppato in modo aperto."
+      "body": "Nessuna telemetria, nessuna analisi, nessun account. L'unica richiesta che Unisic fa da solo è il controllo delle nuove versioni. Con licenza GPL-3.0 e sviluppato in aperto."
     }
   },
   "recording": {
-    "title": "La stessa regione, in GIF o video",
-    "lede": "GIF con palette a due passaggi per colori nitidi, oppure MP4 e WebM con audio opzionale di sistema, del microfono o di una singola app, tramite il portale ScreenCast, PipeWire e ffmpeg. Registra una regione, l'intero schermo o una finestra, lascia che il replay istantaneo memorizzi gli ultimi 30 secondi e taglia il risultato direttamente dalla scheda di notifica.",
+    "title": "Registra la stessa area come GIF o video",
+    "lede": "Cattura un'area, una finestra o l'intero schermo. Salva una GIF dai colori nitidi, oppure un MP4 o WebM con audio di sistema, microfono o di una sola app. Il replay istantaneo tiene pronti gli ultimi 30 secondi e puoi tagliare la clip dalla notifica.",
     "note": "{keys} interrompe sempre una registrazione, indipendentemente da cosa ha il focus.",
     "caption": "Una regione dello schermo in fase di registrazione: Unisic disegna una cornice con il colore d'accento attorno alla regione con un badge REC e un timer del tempo trascorso."
   },
@@ -79,7 +108,13 @@ export const it: Dictionary = {
   },
   "download": {
     "title": "Installa Unisic",
-    "lede": "Richiede una sessione Wayland con xdg-desktop-portal. Per la registrazione servono anche PipeWire e ffmpeg.",
+    "lede": "Pensato per Wayland, funziona anche su X11. Scegli come vuoi installarlo.",
+    "points": {
+      "verify": "Ogni download viene verificato con il suo SHA-256",
+      "noRoot": "L'AppImage non richiede root e si aggiorna da sola",
+      "free": "Gratuito e open source, GPL-3.0"
+    },
+    "or": "Oppure scegli il tuo sistema",
     "repoLede": "AppImage è la via consigliata: un solo file, senza root, e si sostituisce da solo quando esce una nuova versione. In alternativa scegli la tua distribuzione: il repository mantiene Unisic aggiornato tramite il gestore di pacchetti; la release include anche pacchetti una tantum .deb, .rpm e Arch che configurano il repository alla prima installazione.",
     "distroListLabel": "Scegli la tua distribuzione o il formato di pacchetto",
     "versionLabel": "Versione",
@@ -107,7 +142,7 @@ export const it: Dictionary = {
     "fallbackBtn": "Scaricalo da GitHub Releases",
     "fallbackNote": "Non è stato possibile raggiungere GitHub in questo momento, ma ogni build si trova lì.",
     "allReleases": "Tutte le release e le build precedenti",
-    "stability": "Unisic 0.7 è la prima release stabile. Se il tuo compositor trova ancora il modo di sorprenderlo, ogni segnalazione in {link} è d'aiuto.",
+    "stability": "Unisic è in beta. Se si comporta male sul tuo desktop, una segnalazione in {link} aiuta.",
     "stabilityLink": "Issue"
   },
   "hotkeys": {

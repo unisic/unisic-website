@@ -18,10 +18,10 @@
 
 .cell {
   position: relative;
-  border-radius: var(--radius-l);
+  border-radius: var(--radius-xl);
   background: linear-gradient(var(--surface-top), var(--surface-bottom));
   border: 1px solid var(--divider);
-  padding: 24px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -58,9 +58,8 @@
 }
 
 .cellTitle {
-  font-size: 18px;
-  font-weight: 650;
-  letter-spacing: -0.01em;
+  font-size: 1.4375rem;
+  letter-spacing: -0.02em;
 }
 
 /* Four of the titles link into /docs. The global reset already drops the
@@ -70,9 +69,9 @@
 }
 
 .cellBody {
-  color: var(--text-secondary);
-  font-size: 14.5px;
-  line-height: 1.55;
+  color: var(--ink-2);
+  font-size: 1.0625rem;
+  line-height: 1.6;
 }
 
 .cellIcon {
@@ -119,8 +118,8 @@
   border: 1px solid var(--divider);
   background: var(--bg-deep);
   font-family: var(--font-mono), monospace;
-  font-size: 12px;
-  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  color: var(--ink-2);
 }
 
 @media (prefers-reduced-motion: no-preference) {

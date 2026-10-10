@@ -26,8 +26,8 @@
 
 .recNote {
   margin-top: 22px;
-  color: var(--text-secondary);
-  font-size: 15px;
+  color: var(--ink-2);
+  font-size: 1rem;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -56,33 +56,6 @@
   pointer-events: none;
 }
 
-/* full-bleed band under the download section: the conversion moment gets a
-   deeper stage that fades back into the page background */
-.downloadBand {
-  margin-top: var(--space-section);
-  background: linear-gradient(var(--bg-deep), var(--bg));
-  border-top: 1px solid var(--divider);
-}
-
-/* the band's own top edge already provides the section break, so the inner
-   section beat shrinks to the mobile rhythm */
-.downloadBand .download {
-  padding-top: 72px;
-}
-
-.download {
-  text-align: center;
-}
-
-.download h2 {
-  margin: 0 auto;
-}
-
-.download :global(.section-lede) {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .coprCmdWrap {
   position: relative;
   margin-top: 14px;
@@ -94,7 +67,7 @@
   border: 1px solid var(--divider);
   border-radius: var(--radius-m);
   font-family: var(--font-mono), monospace;
-  font-size: 13.5px;
+  font-size: 0.875rem;
   line-height: 1.8;
   color: var(--text);
   overflow-x: auto;
@@ -154,24 +127,8 @@
   height: 16px;
 }
 
-.earlyAccess {
-  margin: 40px auto 0;
-  max-width: 62ch;
-  color: var(--text-secondary);
-  font-size: 14px;
-}
-
-.earlyAccess a {
-  color: var(--text-secondary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.earlyAccess a:hover {
-  color: var(--text);
-}
-
 .refCols {
+  margin-top: var(--space-lede);
   display: grid;
   grid-template-columns: 5fr 6fr;
   gap: 64px;
@@ -195,5 +152,233 @@
   .refCols {
     grid-template-columns: 1fr;
     gap: 48px;
+  }
+}
+
+/* ---- one-line install card (CopyCommand variant="hero") ---- */
+
+.coprHero {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 10px 10px 22px;
+  background: var(--bg-deep);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--divider));
+  border-radius: var(--radius-l);
+  text-align: left;
+}
+
+.coprPrompt {
+  flex: none;
+  color: var(--accent);
+  font-family: var(--font-mono), monospace;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  user-select: none;
+}
+
+/* wraps instead of scrolling: a horizontally scrolling command hides its
+   tail from the very people who most need to read it. anywhere breaks the
+   long URL; the copied text is unchanged. */
+.coprHero .coprCmd {
+  flex: 1 1 14rem;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow: visible;
+}
+
+/* a button that does nothing is worse than no button: without JS the
+   command stays selectable and the button stays hidden */
+.coprHero .coprCopy {
+  display: none;
+  position: static;
+  flex: none;
+  width: auto;
+  min-height: 2.75rem;
+  padding: 0 20px;
+  gap: 8px;
+  border-radius: var(--radius-m);
+  background: var(--accent);
+  border-color: transparent;
+  color: var(--text-on-accent);
+  font-weight: 650;
+  font-size: 1rem;
+}
+
+:global(html[data-js]) .coprHero .coprCopy {
+  display: inline-flex;
+}
+
+.coprHero .coprCopy:hover {
+  background: var(--accent-bright);
+  color: var(--text-on-accent);
+}
+
+.coprHero .coprCopy[data-copied] {
+  background: var(--success);
+  color: var(--text-on-accent);
+  border-color: transparent;
+}
+
+@media (max-width: 599px) {
+  .coprHero {
+    flex-wrap: wrap;
+    padding: 16px;
+  }
+
+  .coprHero .coprCopy {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .coprPrompt {
+    display: none;
+  }
+}
+
+/* ---- install section: a full-bleed accent band with a dark card ---- */
+
+/* the shared footer carries margin-top: var(--space-section) for the docs
+   pages; the negative bottom margin cancels it so the band meets the footer */
+.band {
+  margin-top: var(--space-section);
+  margin-bottom: calc(var(--space-section) * -1);
+  background: var(--accent);
+  color: var(--text-on-accent);
+}
+
+/* two classes so these beat the shared .section shell regardless of the
+   order the stylesheets are emitted in */
+.band .bandInner {
+  padding-top: 88px;
+  padding-bottom: 88px;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.band .bandInner h2 {
+  color: var(--text-on-accent);
+}
+
+.band .bandInner :global(.section-lede) {
+  color: var(--text-on-accent);
+}
+
+.bandCopy {
+  min-width: 0;
+}
+
+.points {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.points li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.points svg {
+  flex: none;
+  margin-top: 3px;
+}
+
+.beta {
+  margin-top: 28px;
+  max-width: 44ch;
+  font-size: 1rem;
+}
+
+.beta a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 650;
+}
+
+/* the dark card carries its own text colors; focus rings flip with the
+   surface they sit on (dark ink on the band, accent inside the card) */
+.band :focus-visible {
+  outline-color: var(--text-on-accent);
+}
+
+.card {
+  min-width: 0;
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  background: var(--bg-deep);
+  color: var(--text);
+  box-shadow: 0 30px 70px rgba(27, 24, 52, 0.4);
+}
+
+.card :focus-visible {
+  outline-color: var(--accent);
+}
+
+.cardLabel {
+  margin-bottom: 12px;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.cardNote {
+  margin-top: 12px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
+.cardNote a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.or {
+  margin: 28px 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.or::before,
+.or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--divider);
+}
+
+@media (max-width: 959px) {
+  .band .bandInner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+}
+
+@media (max-width: 599px) {
+  .card {
+    padding: 20px;
+    border-radius: var(--radius-l);
   }
 }

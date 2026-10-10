@@ -14,24 +14,55 @@ export const en = {
       "Open-source screenshot and screen recorder for Linux. Annotate before the shot, edit after, record GIF and video, upload anywhere. Zero telemetry, GPLv3.",
     ogTitle: "Unisic - Screenshots done right on Linux",
     ogDescription:
-      "Silent capture, annotation before the shot, a 15-tool editor, GIF and video recording, OCR, instant upload. Zero telemetry, GPLv3.",
+      "Capture, annotate, edit, record and share from one hotkey. Silent capture on Wayland, GIF and video recording, OCR, instant upload. Zero telemetry, GPLv3.",
     ogImageAlt: "Unisic screenshot editor on Linux",
   },
 
   nav: {
     skip: "Skip to content",
+    how: "How it works",
     features: "Features",
-    recording: "Recording",
     docs: "Docs",
     github: "Unisic on GitHub",
     download: "Download",
   },
 
   hero: {
-    headline: "Screenshots done right on Linux.",
-    sub: "An open-source screenshot tool and screen recorder for Linux, built for Wayland. Silent capture, annotation before the shot, a 15-tool editor, GIF and video recording, OCR, instant upload. Zero telemetry. GPLv3.",
-    download: "Download",
+    eyebrow: "Screenshots and screen recording for Linux",
+    headline: "A screenshot tool that finishes the job.",
+    sub: "Unisic is free and open source. Draw on the screen before you capture it, edit afterwards, record a GIF or video, and share the link, all from one hotkey.",
+    installLabel: "Install in one line",
+    copy: "Copy",
+    copied: "Copied",
+    installNote:
+      "Opens a menu. Every download is checked against its published SHA-256.",
+    installRead: "How the installer works",
+    otherWays: "Other ways to install",
     github: "View on GitHub",
+    trust: {
+      license: "Free, GPL-3.0 licensed",
+      privacy: "No telemetry, no account",
+      sessions: "Wayland and X11",
+    },
+  },
+
+  how: {
+    title: "How it works",
+    lede: "No setup wizard, no account. Install it, press a hotkey, get to work.",
+    steps: {
+      hotkey: {
+        title: "Press a hotkey",
+        body: "{keys} starts a region capture. Full screen and window have their own keys, and you can rebind them in Settings.",
+      },
+      mark: {
+        title: "Mark it up",
+        body: "Draw arrows, text, blur and numbered steps right on the frozen screen, then press Enter. The editor has more tools.",
+      },
+      share: {
+        title: "Share it",
+        body: "Save it, copy it or upload it. After an upload the link is already in your clipboard.",
+      },
+    },
   },
 
   usp: {
@@ -47,18 +78,18 @@ export const en = {
 
   features: {
     title: "Everything after the hotkey",
-    lede: "Most tools hand you a rectangle of pixels and walk away. Unisic covers the rest of the workflow.",
+    lede: "Most screenshot tools stop at the picture. Unisic keeps going.",
     editor: {
       title: "A real editor, not a crop box",
-      body: "Fifteen tools including highlight, pixelate, smart eraser, callout, measure, numbered steps and crop. Undo, redo, zoom, all in image-pixel space.",
+      body: "Arrows, shapes, text, highlight, blur, pixelate, numbered steps, callouts and crop. Undo, redo and zoom as much as you like.",
     },
     ocr: {
       title: "Text out of pixels",
-      body: "OCR a region straight to your clipboard, or pick single words in the editor to copy, highlight or redact. QR codes decode to their payload.",
+      body: "Copy the text from any region straight to your clipboard. QR codes and barcodes decode to what they contain.",
     },
     upload: {
       title: "Upload anywhere",
-      body: "Custom HTTP destinations, ShareX uploader import, FTP and SFTP, built-in hosts. The link lands in your clipboard.",
+      body: "Your own HTTP server, ShareX uploader files, FTP, SFTP or a built-in host. The link is copied for you.",
       copied: "Copied",
     },
     history: {
@@ -71,13 +102,13 @@ export const en = {
     },
     yours: {
       title: "Yours, entirely",
-      body: "Zero telemetry, no accounts, nothing phones home. GPL-3.0 licensed and built in the open.",
+      body: "No telemetry, no analytics, no account. The only request Unisic makes on its own is a check for new releases. GPL-3.0 licensed and built in the open.",
     },
   },
 
   recording: {
-    title: "Screen recording: the same region, as GIF or video",
-    lede: "GIF with a two-pass palette for crisp colors, or MP4 and WebM with optional system, microphone, or single-app audio, through the ScreenCast portal, PipeWire and ffmpeg. Record a region, the full screen, or a window, let instant replay buffer the last 30 seconds, and trim the result right from the notification card.",
+    title: "Record the same region as a GIF or video",
+    lede: "Capture a region, a window or the whole screen. Save a GIF with clean colors, or an MP4 or WebM with system, microphone or single-app sound. Instant replay keeps the last 30 seconds ready, and you can trim the clip from the notification.",
     note: "{keys} always stops a recording, no matter what has focus.",
     caption:
       "A screen region being recorded: Unisic draws an accent-colored frame around the region with a REC badge and elapsed timer.",
@@ -97,7 +128,13 @@ export const en = {
 
   download: {
     title: "Install Unisic",
-    lede: "Needs a Wayland session with xdg-desktop-portal. Recording also wants PipeWire and ffmpeg.",
+    lede: "Made for Wayland, and it also runs on X11. Choose how you want to install it.",
+    points: {
+      verify: "Every download is checked against its SHA-256",
+      noRoot: "The AppImage needs no root and updates itself",
+      free: "Free and open source, GPL-3.0",
+    },
+    or: "Or pick your system",
     repoLede:
       "AppImage is the recommended way in: one file, no root, and it replaces itself when a new version appears. Pick your distribution instead and the repository keeps Unisic updated through your package manager; the release also carries one-off .deb, .rpm and Arch packages that hook up the repository on first install.",
     distroListLabel: "Choose your distribution or package format",
@@ -131,7 +168,7 @@ export const en = {
     fallbackNote: "Couldn't reach GitHub just now, but every build lives there.",
     allReleases: "All releases and older builds",
     stability:
-      "Unisic 0.7 is the first stable release. If your compositor still finds a way to surprise it, every report in {link} helps.",
+      "Unisic is in beta. If it misbehaves on your desktop, a report in {link} helps.",
     stabilityLink: "Issues",
   },
 
