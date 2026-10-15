@@ -2,8 +2,8 @@
 #
 # Unisic universal installer - INTERACTIVE (a full-screen terminal menu).
 #
-# Run it in a terminal:
-#     bash <(curl -fsSL https://unisic.app/install.sh)
+# Run it in a terminal (bash, zsh or fish alike):
+#     curl -fsSL https://unisic.app/install.sh | bash
 # or, once downloaded:
 #     bash install.sh
 #
@@ -44,6 +44,10 @@
 # through the system's normal updates; portable installs re-run this to update
 # (or turn on the daily auto-update timer in "More options").
 
+# Everything below is one { ... } group, closed on the last line. bash parses a
+# group whole before running any of it, so a download cut short under
+# `curl | bash` is a syntax error that runs nothing, not half an install.
+{
 set -euo pipefail
 
 REPO="unisic/unisic"
@@ -86,7 +90,7 @@ if [ "${1:-}" = "--self-update" ]; then
     if [ "${4:-}" = "pre" ]; then PRERELEASE=1; fi
     ASSUME_YES=1
 elif [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
-    printf 'Unisic installer - an interactive menu. Just run it in a terminal:\n\n    bash %s\n\n' "$0"
+    printf 'Unisic installer - an interactive menu. Just run it in a terminal:\n\n    curl -fsSL %s | bash\n\n' "$RAW_URL"
     exit 0
 fi
 
@@ -727,6 +731,11 @@ if [ "$SELF_UPDATE" -eq 0 ]; then
     if ! { : >/dev/tty; } 2>/dev/null; then
         die "The Unisic installer is interactive - please run it inside a terminal window."
     fi
+    # Under `curl | bash` stdin is the pipe the script came in on. Hand it the
+    # terminal so sudo and the package managers read the keyboard. bash then
+    # reads its own next command from the terminal as well, which is why the
+    # script ends in an explicit exit.
+    [ -t 0 ] || exec </dev/tty
     enter_alt
     tui_run
     case "$MENU_CHOICE" in
@@ -1561,3 +1570,8 @@ update_note "$RESOLVED_CHANNEL"
 # the assumption that a Wayland-first tool cannot record on X11 is common enough
 # that silence reads as confirmation.
 if [ "$(session_kind)" = x11 ]; then x11_notice; fi
+
+# Leave before the group closes: past it, bash would read the next command
+# from stdin, the terminal after the exec above.
+exit
+}

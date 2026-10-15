@@ -21,7 +21,7 @@ One file, no root, and it keeps itself up to date: when a new release appears Un
 The installer script does it for you, and also adds Unisic to your applications menu with its icon:
 
 ```sh
-bash -c "$(curl -fsSL https://unisic.app/install.sh)"
+curl -fsSL https://unisic.app/install.sh | bash
 ```
 
 An arrow-key menu opens and its first entry is this AppImage install, into `~/.local`; the second installs your distribution's package instead. Whatever you already have installed is updated where it is, never duplicated, and the same menu uninstalls, installs an older version and toggles automatic updates.
