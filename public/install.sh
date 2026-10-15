@@ -5,14 +5,14 @@
 # Run it in a terminal:
 #     bash <(curl -fsSL https://unisic.app/install.sh)
 # or, once downloaded:
-#     bash scripts/install.sh
+#     bash install.sh
 #
-# This file mirrors scripts/install.sh of github.com/unisic/unisic and must be re-copied whenever that file changes.
+# This is the only copy: it lives in the unisic-website repo as public/install.sh.
+# Every Unisic release attaches the copy unisic.app served when it was cut.
 #
-# The release asset is the copy attached to the newest release - frozen at what CI built
-# for that tag, and with a sha256 published for it in the API. The branch head
-# (RAW_URL below) is the fallback only: it moves under the release it is meant
-# to belong to, so nothing can be pinned to it.
+# That release asset is frozen at release time and has a sha256 published for it
+# in the API. The site copy (RAW_URL below) is the fallback only: it moves under
+# the release it is meant to belong to, so nothing can be pinned to it.
 #
 # It opens a btop-style menu (arrow keys + Enter) that can install, update,
 # uninstall, install an older version, and turn on automatic updates. There is
@@ -49,7 +49,7 @@ set -euo pipefail
 REPO="unisic/unisic"
 API="https://api.github.com/repos/${REPO}"
 OBS_BASE="https://download.opensuse.org/repositories/home:/unisic"
-RAW_URL="https://raw.githubusercontent.com/${REPO}/main/scripts/install.sh"
+RAW_URL="https://unisic.app/install.sh"
 SHARE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}"
 DATA_DIR="${SHARE_DIR}/unisic"
 UNIT_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user"
@@ -227,7 +227,7 @@ download() {   # curl or wget, to a file
 # defence against GitHub itself; it does catch a truncated or resumed-wrong
 # transfer, a caching proxy serving something else, and a file swapped at one
 # endpoint but not the other. A URL with no digest in the feed (an old release,
-# a raw.githubusercontent copy) has nothing to check against and stands on TLS
+# the unisic.app copy) has nothing to check against and stands on TLS
 # alone, which is what it did before this existed.
 verify_digest() {   # <url> <file>
     local want got
@@ -869,7 +869,7 @@ setup_autoupdate() {
     else
         # Piped `curl | bash`: there is no on-disk $0 to copy, so this timer's
         # script has to be fetched. Take the release's own copy, which
-        # verify_digest can check, and keep the branch head only for a release
+        # verify_digest can check, and keep the unisic.app copy only for a release
         # that predates it. Either way it is run daily with the user's rights
         # from then on, so a wrong file cannot be allowed to install itself.
         local url=""
@@ -878,7 +878,7 @@ setup_autoupdate() {
         download "${url:-$RAW_URL}" "${DATA_DIR}/install.sh"
         grep -q 'Unisic universal installer' "${DATA_DIR}/install.sh" 2>/dev/null || {
             rm -f "${DATA_DIR}/install.sh"
-            die "What came back from GitHub isn't the Unisic installer, so I didn't set up
+            die "What came back isn't the Unisic installer, so I didn't set up
     automatic updates. Please try again in a moment."
         }
     fi
