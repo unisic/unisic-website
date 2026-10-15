@@ -29,8 +29,8 @@ export const en = {
 
   hero: {
     eyebrow: "Screenshots and screen recording for Linux",
-    headline: "A screenshot tool that finishes the job.",
-    sub: "Unisic is free and open source. Draw on the screen before you capture it, edit afterwards, record a GIF or video, and share the link, all from one hotkey.",
+    headline: "Capture, mark up and share. One hotkey.",
+    sub: "Draw on the screen before the shot is taken, record a GIF or video, and find the share link already in your clipboard.",
     installLabel: "Install in one line",
     copy: "Copy",
     copied: "Copied",
@@ -46,9 +46,11 @@ export const en = {
     },
   },
 
+  proof: {
+    packaged: "Packaged for",
+  },
+
   how: {
-    title: "How it works",
-    lede: "No setup wizard, no account. Install it, press a hotkey, get to work.",
     steps: {
       hotkey: {
         title: "Press a hotkey",
@@ -67,7 +69,7 @@ export const en = {
 
   usp: {
     title: "Annotate before the shot is even taken",
-    lede: "The selection overlay is a canvas. Draw arrows, text, blur and steps on the frozen screen, then press Enter: the annotations are burnt into the capture.",
+    lede: "The selection overlay doubles as a canvas. What you draw on the frozen screen goes straight into the capture, with no detour through an editor.",
   },
 
   overlay: {
@@ -108,7 +110,7 @@ export const en = {
 
   recording: {
     title: "Record the same region as a GIF or video",
-    lede: "Capture a region, a window or the whole screen. Save a GIF with clean colors, or an MP4 or WebM with system, microphone or single-app sound. Instant replay keeps the last 30 seconds ready, and you can trim the clip from the notification.",
+    lede: "Record a region, a window or the whole screen. Save a GIF, or an MP4 or WebM with system, microphone or single-app sound. Instant replay keeps the last 30 seconds ready.",
     note: "{keys} always stops a recording, no matter what has focus.",
     caption:
       "A screen region being recorded: Unisic draws an accent-colored frame around the region with a REC badge and elapsed timer.",
@@ -119,7 +121,7 @@ export const en = {
     lede: "Pick a palette below and watch the app wear it.",
     groupLabel: "Preview a theme in the app window",
     reset: "Reset to Unisic",
-    note: "Every chip repaints the window above live. One theme is your system: it follows the desktop light or dark scheme and accent color.",
+    note: "Every chip repaints the app window live. One theme is your system: it follows the desktop light or dark scheme and accent color.",
     system: "System",
     systemLabel:
       "System: follows your desktop light or dark scheme; not previewable here",
@@ -194,7 +196,7 @@ export const en = {
   },
 
   reference: {
-    title: "Reference",
+    title: "Desktop support and hotkeys",
   },
 
   compositors: {

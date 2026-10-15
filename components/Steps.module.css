@@ -1,66 +1,55 @@
+/* captions to the overlay picture above them: a light rule and a number,
+   not three more cards competing with it */
 .steps {
-  margin: var(--space-lede) 0 0;
+  margin: 40px 0 0;
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
 }
 
 .step {
-  position: relative;
   min-width: 0;
-  padding: 28px;
-  border-radius: var(--radius-xl);
-  background: linear-gradient(var(--surface-top), var(--surface-bottom));
-  border: 1px solid var(--divider);
+  padding-top: 20px;
+  border-top: 1px solid var(--divider);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 14px;
+  align-content: start;
 }
 
 .num {
+  grid-row: span 2;
   display: grid;
   place-items: center;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   background: var(--accent);
   color: var(--text-on-accent);
   font-family: var(--font-display), var(--font-sans), sans-serif;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 800;
   line-height: 1;
 }
 
 .title {
-  margin-top: 20px;
-  font-size: 1.5rem;
+  align-self: center;
+  font-size: 1.25rem;
   letter-spacing: -0.02em;
 }
 
 .body {
-  margin-top: 10px;
+  margin-top: 6px;
   color: var(--ink-2);
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.6;
 }
 
 @media (max-width: 899px) {
   .steps {
     grid-template-columns: 1fr;
-  }
-
-  .step {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 20px;
-    align-items: start;
-    padding: 22px;
-  }
-
-  .num {
-    grid-row: span 2;
-  }
-
-  .title {
-    margin-top: 0;
+    gap: 20px;
   }
 }

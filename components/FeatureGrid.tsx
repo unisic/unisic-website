@@ -1,8 +1,11 @@
 import Link from "next/link";
 import styles from "./FeatureGrid.module.css";
 import { EditorPreview } from "./EditorPreview";
-import { CheckmarkIcon, ImageIcon, LockIcon, MonitorIcon, TextIcon } from "./icons";
+import { CheckmarkIcon, ImageIcon, LockIcon } from "./icons";
 import type { Dictionary } from "../lib/i18n";
+
+/* desktops the capture paths in docs/compositors cover; brand names */
+const DESKTOPS = ["KDE Plasma", "GNOME", "niri", "Sway", "Hyprland"];
 
 /* Fully static server component: every cell, its icons and the editor
    preview ship as plain markup, no client JS. The flagship editor cell leads
@@ -52,9 +55,11 @@ export function FeatureGrid({ dict }: { dict: Dictionary }) {
       </article>
 
       <article className={styles.cell}>
-        <span className={styles.cellIcon} aria-hidden="true">
-          <MonitorIcon size={20} />
-        </span>
+        <ul className={styles.desktops}>
+          {DESKTOPS.map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
         <h3 className={styles.cellTitle}>
           <Link href="/docs/compositors/">{f.silent.title}</Link>
         </h3>
@@ -62,9 +67,16 @@ export function FeatureGrid({ dict }: { dict: Dictionary }) {
       </article>
 
       <article className={styles.cell}>
-        <span className={styles.cellIcon} aria-hidden="true">
-          <TextIcon size={20} />
-        </span>
+        <div className={styles.ocrVisual} aria-hidden="true">
+          <span className={styles.ocrRegion}>
+            <span className={styles.ocrLine} />
+            <span className={styles.ocrLineShort} />
+          </span>
+          <span className={styles.copiedChip}>
+            <CheckmarkIcon size={13} />
+            {f.upload.copied}
+          </span>
+        </div>
         <h3 className={styles.cellTitle}>
           <Link href="/docs/capture/#copy-text-out-of-a-region-ocr">{f.ocr.title}</Link>
         </h3>

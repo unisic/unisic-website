@@ -20,8 +20,8 @@ export const zhHant: Dictionary = {
   },
   "hero": {
     "eyebrow": "適用於 Linux 的截圖與螢幕錄影工具",
-    "headline": "把事情一次做完的截圖工具。",
-    "sub": "Unisic 免費且開源。擷取前先在螢幕上標註，擷取後再編輯，錄製 GIF 或影片，然後分享連結，全部從一個快速鍵開始。",
+    "headline": "擷取、標註、分享，一個快速鍵搞定。",
+    "sub": "擷取之前就能在螢幕上標註，還能錄製 GIF 或影片，分享連結已經在你的剪貼簿裡。",
     "installLabel": "一行指令安裝",
     "copy": "複製",
     "copied": "已複製",
@@ -35,9 +35,10 @@ export const zhHant: Dictionary = {
       "sessions": "支援 Wayland 與 X11"
     }
   },
+  "proof": {
+    "packaged": "安裝套件支援"
+  },
   "how": {
-    "title": "使用方式",
-    "lede": "沒有安裝精靈，也不需要帳號。安裝後按下快速鍵，直接開始。",
     "steps": {
       "hotkey": {
         "title": "按下快速鍵",
@@ -55,7 +56,7 @@ export const zhHant: Dictionary = {
   },
   "usp": {
     "title": "在截圖之前就先標註",
-    "lede": "選取覆蓋層就是一塊畫布。在凍結的畫面上畫箭頭、文字、模糊與步驟標記，然後按 Enter：標註便直接烙印進截圖中。"
+    "lede": "選取覆蓋層同時也是畫布。你在凍結畫面上畫的內容會直接進入截圖，不必繞道編輯器。"
   },
   "overlay": {
     "caption": "Unisic 的選取覆蓋層：凍結的畫面上有一塊選取的區域、即時的像素尺寸、擷取前畫好的箭頭，以及浮動工具列。",
@@ -92,7 +93,7 @@ export const zhHant: Dictionary = {
   },
   "recording": {
     "title": "同一區域，錄成 GIF 或影片",
-    "lede": "錄製區域、視窗或整個螢幕。儲存色彩清晰的 GIF，或帶系統聲音、麥克風或單一應用程式聲音的 MP4 或 WebM。即時回放隨時保留最近 30 秒，你還可以直接在通知裡剪輯片段。",
+    "lede": "錄製區域、視窗或整個螢幕。儲存為 GIF，或帶系統聲音、麥克風或單一應用程式聲音的 MP4 或 WebM。即時回放隨時保留最近 30 秒。",
     "note": "無論焦點在哪裡，{keys} 都能停止錄製。",
     "caption": "正在錄製的一塊螢幕區域：Unisic 在區域四周畫出強調色邊框，並附上 REC 標記與計時器。"
   },
@@ -101,7 +102,7 @@ export const zhHant: Dictionary = {
     "lede": "在下方挑一種配色，看應用程式換上它。",
     "groupLabel": "在應用程式視窗中預覽主題",
     "reset": "重設為 Unisic",
-    "note": "每個色塊都會即時重繪上方的視窗。其中一種主題是你的系統：它會跟隨桌面的淺色或深色配置與強調色。",
+    "note": "每個色塊都會即時重繪應用程式視窗。其中一種主題是你的系統：它會跟隨桌面的淺色或深色配置與強調色。",
     "system": "系統",
     "systemLabel": "系統：跟隨你桌面的淺色或深色配置；此處無法預覽",
     "previewLabel": "採用 {theme} 主題的 Unisic 主視窗"
@@ -165,7 +166,7 @@ export const zhHant: Dictionary = {
     "note": "除了固定的停止鍵之外，全部都可在「設定」中修改，並立即套用到系統。"
   },
   "reference": {
-    "title": "參考"
+    "title": "桌面支援與快速鍵"
   },
   "compositors": {
     "title": "與你的合成器搭配運作",

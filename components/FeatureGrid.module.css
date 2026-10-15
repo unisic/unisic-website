@@ -187,6 +187,60 @@
   background: var(--bg-deep);
 }
 
+/* --- silent capture: the desktops it covers --- */
+
+.desktops {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.desktops li {
+  padding: 3px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--divider);
+  background: var(--bg-deep);
+  color: var(--ink-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* --- OCR: a selected block of text, already copied --- */
+
+.ocrVisual {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ocrRegion {
+  flex: 1;
+  min-width: 0;
+  height: 34px;
+  padding: 7px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px dashed var(--accent);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.ocrLine,
+.ocrLineShort {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--text-tertiary);
+}
+
+.ocrLineShort {
+  width: 60%;
+}
+
 /* --- responsive --- */
 
 @media (max-width: 899px) {

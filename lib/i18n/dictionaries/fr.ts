@@ -20,8 +20,8 @@ export const fr: Dictionary = {
   },
   "hero": {
     "eyebrow": "Captures d'écran et enregistrement d'écran pour Linux",
-    "headline": "Un outil de capture qui va jusqu'au bout.",
-    "sub": "Unisic est gratuit et open source. Dessinez sur l'écran avant de capturer, retouchez ensuite, enregistrez un GIF ou une vidéo et partagez le lien, le tout avec un seul raccourci.",
+    "headline": "Capturez, annotez, partagez. Un seul raccourci.",
+    "sub": "Dessinez sur l'écran avant même la capture, enregistrez un GIF ou une vidéo, et retrouvez le lien de partage déjà dans votre presse-papiers.",
     "installLabel": "Installez en une ligne",
     "copy": "Copier",
     "copied": "Copié",
@@ -35,9 +35,10 @@ export const fr: Dictionary = {
       "sessions": "Wayland et X11"
     }
   },
+  "proof": {
+    "packaged": "Paquets pour"
+  },
   "how": {
-    "title": "Comment ça marche",
-    "lede": "Pas d'assistant de configuration, pas de compte. Installez, appuyez sur un raccourci et travaillez à partir de là.",
     "steps": {
       "hotkey": {
         "title": "Appuyez sur un raccourci",
@@ -55,7 +56,7 @@ export const fr: Dictionary = {
   },
   "usp": {
     "title": "Annotez avant même d'avoir pris la capture",
-    "lede": "La surface de sélection est une toile. Dessinez des flèches, du texte, du flou et des étapes sur l'écran figé, puis appuyez sur Entrée : les annotations sont incrustées dans la capture."
+    "lede": "La surface de sélection sert aussi de toile. Ce que vous dessinez sur l'écran figé va directement dans la capture, sans détour par un éditeur."
   },
   "overlay": {
     "caption": "La surface de sélection d'Unisic : un écran figé avec une région sélectionnée, les dimensions en pixels en temps réel, une flèche dessinée avant la capture et une barre d'outils flottante.",
@@ -92,7 +93,7 @@ export const fr: Dictionary = {
   },
   "recording": {
     "title": "Enregistrez la même zone en GIF ou en vidéo",
-    "lede": "Capturez une zone, une fenêtre ou tout l'écran. Enregistrez un GIF aux couleurs nettes, ou un MP4 ou WebM avec le son du système, du micro ou d'une seule application. Le replay instantané garde les 30 dernières secondes prêtes, et vous pouvez couper le clip depuis la notification.",
+    "lede": "Capturez une zone, une fenêtre ou tout l'écran. Enregistrez un GIF, ou un MP4 ou WebM avec le son du système, du micro ou d'une seule application. Le replay instantané garde les 30 dernières secondes prêtes.",
     "note": "{keys} arrête toujours un enregistrement, quel que soit l'élément actif.",
     "caption": "Une région de l'écran en cours d'enregistrement : Unisic dessine un cadre de la couleur d'accentuation autour de la région, avec un badge REC et un minuteur du temps écoulé."
   },
@@ -101,7 +102,7 @@ export const fr: Dictionary = {
     "lede": "Choisissez une palette ci-dessous et regardez l'application l'adopter.",
     "groupLabel": "Prévisualiser un thème dans la fenêtre de l'application",
     "reset": "Réinitialiser sur Unisic",
-    "note": "Chaque pastille repeint la fenêtre ci-dessus en temps réel. Un thème est votre système : il suit le schéma clair ou sombre du bureau et la couleur d'accentuation.",
+    "note": "Chaque pastille repeint la fenêtre de l'app en temps réel. Un thème est votre système : il suit le schéma clair ou sombre du bureau et la couleur d'accentuation.",
     "system": "Système",
     "systemLabel": "Système : suit le schéma clair ou sombre de votre bureau ; non prévisualisable ici",
     "previewLabel": "La fenêtre principale d'Unisic dans le thème {theme}"
@@ -165,7 +166,7 @@ export const fr: Dictionary = {
     "note": "Toutes les touches, sauf la touche d'arrêt fixe, sont modifiables dans les Paramètres et appliquées immédiatement au système."
   },
   "reference": {
-    "title": "Référence"
+    "title": "Bureaux pris en charge et raccourcis"
   },
   "compositors": {
     "title": "Compatible avec votre compositeur",

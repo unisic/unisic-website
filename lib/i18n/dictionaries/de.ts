@@ -20,8 +20,8 @@ export const de: Dictionary = {
   },
   "hero": {
     "eyebrow": "Screenshots und Bildschirmaufnahme für Linux",
-    "headline": "Ein Screenshot-Tool, das die Arbeit zu Ende bringt.",
-    "sub": "Unisic ist kostenlos und quelloffen. Zeichnen Sie auf den Bildschirm, bevor Sie aufnehmen, bearbeiten Sie danach, nehmen Sie ein GIF oder Video auf und teilen Sie den Link, alles mit einem Tastenkürzel.",
+    "headline": "Aufnehmen, markieren, teilen. Ein Tastenkürzel.",
+    "sub": "Zeichnen Sie auf den Bildschirm, bevor der Screenshot entsteht, nehmen Sie ein GIF oder Video auf, und der Link zum Teilen liegt schon in der Zwischenablage.",
     "installLabel": "Installation in einer Zeile",
     "copy": "Kopieren",
     "copied": "Kopiert",
@@ -35,9 +35,10 @@ export const de: Dictionary = {
       "sessions": "Wayland und X11"
     }
   },
+  "proof": {
+    "packaged": "Pakete für"
+  },
   "how": {
-    "title": "So funktioniert's",
-    "lede": "Es gibt keinen Einrichtungsassistenten und kein Konto. Installieren, Tastenkürzel drücken, loslegen.",
     "steps": {
       "hotkey": {
         "title": "Tastenkürzel drücken",
@@ -55,7 +56,7 @@ export const de: Dictionary = {
   },
   "usp": {
     "title": "Kommentieren, bevor die Aufnahme überhaupt gemacht wird",
-    "lede": "Das Auswahl-Overlay ist eine Leinwand. Zeichnen Sie Pfeile, Text, Unschärfe und Schritte auf den eingefrorenen Bildschirm und drücken Sie dann Enter: Die Anmerkungen werden fest in die Aufnahme eingebrannt."
+    "lede": "Das Auswahl-Overlay ist zugleich eine Leinwand. Was Sie auf den eingefrorenen Bildschirm zeichnen, landet direkt in der Aufnahme, ganz ohne Umweg über einen Editor."
   },
   "overlay": {
     "caption": "Das Unisic Auswahl-Overlay: ein eingefrorener Bildschirm mit einem ausgewählten Bereich, Live-Pixelmaßen, einem vor der Aufnahme gezeichneten Pfeil und einer schwebenden Werkzeugleiste.",
@@ -92,7 +93,7 @@ export const de: Dictionary = {
   },
   "recording": {
     "title": "Denselben Bereich als GIF oder Video aufnehmen",
-    "lede": "Nehmen Sie einen Bereich, ein Fenster oder den ganzen Bildschirm auf. Speichern Sie ein GIF mit sauberen Farben oder ein MP4 oder WebM mit System-, Mikrofon- oder Einzel-App-Ton. Die Sofortwiedergabe hält die letzten 30 Sekunden bereit, und den Clip können Sie direkt in der Benachrichtigung kürzen.",
+    "lede": "Nehmen Sie einen Bereich, ein Fenster oder den ganzen Bildschirm auf. Speichern Sie ein GIF oder ein MP4 oder WebM mit System-, Mikrofon- oder Einzel-App-Ton. Die Sofortwiedergabe hält die letzten 30 Sekunden bereit.",
     "note": "{keys} stoppt immer eine Aufzeichnung, egal was gerade den Fokus hat.",
     "caption": "Ein Bildschirmbereich wird aufgezeichnet: Unisic zeichnet einen akzentfarbenen Rahmen um den Bereich mit einem REC-Symbol und einem laufenden Timer."
   },
@@ -101,7 +102,7 @@ export const de: Dictionary = {
     "lede": "Wählen Sie unten eine Palette und sehen Sie zu, wie die App sie trägt.",
     "groupLabel": "Ein Theme im App-Fenster in der Vorschau ansehen",
     "reset": "Auf Unisic zurücksetzen",
-    "note": "Jeder Chip färbt das Fenster oben live neu. Ein Theme ist Ihr System: Es folgt dem hellen oder dunklen Schema und der Akzentfarbe des Desktops.",
+    "note": "Jeder Chip färbt das App-Fenster live neu. Ein Theme ist Ihr System: Es folgt dem hellen oder dunklen Schema und der Akzentfarbe des Desktops.",
     "system": "System",
     "systemLabel": "System: folgt dem hellen oder dunklen Schema Ihres Desktops; hier nicht in der Vorschau verfügbar",
     "previewLabel": "Das Unisic-Hauptfenster im Theme {theme}"
@@ -165,7 +166,7 @@ export const de: Dictionary = {
     "note": "Alle außer der festen Stopp-Taste sind in den Einstellungen bearbeitbar und werden sofort auf das System angewendet."
   },
   "reference": {
-    "title": "Referenz"
+    "title": "Desktop-Unterstützung und Tastenkürzel"
   },
   "compositors": {
     "title": "Funktioniert mit Ihrem Compositor",

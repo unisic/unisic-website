@@ -20,8 +20,8 @@ export const es: Dictionary = {
   },
   "hero": {
     "eyebrow": "Capturas de pantalla y grabación de pantalla para Linux",
-    "headline": "Una herramienta de capturas que termina el trabajo.",
-    "sub": "Unisic es gratuito y de código abierto. Dibuja sobre la pantalla antes de capturarla, edita después, graba un GIF o un vídeo y comparte el enlace, todo con un solo atajo.",
+    "headline": "Captura, anota y comparte. Un solo atajo.",
+    "sub": "Dibuja sobre la pantalla antes de hacer la captura, graba un GIF o un vídeo y encuentra el enlace para compartir ya en tu portapapeles.",
     "installLabel": "Instala en una línea",
     "copy": "Copiar",
     "copied": "Copiado",
@@ -35,9 +35,10 @@ export const es: Dictionary = {
       "sessions": "Wayland y X11"
     }
   },
+  "proof": {
+    "packaged": "Paquetes para"
+  },
   "how": {
-    "title": "Cómo funciona",
-    "lede": "No hay asistente de configuración ni cuenta. Instálalo, pulsa un atajo y trabaja desde ahí.",
     "steps": {
       "hotkey": {
         "title": "Pulsa un atajo",
@@ -55,7 +56,7 @@ export const es: Dictionary = {
   },
   "usp": {
     "title": "Anota antes incluso de tomar la captura",
-    "lede": "La superposición de selección es un lienzo. Dibuja flechas, texto, desenfoque y pasos sobre la pantalla congelada y pulsa Intro: las anotaciones quedan grabadas en la captura."
+    "lede": "La superposición de selección también es un lienzo. Lo que dibujes sobre la pantalla congelada va directo a la captura, sin pasar por un editor."
   },
   "overlay": {
     "caption": "La superposición de selección de Unisic: una pantalla congelada con una región seleccionada, dimensiones en píxeles en tiempo real, una flecha dibujada antes de capturar y una barra de herramientas flotante.",
@@ -92,7 +93,7 @@ export const es: Dictionary = {
   },
   "recording": {
     "title": "Graba la misma región como GIF o vídeo",
-    "lede": "Captura una región, una ventana o toda la pantalla. Guarda un GIF con colores limpios, o un MP4 o WebM con sonido del sistema, del micrófono o de una sola aplicación. La repetición instantánea mantiene listos los últimos 30 segundos, y puedes recortar el clip desde la notificación.",
+    "lede": "Captura una región, una ventana o toda la pantalla. Guarda un GIF, o un MP4 o WebM con sonido del sistema, del micrófono o de una sola aplicación. La repetición instantánea mantiene listos los últimos 30 segundos.",
     "note": "{keys} siempre detiene una grabación, sin importar qué tenga el foco.",
     "caption": "Una región de pantalla en grabación: Unisic dibuja un marco con color de acento alrededor de la región, con una insignia REC y un temporizador."
   },
@@ -101,7 +102,7 @@ export const es: Dictionary = {
     "lede": "Elige una paleta abajo y mira cómo la app se la pone.",
     "groupLabel": "Previsualiza un tema en la ventana de la app",
     "reset": "Restablecer a Unisic",
-    "note": "Cada ficha repinta la ventana de arriba en vivo. Un tema es tu sistema: sigue el esquema claro u oscuro del escritorio y el color de acento.",
+    "note": "Cada ficha repinta la ventana de la app en vivo. Un tema es tu sistema: sigue el esquema claro u oscuro del escritorio y el color de acento.",
     "system": "Sistema",
     "systemLabel": "Sistema: sigue el esquema claro u oscuro de tu escritorio; no se puede previsualizar aquí",
     "previewLabel": "La ventana principal de Unisic con el tema {theme}"
@@ -165,7 +166,7 @@ export const es: Dictionary = {
     "note": "Todos los atajos, salvo la tecla fija de detención, se pueden editar en Ajustes y se aplican al sistema de inmediato."
   },
   "reference": {
-    "title": "Referencia"
+    "title": "Escritorios compatibles y atajos"
   },
   "compositors": {
     "title": "Funciona con tu compositor",

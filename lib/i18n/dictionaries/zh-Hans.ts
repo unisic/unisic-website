@@ -20,8 +20,8 @@ export const zhHans: Dictionary = {
   },
   "hero": {
     "eyebrow": "适用于 Linux 的截图与录屏工具",
-    "headline": "把事情一次做完的截图工具。",
-    "sub": "Unisic 免费且开源。截图前先在屏幕上标注，截图后再编辑，录制 GIF 或视频，然后分享链接，全部从一个快捷键开始。",
+    "headline": "截图、标注、分享，一个快捷键搞定。",
+    "sub": "截图之前就能在屏幕上标注，还能录制 GIF 或视频，分享链接已经在你的剪贴板里。",
     "installLabel": "一行命令安装",
     "copy": "复制",
     "copied": "已复制",
@@ -35,9 +35,10 @@ export const zhHans: Dictionary = {
       "sessions": "支持 Wayland 与 X11"
     }
   },
+  "proof": {
+    "packaged": "安装包支持"
+  },
   "how": {
-    "title": "使用方式",
-    "lede": "没有安装向导，也不需要账号。安装后按下快捷键，直接开始。",
     "steps": {
       "hotkey": {
         "title": "按下快捷键",
@@ -55,7 +56,7 @@ export const zhHans: Dictionary = {
   },
   "usp": {
     "title": "在按下截图前就完成标注",
-    "lede": "选区蒙层就是一块画布。在冻结的画面上绘制箭头、文字、模糊和步骤标记，然后按 Enter：标注即被烙入截图。"
+    "lede": "选区蒙层同时也是画布。你在冻结画面上画的内容会直接进入截图，无需绕道编辑器。"
   },
   "overlay": {
     "caption": "Unisic 选区蒙层：冻结的屏幕上有一块选定区域、实时像素尺寸、一个在截图前绘制的箭头，以及一个浮动工具栏。",
@@ -92,7 +93,7 @@ export const zhHans: Dictionary = {
   },
   "recording": {
     "title": "同一区域，录成 GIF 或视频",
-    "lede": "录制区域、窗口或整个屏幕。保存色彩清晰的 GIF，或带系统声音、麦克风或单个应用声音的 MP4 或 WebM。即时回放始终保留最近 30 秒，你还可以直接在通知里裁剪片段。",
+    "lede": "录制区域、窗口或整个屏幕。保存为 GIF，或带系统声音、麦克风或单个应用声音的 MP4 或 WebM。即时回放始终保留最近 30 秒。",
     "note": "无论焦点在哪里，{keys}始终能停止录制。",
     "caption": "正在录制一块屏幕区域：Unisic 在该区域周围绘制一个强调色边框，配有 REC 标记和已录时长计时器。"
   },
@@ -101,7 +102,7 @@ export const zhHans: Dictionary = {
     "lede": "在下方选择一种配色，看应用换上它。",
     "groupLabel": "在应用窗口中预览主题",
     "reset": "重置为 Unisic",
-    "note": "每个色块都会实时重绘上方的窗口。其中一种主题就是你的系统：它会跟随桌面的浅色或深色方案和强调色。",
+    "note": "每个色块都会实时重绘应用窗口。其中一种主题就是你的系统：它会跟随桌面的浅色或深色方案和强调色。",
     "system": "系统",
     "systemLabel": "系统：跟随你桌面的浅色或深色方案；此处无法预览",
     "previewLabel": "{theme}主题下的 Unisic 主窗口"
@@ -165,7 +166,7 @@ export const zhHans: Dictionary = {
     "note": "除固定的停止键外，其余都可在设置中修改，并立即应用到系统。"
   },
   "reference": {
-    "title": "参考"
+    "title": "桌面支持与快捷键"
   },
   "compositors": {
     "title": "与你的合成器协同工作",

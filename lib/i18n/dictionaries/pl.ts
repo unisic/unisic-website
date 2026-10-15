@@ -20,8 +20,8 @@ export const pl: Dictionary = {
   },
   "hero": {
     "eyebrow": "Zrzuty ekranu i nagrywanie ekranu na Linux",
-    "headline": "Narzędzie do zrzutów, które doprowadza sprawę do końca.",
-    "sub": "Unisic jest darmowy i otwartoźródłowy. Rysuj po ekranie, zanim zrobisz zrzut, edytuj go potem, nagraj GIF-a lub wideo i udostępnij link, wszystko jednym skrótem klawiszowym.",
+    "headline": "Zrób zrzut, opisz, udostępnij. Jednym skrótem.",
+    "sub": "Rysuj po ekranie, zanim powstanie zrzut, nagraj GIF-a lub wideo, a link do udostępnienia znajdziesz już w schowku.",
     "installLabel": "Instalacja w jednej linii",
     "copy": "Kopiuj",
     "copied": "Skopiowano",
@@ -35,9 +35,10 @@ export const pl: Dictionary = {
       "sessions": "Wayland i X11"
     }
   },
+  "proof": {
+    "packaged": "Pakiety dla"
+  },
   "how": {
-    "title": "Jak to działa",
-    "lede": "Bez kreatora konfiguracji i bez konta. Zainstaluj, naciśnij skrót i pracuj.",
     "steps": {
       "hotkey": {
         "title": "Naciśnij skrót",
@@ -55,7 +56,7 @@ export const pl: Dictionary = {
   },
   "usp": {
     "title": "Dodawaj adnotacje, zanim jeszcze zrobisz zrzut",
-    "lede": "Nakładka zaznaczenia to płótno. Rysuj strzałki, tekst, rozmycie i kroki na zamrożonym ekranie, a potem naciśnij Enter: adnotacje zostaną wtopione w zrzut."
+    "lede": "Nakładka zaznaczenia to zarazem płótno. To, co narysujesz na zamrożonym ekranie, trafia prosto do zrzutu, bez przechodzenia przez edytor."
   },
   "overlay": {
     "caption": "Nakładka zaznaczenia Unisic: zamrożony ekran z zaznaczonym obszarem, wymiary w pikselach na żywo, strzałka narysowana przed przechwyceniem oraz pływający pasek narzędzi.",
@@ -92,7 +93,7 @@ export const pl: Dictionary = {
   },
   "recording": {
     "title": "Nagraj ten sam obszar jako GIF lub wideo",
-    "lede": "Nagrywaj obszar, okno albo cały ekran. Zapisz GIF-a z czystymi kolorami albo MP4 lub WebM z dźwiękiem systemu, mikrofonu lub jednej aplikacji. Natychmiastowa powtórka trzyma ostatnie 30 sekund w gotowości, a klip przytniesz prosto z powiadomienia.",
+    "lede": "Nagrywaj obszar, okno albo cały ekran. Zapisz GIF-a albo MP4 lub WebM z dźwiękiem systemu, mikrofonu lub jednej aplikacji. Natychmiastowa powtórka trzyma ostatnie 30 sekund w gotowości.",
     "note": "{keys} zawsze zatrzymuje nagrywanie, niezależnie od tego, co ma fokus.",
     "caption": "Nagrywany obszar ekranu: Unisic rysuje wokół obszaru ramkę w kolorze akcentu z plakietką REC i licznikiem czasu."
   },
@@ -101,7 +102,7 @@ export const pl: Dictionary = {
     "lede": "Wybierz poniżej paletę i patrz, jak aplikacja ją zakłada.",
     "groupLabel": "Podejrzyj motyw w oknie aplikacji",
     "reset": "Przywróć Unisic",
-    "note": "Każdy kafelek na żywo przemalowuje okno powyżej. Jeden motyw to twój system: podąża za jasnym lub ciemnym schematem pulpitu i kolorem akcentu.",
+    "note": "Każdy kafelek na żywo przemalowuje okno aplikacji. Jeden motyw to twój system: podąża za jasnym lub ciemnym schematem pulpitu i kolorem akcentu.",
     "system": "System",
     "systemLabel": "System: podąża za jasnym lub ciemnym schematem pulpitu; niedostępny do podglądu tutaj",
     "previewLabel": "Główne okno Unisic w motywie {theme}"
@@ -165,7 +166,7 @@ export const pl: Dictionary = {
     "note": "Wszystkie klawisze poza stałym klawiszem zatrzymania można edytować w Ustawieniach, a zmiany są od razu stosowane w systemie."
   },
   "reference": {
-    "title": "Materiały referencyjne"
+    "title": "Obsługiwane środowiska i skróty"
   },
   "compositors": {
     "title": "Działa z twoim kompozytorem",

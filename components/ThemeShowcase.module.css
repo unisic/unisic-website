@@ -335,20 +335,18 @@
   font-size: 0.9375rem;
 }
 
-/* Desktop split: the palettes become a vertical rail beside the preview,
-   breaking the page's repeated "heading, lede, full-width visual" stack.
-   Below 900px the original stacked flow remains. */
+/* Desktop split: the palettes wrap in a block beside the preview, so the
+   section stays about one preview tall. Below 900px they stack. */
 @media (min-width: 900px) {
   .showcase {
     display: grid;
-    grid-template-columns: minmax(200px, 3fr) 7fr;
-    column-gap: 40px;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    column-gap: 48px;
     align-items: start;
   }
 
   .chips {
-    flex-direction: column;
-    align-items: flex-start;
+    align-content: flex-start;
   }
 
   .previewFrame {

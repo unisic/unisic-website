@@ -1,20 +1,161 @@
-.uspVisual {
-  margin-top: var(--space-lede);
+/* landing rhythm: a slightly tighter beat than the shared .section shell so
+   the page reads as one sequence. Two classes, so it wins over .section in
+   any stylesheet order; the band below restates its own padding. */
+.page :global(.section) {
+  padding-top: 96px;
+}
+
+@media (max-width: 767px) {
+  .page :global(.section) {
+    padding-top: 72px;
+  }
+}
+
+/* ---- packages strip under the hero ---- */
+
+.proof {
+  width: calc(100% - 48px);
+  max-width: calc(var(--max-width) - 48px);
+  margin: 72px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 32px;
+}
+
+.proofLabel {
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.proofList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 26px;
+}
+
+.proofList li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.proofList svg {
+  flex: none;
+  color: var(--text-secondary);
+}
+
+/* ---- section header: heading left, lede right on wide screens ---- */
+
+.head {
+  display: grid;
+  gap: 16px;
+}
+
+.head :global(.section-lede) {
+  margin-top: 0;
+}
+
+@media (min-width: 960px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 56px;
+    align-items: end;
+  }
 }
 
 /* the differentiator visual breaks out wider than the text column on large
    screens. Fixed negative margins behind a min-width gate, never 100vw math:
    1160px content + 2x60px stays inside a 1320px viewport even with a
    scrollbar, so the page can never scroll horizontally. */
+.overlayVisual {
+  margin-top: var(--space-lede);
+}
+
 @media (min-width: 1320px) {
-  .uspVisual {
+  .overlayVisual {
     margin-inline: -60px;
   }
 }
 
+/* ---- the install command, repeated after the features ---- */
+
+.page .again {
+  padding-top: 72px;
+}
+
+.againCard {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(var(--surface-top), var(--surface-bottom));
+  border: 1px solid var(--divider);
+}
+
+.againLabel {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.againCmd {
+  min-width: 0;
+}
+
+.againLink {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--text);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--text-tertiary);
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+
+.againLink:hover {
+  text-decoration-color: currentColor;
+}
+
+/* on phones the command box is the card: no second frame around it */
+@media (max-width: 599px) {
+  .againCard {
+    padding: 0;
+    background: none;
+    border: 0;
+  }
+}
+
+@media (min-width: 960px) {
+  .againCard {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 28px;
+    padding: 18px 28px;
+  }
+}
+
+/* ---- recording ---- */
+
 .recSplit {
   display: grid;
-  grid-template-columns: 5fr 6fr;
+  grid-template-columns: 6fr 5fr;
   gap: 56px;
   align-items: center;
 }
@@ -24,36 +165,30 @@
   min-width: 0;
 }
 
+.formats {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.formats li {
+  padding: 4px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--divider);
+  background: var(--surface);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
 .recNote {
-  margin-top: 22px;
+  margin-top: 20px;
   color: var(--ink-2);
   font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-/* full-bleed wash behind the themes section. The gradient is drawn by a
-   ::before pinned to inset 0, never oversized or transformed, because
-   decorative layers that outgrow their box extend the document's
-   scrollable area (see the repo's overflow rule). */
-.themesGlow {
-  position: relative;
-  isolation: isolate;
-}
-
-.themesGlow::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(
-    60% 40% at 50% 0%,
-    color-mix(in srgb, var(--tertiary) 18%, transparent),
-    transparent 70%
-  );
-  pointer-events: none;
+  line-height: 1.9;
 }
 
 .coprCmdWrap {
@@ -130,7 +265,7 @@
 .refCols {
   margin-top: var(--space-lede);
   display: grid;
-  grid-template-columns: 5fr 6fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 64px;
   align-items: start;
 }
@@ -139,14 +274,6 @@
   .recSplit {
     grid-template-columns: 1fr;
     gap: 36px;
-  }
-
-  .recVisual {
-    order: 1;
-  }
-
-  .recCopy {
-    order: 0;
   }
 
   .refCols {
@@ -249,17 +376,17 @@
 /* the shared footer carries margin-top: var(--space-section) for the docs
    pages; the negative bottom margin cancels it so the band meets the footer */
 .band {
-  margin-top: var(--space-section);
+  margin-top: 96px;
   margin-bottom: calc(var(--space-section) * -1);
   background: var(--accent);
   color: var(--text-on-accent);
 }
 
 /* two classes so these beat the shared .section shell regardless of the
-   order the stylesheets are emitted in */
+   order the stylesheets are emitted in; declared after .page .section */
 .band .bandInner {
-  padding-top: 88px;
-  padding-bottom: 88px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   display: grid;
   grid-template-columns: 5fr 7fr;
   gap: 56px;
@@ -274,7 +401,8 @@
   color: var(--text-on-accent);
 }
 
-.bandCopy {
+.bandCopy,
+.bandSide {
   min-width: 0;
 }
 
@@ -300,10 +428,19 @@
   margin-top: 3px;
 }
 
+/* in-flow, never absolutely offset, so it cannot widen the scroll area */
+.mascot {
+  display: block;
+  width: 184px;
+  height: auto;
+  margin-top: 36px;
+  pointer-events: none;
+  filter: drop-shadow(0 14px 24px color-mix(in srgb, var(--text-on-accent) 30%, transparent));
+}
+
 .beta {
-  margin-top: 28px;
-  max-width: 44ch;
-  font-size: 1rem;
+  margin-top: 18px;
+  font-size: 0.9375rem;
 }
 
 .beta a {
@@ -324,7 +461,7 @@
   border-radius: var(--radius-xl);
   background: var(--bg-deep);
   color: var(--text);
-  box-shadow: 0 30px 70px rgba(27, 24, 52, 0.4);
+  box-shadow: 0 30px 70px var(--shadow-color);
 }
 
 .card :focus-visible {
@@ -371,8 +508,34 @@
   .band .bandInner {
     grid-template-columns: 1fr;
     gap: 40px;
-    padding-top: 72px;
-    padding-bottom: 72px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  /* on one column Uni would push the card a full screen down: she moves
+     beside the selling points instead */
+  .bandCopy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 20px;
+  }
+
+  .bandCopy > :not(.mascot) {
+    grid-column: 1;
+  }
+
+  .mascot {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: end;
+    width: 96px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .band {
+    margin-top: 72px;
   }
 }
 

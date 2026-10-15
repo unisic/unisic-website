@@ -20,8 +20,8 @@ export const nl: Dictionary = {
   },
   "hero": {
     "eyebrow": "Schermafbeeldingen en schermopname voor Linux",
-    "headline": "Een screenshottool dat de klus afmaakt.",
-    "sub": "Unisic is gratis en open source. Teken op het scherm voordat je het vastlegt, bewerk daarna, neem een GIF of video op en deel de link, alles met één sneltoets.",
+    "headline": "Vastleggen, markeren, delen. Eén sneltoets.",
+    "sub": "Teken op het scherm voordat de schermafbeelding wordt gemaakt, neem een GIF of video op, en de deellink staat al op je klembord.",
     "installLabel": "Installeer in één regel",
     "copy": "Kopiëren",
     "copied": "Gekopieerd",
@@ -35,9 +35,10 @@ export const nl: Dictionary = {
       "sessions": "Wayland en X11"
     }
   },
+  "proof": {
+    "packaged": "Pakketten voor"
+  },
   "how": {
-    "title": "Hoe het werkt",
-    "lede": "Geen installatiewizard en geen account. Installeer het, druk op een sneltoets en ga aan de slag.",
     "steps": {
       "hotkey": {
         "title": "Druk op een sneltoets",
@@ -55,7 +56,7 @@ export const nl: Dictionary = {
   },
   "usp": {
     "title": "Annoteer nog voor de opname is gemaakt",
-    "lede": "De selectie-overlay is een canvas. Teken pijlen, tekst, vervaging en stappen op het bevroren scherm en druk op Enter: de annotaties worden in de opname ingebrand."
+    "lede": "De selectie-overlay is ook een canvas. Wat je op het bevroren scherm tekent, gaat direct de opname in, zonder omweg via een editor."
   },
   "overlay": {
     "caption": "De Unisic selectie-overlay: een bevroren scherm met een geselecteerd gebied, live pixelafmetingen, een pijl die vóór het vastleggen is getekend en een zwevende werkbalk.",
@@ -92,7 +93,7 @@ export const nl: Dictionary = {
   },
   "recording": {
     "title": "Neem hetzelfde gebied op als GIF of video",
-    "lede": "Leg een gebied, een venster of het hele scherm vast. Bewaar een GIF met zuivere kleuren, of een MP4 of WebM met systeemgeluid, microfoon of geluid van één app. Direct terugspelen houdt de laatste 30 seconden klaar, en je kunt de clip bijsnijden vanuit de melding.",
+    "lede": "Leg een gebied, een venster of het hele scherm vast. Bewaar een GIF, of een MP4 of WebM met systeemgeluid, microfoon of geluid van één app. Direct terugspelen houdt de laatste 30 seconden klaar.",
     "note": "{keys} stopt altijd een opname, ongeacht wat de focus heeft.",
     "caption": "Een schermgebied dat wordt opgenomen: Unisic tekent een kader in accentkleur rond het gebied met een REC-badge en een verstreken tijd."
   },
@@ -101,7 +102,7 @@ export const nl: Dictionary = {
     "lede": "Kies hieronder een palet en zie hoe de app het draagt.",
     "groupLabel": "Bekijk een thema in het app-venster",
     "reset": "Terug naar Unisic",
-    "note": "Elke chip kleurt het venster hierboven live opnieuw in. Eén thema is je systeem: het volgt het lichte of donkere schema en de accentkleur van je bureaublad.",
+    "note": "Elke chip kleurt het app-venster live opnieuw in. Eén thema is je systeem: het volgt het lichte of donkere schema en de accentkleur van je bureaublad.",
     "system": "Systeem",
     "systemLabel": "Systeem: volgt het lichte of donkere schema van je bureaublad; hier niet als voorbeeld te bekijken",
     "previewLabel": "Het Unisic-hoofdvenster in het thema {theme}"
@@ -165,7 +166,7 @@ export const nl: Dictionary = {
     "note": "Op de vaste stoptoets na zijn alle sneltoetsen aanpasbaar in Instellingen en worden ze direct op het systeem toegepast."
   },
   "reference": {
-    "title": "Referentie"
+    "title": "Desktopondersteuning en sneltoetsen"
   },
   "compositors": {
     "title": "Werkt met jouw compositor",

@@ -20,8 +20,8 @@ export const it: Dictionary = {
   },
   "hero": {
     "eyebrow": "Screenshot e registrazione dello schermo per Linux",
-    "headline": "Uno strumento per screenshot che porta a termine il lavoro.",
-    "sub": "Unisic è gratuito e open source. Disegna sullo schermo prima di catturarlo, modifica dopo, registra una GIF o un video e condividi il link, tutto con un solo tasto rapido.",
+    "headline": "Cattura, annota e condividi. Un solo tasto rapido.",
+    "sub": "Disegna sullo schermo prima dello scatto, registra una GIF o un video e ritrova il link da condividere già negli appunti.",
     "installLabel": "Installa in una riga",
     "copy": "Copia",
     "copied": "Copiato",
@@ -35,9 +35,10 @@ export const it: Dictionary = {
       "sessions": "Wayland e X11"
     }
   },
+  "proof": {
+    "packaged": "Pacchetti per"
+  },
   "how": {
-    "title": "Come funziona",
-    "lede": "Nessuna procedura guidata e nessun account. Installalo, premi un tasto rapido e lavora da lì.",
     "steps": {
       "hotkey": {
         "title": "Premi un tasto rapido",
@@ -55,7 +56,7 @@ export const it: Dictionary = {
   },
   "usp": {
     "title": "Annota ancora prima di scattare",
-    "lede": "L'overlay di selezione è una tela. Disegna frecce, testo, sfocature e passaggi sullo schermo congelato, poi premi Invio: le annotazioni vengono impresse nella cattura."
+    "lede": "L'overlay di selezione è anche una tela. Quello che disegni sullo schermo congelato finisce direttamente nella cattura, senza passare da un editor."
   },
   "overlay": {
     "caption": "L'overlay di selezione di Unisic: uno schermo congelato con una regione selezionata, dimensioni in pixel in tempo reale, una freccia disegnata prima della cattura e una barra degli strumenti fluttuante.",
@@ -92,7 +93,7 @@ export const it: Dictionary = {
   },
   "recording": {
     "title": "Registra la stessa area come GIF o video",
-    "lede": "Cattura un'area, una finestra o l'intero schermo. Salva una GIF dai colori nitidi, oppure un MP4 o WebM con audio di sistema, microfono o di una sola app. Il replay istantaneo tiene pronti gli ultimi 30 secondi e puoi tagliare la clip dalla notifica.",
+    "lede": "Cattura un'area, una finestra o l'intero schermo. Salva una GIF, oppure un MP4 o WebM con audio di sistema, microfono o di una sola app. Il replay istantaneo tiene pronti gli ultimi 30 secondi.",
     "note": "{keys} interrompe sempre una registrazione, indipendentemente da cosa ha il focus.",
     "caption": "Una regione dello schermo in fase di registrazione: Unisic disegna una cornice con il colore d'accento attorno alla regione con un badge REC e un timer del tempo trascorso."
   },
@@ -101,7 +102,7 @@ export const it: Dictionary = {
     "lede": "Scegli una palette qui sotto e guarda l'app indossarla.",
     "groupLabel": "Anteprima di un tema nella finestra dell'app",
     "reset": "Ripristina su Unisic",
-    "note": "Ogni chip ridipinge la finestra qui sopra in tempo reale. Un tema è il tuo sistema: segue lo schema chiaro o scuro del desktop e il colore d'accento.",
+    "note": "Ogni chip ridipinge la finestra dell'app in tempo reale. Un tema è il tuo sistema: segue lo schema chiaro o scuro del desktop e il colore d'accento.",
     "system": "Sistema",
     "systemLabel": "Sistema: segue lo schema chiaro o scuro del tuo desktop; non visualizzabile in anteprima qui",
     "previewLabel": "La finestra principale di Unisic nel tema {theme}"
@@ -165,7 +166,7 @@ export const it: Dictionary = {
     "note": "Tutte le scorciatoie, tranne il tasto di stop fisso, sono modificabili nelle Impostazioni e applicate al sistema immediatamente."
   },
   "reference": {
-    "title": "Riferimento"
+    "title": "Desktop supportati e tasti rapidi"
   },
   "compositors": {
     "title": "Funziona con il tuo compositor",
