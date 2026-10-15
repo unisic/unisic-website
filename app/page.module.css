@@ -67,6 +67,16 @@
   margin-top: 0;
 }
 
+/* names the #how section after the nav link that points at it */
+.eyebrow {
+  margin-bottom: 12px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 @media (min-width: 960px) {
   .head {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);

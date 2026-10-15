@@ -69,7 +69,10 @@ export function Landing({
 
         <section className="section" id="how" aria-labelledby="how-title">
           <div className={styles.head}>
-            <h2 id="how-title">{dict.usp.title}</h2>
+            <div>
+              <p className={styles.eyebrow}>{dict.nav.how}</p>
+              <h2 id="how-title">{dict.usp.title}</h2>
+            </div>
             <p className="section-lede">{dict.usp.lede}</p>
           </div>
           <Reveal className={styles.overlayVisual}>
