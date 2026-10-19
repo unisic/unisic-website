@@ -171,7 +171,7 @@ The [Releases](https://github.com/unisic/unisic/releases/latest) page carries ev
 
 The Windows port is written entirely by AI. The author will not touch the code it takes to port Unisic to a system this poorly thought out, so everything Windows-specific was written by an AI model and checked by running it, not written by hand. Treat it as a preview: it is checked by hand on Windows 11, not used every day like the Linux build.
 
-From 0.8.8 on, each [release](https://github.com/unisic/unisic/releases) carries two Windows files, each with its `.sha256`:
+From 0.8.8 on, each [release](https://github.com/unisic/unisic/releases) carries two Windows files (the release page shows the SHA-256 of each beside it):
 
 - `unisic-<version>-windows-x64-experimental-setup.exe`, a setup wizard that installs Unisic for your user only into `%LOCALAPPDATA%\Programs\Unisic`, with a Start menu entry and an uninstaller.
 - `Unisic-<version>-windows-x86_64-experimental.zip`, the same files to unpack anywhere and run as `bin\unisic.exe`.
