@@ -6,11 +6,11 @@ order: 2
 group: "Getting started"
 ---
 
-This page covers how to install Unisic: the AppImage (recommended), the distribution repositories, Nix, direct downloads from GitHub Releases, and building from source.
+This page covers how to install Unisic: the AppImage (recommended), the distribution repositories, Nix, direct downloads from GitHub Releases, the experimental Windows build, and building from source.
 
 ## Requirements
 
-Unisic runs on Linux. Native packages include every application dependency and helper, including ffmpeg, the PipeWire command-line tools, Tesseract data, grim and one portal backend chosen for the desktop. Portable bundles carry the helpers but still use the desktop's running PipeWire and portal services. See [Dependencies](/docs/dependencies) for the complete package contract. The app is built with C++20 / Qt 6 / QML.
+Unisic runs on Linux, and as an experimental build on Windows 11 (see [Windows (experimental)](#windows-experimental)). Native packages include every application dependency and helper, including ffmpeg, the PipeWire command-line tools, Tesseract data, grim and one portal backend chosen for the desktop. Portable bundles carry the helpers but still use the desktop's running PipeWire and portal services. See [Dependencies](/docs/dependencies) for the complete package contract. The app is built with C++20 / Qt 6 / QML.
 
 For compositor-specific setup, including compositor-side keybinds on wlroots, see [Compositors](/docs/compositors).
 
@@ -166,6 +166,14 @@ services.pipewire.enable = true;
 ## Direct downloads
 
 The [Releases](https://github.com/unisic/unisic/releases/latest) page carries every format: the self-updating **AppImage**, plus one-off **.deb**, Fedora **.rpm**, and Arch **.pkg.tar.zst** packages that register their repository on first install - from then on updates arrive through `apt upgrade` / `dnf upgrade` / `pacman -Syu` like any other package. openSUSE has no release package (a binary rpm is pinned to the exact Qt it was built against); use the repository above.
+
+## Windows (experimental)
+
+The Windows port is written entirely by AI. The author will not touch the code it takes to port Unisic to a system this poorly thought out, so everything Windows-specific was written by an AI model and checked by running it, not written by hand. Treat it as a preview: it is checked by hand on Windows 11, not used every day like the Linux build.
+
+From 0.8.8 on, each [release](https://github.com/unisic/unisic/releases) carries `Unisic-<version>-windows-x86_64-experimental.zip` and its `.sha256`. Unpack it anywhere and run `bin\unisic.exe`; no administrator rights are needed. It updates itself: a newer release's zip is downloaded, checked against the SHA-256 published for it and unpacked under `%APPDATA%\Unisic\unisic\updates`, and the `unisic.exe` you unpacked starts that copy from then on, so keep the folder where it is.
+
+Screenshots (full screen, region, active window), the overlay, the editor, saving, the clipboard, OCR, the tray, global hotkeys, the scrolling capture and recording a GIF or video of the full screen or a region all work, with system sound, a microphone and the sound of single applications. Recording a single window does not, yet. The default hotkeys differ from Linux, see [Keyboard shortcuts](/docs/hotkeys#windows-experimental).
 
 ## Build from source
 

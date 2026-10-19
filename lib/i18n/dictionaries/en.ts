@@ -162,6 +162,8 @@ export const en = {
       nix: "Runs anywhere Nix does, including NixOS. Try it with nix run, or add the flake as an input for a declarative setup; enable xdg.portal and PipeWire on NixOS.",
       appimage:
         "Recommended. Universal: runs on any distribution, needs no root and installs nothing into your system. It updates itself: the new release is downloaded, checked against the SHA-256 published for it, swapped in place, and Unisic restarts once you are idle.",
+      windows:
+        "Experimental, for Windows 11, and written entirely by AI. Unpack the zip anywhere and run bin\\unisic.exe, no administrator rights needed. It updates itself the way the AppImage does. Recording a single window is not supported there yet.",
     },
     downloadBtn: "Download",
     checking: "Checking the latest release",

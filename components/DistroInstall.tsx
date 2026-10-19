@@ -25,11 +25,13 @@ type ReleaseState =
   | { kind: "ready"; release: LatestRelease }
   | { kind: "error" };
 
-const isAsset = (sel: Selection): sel is AssetId => sel === "appimage";
+const isAsset = (sel: Selection): sel is AssetId =>
+  DIRECT_ASSETS.some((a) => a.id === sel);
 
 /*
  * Install picker: nothing is preselected. One row of buttons - the AppImage
- * direct download first (the recommended way in), then the distros. Picking a
+ * direct download first (the recommended way in), the experimental Windows
+ * zip, then the distros. Picking a
  * distro animates in either its install steps, or first a version switch (Ubuntu, openSUSE)
  * whose pick then animates in the steps. Picking a format animates in a
  * download button for the latest release (fetched lazily on first pick).
@@ -189,7 +191,9 @@ export function DistroInstall({ dict }: { dict: Dictionary }) {
             <>
               <a href={RELEASES_URL} className={`${styles.downloadBtn} shine`}>
                 <span className={styles.btnLabel}>{d.fallbackBtn}</span>
-                <span className={styles.btnHint}>AppImage</span>
+                <span className={styles.btnHint}>
+                  {DIRECT_ASSETS.find((a) => a.id === sel)!.name}
+                </span>
               </a>
               <p className={styles.note}>{d.fallbackNote}</p>
             </>

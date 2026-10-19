@@ -135,7 +135,8 @@ export const es: Dictionary = {
       "opensuse": "zypper te pedirá aceptar la clave de firma del repositorio durante el refresco.",
       "arch": "Un repositorio pacman firmado en openSUSE Build Service: no hace falta AUR.",
       "nix": "Funciona en cualquier sistema con Nix, incluido NixOS. Pruébalo con nix run o añade el flake como input para una configuración declarativa; en NixOS activa xdg.portal y PipeWire.",
-      "appimage": "Recomendado. Universal: funciona en cualquier distribución, no necesita root y no instala nada en tu sistema. Se actualiza solo: descarga la nueva versión, la comprueba con el SHA-256 publicado para ella, la sustituye en el sitio y reinicia Unisic cuando estás inactivo."
+      "appimage": "Recomendado. Universal: funciona en cualquier distribución, no necesita root y no instala nada en tu sistema. Se actualiza solo: descarga la nueva versión, la comprueba con el SHA-256 publicado para ella, la sustituye en el sitio y reinicia Unisic cuando estás inactivo.",
+      "windows": "Experimental, para Windows 11 y escrito íntegramente por IA. Descomprime el zip en cualquier carpeta y ejecuta bin\\unisic.exe, sin permisos de administrador. Se actualiza solo, igual que la AppImage. Todavía no puede grabar una sola ventana."
     },
     "downloadBtn": "Descargar",
     "checking": "Comprobando la última versión",

@@ -135,7 +135,8 @@ export const zhHans: Dictionary = {
       "opensuse": "刷新时 zypper 会请求你接受该软件仓库的签名密钥。",
       "arch": "openSUSE Build Service 上的已签名 pacman 仓库--无需 AUR。",
       "nix": "只要有 Nix 就能运行，包括 NixOS。可用 nix run 直接试用，或把 flake 作为 input 加入配置进行声明式安装；在 NixOS 上请启用 xdg.portal 与 PipeWire。",
-      "appimage": "推荐。通用格式--可在任何发行版上运行，无需 root，也不会在系统中安装任何东西。它会自行更新：下载新版本，用发布时公布的 SHA-256 校验，原地替换，并在你空闲时重启 Unisic。"
+      "appimage": "推荐。通用格式--可在任何发行版上运行，无需 root，也不会在系统中安装任何东西。它会自行更新：下载新版本，用发布时公布的 SHA-256 校验，原地替换，并在你空闲时重启 Unisic。",
+      "windows": "实验性版本，适用于 Windows 11，完全由 AI 编写。将 zip 解压到任意位置并运行 bin\\unisic.exe，无需管理员权限。它会像 AppImage 一样自行更新。目前还不能录制单个窗口。"
     },
     "downloadBtn": "下载",
     "checking": "正在检查最新版本",

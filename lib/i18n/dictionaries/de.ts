@@ -135,7 +135,8 @@ export const de: Dictionary = {
       "opensuse": "zypper bittet beim Aktualisieren darum, den Signaturschlüssel des Repositorys zu akzeptieren.",
       "arch": "Ein signiertes pacman-Repository auf dem openSUSE Build Service. Kein AUR nötig.",
       "nix": "Läuft überall, wo Nix läuft, auch auf NixOS. Probieren Sie es mit nix run oder fügen Sie das Flake als Input für eine deklarative Konfiguration hinzu; aktivieren Sie unter NixOS xdg.portal und PipeWire.",
-      "appimage": "Empfohlen. Universell: läuft auf jeder Distribution, benötigt kein Root und installiert nichts in Ihr System. Die App aktualisiert sich selbst: Das neue Release wird heruntergeladen, gegen die dafür veröffentlichte SHA-256-Summe geprüft und an Ort und Stelle ausgetauscht, und Unisic startet neu, sobald Sie untätig sind."
+      "appimage": "Empfohlen. Universell: läuft auf jeder Distribution, benötigt kein Root und installiert nichts in Ihr System. Die App aktualisiert sich selbst: Das neue Release wird heruntergeladen, gegen die dafür veröffentlichte SHA-256-Summe geprüft und an Ort und Stelle ausgetauscht, und Unisic startet neu, sobald Sie untätig sind.",
+      "windows": "Experimentell, für Windows 11 und vollständig von einer KI geschrieben. Entpacken Sie das ZIP an einem beliebigen Ort und starten Sie bin\\unisic.exe, ohne Administratorrechte. Die App aktualisiert sich selbst wie das AppImage. Einzelne Fenster lassen sich dort noch nicht aufnehmen."
     },
     "downloadBtn": "Herunterladen",
     "checking": "Neueste Version wird geprüft",

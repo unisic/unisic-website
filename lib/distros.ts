@@ -16,10 +16,11 @@ export type DistroId =
 
 /* Direct-download formats that sit in the same picker row as the distros;
    their ids double as lib/releases.ts asset formats. */
-export type AssetId = "appimage";
+export type AssetId = "appimage" | "windows";
 
 export const DIRECT_ASSETS: { id: AssetId; name: string }[] = [
   { id: "appimage", name: "AppImage" },
+  { id: "windows", name: "Windows" },
 ];
 
 export type StepKey =

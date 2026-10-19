@@ -135,7 +135,8 @@ export const nl: Dictionary = {
       "opensuse": "zypper vraagt je tijdens het verversen om de ondertekeningssleutel van de repository te accepteren.",
       "arch": "Een ondertekende pacman-repository op de openSUSE Build Service. Geen AUR nodig.",
       "nix": "Draait overal waar Nix draait, ook op NixOS. Probeer het met nix run of voeg de flake toe als input voor een declaratieve configuratie; schakel op NixOS xdg.portal en PipeWire in.",
-      "appimage": "Aanbevolen. Universeel: draait op elke distributie, heeft geen root nodig en installeert niets in je systeem. De app werkt zichzelf bij: de nieuwe release wordt gedownload, gecontroleerd tegen de SHA-256 die ervoor is gepubliceerd en ter plekke omgewisseld, en Unisic herstart zodra je inactief bent."
+      "appimage": "Aanbevolen. Universeel: draait op elke distributie, heeft geen root nodig en installeert niets in je systeem. De app werkt zichzelf bij: de nieuwe release wordt gedownload, gecontroleerd tegen de SHA-256 die ervoor is gepubliceerd en ter plekke omgewisseld, en Unisic herstart zodra je inactief bent.",
+      "windows": "Experimenteel, voor Windows 11 en volledig door AI geschreven. Pak de zip uit waar je wilt en start bin\\unisic.exe, zonder beheerdersrechten. Werkt zichzelf bij, net als de AppImage. Eén los venster opnemen kan daar nog niet."
     },
     "downloadBtn": "Downloaden",
     "checking": "De nieuwste release controleren",

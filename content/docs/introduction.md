@@ -14,7 +14,7 @@ Unisic is an open-source, zero-telemetry screenshot and screen recorder for Linu
 
 The moment you trigger a capture, Unisic gives you the whole workflow: annotate on the selection overlay before the shot is even taken, edit afterwards, copy text out of any region with OCR, record the same region as a GIF or video, and push the result wherever it belongs - clipboard, disk, or a custom upload destination with the link ready to paste.
 
-It is built for Linux on legitimate APIs only (`xdg-desktop-portal`, KWin ScreenShot2, PipeWire, KGlobalAccel, `wlr-screencopy`), and is written in C++20 / Qt 6 / QML with a fully custom UI.
+It is built for Linux on legitimate APIs only (`xdg-desktop-portal`, KWin ScreenShot2, PipeWire, KGlobalAccel, `wlr-screencopy`), and is written in C++20 / Qt 6 / QML with a fully custom UI. An experimental Windows 11 build, written entirely by AI, ships with each release from 0.8.8 on; see [Installation](/docs/installation#windows-experimental).
 
 ## The workflow
 

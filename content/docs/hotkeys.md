@@ -26,6 +26,22 @@ Unisic ships with the following default keyboard shortcuts:
 
 For what each capture action does, see [Capture](/docs/capture); for the recording shortcuts, see [Recording](/docs/recording).
 
+### Windows (experimental)
+
+Windows keeps `Win+Shift` with digits and most letters for itself, so the [experimental Windows build](/docs/installation#windows-experimental) puts its defaults on Print Screen:
+
+| Action | Shortcut |
+| --- | --- |
+| Capture full screen | `Ctrl+Shift+Print` |
+| Capture region | `Print` or `Ctrl+Print` |
+| Capture active window | `Alt+Print` |
+| Record GIF (start/stop) | `Win+Shift+G` |
+| Record video (start/stop) | `Shift+Print` |
+| OCR region (copy text) | `Win+Shift+O` |
+| Stop recording (fixed) | `Ctrl+Alt+Esc` (`Ctrl+Esc` is the Start menu) |
+
+A bare `Print` opens the Snipping Tool until you turn off Settings > Accessibility > Keyboard > "Use the Print screen key to open screen capture"; `Ctrl+Print` works either way.
+
 ## In the main window
 
 The main window has its own shortcuts, listed in-app under `Ctrl+/`:
