@@ -7,12 +7,9 @@
 # or, once downloaded:
 #     bash install.sh
 #
-# This is the only copy: it lives in the unisic-website repo as public/install.sh.
-# Every Unisic release attaches the copy unisic.app served when it was cut.
-#
-# That release asset is frozen at release time and has a sha256 published for it
-# in the API. The site copy (RAW_URL below) is the fallback only: it moves under
-# the release it is meant to belong to, so nothing can be pinned to it.
+# This is the only copy: it lives in the unisic-website repo as public/install.sh
+# and unisic.app serves it as RAW_URL below. From 0.8.8 on no Unisic release
+# carries a copy of it.
 #
 # It opens a btop-style menu (arrow keys + Enter) that can install, update,
 # uninstall, install an older version, and turn on automatic updates. There is
@@ -877,14 +874,10 @@ setup_autoupdate() {
         cp "$0" "${DATA_DIR}/install.sh"
     else
         # Piped `curl | bash`: there is no on-disk $0 to copy, so this timer's
-        # script has to be fetched. Take the release's own copy, which
-        # verify_digest can check, and keep the unisic.app copy only for a release
-        # that predates it. Either way it is run daily with the user's rights
-        # from then on, so a wrong file cannot be allowed to install itself.
-        local url=""
-        : "${RELEASE_JSON:="$(fetch "${API}/releases/latest" 2>/dev/null || true)"}"
-        url="$(printf '%s' "$RELEASE_JSON" | asset_url '/install\.sh$')"
-        download "${url:-$RAW_URL}" "${DATA_DIR}/install.sh"
+        # script has to be fetched from unisic.app. It is run daily with the
+        # user's rights from then on, so a wrong file cannot be allowed to
+        # install itself.
+        download "$RAW_URL" "${DATA_DIR}/install.sh"
         grep -q 'Unisic universal installer' "${DATA_DIR}/install.sh" 2>/dev/null || {
             rm -f "${DATA_DIR}/install.sh"
             die "What came back isn't the Unisic installer, so I didn't set up
