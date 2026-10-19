@@ -171,7 +171,12 @@ The [Releases](https://github.com/unisic/unisic/releases/latest) page carries ev
 
 The Windows port is written entirely by AI. The author will not touch the code it takes to port Unisic to a system this poorly thought out, so everything Windows-specific was written by an AI model and checked by running it, not written by hand. Treat it as a preview: it is checked by hand on Windows 11, not used every day like the Linux build.
 
-From 0.8.8 on, each [release](https://github.com/unisic/unisic/releases) carries `Unisic-<version>-windows-x86_64-experimental.zip` and its `.sha256`. Unpack it anywhere and run `bin\unisic.exe`; no administrator rights are needed. It updates itself: a newer release's zip is downloaded, checked against the SHA-256 published for it and unpacked under `%APPDATA%\Unisic\unisic\updates`, and the `unisic.exe` you unpacked starts that copy from then on, so keep the folder where it is.
+From 0.8.8 on, each [release](https://github.com/unisic/unisic/releases) carries two Windows files, each with its `.sha256`:
+
+- `unisic-<version>-windows-x64-experimental-setup.exe`, a setup wizard that installs Unisic for your user only into `%LOCALAPPDATA%\Programs\Unisic`, with a Start menu entry and an uninstaller.
+- `Unisic-<version>-windows-x86_64-experimental.zip`, the same files to unpack anywhere and run as `bin\unisic.exe`.
+
+Neither needs administrator rights. Both update themselves: a newer release's zip is downloaded, checked against the SHA-256 published for it and unpacked under `%APPDATA%\Unisic\unisic\updates`, and the installed or unpacked `unisic.exe` starts that copy from then on, so keep an unpacked folder where it is. The uninstaller removes those staged updates too and keeps your settings and capture history.
 
 Screenshots (full screen, region, active window), the overlay, the editor, saving, the clipboard, OCR, the tray, global hotkeys, the scrolling capture and recording a GIF or video of the full screen or a region all work, with system sound, a microphone and the sound of single applications. Recording a single window does not, yet. The default hotkeys differ from Linux, see [Keyboard shortcuts](/docs/hotkeys#windows-experimental).
 

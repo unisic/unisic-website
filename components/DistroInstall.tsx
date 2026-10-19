@@ -31,7 +31,7 @@ const isAsset = (sel: Selection): sel is AssetId =>
 /*
  * Install picker: nothing is preselected. One row of buttons - the AppImage
  * direct download first (the recommended way in), the experimental Windows
- * zip, then the distros. Picking a
+ * installer, then the distros. Picking a
  * distro animates in either its install steps, or first a version switch (Ubuntu, openSUSE)
  * whose pick then animates in the steps. Picking a format animates in a
  * download button for the latest release (fetched lazily on first pick).

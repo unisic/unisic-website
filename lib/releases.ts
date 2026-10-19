@@ -33,9 +33,10 @@ const FORMAT_ORDER: AssetFormat[] = ["appimage", "windows"];
 function matchFormat(name: string): AssetFormat | null {
   const n = name.toLowerCase();
   if (n.endsWith(".appimage")) return "appimage";
-  // Unisic-<ver>-windows-x86_64-experimental.zip, or the same name without
-  // -experimental once the port is not; never its .sha256
-  if (/-windows-x86_64(-experimental)?\.zip$/.test(n)) return "windows";
+  // The installer, unisic-<ver>-windows-x64-experimental-setup.exe, or the same
+  // name without -experimental once the port is not; never its .sha256. The
+  // portable zip stays on the release page.
+  if (/-windows-x64(-experimental)?-setup\.exe$/.test(n)) return "windows";
   // .deb/.rpm/.pkg.tar.zst install via the distro repos (see lib/distros.ts),
   // .zsync, debug builds and checksums are never direct downloads
   return null;

@@ -136,7 +136,7 @@ export const pl: Dictionary = {
       "arch": "Podpisane repozytorium pacmana na openSUSE Build Service. AUR nie jest potrzebny.",
       "nix": "Działa wszędzie tam, gdzie Nix, także na NixOS. Wypróbuj przez nix run albo dodaj flake jako wejście do konfiguracji deklaratywnej; na NixOS włącz xdg.portal i PipeWire.",
       "appimage": "Zalecane. Uniwersalny: działa na każdej dystrybucji, nie wymaga roota i nic nie instaluje w systemie. Aktualizuje się sam: pobiera nowe wydanie, sprawdza je z opublikowaną dla niego sumą SHA-256, podmienia na miejscu i restartuje Unisic, gdy jesteś bezczynny.",
-      "windows": "Eksperymentalna, dla Windows 11, w całości napisana przez AI. Rozpakuj zip w dowolnym miejscu i uruchom bin\\unisic.exe, bez uprawnień administratora. Aktualizuje się sama, tak jak AppImage. Nagrywania pojedynczego okna jeszcze tam nie ma."
+      "windows": "Eksperymentalna, dla Windows 11, w całości napisana przez AI. Instalator instaluje ją tylko dla twojego konta, bez uprawnień administratora. Na stronie wydania jest też przenośny zip. Aktualizuje się sama, tak jak AppImage. Nagrywania pojedynczego okna jeszcze tam nie ma."
     },
     "downloadBtn": "Pobierz",
     "checking": "Sprawdzanie najnowszego wydania",

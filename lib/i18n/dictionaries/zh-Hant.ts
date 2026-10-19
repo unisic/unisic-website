@@ -136,7 +136,7 @@ export const zhHant: Dictionary = {
       "arch": "openSUSE Build Service 上的已簽署 pacman 軟體庫--不需要 AUR。",
       "nix": "只要有 Nix 就能執行，包含 NixOS。可用 nix run 直接試用，或把 flake 作為 input 加入設定進行宣告式安裝；在 NixOS 上請啟用 xdg.portal 與 PipeWire。",
       "appimage": "建議。通用格式--可在任何發行版上執行，不需 root，也不會在系統中安裝任何東西。它會自行更新：下載新版本，以發佈時公布的 SHA-256 校驗，就地替換，並在你閒置時重新啟動 Unisic。",
-      "windows": "實驗性版本，適用於 Windows 11，完全由 AI 撰寫。將 zip 解壓縮到任意位置並執行 bin\\unisic.exe，不需系統管理員權限。它會像 AppImage 一樣自行更新。目前還無法錄製單一視窗。"
+      "windows": "實驗性版本，適用於 Windows 11，完全由 AI 撰寫。安裝程式只為目前使用者安裝，不需系統管理員權限。發行頁面上也提供可攜版 zip。它會像 AppImage 一樣自行更新。目前還無法錄製單一視窗。"
     },
     "downloadBtn": "下載",
     "checking": "正在查看最新版本",
