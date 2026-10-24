@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "../site";
+import { DISCORD_URL, SITE_URL } from "../site";
 import { LOCALES, localePath, type Locale } from "./config";
 import type { Dictionary } from "./dictionaries/en";
 
@@ -55,5 +55,51 @@ export function buildMetadata(locale: Locale, dict: Dictionary): Metadata {
       images: [{ url: "/social-preview.png", alt: dict.meta.ogImageAlt }],
     },
     metadataBase: new URL(SITE_URL),
+  };
+}
+
+/* Discord shows this in place of the OG card when a landing page link is
+   pasted. It is served per locale by app/discord-embed/[lang]/route.ts and
+   linked from <Landing>, so docs pages keep their own OG cards. Accent is
+   --accent from styles/tokens.css.
+   https://docs.discord.com/developers/link-previews/component-embeds */
+export function buildDiscordEmbed(locale: Locale, dict: Dictionary) {
+  const page = `${SITE_URL}${localePath(locale)}`;
+  const button = (label: string, url: string) => ({
+    type: 2,
+    style: 5,
+    label,
+    url,
+  });
+  return {
+    component: {
+      type: 17,
+      accent_color: 0xc8acd6,
+      components: [
+        {
+          type: 9,
+          components: [
+            { type: 10, content: `## [${dict.meta.ogTitle}](${page})` },
+            { type: 10, content: `** **\n${dict.meta.ogDescription}` },
+          ],
+          accessory: { type: 11, media: { url: `${SITE_URL}/apple-icon.png` } },
+        },
+        { type: 14, divider: true, spacing: 2 },
+        {
+          type: 12,
+          items: [{ media: { url: `${SITE_URL}/social-preview.png` } }],
+        },
+        { type: 14, divider: true, spacing: 1 },
+        {
+          type: 1,
+          components: [
+            button(dict.nav.download, `${page}#download`),
+            button(dict.nav.docs, `${SITE_URL}/docs`),
+            button("GitHub", "https://github.com/unisic/unisic"),
+            button("Discord", DISCORD_URL),
+          ],
+        },
+      ],
+    },
   };
 }

@@ -17,7 +17,7 @@ import { Steps } from "./Steps";
 import { ThemeShowcase } from "./ThemeShowcase";
 import { CheckmarkIcon } from "./icons";
 import { DIRECT_ASSETS, DISTROS } from "../lib/distros";
-import { INSTALL_COMMAND } from "../lib/site";
+import { INSTALL_COMMAND, SITE_URL } from "../lib/site";
 import { template } from "../lib/template";
 import type { Dictionary } from "../lib/i18n";
 
@@ -45,6 +45,12 @@ export function Landing({
   const points = [d.points.verify, d.points.noRoot, d.points.free];
   return (
     <>
+      {/* React hoists this into <head>; see buildDiscordEmbed(). */}
+      <link
+        rel="discord:component-embed"
+        type="application/json"
+        href={`${SITE_URL}/discord-embed/${locale}`}
+      />
       <a href="#main" className="skip-link">
         {dict.nav.skip}
       </a>
