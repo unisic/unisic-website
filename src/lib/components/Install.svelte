@@ -160,7 +160,6 @@
 		grid-template-columns: minmax(0, 1fr);
 		align-content: start;
 		gap: var(--s5);
-		max-width: 72ch;
 		padding: var(--s5);
 		min-width: 0;
 	}

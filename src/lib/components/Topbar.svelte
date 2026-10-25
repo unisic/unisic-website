@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { ui, MODE_LABEL } from '#lib/ui.svelte.js';
+	import { ui } from '#lib/ui.svelte.js';
 
 	const docs = $derived(page.url.pathname.startsWith('/docs'));
 </script>
@@ -18,7 +18,6 @@
 			<a href="/docs/" aria-current={docs ? 'page' : undefined}>Docs</a>
 		</nav>
 		<div class="end">
-			{#if !docs}<span class="badge" aria-hidden="true"><i></i>{MODE_LABEL[ui.mode]}</span>{/if}
 			<button class="pause" type="button" aria-pressed={ui.paused} onclick={() => (ui.paused = !ui.paused)}>
 				<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
 					{#if ui.paused}<path d="M8 5.5v13l10-6.5z" />{:else}<path d="M9 5.5v13M15 5.5v13" />{/if}
@@ -92,26 +91,6 @@
 		gap: var(--s2);
 		margin-left: auto;
 	}
-	.badge {
-		display: none;
-		align-items: center;
-		gap: var(--s2);
-		margin-right: var(--s2);
-		padding: 4px 10px;
-		border-radius: 99px;
-		box-shadow: inset 0 0 0 1px var(--line);
-		font: var(--t-label) var(--font-mono);
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--muted);
-	}
-	.badge i {
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
-		background: var(--mode);
-		transition: background-color 300ms ease;
-	}
 	.pause {
 		display: grid;
 		place-items: center;
@@ -153,11 +132,6 @@
 	}
 	@media (min-width: 760px) {
 		nav {
-			display: flex;
-		}
-	}
-	@media (min-width: 1000px) {
-		.badge {
 			display: flex;
 		}
 	}

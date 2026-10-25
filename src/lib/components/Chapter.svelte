@@ -24,7 +24,7 @@
 
 <style>
 	.chapter {
-		padding-block: var(--s9) var(--s8);
+		padding-block: var(--s8) var(--s7);
 		scroll-margin-top: 0;
 	}
 	.head {

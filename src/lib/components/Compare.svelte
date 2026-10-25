@@ -7,29 +7,28 @@
 	type Row = { feature: string; cells: Cell[] };
 
 	const TOOLS = [
+		{ name: 'Unisic', version: 'v0.8.8', href: 'https://github.com/unisic/unisic/tree/v0.8.8' },
 		{ name: 'Flameshot', version: 'v14.0.0', href: 'https://github.com/flameshot-org/flameshot/tree/v14.0.0' },
 		{ name: 'Spectacle', version: '6.8.1', href: 'https://invent.kde.org/plasma/spectacle/-/tree/v6.8.1' },
 		{ name: 'ksnip', version: 'v1.10.1', href: 'https://github.com/ksnip/ksnip/tree/v1.10.1' },
 		{ name: 'Satty', version: 'v0.22.0', href: 'https://github.com/Satty-org/Satty/tree/v0.22.0' },
-		{ name: 'ShareX', version: 'v21.0.0', href: 'https://github.com/ShareX/ShareX/tree/v21.0.0' },
-		{ name: 'Unisic', version: 'v0.8.8', href: 'https://github.com/unisic/unisic/tree/v0.8.8' }
+		{ name: 'ShareX', version: 'v21.0.0', href: 'https://github.com/ShareX/ShareX/tree/v21.0.0' }
 	];
-	const US = TOOLS.length - 1;
 
 	// Each value was read from the tool's source, README or release notes for the tag linked in the header.
 	const ROWS: Row[] = [
-		{ feature: 'Draw on the capture overlay', cells: [['y'], ['y'], ['n', 'Magnifier and rulers only'], ['p', 'Annotates an image taken by another tool'], ['y'], ['y', 'Enter burns it into the crop']] },
-		{ feature: 'Image editor', cells: [['n', 'Cannot open existing images'], ['y'], ['y'], ['y'], ['y'], ['y']] },
-		{ feature: 'Scrolling capture', cells: [['n'], ['n'], ['n'], ['n'], ['y'], ['y']] },
-		{ feature: 'GIF recording', cells: [['n'], ['y'], ['n'], ['n'], ['y'], ['y']] },
-		{ feature: 'Video recording', cells: [['n'], ['y', 'Wayland only'], ['n'], ['n'], ['y'], ['y', 'MP4 and WebM']] },
-		{ feature: 'Sound in recordings', cells: [['n'], ['y', 'Since Plasma 6.8'], ['n'], ['n'], ['y'], ['y', 'System, mic and per app']] },
-		{ feature: 'OCR', cells: [['n'], ['y', 'Since Plasma 6.6'], ['p', 'Separate plugin'], ['n'], ['y'], ['y', 'Tesseract']] },
-		{ feature: 'QR code reading', cells: [['n'], ['y'], ['n'], ['n'], ['y'], ['y', 'zxing-cpp']] },
-		{ feature: 'Custom upload targets', cells: [['n', 'Imgur only, off by default'], ['p', 'KDE Share menu'], ['p', 'Imgur, FTP, scripts'], ['n'], ['y', '.sxcu, FTP, SFTP'], ['y', '.sxcu, HTTP, FTP, SFTP']] },
-		{ feature: 'History with thumbnails', cells: [['p', 'Imgur uploads only'], ['n'], ['n'], ['n'], ['y'], ['y', 'Deleting moves to the trash']] },
-		{ feature: 'Wayland', cells: [['y', 'Portal'], ['p', 'KWin only'], ['p', 'Portal or legacy KWin'], ['p', 'Capture left to grim'], ['n'], ['y', 'Portals, KWin, PipeWire']] },
-		{ feature: 'Platforms', cells: ['Linux, Windows, macOS', 'Linux, KDE Plasma', 'Linux, Windows, macOS', 'Linux, BSD', 'Windows', 'Linux, Windows 11 (experimental)'] }
+		{ feature: 'Draw on the capture overlay', cells: [['y', 'Enter burns it into the crop'], ['y'], ['y'], ['n', 'Magnifier and rulers only'], ['p', 'Annotates an image taken by another tool'], ['y']] },
+		{ feature: 'Image editor', cells: [['y'], ['n', 'Cannot open existing images'], ['y'], ['y'], ['y'], ['y']] },
+		{ feature: 'Scrolling capture', cells: [['y'], ['n'], ['n'], ['n'], ['n'], ['y']] },
+		{ feature: 'GIF recording', cells: [['y'], ['n'], ['y'], ['n'], ['n'], ['y']] },
+		{ feature: 'Video recording', cells: [['y', 'MP4 and WebM'], ['n'], ['y', 'Wayland only'], ['n'], ['n'], ['y']] },
+		{ feature: 'Sound in recordings', cells: [['y', 'System, mic and per app'], ['n'], ['y', 'Since Plasma 6.8'], ['n'], ['n'], ['y']] },
+		{ feature: 'OCR', cells: [['y', 'Tesseract'], ['n'], ['y', 'Since Plasma 6.6'], ['p', 'Separate plugin'], ['n'], ['y']] },
+		{ feature: 'QR code reading', cells: [['y', 'zxing-cpp'], ['n'], ['y'], ['n'], ['n'], ['y']] },
+		{ feature: 'Custom upload targets', cells: [['y', '.sxcu, HTTP, FTP, SFTP'], ['n', 'Imgur only, off by default'], ['p', 'KDE Share menu'], ['p', 'Imgur, FTP, scripts'], ['n'], ['y', '.sxcu, FTP, SFTP']] },
+		{ feature: 'History with thumbnails', cells: [['y', 'Deleting moves to the trash'], ['p', 'Imgur uploads only'], ['n'], ['n'], ['n'], ['y']] },
+		{ feature: 'Wayland', cells: [['y', 'Portals, KWin, PipeWire'], ['y', 'Portal'], ['p', 'KWin only'], ['p', 'Portal or legacy KWin'], ['p', 'Capture left to grim'], ['n']] },
+		{ feature: 'Platforms', cells: ['Linux, Windows 11 (experimental)', 'Linux, Windows, macOS', 'Linux, KDE Plasma', 'Linux, Windows, macOS', 'Linux, BSD', 'Windows'] }
 	];
 	const SAY: Record<Mark, string> = { y: 'Yes', p: 'Partly', n: 'No' };
 
@@ -60,7 +59,7 @@
 					<tr>
 						<td></td>
 						{#each TOOLS as t, i (t.name)}
-							<th scope="col" class:us={i === US}>
+							<th scope="col" class:us={i === 0}>
 								<a href={t.href}>{t.name}<span>{t.version}</span></a>
 							</th>
 						{/each}
@@ -71,7 +70,7 @@
 						<tr style:--r={r}>
 							<th scope="row">{row.feature}</th>
 							{#each row.cells as cell, i (i)}
-								<td class:us={i === US}>
+								<td class:us={i === 0}>
 									{#if typeof cell === 'string'}
 										<span class="text">{cell}</span>
 									{:else}

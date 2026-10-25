@@ -3,14 +3,6 @@ import { MediaQuery } from 'svelte/reactivity';
 
 export type Mode = 'shot' | 'measure' | 'ocr' | 'gif' | 'video';
 
-export const MODE_LABEL: Record<Mode, string> = {
-	shot: 'Screenshot',
-	measure: 'Measure',
-	ocr: 'OCR',
-	gif: 'GIF',
-	video: 'Recording'
-};
-
 /** A frozen copy of the hero stage plus the selection that was cut out of it. */
 export type Capture = { id: number; node: HTMLElement; x: number; y: number; w: number; h: number; sw: number; sh: number };
 

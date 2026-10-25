@@ -496,12 +496,12 @@
 			</div>
 		{/if}
 
-		<p id="hero-hint" class="hint">Drag to select, pick a tool to draw on it, Enter captures. Arrow keys move the selection, Esc resets.</p>
+		<p id="hero-hint" class="hint">Drag or use the arrow keys to move the selection. Enter captures, Esc resets.</p>
 	</div>
 
 	<div class="cta wrap">
 		<p class="lede">
-			Most snipping tools stop at a screenshot. Unisic is everything that should happen after: draw on the selection before the shot, record the same region as a GIF or video, read the text out of the pixels, paste the link.
+			Draw on the selection before the shot, record the same region as a GIF or video, read the text in it, paste the link. Free and open source, with no account and no telemetry.
 		</p>
 		<div class="act">
 			<div class="oneliner">
@@ -511,14 +511,14 @@
 			<a class="btn primary" href="#install">Install Unisic</a>
 			<a class="btn" href="https://github.com/unisic/unisic">Source</a>
 		</div>
-		<p class="label meta">v0.8.8 · 2026-10-19 · GPL-3.0 · no telemetry, no account</p>
+		<p class="label meta">v0.8.8 · 2026-10-19 · GPL-3.0</p>
 	</div>
 </section>
 
 <style>
 	.hero {
 		display: grid;
-		grid-template-rows: minmax(520px, 1fr) auto;
+		grid-template-rows: minmax(400px, 1fr) auto;
 		min-height: calc(100svh - 60px);
 		margin-top: 60px;
 	}
@@ -550,14 +550,14 @@
 	.headline {
 		justify-self: start;
 		max-width: 12.5ch;
-		font-size: var(--t-hero);
+		font-size: min(var(--t-hero), 13svh);
 	}
 	.kicker {
 		margin-bottom: var(--s4);
 		font-family: var(--font-mono);
-		font-size: var(--t-small);
+		font-size: var(--t-body);
 		letter-spacing: 0.04em;
-		color: var(--muted);
+		color: var(--text);
 	}
 	h1 {
 		font-size: inherit;
@@ -837,7 +837,8 @@
 	.size.inside {
 		bottom: auto;
 		top: 6px;
-		left: 6px;
+		left: auto;
+		right: 6px;
 	}
 	.handle {
 		position: absolute;
@@ -1037,7 +1038,7 @@
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		gap: var(--s4) var(--s6);
-		padding-block: var(--s6) var(--s7);
+		padding-block: var(--s5) var(--s6);
 	}
 	.lede {
 		max-width: 58ch;
