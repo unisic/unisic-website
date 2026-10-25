@@ -16,7 +16,7 @@
     <!-- aria-label keeps the brand link named below 480px, where the
          wordmark is hidden and the logo svg is aria-hidden -->
     <a href="{base}#top" class="brand" aria-label="Unisic">
-      <Logo size={30} />
+      <Logo size={28} />
       <span class="wordmark">Unisic</span>
     </a>
     <div class="links">
@@ -31,23 +31,21 @@
         <Icon svg={discord} size={20} />
       </a>
       <LanguageSwitcher current={locale} label={dict.languageSwitcher.label} />
-      <a href="{base}#download" class="cta" aria-label={dict.nav.download}>
+      <a href="{base}#download" class="btn btn-filled btn-compact cta" aria-label={dict.nav.download}>
+        <Icon svg={download} />
         <span class="cta-label">{dict.nav.download}</span>
-        <Icon svg={download} size={18} class="cta-icon" />
       </a>
     </div>
   </nav>
-  <span class="progress" aria-hidden="true"></span>
 </header>
 
 <style>
+  /* the app's title bar: the background colour, a divider under it */
   .header {
     position: sticky;
     top: 0;
     z-index: var(--z-nav);
-    background: color-mix(in srgb, var(--bg) 82%, transparent);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: var(--bg);
     border-bottom: 1px solid var(--divider);
   }
 
@@ -69,22 +67,20 @@
   }
 
   .wordmark {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 750;
-    letter-spacing: -0.02em;
+    font-size: var(--font-l);
+    font-weight: 700;
   }
 
   .links {
     display: flex;
     align-items: center;
-    gap: 26px;
+    gap: 22px;
   }
 
   .link,
   .icon-link {
     color: var(--text-secondary);
-    font-size: 15px;
+    font-size: var(--font-m);
     transition: color var(--dur-fast) var(--ease-out);
   }
 
@@ -96,58 +92,6 @@
   .icon-link {
     display: grid;
     place-items: center;
-  }
-
-  .cta {
-    display: inline-flex;
-    align-items: center;
-    height: 38px;
-    padding: 0 20px;
-    border-radius: 999px;
-    background: var(--accent);
-    color: var(--text-on-accent);
-    font-weight: 650;
-    font-size: 15px;
-    transition:
-      transform var(--dur-fast) var(--ease-out),
-      background-color var(--dur-fast) var(--ease-out);
-  }
-
-  .cta:hover {
-    background: var(--accent-bright);
-  }
-
-  .cta:active {
-    transform: scale(0.96);
-  }
-
-  /* scroll progress along the nav's bottom edge: a scroll-driven
-     animation, simply absent in engines without animation-timeline */
-  .progress {
-    display: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -1px;
-    height: 2px;
-    transform-origin: 0 50%;
-    transform: scaleX(0);
-    background: linear-gradient(90deg, var(--tertiary), var(--accent));
-    pointer-events: none;
-  }
-
-  @supports (animation-timeline: scroll()) {
-    .progress {
-      display: block;
-      animation: nav-progress linear both;
-      animation-timeline: scroll(root block);
-    }
-  }
-
-  @keyframes nav-progress {
-    to {
-      transform: scaleX(1);
-    }
   }
 
   @media (max-width: 767px) {
@@ -164,14 +108,6 @@
     .links {
       gap: 14px;
     }
-
-    .cta {
-      padding: 0 16px;
-    }
-  }
-
-  .cta :global(.cta-icon) {
-    display: none;
   }
 
   /* below ~480px the longest translated labels (de, fr) would overflow the
@@ -185,13 +121,8 @@
     }
 
     .cta {
-      width: 38px;
+      width: 34px;
       padding: 0;
-      justify-content: center;
-    }
-
-    .cta :global(.cta-icon) {
-      display: block;
     }
   }
 </style>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Attachment } from "svelte/attachments";
-  import { checkmark, copy } from "#lib/icons.ts";
+  import { checkmark, contentCopy } from "#lib/icons.ts";
 
   /*
    * The rendered Markdown, plus two client-only upgrades to its code blocks:
@@ -13,7 +13,7 @@
 
   const glyph = (inner: string) =>
     `<svg width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">${inner}</svg>`;
-  const COPY = glyph(copy);
+  const COPY = glyph(contentCopy);
   const COPIED = glyph(checkmark);
 
   const upgrade: Attachment<HTMLDivElement> = (root) => {

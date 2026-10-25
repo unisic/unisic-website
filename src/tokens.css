@@ -1,101 +1,314 @@
 /*
- * Unisic design tokens. Direct port of the app's own design system:
- * unisic/qml/Theme.qml ("unisic" palette, Theme.qml:18-24, derived values
- * Theme.qml:70-104, radii :167-170, spacing :172-175, type :178-182,
- * motion :185-187). Mockups and site chrome must consume these variables,
- * never raw hexes, so the port stays auditable against the source.
+ * Unisic design tokens, generated from the app's own palettes: the three
+ * core ones in unisic-kit/qml/Theme.qml (_defs) and the five decorative ones
+ * in unisic/resources/themes/*.json. Derived tokens follow Theme.qml _expand:
+ * backgroundDeep = darker(bg, 1.28), surfaceTop = lighter(surface, 1.10),
+ * surfaceBottom = darker(surface, 1.05), surfaceHi = lighter(surface, 1.16),
+ * divider = text at 12%, textSecondary 62%, textTertiary 40%. Hover tints are
+ * UButton's lighter(base, 1.12).
+ *
+ * No data-theme is the app's "System" theme: the stock dark palette, or the
+ * light one under a light desktop scheme. The theme chips on the landing
+ * page set data-theme on <html> (app.html restores the choice before paint).
  */
-:root {
-  /* seed colors (Theme.qml:18-24) */
-  --bg: #100e2c;
-  --bg-deep: #0b0921;
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --primary: #17171c;
+  --secondary: #212127;
+  --tertiary: #2e2e36;
+  --tertiary-hover: #34343c;
+  --accent: #c8acd6;
+  --accent-hover: #e0c1f0;
+  --bg: #121216;
+  --bg-deep: #0e0e11;
+  --surface: #1d1d22;
+  --surface-top: #202025;
+  --surface-bottom: #1c1c20;
+  --surface-hi: #222227;
+  --surface-hi-top: #26262c;
+  --text: #ececef;
+  --text-secondary: rgba(236, 236, 239, 0.62);
+  --text-tertiary: rgba(236, 236, 239, 0.4);
+  --text-on-accent: #241c2b;
+  --divider: rgba(236, 236, 239, 0.12);
+  --edge-light: rgba(255, 255, 255, 0.07);
+  --shadow-color: rgba(0, 0, 0, 0.45);
+  --success: #7bd88f;
+  --danger: #ff6b81;
+  --accent-shadow: rgba(200, 172, 214, 0.45);
+  --accent-wash: rgba(200, 172, 214, 0.14);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --primary: #ffffff;
+    --secondary: #eeeef2;
+    --tertiary: #e1e1e8;
+    --tertiary-hover: #fcfcff;
+    --accent: #4c6ef5;
+    --accent-hover: #6382ff;
+    --bg: #f4f5f7;
+    --bg-deep: #bfbfc1;
+    --surface: #ffffff;
+    --surface-top: #ffffff;
+    --surface-bottom: #f3f3f3;
+    --surface-hi: #f1f2f5;
+    --surface-hi-top: #ffffff;
+    --text: #1b1b1f;
+    --text-secondary: rgba(27, 27, 31, 0.62);
+    --text-tertiary: rgba(27, 27, 31, 0.4);
+    --text-on-accent: #ffffff;
+    --divider: rgba(27, 27, 31, 0.12);
+    --edge-light: rgba(255, 255, 255, 0.65);
+    --shadow-color: rgba(0, 0, 0, 0.16);
+    --success: #7bd88f;
+    --danger: #ff6b81;
+    --accent-shadow: rgba(76, 110, 245, 0.45);
+    --accent-wash: rgba(76, 110, 245, 0.14);
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --primary: #ffffff;
+  --secondary: #eeeef2;
+  --tertiary: #e1e1e8;
+  --tertiary-hover: #fcfcff;
+  --accent: #4c6ef5;
+  --accent-hover: #6382ff;
+  --bg: #f4f5f7;
+  --bg-deep: #bfbfc1;
+  --surface: #ffffff;
+  --surface-top: #ffffff;
+  --surface-bottom: #f3f3f3;
+  --surface-hi: #f1f2f5;
+  --surface-hi-top: #ffffff;
+  --text: #1b1b1f;
+  --text-secondary: rgba(27, 27, 31, 0.62);
+  --text-tertiary: rgba(27, 27, 31, 0.4);
+  --text-on-accent: #ffffff;
+  --divider: rgba(27, 27, 31, 0.12);
+  --edge-light: rgba(255, 255, 255, 0.65);
+  --shadow-color: rgba(0, 0, 0, 0.16);
+  --success: #7bd88f;
+  --danger: #ff6b81;
+  --accent-shadow: rgba(76, 110, 245, 0.45);
+  --accent-wash: rgba(76, 110, 245, 0.14);
+}
+
+:root[data-theme="unisic"] {
+  color-scheme: dark;
   --primary: #17153b;
   --secondary: #2e236c;
   --tertiary: #433d8b;
+  --tertiary-hover: #4b449c;
   --accent: #c8acd6;
+  --accent-hover: #e0c1f0;
+  --bg: #100e2c;
+  --bg-deep: #0b0921;
   --surface: #1e1b4a;
   --surface-top: #252158;
   --surface-bottom: #1b1845;
   --surface-hi: #221f52;
   --surface-hi-top: #2c2766;
   --text: #f3f0fa;
-  --text-on-accent: #1b1834;
-
-  /* derived (Theme.qml:85-94) */
   --text-secondary: rgba(243, 240, 250, 0.62);
   --text-tertiary: rgba(243, 240, 250, 0.4);
+  --text-on-accent: #1b1834;
   --divider: rgba(243, 240, 250, 0.12);
   --edge-light: rgba(255, 255, 255, 0.07);
   --shadow-color: rgba(0, 0, 0, 0.45);
   --success: #7bd88f;
   --danger: #ff6b81;
+  --accent-shadow: rgba(200, 172, 214, 0.45);
+  --accent-wash: rgba(200, 172, 214, 0.14);
+}
 
-  /* stroke swatches (Theme.qml:102) */
-  --swatch-1: #ff4757;
-  --swatch-2: #ffd84d;
-  --swatch-3: #2ed573;
-  --swatch-4: #1e90ff;
-  --swatch-5: #c8acd6;
-  --swatch-6: #ffffff;
-  --swatch-7: #17153b;
+:root[data-theme="catppuccin-mocha"] {
+  color-scheme: dark;
+  --primary: #1e1e2e;
+  --secondary: #181825;
+  --tertiary: #45475a;
+  --tertiary-hover: #4d5065;
+  --accent: #cba6f7;
+  --accent-hover: #ddc1ff;
+  --bg: #1e1e2e;
+  --bg-deep: #11111b;
+  --surface: #313244;
+  --surface-top: #36374b;
+  --surface-bottom: #2f3041;
+  --surface-hi: #45475a;
+  --surface-hi-top: #4d5065;
+  --text: #cdd6f4;
+  --text-secondary: rgba(205, 214, 244, 0.62);
+  --text-tertiary: rgba(205, 214, 244, 0.4);
+  --text-on-accent: #1e1e2e;
+  --divider: rgba(205, 214, 244, 0.12);
+  --edge-light: rgba(255, 255, 255, 0.07);
+  --shadow-color: rgba(0, 0, 0, 0.45);
+  --success: #a6e3a1;
+  --danger: #f38ba8;
+  --accent-shadow: rgba(203, 166, 247, 0.45);
+  --accent-wash: rgba(203, 166, 247, 0.14);
+}
 
-  /* radii (Theme.qml:167-170) */
+:root[data-theme="catppuccin-latte"] {
+  color-scheme: light;
+  --primary: #eff1f5;
+  --secondary: #e6e9ef;
+  --tertiary: #ccd0da;
+  --tertiary-hover: #e4e9f4;
+  --accent: #8839ef;
+  --accent-hover: #9849ff;
+  --bg: #eff1f5;
+  --bg-deep: #bbbcbf;
+  --surface: #ffffff;
+  --surface-top: #ffffff;
+  --surface-bottom: #f3f3f3;
+  --surface-hi: #e6e9ef;
+  --surface-hi-top: #ffffff;
+  --text: #4c4f69;
+  --text-secondary: rgba(76, 79, 105, 0.62);
+  --text-tertiary: rgba(76, 79, 105, 0.4);
+  --text-on-accent: #ffffff;
+  --divider: rgba(76, 79, 105, 0.12);
+  --edge-light: rgba(255, 255, 255, 0.65);
+  --shadow-color: rgba(0, 0, 0, 0.16);
+  --success: #40a02b;
+  --danger: #d20f39;
+  --accent-shadow: rgba(136, 57, 239, 0.45);
+  --accent-wash: rgba(136, 57, 239, 0.14);
+}
+
+:root[data-theme="dracula"] {
+  color-scheme: dark;
+  --primary: #282a36;
+  --secondary: #343746;
+  --tertiary: #44475a;
+  --tertiary-hover: #4c5065;
+  --accent: #bd93f9;
+  --accent-hover: #d0aeff;
+  --bg: #282a36;
+  --bg-deep: #1e202a;
+  --surface: #343746;
+  --surface-top: #393d4d;
+  --surface-bottom: #323443;
+  --surface-hi: #44475a;
+  --surface-hi-top: #4c5065;
+  --text: #f8f8f2;
+  --text-secondary: rgba(248, 248, 242, 0.62);
+  --text-tertiary: rgba(248, 248, 242, 0.4);
+  --text-on-accent: #282a36;
+  --divider: rgba(248, 248, 242, 0.12);
+  --edge-light: rgba(255, 255, 255, 0.07);
+  --shadow-color: rgba(0, 0, 0, 0.45);
+  --success: #50fa7b;
+  --danger: #ff5555;
+  --accent-shadow: rgba(189, 147, 249, 0.45);
+  --accent-wash: rgba(189, 147, 249, 0.14);
+}
+
+:root[data-theme="nord"] {
+  color-scheme: dark;
+  --primary: #2e3440;
+  --secondary: #3b4252;
+  --tertiary: #434c5e;
+  --tertiary-hover: #4b5569;
+  --accent: #88c0d0;
+  --accent-hover: #98d7e9;
+  --bg: #2e3440;
+  --bg-deep: #272c36;
+  --surface: #3b4252;
+  --surface-top: #41495a;
+  --surface-bottom: #383f4e;
+  --surface-hi: #434c5e;
+  --surface-hi-top: #4b5569;
+  --text: #eceff4;
+  --text-secondary: rgba(236, 239, 244, 0.62);
+  --text-tertiary: rgba(236, 239, 244, 0.4);
+  --text-on-accent: #2e3440;
+  --divider: rgba(236, 239, 244, 0.12);
+  --edge-light: rgba(255, 255, 255, 0.07);
+  --shadow-color: rgba(0, 0, 0, 0.45);
+  --success: #a3be8c;
+  --danger: #bf616a;
+  --accent-shadow: rgba(136, 192, 208, 0.45);
+  --accent-wash: rgba(136, 192, 208, 0.14);
+}
+
+:root[data-theme="gruvbox"] {
+  color-scheme: dark;
+  --primary: #282828;
+  --secondary: #3c3836;
+  --tertiary: #504945;
+  --tertiary-hover: #5a524d;
+  --accent: #fabd2f;
+  --accent-hover: #ffc849;
+  --bg: #282828;
+  --bg-deep: #1d2021;
+  --surface: #3c3836;
+  --surface-top: #423e3b;
+  --surface-bottom: #393533;
+  --surface-hi: #504945;
+  --surface-hi-top: #5a524d;
+  --text: #ebdbb2;
+  --text-secondary: rgba(235, 219, 178, 0.62);
+  --text-tertiary: rgba(235, 219, 178, 0.4);
+  --text-on-accent: #282828;
+  --divider: rgba(235, 219, 178, 0.12);
+  --edge-light: rgba(255, 255, 255, 0.07);
+  --shadow-color: rgba(0, 0, 0, 0.45);
+  --success: #b8bb26;
+  --danger: #fb4934;
+  --accent-shadow: rgba(250, 189, 47, 0.45);
+  --accent-wash: rgba(250, 189, 47, 0.14);
+}
+
+:root {
+  /* capture-mode identity (Theme.qml modeMeasure etc.): fixed hues, they sit
+     over a frozen screenshot; a plain screenshot keeps the accent */
+  --mode-shot: var(--accent);
+  --mode-measure: #4fc3f7;
+  --mode-ocr: #5ad17a;
+  --mode-gif: #ffb020;
+  --mode-video: #ff4d4d;
+  --rec-badge-bg: rgba(0, 0, 0, 0.78);
+  --rec-dot: #ff4d4d;
+  --thumb-top: #ffffff;
+  --thumb-bottom: #ddd6ec;
+
+  /* radii, spacing, type, motion (Theme.qml radiusS.., spacingXS.., fontS.., anim..) */
   --radius-s: 8px;
   --radius-m: 12px;
   --radius-l: 18px;
   --radius-xl: 26px;
-
-  /* spacing (Theme.qml:172-175) */
+  --space-xs: 3px;
   --space-s: 6px;
   --space-m: 12px;
   --space-l: 20px;
   --space-xl: 32px;
-
-  /* motion (Theme.qml:185-187) */
+  --font-s: 12px;
+  --font-m: 14px;
+  --font-l: 17px;
+  --font-xl: 22px;
+  --font-xxl: 28px;
   --dur-fast: 130ms;
   --dur: 220ms;
   --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* chrome gradient endpoints over #17153B: Qt.lighter scales RGB linearly.
-     1.12 = title bar (EditorWindow.qml:123), 1.22 = editor toolbar + bottom
-     bar (:189, :504), 1.25 = overlay toolbar (OverlayWindow.qml:311) */
-  --chrome-lite: #1a1842;
-  --chrome-liter: #1c1a48;
-  --chrome-litest: #1d1a4a;
+  /* the app has no font of its own: it wears the desktop's */
+  --font-sans: system-ui, "Noto Sans", "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "Noto Sans Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
-  /* site-only */
-  --font-sans: "Atkinson Hyperlegible Next Variable", system-ui, sans-serif;
-  --font-display: "Mona Sans Variable", var(--font-sans);
-  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
-
-  --max-width: 1160px;
-  --nav-height: 64px;
+  --max-width: 1180px;
+  --nav-height: 56px;
 
   /* layer scale: everything stacked above page content lives here */
   --z-nav: 10;
   --z-menu: 20;
   --z-skip: 100;
-  --z-intro: 200;
-
-  /* the capture-overlay motif: faint pixel grid behind heroes and bands,
-     crop-corner brackets around whatever counts as "the selection" */
-  --grid-line: rgba(243, 240, 250, 0.05);
-  --grid-size: 32px;
-  --corner-arm: 18px;
-  --corner-weight: 2px;
-  --accent-bright: #e2cfee;
-  --space-lede: 48px; /* gap from a section lede to the block below it */
-  --space-section: 112px; /* vertical beat between landing sections */
-
-  /* running text on the page background: 10.7:1 over --bg, so paragraphs
-     clear WCAG AAA. --text-secondary (6.8:1) stays for small UI labels */
-  --ink-2: rgba(243, 240, 250, 0.78);
-
-  /* the capture button's glow in the overlay mockup, as the app draws it */
-  --accent-glow-strong: rgba(200, 172, 214, 0.35);
-
-  /* shared "abstract desktop" wallpaper gradient endpoints used by every
-     mockup (previously re-declared with slightly different hexes per module) */
-  --wallpaper-hi: #191542;
-  --wallpaper-lo: #0d0b26;
 }

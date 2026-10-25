@@ -29,10 +29,8 @@ export const zhHant: Dictionary = {
     "installNote": "會開啟一個選單。每個下載都會對照已發布的 SHA-256 驗證。",
     "installRead": "安裝腳本如何運作",
     "otherWays": "其他安裝方式",
-    "github": "在 GitHub 上查看"
-  },
-  "proof": {
-    "packaged": "安裝套件支援"
+    "github": "在 GitHub 上查看",
+    "windowHint": "依照應用程式本身的 QML 與主題重建。點選側邊欄逐頁瀏覽。"
   },
   "how": {
     "steps": {
@@ -95,12 +93,9 @@ export const zhHant: Dictionary = {
   "themes": {
     "title": "多種主題，包含你自己的",
     "lede": "在下方挑一種配色，看應用程式換上它。",
-    "groupLabel": "在應用程式視窗中預覽主題",
-    "reset": "重設為 Unisic",
-    "note": "每個色塊都會即時重繪應用程式視窗。其中一種主題是你的系統：它會跟隨桌面的淺色或深色配置與強調色。",
-    "system": "系統",
-    "systemLabel": "系統：跟隨你桌面的淺色或深色配置；此處無法預覽",
-    "previewLabel": "採用 {theme} 主題的 Unisic 主視窗"
+    "groupLabel": "本頁面的主題",
+    "note": "每個色塊都會用該配色重繪整個頁面，數值來自應用程式本身。第一個跟隨桌面的淺色或深色配置。",
+    "system": "系統"
   },
   "download": {
     "title": "安裝 Unisic",
@@ -110,7 +105,6 @@ export const zhHant: Dictionary = {
       "noRoot": "AppImage 不需要 root，並會自行更新",
       "free": "免費開源，GPL-3.0"
     },
-    "or": "或選擇你的系統",
     "repoLede": "建議使用 AppImage：單一檔案，不需 root，有新版本時會自行替換。也可以改為選擇你的發行版--軟體庫會透過套件管理器讓 Unisic 保持最新；發佈版本中也附有一次性的 .deb、.rpm 與 Arch 套件，首次安裝時就會設定好軟體庫。",
     "distroListLabel": "選擇發行版或軟體套件格式",
     "versionLabel": "版本",
@@ -153,11 +147,9 @@ export const zhHant: Dictionary = {
       "video": "錄製影片（開始／停止）",
       "ocr": "OCR 區域（複製文字）",
       "copyLast": "複製最近一次擷取",
-      "quickTask": "開啟快速任務選擇器",
       "replay": "開始／儲存即時重播",
       "stop": "停止錄製（固定）"
     },
-    "tryHint": "這張表是即時的：在鍵盤上按住某個快捷鍵，對應的按鍵便會亮起。",
     "note": "除了固定的停止鍵之外，全部都可在「設定」中修改，並立即套用到系統。"
   },
   "reference": {
@@ -225,6 +217,120 @@ export const zhHant: Dictionary = {
     "save": "儲存",
     "upload": "上傳",
     "more": "更多"
+  },
+  "cli": {
+    "title": "在終端機中控制",
+    "lede": "每種擷取模式都是一個參數，因此合成器快速鍵、指令碼或 cron 工作都能啟動它。使用 --output - 時影像輸出到 stdout。"
+  },
+  "app": {
+    "record": {
+      "title": "螢幕錄製",
+      "gifTitle": "GIF 錄製",
+      "sub": "將全螢幕、某個區域或單一視窗錄製為影片檔。",
+      "gifSub": "將某個區域或整個螢幕直接錄製為最佳化的 .gif。",
+      "video": "影片",
+      "gif": "GIF",
+      "screen": "螢幕",
+      "region": "區域",
+      "window": "視窗",
+      "pause": "暫停",
+      "stop": "停止",
+      "startReplay": "開始即時重播",
+      "videoOptions": "影片選項",
+      "gifOptions": "GIF 選項",
+      "format": "格式",
+      "frameRate": "影格率",
+      "quality": "品質",
+      "qualitySub": "越高越清晰，檔案也越大。50% 是均衡的預設值。",
+      "maxDuration": "最長時間",
+      "cursor": "包含滑鼠游標",
+      "audio": "音訊與重播",
+      "systemAudio": "錄製系統音訊",
+      "mic": "錄製麥克風",
+      "appAudio": "僅應用程式音訊",
+      "replayLength": "重播長度",
+      "off": "關閉",
+      "refresh": "重新整理",
+      "noWindowGif": "無法使用：GIF 沒有單一視窗來源",
+      "fast": "快速 / 小",
+      "balanced": "均衡",
+      "best": "最佳",
+      "goodToKnow": "須知",
+      "gifNoAudio": "GIF 沒有音軌。如需含聲音的片段，請切換到影片模式，錄製 MP4 或 WebM。",
+      "gifSize": "檔案大小會隨區域、影格率與時長迅速增加。以 15-30 FPS 錄製小區域通常效果很好，也方便分享。"
+    },
+    "edit": {
+      "title": "編輯",
+      "sub": "開啟你已有的圖片或影片，使用與擷圖相同的編輯器和剪輯視窗。",
+      "image": "編輯圖片",
+      "imageSub": "標註、裁切、模糊",
+      "video": "剪輯影片",
+      "videoSub": "剪掉開頭和結尾",
+      "tip": "編輯圖片絕不會更動原圖：除非你自行覆寫，編輯器會以新名稱儲存到擷取畫面的儲存位置。剪輯影片一律會在來源旁寫入新檔案。"
+    },
+    "history": {
+      "title": "歷史紀錄",
+      "items": "{n} 項",
+      "search": "搜尋名稱或連結",
+      "clear": "全部清除",
+      "all": "全部",
+      "images": "圖片",
+      "gifs": "GIF",
+      "recordings": "錄影",
+      "clips": "片段",
+      "starred": "已加星號",
+      "uploaded": "已上傳",
+      "today": "今天",
+      "empty": "這裡還沒有內容。擷取畫面與錄影會連同縮圖顯示在這裡。"
+    },
+    "servers": {
+      "title": "伺服器",
+      "sub": "模組化上傳器：自訂 HTTP API，以及透過 curl 的 FTP/SFTP。每次上傳後連結都會複製到剪貼簿。",
+      "add": "新增自訂伺服器",
+      "import": "匯入 .sxcu",
+      "active": "目前伺服器",
+      "use": "使用",
+      "needsClientId": "需要 Client-ID",
+      "needsUserKey": "需要使用者金鑰"
+    },
+    "modes": {
+      "shot": "擷圖",
+      "measure": "測量",
+      "ocr": "辨識文字",
+      "gif": "錄製 GIF",
+      "video": "錄製影片"
+    },
+    "hint": {
+      "shot": "拖曳以選取 · 按一下擷取整個螢幕 · Ctrl+拖曳以移動 · 用工具列標註 · 空白鍵/Enter 或按兩下以擷取 · Esc 取消",
+      "measure": "拖曳以測量 · Tab：距離/尺寸 · Ctrl+C 複製尺寸 · Esc 關閉",
+      "ocr": "拖曳以選取 · Ctrl+拖曳以移動 · 空白鍵/Enter 辨識文字 · Esc 取消",
+      "gif": "拖曳以選取 · Ctrl+拖曳以移動 · 空白鍵/Enter 開始錄製 GIF · Esc 取消",
+      "video": "拖曳以選取 · Ctrl+拖曳以移動 · 空白鍵/Enter 開始錄製影片 · Esc 取消"
+    },
+    "tools": {
+      "edit": "編輯形狀",
+      "pen": "畫筆",
+      "shapes": "形狀",
+      "text": "文字",
+      "highlight": "螢光筆",
+      "blur": "模糊",
+      "pixelate": "馬賽克",
+      "eraser": "智慧橡皮擦",
+      "magnify": "放大鏡",
+      "eyedropper": "滴管",
+      "step": "步驟標記",
+      "crop": "裁切",
+      "undo": "復原",
+      "redo": "重做",
+      "line": "直線",
+      "arrow": "箭頭",
+      "measure": "測量",
+      "rect": "矩形",
+      "ellipse": "橢圓",
+      "callout": "標註"
+    },
+    "toolbar": "截圖工具列",
+    "cancel": "取消"
   },
   "footer": {
     "license": "自由且開放原始碼，GPL-3.0",

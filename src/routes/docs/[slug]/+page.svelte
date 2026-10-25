@@ -200,7 +200,7 @@
   }
 
   .edit:hover {
-    color: var(--accent-bright);
+    color: var(--accent-hover);
   }
 
   .pager {

@@ -55,11 +55,10 @@
   }
 
   .intro {
-    margin-bottom: var(--space-lede);
+    margin-bottom: 48px;
   }
 
   .title {
-    font-family: var(--font-display);
     font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3.1rem);
     font-weight: 800;
     letter-spacing: -0.035em;
@@ -140,6 +139,6 @@
     margin-top: 4px;
     font-family: var(--font-mono);
     font-size: 0.8125rem;
-    color: var(--accent-bright);
+    color: var(--accent-hover);
   }
 </style>

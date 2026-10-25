@@ -29,10 +29,8 @@ export const nl: Dictionary = {
     "installNote": "Opent een menu. Elke download wordt gecontroleerd met de gepubliceerde SHA-256.",
     "installRead": "Hoe het installatiescript werkt",
     "otherWays": "Andere manieren om te installeren",
-    "github": "Bekijk op GitHub"
-  },
-  "proof": {
-    "packaged": "Pakketten voor"
+    "github": "Bekijk op GitHub",
+    "windowHint": "Nagebouwd uit de eigen QML en thema's van de app. Klik door de zijbalk."
   },
   "how": {
     "steps": {
@@ -95,12 +93,9 @@ export const nl: Dictionary = {
   "themes": {
     "title": "Thema's, waaronder dat van jou",
     "lede": "Kies hieronder een palet en zie hoe de app het draagt.",
-    "groupLabel": "Bekijk een thema in het app-venster",
-    "reset": "Terug naar Unisic",
-    "note": "Elke chip kleurt het app-venster live opnieuw in. Eén thema is je systeem: het volgt het lichte of donkere schema en de accentkleur van je bureaublad.",
-    "system": "Systeem",
-    "systemLabel": "Systeem: volgt het lichte of donkere schema van je bureaublad; hier niet als voorbeeld te bekijken",
-    "previewLabel": "Het Unisic-hoofdvenster in het thema {theme}"
+    "groupLabel": "Thema voor deze pagina",
+    "note": "Elke chip kleurt deze hele pagina in dat palet, met de waarden die de app meelevert. De eerste volgt het lichte of donkere schema van je bureaublad.",
+    "system": "Systeem"
   },
   "download": {
     "title": "Unisic installeren",
@@ -110,7 +105,6 @@ export const nl: Dictionary = {
       "noRoot": "De AppImage heeft geen root nodig en werkt zichzelf bij",
       "free": "Gratis en open source, GPL-3.0"
     },
-    "or": "Of kies je systeem",
     "repoLede": "AppImage is de aanbevolen weg: één bestand, geen root, en het vervangt zichzelf zodra er een nieuwe versie is. Kies anders je distributie: de repository houdt Unisic up-to-date via je pakketbeheerder; de release bevat ook losse .deb-, .rpm- en Arch-pakketten die bij de eerste installatie de repository instellen.",
     "distroListLabel": "Kies je distributie of pakketformaat",
     "versionLabel": "Versie",
@@ -153,11 +147,9 @@ export const nl: Dictionary = {
       "video": "Video opnemen (starten/stoppen)",
       "ocr": "OCR op gebied (tekst kopiëren)",
       "copyLast": "Laatste opname kopiëren",
-      "quickTask": "Kiezer voor snelle taken openen",
       "replay": "Instant replay starten/opslaan",
       "stop": "Opname stoppen (vast)"
     },
-    "tryHint": "Deze tabel is live: houd een sneltoets op je toetsenbord ingedrukt en de toetsen lichten op.",
     "note": "Op de vaste stoptoets na zijn alle sneltoetsen aanpasbaar in Instellingen en worden ze direct op het systeem toegepast."
   },
   "reference": {
@@ -225,6 +217,120 @@ export const nl: Dictionary = {
     "save": "Opslaan",
     "upload": "Uploaden",
     "more": "Meer"
+  },
+  "cli": {
+    "title": "Bestuur het vanuit een terminal",
+    "lede": "Elke opnamemodus is een vlag, dus een sneltoets van je compositor, een script of een cronjob kan hem starten. Met --output - gaat de afbeelding naar stdout."
+  },
+  "app": {
+    "record": {
+      "title": "Schermopname",
+      "gifTitle": "GIF-opname",
+      "sub": "Neem het volledige scherm, een gebied of één venster op naar een videobestand.",
+      "gifSub": "Neem een gebied of een heel scherm direct op als geoptimaliseerde .gif.",
+      "video": "Video",
+      "gif": "GIF",
+      "screen": "Scherm",
+      "region": "Gebied",
+      "window": "Venster",
+      "pause": "Pauze",
+      "stop": "Stop",
+      "startReplay": "Replay starten",
+      "videoOptions": "Video-opties",
+      "gifOptions": "GIF-opties",
+      "format": "Formaat",
+      "frameRate": "Framerate",
+      "quality": "Kwaliteit",
+      "qualitySub": "Hoger is scherper en groter. 50% is de gebalanceerde standaard.",
+      "maxDuration": "Maximale duur",
+      "cursor": "Muiscursor meenemen",
+      "audio": "Audio en replay",
+      "systemAudio": "Systeemgeluid opnemen",
+      "mic": "Microfoon opnemen",
+      "appAudio": "Alleen geluid van één app",
+      "replayLength": "Replay-lengte",
+      "off": "Uit",
+      "refresh": "Vernieuwen",
+      "noWindowGif": "Niet beschikbaar: GIF heeft geen bron voor één venster",
+      "fast": "Snel / klein",
+      "balanced": "Gebalanceerd",
+      "best": "Beste",
+      "goodToKnow": "Goed om te weten",
+      "gifNoAudio": "GIF heeft geen audiospoor. Wil je een clip met geluid, schakel dan naar de modus Video en neem een MP4 of WebM op.",
+      "gifSize": "De bestandsgrootte groeit snel met oppervlak, framerate en duur. Een klein gebied op 15-30 FPS ziet er meestal prima uit en blijft makkelijk te delen."
+    },
+    "edit": {
+      "title": "Bewerken",
+      "sub": "Open een afbeelding of video die je al hebt - in dezelfde editor en hetzelfde trimvenster als je opnamen.",
+      "image": "Afbeelding bewerken",
+      "imageSub": "Annoteren, bijsnijden, vervagen",
+      "video": "Video inkorten",
+      "videoSub": "Knip een begin en een einde af",
+      "tip": "Een afbeelding bewerken raakt het origineel nooit aan: de editor slaat op waar je opnamen terechtkomen, onder een nieuwe naam, tenzij je het zelf overschrijft. Inkorten schrijft altijd een nieuw bestand naast de bron."
+    },
+    "history": {
+      "title": "Geschiedenis",
+      "items": "{n} items",
+      "search": "Zoek op naam of link",
+      "clear": "Alles wissen",
+      "all": "Alle",
+      "images": "Afbeeldingen",
+      "gifs": "GIF's",
+      "recordings": "Opnamen",
+      "clips": "Clips",
+      "starred": "Met ster",
+      "uploaded": "Geüpload",
+      "today": "Vandaag",
+      "empty": "Nog niets hier. Schermafbeeldingen en opnamen verschijnen hier met miniaturen."
+    },
+    "servers": {
+      "title": "Servers",
+      "sub": "Modulaire uploaders: eigen HTTP-API's plus FTP/SFTP via curl. Na elke upload staat de link op je klembord.",
+      "add": "Eigen server toevoegen",
+      "import": ".sxcu importeren",
+      "active": "Actieve server",
+      "use": "Gebruiken",
+      "needsClientId": "Client-ID nodig",
+      "needsUserKey": "Gebruikerssleutel nodig"
+    },
+    "modes": {
+      "shot": "Schermafbeelding",
+      "measure": "Meten",
+      "ocr": "Tekst lezen",
+      "gif": "GIF opnemen",
+      "video": "Video opnemen"
+    },
+    "hint": {
+      "shot": "Sleep om te selecteren · klik voor het hele scherm · Ctrl+slepen om te verplaatsen · annoteer met de werkbalk · Spatie/Enter of dubbelklik om vast te leggen · Esc om te annuleren",
+      "measure": "Sleep om te meten · Tab: afstand/grootte · Ctrl+C kopieert de maten · Esc om te sluiten",
+      "ocr": "Sleep om te selecteren · Ctrl+slepen om te verplaatsen · Spatie/Enter leest de tekst · Esc om te annuleren",
+      "gif": "Sleep om te selecteren · Ctrl+slepen om te verplaatsen · Spatie/Enter start de GIF · Esc om te annuleren",
+      "video": "Sleep om te selecteren · Ctrl+slepen om te verplaatsen · Spatie/Enter start de video · Esc om te annuleren"
+    },
+    "tools": {
+      "edit": "Vormen bewerken",
+      "pen": "Pen",
+      "shapes": "Vormen",
+      "text": "Tekst",
+      "highlight": "Markeren",
+      "blur": "Vervagen",
+      "pixelate": "Pixeleren",
+      "eraser": "Slimme gum",
+      "magnify": "Vergrootglas",
+      "eyedropper": "Pipet",
+      "step": "Stapmarkering",
+      "crop": "Bijsnijden",
+      "undo": "Ongedaan maken",
+      "redo": "Opnieuw",
+      "line": "Lijn",
+      "arrow": "Pijl",
+      "measure": "Meten",
+      "rect": "Rechthoek",
+      "ellipse": "Ellips",
+      "callout": "Tekstballon"
+    },
+    "toolbar": "Werkbalk voor opnamen",
+    "cancel": "Annuleren"
   },
   "footer": {
     "license": "Gratis en open source, GPL-3.0",

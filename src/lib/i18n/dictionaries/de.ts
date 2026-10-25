@@ -29,10 +29,8 @@ export const de: Dictionary = {
     "installNote": "Öffnet ein Menü. Jeder Download wird mit der veröffentlichten SHA-256-Prüfsumme geprüft.",
     "installRead": "So arbeitet das Installationsskript",
     "otherWays": "Andere Installationswege",
-    "github": "Auf GitHub ansehen"
-  },
-  "proof": {
-    "packaged": "Pakete für"
+    "github": "Auf GitHub ansehen",
+    "windowHint": "Nachgebaut aus dem QML und den Themes der App. Klicken Sie sich durch die Seitenleiste."
   },
   "how": {
     "steps": {
@@ -95,12 +93,9 @@ export const de: Dictionary = {
   "themes": {
     "title": "Themes, darunter Ihr eigenes",
     "lede": "Wählen Sie unten eine Palette und sehen Sie zu, wie die App sie trägt.",
-    "groupLabel": "Ein Theme im App-Fenster in der Vorschau ansehen",
-    "reset": "Auf Unisic zurücksetzen",
-    "note": "Jeder Chip färbt das App-Fenster live neu. Ein Theme ist Ihr System: Es folgt dem hellen oder dunklen Schema und der Akzentfarbe des Desktops.",
-    "system": "System",
-    "systemLabel": "System: folgt dem hellen oder dunklen Schema Ihres Desktops; hier nicht in der Vorschau verfügbar",
-    "previewLabel": "Das Unisic-Hauptfenster im Theme {theme}"
+    "groupLabel": "Theme für diese Seite",
+    "note": "Jeder Chip färbt die ganze Seite in dieser Palette ein, mit den Werten aus der App. Der erste folgt dem hellen oder dunklen Schema Ihres Desktops.",
+    "system": "System"
   },
   "download": {
     "title": "Unisic installieren",
@@ -110,7 +105,6 @@ export const de: Dictionary = {
       "noRoot": "Das AppImage braucht kein Root und aktualisiert sich selbst",
       "free": "Kostenlos und quelloffen, GPL-3.0"
     },
-    "or": "Oder wählen Sie Ihr System",
     "repoLede": "AppImage ist der empfohlene Weg: eine Datei, kein Root, und bei einer neuen Version ersetzt sie sich selbst. Wählen Sie stattdessen Ihre Distribution, dann hält das Repository Unisic über die Paketverwaltung aktuell; das Release enthält zudem einmalige .deb-, .rpm- und Arch-Pakete, die bei der Erstinstallation das Repository einrichten.",
     "distroListLabel": "Distribution oder Paketformat wählen",
     "versionLabel": "Version",
@@ -153,11 +147,9 @@ export const de: Dictionary = {
       "video": "Video aufzeichnen (Start/Stopp)",
       "ocr": "Bereich per OCR erfassen (Text kopieren)",
       "copyLast": "Letzte Aufnahme kopieren",
-      "quickTask": "Schnellaufgaben-Auswahl öffnen",
       "replay": "Sofortwiederholung starten/speichern",
       "stop": "Aufzeichnung stoppen (fest)"
     },
-    "tryHint": "Diese Tabelle ist live: Halten Sie ein Tastenkürzel auf Ihrer Tastatur gedrückt, und die Tasten leuchten auf.",
     "note": "Alle außer der festen Stopp-Taste sind in den Einstellungen bearbeitbar und werden sofort auf das System angewendet."
   },
   "reference": {
@@ -225,6 +217,120 @@ export const de: Dictionary = {
     "save": "Speichern",
     "upload": "Hochladen",
     "more": "Mehr"
+  },
+  "cli": {
+    "title": "Aus dem Terminal steuern",
+    "lede": "Jeder Aufnahmemodus ist ein Flag, also kann ihn ein Compositor-Tastenkürzel, ein Skript oder ein Cronjob starten. Mit --output - geht das Bild nach stdout."
+  },
+  "app": {
+    "record": {
+      "title": "Bildschirmaufnahme",
+      "gifTitle": "GIF-Aufnahme",
+      "sub": "Nehmen Sie den ganzen Bildschirm, einen Bereich oder ein einzelnes Fenster in eine Videodatei auf.",
+      "gifSub": "Nehmen Sie einen Bereich oder einen ganzen Bildschirm direkt in ein optimiertes .gif auf.",
+      "video": "Video",
+      "gif": "GIF",
+      "screen": "Bildschirm",
+      "region": "Bereich",
+      "window": "Fenster",
+      "pause": "Pause",
+      "stop": "Stopp",
+      "startReplay": "Wiedergabe starten",
+      "videoOptions": "Videooptionen",
+      "gifOptions": "GIF-Optionen",
+      "format": "Format",
+      "frameRate": "Bildrate",
+      "quality": "Qualität",
+      "qualitySub": "Höher ist schärfer und größer. 50 % ist die ausgewogene Voreinstellung.",
+      "maxDuration": "Höchstdauer",
+      "cursor": "Mauszeiger einbeziehen",
+      "audio": "Ton und Wiedergabe",
+      "systemAudio": "Systemton aufnehmen",
+      "mic": "Mikrofon aufnehmen",
+      "appAudio": "Nur Anwendungston",
+      "replayLength": "Länge der Wiedergabe",
+      "off": "Aus",
+      "refresh": "Aktualisieren",
+      "noWindowGif": "Nicht verfügbar: GIF hat keine Einzelfenster-Quelle",
+      "fast": "Schnell / klein",
+      "balanced": "Ausgewogen",
+      "best": "Beste",
+      "goodToKnow": "Gut zu wissen",
+      "gifNoAudio": "Ein GIF hat keine Tonspur. Für einen Clip mit Ton wechseln Sie in den Videomodus und nehmen Sie ein MP4 oder WebM auf.",
+      "gifSize": "Die Dateigröße wächst schnell mit Fläche, Bildrate und Dauer. Ein kleiner Bereich mit 15-30 FPS sieht meist gut aus und bleibt leicht zu teilen."
+    },
+    "edit": {
+      "title": "Bearbeiten",
+      "sub": "Öffnen Sie ein vorhandenes Bild oder Video - derselbe Editor und dasselbe Zuschneidefenster wie für Ihre Aufnahmen.",
+      "image": "Bild bearbeiten",
+      "imageSub": "Beschriften, zuschneiden, verwischen",
+      "video": "Video zuschneiden",
+      "videoSub": "Anfang und Ende abschneiden",
+      "tip": "Das Bearbeiten eines Bildes rührt das Original nie an: der Editor speichert dorthin, wo auch Ihre Aufnahmen landen, unter neuem Namen, sofern Sie nicht selbst überschreiben. Das Zuschneiden legt immer eine neue Datei neben der Quelle an."
+    },
+    "history": {
+      "title": "Verlauf",
+      "items": "{n} Einträge",
+      "search": "Name oder Link suchen",
+      "clear": "Alles löschen",
+      "all": "Alle",
+      "images": "Bilder",
+      "gifs": "GIFs",
+      "recordings": "Aufnahmen",
+      "clips": "Clips",
+      "starred": "Markiert",
+      "uploaded": "Hochgeladen",
+      "today": "Heute",
+      "empty": "Hier ist noch nichts. Aufnahmen erscheinen hier mit Vorschaubildern."
+    },
+    "servers": {
+      "title": "Server",
+      "sub": "Modulare Uploader: eigene HTTP-APIs sowie FTP/SFTP über curl. Nach jedem Hochladen wird der Link in die Zwischenablage kopiert.",
+      "add": "Eigenen Server hinzufügen",
+      "import": ".sxcu importieren",
+      "active": "Aktiver Server",
+      "use": "Verwenden",
+      "needsClientId": "Benötigt eine Client-ID",
+      "needsUserKey": "Benötigt einen Benutzerschlüssel"
+    },
+    "modes": {
+      "shot": "Bildschirmfoto",
+      "measure": "Messen",
+      "ocr": "Text lesen",
+      "gif": "GIF aufnehmen",
+      "video": "Video aufnehmen"
+    },
+    "hint": {
+      "shot": "Ziehen zum Auswählen · Klick für den ganzen Bildschirm · Ctrl+Ziehen verschiebt · mit der Werkzeugleiste beschriften · Leertaste/Eingabe oder Doppelklick nimmt auf · Esc bricht ab",
+      "measure": "Ziehen zum Messen · Tab: Abstand/Größe · Ctrl+C kopiert die Maße · Esc schließt",
+      "ocr": "Ziehen zum Auswählen · Ctrl+Ziehen verschiebt · Leertaste/Eingabe liest den Text · Esc bricht ab",
+      "gif": "Ziehen zum Auswählen · Ctrl+Ziehen verschiebt · Leertaste/Eingabe startet das GIF · Esc bricht ab",
+      "video": "Ziehen zum Auswählen · Ctrl+Ziehen verschiebt · Leertaste/Eingabe startet das Video · Esc bricht ab"
+    },
+    "tools": {
+      "edit": "Formen bearbeiten",
+      "pen": "Stift",
+      "shapes": "Formen",
+      "text": "Text",
+      "highlight": "Marker",
+      "blur": "Weichzeichnen",
+      "pixelate": "Verpixeln",
+      "eraser": "Kluger Radierer",
+      "magnify": "Lupe",
+      "eyedropper": "Pipette",
+      "step": "Schrittmarke",
+      "crop": "Zuschneiden",
+      "undo": "Rückgängig",
+      "redo": "Wiederherstellen",
+      "line": "Linie",
+      "arrow": "Pfeil",
+      "measure": "Messen",
+      "rect": "Rechteck",
+      "ellipse": "Ellipse",
+      "callout": "Sprechblase"
+    },
+    "toolbar": "Aufnahme-Werkzeugleiste",
+    "cancel": "Abbrechen"
   },
   "footer": {
     "license": "Frei und quelloffen, GPL-3.0",

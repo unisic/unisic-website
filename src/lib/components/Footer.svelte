@@ -28,7 +28,7 @@
 
 <style>
   .footer {
-    margin-top: var(--space-section);
+    margin-top: 96px;
     border-top: 1px solid var(--divider);
     background: var(--bg-deep);
   }
@@ -51,7 +51,6 @@
   }
 
   .name {
-    font-family: var(--font-display);
     font-weight: 750;
     letter-spacing: -0.02em;
   }

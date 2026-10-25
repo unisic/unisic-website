@@ -21,7 +21,7 @@
     <p class="code">{nf.code}</p>
     <h1 class="title">{nf.title}</h1>
     <p class="message">{nf.message}</p>
-    <a href="/" class="btn btn-primary">{nf.home}</a>
+    <a href="/" class="btn btn-filled">{nf.home}</a>
   </div>
 </main>
 
@@ -51,13 +51,13 @@
 
   .title {
     font-size: clamp(2.25rem, 1.2rem + 3.4vw, 3.5rem);
-    font-weight: 800;
-    letter-spacing: -0.035em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
   .message {
     max-width: 46ch;
-    color: var(--ink-2);
+    color: var(--text-secondary);
     font-size: 1.0625rem;
   }
 

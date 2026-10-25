@@ -29,10 +29,8 @@ export const fr: Dictionary = {
     "installNote": "Ouvre un menu. Chaque téléchargement est vérifié avec son SHA-256 publié.",
     "installRead": "Comment fonctionne l'installateur",
     "otherWays": "Autres façons d'installer",
-    "github": "Voir sur GitHub"
-  },
-  "proof": {
-    "packaged": "Paquets pour"
+    "github": "Voir sur GitHub",
+    "windowHint": "Reconstruite à partir du QML et des thèmes de l'app. Parcourez la barre latérale."
   },
   "how": {
     "steps": {
@@ -95,12 +93,9 @@ export const fr: Dictionary = {
   "themes": {
     "title": "Des thèmes, dont le vôtre",
     "lede": "Choisissez une palette ci-dessous et regardez l'application l'adopter.",
-    "groupLabel": "Prévisualiser un thème dans la fenêtre de l'application",
-    "reset": "Réinitialiser sur Unisic",
-    "note": "Chaque pastille repeint la fenêtre de l'app en temps réel. Un thème est votre système : il suit le schéma clair ou sombre du bureau et la couleur d'accentuation.",
-    "system": "Système",
-    "systemLabel": "Système : suit le schéma clair ou sombre de votre bureau ; non prévisualisable ici",
-    "previewLabel": "La fenêtre principale d'Unisic dans le thème {theme}"
+    "groupLabel": "Thème de cette page",
+    "note": "Chaque pastille repeint toute la page avec cette palette, aux valeurs livrées avec l'app. La première suit le thème clair ou sombre de votre bureau.",
+    "system": "Système"
   },
   "download": {
     "title": "Installer Unisic",
@@ -110,7 +105,6 @@ export const fr: Dictionary = {
       "noRoot": "L'AppImage n'exige pas root et se met à jour toute seule",
       "free": "Gratuit et open source, GPL-3.0"
     },
-    "or": "Ou choisissez votre système",
     "repoLede": "AppImage est la voie recommandée : un seul fichier, sans root, et il se remplace lui-même dès qu'une nouvelle version paraît. Choisissez plutôt votre distribution et le dépôt maintiendra Unisic à jour via votre gestionnaire de paquets ; la release contient aussi des paquets .deb, .rpm et Arch ponctuels qui configurent le dépôt dès la première installation.",
     "distroListLabel": "Choisissez votre distribution ou votre format de paquet",
     "versionLabel": "Version",
@@ -153,11 +147,9 @@ export const fr: Dictionary = {
       "video": "Enregistrer une vidéo (démarrer/arrêter)",
       "ocr": "OCR d'une région (copier le texte)",
       "copyLast": "Copier la dernière capture",
-      "quickTask": "Ouvrir le sélecteur de tâche rapide",
       "replay": "Démarrer/sauvegarder la relecture instantanée",
       "stop": "Arrêter l'enregistrement (fixe)"
     },
-    "tryHint": "Ce tableau est interactif : maintenez un raccourci sur votre clavier et les touches s'allument.",
     "note": "Toutes les touches, sauf la touche d'arrêt fixe, sont modifiables dans les Paramètres et appliquées immédiatement au système."
   },
   "reference": {
@@ -225,6 +217,120 @@ export const fr: Dictionary = {
     "save": "Enregistrer",
     "upload": "Envoyer",
     "more": "Plus"
+  },
+  "cli": {
+    "title": "Pilotez-le depuis un terminal",
+    "lede": "Chaque mode de capture est une option : un raccourci du compositeur, un script ou une tâche cron peut le lancer. Avec --output - l'image part sur stdout."
+  },
+  "app": {
+    "record": {
+      "title": "Enregistrement d’écran",
+      "gifTitle": "Enregistrement GIF",
+      "sub": "Enregistrez l’écran entier, une région ou une seule fenêtre dans un fichier vidéo.",
+      "gifSub": "Enregistrez une région ou un écran entier directement en .gif optimisé.",
+      "video": "Vidéo",
+      "gif": "GIF",
+      "screen": "Écran",
+      "region": "Région",
+      "window": "Fenêtre",
+      "pause": "Pause",
+      "stop": "Arrêter",
+      "startReplay": "Démarrer le replay",
+      "videoOptions": "Options vidéo",
+      "gifOptions": "Options GIF",
+      "format": "Format",
+      "frameRate": "Fréquence d’images",
+      "quality": "Qualité",
+      "qualitySub": "Plus haut donne une image plus nette et un fichier plus lourd. 50 % est la valeur équilibrée par défaut.",
+      "maxDuration": "Durée maximale",
+      "cursor": "Inclure le curseur de la souris",
+      "audio": "Audio & replay",
+      "systemAudio": "Enregistrer l’audio du système",
+      "mic": "Enregistrer le microphone",
+      "appAudio": "Audio d’une application uniquement",
+      "replayLength": "Durée du replay",
+      "off": "Désactivé",
+      "refresh": "Actualiser",
+      "noWindowGif": "Indisponible : le GIF n’a pas de source fenêtre unique",
+      "fast": "Rapide / léger",
+      "balanced": "Équilibré",
+      "best": "Optimale",
+      "goodToKnow": "Bon à savoir",
+      "gifNoAudio": "Le GIF n’a pas de piste audio. Pour un clip sonore, passez en mode Vidéo et enregistrez un MP4 ou WebM.",
+      "gifSize": "La taille du fichier augmente vite avec la zone, la fréquence d’images et la durée. Une petite région à 15-30 FPS rend généralement très bien et reste facile à partager."
+    },
+    "edit": {
+      "title": "Modifier",
+      "sub": "Ouvrez une image ou une vidéo que vous avez déjà - le même éditeur et la même fenêtre de découpe que pour vos captures.",
+      "image": "Modifier une image",
+      "imageSub": "Annoter, recadrer, flouter",
+      "video": "Découper une vidéo",
+      "videoSub": "Couper un début et une fin",
+      "tip": "Modifier une image ne touche jamais l’original : l’éditeur enregistre là où vont vos captures, sous un nouveau nom, sauf si vous l’écrasez vous-même. La découpe écrit toujours un nouveau fichier à côté de la source."
+    },
+    "history": {
+      "title": "Historique",
+      "items": "{n} éléments",
+      "search": "Rechercher un nom ou un lien",
+      "clear": "Tout effacer",
+      "all": "Tout",
+      "images": "Images",
+      "gifs": "GIF",
+      "recordings": "Enregistrements",
+      "clips": "Clips",
+      "starred": "Favoris",
+      "uploaded": "Téléversés",
+      "today": "Aujourd’hui",
+      "empty": "Rien ici pour l’instant. Les captures et enregistrements apparaîtront ici avec des miniatures."
+    },
+    "servers": {
+      "title": "Serveurs",
+      "sub": "Uploaders modulaires : API HTTP personnalisées plus FTP/SFTP via curl. Après chaque téléversement, le lien est copié dans votre presse-papiers.",
+      "add": "Ajouter un serveur personnalisé",
+      "import": "Importer un .sxcu",
+      "active": "Serveur actif",
+      "use": "Utiliser",
+      "needsClientId": "Nécessite un Client-ID",
+      "needsUserKey": "Nécessite une clé utilisateur"
+    },
+    "modes": {
+      "shot": "Capture d'écran",
+      "measure": "Mesurer",
+      "ocr": "Lire le texte",
+      "gif": "Enregistrer un GIF",
+      "video": "Enregistrer une vidéo"
+    },
+    "hint": {
+      "shot": "Glissez pour sélectionner · cliquez pour l’écran entier · Ctrl+glisser pour déplacer · annotez avec la barre d’outils · Espace/Entrée ou double-clic pour capturer · Échap pour annuler",
+      "measure": "Glissez pour mesurer · Tab : distance/taille · Ctrl+C copie les tailles · Échap pour fermer",
+      "ocr": "Glissez pour sélectionner · Ctrl+glisser pour déplacer · Espace/Entrée lit le texte · Échap pour annuler",
+      "gif": "Glissez pour sélectionner · Ctrl+glisser pour déplacer · Espace/Entrée démarre le GIF · Échap pour annuler",
+      "video": "Glissez pour sélectionner · Ctrl+glisser pour déplacer · Espace/Entrée démarre la vidéo · Échap pour annuler"
+    },
+    "tools": {
+      "edit": "Modifier les formes",
+      "pen": "Crayon",
+      "shapes": "Formes",
+      "text": "Texte",
+      "highlight": "Surligner",
+      "blur": "Flou",
+      "pixelate": "Pixelliser",
+      "eraser": "Gomme intelligente",
+      "magnify": "Loupe",
+      "eyedropper": "Pipette",
+      "step": "Marqueur d’étape",
+      "crop": "Recadrer",
+      "undo": "Annuler",
+      "redo": "Rétablir",
+      "line": "Ligne",
+      "arrow": "Flèche",
+      "measure": "Mesurer",
+      "rect": "Rectangle",
+      "ellipse": "Ellipse",
+      "callout": "Bulle"
+    },
+    "toolbar": "Barre d’outils de capture",
+    "cancel": "Annuler"
   },
   "footer": {
     "license": "Libre et open source, GPL-3.0",

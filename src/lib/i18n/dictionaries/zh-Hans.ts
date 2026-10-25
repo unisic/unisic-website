@@ -29,10 +29,8 @@ export const zhHans: Dictionary = {
     "installNote": "会打开一个菜单。每个下载都会对照已发布的 SHA-256 校验。",
     "installRead": "安装脚本如何工作",
     "otherWays": "其他安装方式",
-    "github": "在 GitHub 查看"
-  },
-  "proof": {
-    "packaged": "安装包支持"
+    "github": "在 GitHub 查看",
+    "windowHint": "根据应用自己的 QML 和主题重建。点击侧边栏逐页查看。"
   },
   "how": {
     "steps": {
@@ -95,12 +93,9 @@ export const zhHans: Dictionary = {
   "themes": {
     "title": "多种主题，包括你自己的",
     "lede": "在下方选择一种配色，看应用换上它。",
-    "groupLabel": "在应用窗口中预览主题",
-    "reset": "重置为 Unisic",
-    "note": "每个色块都会实时重绘应用窗口。其中一种主题就是你的系统：它会跟随桌面的浅色或深色方案和强调色。",
-    "system": "系统",
-    "systemLabel": "系统：跟随你桌面的浅色或深色方案；此处无法预览",
-    "previewLabel": "{theme}主题下的 Unisic 主窗口"
+    "groupLabel": "本页面的主题",
+    "note": "每个色块都会用该配色重绘整个页面，取值来自应用本身。第一个跟随桌面的浅色或深色方案。",
+    "system": "系统"
   },
   "download": {
     "title": "安装 Unisic",
@@ -110,7 +105,6 @@ export const zhHans: Dictionary = {
       "noRoot": "AppImage 无需 root，并会自行更新",
       "free": "免费开源，GPL-3.0"
     },
-    "or": "或选择你的系统",
     "repoLede": "推荐使用 AppImage：单个文件，无需 root，有新版本时会自行替换。也可以改为选择你的发行版--软件仓库会通过包管理器让 Unisic 保持最新；发布版本中还附带一次性的 .deb、.rpm 和 Arch 软件包，首次安装时会自动配置好软件仓库。",
     "distroListLabel": "选择发行版或软件包格式",
     "versionLabel": "版本",
@@ -153,11 +147,9 @@ export const zhHans: Dictionary = {
       "video": "录制视频（开始/停止）",
       "ocr": "OCR 区域（复制文字）",
       "copyLast": "复制上一次截图",
-      "quickTask": "打开快捷任务选择器",
       "replay": "开始/保存即时回放",
       "stop": "停止录制（固定）"
     },
-    "tryHint": "这张表是实时的：在键盘上按住某个快捷键，对应的键帽就会亮起。",
     "note": "除固定的停止键外，其余都可在设置中修改，并立即应用到系统。"
   },
   "reference": {
@@ -225,6 +217,120 @@ export const zhHans: Dictionary = {
     "save": "保存",
     "upload": "上传",
     "more": "更多"
+  },
+  "cli": {
+    "title": "在终端中控制",
+    "lede": "每种截图模式都是一个参数，因此合成器快捷键、脚本或 cron 任务都能启动它。使用 --output - 时图像输出到 stdout。"
+  },
+  "app": {
+    "record": {
+      "title": "屏幕录制",
+      "gifTitle": "GIF 录制",
+      "sub": "将全屏、某个区域或单个窗口录制为视频文件。",
+      "gifSub": "将某个区域或整个屏幕直接录制为优化过的 .gif。",
+      "video": "视频",
+      "gif": "GIF",
+      "screen": "屏幕",
+      "region": "区域",
+      "window": "窗口",
+      "pause": "暂停",
+      "stop": "停止",
+      "startReplay": "开始即时回放",
+      "videoOptions": "视频选项",
+      "gifOptions": "GIF 选项",
+      "format": "格式",
+      "frameRate": "帧率",
+      "quality": "质量",
+      "qualitySub": "越高越清晰，文件也越大。50% 是均衡的默认值。",
+      "maxDuration": "最长时长",
+      "cursor": "包含鼠标指针",
+      "audio": "音频与回放",
+      "systemAudio": "录制系统声音",
+      "mic": "录制麦克风",
+      "appAudio": "仅应用声音",
+      "replayLength": "回放长度",
+      "off": "关闭",
+      "refresh": "刷新",
+      "noWindowGif": "不可用：GIF 没有单窗口来源",
+      "fast": "快速 / 小",
+      "balanced": "均衡",
+      "best": "最佳",
+      "goodToKnow": "须知",
+      "gifNoAudio": "GIF 没有音轨。如需带声音的片段，请切换到视频模式，录制 MP4 或 WebM。",
+      "gifSize": "文件大小会随区域、帧率和时长迅速增长。以 15-30 FPS 录制小区域通常效果很好，也便于分享。"
+    },
+    "edit": {
+      "title": "编辑",
+      "sub": "打开你已有的图片或视频，使用与截图相同的编辑器和剪辑窗口。",
+      "image": "编辑图片",
+      "imageSub": "标注、裁剪、模糊",
+      "video": "剪辑视频",
+      "videoSub": "剪掉开头和结尾",
+      "tip": "编辑图片绝不会改动原图：除非你自己覆盖，编辑器会以新名称保存到截图的保存位置。裁剪视频总是在源文件旁写入一个新文件。"
+    },
+    "history": {
+      "title": "历史记录",
+      "items": "{n} 项",
+      "search": "搜索名称或链接",
+      "clear": "全部清除",
+      "all": "全部",
+      "images": "图片",
+      "gifs": "GIF",
+      "recordings": "录像",
+      "clips": "片段",
+      "starred": "已加星标",
+      "uploaded": "已上传",
+      "today": "今天",
+      "empty": "这里还没有内容。截图和录屏会带缩略图显示在这里。"
+    },
+    "servers": {
+      "title": "服务器",
+      "sub": "模块化上传器：自定义 HTTP API，以及通过 curl 的 FTP/SFTP。每次上传后链接都会复制到剪贴板。",
+      "add": "添加自定义服务器",
+      "import": "导入 .sxcu",
+      "active": "当前服务器",
+      "use": "使用",
+      "needsClientId": "需要 Client-ID",
+      "needsUserKey": "需要用户密钥"
+    },
+    "modes": {
+      "shot": "截图",
+      "measure": "测量",
+      "ocr": "识别文字",
+      "gif": "录制 GIF",
+      "video": "录制视频"
+    },
+    "hint": {
+      "shot": "拖动以选择 · 单击截取整个屏幕 · Ctrl+拖动以移动 · 用工具栏标注 · 空格/回车或双击以截图 · Esc 取消",
+      "measure": "拖动以测量 · Tab：距离/尺寸 · Ctrl+C 复制尺寸 · Esc 关闭",
+      "ocr": "拖动以选择 · Ctrl+拖动以移动 · 空格/回车识别文字 · Esc 取消",
+      "gif": "拖动以选择 · Ctrl+拖动以移动 · 空格/回车开始录制 GIF · Esc 取消",
+      "video": "拖动以选择 · Ctrl+拖动以移动 · 空格/回车开始录制视频 · Esc 取消"
+    },
+    "tools": {
+      "edit": "编辑形状",
+      "pen": "画笔",
+      "shapes": "形状",
+      "text": "文字",
+      "highlight": "高亮",
+      "blur": "模糊",
+      "pixelate": "马赛克",
+      "eraser": "智能橡皮擦",
+      "magnify": "放大镜",
+      "eyedropper": "取色器",
+      "step": "步骤标记",
+      "crop": "裁剪",
+      "undo": "撤销",
+      "redo": "重做",
+      "line": "直线",
+      "arrow": "箭头",
+      "measure": "测量",
+      "rect": "矩形",
+      "ellipse": "椭圆",
+      "callout": "标注"
+    },
+    "toolbar": "截图工具栏",
+    "cancel": "取消"
   },
   "footer": {
     "license": "自由开源，GPL-3.0",

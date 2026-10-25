@@ -4,8 +4,8 @@
   import { discord, github } from "#lib/icons.ts";
   import { DISCORD_URL } from "#lib/site.ts";
 
-  /* The landing Nav's sticky glass bar, with links back into the marketing
-     site. The docs are an English-only section, so no dictionary here. */
+  /* The landing Nav's title bar, with links back into the product page.
+     The docs are an English-only section, so no dictionary here. */
 </script>
 
 <header class="header">
@@ -24,7 +24,7 @@
       <a href={DISCORD_URL} class="icon-link" aria-label="Unisic on Discord">
         <Icon svg={discord} size={20} />
       </a>
-      <a href="/#download" class="cta">Download</a>
+      <a href="/#download" class="btn btn-filled btn-compact">Download</a>
     </div>
   </nav>
 </header>
@@ -34,9 +34,7 @@
     position: sticky;
     top: 0;
     z-index: var(--z-nav);
-    background: color-mix(in srgb, var(--bg) 82%, transparent);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: var(--bg);
     border-bottom: 1px solid var(--divider);
   }
 
@@ -57,13 +55,11 @@
   }
 
   .wordmark {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 750;
-    letter-spacing: -0.02em;
+    font-size: var(--font-l);
+    font-weight: 700;
   }
 
-  /* the hero's selection readout, reused as the section tag */
+  /* the overlay's size pill, reused as the section tag */
   .badge {
     padding: 2px 8px;
     border-radius: var(--radius-s);
@@ -84,7 +80,7 @@
   .link,
   .icon-link {
     color: var(--text-secondary);
-    font-size: 15px;
+    font-size: var(--font-m);
     transition: color var(--dur-fast) var(--ease-out);
   }
 
@@ -98,29 +94,6 @@
     place-items: center;
   }
 
-  .cta {
-    display: inline-flex;
-    align-items: center;
-    height: 38px;
-    padding: 0 20px;
-    border-radius: 999px;
-    background: var(--accent);
-    color: var(--text-on-accent);
-    font-weight: 650;
-    font-size: 15px;
-    transition:
-      transform var(--dur-fast) var(--ease-out),
-      background-color var(--dur-fast) var(--ease-out);
-  }
-
-  .cta:hover {
-    background: var(--accent-bright);
-  }
-
-  .cta:active {
-    transform: scale(0.96);
-  }
-
   @media (max-width: 560px) {
     .link {
       display: none;
@@ -128,10 +101,6 @@
 
     .links {
       gap: 16px;
-    }
-
-    .cta {
-      padding: 0 16px;
     }
   }
 

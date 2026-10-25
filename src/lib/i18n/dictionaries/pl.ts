@@ -29,10 +29,8 @@ export const pl: Dictionary = {
     "installNote": "Otwiera menu. Każde pobranie jest sprawdzane z opublikowaną sumą SHA-256.",
     "installRead": "Jak działa instalator",
     "otherWays": "Inne sposoby instalacji",
-    "github": "Zobacz na GitHub"
-  },
-  "proof": {
-    "packaged": "Pakiety dla"
+    "github": "Zobacz na GitHub",
+    "windowHint": "Odtworzone z QML i motywów samej aplikacji. Klikaj w pasek boczny."
   },
   "how": {
     "steps": {
@@ -95,12 +93,9 @@ export const pl: Dictionary = {
   "themes": {
     "title": "Motywy, w tym twój",
     "lede": "Wybierz poniżej paletę i patrz, jak aplikacja ją zakłada.",
-    "groupLabel": "Podejrzyj motyw w oknie aplikacji",
-    "reset": "Przywróć Unisic",
-    "note": "Każdy kafelek na żywo przemalowuje okno aplikacji. Jeden motyw to twój system: podąża za jasnym lub ciemnym schematem pulpitu i kolorem akcentu.",
-    "system": "System",
-    "systemLabel": "System: podąża za jasnym lub ciemnym schematem pulpitu; niedostępny do podglądu tutaj",
-    "previewLabel": "Główne okno Unisic w motywie {theme}"
+    "groupLabel": "Motyw tej strony",
+    "note": "Każdy kafelek przemalowuje całą stronę tą paletą, z wartościami prosto z aplikacji. Pierwszy podąża za jasnym lub ciemnym schematem pulpitu.",
+    "system": "System"
   },
   "download": {
     "title": "Zainstaluj Unisic",
@@ -110,7 +105,6 @@ export const pl: Dictionary = {
       "noRoot": "AppImage nie wymaga roota i aktualizuje się samo",
       "free": "Darmowy i otwartoźródłowy, GPL-3.0"
     },
-    "or": "Albo wybierz swój system",
     "repoLede": "AppImage to zalecany sposób: jeden plik, bez roota, a gdy pojawi się nowa wersja, podmienia sam siebie. Możesz zamiast tego wybrać swoją dystrybucję - repozytorium aktualizuje Unisic przez menedżera pakietów; w wydaniu znajdziesz też pojedyncze pakiety .deb i .rpm oraz pakiet dla Archa, które przy pierwszej instalacji podpinają repozytorium.",
     "distroListLabel": "Wybierz dystrybucję lub format pakietu",
     "versionLabel": "Wersja",
@@ -153,11 +147,9 @@ export const pl: Dictionary = {
       "video": "Nagraj wideo (start/stop)",
       "ocr": "Wykonaj OCR obszaru (kopiuje tekst)",
       "copyLast": "Skopiuj ostatni zrzut",
-      "quickTask": "Otwórz menu szybkich zadań",
       "replay": "Rozpocznij/zapisz natychmiastową powtórkę",
       "stop": "Zatrzymaj nagrywanie (stałe)"
     },
-    "tryHint": "Ta tabela jest na żywo: przytrzymaj skrót na klawiaturze, a klawisze się rozświetlą.",
     "note": "Wszystkie klawisze poza stałym klawiszem zatrzymania można edytować w Ustawieniach, a zmiany są od razu stosowane w systemie."
   },
   "reference": {
@@ -225,6 +217,120 @@ export const pl: Dictionary = {
     "save": "Zapisz",
     "upload": "Prześlij",
     "more": "Więcej"
+  },
+  "cli": {
+    "title": "Steruj z terminala",
+    "lede": "Każdy tryb przechwytywania to flaga, więc skrót kompozytora, skrypt albo zadanie cron może go uruchomić. Z --output - obraz trafia na stdout."
+  },
+  "app": {
+    "record": {
+      "title": "Nagrywanie ekranu",
+      "gifTitle": "Nagrywanie GIF",
+      "sub": "Nagraj pełny ekran, obszar lub pojedyncze okno do pliku wideo.",
+      "gifSub": "Nagraj obszar lub cały ekran prosto do zoptymalizowanego .gif.",
+      "video": "Wideo",
+      "gif": "GIF",
+      "screen": "Ekran",
+      "region": "Obszar",
+      "window": "Okno",
+      "pause": "Pauza",
+      "stop": "Zatrzymaj",
+      "startReplay": "Uruchom powtórkę",
+      "videoOptions": "Opcje wideo",
+      "gifOptions": "Opcje GIF",
+      "format": "Format",
+      "frameRate": "Liczba klatek",
+      "quality": "Jakość",
+      "qualitySub": "Wyżej znaczy ostrzej i większy plik. 50% to zrównoważone ustawienie domyślne.",
+      "maxDuration": "Maksymalny czas trwania",
+      "cursor": "Dołącz kursor myszy",
+      "audio": "Dźwięk i powtórka",
+      "systemAudio": "Nagrywaj dźwięk systemowy",
+      "mic": "Nagrywaj mikrofon",
+      "appAudio": "Tylko dźwięk aplikacji",
+      "replayLength": "Długość powtórki",
+      "off": "Wyłącz",
+      "refresh": "Odśwież",
+      "noWindowGif": "Niedostępne: GIF nie ma źródła pojedynczego okna",
+      "fast": "Szybko / mało",
+      "balanced": "Zrównoważona",
+      "best": "Najlepsza",
+      "goodToKnow": "Warto wiedzieć",
+      "gifNoAudio": "GIF nie ma ścieżki dźwiękowej. Aby nagrać klip z dźwiękiem, przełącz się na tryb Wideo i nagraj MP4 lub WebM.",
+      "gifSize": "Rozmiar pliku rośnie szybko wraz z obszarem, liczbą klatek i czasem trwania. Mały obszar przy 15-30 FPS zwykle wygląda świetnie i łatwo się nim dzielić."
+    },
+    "edit": {
+      "title": "Edytuj",
+      "sub": "Otwórz zdjęcie lub film, który już masz - w tym samym edytorze i oknie przycinania, co Twoje zrzuty.",
+      "image": "Edytuj obraz",
+      "imageSub": "Adnotacje, kadrowanie, rozmycie",
+      "video": "Przytnij film",
+      "videoSub": "Utnij początek i koniec",
+      "tip": "Edycja obrazu nie rusza oryginału: edytor zapisuje tam, gdzie lądują Twoje zrzuty, pod nową nazwą - chyba że sam nadpiszesz. Przycinanie zawsze tworzy nowy plik obok źródła."
+    },
+    "history": {
+      "title": "Historia",
+      "items": "{n} elementów",
+      "search": "Szukaj nazwy lub linku",
+      "clear": "Wyczyść wszystko",
+      "all": "Wszystko",
+      "images": "Obrazy",
+      "gifs": "GIF-y",
+      "recordings": "Nagrania",
+      "clips": "Klipy",
+      "starred": "Oznaczone",
+      "uploaded": "Wysłane",
+      "today": "Dziś",
+      "empty": "Jeszcze nic tu nie ma. Przechwycenia i nagrania pojawią się tutaj z miniaturami."
+    },
+    "servers": {
+      "title": "Serwery",
+      "sub": "Modularne uploadery: własne API HTTP oraz FTP/SFTP przez curl. Po każdym wysłaniu link jest kopiowany do schowka.",
+      "add": "Dodaj własny serwer",
+      "import": "Importuj .sxcu",
+      "active": "Aktywny serwer",
+      "use": "Użyj",
+      "needsClientId": "Wymaga Client-ID",
+      "needsUserKey": "Wymaga klucza użytkownika"
+    },
+    "modes": {
+      "shot": "Zrzut ekranu",
+      "measure": "Pomiar",
+      "ocr": "Odczyt tekstu",
+      "gif": "Nagraj GIF",
+      "video": "Nagraj wideo"
+    },
+    "hint": {
+      "shot": "Przeciągnij, aby zaznaczyć · kliknij, aby przechwycić cały ekran · Ctrl+przeciągnij, aby przesunąć · adnotuj paskiem narzędzi · Spacja/Enter lub dwuklik, aby przechwycić · Esc, aby anulować",
+      "measure": "Przeciągnij, aby zmierzyć · Tab: dystans/rozmiar · Ctrl+C kopiuje wymiary · Esc zamyka",
+      "ocr": "Przeciągnij, aby zaznaczyć · Ctrl+przeciągnij, aby przesunąć · Spacja/Enter odczytuje tekst · Esc, aby anulować",
+      "gif": "Przeciągnij, aby zaznaczyć · Ctrl+przeciągnij, aby przesunąć · Spacja/Enter rozpoczyna GIF · Esc, aby anulować",
+      "video": "Przeciągnij, aby zaznaczyć · Ctrl+przeciągnij, aby przesunąć · Spacja/Enter rozpoczyna wideo · Esc, aby anulować"
+    },
+    "tools": {
+      "edit": "Edytuj kształty",
+      "pen": "Pióro",
+      "shapes": "Kształty",
+      "text": "Tekst",
+      "highlight": "Zakreślacz",
+      "blur": "Rozmycie",
+      "pixelate": "Pikselizacja",
+      "eraser": "Inteligentna gumka",
+      "magnify": "Lupa",
+      "eyedropper": "Pipeta",
+      "step": "Znacznik kroku",
+      "crop": "Przytnij",
+      "undo": "Cofnij",
+      "redo": "Ponów",
+      "line": "Linia",
+      "arrow": "Strzałka",
+      "measure": "Pomiar",
+      "rect": "Prostokąt",
+      "ellipse": "Elipsa",
+      "callout": "Dymek"
+    },
+    "toolbar": "Pasek narzędzi przechwytywania",
+    "cancel": "Anuluj"
   },
   "footer": {
     "license": "Wolne i otwartoźródłowe, GPL-3.0",

@@ -42,10 +42,11 @@ function matchFormat(name: string): AssetFormat | null {
   return null;
 }
 
+// a no-break space: a wrapping download hint never strands the unit
 export function formatSize(bytes: number): string {
-  if (bytes >= 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(0)} MB`;
-  if (bytes >= 1024) return `${(bytes / 1024).toFixed(0)} KB`;
-  return `${bytes} B`;
+  if (bytes >= 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(0)}\u00a0MB`;
+  if (bytes >= 1024) return `${(bytes / 1024).toFixed(0)}\u00a0KB`;
+  return `${bytes}\u00a0B`;
 }
 
 type GitHubAsset = {

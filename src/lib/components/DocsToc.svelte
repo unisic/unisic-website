@@ -96,7 +96,7 @@
   }
 
   .link[aria-current] {
-    color: var(--accent-bright);
+    color: var(--accent-hover);
     border-left-color: var(--accent);
   }
 

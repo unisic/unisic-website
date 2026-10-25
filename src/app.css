@@ -1,5 +1,6 @@
-/* Ships dark by default (the app's own "unisic" theme). The ThemeShowcase
-   picker only repaints its own miniature window, never the whole page. */
+/* Page-wide base plus the unisic-kit look as global classes: .btn is
+   UButton, .card is UCard, .chip is UFilterChip. Colours come from
+   tokens.css, which follows the theme picked on the landing page. */
 
 *,
 *::before,
@@ -8,7 +9,6 @@
 }
 
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
   /* page scrollbar in brand tones on engines with scrollbar-color */
   scrollbar-color: var(--tertiary) var(--bg-deep);
@@ -40,9 +40,8 @@ p {
 h1,
 h2,
 h3 {
-  font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   line-height: 1.1;
   text-wrap: balance;
   /* Dutch and German compounds outgrow a phone at display sizes: hyphenate
@@ -135,235 +134,172 @@ table {
   opacity: 1;
 }
 
-/* Shared section shell */
-.section {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--space-section) 24px 0;
-  /* keep in-page jump targets clear of the sticky nav */
-  scroll-margin-top: calc(var(--nav-height) + 16px);
-}
-
-/* #main and #top are jump targets but not .section elements */
-#main,
-#top {
-  scroll-margin-top: calc(var(--nav-height) + 16px);
-}
-
-.section h2 {
-  font-size: clamp(2.1rem, 1.2rem + 3vw, 3.5rem);
-  font-weight: 850;
-  font-stretch: 112%;
-  letter-spacing: -0.035em;
-  line-height: 1.02;
-  max-width: 18ch;
-}
-
-/* the lede is the second most important text in every section; one clear
-   step above body size, in the AAA-contrast ink */
-.section-lede {
-  margin-top: 18px;
-  color: var(--ink-2);
-  max-width: 56ch;
-  font-size: 1.1875rem;
-  line-height: 1.6;
-}
-
-/* Section head: the title, with the lede beside it on wide screens */
-.section-head {
-  display: grid;
-  gap: 0 56px;
-  margin-bottom: var(--space-lede);
-}
-
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 22px;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--accent);
-}
-
-@media (min-width: 1024px) {
-  .section-head {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    align-items: end;
-  }
-
-  .section-head .section-lede {
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .section {
-    padding-top: 80px;
-  }
-}
-
-/* Crop-corner brackets, the selection overlay's own handles: four L-shaped
-   corners painted by eight gradients on one pseudo-element, so any box can
-   read as "selected" without extra markup. The host must be positioned. */
-.frame {
-  position: relative;
-}
-
-.frame::after {
-  content: "";
-  position: absolute;
-  inset: calc(var(--frame-gap, 10px) * -1);
-  pointer-events: none;
-  --c: var(--frame-color, var(--accent));
-  --a: var(--corner-arm);
-  --w: var(--corner-weight);
-  background:
-    linear-gradient(var(--c) 0 0) top left / var(--a) var(--w),
-    linear-gradient(var(--c) 0 0) top left / var(--w) var(--a),
-    linear-gradient(var(--c) 0 0) top right / var(--a) var(--w),
-    linear-gradient(var(--c) 0 0) top right / var(--w) var(--a),
-    linear-gradient(var(--c) 0 0) bottom left / var(--a) var(--w),
-    linear-gradient(var(--c) 0 0) bottom left / var(--w) var(--a),
-    linear-gradient(var(--c) 0 0) bottom right / var(--a) var(--w),
-    linear-gradient(var(--c) 0 0) bottom right / var(--w) var(--a);
-  background-repeat: no-repeat;
-}
-
-/* Faint pixel grid, faded out toward the edges so it never meets a hard
-   border. Decorative backdrop for heroes and the download band. */
-.pixel-grid {
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  background-position: center top;
-}
-
-/* A dark well under a slim title bar: the install card's terminal and
-   download boxes. The title sits at the start, as docs code blocks label
-   their language; a control can sit at the end. */
-.well {
-  display: flex;
-  flex-direction: column;
-  background: var(--bg-deep);
-  border: 1px solid var(--divider);
-  border-radius: var(--radius-m);
-}
-
-.well-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 44px;
-  padding: 0 7px 0 16px;
-  border-bottom: 1px solid var(--divider);
-  border-radius: calc(var(--radius-m) - 1px) calc(var(--radius-m) - 1px) 0 0;
-  background: var(--surface);
-}
-
-.well-title {
-  font-size: 11px;
-  font-weight: 650;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  /* secondary, not tertiary: 11px clears WCAG AA only above ~4.5:1 */
-  color: var(--text-secondary);
-}
-
-/* Pill buttons. One primary (accent fill) per view; quiet is the outline
-   companion for secondary actions. 44px tall: a comfortable touch target. */
+/* UButton: a 42px pill (34 compact), filled in the accent, tonal in
+   tertiary with a divider ring; hover is Qt.lighter(base, 1.12), press
+   shrinks to 0.96 with the kit's OutBack ease */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 44px;
-  padding: 0 22px;
+  gap: 7px;
+  min-height: 42px;
+  padding: 0 20px;
   border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: var(--font-m);
   font-weight: 600;
   line-height: 1.2;
   white-space: nowrap;
   transition:
     background-color var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out),
-    transform var(--dur-fast) var(--ease-out);
+    transform var(--dur-fast) var(--ease-back);
 }
 
-.btn-primary {
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+.btn-filled {
+  background: var(--accent);
+  color: var(--text-on-accent);
+  box-shadow: 0 3px 10px -2px var(--accent-shadow);
+}
+
+.btn-filled:hover {
+  background: var(--accent-hover);
+}
+
+.btn-tonal {
+  background: var(--tertiary);
+  border-color: var(--divider);
+  color: var(--text);
+  box-shadow: 0 3px 10px -4px var(--shadow-color);
+}
+
+.btn-tonal:hover {
+  background: var(--tertiary-hover);
+}
+
+.btn-ghost {
+  border-color: var(--divider);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  background: var(--accent-wash);
+}
+
+.btn-compact {
+  min-height: 34px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
+.btn-compact svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+/* UCard: surfaceTop to surfaceBottom, divider ring, lit top hairline */
+.card {
+  position: relative;
+  border-radius: var(--radius-l);
+  border: 1px solid var(--divider);
+  background: linear-gradient(var(--surface-top), var(--surface-bottom));
+  box-shadow: 0 5px 18px -6px var(--shadow-color);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: calc(var(--radius-l) / 2);
+  right: calc(var(--radius-l) / 2);
+  height: 1px;
+  background: var(--edge-light);
+  pointer-events: none;
+}
+
+/* UFilterChip: 28px pill, accent fill when checked */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--divider);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: var(--font-s);
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.chip svg {
+  width: 13px;
+  height: 13px;
+}
+
+.chip:hover {
+  background: var(--surface-hi);
+}
+
+.chip[aria-pressed="true"],
+.chip[aria-checked="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-on-accent);
+}
+
+/* ToolChip: the 40px icon button of the overlay and editor tool rows */
+.tool-chip {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-m);
+  color: var(--text);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-back);
+}
+
+.tool-chip:hover:not(:disabled) {
+  background: var(--accent-wash);
+}
+
+.tool-chip:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.tool-chip[aria-pressed="true"] {
   background: var(--accent);
   color: var(--text-on-accent);
 }
 
-.btn-primary:hover {
-  background: var(--accent-bright);
+.tool-chip:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
-.btn-quiet {
-  border: 1px solid var(--divider);
-  color: var(--text);
-}
-
-.btn-quiet:hover {
-  border-color: var(--tertiary);
-  background: var(--surface);
-}
-
-.btn:active {
-  transform: translateY(1px);
-}
-
-/* Scroll reveal: animated only when JS is present and motion is allowed;
-   final state otherwise (no-JS visitors must see everything) */
-@media (prefers-reduced-motion: no-preference) {
-  html[data-js] [data-reveal] {
-    opacity: 0;
-    transform: translateY(18px);
-    transition:
-      opacity 0.55s var(--ease-out),
-      transform 0.55s var(--ease-out);
-  }
-
-  html[data-js] [data-reveal][data-inview="true"] {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Staggered children: mark a container inside a Reveal with data-stagger.
-     One-shot animation with backwards fill, so once it ends the children
-     return to their natural styles and keep their own hover/press
-     transitions; :where() keeps specificity below component classes. */
-  html[data-js] :where([data-reveal]:not([data-inview="true"]) [data-stagger] > *) {
-    opacity: 0;
-  }
-
-  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > *) {
-    animation: stagger-rise 0.5s var(--ease-out) backwards;
-  }
-
-  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(2)) { animation-delay: 70ms; }
-  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(3)) { animation-delay: 140ms; }
-  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(4)) { animation-delay: 210ms; }
-  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(5)) { animation-delay: 280ms; }
-  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(6)) { animation-delay: 350ms; }
-  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(7)) { animation-delay: 420ms; }
-  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(8)) { animation-delay: 490ms; }
-
-  /* a chip focused via keyboard must never be invisible */
-  html[data-js] [data-reveal] [data-stagger] > :focus-visible {
-    opacity: 1;
-    animation: none;
-  }
-}
-
-@keyframes stagger-rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
+/* a small mono label above a heading: the docs index uses it */
+.eyebrow {
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent);
 }
 
 /* Rendered Markdown for the /docs pages. Kept here (not in a CSS module) so it
@@ -426,7 +362,7 @@ table {
 }
 
 .docs-prose a:hover {
-  color: var(--accent-bright);
+  color: var(--accent-hover);
   text-decoration-color: currentColor;
 }
 
@@ -522,7 +458,7 @@ table {
 }
 
 .docs-prose .tok-v {
-  color: var(--accent-bright);
+  color: var(--accent-hover);
 }
 
 .docs-prose .tok-k {

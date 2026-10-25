@@ -1,509 +1,781 @@
 <script lang="ts">
-  import CompositorNotes from "#lib/components/CompositorNotes.svelte";
-  import CopyCommand from "#lib/components/CopyCommand.svelte";
-  import DistroIcon from "#lib/components/DistroIcon.svelte";
-  import DistroInstall from "#lib/components/DistroInstall.svelte";
-  import FeatureGrid from "#lib/components/FeatureGrid.svelte";
   import Footer from "#lib/components/Footer.svelte";
-  import Hero from "#lib/components/Hero.svelte";
-  import HotkeyTable from "#lib/components/HotkeyTable.svelte";
-  import Intro from "#lib/components/Intro.svelte";
   import Icon from "#lib/components/Icon.svelte";
-  import Kbd from "#lib/components/Kbd.svelte";
   import Nav from "#lib/components/Nav.svelte";
-  import OverlayMockup from "#lib/components/OverlayMockup.svelte";
-  import RecordingFrame from "#lib/components/RecordingFrame.svelte";
   import Seo from "#lib/components/Seo.svelte";
-  import Steps from "#lib/components/Steps.svelte";
-  import T from "#lib/components/T.svelte";
-  import ThemeShowcase from "#lib/components/ThemeShowcase.svelte";
-  import { DIRECT_ASSETS, DISTROS } from "#lib/distros.ts";
+  import Copy from "#lib/app/Copy.svelte";
+  import Editor from "#lib/app/Editor.svelte";
+  import Install from "#lib/app/Install.svelte";
+  import MainWindow from "#lib/app/MainWindow.svelte";
+  import Overlay from "#lib/app/Overlay.svelte";
+  import Window from "#lib/app/Window.svelte";
+  import { cameraPhoto, checkmark, download, edit, github, lock, ocr, uploadCloud, viewHistory } from "#lib/icons.ts";
+  import type { Dictionary } from "#lib/i18n/index.ts";
   import { landingMeta } from "#lib/i18n/metadata.ts";
-  import { checkmark } from "#lib/icons.ts";
-  import { reveal } from "#lib/reveal.ts";
   import { INSTALL_COMMAND } from "#lib/site.ts";
+  import { THEME_KEY, THEMES } from "#lib/themes.ts";
   import type { PageProps } from "./$types";
 
-  /* every package the download picker offers, in the picker's order */
-  const PACKAGES = [...DIRECT_ASSETS, ...DISTROS];
-
-  /* Order follows the questions a visitor asks: what is it and how do I get
-     it (hero), will it run on my system (packages), what makes it different
-     (#how), what else does it do (#features), then the install command again
-     at the point of most interest, the details, and the full install band.
-
-     Reveal wraps only the mockups, whose one-shot open choreography is keyed
-     off it. Text and controls are never hidden behind a scroll trigger. */
   let { data }: PageProps = $props();
   const dict = $derived(data.dict);
-  const d = $derived(dict.download);
+
+  /* step marker colours from Theme.swatches, number in the ink the editor's
+     step tool puts on that colour */
+  const STEPS = [
+    ["hotkey", "#FF4757", "#FFFFFF"],
+    ["mark", "#FFD84D", "#17153B"],
+    ["share", "#1E90FF", "#FFFFFF"],
+  ] as const;
+
+  const FEATURES = [
+    ["editor", edit],
+    ["ocr", ocr],
+    ["upload", uploadCloud],
+    ["history", viewHistory],
+    ["silent", cameraPhoto],
+    ["yours", lock],
+  ] as const;
+
+  const COMPOSITORS = ["plasma", "gnome", "wlroots"] as const;
+  const POINTS = ["verify", "noRoot", "free"] as const;
+
+  /* the Linux defaults from the app's HotkeyDefaults.h and Settings.h */
+  const KEYS: [keyof Dictionary["hotkeys"]["rows"], string][] = [
+    ["full", "Meta+Shift+1"],
+    ["region", "Meta+Shift+2"],
+    ["window", "Meta+Shift+3"],
+    ["ocr", "Meta+Shift+T"],
+    ["copyLast", "Meta+Shift+C"],
+    ["gif", "Meta+Shift+G"],
+    ["video", "Meta+Shift+R"],
+    ["replay", "Meta+Shift+I"],
+    ["stop", "Ctrl+Esc"],
+  ];
+
+  /* `unisic --help` of 0.8.8, verbatim */
+  const HELP = `Usage: unisic [OPTION]
+
+Capture:
+  --fullscreen                 Capture all screens
+  --region                     Capture a selected region
+  --scroll                     Capture a scrolling region (long screenshot)
+  --window                     Capture the active window
+  --monitor                    Capture the screen under the cursor
+  --recapture                  Capture the last selected region again
+  --measure                    Measure a selected region
+  --gif                        Record a selected region as a GIF
+
+Capture options:
+  --delay SECONDS              Delay a screenshot by 0 to 60 seconds
+  --output PATH                Save a screenshot to PATH; use - for stdout
+  --format FORMAT              Use png, jpg, webp, or gif with --output
+
+Other options:
+  --export-settings PATH       Export settings without starting the UI
+  --import-settings PATH       Import settings without starting the UI
+  --hotkey ID                  Run a configured hotkey action
+  --tray-only                  Start without showing the main window
+  --help                       Show this help and exit
+  --version                    Show the version and exit`;
+
+  /* a {token} that holds markup: the text on either side of it */
+  function around(template: string, token: string): [string, string] {
+    const [before, after = ""] = template.split(`{${token}}`);
+    return [before, after];
+  }
+
+  const headline = $derived(around(dict.hero.headline, "mark"));
+  const hotkeyBody = $derived(around(dict.how.steps.hotkey.body, "keys"));
+  const stopNote = $derived(around(dict.recording.note, "keys"));
+  const stability = $derived(around(dict.download.stability, "link"));
+
+  /* null is System: no data-theme, so tokens.css follows the desktop's
+     light or dark scheme. app.html restores a stored pick before paint. */
+  let theme = $state<string | null>(null);
+  $effect(() => {
+    theme = document.documentElement.dataset.theme ?? null;
+  });
+
+  function pick(id: string | null) {
+    theme = id;
+    const root = document.documentElement;
+    if (id) root.dataset.theme = id;
+    else delete root.dataset.theme;
+    /* blocked storage only means the pick is not kept for the next visit */
+    try {
+      if (id) localStorage.setItem(THEME_KEY, id);
+      else localStorage.removeItem(THEME_KEY);
+    } catch {}
+  }
 </script>
 
 <Seo meta={landingMeta(data.locale, dict)} />
-<Intro />
+
+{#snippet keys(combo: string)}
+  <span class="keys">{#each combo.split("+") as k, i (i)}<kbd>{k}</kbd>{/each}</span>
+{/snippet}
 
 <a href="#main" class="skip-link">{dict.nav.skip}</a>
 <Nav {dict} locale={data.locale} />
 
 <main id="main">
-  <span id="top" aria-hidden="true"></span>
-  <Hero {dict} />
-
-  <div class="packages">
-    <p class="packages-label" id="packages-label">{dict.proof.packaged}</p>
-    <ul class="packages-list" aria-labelledby="packages-label">
-      {#each PACKAGES as p (p.id)}
-        <li><DistroIcon id={p.id} size={20} />{p.name}</li>
-      {/each}
-    </ul>
-  </div>
-
-  <section class="section" id="how" aria-labelledby="how-title">
-    <div class="section-head">
-      <h2 id="how-title">{dict.usp.title}</h2>
-      <p class="section-lede">{dict.usp.lede}</p>
-    </div>
-    <div class="overlay-visual" data-reveal {@attach reveal}>
-      <OverlayMockup {dict} />
-    </div>
-    <Steps {dict} />
-  </section>
-
-  <section class="section" id="features" aria-labelledby="features-title">
-    <div class="section-head">
-      <h2 id="features-title">{dict.features.title}</h2>
-    </div>
-    <FeatureGrid {dict} />
-  </section>
-
-  <!-- the install command again, right after the part of the page that
-       does the convincing -->
-  <div class="section again">
-    <div class="again-card frame">
-      <p class="again-label">{dict.hero.installLabel}</p>
-      <div class="again-cmd">
-        <CopyCommand variant="hero" command={INSTALL_COMMAND} copyLabel={dict.hero.copy} copiedLabel={dict.hero.copied} />
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">{dict.hero.eyebrow}</p>
+          <h1>{headline[0]}<span class="mark">{dict.hero.headlineMark}</span>{headline[1]}</h1>
+          <p class="sub">{dict.hero.sub}</p>
+          <div class="cta">
+            <a href="#download" class="btn btn-filled"><Icon svg={download} />{dict.nav.download}</a>
+            <a href="https://github.com/unisic/unisic" class="btn btn-tonal"><Icon svg={github} />{dict.hero.github}</a>
+          </div>
+        </div>
+        <div class="install">
+          <p class="label">{dict.hero.installLabel}</p>
+          <div class="cmd card">
+            <code><span class="prompt" aria-hidden="true">$ </span>{INSTALL_COMMAND}</code>
+            <Copy text={INSTALL_COMMAND} label={dict.hero.copy} copiedLabel={dict.hero.copied} />
+          </div>
+          <p class="note">{dict.hero.installNote}</p>
+          <p class="links">
+            <a href="/docs/installation/">{dict.hero.installRead}</a>
+            <a href="#download">{dict.hero.otherWays}</a>
+          </p>
+        </div>
       </div>
-      <a href="#download" class="again-link">{dict.hero.otherWays}</a>
-    </div>
-  </div>
-
-  <section class="section" id="recording" aria-labelledby="rec-title">
-    <div class="rec-split">
-      <div class="rec-copy">
-        <h2 id="rec-title">{dict.recording.title}</h2>
-        <p class="section-lede">{dict.recording.lede}</p>
-        <p class="rec-note">
-          <T str={dict.recording.note}>
-            {#snippet keys()}<Kbd keys={["Ctrl", "Esc"]} />{/snippet}
-          </T>
-        </p>
-      </div>
-      <div class="rec-visual" data-reveal {@attach reveal}>
-        <RecordingFrame {dict} />
-      </div>
+      <figure class="shot">
+        <MainWindow {dict} />
+        <figcaption>{dict.hero.windowHint}</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="themes-title">
-    <div class="section-head">
-      <h2 id="themes-title">{dict.themes.title}</h2>
-      <p class="section-lede">{dict.themes.lede}</p>
+  <section class="section" id="how">
+    <div class="wrap">
+      <h2 class="head">{dict.nav.how}</h2>
+      <ol class="steps">
+        {#each STEPS as [id, bg, ink], i (id)}
+          <li class="card step">
+            <span class="num" style:background={bg} style:color={ink} aria-hidden="true">{i + 1}</span>
+            <h3>{dict.how.steps[id].title}</h3>
+            <p>
+              {#if id === "hotkey"}{hotkeyBody[0]}{@render keys("Meta+Shift+2")}{hotkeyBody[1]}{:else}{dict.how.steps[id].body}{/if}
+            </p>
+          </li>
+        {/each}
+      </ol>
     </div>
-    <ThemeShowcase {dict} />
   </section>
 
-  <section class="section" aria-labelledby="reference-title">
-    <h2 id="reference-title">{dict.reference.title}</h2>
-    <div class="ref-cols">
-      <CompositorNotes {dict} />
-      <HotkeyTable {dict} />
+  <section class="section">
+    <div class="wrap">
+      <header class="head">
+        <h2>{dict.usp.title}</h2>
+        <p class="lede">{dict.usp.lede}</p>
+      </header>
+      <Overlay {dict} />
     </div>
   </section>
 
-  <!-- the conversion moment: a full-bleed accent band with a dark card, the
-       one place on the page where the palette inverts -->
-  <div class="band pixel-grid">
-    <section class="section band-inner" id="download" aria-labelledby="download-title">
-      <div class="band-head">
-        <h2 id="download-title">{d.title}</h2>
-        <p class="section-lede">{d.lede}</p>
-        <ul class="points">
-          {#each [d.points.verify, d.points.noRoot, d.points.free] as p (p)}
-            <li><Icon svg={checkmark} size={20} />{p}</li>
-          {/each}
-        </ul>
-        <!-- Uni, the mascot, gives the thumbs-up from behind the install
-             card. Decorative, so hidden from assistive tech. -->
-        <img
-          src="/uni.webp"
-          alt=""
-          aria-hidden="true"
-          width="400"
-          height="676"
-          loading="lazy"
-          decoding="async"
-          class="mascot"
-        />
+  <section class="section" id="features">
+    <div class="wrap">
+      <h2 class="head">{dict.features.title}</h2>
+      <Editor {dict} />
+      <ul class="grid features">
+        {#each FEATURES as [id, svg] (id)}
+          <li class="card item">
+            <span class="tile" aria-hidden="true"><Icon {svg} size={20} /></span>
+            <h3>{dict.features[id].title}</h3>
+            <p>{dict.features[id].body}</p>
+          </li>
+        {/each}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <header class="head">
+        <h2>{dict.recording.title}</h2>
+        <p class="lede">{dict.recording.lede}</p>
+        <p class="lede">{stopNote[0]}{@render keys("Ctrl+Esc")}{stopNote[1]}</p>
+      </header>
+      <div class="rec" role="img" aria-label={dict.recording.caption}>
+        <div class="rec-frame">
+          <span class="rec-badge"><span class="dot"></span>REC 0:07</span>
+          <img src="/uni.webp" alt="" width="400" height="676" loading="lazy" decoding="async" />
+        </div>
       </div>
-      <div class="card">
-        <p class="card-label">{dict.hero.installLabel}</p>
-        <CopyCommand variant="hero" command={INSTALL_COMMAND} copyLabel={dict.hero.copy} copiedLabel={dict.hero.copied} />
-        <p class="card-note">
-          {dict.hero.installNote}
-          <a href="/docs/installation/">{dict.hero.installRead}</a>
-        </p>
-        <p class="or">{d.or}</p>
-        <DistroInstall {dict} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="head">{dict.reference.title}</h2>
+      <h3 class="group-title">{dict.compositors.title}</h3>
+      <ul class="grid compositors">
+        {#each COMPOSITORS as id (id)}
+          <li class="card item">
+            <h4>{dict.compositors[id].name}</h4>
+            <p>{dict.compositors[id].body}</p>
+          </li>
+        {/each}
+      </ul>
+      <div class="split ref">
+        <div class="card hotkeys">
+          <table>
+            <caption>{dict.hotkeys.caption}</caption>
+            <thead>
+              <tr><th scope="col">{dict.hotkeys.action}</th><th scope="col">{dict.hotkeys.shortcut}</th></tr>
+            </thead>
+            <tbody>
+              {#each KEYS as [id, combo] (id)}
+                <tr><th scope="row">{dict.hotkeys.rows[id]}</th><td>{@render keys(combo)}</td></tr>
+              {/each}
+            </tbody>
+          </table>
+          <p class="note">{dict.hotkeys.note}</p>
+        </div>
+        <div class="cli">
+          <h3>{dict.cli.title}</h3>
+          <p class="lede">{dict.cli.lede}</p>
+          <Window title="unisic --help" label={dict.cli.title} left>
+            <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+            <!-- the help scrolls sideways on phones, so the keyboard has to reach it -->
+            <pre class="term" tabindex="0"><code><span class="prompt">$</span> unisic --help{"\n"}{HELP}</code></pre>
+          </Window>
+        </div>
       </div>
-      <p class="beta">
-        <T str={d.stability}>
-          {#snippet link()}<a href="https://github.com/unisic/unisic/issues">{d.stabilityLink}</a>{/snippet}
-        </T>
+    </div>
+  </section>
+
+  <section class="section themes">
+    <div class="wrap">
+      <header class="head">
+        <h2>{dict.themes.title}</h2>
+        <p class="lede">{dict.themes.lede}</p>
+      </header>
+      <div class="picker" role="group" aria-label={dict.themes.groupLabel}>
+        <button type="button" class="chip" aria-pressed={theme === null} onclick={() => pick(null)}>
+          {dict.themes.system}
+        </button>
+        {#each THEMES as t (t.id)}
+          <button type="button" class="chip" aria-pressed={theme === t.id} onclick={() => pick(t.id)}>
+            <span class="swatch" aria-hidden="true">
+              {#each t.swatch as c, i (i)}<span style:background={c}></span>{/each}
+            </span>
+            {t.label}
+          </button>
+        {/each}
+      </div>
+      <p class="note">{dict.themes.note}</p>
+    </div>
+  </section>
+
+  <section class="section" id="download">
+    <div class="wrap">
+      <header class="head">
+        <h2>{dict.download.title}</h2>
+        <p class="lede">{dict.download.lede}</p>
+      </header>
+      <ul class="points">
+        {#each POINTS as id (id)}
+          <li><Icon svg={checkmark} size={18} />{dict.download.points[id]}</li>
+        {/each}
+      </ul>
+      <p class="lede repo">{dict.download.repoLede}</p>
+      <Install {dict} />
+      <p class="note">
+        {stability[0]}<a href="https://github.com/unisic/unisic/issues">{dict.download.stabilityLink}</a>{stability[1]}
       </p>
-    </section>
-  </div>
+    </div>
+  </section>
 </main>
 
 <Footer {dict} />
 
 <style>
-  /* ---- packages strip under the hero ---- */
-
-  .packages {
-    width: calc(100% - 48px);
-    max-width: calc(var(--max-width) - 48px);
-    margin: 72px auto 0;
-    padding-top: 24px;
-    border-top: 1px solid var(--divider);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 14px 32px;
+  .wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
   }
 
-  .packages-label {
-    color: var(--text-secondary);
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
+  .section {
+    padding-top: 112px;
   }
 
-  .packages-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 26px;
+  section[id] {
+    scroll-margin-top: var(--nav-height);
   }
 
-  .packages-list li {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--ink-2);
-    font-size: 0.9375rem;
-    font-weight: 600;
-  }
-
-  .packages-list :global(svg) {
-    flex: none;
-    color: var(--text-secondary);
-  }
-
-  /* the differentiator visual breaks out wider than the text column on
-     large screens. Fixed negative margins behind a min-width gate, never
-     100vw math: 1160px content + 2x60px stays inside a 1320px viewport even
-     with a scrollbar, so the page never scrolls horizontally. */
-  @media (min-width: 1320px) {
-    .overlay-visual {
-      margin-inline: -60px;
-    }
-  }
-
-  /* ---- the install command, repeated after the features ---- */
-
-  .again {
-    padding-top: 96px;
-  }
-
-  .again-card {
+  .head {
     display: grid;
     gap: 14px;
-    padding: 24px;
-    border-radius: var(--radius-l);
-    background: var(--surface);
-    border: 1px solid var(--divider);
-    --frame-gap: 8px;
-    --corner-arm: 18px;
+    max-width: 760px;
+    margin-bottom: 36px;
   }
 
-  .again-label {
-    font-family: var(--font-display);
-    font-size: 1.375rem;
-    font-weight: 750;
+  h1 {
+    font-size: clamp(2.5rem, 1.5rem + 3.6vw, 4.25rem);
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+  }
+
+  h2 {
+    font-size: clamp(1.875rem, 1.3rem + 1.9vw, 2.75rem);
     letter-spacing: -0.025em;
-    line-height: 1.2;
   }
 
-  .again-cmd {
-    min-width: 0;
+  h3,
+  h4 {
+    font-size: var(--font-l);
+    line-height: 1.25;
   }
 
-  .again-link {
-    justify-self: start;
-    display: inline-flex;
-    align-items: center;
-    min-height: 2.75rem;
-    font-weight: 650;
+  h4 {
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .lede {
+    max-width: 62ch;
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+  }
+
+  .note {
+    margin-top: 14px;
+    color: var(--text-secondary);
+    font-size: var(--font-s);
+  }
+
+  .note a,
+  .links a {
+    color: var(--text);
     text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-color: var(--text-tertiary);
+    text-decoration-color: var(--divider);
+    text-underline-offset: 3px;
     transition: text-decoration-color var(--dur-fast) var(--ease-out);
   }
 
-  .again-link:hover {
+  .note a:hover,
+  .links a:hover {
     text-decoration-color: currentColor;
   }
 
-  @media (min-width: 960px) {
-    .again-card {
-      grid-template-columns: auto minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 28px;
-      padding: 18px 28px;
-    }
+  .prompt {
+    color: var(--accent);
   }
 
-  /* on phones the command box is the card: no second frame around it */
-  @media (max-width: 599px) {
-    .again-card {
-      padding: 0;
-      background: none;
-      border: 0;
-    }
-
-    .again-card::after {
-      display: none;
-    }
+  .keys {
+    display: inline-flex;
+    gap: 3px;
+    vertical-align: middle;
   }
 
-  /* ---- recording ---- */
-
-  .rec-split {
-    display: grid;
-    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-    gap: 56px;
-    align-items: center;
+  kbd {
+    display: inline-grid;
+    place-items: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    border: 1px solid var(--divider);
+    border-bottom-width: 2px;
+    border-radius: var(--radius-s);
+    background: var(--surface-hi);
+    color: var(--text);
+    font: 600 var(--font-s) / 1 var(--font-mono);
   }
 
-  .rec-note {
-    margin-top: 20px;
-    color: var(--ink-2);
-    font-size: 1rem;
-    line-height: 1.9;
-  }
-
-  .ref-cols {
-    margin-top: var(--space-lede);
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 64px;
-    align-items: start;
-  }
-
-  @media (max-width: 899px) {
-    .rec-split {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 36px;
-    }
-
-    .ref-cols {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 48px;
-    }
-  }
-
-  /* ---- install section: a full-bleed accent band with a dark card ---- */
-
-  /* the footer's margin-top is cancelled so the band meets it */
-  .band {
-    --grid-line: color-mix(in srgb, var(--text-on-accent) 7%, transparent);
-    margin-top: var(--space-section);
-    margin-bottom: calc(var(--space-section) * -1);
-    background-color: var(--accent);
-    color: var(--text-on-accent);
-  }
-
-  .band-inner {
-    padding-top: 88px;
-    padding-bottom: 88px;
-  }
-
-  /* the selling points beside Uni, who stands behind the card: her bottom
-     hangs into it, so the head is only as tall as the part of her above it */
-  .band-head {
-    --uni-w: 270px;
-    margin-bottom: 40px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    /* when Uni outgrows the text, the extra height goes above the heading */
-    grid-template-rows: 1fr auto auto;
-    column-gap: 32px;
-    align-items: end;
-  }
-
-  .band-head > :not(.mascot) {
-    grid-column: 1;
-  }
-
-  .band-inner h2,
-  .band-inner .section-lede {
-    color: var(--text-on-accent);
-  }
-
-  .points {
-    margin: 28px 0 0;
+  .grid {
+    margin: 0;
     padding: 0;
     list-style: none;
+    display: grid;
+    gap: 16px;
+  }
+
+  .item {
+    padding: 22px;
+    display: grid;
+    gap: 8px;
+    align-content: start;
+  }
+
+  .item p,
+  .step p {
+    color: var(--text-secondary);
+    font-size: var(--font-m);
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  /* hero */
+  .hero {
+    padding-top: 72px;
+  }
+
+  /* minmax(0) so the nowrap install command scrolls instead of widening
+     the column on phones */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+
+  .mark {
+    color: var(--accent);
+  }
+
+  .sub {
+    max-width: 56ch;
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+  }
+
+  .cta {
+    margin-top: 28px;
     display: flex;
-    flex-direction: column;
-    gap: 14px;
-    font-size: 1.0625rem;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .install .label {
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    font-size: var(--font-s);
     font-weight: 600;
   }
 
-  .points li {
+  .cmd {
     display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 8px 8px 8px 16px;
+    border-radius: var(--radius-m);
+  }
+
+  .cmd code {
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    font: 500 var(--font-m) / 1.5 var(--font-mono);
+  }
+
+  .links {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-size: var(--font-s);
+  }
+
+  .shot {
+    margin: 56px 0 0;
+  }
+
+  figcaption {
+    margin-top: 14px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: var(--font-s);
+  }
+
+  /* how it works */
+  .steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 16px;
+  }
+
+  .step {
+    padding: 24px;
+    display: grid;
+    gap: 10px;
+    align-content: start;
+  }
+
+  /* the editor's numbered step marker */
+  .num {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 6px;
+    border-radius: 50%;
+    font-size: 1.1875rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* features */
+  .features {
+    margin-top: 16px;
+  }
+
+  .tile {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+    border-radius: var(--radius-m);
+    background: var(--accent-wash);
+    color: var(--accent);
+  }
+
+  /* recording: the app's frame around the recorded region */
+  .rec {
+    aspect-ratio: 16 / 10;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--divider);
+    border-radius: var(--radius-l);
+    background: var(--bg-deep);
+  }
+
+  .rec-frame {
+    position: relative;
+    height: 70%;
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: end center;
+    outline: 2px solid var(--accent);
+    background: var(--surface);
+  }
+
+  .rec-frame img {
+    width: auto;
+    height: 92%;
+  }
+
+  .rec-badge {
+    position: absolute;
+    left: -2px;
+    bottom: calc(100% + 10px);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: var(--rec-badge-bg);
+    color: #fff;
+    font: 600 var(--font-s) / 1 var(--font-mono);
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--rec-dot);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .dot {
+      animation: blink 1.4s var(--ease-out) infinite alternate;
+    }
+  }
+
+  @keyframes blink {
+    to {
+      opacity: 0.3;
+    }
+  }
+
+  /* reference */
+  .group-title {
+    margin-bottom: 16px;
+  }
+
+  .ref {
+    margin-top: 48px;
+    align-items: start;
+  }
+
+  .hotkeys {
+    padding: 20px 22px 22px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  caption {
+    padding-bottom: 8px;
+    text-align: left;
+    font-size: var(--font-l);
+    font-weight: 700;
+  }
+
+  th,
+  td {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--divider);
+    text-align: left;
+    font-size: var(--font-m);
+  }
+
+  thead th {
+    color: var(--text-secondary);
+    font-size: var(--font-s);
+    font-weight: 600;
+  }
+
+  tbody th {
+    font-weight: 500;
+  }
+
+  td,
+  thead th:last-child {
+    padding-left: 16px;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+
+  .cli {
+    display: grid;
     gap: 12px;
-    align-items: flex-start;
+  }
+
+  .cli .lede {
+    margin-bottom: 8px;
+  }
+
+  .term {
+    margin: 0;
+    padding: 18px 20px;
+    overflow-x: auto;
+    background: var(--bg-deep);
+    color: var(--text);
+    font: 400 12.5px / 1.6 var(--font-mono);
+  }
+
+  /* themes: the chips only work with JS */
+  .themes {
+    display: none;
+  }
+
+  :global(html[data-js]) .themes {
+    display: block;
+  }
+
+  .picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .picker .chip {
+    height: 36px;
+    padding: 0 14px;
+    gap: 8px;
+    font-size: var(--font-m);
+  }
+
+  .swatch {
+    display: inline-flex;
+  }
+
+  .swatch span {
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--divider);
+    border-radius: 50%;
+  }
+
+  .swatch span + span {
+    margin-left: -5px;
+  }
+
+  /* download */
+  .points {
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+  }
+
+  .points li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: var(--font-m);
   }
 
   .points :global(svg) {
     flex: none;
-    margin-top: 3px;
+    color: var(--success);
   }
 
-  /* in-flow, never absolutely offset, so it cannot widen the scroll area.
-     The card hides her from the hips down: the bottom 32% of her height,
-     0.54 of her width at 400 x 676 */
-  .mascot {
-    grid-column: 2;
-    grid-row: 1 / span 3;
-    display: block;
-    width: var(--uni-w);
-    height: auto;
-    margin: 0 16px calc(var(--uni-w) * -0.54 - 40px) 0;
-    pointer-events: none;
-    filter: drop-shadow(0 14px 24px color-mix(in srgb, var(--text-on-accent) 30%, transparent));
+  .repo {
+    margin-bottom: 24px;
+    font-size: var(--font-m);
   }
 
-  .beta {
-    margin-top: 18px;
-    font-size: 0.9375rem;
-  }
-
-  .beta a {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    font-weight: 650;
-  }
-
-  /* focus rings flip with the surface they sit on: dark ink on the band,
-     accent inside the card */
-  .band :focus-visible {
-    outline-color: var(--text-on-accent);
-  }
-
-  /* positioned so it paints over Uni, whose drop-shadow filter lifts her
-     into the positioned layer */
-  .card {
-    position: relative;
-    padding: 32px;
-    border-radius: var(--radius-xl);
-    background: var(--bg-deep);
-    color: var(--text);
-    box-shadow: 0 30px 70px var(--shadow-color);
-  }
-
-  .card :focus-visible {
-    outline-color: var(--accent);
-  }
-
-  .card-label {
-    margin-bottom: 12px;
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    color: var(--text-secondary);
-  }
-
-  .card-note {
-    margin-top: 12px;
-    color: var(--ink-2);
-    font-size: 0.9375rem;
-  }
-
-  .card-note a {
-    color: var(--text);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .or {
-    margin: 28px 0 4px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--ink-2);
-    font-size: 0.9375rem;
-    font-weight: 600;
-  }
-
-  .or::before,
-  .or::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--divider);
-  }
-
-  @media (max-width: 959px) {
-    .band-inner {
-      padding-top: 64px;
-      padding-bottom: 64px;
+  @media (min-width: 640px) {
+    .features {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
-  /* too narrow to share a row with the text: Uni gets her own, under the
-     points, still behind the card */
-  @media (max-width: 767px) {
-    .band-head {
-      --uni-w: 168px;
-    }
-
-    .band-head > :not(.mascot) {
-      grid-column: 1 / -1;
-    }
-
-    .mascot {
-      grid-column: 1 / -1;
-      grid-row: 4;
-      justify-self: end;
-      margin-top: 8px;
-      margin-right: 8px;
+  @media (min-width: 768px) {
+    .steps,
+    .compositors {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
-  @media (max-width: 767px) {
-    .band {
-      margin-top: 80px;
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      align-items: end;
+      gap: 56px;
+    }
+
+    .features {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .split {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 56px;
+    }
+
+    .ref {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      align-items: start;
     }
   }
 
-  @media (max-width: 599px) {
-    .card {
-      padding: 20px;
-      border-radius: var(--radius-l);
+  @media (max-width: 479px) {
+    .section {
+      padding-top: 80px;
+    }
+
+    .hero {
+      padding-top: 48px;
     }
   }
 </style>
