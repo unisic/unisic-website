@@ -79,6 +79,6 @@ unisic --window
 unisic --measure   # on-screen measure overlay
 ```
 
-The capture flags accept modifiers: `--delay <seconds>` (0-60) waits before the shot, `--output <path>` saves to an explicit file (`-` streams the image to stdout), and `--format png|jpg|webp` picks the format for `--output`.
+The capture flags accept modifiers: `--delay <seconds>` (0-60) waits before the shot, `--output <path>` saves to an explicit file (`-` streams the image to stdout), and `--format png|jpg|webp|gif` picks the format for `--output`.
 
-If Unisic is already running, a second invocation forwards the command to the running instance, which is how compositor-side keybinds drive captures.
+If Unisic is already running, a second invocation forwards the command to the running instance, which is how compositor-side keybinds drive captures. With `--output`, that invocation waits until the file is written, replacing one already at that path, and exits with 1 when the capture failed or was cancelled.
