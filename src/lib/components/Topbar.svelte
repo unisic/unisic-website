@@ -1,28 +1,31 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import { ui, MODE_LABEL } from '#lib/ui.svelte.js';
+
+	const docs = $derived(page.url.pathname.startsWith('/docs'));
 </script>
 
 <header class="bar">
 	<div class="inner">
-		<a class="brand" href="#main">
+		<a class="brand" href="/#main">
 			<img src="/favicon.svg" alt="" width="28" height="28" />
 			Unisic
 		</a>
 		<nav aria-label="Primary">
-			<a href="#capture">Features</a>
-			<a href="#compare">Compare</a>
-			<a href="#install">Install</a>
-			<a href="/docs" data-sveltekit-reload>Docs</a>
+			<a href="/#capture">Features</a>
+			<a href="/#compare">Compare</a>
+			<a href="/#install">Install</a>
+			<a href="/docs/" aria-current={docs ? 'page' : undefined}>Docs</a>
 		</nav>
 		<div class="end">
-			<span class="badge" aria-hidden="true"><i></i>{MODE_LABEL[ui.mode]}</span>
+			{#if !docs}<span class="badge" aria-hidden="true"><i></i>{MODE_LABEL[ui.mode]}</span>{/if}
 			<button class="pause" type="button" aria-pressed={ui.paused} onclick={() => (ui.paused = !ui.paused)}>
 				<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
 					{#if ui.paused}<path d="M8 5.5v13l10-6.5z" />{:else}<path d="M9 5.5v13M15 5.5v13" />{/if}
 				</svg>
 				<span class="sr-only">Pause animations</span>
 			</button>
-			<a class="btn primary get" href="#install">Download</a>
+			<a class="btn primary get" href="/#install">Download</a>
 		</div>
 	</div>
 </header>
@@ -72,6 +75,11 @@
 		font-weight: 560;
 		text-decoration: none;
 		transition: color 150ms ease;
+	}
+	nav a[aria-current='page'] {
+		color: var(--text);
+		box-shadow: inset 0 -2px 0 var(--accent);
+		border-radius: 0;
 	}
 	@media (hover: hover) and (pointer: fine) {
 		nav a:hover {

@@ -163,7 +163,7 @@
 						{/each}
 						{#if t.docs}
 							<p class="say small">
-								Repository setup, step by step: <a href="/docs/installation" data-sveltekit-reload>installation docs</a>.
+								Repository setup, step by step: <a href="/docs/installation/">installation docs</a>.
 							</p>
 						{/if}
 					{/if}

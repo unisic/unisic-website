@@ -47,7 +47,7 @@
 			<p>
 				Uploads happen only when you press Upload or turn on upload after capture, and only to the host you picked.
 			</p>
-			<a href="/docs/introduction#privacy" data-sveltekit-reload>What exactly is sent</a>
+			<a href="/docs/introduction/#privacy">What exactly is sent</a>
 		</div>
 	</div>
 </Chapter>

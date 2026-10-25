@@ -86,7 +86,7 @@
 			Rebind any shortcut in Settings › Hotkeys. On Linux, <kbd class="cap">Ctrl</kbd>+<kbd class="cap">Esc</kbd> is fixed so a
 			stuck recording can always be stopped. More flags, such as <code>--delay</code>, <code>--output -</code> and
 			<code>--format webp</code>, are in the
-			<a href="/docs/configuration#command-line-interface" data-sveltekit-reload>CLI reference</a>.
+			<a href="/docs/configuration/#command-line-interface">CLI reference</a>.
 		</p>
 	</div>
 </Chapter>

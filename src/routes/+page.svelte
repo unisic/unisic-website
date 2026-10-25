@@ -17,10 +17,22 @@
 	import Install from '#lib/components/Install.svelte';
 	import Footer from '#lib/components/Footer.svelte';
 	import Toast from '#lib/components/Toast.svelte';
+
+	const description =
+		'Unisic draws on the selection before the shot, records GIF and video, reads text out of pixels and uploads the result. A screenshot tool for Linux Wayland with zero telemetry.';
 </script>
 
+<svelte:head>
+	<title>Unisic: screenshots, recording and OCR for Linux</title>
+	<meta name="description" content={description} />
+	<link rel="canonical" href="https://unisic.app/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://unisic.app/" />
+	<meta property="og:title" content="Unisic" />
+	<meta property="og:description" content={description} />
+</svelte:head>
+
 <div class="page" data-mode={ui.mode}>
-	<a class="skip" href="#main">Skip to content</a>
 	<Topbar />
 	<Hud />
 	<main id="main" tabindex="-1">
@@ -41,24 +53,3 @@
 	<Footer />
 	<Toast />
 </div>
-
-<style>
-	.skip {
-		position: fixed;
-		left: var(--s4);
-		top: var(--s3);
-		z-index: var(--z-toast);
-		padding: var(--s2) var(--s4);
-		border-radius: var(--r2);
-		background: var(--accent);
-		color: var(--on-accent);
-		font-weight: 600;
-		transform: translateY(-200%);
-	}
-	.skip:focus-visible {
-		transform: none;
-	}
-	main:focus {
-		outline: none;
-	}
-</style>

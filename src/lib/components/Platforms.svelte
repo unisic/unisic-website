@@ -87,7 +87,7 @@
 	</ul>
 	<p class="more wrap">
 		Which desktop takes which path, and what each one asks you to confirm:
-		<a href="/docs/compositors" data-sveltekit-reload>compositor support</a>.
+		<a href="/docs/compositors/">compositor support</a>.
 	</p>
 </Chapter>
 

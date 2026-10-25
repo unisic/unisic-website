@@ -5,11 +5,11 @@
 		{
 			title: 'Unisic',
 			links: [
-				{ href: '#capture', text: 'Capture' },
-				{ href: '#record', text: 'Record' },
-				{ href: '#keys', text: 'Hotkeys' },
-				{ href: '#compare', text: 'Compared' },
-				{ href: '#install', text: 'Install' }
+				{ href: '/#capture', text: 'Capture' },
+				{ href: '/#record', text: 'Record' },
+				{ href: '/#keys', text: 'Hotkeys' },
+				{ href: '/#compare', text: 'Compared' },
+				{ href: '/#install', text: 'Install' }
 			]
 		},
 		{
@@ -18,7 +18,7 @@
 				{ href: 'https://github.com/unisic/unisic', text: 'Source on GitHub' },
 				{ href: 'https://github.com/unisic/unisic/releases/latest', text: 'Releases' },
 				{ href: 'https://github.com/unisic/unisic/issues', text: 'Report a bug' },
-				{ href: '/docs', text: 'Documentation', reload: true }
+				{ href: '/docs/', text: 'Documentation' }
 			]
 		},
 		{
@@ -46,7 +46,7 @@
 					<h2 class="label">{g.title}</h2>
 					<ul>
 						{#each g.links as l (l.href)}
-							<li><a href={l.href} data-sveltekit-reload={l.reload ? '' : undefined}>{l.text}</a></li>
+							<li><a href={l.href}>{l.text}</a></li>
 						{/each}
 					</ul>
 				</div>
@@ -55,7 +55,7 @@
 
 		<p class="legal">
 			Unisic is free software under the
-			<a href="/docs/introduction#license" data-sveltekit-reload>GNU GPL v3</a>. Built by
+			<a href="/docs/introduction/#license">GNU GPL v3</a>. Built by
 			<a href="https://github.com/DeBondor">@DeBondor</a> and <a href="https://github.com/D3anDark">@D3anDark</a>, inspired by
 			<a href="https://getsharex.com/">ShareX</a> and <a href="https://apps.kde.org/spectacle/">Spectacle</a>.
 		</p>

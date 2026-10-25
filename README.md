@@ -1,8 +1,8 @@
 # unisic.app
 
-The landing page for [Unisic](https://github.com/unisic/unisic), a screenshot and screen-recording app for Linux.
+The website for [Unisic](https://github.com/unisic/unisic), a screenshot and screen-recording app for Linux: the landing page and the documentation.
 
-SvelteKit with Svelte 5 and `adapter-static`: the page is prerendered to plain HTML, CSS and a small amount of JS. No analytics, no external requests at runtime, fonts are self-hosted.
+SvelteKit with Svelte 5 and `adapter-static`: every page is prerendered to plain HTML, CSS and a small amount of JS. No analytics, no external requests at runtime, fonts are self-hosted.
 
 ## Develop
 
@@ -21,17 +21,19 @@ npm run preview   # serve build/ locally
 
 ## Not built here
 
-The page links to these paths, but this project does not produce them. The deploy has to serve them from elsewhere:
+The install commands fetch `/install.sh`, the script from the Unisic repository. This project does not produce it, so the deploy has to serve it from elsewhere.
 
-- `/install.sh`, the install script from the Unisic repository
-- `/docs/*`, the documentation
+## Documentation
 
-Links to them carry `data-sveltekit-reload`, so the router leaves them to the server.
+Each page is a Markdown file in `content/docs/`, with front matter for its title, description, group and order. `src/lib/server/docs.ts` reads them at build time, renders them with `marked`, highlights the code blocks and collects the table of contents and the filter index. The browser gets the rendered HTML and the filter index (titles and headings), not `marked` or the highlighter.
+
+Pages live at `/docs/<file name>/`, with the trailing slash the old site used. A new file shows up in the sidebar and the overview on the next build.
 
 ## Layout
 
 - `src/routes/+page.svelte` puts the chapters in order
-- `src/lib/components/` holds one component per chapter, plus the shared `Chapter`, `Frame`, `Copy` and `Thumb`
+- `src/routes/docs/` holds the docs layout with the sidebar and filter, the overview and the page template
+- `src/lib/components/` holds one component per chapter, plus the shared `Chapter`, `Frame`, `Copy`, `Thumb` and `Prose`
 - `src/lib/ui.svelte.ts` holds the shared state: capture mode, OS, the captures shown in Share, and the pause switch
 - `src/app.css` holds the tokens and the themes
 
