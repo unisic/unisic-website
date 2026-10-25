@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
 	import Frame from './Frame.svelte';
-	import { inview, calm } from '#lib/ui.svelte.js';
 
 	// The editor's tool list and shortcuts, in the order of qml/ToolCatalog.qml.
 	const TOOLS = [
@@ -23,15 +22,6 @@
 		['N', 'Step marker'],
 		['C', 'Crop']
 	];
-
-	let visible = $state(false);
-	let on = $state(0);
-
-	$effect(() => {
-		if (!visible || calm.current) return;
-		const timer = setInterval(() => (on = (on + 1) % TOOLS.length), 1100);
-		return () => clearInterval(timer);
-	});
 </script>
 
 <Chapter
@@ -50,11 +40,11 @@
 			alt="The Unisic editor with a screenshot marked up with a circle, arrows, a callout reading I LOVE LINUX, a measurement of 213 px at minus 11 degrees, pixelated and blurred areas, steps 1 to 3 and a 262 by 118 rectangle, above Copy, Save and Upload buttons."
 		/>
 
-		<div class="side" {@attach inview((v) => (visible = v))}>
+		<div class="side">
 			<h3>17 tools, one key each.</h3>
 			<ul class="tools" aria-label="Editor tools and their shortcuts">
-				{#each TOOLS as [key, name], i (key)}
-					<li data-on={visible && !calm.current && i === on}>
+				{#each TOOLS as [key, name] (key)}
+					<li>
 						<kbd class="cap">{key}</kbd>
 						<span>{name}</span>
 					</li>
@@ -93,16 +83,6 @@
 		padding: 6px 0;
 		font-size: var(--t-small);
 		color: var(--muted);
-		transition: color 160ms ease;
-	}
-	li[data-on='true'] {
-		color: var(--text);
-	}
-	li[data-on='true'] kbd {
-		background: var(--mode);
-		color: var(--mode-ink);
-		transform: translateY(1px);
-		box-shadow: inset 0 -1px 0 rgb(0 0 0 / 0.28);
 	}
 	.note {
 		max-width: 46ch;

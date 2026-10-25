@@ -1,31 +1,23 @@
 <script lang="ts">
 	import { ui, inview } from '#lib/ui.svelte.js';
 
-	const LABELS = ['Capture and record', 'Edit and share'];
-	const ROWS = [
-		['Region', 'Full screen', 'Active window', 'Scrolling capture', 'GIF', 'MP4', 'WebM', 'System audio', 'Instant replay', 'OCR', 'QR codes'],
-		['Arrows', 'Blur', 'Pixelate', 'Step markers', 'Callouts', 'Magnifier', 'Imgur', 'catbox.moe', '.sxcu', 'FTP', 'SFTP', 'History', 'Themes']
-	];
+	const ITEMS = ['Region', 'Full screen', 'Scrolling capture', 'GIF', 'MP4', 'System audio', 'Instant replay', 'OCR', 'QR codes', 'Arrows', 'Blur', 'Step markers', 'Callouts', '.sxcu', 'SFTP', 'History', 'Themes'];
 
 	let run = $state(false);
 </script>
 
 <div class="marquee" data-run={run && !ui.paused} {@attach inview((v) => (run = v))}>
-	{#each ROWS as row, r (r)}
-		<div class="row" class:back={r === 1}>
-			{#each [0, 1] as copy (copy)}
-				<ul class="track" aria-hidden={copy === 1 ? 'true' : undefined} aria-label={copy === 0 ? LABELS[r] : undefined}>
-					{#each row as item (item)}<li>{item}</li>{/each}
-				</ul>
-			{/each}
-		</div>
-	{/each}
+	<div class="row">
+		{#each [0, 1] as copy (copy)}
+			<ul class="track" aria-hidden={copy === 1 ? 'true' : undefined} aria-label={copy === 0 ? 'What Unisic does' : undefined}>
+				{#each ITEMS as item (item)}<li>{item}</li>{/each}
+			</ul>
+		{/each}
+	</div>
 </div>
 
 <style>
 	.marquee {
-		display: grid;
-		gap: var(--s2);
 		padding-block: var(--s5);
 		overflow: hidden;
 		border-block: 1px solid var(--line);
@@ -74,23 +66,10 @@
 	li:nth-child(5n + 5)::after {
 		background: var(--c-video);
 	}
-	.back li {
-		font: 400 clamp(1rem, 0.8rem + 0.8vw, 1.375rem) var(--font-mono);
-		letter-spacing: 0;
-		color: var(--muted);
-	}
-	.back li::after {
-		width: 6px;
-		height: 6px;
-	}
 
 	@media (prefers-reduced-motion: no-preference) {
 		.track {
-			animation: slide 70s linear infinite paused;
-		}
-		.back .track {
-			animation-duration: 55s;
-			animation-direction: reverse;
+			animation: slide 120s linear infinite paused;
 		}
 		[data-run='true'] .track {
 			animation-play-state: running;

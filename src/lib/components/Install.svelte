@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
 	import Copy from './Copy.svelte';
-	import { ui, inview, calm } from '#lib/ui.svelte.js';
+	import { ui } from '#lib/ui.svelte.js';
 
 	const VERSION = '0.8.8';
 	const DOWNLOAD = `https://github.com/unisic/unisic/releases/download/v${VERSION}`;
@@ -79,25 +79,15 @@
 		['Install the Flatpak version       (sandboxed)', 'Installs Unisic as a Flatpak. No password needed.'],
 		['Install a specific (older) version', 'Pick an exact, older version from a list.']
 	];
-	const PATH = [0, 1, 2, 3, 2, 1];
 
 	let active = $state(0);
 	let tabs: HTMLButtonElement[] = [];
-	let step = $state(0);
-	let visible = $state(false);
-	const sel = $derived(PATH[step]);
 
 	$effect(() => {
 		if (/Windows/.test(navigator.userAgent)) {
 			ui.os = 'windows';
 			active = TABS.length - 1;
 		}
-	});
-
-	$effect(() => {
-		if (!visible || calm.current) return;
-		const timer = setInterval(() => (step = (step + 1) % PATH.length), 1300);
-		return () => clearInterval(timer);
 	});
 
 	function select(i: number, focus = false) {
@@ -175,18 +165,18 @@
 			</p>
 		</div>
 
-		<figure class="term" {@attach inview((v) => (visible = v))}>
+		<figure class="term">
 			<div class="screen" aria-hidden="true">
 				<pre class="top">Unisic  installer
 <span class="dim">a screenshot & screen-recording app for Linux</span></pre>
 				<pre class="status dim">Install or update</pre>
 				<ul>
 					{#each MENU as [label], i (label)}
-						<li class:on={sel === i}><span class="caret">{sel === i ? '>' : ' '}</span> {label}</li>
+						<li class:on={i === 0}><span class="caret">{i === 0 ? '>' : ' '}</span> {label}</li>
 					{/each}
 					<li class="back">{'  Back'}</li>
 				</ul>
-				<pre class="help dim">{MENU[sel][1]}
+				<pre class="help dim">{MENU[0][1]}
 Up/Down  move     Enter  choose     q  back</pre>
 			</div>
 			<figcaption>

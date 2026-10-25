@@ -1,11 +1,9 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
-	import { ui, inview } from '#lib/ui.svelte.js';
 
 	const URL = 'https://api.github.com/repos/unisic/unisic/releases/latest';
 
 	let updates = $state(true);
-	let run = $state(false);
 </script>
 
 <Chapter
@@ -17,10 +15,10 @@
 	lede="No telemetry, no analytics, no account. The only request Unisic makes on its own asks GitHub whether there is a newer release, shortly after it starts and once a day after that. Nothing about you or your captures is sent."
 >
 	<div class="grid wrap">
-		<div class="wire panel" data-on={updates} data-run={run && updates && !ui.paused} {@attach inview((v) => (run = v))}>
+		<div class="wire panel" data-on={updates}>
 			<div class="ends" aria-hidden="true">
 				<span class="node">Unisic</span>
-				<span class="line"><i class="packet"></i></span>
+				<span class="line"></span>
 				<span class="node">api.github.com</span>
 			</div>
 
@@ -78,22 +76,11 @@
 	.line {
 		position: relative;
 		height: 2px;
-		container-type: inline-size;
 		background: var(--line-strong);
 		transition: opacity 200ms ease;
 	}
 	[data-on='false'] .line {
 		opacity: 0.35;
-	}
-	.packet {
-		position: absolute;
-		left: 0;
-		top: -4px;
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		background: var(--mode);
-		opacity: 0;
 	}
 	.log {
 		display: grid;
@@ -196,41 +183,6 @@
 		.grid {
 			grid-template-columns: 1.4fr 1fr;
 			align-items: start;
-		}
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		.packet {
-			animation: packet 3.2s var(--ease-in-out) infinite paused;
-		}
-		[data-run='true'] .packet {
-			animation-play-state: running;
-		}
-	}
-	@keyframes packet {
-		0% {
-			opacity: 0;
-			transform: none;
-		}
-		8% {
-			opacity: 1;
-		}
-		42% {
-			opacity: 1;
-			transform: translateX(calc(100cqw - 10px));
-			background: var(--mode);
-		}
-		50% {
-			background: var(--success);
-		}
-		88% {
-			opacity: 1;
-			background: var(--success);
-		}
-		96%,
-		100% {
-			opacity: 0;
-			transform: none;
 		}
 	}
 </style>

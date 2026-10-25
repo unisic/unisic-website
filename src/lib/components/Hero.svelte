@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount, untrack } from 'svelte';
-	import { ui, reduced, calm, track, inview } from '#lib/ui.svelte.js';
+	import { onMount } from 'svelte';
+	import { ui, reduced, track } from '#lib/ui.svelte.js';
 	import Copy from './Copy.svelte';
 
 	type Tool =
@@ -54,13 +54,7 @@
 		['#C8ACD6', 'Lavender'],
 		['#FFFFFF', 'White']
 	];
-	const COMMANDS = [
-		'unisic --region',
-		'unisic --scroll',
-		'unisic --gif',
-		'unisic --fullscreen --delay 3',
-		'unisic --region --output - | wl-copy'
-	];
+	const COMMAND = 'unisic --region';
 	const MAX_SHAPES = 60;
 	const MAX_POINTS = 2000;
 	const MAX_HISTORY = 40;
@@ -87,7 +81,6 @@
 	let flash = $state(0);
 	let hovering = $state(false);
 	let now = $state<Date | null>(null);
-	let typed = $state(COMMANDS[0]);
 	let drag: Drag | null = null;
 	let origin = { left: 0, top: 0 };
 	let touched = false;
@@ -358,37 +351,12 @@
 		};
 	});
 
-	let onscreen = $state(false);
-	$effect(() => {
-		if (!onscreen || calm.current) return;
-		// Resume the line that was cut off, so pausing never jumps to another command.
-		const start = untrack(() => typed);
-		let line = Math.max(0, COMMANDS.findIndex((c) => c.startsWith(start)));
-		let i = start.length;
-		let hold = 0;
-		const timer = setInterval(() => {
-			if (hold > 0) {
-				hold--;
-				return;
-			}
-			const full = COMMANDS[line];
-			if (i < full.length) typed = full.slice(0, ++i);
-			else {
-				hold = 28;
-				line = (line + 1) % COMMANDS.length;
-				i = 0;
-				typed = '';
-			}
-		}, 70);
-		return () => clearInterval(timer);
-	});
-
 	const time = $derived(now?.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) ?? '');
 	const shown = $derived(draft ? [...shapes, draft] : shapes);
 </script>
 
 <section class="hero" aria-label="Unisic" {@attach track('shot')}>
-	<div class="stage" bind:this={stage} data-run={onscreen && !ui.paused} {@attach inview((v) => (onscreen = v))}>
+	<div class="stage" bind:this={stage}>
 		<div class="shot" bind:this={shot}>
 			<div class="desk">
 				<div class="headline" bind:this={headline}>
@@ -399,7 +367,7 @@
 				<div class="win" aria-hidden="true">
 					<img class="uni" src="/img/uni.webp" alt="" width="376" height="568" />
 					<div class="win-bar"><i></i><i></i><i></i><span>~ zsh</span></div>
-					<p class="win-body"><span class="prompt">$</span> {typed}<span class="caret"></span></p>
+					<p class="win-body"><span class="prompt">$</span> {COMMAND}<span class="caret"></span></p>
 				</div>
 
 				<div class="panel" aria-hidden="true">
@@ -657,19 +625,6 @@
 		margin-left: 2px;
 		vertical-align: text-bottom;
 		background: var(--accent);
-	}
-	@media (prefers-reduced-motion: no-preference) {
-		.caret {
-			animation: blink 1.1s steps(1) infinite paused;
-		}
-		[data-run='true'] .caret {
-			animation-play-state: running;
-		}
-	}
-	@keyframes blink {
-		50% {
-			opacity: 0;
-		}
 	}
 	@media (min-width: 1080px) {
 		.win {

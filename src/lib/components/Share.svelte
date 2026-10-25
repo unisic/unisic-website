@@ -2,12 +2,10 @@
 	import Chapter from './Chapter.svelte';
 	import Frame from './Frame.svelte';
 	import Thumb from './Thumb.svelte';
-	import { ui, inview } from '#lib/ui.svelte.js';
+	import { ui } from '#lib/ui.svelte.js';
 
 	const STEPS = ['Capture', 'Copy image', 'Upload', 'Link copied'];
 	const HOSTS = ['Imgur', 'catbox.moe', 'Litterbox', 'tmpfiles.org', 'vgy.me', 'Buzzheavier', 'Custom HTTP', '.sxcu import', 'FTP', 'SFTP'];
-
-	let run = $state(false);
 </script>
 
 <Chapter
@@ -18,9 +16,9 @@
 	lede="After a capture Unisic can copy the image, save it, upload it and put the link on your clipboard. Every capture lands in a history with thumbnails, and deleting one moves the file to the trash instead of erasing it."
 >
 	<div class="wrap stack">
-		<ol class="flow" data-run={run && !ui.paused} {@attach inview((v) => (run = v))}>
-			{#each STEPS as step, i (step)}
-				<li style:--i={i}><span class="dot" aria-hidden="true"></span>{step}</li>
+		<ol class="flow">
+			{#each STEPS as step (step)}
+				<li><span class="dot" aria-hidden="true"></span>{step}</li>
 			{/each}
 		</ol>
 
@@ -93,19 +91,14 @@
 		background: var(--mode);
 		box-shadow: 0 0 0 4px var(--bg);
 	}
-	.flow::before,
-	.flow::after {
+	.flow::before {
 		content: '';
 		position: absolute;
 		left: 8px;
 		right: calc(25% - 8px);
 		top: calc(var(--s2) + 7px);
 		height: 2px;
-		background: var(--line-strong);
-	}
-	.flow::after {
 		background: var(--mode);
-		transform-origin: left;
 	}
 
 	.cols {
@@ -190,17 +183,6 @@
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
-		.flow::after {
-			animation: fill 4.8s var(--ease-in-out) infinite paused;
-		}
-		.dot {
-			animation: lit 4.8s ease infinite backwards paused;
-			animation-delay: calc(var(--i) * 1.2s);
-		}
-		[data-run='true']::after,
-		[data-run='true'] .dot {
-			animation-play-state: running;
-		}
 		@starting-style {
 			.thumbs li:first-child {
 				opacity: 0;
@@ -211,32 +193,6 @@
 			transition:
 				opacity 260ms var(--ease-out),
 				transform 260ms var(--ease-out);
-		}
-	}
-	@keyframes fill {
-		0% {
-			transform: scaleX(0);
-		}
-		75%,
-		90% {
-			transform: scaleX(1);
-		}
-		100% {
-			transform: scaleX(1);
-			opacity: 0;
-		}
-	}
-	@keyframes lit {
-		0%,
-		24%,
-		100% {
-			background: var(--line-strong);
-			transform: none;
-		}
-		4%,
-		16% {
-			background: var(--mode);
-			transform: scale(1.35);
 		}
 	}
 </style>

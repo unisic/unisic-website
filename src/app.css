@@ -89,7 +89,6 @@
 	--z-frame: 3;
 	--z-tools: 4;
 	--z-bar: 10;
-	--z-hud: 11;
 	--z-toast: 12;
 
 	--wrap: min(100% - 2 * var(--s4), 1240px);

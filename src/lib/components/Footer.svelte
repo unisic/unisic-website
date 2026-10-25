@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { ui, inview } from '#lib/ui.svelte.js';
 
 	const GROUPS = [
 		{
@@ -29,11 +28,9 @@
 			]
 		}
 	];
-
-	let run = $state(false);
 </script>
 
-<footer class="foot" data-run={run && !ui.paused} {@attach inview((v) => (run = v))}>
+<footer class="foot">
 	<div class="wrap grid">
 		<div class="sign">
 			<img class="uni" src="/img/uni.webp" alt="Uni, the Unisic mascot" width="376" height="568" loading="lazy" decoding="async" />
@@ -133,23 +130,6 @@
 		}
 		.legal {
 			grid-column: 1 / -1;
-		}
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		.uni {
-			animation: float 5s var(--ease-in-out) infinite alternate paused;
-		}
-		[data-run='true'] .uni {
-			animation-play-state: running;
-		}
-	}
-	@keyframes float {
-		from {
-			transform: translateY(0) rotate(-2deg);
-		}
-		to {
-			transform: translateY(-10px) rotate(2deg);
 		}
 	}
 </style>

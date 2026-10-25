@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
-	import { ui, inview, calm } from '#lib/ui.svelte.js';
+	import { ui } from '#lib/ui.svelte.js';
 
 	type Row = { action: string; linux: string[]; windows: string[]; cli?: string };
 
@@ -22,15 +22,6 @@
 		windows: { Meta: 'Win', Escape: 'Esc' }
 	};
 
-	let visible = $state(false);
-	let on = $state(0);
-
-	$effect(() => {
-		if (!visible || calm.current) return;
-		const timer = setInterval(() => (on = (on + 1) % ROWS.length), 1600);
-		return () => clearInterval(timer);
-	});
-
 	const keys = (combo: string) => combo.split('+').map((k) => NAME[ui.os][k] ?? k);
 </script>
 
@@ -49,7 +40,7 @@
 		</div>
 
 		<!-- svelte-ignore a11y_no_noninteractive_tabindex: a scrolling region must take focus so keyboard users can scroll it -->
-		<div class="scroller" role="region" aria-labelledby="keys-caption" tabindex="0" {@attach inview((v) => (visible = v))}>
+		<div class="scroller" role="region" aria-labelledby="keys-caption" tabindex="0">
 			<table>
 				<caption id="keys-caption" class="sr-only">Default hotkeys on {ui.os === 'linux' ? 'Linux' : 'Windows'} and the matching command</caption>
 				<thead>
@@ -60,8 +51,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each ROWS as row, i (row.action)}
-						<tr data-on={visible && !calm.current && i === on}>
+					{#each ROWS as row (row.action)}
+						<tr>
 							<th scope="row">{row.action}</th>
 							<td>
 								{#each row[ui.os] as combo, c (combo)}
@@ -161,17 +152,6 @@
 	}
 	tbody tr + tr {
 		border-top: 1px solid var(--line);
-	}
-	tbody tr {
-		transition: background-color 200ms ease;
-	}
-	tbody tr[data-on='true'] {
-		background: color-mix(in oklab, var(--mode) 10%, transparent);
-	}
-	tbody tr[data-on='true'] kbd {
-		background: var(--mode);
-		color: var(--mode-ink);
-		transform: translateY(1px);
 	}
 	tbody th {
 		font-weight: 600;

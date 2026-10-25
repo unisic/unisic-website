@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { flushSync } from 'svelte';
 	import Chapter from './Chapter.svelte';
-	import { inview, reduced, calm } from '#lib/ui.svelte.js';
+	import { reduced } from '#lib/ui.svelte.js';
 
 	type Swatch = { name: string; bg: string; surface: string; accent: string; text: string };
 	type Theme = { id: string; file: string; json: Swatch & Record<string, string | boolean> };
@@ -53,8 +53,6 @@
 
 	let current = $state('unisic');
 	let lang = $state(0);
-	let manual = $state(false);
-	let visible = $state(false);
 
 	const theme = $derived(THEMES.find((t) => t.id === current) ?? THEMES[0]);
 	const entries = $derived(Object.entries(theme.json));
@@ -62,12 +60,6 @@
 
 	$effect(() => {
 		current = document.documentElement.dataset.theme ?? 'unisic';
-	});
-
-	$effect(() => {
-		if (!visible || manual || calm.current) return;
-		const timer = setInterval(() => (lang = (lang + 1) % LANGS.length), 2400);
-		return () => clearInterval(timer);
 	});
 
 	function pick(id: string, e: MouseEvent & { currentTarget: HTMLElement }) {
@@ -139,7 +131,7 @@
 			</figure>
 		</div>
 
-		<div class="langs panel" {@attach inview((v) => (visible = v))}>
+		<div class="langs panel">
 			<p class="label">Interface language</p>
 			<div class="codes" role="group" aria-label="Show the interface in">
 				{#each LANGS as l, i (l.code)}
@@ -147,10 +139,7 @@
 						type="button"
 						lang={l.code}
 						aria-pressed={lang === i}
-						onclick={() => {
-							lang = i;
-							manual = true;
-						}}>{l.name}</button
+						onclick={() => (lang = i)}>{l.name}</button
 					>
 				{/each}
 			</div>
