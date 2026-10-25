@@ -12,7 +12,7 @@
 			Unisic
 		</a>
 		<nav aria-label="Primary">
-			<a href="/#capture">Features</a>
+			<a href="/#why">Features</a>
 			<a href="/#compare">Compare</a>
 			<a href="/#install">Install</a>
 			<a href="/docs/" aria-current={docs ? 'page' : undefined}>Docs</a>

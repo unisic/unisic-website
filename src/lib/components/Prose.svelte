@@ -124,7 +124,8 @@
 		content: attr(data-lang);
 		grid-area: 1 / 1;
 		padding: var(--s2) var(--s4);
-		font: var(--t-label) var(--font-mono);
+		font-size: var(--t-label);
+		font-weight: 600;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--muted);
@@ -202,7 +203,8 @@
 		display: flex;
 		align-items: center;
 		gap: var(--s2);
-		font: var(--t-label) var(--font-mono);
+		font-size: var(--t-label);
+		font-weight: 600;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 	}

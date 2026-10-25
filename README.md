@@ -43,4 +43,4 @@ Every looping animation runs only while its section is on screen and stops when 
 
 ## Fonts
 
-Bricolage Grotesque and Departure Mono, both under the SIL Open Font License; the license files are in `static/fonts/`.
+Bricolage Grotesque, under the SIL Open Font License; the license file is in `static/fonts/`.

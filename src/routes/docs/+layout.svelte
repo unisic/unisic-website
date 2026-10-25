@@ -199,7 +199,8 @@
 	}
 	.in {
 		display: block;
-		font: var(--t-label) var(--font-mono);
+		font-size: var(--t-label);
+		font-weight: 600;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: var(--muted);

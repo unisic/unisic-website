@@ -2,6 +2,7 @@
 	import { ui } from '#lib/ui.svelte.js';
 	import Topbar from '#lib/components/Topbar.svelte';
 	import Hero from '#lib/components/Hero.svelte';
+	import Why from '#lib/components/Why.svelte';
 	import Capture from '#lib/components/Capture.svelte';
 	import Edit from '#lib/components/Edit.svelte';
 	import Record from '#lib/components/Record.svelte';
@@ -32,6 +33,7 @@
 	<Topbar />
 	<main id="main" tabindex="-1">
 		<Hero />
+		<Why />
 		<Capture />
 		<Edit />
 		<Record />

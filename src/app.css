@@ -17,12 +17,6 @@
 		U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
 		U+2C60-2C7F, U+A720-A7FF;
 }
-@font-face {
-	font-family: 'Departure Mono';
-	src: url('/fonts/departure-mono.woff2') format('woff2');
-	font-weight: 400;
-	font-display: swap;
-}
 
 /* Theme tokens use the key names of Unisic's theme JSON files. */
 :root {
@@ -53,7 +47,7 @@
 	--line-strong: color-mix(in oklab, var(--text) 26%, transparent);
 
 	--font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
-	--font-mono: 'Departure Mono', ui-monospace, 'SFMono-Regular', monospace;
+	--font-mono: ui-monospace, 'SFMono-Regular', 'Cascadia Mono', 'DejaVu Sans Mono', Menlo, Consolas, monospace;
 
 	--s1: 4px;
 	--s2: 8px;
@@ -71,7 +65,7 @@
 	--r3: 16px;
 	--r4: 26px;
 
-	--t-label: 0.6875rem;
+	--t-label: 0.75rem;
 	--t-small: 0.875rem;
 	--t-body: 1.0625rem;
 	--t-lede: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
@@ -279,8 +273,8 @@ main:focus {
 }
 
 .label {
-	font-family: var(--font-mono);
 	font-size: var(--t-label);
+	font-weight: 600;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	color: var(--muted);

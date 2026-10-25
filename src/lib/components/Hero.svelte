@@ -55,6 +55,7 @@
 		['#FFFFFF', 'White']
 	];
 	const COMMAND = 'unisic --region';
+	const INSTALL = 'curl -fsSL https://unisic.app/install.sh | bash';
 	const MAX_SHAPES = 60;
 	const MAX_POINTS = 2000;
 	const MAX_HISTORY = 40;
@@ -360,7 +361,7 @@
 		<div class="shot" bind:this={shot}>
 			<div class="desk">
 				<div class="headline" bind:this={headline}>
-					<p class="kicker">Screenshot tool for Linux Wayland</p>
+					<p class="kicker">Free and open source screenshot tool for Linux Wayland</p>
 					<h1>Take the shot. Unisic handles everything <span class="mark" bind:this={mark}>after.</span></h1>
 				</div>
 
@@ -500,18 +501,28 @@
 	</div>
 
 	<div class="cta wrap">
-		<p class="lede">
-			Draw on the selection before the shot, record the same region as a GIF or video, read the text in it, paste the link. Free and open source, with no account and no telemetry.
-		</p>
-		<div class="act">
-			<div class="oneliner">
-				<code>curl -fsSL https://unisic.app/install.sh | bash</code>
-				<Copy text="curl -fsSL https://unisic.app/install.sh | bash" />
-			</div>
-			<a class="btn primary" href="#install">Install Unisic</a>
-			<a class="btn" href="https://github.com/unisic/unisic">Source</a>
+		<div class="about">
+			<p class="lede">
+				Capture a region, draw on it before the shot, record it as a GIF or video, copy the text out of it and upload the link.
+			</p>
+			<ul class="facts">
+				{#each ['Free, GPL-3.0', 'No account', 'No telemetry'] as fact (fact)}
+					<li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>{fact}</li>
+				{/each}
+				<li class="ver">v0.8.8, 2026-10-19</li>
+			</ul>
 		</div>
-		<p class="label meta">v0.8.8 · 2026-10-19 · GPL-3.0</p>
+		<div class="get">
+			<div class="get-head">
+				<p class="get-title">Install free on any distro</p>
+				<Copy text={INSTALL} />
+			</div>
+			<code class="oneliner"><span class="prompt" aria-hidden="true">$</span> {INSTALL}</code>
+			<p class="more">
+				<a href="#install">Fedora, Arch, Debian and other packages</a>
+				<a href="https://github.com/unisic/unisic">Source on GitHub</a>
+			</p>
+		</div>
 	</div>
 </section>
 
@@ -554,9 +565,8 @@
 	}
 	.kicker {
 		margin-bottom: var(--s4);
-		font-family: var(--font-mono);
-		font-size: var(--t-body);
-		letter-spacing: 0.04em;
+		font-size: var(--t-lede);
+		font-weight: 600;
 		color: var(--text);
 	}
 	h1 {
@@ -617,6 +627,7 @@
 	}
 	.prompt {
 		color: var(--success);
+		user-select: none;
 	}
 	.caret {
 		display: inline-block;
@@ -1037,46 +1048,101 @@
 	.cta {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		gap: var(--s4) var(--s6);
+		gap: var(--s5) var(--s7);
 		padding-block: var(--s5) var(--s6);
 	}
+	.about {
+		display: grid;
+		align-content: start;
+		gap: var(--s4);
+	}
 	.lede {
-		max-width: 58ch;
+		max-width: 52ch;
 		font-size: var(--t-lede);
 		line-height: 1.45;
 	}
-	.act {
+	.facts {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
-		gap: var(--s3);
+		gap: var(--s2) var(--s4);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: var(--t-small);
+		font-weight: 600;
 	}
-	.oneliner {
+	.facts li {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+	}
+	.facts .ver {
+		color: var(--muted);
+	}
+	.facts .icon {
+		width: 16px;
+		height: 16px;
+		color: var(--success);
+	}
+	.get {
+		display: grid;
+		gap: var(--s3);
+		padding: var(--s4);
+		border-radius: var(--r4);
+		background: var(--surface);
+		box-shadow:
+			inset 0 0 0 1px var(--line),
+			0 24px 48px -28px rgb(0 0 0 / 0.55);
+	}
+	.get-head {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		gap: var(--s3);
-		min-width: 0;
-		max-width: 100%;
-		min-height: 44px;
-		padding: 4px 4px 4px var(--s4);
+	}
+	.get-title {
+		font-size: var(--t-h3);
+		font-weight: 720;
+		font-stretch: 78%;
+		line-height: 1.05;
+		letter-spacing: -0.01em;
+	}
+	.oneliner {
+		padding: var(--s3) var(--s4);
 		border-radius: var(--r2);
 		background: var(--deep);
 		box-shadow: inset 0 0 0 1px var(--line);
-	}
-	.oneliner code {
-		overflow-x: auto;
-		white-space: nowrap;
 		font-size: var(--t-small);
-		scrollbar-width: none;
+		line-height: 1.5;
+		overflow-wrap: anywhere;
 	}
-	@media (min-width: 1000px) {
-		.cta {
-			grid-template-columns: minmax(0, 1fr) auto;
-			align-items: end;
+	.get :global(.copy) {
+		background: var(--accent);
+		color: var(--on-accent);
+	}
+	.more {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s1) var(--s5);
+		font-size: var(--t-small);
+	}
+	.more a {
+		color: var(--accent);
+	}
+	@media (hover: hover) and (pointer: fine) {
+		.get :global(.copy:hover) {
+			background: color-mix(in oklab, var(--accent) 86%, var(--text));
 		}
-		.act {
-			grid-row: span 2;
-			justify-content: flex-end;
+	}
+	@media (min-width: 600px) {
+		.oneliner {
+			font-size: var(--t-body);
+		}
+	}
+	@media (min-width: 1100px) {
+		.cta {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 600px);
+			align-items: center;
 		}
 	}
 </style>

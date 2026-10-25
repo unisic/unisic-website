@@ -99,7 +99,8 @@
 		overflow-wrap: anywhere;
 	}
 	.when {
-		font: var(--t-label) var(--font-mono);
+		font-size: var(--t-label);
+		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
 		color: var(--muted);
