@@ -1,0 +1,387 @@
+@font-face {
+	font-family: 'Bricolage Grotesque';
+	src: url('/fonts/bricolage-latin.woff2') format('woff2');
+	font-weight: 200 800;
+	font-stretch: 75% 100%;
+	font-display: swap;
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+		U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: 'Bricolage Grotesque';
+	src: url('/fonts/bricolage-latin-ext.woff2') format('woff2');
+	font-weight: 200 800;
+	font-stretch: 75% 100%;
+	font-display: swap;
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+		U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+		U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Departure Mono';
+	src: url('/fonts/departure-mono.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+}
+
+/* Theme tokens use the key names of Unisic's theme JSON files. */
+:root {
+	--primary: #17153b;
+	--secondary: #2e236c;
+	--tertiary: #433d8b;
+	--accent: #c8acd6;
+	--bg: #100e2c;
+	--deep: #0b0921;
+	--surface: #1e1b4a;
+	--surface-hi: #221f52;
+	--text: #f3f0fa;
+	--on-accent: #1b1834;
+	--danger: #ff6b81;
+	--success: #7bd88f;
+	--mute-mix: 66%;
+	--scrim: rgb(5 4 18 / 0.62);
+
+	/* Capture mode colors from unisic-kit, fixed across themes. */
+	--c-measure: #4fc3f7;
+	--c-ocr: #5ad17a;
+	--c-gif: #ffb020;
+	--c-video: #ff4d4d;
+	--ink: #17153b;
+
+	--muted: color-mix(in oklab, var(--text) var(--mute-mix), var(--bg));
+	--line: color-mix(in oklab, var(--text) 14%, transparent);
+	--line-strong: color-mix(in oklab, var(--text) 26%, transparent);
+
+	--font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'Departure Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+	--s1: 4px;
+	--s2: 8px;
+	--s3: 12px;
+	--s4: 16px;
+	--s5: 24px;
+	--s6: 32px;
+	--s7: 48px;
+	--s8: 64px;
+	--s9: 96px;
+	--s10: 144px;
+
+	--r1: 6px;
+	--r2: 10px;
+	--r3: 16px;
+	--r4: 26px;
+
+	--t-label: 0.6875rem;
+	--t-small: 0.875rem;
+	--t-body: 1.0625rem;
+	--t-lede: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+	--t-h3: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+	--t-h2: clamp(2.75rem, 1.6rem + 5vw, 6.25rem);
+	--t-hero: clamp(3.25rem, 1.4rem + 8.4vw, 10rem);
+
+	--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+	--ease-icon: cubic-bezier(0.2, 0, 0, 1);
+
+	/* Layer scale: inside the hero, then page-level chrome. */
+	--z-ink: 2;
+	--z-frame: 3;
+	--z-tools: 4;
+	--z-bar: 10;
+	--z-hud: 11;
+	--z-toast: 12;
+
+	--wrap: min(100% - 2 * var(--s4), 1240px);
+	color-scheme: dark;
+}
+
+:root[data-theme='latte'] {
+	--primary: #eff1f5;
+	--secondary: #e6e9ef;
+	--tertiary: #ccd0da;
+	--accent: #8839ef;
+	--bg: #eff1f5;
+	--deep: color-mix(in oklab, #eff1f5 90%, #4c4f69);
+	--surface: #ffffff;
+	--surface-hi: #e6e9ef;
+	--text: #4c4f69;
+	--on-accent: #ffffff;
+	--danger: #d20f39;
+	--success: #40a02b;
+	--mute-mix: 86%;
+	--scrim: rgb(76 79 105 / 0.42);
+	color-scheme: light;
+}
+:root[data-theme='mocha'] {
+	--primary: #1e1e2e;
+	--secondary: #181825;
+	--tertiary: #45475a;
+	--accent: #cba6f7;
+	--bg: #1e1e2e;
+	--deep: #11111b;
+	--surface: #313244;
+	--surface-hi: #45475a;
+	--text: #cdd6f4;
+	--on-accent: #1e1e2e;
+	--danger: #f38ba8;
+	--success: #a6e3a1;
+}
+:root[data-theme='dracula'] {
+	--primary: #282a36;
+	--secondary: #343746;
+	--tertiary: #44475a;
+	--accent: #bd93f9;
+	--bg: #282a36;
+	--deep: #1e202a;
+	--surface: #343746;
+	--surface-hi: #44475a;
+	--text: #f8f8f2;
+	--on-accent: #282a36;
+	--danger: #ff5555;
+	--success: #50fa7b;
+}
+:root[data-theme='gruvbox'] {
+	--primary: #282828;
+	--secondary: #3c3836;
+	--tertiary: #504945;
+	--accent: #fabd2f;
+	--bg: #282828;
+	--deep: #1d2021;
+	--surface: #3c3836;
+	--surface-hi: #504945;
+	--text: #ebdbb2;
+	--on-accent: #282828;
+	--danger: #fb4934;
+	--success: #b8bb26;
+}
+:root[data-theme='nord'] {
+	--primary: #2e3440;
+	--secondary: #3b4252;
+	--tertiary: #434c5e;
+	--accent: #88c0d0;
+	--bg: #2e3440;
+	--deep: #272c36;
+	--surface: #3b4252;
+	--surface-hi: #434c5e;
+	--text: #eceff4;
+	--on-accent: #2e3440;
+	--danger: #bf616a;
+	--success: #a3be8c;
+}
+
+[data-mode] {
+	--mode: var(--accent);
+	--mode-ink: var(--on-accent);
+}
+[data-mode='measure'] {
+	--mode: var(--c-measure);
+	--mode-ink: var(--ink);
+}
+[data-mode='ocr'] {
+	--mode: var(--c-ocr);
+	--mode-ink: var(--ink);
+}
+[data-mode='gif'] {
+	--mode: var(--c-gif);
+	--mode-ink: var(--ink);
+}
+[data-mode='video'] {
+	--mode: var(--c-video);
+	--mode-ink: var(--ink);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	background: var(--deep);
+	color: var(--text);
+	font-family: var(--font-display);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-size-adjust: 100%;
+	scroll-padding-top: 88px;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	font-size: var(--t-body);
+	line-height: 1.55;
+	font-stretch: 92%;
+	overflow-x: clip;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	font-weight: 720;
+	font-stretch: 78%;
+	line-height: 0.92;
+	letter-spacing: -0.025em;
+	text-wrap: balance;
+}
+h3 {
+	font-size: var(--t-h3);
+	line-height: 1.05;
+	letter-spacing: -0.01em;
+}
+
+p {
+	margin: 0;
+	text-wrap: pretty;
+}
+
+a {
+	color: inherit;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+code,
+kbd,
+pre,
+.mono {
+	font-family: var(--font-mono);
+	font-weight: 400;
+	letter-spacing: 0;
+}
+
+:focus-visible {
+	outline: 2px solid var(--mode, var(--accent));
+	outline-offset: 3px;
+	border-radius: var(--r1);
+}
+
+::selection {
+	background: var(--accent);
+	color: var(--on-accent);
+}
+
+.wrap {
+	width: var(--wrap);
+	margin-inline: auto;
+}
+
+.label {
+	font-family: var(--font-mono);
+	font-size: var(--t-label);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--s2);
+	min-height: 44px;
+	padding: 0 var(--s4);
+	border: 0;
+	border-radius: var(--r2);
+	background: var(--surface-hi);
+	color: var(--text);
+	font: inherit;
+	font-weight: 600;
+	font-size: var(--t-small);
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow:
+		inset 0 0 0 1px var(--line),
+		0 1px 2px rgb(0 0 0 / 0.18);
+	transition:
+		transform 160ms var(--ease-out),
+		background-color 160ms ease,
+		color 160ms ease;
+}
+.btn:active {
+	transform: scale(0.96);
+}
+.btn.primary {
+	background: var(--accent);
+	color: var(--on-accent);
+	box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+}
+@media (hover: hover) and (pointer: fine) {
+	.btn:hover {
+		background: color-mix(in oklab, var(--surface-hi) 80%, var(--text));
+	}
+	.btn.primary:hover {
+		background: color-mix(in oklab, var(--accent) 86%, var(--text));
+	}
+}
+
+.icon {
+	width: 18px;
+	height: 18px;
+	flex: none;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+.panel {
+	background: var(--surface);
+	border-radius: var(--r3);
+	box-shadow:
+		inset 0 0 0 1px var(--line),
+		0 24px 48px -28px rgb(0 0 0 / 0.55);
+}
+
+kbd.cap {
+	display: inline-grid;
+	place-items: center;
+	min-width: 1.9em;
+	height: 1.9em;
+	padding: 0 0.45em;
+	border-radius: var(--r1);
+	background: var(--surface-hi);
+	box-shadow:
+		inset 0 -2px 0 rgb(0 0 0 / 0.28),
+		inset 0 0 0 1px var(--line);
+	font-size: 0.8125rem;
+	line-height: 1;
+	color: var(--text);
+	transition:
+		transform 120ms var(--ease-out),
+		background-color 160ms ease,
+		color 160ms ease;
+}
+
+/* The theme switcher draws its own circular reveal over the new snapshot. */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation: none;
+	mix-blend-mode: normal;
+}
