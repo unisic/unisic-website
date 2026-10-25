@@ -1,0 +1,708 @@
+/* Ships dark by default (the app's own "unisic" theme). The ThemeShowcase
+   picker only repaints its own miniature window, never the whole page. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  /* page scrollbar in brand tones on engines with scrollbar-color */
+  scrollbar-color: var(--tertiary) var(--bg-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-wrap: balance;
+  /* Dutch and German compounds outgrow a phone at display sizes: hyphenate
+     only long words, and break one as a last resort where no dictionary is */
+  hyphens: auto;
+  hyphenate-limit-chars: 12 5 5;
+  overflow-wrap: break-word;
+}
+
+/* headings balance; paragraphs avoid single-word orphan lines (progressive
+   enhancement, ignored where unsupported) */
+p {
+  text-wrap: pretty;
+}
+
+/* horizontal-scroll code blocks: thin brand scrollbar instead of the stock
+   track interrupting the rounded surface language */
+pre {
+  scrollbar-width: thin;
+  scrollbar-color: var(--tertiary) transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* outline follows each element's own border-radius; forcing a radius here
+   used to snap 999px pills to 2px corners on keyboard focus */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--tertiary);
+  color: var(--text);
+}
+
+/* Visually hidden but exposed to assistive tech (live-region status text,
+   etc.); the standard clip pattern. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: var(--z-skip);
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--text-on-accent);
+  font-weight: 600;
+  /* hidden, not only off-screen: the intro's zoom pulls the top edge in */
+  opacity: 0;
+  transition: top var(--dur-fast) var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  top: 16px;
+  opacity: 1;
+}
+
+/* Shared section shell */
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-section) 24px 0;
+  /* keep in-page jump targets clear of the sticky nav */
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+/* #main and #top are jump targets but not .section elements */
+#main,
+#top {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+.section h2 {
+  font-size: clamp(2.1rem, 1.2rem + 3vw, 3.5rem);
+  font-weight: 850;
+  font-stretch: 112%;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  max-width: 18ch;
+}
+
+/* the lede is the second most important text in every section; one clear
+   step above body size, in the AAA-contrast ink */
+.section-lede {
+  margin-top: 18px;
+  color: var(--ink-2);
+  max-width: 56ch;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+
+/* Section head: the title, with the lede beside it on wide screens */
+.section-head {
+  display: grid;
+  gap: 0 56px;
+  margin-bottom: var(--space-lede);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+
+@media (min-width: 1024px) {
+  .section-head {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: end;
+  }
+
+  .section-head .section-lede {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-top: 80px;
+  }
+}
+
+/* Crop-corner brackets, the selection overlay's own handles: four L-shaped
+   corners painted by eight gradients on one pseudo-element, so any box can
+   read as "selected" without extra markup. The host must be positioned. */
+.frame {
+  position: relative;
+}
+
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--frame-gap, 10px) * -1);
+  pointer-events: none;
+  --c: var(--frame-color, var(--accent));
+  --a: var(--corner-arm);
+  --w: var(--corner-weight);
+  background:
+    linear-gradient(var(--c) 0 0) top left / var(--a) var(--w),
+    linear-gradient(var(--c) 0 0) top left / var(--w) var(--a),
+    linear-gradient(var(--c) 0 0) top right / var(--a) var(--w),
+    linear-gradient(var(--c) 0 0) top right / var(--w) var(--a),
+    linear-gradient(var(--c) 0 0) bottom left / var(--a) var(--w),
+    linear-gradient(var(--c) 0 0) bottom left / var(--w) var(--a),
+    linear-gradient(var(--c) 0 0) bottom right / var(--a) var(--w),
+    linear-gradient(var(--c) 0 0) bottom right / var(--w) var(--a);
+  background-repeat: no-repeat;
+}
+
+/* Faint pixel grid, faded out toward the edges so it never meets a hard
+   border. Decorative backdrop for heroes and the download band. */
+.pixel-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: center top;
+}
+
+/* A dark well under a slim title bar: the install card's terminal and
+   download boxes. The title sits at the start, as docs code blocks label
+   their language; a control can sit at the end. */
+.well {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-deep);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-m);
+}
+
+.well-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 7px 0 16px;
+  border-bottom: 1px solid var(--divider);
+  border-radius: calc(var(--radius-m) - 1px) calc(var(--radius-m) - 1px) 0 0;
+  background: var(--surface);
+}
+
+.well-title {
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  /* secondary, not tertiary: 11px clears WCAG AA only above ~4.5:1 */
+  color: var(--text-secondary);
+}
+
+/* Pill buttons. One primary (accent fill) per view; quiet is the outline
+   companion for secondary actions. 44px tall: a comfortable touch target. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--text-on-accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-bright);
+}
+
+.btn-quiet {
+  border: 1px solid var(--divider);
+  color: var(--text);
+}
+
+.btn-quiet:hover {
+  border-color: var(--tertiary);
+  background: var(--surface);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Scroll reveal: animated only when JS is present and motion is allowed;
+   final state otherwise (no-JS visitors must see everything) */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-js] [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.55s var(--ease-out),
+      transform 0.55s var(--ease-out);
+  }
+
+  html[data-js] [data-reveal][data-inview="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Staggered children: mark a container inside a Reveal with data-stagger.
+     One-shot animation with backwards fill, so once it ends the children
+     return to their natural styles and keep their own hover/press
+     transitions; :where() keeps specificity below component classes. */
+  html[data-js] :where([data-reveal]:not([data-inview="true"]) [data-stagger] > *) {
+    opacity: 0;
+  }
+
+  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > *) {
+    animation: stagger-rise 0.5s var(--ease-out) backwards;
+  }
+
+  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(2)) { animation-delay: 70ms; }
+  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(3)) { animation-delay: 140ms; }
+  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(4)) { animation-delay: 210ms; }
+  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(5)) { animation-delay: 280ms; }
+  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(6)) { animation-delay: 350ms; }
+  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(7)) { animation-delay: 420ms; }
+  html[data-js] :where([data-reveal][data-inview="true"] [data-stagger] > :nth-child(8)) { animation-delay: 490ms; }
+
+  /* a chip focused via keyboard must never be invisible */
+  html[data-js] [data-reveal] [data-stagger] > :focus-visible {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@keyframes stagger-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Rendered Markdown for the /docs pages. Kept here (not in a CSS module) so it
+   applies to the HTML produced by marked, and lives in one editable place. */
+.docs-prose {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.docs-prose > *:first-child {
+  margin-top: 0;
+}
+
+.docs-prose h2 {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  margin: 2.4em 0 0.6em;
+  scroll-margin-top: 88px;
+}
+
+.docs-prose h3 {
+  font-size: 1.18rem;
+  letter-spacing: -0.01em;
+  margin: 1.9em 0 0.5em;
+  scroll-margin-top: 88px;
+}
+
+/* Hover anchor injected after every h2/h3 by lib/docs.ts, for grabbing a
+   section link (doc links get pasted into issues). Revealed on heading
+   hover and on its own keyboard focus. */
+.docs-prose .heading-anchor {
+  margin-left: 0.4em;
+  color: var(--text-tertiary);
+  opacity: 0;
+  text-decoration: none;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.docs-prose h2:hover .heading-anchor,
+.docs-prose h3:hover .heading-anchor,
+.docs-prose .heading-anchor:focus-visible {
+  opacity: 1;
+}
+
+.docs-prose .heading-anchor:hover {
+  color: var(--accent);
+}
+
+.docs-prose p {
+  margin: 0.95em 0;
+}
+
+.docs-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.docs-prose a:hover {
+  color: var(--accent-bright);
+  text-decoration-color: currentColor;
+}
+
+/* External links (marked with class="ext" by lib/docs.ts) get a north-east
+   arrow; the FE0E variation selector forces the text glyph, never an emoji. */
+.docs-prose a.ext::after {
+  content: "\2197\FE0E";
+  font-size: 0.72em;
+  margin-left: 2px;
+  vertical-align: super;
+  opacity: 0.7;
+}
+
+.docs-prose ul,
+.docs-prose ol {
+  margin: 0.95em 0;
+  padding-left: 1.4em;
+}
+
+.docs-prose li {
+  margin: 0.4em 0;
+}
+
+.docs-prose li::marker {
+  color: var(--text-tertiary);
+}
+
+.docs-prose strong {
+  font-weight: 650;
+  color: var(--text);
+}
+
+.docs-prose code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.86em;
+  background: var(--surface-hi);
+  border: 1px solid var(--divider);
+  padding: 0.12em 0.4em;
+  border-radius: 6px;
+  word-break: break-word;
+}
+
+.docs-prose pre {
+  position: relative;
+  margin: 1.3em 0;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-m);
+  overflow-x: auto;
+}
+
+/* The fence language, surfaced as a top-left label so sh / nix / kdl blocks
+   are tellable apart before pasting. Sits opposite the copy button. */
+.docs-prose pre[data-lang] {
+  padding-top: 34px;
+}
+
+.docs-prose pre[data-lang]::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  /* secondary, not tertiary: 11px clears WCAG AA only above ~4.5:1 */
+  color: var(--text-secondary);
+}
+
+.docs-prose pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text);
+  word-break: normal;
+}
+
+/* Build-time syntax highlighting (lib/docs.ts). Four token classes, all
+   drawn from existing tokens - no new hues. Comments use text-secondary,
+   not tertiary: they are content the reader must act on and tertiary's
+   ~3.4:1 over the code surface fails WCAG AA. */
+.docs-prose .tok-c {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.docs-prose .tok-s {
+  color: var(--accent);
+}
+
+.docs-prose .tok-v {
+  color: var(--accent-bright);
+}
+
+.docs-prose .tok-k {
+  color: var(--text);
+  font-weight: 650;
+}
+
+/* Copy-to-clipboard button injected into each code block by DocsProse. */
+.docs-prose pre.has-copy {
+  padding-right: 52px;
+}
+
+.docs-copy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--surface-hi);
+  border: 1px solid var(--divider);
+  color: var(--text-secondary);
+  opacity: 0.5;
+  transition:
+    opacity var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.docs-prose pre.has-copy:hover .docs-copy,
+.docs-copy:focus-visible {
+  opacity: 1;
+}
+
+.docs-copy:hover {
+  color: var(--text);
+  background: var(--surface-hi-top);
+}
+
+.docs-copy:active {
+  transform: scale(0.92);
+}
+
+/* Keep the visual at 32px but extend the hit area to 48px; the pseudo
+   element is invisible and adds no layout. */
+.docs-copy::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+}
+
+.docs-copy.copied {
+  opacity: 1;
+  color: var(--success);
+  border-color: color-mix(in srgb, var(--success) 40%, var(--divider));
+}
+
+/* One-shot confirmation beat when the checkmark swaps in. */
+@media (prefers-reduced-motion: no-preference) {
+  .docs-copy.copied svg {
+    animation: check-pop 0.3s var(--ease-out);
+  }
+}
+
+@keyframes check-pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* Touch devices don't hover, so keep the button fully visible there. */
+@media (hover: none) {
+  .docs-copy {
+    opacity: 1;
+  }
+}
+
+/* Tables can be wider than the column on small screens; let them scroll.
+   The wrapper doubles as a bounded card so reference tables read as one
+   surface (and the scroll container is visible on mobile). */
+.docs-prose .table-scroll {
+  overflow-x: auto;
+  margin: 1.4em 0;
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+}
+
+.docs-prose table {
+  width: 100%;
+  font-size: 0.95rem;
+  border-collapse: collapse;
+}
+
+.docs-prose th,
+.docs-prose td {
+  text-align: left;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--divider);
+  vertical-align: top;
+}
+
+.docs-prose thead th {
+  color: var(--text-secondary);
+  font-weight: 650;
+  background: var(--surface-hi);
+}
+
+.docs-prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.docs-prose blockquote {
+  margin: 1.3em 0;
+  padding: 2px 18px;
+  border-left: 3px solid var(--tertiary);
+  color: var(--text-secondary);
+}
+
+/* Callouts, from GitHub alert syntax in the Markdown ([!NOTE] / [!TIP] /
+   [!WARNING], see lib/docs.ts). One layout, three token-derived tints:
+   accent for notes, success for tips, danger for warnings. */
+.docs-prose .callout {
+  margin: 1.3em 0;
+  padding: 14px 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--divider));
+  border-left-width: 3px;
+  border-left-color: var(--accent);
+  border-radius: var(--radius-m);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+}
+
+.docs-prose .callout > p {
+  margin: 0.4em 0;
+}
+
+.docs-prose .callout > p:last-child {
+  margin-bottom: 0;
+}
+
+.docs-prose .callout > .callout-label {
+  font-size: 12px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px;
+  color: var(--accent);
+}
+
+.docs-prose .callout-tip {
+  border-color: color-mix(in srgb, var(--success) 30%, var(--divider));
+  border-left-color: var(--success);
+  background: color-mix(in srgb, var(--success) 6%, var(--surface));
+}
+
+.docs-prose .callout-tip > .callout-label {
+  color: var(--success);
+}
+
+.docs-prose .callout-warning {
+  border-color: color-mix(in srgb, var(--danger) 30%, var(--divider));
+  border-left-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 6%, var(--surface));
+}
+
+.docs-prose .callout-warning > .callout-label {
+  color: var(--danger);
+}
+
+.docs-prose hr {
+  border: 0;
+  border-top: 1px solid var(--divider);
+  margin: 2.2em 0;
+}
+
+.docs-prose img {
+  max-width: 100%;
+  border-radius: var(--radius-m);
+}

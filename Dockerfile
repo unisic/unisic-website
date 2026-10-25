@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-# --- build stage: produce the static export in ./out ---
+# --- build stage: prerender the site into ./out ---
 FROM node:22-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
@@ -8,7 +8,7 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-# --- runtime stage: serve the static export with nginx ---
+# --- runtime stage: serve ./out with nginx ---
 FROM nginx:alpine
 COPY --from=build /app/out /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
