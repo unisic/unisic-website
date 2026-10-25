@@ -1,12 +1,11 @@
 <script lang="ts">
-
 	const GROUPS = [
 		{
 			title: 'Unisic',
 			links: [
 				{ href: '/#capture', text: 'Capture' },
 				{ href: '/#record', text: 'Record' },
-				{ href: '/#keys', text: 'Hotkeys' },
+				{ href: '/docs/hotkeys/', text: 'Hotkeys' },
 				{ href: '/#compare', text: 'Compared' },
 				{ href: '/#install', text: 'Install' }
 			]

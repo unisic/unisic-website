@@ -29,9 +29,7 @@
 		{ feature: 'Custom upload targets', cells: [['n', 'Imgur only, off by default'], ['p', 'KDE Share menu'], ['p', 'Imgur, FTP, scripts'], ['n'], ['y', '.sxcu, FTP, SFTP'], ['y', '.sxcu, HTTP, FTP, SFTP']] },
 		{ feature: 'History with thumbnails', cells: [['p', 'Imgur uploads only'], ['n'], ['n'], ['n'], ['y'], ['y', 'Deleting moves to the trash']] },
 		{ feature: 'Wayland', cells: [['y', 'Portal'], ['p', 'KWin only'], ['p', 'Portal or legacy KWin'], ['p', 'Capture left to grim'], ['n'], ['y', 'Portals, KWin, PipeWire']] },
-		{ feature: 'Platforms', cells: ['Linux, Windows, macOS', 'Linux, KDE Plasma', 'Linux, Windows, macOS', 'Linux, BSD', 'Windows', 'Linux, Windows 11 (experimental)'] },
-		{ feature: 'License', cells: ['GPL-3.0-or-later', 'LGPL-2.0-or-later, mostly', 'GPL-3.0', 'MPL-2.0', 'GPL-3.0', 'GPL-3.0'] },
-		{ feature: 'Telemetry or account', cells: ['None', 'None', 'None', 'None', 'None', 'None; a release check you can turn off'] }
+		{ feature: 'Platforms', cells: ['Linux, Windows, macOS', 'Linux, KDE Plasma', 'Linux, Windows, macOS', 'Linux, BSD', 'Windows', 'Linux, Windows 11 (experimental)'] }
 	];
 	const SAY: Record<Mark, string> = { y: 'Yes', p: 'Partly', n: 'No' };
 
@@ -40,11 +38,11 @@
 
 <Chapter
 	id="compare"
-	num="10"
+	num="08"
 	mode="measure"
 	kicker="Compared"
 	title="Where it stands among the others."
-	lede="Six tools, the same fourteen questions. Every answer was checked against the tool's source, README or release notes for the version in the header, so you can check it too."
+	lede="Six tools, the same twelve questions. Every answer was checked against the tool's source, README or release notes for the version in the header, so you can check it too."
 >
 	<div class="wrap">
 		<!-- svelte-ignore a11y_no_noninteractive_tabindex: a scrolling region must take focus so keyboard users can scroll it -->

@@ -18,7 +18,6 @@ const MAX_CAPTURES = 8;
 
 class Ui {
 	mode = $state<Mode>('shot');
-	os = $state<'linux' | 'windows'>('linux');
 	captures = $state.raw<Capture[]>([]);
 	paused = $state(false);
 

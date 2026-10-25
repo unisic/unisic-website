@@ -31,7 +31,7 @@
 	mode={format === 'gif' ? 'gif' : 'video'}
 	kicker="Record"
 	title="Record the screen, with sound."
-	lede="A region, the full screen or a window, saved as GIF, MP4 or WebM. System audio, the microphone and single apps land on separate tracks. A cursor halo and click ripples show where you clicked; turn on the keystroke overlay to show what you typed."
+	lede="A region, the full screen or a window, saved as GIF, MP4 or WebM. System sound, the microphone and single apps land on separate tracks, and instant replay keeps the last stretch of the screen."
 >
 	<div class="grid wrap">
 		<div class="media" data-run={visible && !ui.paused} {@attach inview((v) => (visible = v))}>
@@ -69,25 +69,6 @@
 				{/each}
 			</fieldset>
 			<p class="fps" aria-live="polite"><strong>{fps}</strong> frames per second by default</p>
-
-			<dl class="facts">
-				<div>
-					<dt>Audio</dt>
-					<dd>System sound, a microphone and one app's sound, each on its own track.</dd>
-				</div>
-				<div>
-					<dt>Instant replay</dt>
-					<dd>Keeps the last stretch of the screen, 30 seconds in the shot above. <kbd class="cap">Meta</kbd>+<kbd class="cap">Shift</kbd>+<kbd class="cap">I</kbd> starts it and saves it.</dd>
-				</div>
-				<div>
-					<dt>Stop</dt>
-					<dd><kbd class="cap">Ctrl</kbd>+<kbd class="cap">Esc</kbd> is the emergency stop on Linux, and it cannot be rebound.</dd>
-				</div>
-				<div>
-					<dt>Trim</dt>
-					<dd>Trim a video afterwards on the Edit page.</dd>
-				</div>
-			</dl>
 		</div>
 	</div>
 </Chapter>
@@ -242,25 +223,6 @@
 		font-size: var(--t-h3);
 		font-variant-numeric: tabular-nums;
 		color: var(--text);
-	}
-	.facts {
-		display: grid;
-		gap: var(--s4);
-		margin: 0;
-	}
-	.facts div {
-		display: grid;
-		gap: var(--s1);
-		padding-top: var(--s3);
-		border-top: 1px solid var(--line);
-	}
-	dt {
-		font-weight: 650;
-	}
-	dd {
-		margin: 0;
-		font-size: var(--t-small);
-		color: var(--muted);
 	}
 
 	@media (min-width: 960px) {

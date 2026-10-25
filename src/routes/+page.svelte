@@ -8,9 +8,7 @@
 	import Record from '#lib/components/Record.svelte';
 	import Read from '#lib/components/Read.svelte';
 	import Share from '#lib/components/Share.svelte';
-	import Keys from '#lib/components/Keys.svelte';
 	import Themes from '#lib/components/Themes.svelte';
-	import Platforms from '#lib/components/Platforms.svelte';
 	import Privacy from '#lib/components/Privacy.svelte';
 	import Compare from '#lib/components/Compare.svelte';
 	import Install from '#lib/components/Install.svelte';
@@ -41,9 +39,7 @@
 		<Record />
 		<Read />
 		<Share />
-		<Keys />
 		<Themes />
-		<Platforms />
 		<Privacy />
 		<Compare />
 		<Install />

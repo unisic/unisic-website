@@ -8,7 +8,7 @@
 
 <Chapter
 	id="privacy"
-	num="09"
+	num="07"
 	mode="ocr"
 	kicker="Privacy"
 	title="One request, and you can turn it off."
@@ -38,10 +38,6 @@
 		</div>
 
 		<div class="side">
-			<p>
-				With automatic updates on, an AppImage downloads the new version and swaps it in; the Windows build does the same
-				with a checked zip. Switch the setting off in Unisic and the request never goes out.
-			</p>
 			<p>
 				Uploads happen only when you press Upload or turn on upload after capture, and only to the host you picked.
 			</p>

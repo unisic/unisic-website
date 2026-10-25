@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
-	import Frame from './Frame.svelte';
 	import Thumb from './Thumb.svelte';
 	import { ui } from '#lib/ui.svelte.js';
 
@@ -28,7 +27,6 @@
 				<ul>
 					{#each HOSTS as host (host)}<li>{host}</li>{/each}
 				</ul>
-				<p>Import a ShareX <code>.sxcu</code> file or describe your own HTTP endpoint.</p>
 			</div>
 
 			<section class="live panel" aria-labelledby="live-title">
@@ -49,13 +47,6 @@
 				{/if}
 			</section>
 		</div>
-
-		<Frame
-			src="/img/history.webp"
-			width={1060}
-			height={700}
-			alt="Unisic's History page: a grid of capture thumbnails with All, Images, GIFs, Recordings, Clips, Starred and Uploaded filters."
-		/>
 	</div>
 </Chapter>
 
@@ -123,10 +114,6 @@
 		border-radius: 99px;
 		box-shadow: inset 0 0 0 1px var(--line-strong);
 		font: var(--t-small) var(--font-mono);
-	}
-	.hosts p {
-		color: var(--muted);
-		font-size: var(--t-small);
 	}
 
 	.live {

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
 	import Copy from './Copy.svelte';
-	import { ui } from '#lib/ui.svelte.js';
 
 	const VERSION = '0.8.8';
 	const DOWNLOAD = `https://github.com/unisic/unisic/releases/download/v${VERSION}`;
@@ -16,7 +15,7 @@
 			label: 'Any distro',
 			steps: [
 				{
-					say: 'One script with an arrow-key menu. The recommended entry puts the self-updating AppImage in ~/.local and needs no password; the system package entry asks for one. Run it again to update, remove, pick an older version or switch automatic updates. Every download is checked against its SHA-256 and deleted on a mismatch.',
+					say: 'One script with an arrow-key menu. The recommended entry puts the self-updating AppImage in ~/.local without a password. Run it again to update, remove or pick an older version. Every download is checked against its SHA-256.',
 					cmd: 'curl -fsSL https://unisic.app/install.sh | bash'
 				},
 				{ say: 'Read it before it runs:', cmd: 'curl -fsSLO https://unisic.app/install.sh' },
@@ -72,27 +71,15 @@
 		{ id: 'windows', label: 'Windows 11', steps: [] }
 	];
 
-	// The install submenu of install.sh, copied from the v0.8.8 script.
-	const MENU = [
-		['Install or update Unisic          (recommended)', 'No password needed, unless Unisic is already installed system-wide.'],
-		['Install the system package        (asks for password)', "Installs Unisic with your system's package manager."],
-		['Install the Flatpak version       (sandboxed)', 'Installs Unisic as a Flatpak. No password needed.'],
-		['Install a specific (older) version', 'Pick an exact, older version from a list.']
-	];
-
 	let active = $state(0);
 	let tabs: HTMLButtonElement[] = [];
 
 	$effect(() => {
-		if (/Windows/.test(navigator.userAgent)) {
-			ui.os = 'windows';
-			active = TABS.length - 1;
-		}
+		if (/Windows/.test(navigator.userAgent)) active = TABS.length - 1;
 	});
 
 	function select(i: number, focus = false) {
 		active = i;
-		ui.os = TABS[i].id === 'windows' ? 'windows' : 'linux';
 		if (focus) tabs[i].focus();
 	}
 
@@ -105,8 +92,8 @@
 	}
 </script>
 
-<Chapter id="install" num="11" mode="shot" kicker="Install" title="Installed in one line.">
-	<div class="wrap grid">
+<Chapter id="install" num="09" mode="shot" kicker="Install" title="Installed in one line.">
+	<div class="wrap">
 		<div class="box panel">
 			<div class="tabs" role="tablist" aria-label="Install on">
 				{#each TABS as t, i (t.id)}
@@ -164,38 +151,16 @@
 				Version {VERSION}. Every file, with checksums: <a href={RELEASES}>GitHub releases</a>.
 			</p>
 		</div>
-
-		<figure class="term">
-			<div class="screen" aria-hidden="true">
-				<pre class="top">Unisic  installer
-<span class="dim">a screenshot & screen-recording app for Linux</span></pre>
-				<pre class="status dim">Install or update</pre>
-				<ul>
-					{#each MENU as [label], i (label)}
-						<li class:on={i === 0}><span class="caret">{i === 0 ? '>' : ' '}</span> {label}</li>
-					{/each}
-					<li class="back">{'  Back'}</li>
-				</ul>
-				<pre class="help dim">{MENU[0][1]}
-Up/Down  move     Enter  choose     q  back</pre>
-			</div>
-			<figcaption>
-				The install menu of install.sh: the recommended entry, the system package, the Flatpak version and an older version.
-			</figcaption>
-		</figure>
 	</div>
 </Chapter>
 
 <style>
-	.grid {
-		display: grid;
-		gap: var(--s6);
-	}
 	.box {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		align-content: start;
 		gap: var(--s5);
+		max-width: 72ch;
 		padding: var(--s5);
 		min-width: 0;
 	}
@@ -282,70 +247,5 @@ Up/Down  move     Enter  choose     q  back</pre>
 		border-top: 1px solid var(--line);
 		font-size: var(--t-small);
 		color: var(--muted);
-	}
-
-	.term {
-		display: grid;
-		gap: var(--s3);
-		margin: 0;
-		min-width: 0;
-	}
-	.screen {
-		display: grid;
-		gap: var(--s3);
-		padding: var(--s4);
-		overflow-x: auto;
-		border-radius: var(--r3);
-		background: var(--deep);
-		color: var(--text);
-		box-shadow: inset 0 0 0 1px var(--line);
-		font: 0.8125rem/1.6 var(--font-mono);
-	}
-	.screen pre {
-		margin: 0;
-		font: inherit;
-	}
-	.top {
-		font-weight: 700;
-	}
-	.dim {
-		color: var(--muted);
-		font-weight: 400;
-	}
-	.help {
-		white-space: pre-wrap;
-	}
-	.status,
-	.help {
-		padding-block: var(--s2);
-		border-block: 1px solid var(--line);
-	}
-	.screen ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		white-space: pre;
-	}
-	.screen li {
-		padding-inline: 4px;
-		border-radius: 3px;
-	}
-	.screen li.on {
-		background: var(--accent);
-		color: var(--on-accent);
-	}
-	.back {
-		margin-top: 1.6em;
-	}
-	figcaption {
-		font-size: var(--t-small);
-		color: var(--muted);
-	}
-
-	@media (min-width: 1040px) {
-		.grid {
-			grid-template-columns: 1.25fr 1fr;
-			align-items: start;
-		}
 	}
 </style>

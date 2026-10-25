@@ -3,12 +3,6 @@
 	import Frame from './Frame.svelte';
 	import { ui, inview } from '#lib/ui.svelte.js';
 
-	const MODES = [
-		{ name: 'Full screen', flag: '--fullscreen', note: 'Every monitor in one image, or only the one under the cursor with --monitor.' },
-		{ name: 'Region', flag: '--region', note: 'Drag a box and read its size as you go. --recapture grabs the same box again.' },
-		{ name: 'Window', flag: '--window', note: 'The active window and nothing around it.' },
-		{ name: 'Scrolling', flag: '--scroll', note: 'Scroll down and Unisic stitches one long screenshot.' }
-	];
 	// Widths of the fake document lines in the scroll demo; 0 is an image block.
 	const LINES = [86, 64, 92, 0, 78, 90, 52, 84, 70, 0, 94, 60, 82, 46, 0, 88, 72, 58, 90, 0, 66, 84, 50, 76];
 
@@ -58,17 +52,6 @@
 			</p>
 		</div>
 
-		<ul class="modes">
-			{#each MODES as m, i (m.name)}
-				<li style:--i={i}>
-					<h3>{m.name}</h3>
-					<code>{m.flag}</code>
-					<p>
-						{#each m.note.split(/(--[a-z]+)/) as part, i (i)}{#if i % 2}<code>{part}</code>{:else}{part}{/if}{/each}
-					</p>
-				</li>
-			{/each}
-		</ul>
 	</div>
 </Chapter>
 
@@ -163,37 +146,10 @@
 		color: var(--text);
 	}
 
-	.modes {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-		gap: var(--s5);
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-	.modes li {
-		display: grid;
-		align-content: start;
-		gap: var(--s2);
-		padding-top: var(--s4);
-		border-top: 1px solid var(--line-strong);
-	}
-	.modes code {
-		color: var(--mode);
-		font-size: var(--t-small);
-	}
-	.modes p {
-		font-size: var(--t-small);
-		color: var(--muted);
-	}
-
 	@media (min-width: 960px) {
 		.grid {
 			grid-template-columns: 1.45fr 1fr;
 			align-items: start;
-		}
-		.modes {
-			grid-column: 1 / -1;
 		}
 	}
 

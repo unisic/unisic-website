@@ -50,10 +50,6 @@
 					</li>
 				{/each}
 			</ul>
-			<p class="note">
-				Highlight works freehand, as a box, or snapped to the text lines OCR finds. Measure shows length and angle. Crop is
-				editor only; the overlay crops by selection.
-			</p>
 		</div>
 	</div>
 </Chapter>
@@ -81,11 +77,6 @@
 		align-items: center;
 		gap: var(--s3);
 		padding: 6px 0;
-		font-size: var(--t-small);
-		color: var(--muted);
-	}
-	.note {
-		max-width: 46ch;
 		font-size: var(--t-small);
 		color: var(--muted);
 	}
