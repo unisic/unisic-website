@@ -19,8 +19,7 @@
 					say: 'One script with an arrow-key menu. The recommended entry puts the self-updating AppImage in ~/.local without a password. Run it again to update, remove or pick an older version. Every download is checked against its SHA-256.',
 					cmd: 'curl -fsSL https://unisic.app/install.sh | bash'
 				},
-				{ say: 'Read it before it runs:', cmd: 'curl -fsSLO https://unisic.app/install.sh' },
-				{ cmd: 'less install.sh && bash install.sh' }
+				{ say: 'Read it before it runs:', cmd: 'curl -fsSLO https://unisic.app/install.sh\nless install.sh && bash install.sh' }
 			]
 		},
 		{
@@ -36,12 +35,14 @@
 			label: 'Arch',
 			steps: [
 				{
-					say: 'A signed pacman repository on the openSUSE Build Service, so updates come with pacman -Syu. Trust its key:',
-					cmd: `curl -fsSL 'https://build.opensuse.org/projects/home:unisic/signing_keys/download?kind=gpg' -o /tmp/unisic-obs.key`
+					say: 'A signed pacman repository on the openSUSE Build Service, so updates come with pacman -Syu:',
+					cmd: [
+						`curl -fsSL 'https://build.opensuse.org/projects/home:unisic/signing_keys/download?kind=gpg' -o /tmp/unisic-obs.key`,
+						'sudo pacman-key --add /tmp/unisic-obs.key && sudo pacman-key --lsign-key E5057FCB0F3DF876',
+						`printf '\\n[home_unisic_Arch]\\nServer = ${OBS}/Arch/$arch\\n' | sudo tee -a /etc/pacman.conf`,
+						'sudo pacman -Syu unisic'
+					].join('\n')
 				},
-				{ cmd: 'sudo pacman-key --add /tmp/unisic-obs.key && sudo pacman-key --lsign-key E5057FCB0F3DF876' },
-				{ say: 'Add the repository and install:', cmd: `printf '\\n[home_unisic_Arch]\\nServer = ${OBS}/Arch/$arch\\n' | sudo tee -a /etc/pacman.conf` },
-				{ cmd: 'sudo pacman -Syu unisic' },
 				{ say: 'Or the package from the release, which adds the same repository by itself:', cmd: 'sudo pacman -U ./unisic-*-x86_64.pkg.tar.zst' }
 			]
 		},
@@ -50,12 +51,14 @@
 			label: 'Debian, Ubuntu',
 			steps: [
 				{
-					say: 'A signed apt repository on the openSUSE Build Service, so updates come with apt upgrade. Pick your release, then run the rest in the same shell:',
-					cmd: 'REPO=Debian_13  # or xUbuntu_26.04, xUbuntu_25.10'
+					say: 'A signed apt repository on the openSUSE Build Service, so updates come with apt upgrade. Set REPO to your release, then run it in bash:',
+					cmd: [
+						'REPO=Debian_13  # or xUbuntu_26.04, xUbuntu_25.10',
+						`curl -fsSL "${OBS}/$REPO/Release.key" | gpg --dearmor | sudo tee /etc/apt/keyrings/home_unisic.gpg > /dev/null`,
+						`echo "deb [signed-by=/etc/apt/keyrings/home_unisic.gpg] ${OBS}/$REPO/ ./" | sudo tee /etc/apt/sources.list.d/home_unisic.list`,
+						'sudo apt update && sudo apt install unisic'
+					].join('\n')
 				},
-				{ cmd: `curl -fsSL "${OBS}/$REPO/Release.key" | gpg --dearmor | sudo tee /etc/apt/keyrings/home_unisic.gpg > /dev/null` },
-				{ cmd: `echo "deb [signed-by=/etc/apt/keyrings/home_unisic.gpg] ${OBS}/$REPO/ ./" | sudo tee /etc/apt/sources.list.d/home_unisic.list` },
-				{ cmd: 'sudo apt update && sudo apt install unisic' },
 				{ say: 'Or the package from the release, which adds the same repository by itself:', cmd: 'sudo apt install ./unisic_*_amd64.deb' }
 			]
 		},
@@ -64,23 +67,31 @@
 			label: 'openSUSE',
 			steps: [
 				{
-					say: 'A signed repository on the openSUSE Build Service. On Leap 16.0, put 16.0 in place of openSUSE_Tumbleweed:',
-					cmd: 'sudo zypper addrepo https://download.opensuse.org/repositories/home:unisic/openSUSE_Tumbleweed/home:unisic.repo'
+					say: 'A signed repository on the openSUSE Build Service. Accept its signing key when zypper asks. On Tumbleweed:',
+					cmd: `sudo zypper addrepo https://download.opensuse.org/repositories/home:unisic/openSUSE_Tumbleweed/home:unisic.repo\nsudo zypper refresh && sudo zypper install unisic`
 				},
-				{ say: 'Accept the signing key when zypper asks, then install:', cmd: 'sudo zypper refresh && sudo zypper install unisic' }
+				{
+					say: 'On Leap 16.0:',
+					cmd: `sudo zypper addrepo https://download.opensuse.org/repositories/home:unisic/16.0/home:unisic.repo\nsudo zypper refresh && sudo zypper install unisic`
+				}
 			]
 		},
 		{
 			id: 'nix',
 			label: 'Nix',
-			steps: [{ say: 'Straight from the flake:', cmd: 'nix run github:unisic/unisic' }]
+			steps: [
+				{ say: 'Run it straight from the flake:', cmd: 'nix run github:unisic/unisic' },
+				{ say: 'Or install it into your profile:', cmd: 'nix profile add github:unisic/unisic' }
+			]
 		},
 		{
 			id: 'appimage',
 			label: 'AppImage, Flatpak',
 			steps: [
 				{ say: 'The AppImage runs on its own and replaces itself when a new version is out:', cmd: 'chmod +x Unisic-*-x86_64.AppImage && ./Unisic-*-x86_64.AppImage' },
-				{ say: 'Where flatpak is installed, the script above offers a Flatpak entry too.' }
+				{
+					say: 'It needs fuse, which every desktop distribution ships. Where fuse is missing, the install script puts in the .tar.gz of the same build instead, and where flatpak is installed, it offers a Flatpak entry too.'
+				}
 			]
 		},
 		{ id: 'windows', label: 'Windows 11', steps: [] }
@@ -149,7 +160,11 @@
 								{#if s.say}<p class="say">{s.say}</p>{/if}
 								{#if s.cmd}
 									<div class="cmd">
-										<code><span aria-hidden="true">$ </span>{s.cmd}</code>
+										<code>
+											{#each s.cmd.split('\n') as line, k (k)}
+												<span class="line"><span class="ps" aria-hidden="true">$ </span>{line}</span>
+											{/each}
+										</code>
 										<Copy text={s.cmd} />
 									</div>
 								{/if}
@@ -252,7 +267,10 @@
 		font-size: var(--t-small);
 		scrollbar-width: thin;
 	}
-	.cmd code span {
+	.cmd .line {
+		display: block;
+	}
+	.cmd .ps {
 		margin-inline-end: 1ch;
 		color: var(--mode);
 		user-select: none;
