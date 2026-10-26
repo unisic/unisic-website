@@ -39,7 +39,7 @@ export default {
 	},
 
 	hero: {
-		kicker: 'Capturador de pantalla libre y gratuito para Linux Wayland',
+		kicker: 'Capturador de pantalla libre y gratuito para Linux',
 		title: 'Haz la captura. Unisic se encarga del',
 		titleMark: 'resto.',
 		lede: 'Captura una región o una página larga, anótala, grábala con sonido, saca el texto y compártela con un enlace. Todo en una app gratuita.',

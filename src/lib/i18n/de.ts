@@ -39,7 +39,7 @@ export default {
 	},
 
 	hero: {
-		kicker: 'Kostenloses Open-Source-Screenshot-Tool für Linux Wayland',
+		kicker: 'Kostenloses Open-Source-Screenshot-Tool für Linux',
 		title: 'Aufnehmen. Unisic erledigt den',
 		titleMark: 'Rest.',
 		lede: 'Bereich oder lange Seite aufnehmen, beschriften, mit Ton aufzeichnen, Text herausholen, per Link teilen. Alles in einer kostenlosen App.',

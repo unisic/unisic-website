@@ -39,7 +39,7 @@ export default {
 	},
 
 	hero: {
-		kicker: 'Gratis en open source screenshottool voor Linux Wayland',
+		kicker: 'Gratis en open source screenshottool voor Linux',
 		title: 'Maak de screenshot. Unisic doet de',
 		titleMark: 'rest.',
 		lede: 'Leg een gebied of een lange pagina vast, annoteer het, neem het op met geluid, haal de tekst eruit en deel een link. Alles in één gratis app.',

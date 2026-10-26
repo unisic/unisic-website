@@ -44,7 +44,7 @@ export const en = {
 	},
 
 	hero: {
-		kicker: 'Free and open source screenshot tool for Linux Wayland',
+		kicker: 'Free and open source screenshot tool for Linux',
 		title: 'Take the shot. Unisic handles everything',
 		titleMark: 'after.',
 		lede: 'Capture a region or a page longer than your screen, mark it up, record it with sound, pull the text out and upload a link. All in one free app.',

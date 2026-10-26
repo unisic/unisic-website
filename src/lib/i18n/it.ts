@@ -39,7 +39,7 @@ export default {
 	},
 
 	hero: {
-		kicker: 'Screenshot per Linux Wayland, gratuito e open source',
+		kicker: 'Screenshot per Linux, gratuito e open source',
 		title: 'Fai lo screenshot. Unisic pensa al',
 		titleMark: 'resto.',
 		lede: 'Cattura una regione o una pagina lunga, annotala, registrala con audio, estrai il testo e condividila con un link. Tutto in una sola app gratuita.',

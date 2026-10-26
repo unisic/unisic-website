@@ -39,7 +39,7 @@ export default {
 	},
 
 	hero: {
-		kicker: "Capture d'écran libre et gratuite pour Linux sous Wayland",
+		kicker: "Capture d'écran libre et gratuite pour Linux",
 		title: "Capturez. Unisic s'occupe",
 		titleMark: 'du reste.',
 		lede: "Capturez une région ou une longue page, annotez, filmez avec le son, extrayez le texte et partagez un lien. Et c'est gratuit.",

@@ -39,7 +39,7 @@ export default {
 	},
 
 	hero: {
-		kicker: 'Darmowy program do zrzutów ekranu na Linuksa z Waylandem',
+		kicker: 'Darmowy program do zrzutów ekranu na Linuksa',
 		title: 'Zrób zrzut. Unisic zajmie się',
 		titleMark: 'resztą.',
 		lede: 'Zaznacz obszar albo długą stronę, dorysuj strzałki, nagraj ekran z dźwiękiem, skopiuj tekst i wyślij link. Wszystko w jednym programie.',

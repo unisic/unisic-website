@@ -39,7 +39,7 @@ export default {
 	},
 
 	hero: {
-		kicker: '适用于 Linux Wayland 的免费开源截图工具',
+		kicker: '适用于 Linux 的免费开源截图工具',
 		title: '你只管截图。之后的一切，',
 		titleMark: '交给 Unisic。',
 		lede: '截取一块区域或比屏幕还长的页面，加上标注，连同声音一起录制，提取其中的文字，上传后得到链接。这些都在一个免费应用里完成。',
