@@ -78,7 +78,7 @@
 	--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 	--ease-icon: cubic-bezier(0.2, 0, 0, 1);
 
-	/* Layer scale: inside the hero, then page-level chrome. */
+	/* Layer scale: inside the overlay demo, then page-level chrome. */
 	--z-ink: 2;
 	--z-frame: 3;
 	--z-tools: 4;
@@ -86,6 +86,12 @@
 	--z-toast: 12;
 
 	--wrap: min(100% - 2 * var(--s4), 1240px);
+	/* The fake desktop behind the hero and the overlay demo. */
+	--desk:
+		radial-gradient(70% 90% at 82% 8%, color-mix(in oklab, var(--tertiary) 70%, transparent), transparent 70%),
+		radial-gradient(60% 70% at 6% 100%, color-mix(in oklab, var(--secondary) 90%, transparent), transparent 70%),
+		radial-gradient(circle, color-mix(in oklab, var(--text) 9%, transparent) 1px, transparent 1.5px) 0 0 / 24px 24px,
+		var(--deep);
 	color-scheme: dark;
 }
 
