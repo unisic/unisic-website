@@ -150,6 +150,9 @@
 	.head h3 {
 		font-size: 1.25rem;
 	}
+	.head .label {
+		white-space: nowrap;
+	}
 	.thumbs {
 		display: flex;
 		flex-wrap: wrap;

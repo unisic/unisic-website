@@ -6,6 +6,8 @@
 	let { t }: { t: Dictionary } = $props();
 
 	const INSTALL = 'curl -fsSL https://unisic.app/install.sh | bash';
+	// The command may break after the host, never before the pipe.
+	const [INSTALL_HEAD, INSTALL_TAIL] = INSTALL.split(/(?<=app\/)/);
 	const PACKAGES = '/docs/installation/#install-from-a-distribution-repository';
 	// The compositors named in docs/compositors.md.
 	const DESKTOPS = ['KDE Plasma', 'GNOME', 'Hyprland', 'Sway', 'niri', 'Wayfire'];
@@ -76,7 +78,7 @@
 			{:else}
 				<p class="bar"><i></i><i></i><i></i><span>{t.hero.anyDistro}</span></p>
 				<div class="body">
-					<code class="cmd"><span class="prompt" aria-hidden="true">$</span> {INSTALL}</code>
+					<code class="cmd"><span class="prompt" aria-hidden="true">$</span> {INSTALL_HEAD}<wbr /><span class="tail">{INSTALL_TAIL}</span></code>
 					<Copy text={INSTALL} />
 				</div>
 				<div class="note">
@@ -335,6 +337,9 @@
 		line-height: 1.4;
 		overflow-wrap: break-word;
 	}
+	.tail {
+		white-space: nowrap;
+	}
 	.prompt {
 		color: var(--success);
 		user-select: none;
@@ -368,6 +373,12 @@
 		flex-wrap: wrap;
 		align-items: center;
 		gap: var(--s2) var(--s5);
+	}
+	/* On a narrow card the label drops under the name instead of splitting it or overflowing. */
+	.alt .btn {
+		flex-wrap: wrap;
+		row-gap: 0;
+		padding-block: var(--s2);
 	}
 
 	.foot {

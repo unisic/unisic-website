@@ -149,6 +149,7 @@
 		inset: auto 10px 10px;
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
 		justify-content: space-between;
 		gap: var(--s2);
 		padding: 6px 6px 6px 12px;
@@ -159,11 +160,10 @@
 	}
 	.banner span:first-child {
 		min-width: 0;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+		text-wrap: pretty;
 	}
 	.finish {
+		margin-left: auto;
 		padding: 5px 10px;
 		border-radius: var(--r1);
 		background: var(--mode);

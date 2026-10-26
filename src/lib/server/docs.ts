@@ -3,7 +3,7 @@
  * description, order, group). Vite inlines the files at build time and pages are prerendered, so
  * Markdown and the highlighter never reach the browser. To add or edit a page, touch the Markdown.
  */
-import { Marked, marked } from 'marked';
+import { Marked, Renderer, marked } from 'marked';
 import { SITE_URL } from '#lib/i18n/locales.js';
 
 export type DocMeta = {
@@ -264,6 +264,21 @@ function renderMarkdown(md: string): string {
 						? `<a class="anchor" href="#${id}" aria-label="Link to this section">#</a>`
 						: '';
 				return `<h${token.depth} id="${id}">${inner}${anchor}</h${token.depth}>\n`;
+			},
+			text(token) {
+				// A spaced dash or arrow ("Settings -> Hotkeys") never starts a line, and the arrow never splits.
+				return Renderer.prototype.text
+					.call(this, token)
+					.replace(/ -&gt; /g, '\u00a0-\u2060&gt; ')
+					.replace(/ - /g, '\u00a0- ');
+			},
+			codespan(token) {
+				/* A short word (a flag, a key combo, a package) stays on one line, so a command breaks only
+				   between its words. A long one may also break after / and =, so a path splits between its parts. */
+				const words = token.text.split(/(\s+)/).map((w) =>
+					!w.trim() ? w : w.length <= 24 ? `<span class="nowrap">${escapeHtml(w)}</span>` : escapeHtml(w).replace(/([/=])(?=.)/g, '$1<wbr>')
+				);
+				return `<code>${words.join('')}</code>`;
 			},
 			code(token) {
 				const lang = (token.lang ?? '')

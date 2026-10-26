@@ -219,22 +219,22 @@ export default {
 		say: { y: 'Tak', p: 'Częściowo', n: 'Nie' },
 		rows: [
 			{
-				feature: 'Rysowanie przed zrzutem',
+				feature: 'Ry\u00adso\u00adwa\u00adnie przed zrzutem',
 				notes: ['Enter utrwala rysunek', '', '', 'Tylko lupa i linijki', 'Rysuje na obrazie z innego programu', '']
 			},
 			{ feature: 'Edytor obrazów', notes: ['', 'Nie otwiera gotowych plików', '', '', '', ''] },
-			{ feature: 'Zrzuty z przewijaniem', notes: ['', '', '', '', '', ''] },
-			{ feature: 'Nagrywanie do GIF', notes: ['', '', '', '', '', ''] },
-			{ feature: 'Nagrywanie wideo', notes: ['MP4 i WebM', '', 'Tylko Wayland', '', '', ''] },
-			{ feature: 'Dźwięk w nagraniach', notes: ['System, mikrofon, aplikacje', '', 'Od Plasmy 6.8', '', '', ''] },
+			{ feature: 'Zrzuty z prze\u00adwi\u00adja\u00adniem', notes: ['', '', '', '', '', ''] },
+			{ feature: 'Na\u00adgry\u00adwa\u00adnie do GIF', notes: ['', '', '', '', '', ''] },
+			{ feature: 'Na\u00adgry\u00adwa\u00adnie wideo', notes: ['MP4 i WebM', '', 'Tylko Wayland', '', '', ''] },
+			{ feature: 'Dźwięk w na\u00adgra\u00adniach', notes: ['System, mikrofon, aplikacje', '', 'Od Plasmy 6.8', '', '', ''] },
 			{ feature: 'OCR', notes: ['Tesseract', '', 'Od Plasmy 6.6', 'Osobna wtyczka', '', ''] },
 			{ feature: 'Odczyt kodów QR', notes: ['zxing-cpp', '', '', '', '', ''] },
 			{
-				feature: 'Wysyłanie na własny serwer',
+				feature: 'Wy\u00adsy\u00adła\u00adnie na własny serwer',
 				notes: ['.sxcu, HTTP, FTP, SFTP', 'Tylko Imgur, domyślnie wyłączone', 'Menu Udostępnij z KDE', 'Imgur, FTP, skrypty', '', '.sxcu, FTP, SFTP']
 			},
 			{
-				feature: 'Historia z miniaturami',
+				feature: 'Historia z mi\u00adnia\u00adtu\u00adra\u00admi',
 				notes: ['Usunięte trafiają do kosza', 'Tylko wysłane na Imgur', '', '', '', '']
 			},
 			{
@@ -243,7 +243,7 @@ export default {
 			},
 			{ feature: 'X11', notes: ['Drugi cel, bez gwarancji', 'Portal lub stare API X11', '', '', 'Brak informacji', ''] },
 			{
-				feature: 'Platformy',
+				feature: 'Plat\u00adfor\u00admy',
 				notes: [
 					'Linux, Windows\u00a011 (testowo)',
 					'Linux, Windows, macOS',

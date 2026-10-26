@@ -44,7 +44,6 @@
 		margin: var(--s6) 0 var(--s3);
 		font-size: 1.1875rem;
 		font-weight: 680;
-		font-stretch: 85%;
 		line-height: 1.2;
 		letter-spacing: -0.005em;
 	}
@@ -108,7 +107,10 @@
 		background: var(--surface-hi);
 		box-shadow: inset 0 0 0 1px var(--line);
 		font-size: 0.85em;
-		overflow-wrap: anywhere;
+		overflow-wrap: break-word;
+	}
+	.prose :global(code .nowrap) {
+		white-space: nowrap;
 	}
 	.prose :global(pre) {
 		display: grid;

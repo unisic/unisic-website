@@ -38,6 +38,8 @@
 	let shown = $state(false);
 	// Phones show Unisic beside one other tool, picked here, so the table fits without a sideways scroll.
 	let vs = $state(1);
+	// The check date never breaks at its hyphens.
+	const caption = $derived(t.compare.caption.split(/(\d{4}-\d{2}-\d{2})/));
 </script>
 
 <Chapter
@@ -64,7 +66,7 @@
 			{@attach inview((v) => v && (shown = true), '0px 0px -15% 0px')}
 		>
 			<table>
-				<caption id="compare-caption">{t.compare.caption}</caption>
+				<caption id="compare-caption">{caption[0]}<span class="date">{caption[1]}</span>{caption[2]}</caption>
 				<thead>
 					<tr>
 						<td></td>
@@ -130,6 +132,9 @@
 		text-transform: uppercase;
 		color: var(--muted);
 		border-bottom: 1px solid var(--line);
+	}
+	.date {
+		white-space: nowrap;
 	}
 	th,
 	td {
@@ -256,16 +261,21 @@
 		.off {
 			display: none;
 		}
-		/* German and Dutch compounds outgrow a third of a phone; break them rather than the page. */
+		/* Columns size to their longest word; long compounds hyphenate instead of splitting raw.
+		   Words under eight letters (Wayland, Windows) stay whole. */
 		th,
 		td {
 			padding: var(--s2);
-			overflow-wrap: anywhere;
 			hyphens: auto;
+			hyphenate-limit-chars: 8 2 2;
+		}
+		/* Tool names never hyphenate; the smaller header leaves them room. */
+		thead th {
+			font-size: var(--t-small);
+			hyphens: manual;
 		}
 		tbody th {
 			min-width: 0;
-			width: 34%;
 		}
 		thead > tr > * {
 			position: sticky;
