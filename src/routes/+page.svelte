@@ -10,7 +10,6 @@
 	import Themes from '#lib/components/Themes.svelte';
 	import Privacy from '#lib/components/Privacy.svelte';
 	import Compare from '#lib/components/Compare.svelte';
-	import Install from '#lib/components/Install.svelte';
 	import Footer from '#lib/components/Footer.svelte';
 	import Toast from '#lib/components/Toast.svelte';
 
@@ -41,7 +40,6 @@
 		<Themes />
 		<Privacy />
 		<Compare />
-		<Install />
 	</main>
 	<Footer />
 	<Toast />

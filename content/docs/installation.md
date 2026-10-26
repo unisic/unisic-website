@@ -10,7 +10,7 @@ This page covers how to install Unisic: the AppImage (recommended), the distribu
 
 ## Requirements
 
-Unisic runs on Linux, and as an experimental build on Windows 11 (see [Windows (experimental)](#windows-experimental)). Native packages include every application dependency and helper, including ffmpeg, the PipeWire command-line tools, Tesseract data, grim and one portal backend chosen for the desktop. Portable bundles carry the helpers but still use the desktop's running PipeWire and portal services. See [Dependencies](/docs/dependencies) for the complete package contract. The app is built with C++20 / Qt 6 / QML.
+Unisic runs on Linux, and as an experimental build on Windows 11 (see [Windows (experimental)](#windows-experimental)). It is made for Wayland: KDE Plasma natively, GNOME and wlroots desktops through portals. X11 works as a best-effort second target; recording a single window needs Wayland. Native packages include every application dependency and helper, including ffmpeg, the PipeWire command-line tools, Tesseract data, grim and one portal backend chosen for the desktop. Portable bundles carry the helpers but still use the desktop's running PipeWire and portal services. See [Dependencies](/docs/dependencies) for the complete package contract. The app is built with C++20 / Qt 6 / QML.
 
 For compositor-specific setup, including compositor-side keybinds on wlroots, see [Compositors](/docs/compositors).
 
@@ -26,6 +26,13 @@ curl -fsSL https://unisic.app/install.sh | bash
 
 An arrow-key menu opens and its first entry is this AppImage install, into `~/.local`; the second installs your distribution's package instead. Whatever you already have installed is updated where it is, never duplicated, and the same menu uninstalls, installs an older version and toggles automatic updates.
 
+To read the script before it runs:
+
+```sh
+curl -fsSLO https://unisic.app/install.sh
+less install.sh && bash install.sh
+```
+
 By hand instead, take `Unisic-<version>-x86_64.AppImage` from the [latest release](https://github.com/unisic/unisic/releases/latest) (the asset name carries the version, so there is no version-less URL for it), then:
 
 ```sh
@@ -37,7 +44,7 @@ The AppImage needs `fuse` (`/dev/fuse` plus a `fusermount` binary), which every 
 
 ## Install from a distribution repository
 
-Install from a repository and updates arrive automatically through your package manager, like any other package - the right choice if you would rather one program managed everything on the machine. The [website download section](/#install) has the same snippets with a distro picker and copy buttons.
+Install from a repository and updates arrive automatically through your package manager, like any other package - the right choice if you would rather one program managed everything on the machine.
 
 ### Debian / Ubuntu
 
@@ -166,6 +173,13 @@ services.pipewire.enable = true;
 ## Direct downloads
 
 The [Releases](https://github.com/unisic/unisic/releases/latest) page carries every format: the self-updating **AppImage**, plus one-off **.deb**, Fedora **.rpm**, and Arch **.pkg.tar.zst** packages that register their repository on first install - from then on updates arrive through `apt upgrade` / `dnf upgrade` / `pacman -Syu` like any other package. openSUSE has no release package (a binary rpm is pinned to the exact Qt it was built against); use the repository above.
+
+The **Flatpak** bundle, `unisic-<version>-x86_64.flatpak`, installs for your user and takes the KDE runtime from Flathub:
+
+```sh
+flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --user --bundle ./unisic-*-x86_64.flatpak
+```
 
 ## Windows (experimental)
 

@@ -7,7 +7,7 @@
 				{ href: '/#record', text: 'Record' },
 				{ href: '/docs/hotkeys/', text: 'Hotkeys' },
 				{ href: '/#compare', text: 'Compared' },
-				{ href: '/#install', text: 'Install' }
+				{ href: '/docs/installation/', text: 'Install' }
 			]
 		},
 		{

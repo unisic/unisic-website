@@ -31,7 +31,7 @@
 				</svg>
 				<span class="sr-only">Pause animations</span>
 			</button>
-			<a class="btn primary" href="/#install">Install</a>
+			<a class="btn primary" href="/docs/installation/">Install</a>
 			<button class="toggle" type="button" popovertarget="site-nav">
 				<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
 				<span class="sr-only">Menu</span>

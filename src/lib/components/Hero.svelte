@@ -3,8 +3,9 @@
 	import { RELEASED, VERSION, WINDOWS_SETUP } from '#lib/release.js';
 
 	const INSTALL = 'curl -fsSL https://unisic.app/install.sh | bash';
+	const PACKAGES = '/docs/installation/#install-from-a-distribution-repository';
 
-	// Same check as the Install tabs: a Windows visitor gets the installer, not a shell line.
+	// A Windows visitor gets the installer, not a shell line.
 	let windows = $state(false);
 	$effect(() => {
 		windows = /Windows/.test(navigator.userAgent);
@@ -39,7 +40,7 @@
 				<p class="bar"><i></i><i></i><i></i><span>Windows 11, experimental</span></p>
 				<div class="body">
 					<a class="btn primary get" href={WINDOWS_SETUP}>Download the installer</a>
-					<a class="other" href="#install">Linux packages</a>
+					<a class="other" href={PACKAGES}>Linux packages</a>
 				</div>
 				<p class="note">Installs for your user, no administrator rights, updates itself.</p>
 			{:else}
@@ -48,7 +49,13 @@
 					<code class="cmd"><span class="prompt" aria-hidden="true">$</span> {INSTALL}</code>
 					<Copy text={INSTALL} />
 				</div>
-				<p class="note">Installs for your user, no sudo, updates itself.</p>
+				<div class="note">
+					<p>Installs for your user, no sudo, updates itself.</p>
+					<p class="alt">
+						<a class="other" href={PACKAGES}>Per-distro packages, Nix</a>
+						<a class="btn" href={WINDOWS_SETUP}>Windows installer <span class="label">Experimental</span></a>
+					</p>
+				</div>
 			{/if}
 		</div>
 
@@ -60,7 +67,6 @@
 				<li class="ver">v{VERSION}, {RELEASED}</li>
 			</ul>
 			<p class="more">
-				<a href="#install">Distro packages, Nix, Windows</a>
 				<a href="https://github.com/unisic/unisic">Source on GitHub</a>
 			</p>
 		</div>
@@ -198,9 +204,21 @@
 		}
 	}
 	.note {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--s3) var(--s5);
 		padding: 0 var(--s5) var(--s5);
 		font-size: var(--t-small);
 		color: var(--muted);
+	}
+
+	.alt {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--s2) var(--s5);
 	}
 
 	.foot {
