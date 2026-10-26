@@ -11,6 +11,8 @@ export default defineConfig({
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
 			adapter: adapter(),
+			// The 404 page is served at any depth, so its asset URLs must not be relative to it.
+			paths: { relative: false },
 			version: { pollInterval: 0 }
 		})
 	]

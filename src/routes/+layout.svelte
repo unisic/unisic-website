@@ -13,6 +13,8 @@
 
 <svelte:head>
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+	<link rel="apple-touch-icon" href="/apple-icon.png" />
+	<link rel="manifest" href="/manifest.webmanifest" />
 	<meta name="theme-color" content="#100e2c" />
 	<meta property="og:image" content="https://unisic.app/img/og.jpg" />
 	<meta property="og:image:width" content="1280" />
