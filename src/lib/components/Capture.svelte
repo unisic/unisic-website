@@ -1,18 +1,16 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
 	import { ui, inview } from '#lib/ui.svelte.js';
+	import type { Dictionary } from '#lib/i18n/en.js';
 
 	// Linux defaults from the hotkeys docs; every one can be rebound in Settings.
-	const MODES = [
-		{ name: 'Full screen', say: 'All monitors in one image.', keys: 'Meta+Shift+1' },
-		{ name: 'Region', say: 'Drag a box with live dimensions and mark it up before the shot.', keys: 'Meta+Shift+2' },
-		{ name: 'Window', say: 'The active window, nothing around it.', keys: 'Meta+Shift+3' }
-	];
+	const KEYS = ['Meta+Shift+1', 'Meta+Shift+2', 'Meta+Shift+3'];
 
 	// Widths of the fake document lines in the scroll demo; 0 is an image block.
 	const LINES = [86, 64, 92, 0, 78, 90, 52, 84, 70, 0, 94, 60, 82, 46, 0, 88, 72, 58, 90, 0, 66, 84, 50, 76];
 
 	let run = $state(false);
+	let { t }: { t: Dictionary } = $props();
 </script>
 
 {#snippet doc()}
@@ -25,37 +23,35 @@
 
 <Chapter
 	id="capture"
-	kicker="Capture"
-	title="Every way to grab the screen."
-	lede="Full screen across monitors, a region with live dimensions, the active window, or a page longer than your screen. Add a delay of up to 60 seconds and the cursor when you need them."
+	kicker={t.capture.kicker}
+	title={t.capture.title}
+	lede={t.capture.lede}
 >
 	<div class="grid wrap">
 		<ul class="modes">
-			{#each MODES as m (m.name)}
+			{#each t.capture.modes as m, i (KEYS[i])}
 				<li>
 					<strong>{m.name}</strong>
 					<span>{m.say}</span>
-					<kbd class="cap">{m.keys}</kbd>
+					<kbd class="cap">{KEYS[i]}</kbd>
 				</li>
 			{/each}
 		</ul>
 
 		<div class="scroll panel" data-run={run && !ui.paused} {@attach inview((v) => (run = v))}>
-			<p class="label">A page longer than your screen</p>
+			<p class="label">{t.capture.scroll}</p>
 			<div class="stage" aria-hidden="true">
 				<div class="viewport">
 					{@render doc()}
 					<div class="banner">
-						<span>Scroll down to capture...</span>
-						<span class="finish">Finish</span>
+						<span>{t.capture.scrolling}</span>
+						<span class="finish">{t.capture.finish}</span>
 					</div>
 				</div>
 				<div class="arrow"></div>
 				<div class="result">{@render doc()}</div>
 			</div>
-			<p class="caption">
-				Start it with <code>unisic --scroll</code>, scroll the page, press Finish. The pieces are stitched into one image.
-			</p>
+			<p class="caption">{@html t.capture.captionHtml}</p>
 		</div>
 
 	</div>
@@ -183,7 +179,7 @@
 		font-size: var(--t-small);
 		color: var(--muted);
 	}
-	code {
+	.caption :global(code) {
 		font-size: 0.92em;
 		color: var(--text);
 	}

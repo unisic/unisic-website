@@ -4,8 +4,7 @@
  * Markdown and the highlighter never reach the browser. To add or edit a page, touch the Markdown.
  */
 import { Marked, marked } from 'marked';
-
-export const SITE_URL = 'https://unisic.app';
+import { SITE_URL } from '#lib/i18n/locales.js';
 
 export type DocMeta = {
 	slug: string;

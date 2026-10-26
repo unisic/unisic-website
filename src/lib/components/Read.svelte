@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
 	import Copy from './Copy.svelte';
+	import type { Dictionary } from '#lib/i18n/en.js';
+
+	let { t }: { t: Dictionary } = $props();
 
 	// The first block of `unisic --help`, read here the way OCR would read it.
 	const LINES = [
@@ -36,34 +39,34 @@
 <Chapter
 	id="read"
 	mode="ocr"
-	kicker="OCR and QR"
-	title="Copy text out of pixels."
-	lede="Select any text on screen and get it back as text. Tesseract does the reading, with Polish and English and automatic language detection. Point Unisic at a QR code or a barcode and zxing-cpp hands you what it encodes."
+	kicker={t.read.kicker}
+	title={t.read.title}
+	lede={t.read.lede}
 >
 	<div class="grid wrap">
 		<div class="ocr panel" data-shown={shown} {@attach once}>
 			<div class="bar">
-				<span class="label">OCR region</span>
-				<span class="count" aria-hidden="true">{shown ? LINES.length : 0} lines</span>
+				<span class="label">{t.read.region}</span>
+				<span class="count" aria-hidden="true">{t.read.lines.replace('{n}', String(shown ? LINES.length : 0))}</span>
 			</div>
 			<div class="page">
 				<pre>{#each LINES as line, i (i)}<span class="ln" style:--i={i}>{line}</span>
 {/each}</pre>
 			</div>
 			<div class="out">
-				<p>Recognized text goes straight to the clipboard.</p>
-				<Copy text={TEXT} label="Copy text" />
+				<p>{t.read.out}</p>
+				<Copy text={TEXT} label={t.read.copy} />
 			</div>
 		</div>
 
 		<div class="qr panel" data-shown={shown}>
 			<div class="code">
-				<svg viewBox="4 4 25 25" shape-rendering="crispEdges" role="img" aria-label="QR code for unisic.app">
+				<svg viewBox="4 4 25 25" shape-rendering="crispEdges" role="img" aria-label={t.read.qr}>
 					<path d={QR} stroke="currentColor" stroke-width="1" fill="none" />
 				</svg>
 				<i class="c tl" aria-hidden="true"></i><i class="c tr" aria-hidden="true"></i><i class="c bl" aria-hidden="true"></i><i class="c br" aria-hidden="true"></i>
 			</div>
-			<p class="label">Decoded</p>
+			<p class="label">{t.read.decoded}</p>
 			<a class="decoded" href="https://unisic.app">https://unisic.app</a>
 		</div>
 	</div>

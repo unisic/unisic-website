@@ -1,45 +1,25 @@
 <script lang="ts">
 	// The scrolling capture claim and the closing sentence follow the rows in Compare.svelte.
-	const POINTS = [
-		{
-			href: '#capture',
-			title: 'Scrolling capture',
-			text: 'A page longer than the screen comes out as one image. Flameshot, Spectacle, ksnip and Satty have no scrolling capture.'
-		},
-		{
-			href: '#record',
-			title: 'Recording with sound',
-			text: 'The same region as a GIF, MP4 or WebM, with system sound, the microphone or one app on its own track.'
-		},
-		{
-			href: '#read',
-			title: 'Text and QR codes',
-			text: 'Copy the text out of any capture, or get the link inside a QR code or barcode.'
-		},
-		{
-			href: '#share',
-			title: 'Uploads and history',
-			text: 'Your own server over HTTP, FTP or SFTP, or a ShareX .sxcu config, and a thumbnail of every capture in the history.'
-		}
-	];
+	import type { Dictionary } from '#lib/i18n/en.js';
+
+	const HREFS = ['#capture', '#record', '#read', '#share'];
+
+	let { t }: { t: Dictionary } = $props();
 </script>
 
 <section id="why" class="why wrap" aria-labelledby="why-title">
 	<div class="head">
-		<h2 id="why-title">Why Unisic.</h2>
-		<p>
-			Of the tools in the <a href="#compare">comparison</a>, only Unisic and ShareX have every feature, and ShareX runs
-			only on Windows.
-		</p>
+		<h2 id="why-title">{t.why.title}</h2>
+		<p>{@html t.why.ledeHtml}</p>
 	</div>
 	<ul>
-		{#each POINTS as point (point.href)}
+		{#each t.why.points as point, i (HREFS[i])}
 			<li>
-				<a href={point.href}>
+				<a href={HREFS[i]}>
 					<strong>{point.title}</strong>
 					{point.text}
 					<span class="see">
-						See it
+						{t.why.see}
 						<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
 					</span>
 				</a>
@@ -67,7 +47,7 @@
 		line-height: 1.45;
 		color: var(--muted);
 	}
-	.head a {
+	.head :global(a) {
 		color: var(--accent);
 	}
 	ul {

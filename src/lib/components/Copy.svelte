@@ -1,5 +1,8 @@
 <script lang="ts">
-	let { text, label = 'Copy' }: { text: string; label?: string } = $props();
+	import { page } from '$app/state';
+
+	const t = $derived(page.data.copy);
+	let { text, label }: { text: string; label?: string } = $props();
 
 	let status = $state<'idle' | 'done' | 'failed'>('idle');
 	let timer: ReturnType<typeof setTimeout> | undefined;
@@ -24,12 +27,12 @@
 		<svg class="icon b" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
 	</span>
 	<span class="txt">
-		{#each [['idle', label], ['done', 'Copied'], ['failed', 'Select it']] as [s, t] (s)}
-			<span class:on={status === s}>{t}</span>
+		{#each [['idle', label ?? t.copy], ['done', t.copied], ['failed', t.select]] as [s, word] (s)}
+			<span class:on={status === s}>{word}</span>
 		{/each}
 	</span>
 </button>
-<span class="sr-only" role="status">{status === 'done' ? 'Copied to clipboard' : status === 'failed' ? 'Clipboard blocked, select the text instead' : ''}</span>
+<span class="sr-only" role="status">{status === 'done' ? t.done : status === 'failed' ? t.failed : ''}</span>
 
 <style>
 	.copy {

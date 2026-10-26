@@ -1,48 +1,48 @@
 <script lang="ts">
-	const GROUPS = [
+	import { page } from '$app/state';
+	import { home } from '#lib/i18n/locales.js';
+
+	const words = $derived(page.data.chrome.footer);
+	const root = $derived(home(page.data.lang));
+	const groups = $derived([
 		{
 			title: 'Unisic',
 			links: [
-				{ href: '/#capture', text: 'Capture' },
-				{ href: '/#record', text: 'Record' },
-				{ href: '/docs/hotkeys/', text: 'Hotkeys' },
-				{ href: '/#compare', text: 'Compared' },
-				{ href: '/docs/installation/', text: 'Install' }
+				{ href: `${root}#capture`, text: words.capture },
+				{ href: `${root}#record`, text: words.record },
+				{ href: '/docs/hotkeys/', text: words.hotkeys },
+				{ href: `${root}#compare`, text: words.compared },
+				{ href: '/docs/installation/', text: words.install }
 			]
 		},
 		{
-			title: 'Project',
+			title: words.project,
 			links: [
-				{ href: 'https://github.com/unisic/unisic', text: 'Source on GitHub' },
-				{ href: 'https://github.com/unisic/unisic/releases/latest', text: 'Releases' },
-				{ href: 'https://github.com/unisic/unisic/issues', text: 'Report a bug' },
-				{ href: '/docs/', text: 'Documentation' }
+				{ href: 'https://github.com/unisic/unisic', text: words.source },
+				{ href: 'https://github.com/unisic/unisic/releases/latest', text: words.releases },
+				{ href: 'https://github.com/unisic/unisic/issues', text: words.bug },
+				{ href: '/docs/', text: words.docs }
 			]
 		},
 		{
-			title: 'Community',
+			title: words.community,
 			links: [
 				{ href: 'https://discord.gg/U2Eyw6xQBz', text: 'Discord' },
-				{ href: 'https://ko-fi.com/deandark', text: 'Support on Ko-fi' }
+				{ href: 'https://ko-fi.com/deandark', text: words.kofi }
 			]
 		}
-	];
+	]);
 </script>
 
 <footer class="foot">
 	<div class="wrap grid">
 		<div class="sign">
-			<img class="uni" src="/img/uni.webp" alt="Uni, the Unisic mascot" width="376" height="568" loading="lazy" decoding="async" />
-			<p class="legal">
-				Unisic is free software under the
-				<a href="/docs/introduction/#license">GNU GPL v3</a>. Built by
-				<a href="https://github.com/DeBondor">@DeBondor</a> and <a href="https://github.com/D3anDark">@D3anDark</a>, inspired by
-				<a href="https://getsharex.com/">ShareX</a> and <a href="https://apps.kde.org/spectacle/">Spectacle</a>.
-			</p>
+			<img class="uni" src="/img/uni.webp" alt={words.mascot} width="376" height="568" loading="lazy" decoding="async" />
+			<p class="legal">{@html words.legalHtml}</p>
 		</div>
 
-		<nav class="groups" aria-label="Footer">
-			{#each GROUPS as g (g.title)}
+		<nav class="groups" aria-label={words.label}>
+			{#each groups as g (g.title)}
 				<div>
 					<h3 class="label">{g.title}</h3>
 					<ul>
@@ -97,7 +97,7 @@
 		transition: color 150ms ease;
 	}
 	.groups a:focus-visible,
-	.legal a:focus-visible {
+	.legal :global(a:focus-visible) {
 		outline: 2px solid var(--mode);
 		outline-offset: 2px;
 		border-radius: 4px;
@@ -113,7 +113,7 @@
 		color: var(--muted);
 		text-wrap: pretty;
 	}
-	.legal a {
+	.legal :global(a) {
 		color: var(--text);
 	}
 

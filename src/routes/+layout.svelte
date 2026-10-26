@@ -3,11 +3,15 @@
 	import { ui } from '#lib/ui.svelte.js';
 	import type { LayoutProps } from './$types';
 
-	let { children }: LayoutProps = $props();
+	let { data, children }: LayoutProps = $props();
 
 	// Keeps the System pick in step when the desktop flips between light and dark.
 	$effect(() => {
 		document.documentElement.dataset.theme = ui.shown;
+	});
+	// The hook sets lang on the first load; client navigation from /pl/ to the docs must put it back.
+	$effect(() => {
+		document.documentElement.lang = data.lang;
 	});
 </script>
 
@@ -22,7 +26,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">{data.chrome.skip}</a>
 {@render children()}
 
 <style>

@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Copy from './Copy.svelte';
 	import { RELEASED, VERSION, WINDOWS_SETUP } from '#lib/release.js';
+	import type { Dictionary } from '#lib/i18n/en.js';
+
+	let { t }: { t: Dictionary } = $props();
 
 	const INSTALL = 'curl -fsSL https://unisic.app/install.sh | bash';
 	const PACKAGES = '/docs/installation/#install-from-a-distribution-repository';
@@ -26,17 +29,14 @@
 <section class="hero" aria-labelledby="hero-title">
 	<div class="inner wrap">
 		<div class="copy">
-			<p class="kicker">Free and open source screenshot tool for Linux Wayland</p>
-			<h1 id="hero-title">Take the shot. Unisic handles everything <span class="mark">after.</span></h1>
-			<p class="lede">
-				Capture a region or a page longer than your screen, mark it up, record it with sound, pull the text out and
-				upload a link. All in one free app.
-			</p>
+			<p class="kicker">{t.hero.kicker}</p>
+			<h1 id="hero-title">{t.hero.title} <span class="mark">{t.hero.titleMark}</span></h1>
+			<p class="lede">{t.hero.lede}</p>
 			<div class="desks">
-				<p class="label">Runs on</p>
+				<p class="label">{t.hero.runsOn}</p>
 				<ul>
 					{#each DESKTOPS as d (d)}<li>{d}</li>{/each}
-					<li><a href="/docs/compositors/">and more</a></li>
+					<li><a href="/docs/compositors/">{t.hero.more}</a></li>
 				</ul>
 			</div>
 		</div>
@@ -50,7 +50,7 @@
 					width="1060"
 					height="700"
 					fetchpriority="high"
-					alt="Unisic's Capture page: Full screen, Region and Window cards with their shortcuts, and the capture options below."
+					alt={t.hero.alt}
 				/>
 				<!-- The Region card as the overlay frames it, in the screenshot's own pixels. -->
 				<div class="sel" aria-hidden="true">
@@ -67,23 +67,23 @@
 
 		<div class="term panel">
 			{#if windows}
-				<p class="bar"><i></i><i></i><i></i><span>Windows 11, experimental</span></p>
+				<p class="bar"><i></i><i></i><i></i><span>{t.hero.windows}</span></p>
 				<div class="body">
-					<a class="btn primary get" href={WINDOWS_SETUP}>{@render windowsLogo()}Download the installer</a>
-					<a class="other" href={PACKAGES}>Linux packages</a>
+					<a class="btn primary get" href={WINDOWS_SETUP}>{@render windowsLogo()}{t.hero.download}</a>
+					<a class="other" href={PACKAGES}>{t.hero.linuxPackages}</a>
 				</div>
-				<p class="note">Installs for your user, no administrator rights, updates itself.</p>
+				<p class="note">{t.hero.windowsNote}</p>
 			{:else}
-				<p class="bar"><i></i><i></i><i></i><span>Install on any distro</span></p>
+				<p class="bar"><i></i><i></i><i></i><span>{t.hero.anyDistro}</span></p>
 				<div class="body">
 					<code class="cmd"><span class="prompt" aria-hidden="true">$</span> {INSTALL}</code>
 					<Copy text={INSTALL} />
 				</div>
 				<div class="note">
-					<p>Installs for your user, no sudo, updates itself.</p>
+					<p>{t.hero.linuxNote}</p>
 					<p class="alt">
-						<a class="other" href={PACKAGES}>Per-distro packages, Nix</a>
-						<a class="btn" href={WINDOWS_SETUP}>{@render windowsLogo()}Windows installer <span class="label">Experimental</span></a>
+						<a class="other" href={PACKAGES}>{t.hero.packages}</a>
+						<a class="btn" href={WINDOWS_SETUP}>{@render windowsLogo()}{t.hero.windowsInstaller} <span class="label">{t.hero.experimental}</span></a>
 					</p>
 				</div>
 			{/if}
@@ -91,13 +91,13 @@
 
 		<div class="foot">
 			<ul class="facts">
-				{#each ['Free, GPL-3.0', 'No account', 'No telemetry'] as fact (fact)}
+				{#each t.hero.facts as fact (fact)}
 					<li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>{fact}</li>
 				{/each}
 				<li class="ver">v{VERSION}, {RELEASED}</li>
 			</ul>
 			<p class="more">
-				<a href="https://github.com/unisic/unisic">Source on GitHub</a>
+				<a href="https://github.com/unisic/unisic">{t.hero.source}</a>
 			</p>
 		</div>
 	</div>

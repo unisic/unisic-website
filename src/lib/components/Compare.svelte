@@ -2,10 +2,9 @@
 	import Chapter from './Chapter.svelte';
 	import { inview } from '#lib/ui.svelte.js';
 	import { VERSION } from '#lib/release.js';
+	import type { Dictionary } from '#lib/i18n/en.js';
 
 	type Mark = 'y' | 'p' | 'n';
-	type Cell = [Mark, string?] | string;
-	type Row = { feature: string; cells: Cell[] };
 
 	const TOOLS = [
 		{ name: 'Unisic', version: `v${VERSION}`, href: `https://github.com/unisic/unisic/tree/v${VERSION}` },
@@ -17,22 +16,24 @@
 	];
 
 	// Each value was read from the tool's source, README or release notes for the tag linked in the header.
-	const ROWS: Row[] = [
-		{ feature: 'Draw on the capture overlay', cells: [['y', 'Enter burns it into the crop'], ['y'], ['y'], ['n', 'Magnifier and rulers only'], ['p', 'Annotates an image taken by another tool'], ['y']] },
-		{ feature: 'Image editor', cells: [['y'], ['n', 'Cannot open existing images'], ['y'], ['y'], ['y'], ['y']] },
-		{ feature: 'Scrolling capture', cells: [['y'], ['n'], ['n'], ['n'], ['n'], ['y']] },
-		{ feature: 'GIF recording', cells: [['y'], ['n'], ['y'], ['n'], ['n'], ['y']] },
-		{ feature: 'Video recording', cells: [['y', 'MP4 and WebM'], ['n'], ['y', 'Wayland only'], ['n'], ['n'], ['y']] },
-		{ feature: 'Sound in recordings', cells: [['y', 'System, mic and per app'], ['n'], ['y', 'Since Plasma 6.8'], ['n'], ['n'], ['y']] },
-		{ feature: 'OCR', cells: [['y', 'Tesseract'], ['n'], ['y', 'Since Plasma 6.6'], ['p', 'Separate plugin'], ['n'], ['y']] },
-		{ feature: 'QR code reading', cells: [['y', 'zxing-cpp'], ['n'], ['y'], ['n'], ['n'], ['y']] },
-		{ feature: 'Custom upload targets', cells: [['y', '.sxcu, HTTP, FTP, SFTP'], ['n', 'Imgur only, off by default'], ['p', 'KDE Share menu'], ['p', 'Imgur, FTP, scripts'], ['n'], ['y', '.sxcu, FTP, SFTP']] },
-		{ feature: 'History with thumbnails', cells: [['y', 'Deleting moves to the trash'], ['p', 'Imgur uploads only'], ['n'], ['n'], ['n'], ['y']] },
-		{ feature: 'Wayland', cells: [['y', 'Portals, KWin, PipeWire'], ['y', 'Portal'], ['p', 'KWin only'], ['p', 'Portal or legacy KWin'], ['p', 'Capture left to grim'], ['n']] },
-		{ feature: 'X11', cells: [['p', 'Best-effort second target'], ['y', 'Portal or legacy X11'], ['y'], ['y'], 'Not stated', ['n']] },
-		{ feature: 'Platforms', cells: ['Linux, Windows 11 (experimental)', 'Linux, Windows, macOS', 'Linux, KDE Plasma', 'Linux, Windows, macOS', 'Linux, BSD', 'Windows'] }
+	// One row per t.compare.rows entry, one mark per tool; null shows the note alone, as plain text.
+	const MARKS: (Mark | null)[][] = [
+		['y', 'y', 'y', 'n', 'p', 'y'],
+		['y', 'n', 'y', 'y', 'y', 'y'],
+		['y', 'n', 'n', 'n', 'n', 'y'],
+		['y', 'n', 'y', 'n', 'n', 'y'],
+		['y', 'n', 'y', 'n', 'n', 'y'],
+		['y', 'n', 'y', 'n', 'n', 'y'],
+		['y', 'n', 'y', 'p', 'n', 'y'],
+		['y', 'n', 'y', 'n', 'n', 'y'],
+		['y', 'n', 'p', 'p', 'n', 'y'],
+		['y', 'p', 'n', 'n', 'n', 'y'],
+		['y', 'y', 'p', 'p', 'p', 'n'],
+		['p', 'y', 'y', 'y', null, 'n'],
+		[null, null, null, null, null, null]
 	];
-	const SAY: Record<Mark, string> = { y: 'Yes', p: 'Partly', n: 'No' };
+
+	let { t }: { t: Dictionary } = $props();
 
 	let shown = $state(false);
 	// Phones show Unisic beside one other tool, picked here, so the table fits without a sideways scroll.
@@ -42,15 +43,15 @@
 <Chapter
 	id="compare"
 	band
-	kicker="Compared"
-	title="Where it stands among the others."
-	lede="Six tools, the same questions. Every answer was checked against the tool's source, README or release notes for the version in the header, so you can check it too."
+	kicker={t.compare.kicker}
+	title={t.compare.title}
+	lede={t.compare.lede}
 >
 	<div class="wrap">
 		<label class="vs">
-			Compare Unisic with
+			{t.compare.vs}
 			<select bind:value={vs}>
-				{#each TOOLS.slice(1) as t, i (t.name)}<option value={i + 1}>{t.name}</option>{/each}
+				{#each TOOLS.slice(1) as tool, i (tool.name)}<option value={i + 1}>{tool.name}</option>{/each}
 			</select>
 		</label>
 		<!-- svelte-ignore a11y_no_noninteractive_tabindex: a scrolling region must take focus so keyboard users can scroll it -->
@@ -63,33 +64,33 @@
 			{@attach inview((v) => v && (shown = true), '0px 0px -15% 0px')}
 		>
 			<table>
-				<caption id="compare-caption">Screenshot tools compared. Checked 2026-10-26 against tagged source.</caption>
+				<caption id="compare-caption">{t.compare.caption}</caption>
 				<thead>
 					<tr>
 						<td></td>
-						{#each TOOLS as t, i (t.name)}
+						{#each TOOLS as tool, i (tool.name)}
 							<th scope="col" class:us={i === 0} class:off={i > 0 && i !== vs}>
-								<a href={t.href}>{t.name}<span>{t.version}</span></a>
+								<a href={tool.href}>{tool.name}<span>{tool.version}</span></a>
 							</th>
 						{/each}
 					</tr>
 				</thead>
 				<tbody>
-					{#each ROWS as row, r (row.feature)}
+					{#each t.compare.rows as row, r (r)}
 						<tr style:--r={r}>
 							<th scope="row">{row.feature}</th>
-							{#each row.cells as cell, i (i)}
+							{#each MARKS[r] as mark, i (i)}
 								<td class:us={i === 0} class:off={i > 0 && i !== vs}>
-									{#if typeof cell === 'string'}
-										<span class="text">{cell}</span>
+									{#if !mark}
+										<span class="text">{row.notes[i]}</span>
 									{:else}
-										<span class="mark" data-m={cell[0]}>
+										<span class="mark" data-m={mark}>
 											<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-												{#if cell[0] === 'y'}<path d="M5 12.5l4.5 4.5L19 7.5" />{:else if cell[0] === 'p'}<path d="M6 12h12" />{:else}<path d="M7 7l10 10M17 7L7 17" />{/if}
+												{#if mark === 'y'}<path d="M5 12.5l4.5 4.5L19 7.5" />{:else if mark === 'p'}<path d="M6 12h12" />{:else}<path d="M7 7l10 10M17 7L7 17" />{/if}
 											</svg>
-											{SAY[cell[0]]}
+											{t.compare.say[mark]}
 										</span>
-										{#if cell[1]}<span class="note">{cell[1]}</span>{/if}
+										{#if row.notes[i]}<span class="note">{row.notes[i]}</span>{/if}
 									{/if}
 								</td>
 							{/each}
@@ -98,10 +99,7 @@
 				</tbody>
 			</table>
 		</div>
-		<p class="foot">
-			Satty only annotates: the image comes from a file or standard input, usually from grim. ksnip's behaviour on Plasma 6
-			was not checked. Spot a mistake? <a href="https://github.com/unisic/unisic/issues">Open an issue</a>.
-		</p>
+		<p class="foot">{@html t.compare.footHtml}</p>
 	</div>
 </Chapter>
 
@@ -221,7 +219,7 @@
 		font-size: var(--t-small);
 		color: var(--muted);
 	}
-	.foot a {
+	.foot :global(a) {
 		color: var(--accent);
 	}
 	.vs {
@@ -258,9 +256,16 @@
 		.off {
 			display: none;
 		}
+		/* German and Dutch compounds outgrow a third of a phone; break them rather than the page. */
 		th,
 		td {
-			padding: var(--s2) var(--s3);
+			padding: var(--s2);
+			overflow-wrap: anywhere;
+			hyphens: auto;
+		}
+		tbody th {
+			min-width: 0;
+			width: 34%;
 		}
 		thead > tr > * {
 			position: sticky;

@@ -1,18 +1,20 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
+	import type { Dictionary } from '#lib/i18n/en.js';
 
 	// The host is on the wire diagram above the log, so the log shows only the path.
 	const PATH = '/repos/unisic/unisic/releases/latest'.split('/').slice(1);
 
+	let { t }: { t: Dictionary } = $props();
 	let updates = $state(true);
 </script>
 
 <Chapter
 	id="privacy"
 	split
-	kicker="Privacy"
-	title="One request, and you can turn it off."
-	lede="No telemetry, no analytics, no account. The only request Unisic makes on its own asks GitHub whether there is a newer release, shortly after it starts and once a day after that. Nothing about you or your captures is sent."
+	kicker={t.privacy.kicker}
+	title={t.privacy.title}
+	lede={t.privacy.lede}
 >
 	<div class="grid wrap">
 		<div class="wire panel" data-on={updates}>
@@ -22,9 +24,9 @@
 				<span class="node">api.github.com</span>
 			</div>
 
-			<ol class="log" aria-label="Requests Unisic makes on its own">
+			<ol class="log" aria-label={t.privacy.log}>
 				{#if updates}
-					{#each ['After start', 'Every 24 h'] as when (when)}
+					{#each t.privacy.when as when (when)}
 						<li>
 							<span class="when">{when}</span>
 							<code>GET {#each PATH as seg, i (i)}/{seg}<wbr />{/each}</code>
@@ -32,7 +34,7 @@
 						</li>
 					{/each}
 				{:else}
-					<li class="none">No automatic requests. Settings keeps a Check now button for when you want one.</li>
+					<li class="none">{t.privacy.none}</li>
 				{/if}
 			</ol>
 
@@ -46,17 +48,15 @@
 			>
 				<span class="track" aria-hidden="true"><i></i></span>
 				<span>
-					Automatic updates
-					<span id="privacy-demo" class="demo">Demo of the switch in Settings</span>
+					{t.privacy.updates}
+					<span id="privacy-demo" class="demo">{t.privacy.demo}</span>
 				</span>
 			</button>
 		</div>
 
 		<div class="side">
-			<p>
-				Uploads happen only when you press Upload or turn on upload after capture, and only to the host you picked.
-			</p>
-			<a href="/docs/introduction/#privacy">What exactly is sent</a>
+			<p>{t.privacy.uploads}</p>
+			<a href="/docs/introduction/#privacy">{t.privacy.sent}</a>
 		</div>
 	</div>
 </Chapter>

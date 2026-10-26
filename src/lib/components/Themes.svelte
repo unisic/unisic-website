@@ -2,6 +2,9 @@
 	import { flushSync } from 'svelte';
 	import Chapter from './Chapter.svelte';
 	import { THEMES, reduced, ui } from '#lib/ui.svelte.js';
+	import type { Dictionary } from '#lib/i18n/en.js';
+
+	let { t }: { t: Dictionary } = $props();
 
 	const [dark, light] = THEMES;
 
@@ -35,11 +38,11 @@
 
 <Chapter
 	id="themes"
-	kicker="Themes and languages"
-	title="Your colors, your language."
-	lede="Six themes ship with Unisic, plus one that follows your system's light or dark scheme and accent color. Pick one below and this page switches with it."
+	kicker={t.themes.kicker}
+	title={t.themes.title}
+	lede={t.themes.lede}
 >
-	<div class="picks wrap" role="group" aria-label="Page theme">
+	<div class="picks wrap" role="group" aria-label={t.themes.label}>
 		<button
 			type="button"
 			class="system"
@@ -51,27 +54,26 @@
 			style:--d={light.accent}
 		>
 			<span class="chip" aria-hidden="true"><i></i><i></i><i></i></span>
-			System
+			{t.themes.system}
 		</button>
-		{#each THEMES as t (t.id)}
+		{#each THEMES as theme (theme.id)}
 			<button
 				type="button"
-				aria-pressed={ui.theme === t.id}
-				onclick={(e) => pick(t.id, e)}
-				style:--a={t.bg}
-				style:--b={t.surface}
-				style:--c={t.accent}
-				style:--d={t.text}
+				aria-pressed={ui.theme === theme.id}
+				onclick={(e) => pick(theme.id, e)}
+				style:--a={theme.bg}
+				style:--b={theme.surface}
+				style:--c={theme.accent}
+				style:--d={theme.text}
 			>
 				<span class="chip" aria-hidden="true"><i></i><i></i><i></i></span>
-				{t.name}
+				{theme.name}
 			</button>
 		{/each}
 	</div>
 	<p class="langs wrap">
-		<span class="label">Interface languages</span>
-		English, Polish, Spanish, Italian, French, Russian and German. Unisic follows your desktop's language unless you pick
-		one in Settings.
+		<span class="label">{t.themes.languages}</span>
+		{t.themes.languagesText}
 	</p>
 </Chapter>
 

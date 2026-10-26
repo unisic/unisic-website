@@ -2,36 +2,39 @@
 	import Chapter from './Chapter.svelte';
 	import Thumb from './Thumb.svelte';
 	import { ui } from '#lib/ui.svelte.js';
+	import type { Dictionary } from '#lib/i18n/en.js';
 
-	const STEPS = ['Capture', 'Copy image', 'Upload', 'Link copied'];
-	const HOSTS = ['Imgur', 'catbox.moe', 'Litterbox', 'tmpfiles.org', 'vgy.me', 'Buzzheavier', 'Custom HTTP', '.sxcu import', 'FTP', 'SFTP'];
+
+	let { t }: { t: Dictionary } = $props();
+
+	const hosts = $derived(['Imgur', 'catbox.moe', 'Litterbox', 'tmpfiles.org', 'vgy.me', 'Buzzheavier', t.share.customHttp, t.share.sxcu, 'FTP', 'SFTP']);
 </script>
 
 <Chapter
 	id="share"
 	split
-	kicker="Share and history"
-	title="From shot to link in one key."
-	lede="After a capture Unisic can copy the image, save it, upload it and put the link on your clipboard. Every capture lands in a history with thumbnails, and deleting one moves the file to the trash instead of erasing it."
+	kicker={t.share.kicker}
+	title={t.share.title}
+	lede={t.share.lede}
 >
 	<div class="wrap stack">
 		<ol class="flow">
-			{#each STEPS as step (step)}
+			{#each t.share.steps as step, i (i)}
 				<li><span class="dot" aria-hidden="true"></span>{step}</li>
 			{/each}
 		</ol>
 
 		<div class="cols">
 			<div class="hosts">
-				<h3>Upload anywhere.</h3>
+				<h3>{t.share.hosts}</h3>
 				<ul>
-					{#each HOSTS as host (host)}<li>{host}</li>{/each}
+					{#each hosts as host (host)}<li>{host}</li>{/each}
 				</ul>
 			</div>
 
 			<section class="live panel" aria-labelledby="live-title">
 				<div class="head">
-					<h3 id="live-title">Your history on this page</h3>
+					<h3 id="live-title">{t.share.history}</h3>
 					<span class="label">{ui.captures.length} / 8</span>
 				</div>
 				{#if ui.captures.length}
@@ -42,7 +45,7 @@
 					</ul>
 				{:else}
 					<p class="empty">
-						<span>Nothing yet. Drag a selection in the <a href="#edit">editor demo</a> above and press Capture; it shows up here.</span>
+						<span>{@html t.share.emptyHtml}</span>
 					</p>
 				{/if}
 			</section>
@@ -174,7 +177,7 @@
 		color: var(--muted);
 		font-size: var(--t-small);
 	}
-	.empty a {
+	.empty :global(a) {
 		color: var(--accent);
 	}
 

@@ -2,6 +2,9 @@
 	import Chapter from './Chapter.svelte';
 	import Frame from './Frame.svelte';
 	import { ui, inview, reduced, calm } from '#lib/ui.svelte.js';
+	import type { Dictionary } from '#lib/i18n/en.js';
+
+	let { t }: { t: Dictionary } = $props();
 
 	const FORMATS = [
 		{ id: 'gif', label: 'GIF', fps: 15 },
@@ -16,6 +19,8 @@
 
 	const fps = $derived(FORMATS.find((f) => f.id === format)?.fps ?? 30);
 	const clock = $derived(`${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`);
+	// The number sits in a <strong>, so the sentence is split around it.
+	const fpsWords = $derived(t.record.fps.split('{fps}'));
 	const keys = $derived(KEYS[Math.floor(seconds / 2) % KEYS.length]);
 
 	$effect(() => {
@@ -29,9 +34,9 @@
 	id="record"
 	mode="video"
 	split
-	kicker="Record"
-	title="Record the screen, with sound."
-	lede="A region, the full screen or a window, saved as GIF, MP4 or WebM. System sound, the microphone and single apps land on separate tracks, and instant replay keeps the last stretch of the screen."
+	kicker={t.record.kicker}
+	title={t.record.title}
+	lede={t.record.lede}
 >
 	<div class="grid wrap">
 		<div class="media" data-run={visible && !ui.paused} {@attach inview((v) => (visible = v))}>
@@ -39,7 +44,7 @@
 				src="/img/record.webp"
 				width={1060}
 				height={700}
-				alt="Unisic's Screen recording page: Screen, Region or Window, WebM format, frame rate, CRF quality, system audio, microphone, application audio and a replay length of 30 seconds."
+				alt={t.record.alt}
 			>
 				{#if !reduced.current}
 					<div class="fx" aria-hidden="true">
@@ -60,7 +65,7 @@
 
 		<div class="side">
 			<fieldset class="formats">
-				<legend class="label">Format</legend>
+				<legend class="label">{t.record.format}</legend>
 				{#each FORMATS as f (f.id)}
 					<label>
 						<input type="radio" name="format" value={f.id} bind:group={format} />
@@ -68,13 +73,11 @@
 					</label>
 				{/each}
 			</fieldset>
-			<p class="fps" aria-live="polite"><strong>{fps}</strong> frames per second by default</p>
+			<p class="fps" aria-live="polite">{fpsWords[0]}<strong>{fps}</strong>{fpsWords[1]}</p>
 			<div class="drawn">
-				<h3 class="label">Drawn into the recording</h3>
+				<h3 class="label">{t.record.drawn}</h3>
 				<ul>
-					<li><strong>Pointer halo</strong>keeps the cursor easy to find in a scaled-down video</li>
-					<li><strong>Click ripples</strong>show where and when you clicked</li>
-					<li><strong>Key badge</strong>shows the shortcuts you press, off until you turn it on</li>
+					{#each t.record.effects as e (e.name)}<li><strong>{e.name}</strong>{e.say}</li>{/each}
 				</ul>
 			</div>
 		</div>

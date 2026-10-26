@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { ui, reduced } from '#lib/ui.svelte.js';
+	import type { Dictionary } from '#lib/i18n/en.js';
+
+	let { words }: { words: Dictionary['overlay'] } = $props();
 
 	type Tool =
 		| 'select'
@@ -34,27 +37,20 @@
 		| { type: 'move' | 'new' | 'resize'; ox: number; oy: number; start: Rect; edge: string }
 		| { type: 'draw' };
 
-	const TOOLS: { id: Tool; key: string; label: string; d: string }[] = [
-		{ id: 'select', key: 'V', label: 'Select', d: 'M6 3l12 9-5.5 1.2L10 19z' },
-		{ id: 'pen', key: 'P', label: 'Pen', d: 'M4 20l4-1L19 8l-3-3L5 16zM14 7l3 3' },
-		{ id: 'line', key: 'L', label: 'Line', d: 'M5 19L19 5' },
-		{ id: 'arrow', key: 'A', label: 'Arrow', d: 'M5 19L19 5M10 5h9v9' },
-		{ id: 'measure', key: 'M', label: 'Measure', d: 'M3 17L17 3l4 4L7 21zM7 13l2 2M10 10l2 2M13 7l2 2' },
-		{ id: 'rect', key: 'R', label: 'Rectangle', d: 'M4 6h16v12H4z' },
-		{ id: 'ellipse', key: 'O', label: 'Ellipse', d: 'M3 12a9 6 0 1 0 18 0a9 6 0 1 0-18 0' },
-		{ id: 'highlight', key: 'H', label: 'Highlight', d: 'M8 15l7-9 4 3-7 9H8zM4 21h16' },
-		{ id: 'blur', key: 'B', label: 'Blur', d: 'M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z' },
-		{ id: 'step', key: 'N', label: 'Step number', d: 'M4 12a8 8 0 1 0 16 0a8 8 0 1 0-16 0M11 9l2-1v8' },
-		{ id: 'erase', key: 'E', label: 'Smart eraser', d: 'M4 15l9-9 6 6-7 7H8zM14 20h6' }
+	const TOOLS: { id: Tool; key: string; d: string }[] = [
+		{ id: 'select', key: 'V', d: 'M6 3l12 9-5.5 1.2L10 19z' },
+		{ id: 'pen', key: 'P', d: 'M4 20l4-1L19 8l-3-3L5 16zM14 7l3 3' },
+		{ id: 'line', key: 'L', d: 'M5 19L19 5' },
+		{ id: 'arrow', key: 'A', d: 'M5 19L19 5M10 5h9v9' },
+		{ id: 'measure', key: 'M', d: 'M3 17L17 3l4 4L7 21zM7 13l2 2M10 10l2 2M13 7l2 2' },
+		{ id: 'rect', key: 'R', d: 'M4 6h16v12H4z' },
+		{ id: 'ellipse', key: 'O', d: 'M3 12a9 6 0 1 0 18 0a9 6 0 1 0-18 0' },
+		{ id: 'highlight', key: 'H', d: 'M8 15l7-9 4 3-7 9H8zM4 21h16' },
+		{ id: 'blur', key: 'B', d: 'M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z' },
+		{ id: 'step', key: 'N', d: 'M4 12a8 8 0 1 0 16 0a8 8 0 1 0-16 0M11 9l2-1v8' },
+		{ id: 'erase', key: 'E', d: 'M4 15l9-9 6 6-7 7H8zM14 20h6' }
 	];
-	const COLORS: [string, string][] = [
-		['#FF4757', 'Red'],
-		['#FFD84D', 'Yellow'],
-		['#2ED573', 'Green'],
-		['#1E90FF', 'Blue'],
-		['#C8ACD6', 'Lavender'],
-		['#FFFFFF', 'White']
-	];
+	const COLORS = ['#FF4757', '#FFD84D', '#2ED573', '#1E90FF', '#C8ACD6', '#FFFFFF'];
 	const COMMAND = 'unisic --region';
 	const TASKBAR = 40;
 	const MAX_SHAPES = 60;
@@ -80,7 +76,7 @@
 	let sel = $state<Rect>({ x: 0, y: 0, w: 0, h: 0 });
 	let ready = $state(false);
 	let tool = $state<Tool>('select');
-	let color = $state(COLORS[0][0]);
+	let color = $state(COLORS[0]);
 	let shapes = $state.raw<Shape[]>([]);
 	let past = $state.raw<Shape[][]>([]);
 	let draft = $state.raw<Shape | null>(null);
@@ -498,15 +494,15 @@
 </script>
 
 <p id="overlay-hint" class="hint">
-	Drag the frame or its handles, pick a tool and draw inside it, then press Capture.
-	<span class="keys">Arrow keys move the frame, Enter captures, Esc resets.</span>
-	<span class="now">Tool: <strong>{TOOLS.find((t) => t.id === tool)?.label}</strong></span>
+	{words.hint}
+	<span class="keys">{words.keys}</span>
+	<span class="now">{words.tool} <strong>{words.tools[tool]}</strong></span>
 </p>
 
 <div class="stage" bind:this={stage}>
 	<div class="shot" bind:this={shot}>
 		<div class="desk" bind:this={desk}>
-			<p class="headline" bind:this={headline}>Select it. Draw on it. Press <span class="mark" bind:this={mark}>Enter.</span></p>
+			<p class="headline" bind:this={headline}>{words.headline} <span class="mark" bind:this={mark}>{words.headlineMark}</span></p>
 
 			<div class="win" aria-hidden="true">
 				<div class="win-bar"><i></i><i></i><i></i><span>~ fish</span></div>
@@ -583,7 +579,7 @@
 			class="overlay"
 			bind:this={overlay}
 			role="application"
-			aria-label="Capture overlay demo"
+			aria-label={words.label}
 			aria-describedby="overlay-hint"
 			tabindex="0"
 			data-tool={tool}
@@ -617,26 +613,26 @@
 			</div>
 
 			<div class="tools">
-				<div class="group" role="group" aria-label="Tools">
+				<div class="group" role="group" aria-label={words.toolsLabel}>
 					{#each TOOLS as t (t.id)}
-						<button type="button" class="tool" aria-pressed={tool === t.id} title="{t.label} ({t.key})" onclick={() => (tool = t.id)}>
+						<button type="button" class="tool" aria-pressed={tool === t.id} title="{words.tools[t.id]} ({t.key})" onclick={() => (tool = t.id)}>
 							<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d={t.d} /></svg>
-							<span class="sr-only">{t.label}</span>
+							<span class="sr-only">{words.tools[t.id]}</span>
 						</button>
 					{/each}
 				</div>
-				<div class="group" role="group" aria-label="Color">
-					{#each COLORS as [c, name] (c)}
-						<button type="button" class="swatch" aria-pressed={color === c} aria-label={name} style:--c={c} onclick={() => (color = c)}></button>
+				<div class="group" role="group" aria-label={words.colorLabel}>
+					{#each COLORS as c, i (c)}
+						<button type="button" class="swatch" aria-pressed={color === c} aria-label={words.colors[i]} style:--c={c} onclick={() => (color = c)}></button>
 					{/each}
 				</div>
 				<div class="group">
-					<button type="button" class="tool" title="Undo (Ctrl+Z)" disabled={!past.length} onclick={undo}>
+					<button type="button" class="tool" title={words.undoTitle} disabled={!past.length} onclick={undo}>
 						<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5M4 9h11a5 5 0 0 1 0 10h-3" /></svg>
-						<span class="sr-only">Undo</span>
+						<span class="sr-only">{words.undo}</span>
 					</button>
 					<button type="button" class="shoot" onclick={capture}>
-						Capture <kbd>Enter</kbd>
+						{words.capture} <kbd>Enter</kbd>
 					</button>
 				</div>
 			</div>

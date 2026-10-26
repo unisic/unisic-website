@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { ui } from '#lib/ui.svelte.js';
 	import Thumb from './Thumb.svelte';
+	import type { Dictionary } from '#lib/i18n/en.js';
+
+	let { t }: { t: Dictionary } = $props();
 
 	const cap = $derived(ui.captures[0]);
 	let open = $state(false);
@@ -17,8 +20,8 @@
 	{#if cap}
 		<Thumb {cap} width={150} />
 		<p>
-			<strong>Captured {Math.round(cap.w)} × {Math.round(cap.h)}</strong>
-			<a href="#share">Saved to history</a>
+			<strong>{t.toast.captured.replace('{size}', `${Math.round(cap.w)} × ${Math.round(cap.h)}`)}</strong>
+			<a href="#share">{t.toast.saved}</a>
 		</p>
 	{/if}
 </div>
