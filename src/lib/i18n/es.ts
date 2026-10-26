@@ -39,10 +39,10 @@ export default {
 	},
 
 	hero: {
-		kicker: 'Capturador de pantalla gratuito y de código abierto para Linux Wayland',
-		title: 'Haz la captura. Unisic se encarga de todo lo que viene',
-		titleMark: 'después.',
-		lede: 'Captura una región o una página más larga que tu pantalla, anótala, grábala con sonido, saca el texto y súbela para tener un enlace. Todo en una app gratuita.',
+		kicker: 'Capturador de pantalla libre y gratuito para Linux Wayland',
+		title: 'Haz la captura. Unisic se encarga del',
+		titleMark: 'resto.',
+		lede: 'Captura una región o una página larga, anótala, grábala con sonido, saca el texto y compártela con un enlace. Todo en una app gratuita.',
 		runsOn: 'Funciona en',
 		more: 'y más',
 		alt: 'La página Capturar de Unisic: las tarjetas Pantalla completa, Región y Ventana con sus atajos, y debajo las opciones de captura.',
@@ -53,7 +53,7 @@ export default {
 		anyDistro: 'Instala en cualquier distro',
 		linuxNote: 'Se instala para tu usuario, sin sudo, y se actualiza solo.',
 		packages: 'Paquetes por distro, Nix',
-		windowsInstaller: 'Instalador para Windows',
+		windowsInstaller: 'Instalador de Windows',
 		experimental: 'Experimental',
 		facts: ['Gratis, GPL-3.0', 'Sin cuenta', 'Sin telemetría'],
 		source: 'Código en GitHub'
@@ -243,7 +243,7 @@ export default {
 			{
 				feature: 'Plataformas',
 				notes: [
-					'Linux, Windows 11 (experimental)',
+					'Linux, Windows\u00a011 (experimental)',
 					'Linux, Windows, macOS',
 					'Linux, KDE Plasma',
 					'Linux, Windows, macOS',

@@ -42,7 +42,7 @@ export default {
 		kicker: 'Gratis en open source screenshottool voor Linux Wayland',
 		title: 'Maak de screenshot. Unisic doet de',
 		titleMark: 'rest.',
-		lede: 'Leg een gebied of een pagina langer dan je scherm vast, annoteer het, neem het op met geluid, haal de tekst eruit en upload het als link. Alles in één gratis app.',
+		lede: 'Leg een gebied of een lange pagina vast, annoteer het, neem het op met geluid, haal de tekst eruit en deel een link. Alles in één gratis app.',
 		runsOn: 'Draait op',
 		more: 'en meer',
 		alt: 'De pagina Vastleggen van Unisic: kaarten voor Volledig scherm, Gebied en Venster met hun sneltoetsen, en daaronder de opties voor vastleggen.',
@@ -53,7 +53,7 @@ export default {
 		anyDistro: 'Installeren op elke distributie',
 		linuxNote: 'Installeert voor jouw gebruiker, zonder sudo, werkt zichzelf bij.',
 		packages: 'Pakketten per distributie, Nix',
-		windowsInstaller: 'Windows-installatieprogramma',
+		windowsInstaller: 'Windows-installer',
 		experimental: 'Experimenteel',
 		facts: ['Gratis, GPL-3.0', 'Geen account', 'Geen telemetrie'],
 		source: 'Broncode op GitHub'
@@ -243,7 +243,7 @@ export default {
 			{
 				feature: 'Platformen',
 				notes: [
-					'Linux, Windows 11 (experimenteel)',
+					'Linux, Windows\u00a011 (experimenteel)',
 					'Linux, Windows, macOS',
 					'Linux, KDE Plasma',
 					'Linux, Windows, macOS',

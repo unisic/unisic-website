@@ -39,10 +39,10 @@ export default {
 	},
 
 	hero: {
-		kicker: "Outil de capture d'écran gratuit et open source pour Linux sous Wayland",
+		kicker: "Capture d'écran libre et gratuite pour Linux sous Wayland",
 		title: "Capturez. Unisic s'occupe",
 		titleMark: 'du reste.',
-		lede: 'Capturez une région ou une page plus longue que votre écran, annotez-la, enregistrez-la avec le son, extrayez-en le texte et envoyez un lien. Le tout dans une seule application gratuite.',
+		lede: "Capturez une région ou une longue page, annotez, filmez avec le son, extrayez le texte et partagez un lien. Et c'est gratuit.",
 		runsOn: 'Fonctionne sur',
 		more: 'et plus encore',
 		alt: "La page Capture d'Unisic : les cartes Plein écran, Région et Fenêtre avec leurs raccourcis, et les options de capture en dessous.",
@@ -263,7 +263,7 @@ export default {
 			{
 				feature: 'Plateformes',
 				notes: [
-					'Linux, Windows 11 (expérimental)',
+					'Linux, Windows\u00a011 (expérimental)',
 					'Linux, Windows, macOS',
 					'Linux, KDE Plasma',
 					'Linux, Windows, macOS',

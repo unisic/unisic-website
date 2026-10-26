@@ -243,7 +243,7 @@ export default {
 			{
 				feature: '平台',
 				notes: [
-					'Linux、Windows 11（实验性）',
+					'Linux、Windows\u00a011（实验性）',
 					'Linux、Windows、macOS',
 					'Linux、KDE Plasma',
 					'Linux、Windows、macOS',

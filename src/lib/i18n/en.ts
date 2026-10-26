@@ -253,7 +253,7 @@ export const en = {
 			{
 				feature: 'Platforms',
 				notes: [
-					'Linux, Windows 11 (experimental)',
+					'Linux, Windows\u00a011 (experimental)',
 					'Linux, Windows, macOS',
 					'Linux, KDE Plasma',
 					'Linux, Windows, macOS',

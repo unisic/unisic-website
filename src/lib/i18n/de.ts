@@ -40,9 +40,9 @@ export default {
 
 	hero: {
 		kicker: 'Kostenloses Open-Source-Screenshot-Tool für Linux Wayland',
-		title: 'Machen Sie die Aufnahme. Unisic erledigt alles',
-		titleMark: 'Weitere.',
-		lede: 'Nehmen Sie einen Bereich auf oder eine Seite, die länger ist als Ihr Bildschirm, beschriften Sie sie, zeichnen Sie sie mit Ton auf, holen Sie den Text heraus und teilen Sie sie per Link. Alles in einer kostenlosen App.',
+		title: 'Aufnehmen. Unisic erledigt den',
+		titleMark: 'Rest.',
+		lede: 'Bereich oder lange Seite aufnehmen, beschriften, mit Ton aufzeichnen, Text herausholen, per Link teilen. Alles in einer kostenlosen App.',
 		runsOn: 'Läuft auf',
 		more: 'und mehr',
 		alt: 'Die Seite Aufnahme in Unisic: Karten für Vollbild, Bereich und Fenster mit ihren Tastenkürzeln, darunter die Aufnahmeoptionen.',
@@ -53,7 +53,7 @@ export default {
 		anyDistro: 'Auf jeder Distribution installieren',
 		linuxNote: 'Installiert für Ihr Benutzerkonto, ohne sudo, aktualisiert sich selbst.',
 		packages: 'Pakete je Distribution, Nix',
-		windowsInstaller: 'Windows-Installationsprogramm',
+		windowsInstaller: 'Windows-Installer',
 		experimental: 'Experimentell',
 		facts: ['Kostenlos, GPL-3.0', 'Kein Konto', 'Keine Telemetrie'],
 		source: 'Quellcode auf GitHub'
@@ -243,7 +243,7 @@ export default {
 			{
 				feature: 'Plattformen',
 				notes: [
-					'Linux, Windows 11 (experimentell)',
+					'Linux, Windows\u00a011 (experimentell)',
 					'Linux, Windows, macOS',
 					'Linux, KDE Plasma',
 					'Linux, Windows, macOS',

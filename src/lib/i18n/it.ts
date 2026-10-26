@@ -39,10 +39,10 @@ export default {
 	},
 
 	hero: {
-		kicker: 'Strumento per screenshot gratuito e open source per Linux Wayland',
-		title: 'Fai lo screenshot. Unisic pensa a tutto quello che viene',
-		titleMark: 'dopo.',
-		lede: 'Cattura una regione o una pagina più lunga dello schermo, annotala, registrala con audio, estrai il testo e caricala per avere un link. Tutto in una sola app gratuita.',
+		kicker: 'Screenshot per Linux Wayland, gratuito e open source',
+		title: 'Fai lo screenshot. Unisic pensa al',
+		titleMark: 'resto.',
+		lede: 'Cattura una regione o una pagina lunga, annotala, registrala con audio, estrai il testo e condividila con un link. Tutto in una sola app gratuita.',
 		runsOn: 'Funziona su',
 		more: 'e altri',
 		alt: 'La pagina Cattura di Unisic: le schede Schermo intero, Regione e Finestra con le loro scorciatoie e, sotto, le opzioni di cattura.',
@@ -243,7 +243,7 @@ export default {
 			{
 				feature: 'Piattaforme',
 				notes: [
-					'Linux, Windows 11 (sperimentale)',
+					'Linux, Windows\u00a011 (sperimentale)',
 					'Linux, Windows, macOS',
 					'Linux, KDE Plasma',
 					'Linux, Windows, macOS',
