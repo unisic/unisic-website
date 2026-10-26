@@ -1,13 +1,14 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
 	import { inview } from '#lib/ui.svelte.js';
+	import { VERSION } from '#lib/release.js';
 
 	type Mark = 'y' | 'p' | 'n';
 	type Cell = [Mark, string?] | string;
 	type Row = { feature: string; cells: Cell[] };
 
 	const TOOLS = [
-		{ name: 'Unisic', version: 'v0.8.8', href: 'https://github.com/unisic/unisic/tree/v0.8.8' },
+		{ name: 'Unisic', version: `v${VERSION}`, href: `https://github.com/unisic/unisic/tree/v${VERSION}` },
 		{ name: 'Flameshot', version: 'v14.0.0', href: 'https://github.com/flameshot-org/flameshot/tree/v14.0.0' },
 		{ name: 'Spectacle', version: '6.8.1', href: 'https://invent.kde.org/plasma/spectacle/-/tree/v6.8.1' },
 		{ name: 'ksnip', version: 'v1.10.1', href: 'https://github.com/ksnip/ksnip/tree/v1.10.1' },
@@ -28,22 +29,30 @@
 		{ feature: 'Custom upload targets', cells: [['y', '.sxcu, HTTP, FTP, SFTP'], ['n', 'Imgur only, off by default'], ['p', 'KDE Share menu'], ['p', 'Imgur, FTP, scripts'], ['n'], ['y', '.sxcu, FTP, SFTP']] },
 		{ feature: 'History with thumbnails', cells: [['y', 'Deleting moves to the trash'], ['p', 'Imgur uploads only'], ['n'], ['n'], ['n'], ['y']] },
 		{ feature: 'Wayland', cells: [['y', 'Portals, KWin, PipeWire'], ['y', 'Portal'], ['p', 'KWin only'], ['p', 'Portal or legacy KWin'], ['p', 'Capture left to grim'], ['n']] },
+		{ feature: 'X11', cells: [['p', 'Best-effort second target'], ['y', 'Portal or legacy X11'], ['y'], ['y'], 'Not stated', ['n']] },
 		{ feature: 'Platforms', cells: ['Linux, Windows 11 (experimental)', 'Linux, Windows, macOS', 'Linux, KDE Plasma', 'Linux, Windows, macOS', 'Linux, BSD', 'Windows'] }
 	];
 	const SAY: Record<Mark, string> = { y: 'Yes', p: 'Partly', n: 'No' };
 
 	let shown = $state(false);
+	// Phones show Unisic beside one other tool, picked here, so the table fits without a sideways scroll.
+	let vs = $state(1);
 </script>
 
 <Chapter
 	id="compare"
-	num="08"
-	mode="measure"
+	band
 	kicker="Compared"
 	title="Where it stands among the others."
-	lede="Six tools, the same twelve questions. Every answer was checked against the tool's source, README or release notes for the version in the header, so you can check it too."
+	lede="Six tools, the same questions. Every answer was checked against the tool's source, README or release notes for the version in the header, so you can check it too."
 >
 	<div class="wrap">
+		<label class="vs">
+			Compare Unisic with
+			<select bind:value={vs}>
+				{#each TOOLS.slice(1) as t, i (t.name)}<option value={i + 1}>{t.name}</option>{/each}
+			</select>
+		</label>
 		<!-- svelte-ignore a11y_no_noninteractive_tabindex: a scrolling region must take focus so keyboard users can scroll it -->
 		<div
 			class="scroller"
@@ -54,12 +63,12 @@
 			{@attach inview((v) => v && (shown = true), '0px 0px -15% 0px')}
 		>
 			<table>
-				<caption id="compare-caption">Screenshot tools compared. Checked 2026-10-25 against tagged source.</caption>
+				<caption id="compare-caption">Screenshot tools compared. Checked 2026-10-26 against tagged source.</caption>
 				<thead>
 					<tr>
 						<td></td>
 						{#each TOOLS as t, i (t.name)}
-							<th scope="col" class:us={i === 0}>
+							<th scope="col" class:us={i === 0} class:off={i > 0 && i !== vs}>
 								<a href={t.href}>{t.name}<span>{t.version}</span></a>
 							</th>
 						{/each}
@@ -70,7 +79,7 @@
 						<tr style:--r={r}>
 							<th scope="row">{row.feature}</th>
 							{#each row.cells as cell, i (i)}
-								<td class:us={i === 0}>
+								<td class:us={i === 0} class:off={i > 0 && i !== vs}>
 									{#if typeof cell === 'string'}
 										<span class="text">{cell}</span>
 									{:else}
@@ -100,6 +109,7 @@
 	.scroller {
 		overflow-x: auto;
 		border-radius: var(--r3);
+		background: var(--bg);
 		box-shadow: inset 0 0 0 1px var(--line);
 	}
 	.scroller:focus-visible {
@@ -139,6 +149,8 @@
 	}
 	thead a {
 		display: grid;
+		align-content: end;
+		min-height: 44px;
 		color: var(--text);
 		text-decoration: none;
 	}
@@ -168,10 +180,7 @@
 		box-shadow: 1px 0 0 var(--line);
 	}
 	.us {
-		background: color-mix(in oklab, var(--mode) 9%, var(--bg));
-	}
-	thead .us a span {
-		color: var(--mode);
+		background: color-mix(in oklab, var(--text) 4%, var(--bg));
 	}
 	.mark {
 		display: inline-flex;
@@ -214,6 +223,66 @@
 	}
 	.foot a {
 		color: var(--accent);
+	}
+	.vs {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--s2) var(--s3);
+		margin-bottom: var(--s4);
+		font-size: var(--t-small);
+		font-weight: 600;
+	}
+	select {
+		min-height: 44px;
+		padding: 0 var(--s3);
+		border: 1px solid var(--line-strong);
+		border-radius: var(--r1);
+		background: var(--surface);
+		color: var(--text);
+		font: inherit;
+	}
+	select:focus-visible {
+		outline: 2px solid var(--mode);
+		outline-offset: 2px;
+	}
+
+	/* Three columns fit a phone, so the table stops scrolling sideways and its header can stick under the top bar. */
+	@media (max-width: 759px) {
+		.scroller {
+			overflow: visible;
+		}
+		table {
+			min-width: 0;
+		}
+		.off {
+			display: none;
+		}
+		th,
+		td {
+			padding: var(--s2) var(--s3);
+		}
+		thead > tr > * {
+			position: sticky;
+			top: 60px;
+			z-index: 2;
+			background: var(--bg);
+			box-shadow: 0 1px 0 var(--line);
+		}
+		thead .us {
+			background: color-mix(in oklab, var(--text) 4%, var(--bg));
+		}
+	}
+	@media (min-width: 760px) {
+		.vs {
+			display: none;
+		}
+		table {
+			table-layout: fixed;
+		}
+		thead td {
+			width: 184px;
+		}
 	}
 
 	@media (hover: hover) and (pointer: fine) {

@@ -1,15 +1,15 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
 
-	const URL = 'https://api.github.com/repos/unisic/unisic/releases/latest';
+	// The host is on the wire diagram above the log, so the log shows only the path.
+	const PATH = '/repos/unisic/unisic/releases/latest'.split('/').slice(1);
 
 	let updates = $state(true);
 </script>
 
 <Chapter
 	id="privacy"
-	num="07"
-	mode="ocr"
+	split
 	kicker="Privacy"
 	title="One request, and you can turn it off."
 	lede="No telemetry, no analytics, no account. The only request Unisic makes on its own asks GitHub whether there is a newer release, shortly after it starts and once a day after that. Nothing about you or your captures is sent."
@@ -24,16 +24,31 @@
 
 			<ol class="log" aria-label="Requests Unisic makes on its own">
 				{#if updates}
-					<li><span class="when">After start</span><code>GET {URL}</code><span class="ok">200</span></li>
-					<li><span class="when">Every 24 h</span><code>GET {URL}</code><span class="ok">200</span></li>
+					{#each ['After start', 'Every 24 h'] as when (when)}
+						<li>
+							<span class="when">{when}</span>
+							<code>GET {#each PATH as seg, i (i)}/{seg}<wbr />{/each}</code>
+							<span class="ok">200</span>
+						</li>
+					{/each}
 				{:else}
-					<li class="none"><span class="when">Always</span>0 automatic requests</li>
+					<li class="none">No automatic requests. Settings keeps a Check now button for when you want one.</li>
 				{/if}
 			</ol>
 
-			<button class="switch" type="button" role="switch" aria-checked={updates} onclick={() => (updates = !updates)}>
+			<button
+				class="switch"
+				type="button"
+				role="switch"
+				aria-checked={updates}
+				aria-describedby="privacy-demo"
+				onclick={() => (updates = !updates)}
+			>
 				<span class="track" aria-hidden="true"><i></i></span>
-				Automatic updates
+				<span>
+					Automatic updates
+					<span id="privacy-demo" class="demo">Demo of the switch in Settings</span>
+				</span>
 			</button>
 		</div>
 
@@ -96,7 +111,7 @@
 		background: var(--deep);
 	}
 	.log code {
-		overflow-wrap: anywhere;
+		min-width: 0;
 	}
 	.when {
 		font-size: var(--t-label);
@@ -109,9 +124,18 @@
 		font-family: var(--font-mono);
 		color: var(--success);
 	}
-	.none {
-		grid-template-columns: 7.5em 1fr;
+	.log .none {
+		display: block;
 		color: var(--success);
+	}
+	@media (max-width: 599px) {
+		.log li {
+			grid-template-columns: minmax(0, 1fr) auto;
+			row-gap: var(--s1);
+		}
+		.when {
+			grid-column: 1 / -1;
+		}
 	}
 
 	.switch {
@@ -129,6 +153,7 @@
 		cursor: pointer;
 	}
 	.switch .track {
+		flex: none;
 		position: relative;
 		width: 44px;
 		height: 26px;
@@ -154,6 +179,12 @@
 	.switch[aria-checked='true'] .track i {
 		background: var(--mode-ink);
 		transform: translateX(18px);
+	}
+	.demo {
+		display: block;
+		font-size: var(--t-label);
+		font-weight: 400;
+		color: var(--muted);
 	}
 	.switch:focus-visible {
 		outline: 2px solid var(--mode);

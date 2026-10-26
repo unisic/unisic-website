@@ -3,6 +3,13 @@
 	import { ui } from '#lib/ui.svelte.js';
 
 	const docs = $derived(page.url.pathname.startsWith('/docs'));
+
+	let menu: HTMLElement;
+
+	// On phones the nav is a popover; a picked link should close it, not leave it over the page.
+	function close() {
+		if (menu.matches(':popover-open')) menu.hidePopover();
+	}
 </script>
 
 <header class="bar">
@@ -11,20 +18,24 @@
 			<img src="/favicon.svg" alt="" width="28" height="28" />
 			Unisic
 		</a>
-		<nav aria-label="Primary">
-			<a href="/#why">Features</a>
-			<a href="/#compare">Compare</a>
-			<a href="/#install">Install</a>
-			<a href="/docs/" aria-current={docs ? 'page' : undefined}>Docs</a>
+		<nav id="site-nav" aria-label="Primary" popover bind:this={menu}>
+			<a href="/#capture" onclick={close}>Features</a>
+			<a href="/#themes" onclick={close}><span class="dot" aria-hidden="true"></span>Themes</a>
+			<a href="/#compare" onclick={close}>Compare</a>
+			<a href="/docs/" onclick={close} aria-current={docs ? 'page' : undefined}>Docs</a>
 		</nav>
 		<div class="end">
-			<button class="pause" type="button" aria-pressed={ui.paused} onclick={() => (ui.paused = !ui.paused)}>
+			<button class="pause" type="button" title="Pause animations" aria-pressed={ui.paused} onclick={() => (ui.paused = !ui.paused)}>
 				<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
 					{#if ui.paused}<path d="M8 5.5v13l10-6.5z" />{:else}<path d="M9 5.5v13M15 5.5v13" />{/if}
 				</svg>
 				<span class="sr-only">Pause animations</span>
 			</button>
-			<a class="btn primary get" href="/#install">Download</a>
+			<a class="btn primary" href="/#install">Install</a>
+			<button class="toggle" type="button" popovertarget="site-nav">
+				<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+				<span class="sr-only">Menu</span>
+			</button>
 		</div>
 	</div>
 </header>
@@ -35,9 +46,7 @@
 		inset: 0 0 auto;
 		z-index: var(--z-bar);
 		height: 60px;
-		background: color-mix(in oklab, var(--bg) 92%, transparent);
-		backdrop-filter: blur(14px) saturate(1.3);
-		-webkit-backdrop-filter: blur(14px) saturate(1.3);
+		background: var(--bg);
 		border-bottom: 1px solid var(--line);
 	}
 	.inner {
@@ -59,13 +68,25 @@
 		letter-spacing: -0.01em;
 		text-decoration: none;
 	}
+	/* Phones: the popover drops under the bar as a full-width sheet. */
 	nav {
-		display: none;
-		gap: var(--s1);
+		position: fixed;
+		inset: 60px 0 auto;
+		width: auto;
+		margin: 0;
+		padding: var(--s2) var(--s4) var(--s4);
+		border: 0;
+		border-bottom: 1px solid var(--line);
+		background: var(--bg);
+		color: var(--text);
+	}
+	nav:popover-open {
+		display: grid;
 	}
 	nav a {
 		display: flex;
 		align-items: center;
+		gap: var(--s2);
 		min-height: 44px;
 		padding: 0 var(--s3);
 		border-radius: var(--r1);
@@ -85,13 +106,21 @@
 			color: var(--text);
 		}
 	}
+	.dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: var(--accent);
+		box-shadow: inset 0 0 0 1px var(--line-strong);
+	}
 	.end {
 		display: flex;
 		align-items: center;
-		gap: var(--s2);
+		gap: var(--s4);
 		margin-left: auto;
 	}
-	.pause {
+	.pause,
+	.toggle {
 		display: grid;
 		place-items: center;
 		width: 44px;
@@ -110,29 +139,41 @@
 		background: var(--surface-hi);
 		color: var(--text);
 	}
-	.pause:active {
+	.pause:active,
+	.toggle:active {
 		transform: scale(0.96);
 	}
-	.pause:focus-visible {
+	.pause:focus-visible,
+	.toggle:focus-visible {
 		outline: 2px solid var(--mode);
 		outline-offset: 2px;
 	}
 	@media (hover: hover) and (pointer: fine) {
-		.pause:hover {
+		.pause:hover,
+		.toggle:hover {
 			color: var(--text);
 		}
+	}
+	.toggle {
+		margin-left: calc(-1 * var(--s2));
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.pause {
 			display: none;
 		}
 	}
-	.get {
-		min-height: 38px;
-	}
 	@media (min-width: 760px) {
 		nav {
 			display: flex;
+			position: static;
+			gap: var(--s1);
+			padding: 0;
+			border: 0;
+			background: transparent;
+			overflow: visible;
+		}
+		.toggle {
+			display: none;
 		}
 	}
 </style>

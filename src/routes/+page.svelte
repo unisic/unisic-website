@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { ui } from '#lib/ui.svelte.js';
 	import Topbar from '#lib/components/Topbar.svelte';
 	import Hero from '#lib/components/Hero.svelte';
 	import Why from '#lib/components/Why.svelte';
@@ -29,7 +28,7 @@
 	<meta property="og:description" content={description} />
 </svelte:head>
 
-<div class="page" data-mode={ui.mode}>
+<div class="page" data-mode>
 	<Topbar />
 	<main id="main" tabindex="-1">
 		<Hero />

@@ -1,7 +1,13 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
-	import Frame from './Frame.svelte';
 	import { ui, inview } from '#lib/ui.svelte.js';
+
+	// Linux defaults from the hotkeys docs; every one can be rebound in Settings.
+	const MODES = [
+		{ name: 'Full screen', say: 'All monitors in one image.', keys: 'Meta+Shift+1' },
+		{ name: 'Region', say: 'Drag a box with live dimensions and mark it up before the shot.', keys: 'Meta+Shift+2' },
+		{ name: 'Window', say: 'The active window, nothing around it.', keys: 'Meta+Shift+3' }
+	];
 
 	// Widths of the fake document lines in the scroll demo; 0 is an image block.
 	const LINES = [86, 64, 92, 0, 78, 90, 52, 84, 70, 0, 94, 60, 82, 46, 0, 88, 72, 58, 90, 0, 66, 84, 50, 76];
@@ -19,23 +25,23 @@
 
 <Chapter
 	id="capture"
-	num="01"
 	kicker="Capture"
 	title="Every way to grab the screen."
 	lede="Full screen across monitors, a region with live dimensions, the active window, or a page longer than your screen. Add a delay of up to 60 seconds and the cursor when you need them."
 >
 	<div class="grid wrap">
-		<div class="shot">
-			<Frame
-				src="/img/capture.webp"
-				width={1060}
-				height={700}
-				alt="Unisic's Capture page with Full screen, Region and Window cards and the capture options: delay, upload server catbox.moe, cursor, copy to clipboard, save, upload and copy the link."
-			/>
-		</div>
+		<ul class="modes">
+			{#each MODES as m (m.name)}
+				<li>
+					<strong>{m.name}</strong>
+					<span>{m.say}</span>
+					<kbd class="cap">{m.keys}</kbd>
+				</li>
+			{/each}
+		</ul>
 
 		<div class="scroll panel" data-run={run && !ui.paused} {@attach inview((v) => (run = v))}>
-			<p class="label">Scrolling capture</p>
+			<p class="label">A page longer than your screen</p>
 			<div class="stage" aria-hidden="true">
 				<div class="viewport">
 					{@render doc()}
@@ -59,6 +65,36 @@
 	.grid {
 		display: grid;
 		gap: var(--s7) var(--s6);
+	}
+	.modes {
+		display: grid;
+		align-content: start;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.modes li {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: var(--s1) var(--s4);
+		padding-block: var(--s4);
+		border-bottom: 1px solid var(--line);
+	}
+	.modes li:first-child {
+		padding-top: 0;
+	}
+	.modes strong {
+		font-size: var(--t-h3);
+	}
+	.modes span {
+		grid-column: 1;
+		color: var(--muted);
+		text-wrap: pretty;
+	}
+	.modes kbd {
+		grid-column: 2;
+		grid-row: 1 / span 2;
+		align-self: center;
 	}
 	.scroll {
 		display: grid;
@@ -125,6 +161,12 @@
 		box-shadow: 0 0 0 1px var(--line);
 		font: 12px/1.3 var(--font-mono);
 	}
+	.banner span:first-child {
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 	.finish {
 		padding: 5px 10px;
 		border-radius: var(--r1);
@@ -148,7 +190,7 @@
 
 	@media (min-width: 960px) {
 		.grid {
-			grid-template-columns: 1.45fr 1fr;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 			align-items: start;
 		}
 	}

@@ -1,7 +1,7 @@
 ---
 title: "Installation"
-seoTitle: "Install Unisic on Ubuntu, Fedora, Arch or Debian"
-description: "Install from a distribution repository (OBS / COPR), with Nix, grab a direct download, or build from source."
+seoTitle: "Install Unisic: Fedora, Arch, Debian, openSUSE, Nix, Windows"
+description: "Install from a distribution repository (OBS / COPR), with Nix, grab a direct download or the Windows installer, or build from source."
 order: 2
 group: "Getting started"
 ---

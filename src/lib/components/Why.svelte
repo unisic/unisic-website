@@ -28,14 +28,21 @@
 	<div class="head">
 		<h2 id="why-title">Why Unisic.</h2>
 		<p>
-			Of the six tools in the <a href="#compare">comparison</a>, only Unisic and ShareX have every feature, and ShareX
-			runs only on Windows.
+			Of the tools in the <a href="#compare">comparison</a>, only Unisic and ShareX have every feature, and ShareX runs
+			only on Windows.
 		</p>
 	</div>
 	<ul>
 		{#each POINTS as point (point.href)}
 			<li>
-				<a href={point.href}><strong>{point.title}</strong>{point.text}</a>
+				<a href={point.href}>
+					<strong>{point.title}</strong>
+					{point.text}
+					<span class="see">
+						See it
+						<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+					</span>
+				</a>
 			</li>
 		{/each}
 	</ul>
@@ -73,7 +80,7 @@
 	}
 	li a {
 		display: grid;
-		align-content: start;
+		grid-template-rows: auto 1fr auto;
 		gap: var(--s2);
 		height: 100%;
 		padding: var(--s5);
@@ -89,9 +96,25 @@
 		font-size: var(--t-body);
 		color: var(--text);
 	}
+	.see {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--s1);
+		margin-top: var(--s2);
+		color: var(--accent);
+		font-weight: 600;
+	}
+	.see .icon {
+		width: 16px;
+		height: 16px;
+		transition: transform 160ms var(--ease-out);
+	}
 	@media (hover: hover) and (pointer: fine) {
 		li a:hover {
 			background: var(--surface-hi);
+		}
+		li a:hover .icon {
+			transform: translateX(3px);
 		}
 	}
 </style>

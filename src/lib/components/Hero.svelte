@@ -1,27 +1,55 @@
 <script lang="ts">
-	import { track } from '#lib/ui.svelte.js';
 	import Copy from './Copy.svelte';
+	import { RELEASED, VERSION, WINDOWS_SETUP } from '#lib/release.js';
 
 	const INSTALL = 'curl -fsSL https://unisic.app/install.sh | bash';
+
+	// Same check as the Install tabs: a Windows visitor gets the installer, not a shell line.
+	let windows = $state(false);
+	$effect(() => {
+		windows = /Windows/.test(navigator.userAgent);
+	});
 </script>
 
-<section class="hero" aria-labelledby="hero-title" {@attach track('shot')}>
+<section class="hero" aria-labelledby="hero-title">
 	<div class="inner wrap">
-		<p class="kicker">Free and open source screenshot tool for Linux Wayland</p>
-		<h1 id="hero-title">Take the shot. Unisic handles everything <span class="mark">after.</span></h1>
-		<p class="lede">
-			Capture a region or a page longer than your screen, mark it up, record it with sound, pull the text out and
-			upload a link. All in one free app.
-		</p>
+		<div class="copy">
+			<p class="kicker">Free and open source screenshot tool for Linux Wayland</p>
+			<h1 id="hero-title">Take the shot. Unisic handles everything <span class="mark">after.</span></h1>
+			<p class="lede">
+				Capture a region or a page longer than your screen, mark it up, record it with sound, pull the text out and
+				upload a link. All in one free app.
+			</p>
+		</div>
+
+		<figure class="shot">
+			<img class="uni" src="/img/uni.webp" alt="" width="376" height="568" />
+			<img
+				class="app"
+				src="/img/capture.webp"
+				width="1060"
+				height="700"
+				fetchpriority="high"
+				alt="Unisic's Capture page: Full screen, Region and Window cards with their shortcuts, and the capture options below."
+			/>
+		</figure>
 
 		<div class="term panel">
-			<img class="uni" src="/img/uni.webp" alt="" width="376" height="568" />
-			<p class="bar"><i></i><i></i><i></i><span>Install on any distro</span></p>
-			<div class="body">
-				<code class="cmd"><span class="prompt" aria-hidden="true">$</span> {INSTALL}</code>
-				<Copy text={INSTALL} />
-			</div>
-			<p class="note">Opens a menu. The default entry puts the self-updating AppImage in ~/.local, without a password.</p>
+			{#if windows}
+				<p class="bar"><i></i><i></i><i></i><span>Windows 11, experimental</span></p>
+				<div class="body">
+					<a class="btn primary get" href={WINDOWS_SETUP}>Download the installer</a>
+					<a class="other" href="#install">Linux packages</a>
+				</div>
+				<p class="note">Installs for your user, no administrator rights, updates itself.</p>
+			{:else}
+				<p class="bar"><i></i><i></i><i></i><span>Install on any distro</span></p>
+				<div class="body">
+					<code class="cmd"><span class="prompt" aria-hidden="true">$</span> {INSTALL}</code>
+					<Copy text={INSTALL} />
+				</div>
+				<p class="note">Installs for your user, no sudo, updates itself.</p>
+			{/if}
 		</div>
 
 		<div class="foot">
@@ -29,7 +57,7 @@
 				{#each ['Free, GPL-3.0', 'No account', 'No telemetry'] as fact (fact)}
 					<li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>{fact}</li>
 				{/each}
-				<li class="ver">v0.8.8, 2026-10-19</li>
+				<li class="ver">v{VERSION}, {RELEASED}</li>
 			</ul>
 			<p class="more">
 				<a href="#install">Distro packages, Nix, Windows</a>
@@ -48,9 +76,15 @@
 		padding-block: var(--s7) var(--s8);
 		background: var(--deep);
 	}
+	/* Phones and tablets: the install box comes right after the pitch, the screenshot last. */
 	.inner {
 		display: grid;
-		justify-items: start;
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-areas: 'copy' 'term' 'foot' 'shot';
+		align-items: end;
+	}
+	.copy {
+		grid-area: copy;
 	}
 
 	.kicker {
@@ -79,18 +113,30 @@
 		text-wrap: pretty;
 	}
 
-	.term {
+	.shot {
+		grid-area: shot;
 		position: relative;
+		margin: var(--s9) 0 0;
+	}
+	.app {
 		width: 100%;
-		max-width: 960px;
-		margin-top: var(--s8);
+		border-radius: var(--r2);
+		outline: 1px solid oklch(1 0 0 / 0.1);
+		outline-offset: -1px;
+	}
+	:global([data-theme='latte']) .app {
+		outline-color: oklch(0 0 0 / 0.1);
 	}
 	.uni {
 		position: absolute;
-		right: var(--s6);
-		bottom: calc(100% - 22px);
-		width: 120px;
+		right: var(--s5);
+		bottom: calc(100% - 16px);
+		width: 72px;
 		pointer-events: none;
+	}
+	.term {
+		grid-area: term;
+		margin-top: var(--s7);
 	}
 	.bar {
 		display: flex;
@@ -116,6 +162,16 @@
 		align-items: center;
 		gap: var(--s4) var(--s5);
 		padding: var(--s5) var(--s5) var(--s3);
+	}
+	.get {
+		min-height: 48px;
+		padding-inline: var(--s5);
+	}
+	.other {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		color: var(--accent);
 	}
 	.cmd {
 		flex: 1 1 24ch;
@@ -148,13 +204,12 @@
 	}
 
 	.foot {
+		grid-area: foot;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		gap: var(--s3) var(--s6);
-		width: 100%;
-		max-width: 960px;
-		margin-top: var(--s4);
+		gap: var(--s1) var(--s6);
+		margin-top: var(--s3);
 		font-size: var(--t-small);
 	}
 	.facts {
@@ -182,16 +237,29 @@
 	.more {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--s1) var(--s5);
+		gap: 0 var(--s5);
 	}
 	.more a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
 		color: var(--accent);
 	}
 
-	@media (max-width: 599px) {
+	@media (min-width: 1100px) {
+		.inner {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 0.62fr);
+			grid-template-areas: 'copy shot' 'term term' 'foot foot';
+			column-gap: var(--s8);
+		}
+		h1 {
+			font-size: min(5rem, 1.25rem + 4.4vw);
+		}
+		.shot {
+			margin: 0;
+		}
 		.uni {
-			right: var(--s4);
-			width: 80px;
+			width: 96px;
 		}
 	}
 </style>

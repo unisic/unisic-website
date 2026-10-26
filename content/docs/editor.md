@@ -1,7 +1,7 @@
 ---
 title: "The editor"
 seoTitle: "Annotate and edit screenshots on Linux"
-description: "The post-capture editor: fifteen tools, OCR text picking, stroke colors, zoom and undo."
+description: "The post-capture editor: drawing tools, OCR text picking, stroke colors, zoom and undo."
 order: 4
 group: "Capturing & editing"
 ---

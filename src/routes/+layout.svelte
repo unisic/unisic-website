@@ -1,8 +1,14 @@
 <script lang="ts">
 	import '../app.css';
+	import { ui } from '#lib/ui.svelte.js';
 	import type { LayoutProps } from './$types';
 
 	let { children }: LayoutProps = $props();
+
+	// Keeps the System pick in step when the desktop flips between light and dark.
+	$effect(() => {
+		document.documentElement.dataset.theme = ui.shown;
+	});
 </script>
 
 <svelte:head>

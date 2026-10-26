@@ -1,14 +1,13 @@
 <script lang="ts">
 	import Chapter from './Chapter.svelte';
 	import Copy from './Copy.svelte';
+	import { VERSION, WINDOWS_SETUP, asset } from '#lib/release.js';
 
-	const VERSION = '0.8.8';
-	const DOWNLOAD = `https://github.com/unisic/unisic/releases/download/v${VERSION}`;
 	const RELEASES = 'https://github.com/unisic/unisic/releases/latest';
 	const OBS = 'https://download.opensuse.org/repositories/home:/unisic';
 
 	type Step = { say?: string; cmd?: string };
-	type Tab = { id: string; label: string; steps: Step[] };
+	type Tab = { id: string; label: string; steps: Step[]; files?: { name: string; href: string }[] };
 
 	const TABS: Tab[] = [
 		{
@@ -28,7 +27,8 @@
 			steps: [
 				{ say: 'From COPR, so updates arrive with the rest of the system:', cmd: 'sudo dnf copr enable deandark/Unisic && sudo dnf install unisic' },
 				{ say: 'A package downloaded from the release adds the COPR repository by itself:', cmd: 'sudo dnf install ./unisic-*.fedora.x86_64.rpm' }
-			]
+			],
+			files: [{ name: 'Download the .rpm', href: asset('unisic-{v}-1.fedora.x86_64.rpm') }]
 		},
 		{
 			id: 'arch',
@@ -44,23 +44,25 @@
 					].join('\n')
 				},
 				{ say: 'Or the package from the release, which adds the same repository by itself:', cmd: 'sudo pacman -U ./unisic-*-x86_64.pkg.tar.zst' }
-			]
+			],
+			files: [{ name: 'Download the .pkg.tar.zst', href: asset('unisic-{v}-1-x86_64.pkg.tar.zst') }]
 		},
 		{
 			id: 'debian',
 			label: 'Debian, Ubuntu',
 			steps: [
 				{
-					say: 'A signed apt repository on the openSUSE Build Service, so updates come with apt upgrade. Set REPO to your release, then run it in bash:',
+					say: 'A signed apt repository on the openSUSE Build Service, so updates come with apt upgrade. The first line picks Debian 13, Ubuntu 25.10 or 26.04 from /etc/os-release; on a derivative such as Mint, set REPO=xUbuntu_26.04 by hand.',
 					cmd: [
-						'REPO=Debian_13  # or xUbuntu_26.04, xUbuntu_25.10',
+						'. /etc/os-release; [ "$ID" = ubuntu ] && REPO=xUbuntu_$VERSION_ID || REPO=Debian_$VERSION_ID',
 						`curl -fsSL "${OBS}/$REPO/Release.key" | gpg --dearmor | sudo tee /etc/apt/keyrings/home_unisic.gpg > /dev/null`,
 						`echo "deb [signed-by=/etc/apt/keyrings/home_unisic.gpg] ${OBS}/$REPO/ ./" | sudo tee /etc/apt/sources.list.d/home_unisic.list`,
 						'sudo apt update && sudo apt install unisic'
 					].join('\n')
 				},
 				{ say: 'Or the package from the release, which adds the same repository by itself:', cmd: 'sudo apt install ./unisic_*_amd64.deb' }
-			]
+			],
+			files: [{ name: 'Download the .deb', href: asset('unisic_{v}_amd64.deb') }]
 		},
 		{
 			id: 'opensuse',
@@ -88,10 +90,15 @@
 			id: 'appimage',
 			label: 'AppImage, Flatpak',
 			steps: [
-				{ say: 'The AppImage runs on its own and replaces itself when a new version is out:', cmd: 'chmod +x Unisic-*-x86_64.AppImage && ./Unisic-*-x86_64.AppImage' },
+				{ say: 'The AppImage runs on its own and replaces itself when a new version is out. It needs fuse, which every desktop distribution ships:', cmd: 'chmod +x Unisic-*-x86_64.AppImage && ./Unisic-*-x86_64.AppImage' },
 				{
-					say: 'It needs fuse, which every desktop distribution ships. Where fuse is missing, the install script puts in the .tar.gz of the same build instead, and where flatpak is installed, it offers a Flatpak entry too.'
+					say: 'The Flatpak bundle installs for your user and takes the KDE runtime from Flathub:',
+					cmd: 'flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo\nflatpak install --user --bundle ./unisic-*-x86_64.flatpak'
 				}
+			],
+			files: [
+				{ name: 'Download the AppImage', href: asset('Unisic-{v}-x86_64.AppImage') },
+				{ name: 'Download the Flatpak', href: asset('unisic-{v}-x86_64.flatpak') }
 			]
 		},
 		{ id: 'windows', label: 'Windows 11', steps: [] }
@@ -118,7 +125,7 @@
 	}
 </script>
 
-<Chapter id="install" num="09" mode="shot" kicker="Install" title="Installed in one line.">
+<Chapter id="install" kicker="Install" title="Pick your system, copy, paste.">
 	<div class="wrap">
 		<div class="box panel">
 			<div class="tabs" role="tablist" aria-label="Install on">
@@ -146,10 +153,8 @@
 								Recording a single window does not work yet.
 							</p>
 							<div class="files">
-								<a class="btn primary" href="{DOWNLOAD}/unisic-{VERSION}-windows-x64-experimental-setup.exe">
-									Download the installer
-								</a>
-								<a class="btn" href="{DOWNLOAD}/Unisic-{VERSION}-windows-x86_64-experimental.zip">Download the zip</a>
+								<a class="btn primary" href={WINDOWS_SETUP}>Download the installer</a>
+								<a class="btn" href={asset('Unisic-{v}-windows-x86_64-experimental.zip')}>Download the zip</a>
 							</div>
 							<p class="say small">
 								The installer adds a Start menu entry and an uninstaller. Unpack the zip anywhere and run
@@ -169,12 +174,19 @@
 									</div>
 								{/if}
 							{/each}
+							{#if t.files}
+								<div class="files">
+									{#each t.files as f (f.href)}<a class="btn" href={f.href}>{f.name}</a>{/each}
+								</div>
+							{/if}
 						{/if}
 					</div>
 				{/each}
 			</div>
 
 			<p class="all">
+				Made for Wayland: KDE Plasma natively, GNOME and wlroots desktops through portals. X11 works as a best-effort
+				second target; recording a single window needs Wayland.
 				Version {VERSION}. Every file, with checksums: <a href={RELEASES}>GitHub releases</a>. Building from source:
 				<a href="/docs/installation/#build-from-source">installation docs</a>.
 			</p>
@@ -191,15 +203,19 @@
 		padding: var(--s5);
 		min-width: 0;
 	}
+	/* One row that scrolls sideways on phones, so the panel never jumps down a line per wrap. */
 	.tabs {
 		display: flex;
-		flex-wrap: wrap;
 		gap: var(--s1);
-		padding-bottom: var(--s4);
+		margin-inline: calc(-1 * var(--s5));
+		padding: 0 var(--s5) var(--s4);
+		overflow-x: auto;
 		border-bottom: 1px solid var(--line);
+		scrollbar-width: none;
 	}
 	[role='tab'] {
-		min-height: 40px;
+		flex: none;
+		min-height: 44px;
 		padding: 0 var(--s3);
 		border: 0;
 		border-radius: var(--r1);
@@ -242,6 +258,13 @@
 	.panel-body[hidden] {
 		visibility: hidden;
 	}
+	/* On phones the longest panel is taller than the screen, so its bottom is out of view anyway;
+	   reserving its height there would only leave a screen of blank box under the short ones. */
+	@media (max-width: 759px) {
+		.panel-body[hidden] {
+			display: none;
+		}
+	}
 	.say {
 		max-width: 64ch;
 		text-wrap: pretty;
@@ -266,6 +289,18 @@
 		white-space: nowrap;
 		font-size: var(--t-small);
 		scrollbar-width: thin;
+	}
+	@media (max-width: 759px) {
+		.cmd {
+			align-items: start;
+		}
+		.cmd code {
+			white-space: pre-wrap;
+			overflow-wrap: anywhere;
+		}
+		.cmd .line + .line {
+			margin-top: var(--s2);
+		}
 	}
 	.cmd .line {
 		display: block;

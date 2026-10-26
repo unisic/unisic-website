@@ -9,7 +9,7 @@
 
 <Chapter
 	id="share"
-	num="05"
+	split
 	kicker="Share and history"
 	title="From shot to link in one key."
 	lede="After a capture Unisic can copy the image, save it, upload it and put the link on your clipboard. Every capture lands in a history with thumbnails, and deleting one moves the file to the trash instead of erasing it."
@@ -42,7 +42,7 @@
 					</ul>
 				{:else}
 					<p class="empty">
-						<span>Nothing yet. Drag a selection over the top of this page and press <a href="#main">Capture</a>; it shows up here.</span>
+						<span>Nothing yet. Drag a selection in the <a href="#edit">editor demo</a> above and press Capture; it shows up here.</span>
 					</p>
 				{/if}
 			</section>
@@ -58,19 +58,17 @@
 	.flow {
 		position: relative;
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: var(--s3);
+		gap: var(--s4);
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 	.flow li {
-		display: grid;
-		justify-items: start;
+		display: flex;
+		align-items: center;
 		gap: var(--s3);
-		padding-top: var(--s2);
 		font-weight: 650;
-		font-size: clamp(0.9375rem, 0.8rem + 0.6vw, 1.25rem);
+		font-size: clamp(1rem, 0.8rem + 0.6vw, 1.25rem);
 		line-height: 1.2;
 	}
 	.dot {
@@ -85,11 +83,30 @@
 	.flow::before {
 		content: '';
 		position: absolute;
-		left: 8px;
-		right: calc(25% - 8px);
-		top: calc(var(--s2) + 7px);
-		height: 2px;
+		left: 7px;
+		top: 8px;
+		bottom: 8px;
+		width: 2px;
 		background: var(--mode);
+	}
+	@media (min-width: 600px) {
+		.flow {
+			grid-template-columns: repeat(4, 1fr);
+			gap: var(--s3);
+		}
+		.flow li {
+			display: grid;
+			justify-items: start;
+			padding-top: var(--s2);
+		}
+		.flow::before {
+			left: 8px;
+			right: calc(25% - 8px);
+			top: calc(var(--s2) + 7px);
+			bottom: auto;
+			width: auto;
+			height: 2px;
+		}
 	}
 
 	.cols {
@@ -102,18 +119,16 @@
 		gap: var(--s4);
 	}
 	.hosts ul {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--s2);
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		column-gap: var(--s5);
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 	.hosts li {
-		padding: 6px 12px;
-		border-radius: 99px;
-		box-shadow: inset 0 0 0 1px var(--line-strong);
-		font: var(--t-small) var(--font-mono);
+		padding-block: var(--s2);
+		border-bottom: 1px solid var(--line);
 	}
 
 	.live {

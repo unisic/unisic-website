@@ -56,6 +56,7 @@
 		['#FFFFFF', 'White']
 	];
 	const COMMAND = 'unisic --region';
+	const TASKBAR = 40;
 	const MAX_SHAPES = 60;
 	const MAX_POINTS = 2000;
 	const MAX_HISTORY = 40;
@@ -237,7 +238,7 @@
 
 	function home(): Rect {
 		const r = relative(headline);
-		const pad = Math.min(32, W * 0.05);
+		const pad = 32;
 		return fit({ x: r.x - pad, y: r.y - pad, w: r.w + pad * 2, h: r.h + pad * 2 });
 	}
 
@@ -245,10 +246,12 @@
 		const m = relative(mark);
 		const tipX = m.x + m.w + 10;
 		const tipY = m.y + m.h * 0.7;
+		// The step marker sits under the highlight, inside the frame's padding, so it covers no letters.
+		const stepY = m.y + m.h * 0.92 + 16;
 		return [
 			{ id: ++uid, kind: 'highlight', color: '#FFD84D', x1: m.x - 6, y1: m.y + m.h * 0.2, x2: m.x + m.w + 4, y2: m.y + m.h * 0.92, draw },
 			{ id: ++uid, kind: 'arrow', color: '#FF4757', x1: clamp(tipX + 120, 0, W - 12), y1: clamp(tipY + 84, 0, H - 72), x2: tipX, y2: tipY, draw },
-			{ id: ++uid, kind: 'step', color: '#FF4757', x1: m.x - 8, y1: m.y + m.h * 0.2, x2: m.x - 8, y2: m.y + m.h * 0.2, n: 1, draw }
+			{ id: ++uid, kind: 'step', color: '#FF4757', x1: m.x + 14, y1: stepY, x2: m.x + 14, y2: stepY, n: 1, draw }
 		];
 	}
 
@@ -396,9 +399,12 @@
 		const r = stage.getBoundingClientRect();
 		const x = Math.round(cx - r.left);
 		const y = Math.round(cy - r.top);
+		// The label flips to the other side of the cursor near the right edge and above the taskbar.
+		const lx = x + 14 + coord.offsetWidth > r.width ? x - 14 - coord.offsetWidth : x + 14;
+		const ly = y + 14 + coord.offsetHeight > r.height - TASKBAR ? y - 14 - coord.offsetHeight : y + 14;
 		vline.style.transform = `translateX(${x}px)`;
 		hline.style.transform = `translateY(${y}px)`;
-		coord.style.transform = `translate(${x + 14}px, ${y + 14}px)`;
+		coord.style.transform = `translate(${lx}px, ${ly}px)`;
 		coord.textContent = `${x}, ${y}`;
 	}
 
@@ -490,6 +496,12 @@
 	const time = $derived(now?.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) ?? '');
 	const shown = $derived(draft ? [...shapes, draft] : shapes);
 </script>
+
+<p id="overlay-hint" class="hint">
+	Drag the frame or its handles, pick a tool and draw inside it, then press Capture.
+	<span class="keys">Arrow keys move the frame, Enter captures, Esc resets.</span>
+	<span class="now">Tool: <strong>{TOOLS.find((t) => t.id === tool)?.label}</strong></span>
+</p>
 
 <div class="stage" bind:this={stage}>
 	<div class="shot" bind:this={shot}>
@@ -630,8 +642,6 @@
 			</div>
 		</div>
 	{/if}
-
-	<p id="overlay-hint" class="hint">Drag or use the arrow keys to move the selection. Enter captures, Esc resets.</p>
 </div>
 
 <style>
@@ -1106,27 +1116,59 @@
 	}
 
 	.hint {
-		position: absolute;
-		top: var(--s4);
-		right: var(--s4);
-		max-width: 34ch;
-		padding: 6px 10px;
-		border-radius: var(--r1);
-		background: rgb(0 0 0 / 0.5);
-		color: #fff;
-		font: 12px/1.45 var(--font-mono);
-		pointer-events: none;
-		z-index: var(--z-tools);
+		max-width: 72ch;
+		margin-bottom: var(--s4);
+		font-size: var(--t-small);
+		color: var(--muted);
+		text-wrap: pretty;
+	}
+	.now {
+		white-space: nowrap;
+	}
+	.now strong {
+		color: var(--text);
+	}
+	@media (pointer: coarse) {
+		.keys {
+			display: none;
+		}
+	}
+	/* Phones: every tool, color and the Capture button stay on screen in three rows, and the stage
+	   grows so the toolbar clears the headline. */
+	@media (max-width: 759px) {
+		.stage {
+			height: 540px;
+		}
 	}
 	@container (max-width: 719px) {
-		.hint {
-			width: 1px;
-			height: 1px;
-			padding: 0;
-			overflow: hidden;
-			clip-path: inset(50%);
-		}
 		.taskbar .app {
+			display: none;
+		}
+		.desk {
+			padding-bottom: 220px;
+		}
+		.tools {
+			flex-wrap: wrap;
+			justify-content: center;
+			width: calc(100% - 2 * var(--s4));
+			overflow: visible;
+		}
+		.group {
+			flex-wrap: wrap;
+			justify-content: center;
+			flex: 0 1 auto;
+		}
+		.group:first-child {
+			flex-basis: 100%;
+		}
+		.group:nth-child(2) {
+			padding-left: 0;
+			border-left: 0;
+		}
+		.shoot {
+			padding: 0 var(--s3);
+		}
+		.shoot kbd {
 			display: none;
 		}
 	}

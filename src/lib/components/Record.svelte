@@ -10,7 +10,7 @@
 	];
 	const KEYS = ['Ctrl+C', 'Ctrl+V', 'Ctrl+S', 'Alt+Tab'];
 
-	let format = $state('mp4');
+	let format = $state('webm');
 	let visible = $state(false);
 	let seconds = $state(0);
 
@@ -27,8 +27,8 @@
 
 <Chapter
 	id="record"
-	num="03"
-	mode={format === 'gif' ? 'gif' : 'video'}
+	mode="video"
+	split
 	kicker="Record"
 	title="Record the screen, with sound."
 	lede="A region, the full screen or a window, saved as GIF, MP4 or WebM. System sound, the microphone and single apps land on separate tracks, and instant replay keeps the last stretch of the screen."
@@ -69,6 +69,14 @@
 				{/each}
 			</fieldset>
 			<p class="fps" aria-live="polite"><strong>{fps}</strong> frames per second by default</p>
+			<div class="drawn">
+				<h3 class="label">Drawn into the recording</h3>
+				<ul>
+					<li><strong>Pointer halo</strong>keeps the cursor easy to find in a scaled-down video</li>
+					<li><strong>Click ripples</strong>show where and when you clicked</li>
+					<li><strong>Key badge</strong>shows the shortcuts you press, off until you turn it on</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </Chapter>
@@ -114,7 +122,7 @@
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
-		background: color-mix(in oklab, var(--c-gif) 45%, transparent);
+		background: rgb(255 214 0 / 0.45);
 	}
 	.ripple {
 		width: 44px;
@@ -204,13 +212,14 @@
 			color 160ms ease,
 			transform 160ms var(--ease-out);
 	}
+	/* Page controls take the site accent; the mode color stays inside the demo, where the app uses it. */
 	.formats input:checked + span {
-		background: var(--mode);
-		color: var(--mode-ink);
+		background: var(--accent);
+		color: var(--on-accent);
 		box-shadow: none;
 	}
 	.formats input:focus-visible + span {
-		outline: 2px solid var(--mode);
+		outline: 2px solid var(--accent);
 		outline-offset: 3px;
 	}
 	.formats label:active span {
@@ -223,6 +232,26 @@
 		font-size: var(--t-h3);
 		font-variant-numeric: tabular-nums;
 		color: var(--text);
+	}
+	.drawn {
+		display: grid;
+		gap: var(--s3);
+		padding-top: var(--s5);
+		border-top: 1px solid var(--line);
+	}
+	.drawn ul {
+		display: grid;
+		gap: var(--s3);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: var(--t-small);
+		color: var(--muted);
+	}
+	.drawn li strong {
+		display: block;
+		color: var(--text);
+		font-size: var(--t-body);
 	}
 
 	@media (min-width: 960px) {

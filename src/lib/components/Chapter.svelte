@@ -1,21 +1,33 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { track, type Mode } from '#lib/ui.svelte.js';
+	import type { Mode } from '#lib/ui.svelte.js';
 
+	// split puts the lede beside the title on wide screens, band sets the chapter on the deep background.
+	// Both exist to break the rhythm of chapters that would otherwise share one shape.
 	let {
 		id,
-		num,
 		mode = 'shot',
 		kicker,
 		title,
 		lede,
+		split = false,
+		band = false,
 		children
-	}: { id: string; num: string; mode?: Mode; kicker: string; title: string; lede?: string; children: Snippet } = $props();
+	}: {
+		id: string;
+		mode?: Mode;
+		kicker: string;
+		title: string;
+		lede?: string;
+		split?: boolean;
+		band?: boolean;
+		children: Snippet;
+	} = $props();
 </script>
 
-<section {id} class="chapter" data-mode={mode} aria-labelledby="{id}-title" {@attach track(mode)}>
-	<header class="head wrap">
-		<p class="meta label"><span class="num">{num}</span><span class="rule"></span><span>{kicker}</span></p>
+<section {id} class="chapter" class:band data-mode={mode} aria-labelledby="{id}-title">
+	<header class="head wrap" class:split>
+		<p class="kicker label">{kicker}</p>
 		<h2 id="{id}-title">{title}</h2>
 		{#if lede}<p class="lede">{lede}</p>{/if}
 	</header>
@@ -25,40 +37,45 @@
 <style>
 	.chapter {
 		padding-block: var(--s8) var(--s7);
-		scroll-margin-top: 0;
+	}
+	.band {
+		padding-block: var(--s8);
+		background: var(--deep);
+		border-block: 1px solid var(--line);
 	}
 	.head {
 		display: grid;
-		gap: var(--s5);
+		gap: var(--s4);
 		margin-bottom: var(--s7);
 	}
-	.meta {
-		display: flex;
-		align-items: center;
-		gap: var(--s3);
-	}
-	.num {
-		padding: 2px 7px;
-		border-radius: 4px;
-		background: var(--mode);
-		color: var(--mode-ink);
-		font-variant-numeric: tabular-nums;
-	}
-	.rule {
-		flex: 0 1 var(--s9);
-		height: 1px;
-		background: var(--mode);
-		transform-origin: left;
+	.kicker {
+		color: var(--accent);
 	}
 	h2 {
 		max-width: 14ch;
 		font-size: var(--t-h2);
+		text-wrap: balance;
 	}
 	.lede {
 		max-width: 56ch;
+		margin-top: var(--s1);
 		font-size: var(--t-lede);
 		line-height: 1.45;
 		color: var(--muted);
+		text-wrap: pretty;
+	}
+	@media (min-width: 960px) {
+		.split {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			column-gap: var(--s8);
+			align-items: end;
+		}
+		.split .kicker {
+			grid-column: 1 / -1;
+		}
+		.split .lede {
+			margin-top: 0;
+		}
 	}
 
 	@supports (animation-timeline: view()) {
@@ -69,22 +86,12 @@
 				animation-timeline: view();
 				animation-range: entry 0% entry 70%;
 			}
-			.rule {
-				animation: grow linear both;
-				animation-timeline: view();
-				animation-range: entry 10% cover 35%;
-			}
 		}
 	}
 	@keyframes rise {
 		from {
 			opacity: 0;
 			transform: translateY(0.4em);
-		}
-	}
-	@keyframes grow {
-		from {
-			transform: scaleX(0.05);
 		}
 	}
 </style>

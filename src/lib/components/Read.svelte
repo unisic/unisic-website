@@ -35,7 +35,6 @@
 
 <Chapter
 	id="read"
-	num="04"
 	mode="ocr"
 	kicker="OCR and QR"
 	title="Copy text out of pixels."
@@ -118,6 +117,21 @@
 		border-radius: 3px;
 		box-shadow: 0 0 0 1px var(--mode);
 		background: color-mix(in oklab, var(--mode) 14%, transparent);
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+	}
+	/* Phones wrap the long help lines instead of hiding their ends behind a sideways scroll,
+	   with a hanging indent so a wrapped description stays under its own column. */
+	@media (max-width: 599px) {
+		pre {
+			white-space: pre-wrap;
+		}
+		.ln {
+			display: block;
+			padding-left: calc(4px + 18ch);
+			text-indent: -18ch;
+			line-height: 1.6;
+		}
 	}
 
 	.qr {
@@ -154,8 +168,11 @@
 		margin-top: var(--s3);
 	}
 	.decoded {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
 		font-family: var(--font-mono);
-		color: var(--mode);
+		color: var(--accent);
 		overflow-wrap: anywhere;
 	}
 

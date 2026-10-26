@@ -33,13 +33,18 @@
 	<div class="wrap grid">
 		<div class="sign">
 			<img class="uni" src="/img/uni.webp" alt="Uni, the Unisic mascot" width="376" height="568" loading="lazy" decoding="async" />
-			<p class="quote">Uni approves this capture.</p>
+			<p class="legal">
+				Unisic is free software under the
+				<a href="/docs/introduction/#license">GNU GPL v3</a>. Built by
+				<a href="https://github.com/DeBondor">@DeBondor</a> and <a href="https://github.com/D3anDark">@D3anDark</a>, inspired by
+				<a href="https://getsharex.com/">ShareX</a> and <a href="https://apps.kde.org/spectacle/">Spectacle</a>.
+			</p>
 		</div>
 
 		<nav class="groups" aria-label="Footer">
 			{#each GROUPS as g (g.title)}
 				<div>
-					<h2 class="label">{g.title}</h2>
+					<h3 class="label">{g.title}</h3>
 					<ul>
 						{#each g.links as l (l.href)}
 							<li><a href={l.href}>{l.text}</a></li>
@@ -48,19 +53,12 @@
 				</div>
 			{/each}
 		</nav>
-
-		<p class="legal">
-			Unisic is free software under the
-			<a href="/docs/introduction/#license">GNU GPL v3</a>. Built by
-			<a href="https://github.com/DeBondor">@DeBondor</a> and <a href="https://github.com/D3anDark">@D3anDark</a>, inspired by
-			<a href="https://getsharex.com/">ShareX</a> and <a href="https://apps.kde.org/spectacle/">Spectacle</a>.
-		</p>
 	</div>
 </footer>
 
 <style>
 	.foot {
-		padding-block: var(--s9) var(--s7);
+		padding-block: var(--s8) var(--s7);
 		border-top: 1px solid var(--line);
 		background: var(--deep);
 	}
@@ -70,17 +68,14 @@
 	}
 	.sign {
 		display: flex;
-		align-items: flex-end;
+		align-self: start;
+		align-items: center;
 		gap: var(--s5);
 	}
 	.uni {
-		width: 96px;
+		flex: none;
+		width: 72px;
 		height: auto;
-	}
-	.quote {
-		margin-bottom: var(--s4);
-		font: italic 600 clamp(1.25rem, 1rem + 1vw, 1.75rem) / 1.2 var(--font-display);
-		text-wrap: balance;
 	}
 	.groups {
 		display: grid;
@@ -96,8 +91,8 @@
 	.groups a {
 		display: inline-flex;
 		align-items: center;
-		min-height: 40px;
-		color: var(--muted);
+		min-height: 44px;
+		color: var(--text);
 		text-decoration: none;
 		transition: color 150ms ease;
 	}
@@ -109,15 +104,14 @@
 	}
 	@media (hover: hover) and (pointer: fine) {
 		.groups a:hover {
-			color: var(--text);
+			color: var(--accent);
 		}
 	}
 	.legal {
-		max-width: 72ch;
-		padding-top: var(--s5);
-		border-top: 1px solid var(--line);
+		max-width: 44ch;
 		font-size: var(--t-small);
 		color: var(--muted);
+		text-wrap: pretty;
 	}
 	.legal a {
 		color: var(--text);
@@ -126,9 +120,6 @@
 	@media (min-width: 900px) {
 		.grid {
 			grid-template-columns: 1fr 1.4fr;
-		}
-		.legal {
-			grid-column: 1 / -1;
 		}
 	}
 </style>

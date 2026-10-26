@@ -58,10 +58,17 @@
 		font-variant-numeric: tabular-nums;
 	}
 	a {
+		position: relative;
 		display: inline-flex;
 		align-items: center;
 		min-height: 32px;
 		color: var(--accent);
+	}
+	/* The tap area reaches 44px into the toast's own padding without making the toast taller. */
+	a::after {
+		content: '';
+		position: absolute;
+		inset: -6px 0;
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.toast {
