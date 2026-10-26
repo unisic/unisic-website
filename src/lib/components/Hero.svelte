@@ -14,7 +14,7 @@
 			upload a link. All in one free app.
 		</p>
 
-		<div class="term">
+		<div class="term panel">
 			<img class="uni" src="/img/uni.webp" alt="" width="376" height="568" />
 			<p class="bar"><i></i><i></i><i></i><span>Install on any distro</span></p>
 			<div class="body">
@@ -32,7 +32,7 @@
 				<li class="ver">v0.8.8, 2026-10-19</li>
 			</ul>
 			<p class="more">
-				<a href="#install">Fedora, Arch, Debian, Nix, Windows</a>
+				<a href="#install">Distro packages, Nix, Windows</a>
 				<a href="https://github.com/unisic/unisic">Source on GitHub</a>
 			</p>
 		</div>
@@ -46,7 +46,7 @@
 		min-height: calc(100svh - 60px);
 		margin-top: 60px;
 		padding-block: var(--s7) var(--s8);
-		background: var(--desk);
+		background: var(--deep);
 	}
 	.inner {
 		display: grid;
@@ -84,11 +84,6 @@
 		width: 100%;
 		max-width: 960px;
 		margin-top: var(--s8);
-		border-radius: var(--r3);
-		background: var(--surface);
-		box-shadow:
-			0 0 0 1px color-mix(in oklab, var(--accent) 45%, transparent),
-			0 32px 64px -32px rgb(0 0 0 / 0.7);
 	}
 	.uni {
 		position: absolute;

@@ -23,7 +23,11 @@
 		<svg class="icon a" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" /></svg>
 		<svg class="icon b" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
 	</span>
-	<span class="txt">{status === 'done' ? 'Copied' : status === 'failed' ? 'Select it' : label}</span>
+	<span class="txt">
+		{#each [['idle', label], ['done', 'Copied'], ['failed', 'Select it']] as [s, t] (s)}
+			<span class:on={status === s}>{t}</span>
+		{/each}
+	</span>
 </button>
 <span class="sr-only" role="status">{status === 'done' ? 'Copied to clipboard' : status === 'failed' ? 'Clipboard blocked, select the text instead' : ''}</span>
 
@@ -89,9 +93,16 @@
 		scale: 1;
 		filter: blur(0);
 	}
+	/* All three labels share one cell, so the button keeps the width of the longest. */
 	.txt {
-		min-width: 5.5ch;
+		display: grid;
 		text-align: start;
+	}
+	.txt span {
+		grid-area: 1 / 1;
+	}
+	.txt span:not(.on) {
+		visibility: hidden;
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.glyphs .icon {

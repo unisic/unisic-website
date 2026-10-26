@@ -27,6 +27,8 @@
 		d?: string;
 		n?: number;
 		draw?: boolean;
+		/** The smart eraser's patch, as an image. */
+		fill?: string;
 	};
 	type Drag =
 		| { type: 'move' | 'new' | 'resize'; ox: number; oy: number; start: Rect; edge: string }
@@ -58,10 +60,14 @@
 	const MAX_POINTS = 2000;
 	const MAX_HISTORY = 40;
 	const MIN = 24;
+	// The app caps its patch at 192 samples a side. The patch is smooth, so 64 upscaled looks the
+	// same here at a ninth of the work.
+	const ERASE_MAX = 64;
 
 	let stage: HTMLDivElement;
 	let overlay = $state<HTMLDivElement>();
 	let shot: HTMLDivElement;
+	let desk: HTMLDivElement;
 	let headline: HTMLParagraphElement;
 	let mark: HTMLSpanElement;
 	let vline = $state<HTMLDivElement>();
@@ -85,6 +91,8 @@
 	let touched = false;
 	let uid = 0;
 	let captures = 0;
+	let clean: ImageData | null = null;
+	let canvas: HTMLCanvasElement | undefined;
 
 	const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), Math.max(lo, hi));
 	const norm = (x1: number, y1: number, x2: number, y2: number): Rect => ({
@@ -105,6 +113,126 @@
 		const s = stage.getBoundingClientRect();
 		const r = el.getBoundingClientRect();
 		return { x: r.left - s.left, y: r.top - s.top, w: r.width, h: r.height };
+	}
+
+	// The capture as the eraser sees it: every surface on the desk, without its text and icons.
+	// The app samples the real pixels and outvotes the text with medians. A page can't read its
+	// own pixels, so the surfaces are painted into a canvas instead and the text stays out.
+	function surfaces(): ImageData | null {
+		const c = document.createElement('canvas');
+		c.width = Math.max(1, Math.round(W));
+		c.height = Math.max(1, Math.round(H));
+		const g = c.getContext('2d', { willReadFrequently: true });
+		if (!g) return null;
+		for (const el of [desk, ...desk.querySelectorAll('*')]) {
+			const css = getComputedStyle(el);
+			const r = relative(el);
+			if (css.backgroundColor === 'rgba(0, 0, 0, 0)' || !r.w || !r.h) continue;
+			g.fillStyle = css.backgroundColor;
+			g.beginPath();
+			g.roundRect(r.x, r.y, r.w, r.h, Math.min(parseFloat(css.borderTopLeftRadius) || 0, r.w / 2, r.h / 2));
+			g.fill();
+		}
+		return g.getImageData(0, 0, c.width, c.height);
+	}
+
+	// AnnotationCanvas::smartErasePatch: sample just outside the rectangle, vote out whatever
+	// isn't background, then fill with a Coons patch through the four edges.
+	function patch(img: ImageData, b: Rect, fast: boolean): string {
+		type RGB = number[];
+		const { data, width: iw, height: ih } = img;
+		const x0 = Math.floor(b.x);
+		const y0 = Math.floor(b.y);
+		const x1 = Math.max(x0, Math.ceil(b.x + b.w) - 1);
+		const y1 = Math.max(y0, Math.ceil(b.y + b.h) - 1);
+		const rw = x1 - x0 + 1;
+		const rh = y1 - y0 + 1;
+		const gw = clamp(rw, 2, ERASE_MAX);
+		const gh = clamp(rh, 2, ERASE_MAX);
+		const median = (v: number[]) => v.sort((p, q) => p - q)[v.length >> 1];
+
+		// One sample is the per-channel median of a window 3 rows out and 5 along the edge.
+		const edge = (x: number, y: number, nx: number, ny: number): RGB => {
+			const ch: number[][] = [[], [], []];
+			for (let d = 1; d <= (fast ? 1 : 3); d++)
+				for (let t = -2; t <= 2; t++) {
+					const sx = clamp(x + nx * d + (nx ? 0 : t), 0, iw - 1);
+					const sy = clamp(y + ny * d + (ny ? 0 : t), 0, ih - 1);
+					for (let k = 0; k < 3; k++) ch[k].push(data[(sy * iw + sx) * 4 + k]);
+				}
+			return ch.map(median);
+		};
+		const top: RGB[] = [];
+		const bottom: RGB[] = [];
+		const left: RGB[] = [];
+		const right: RGB[] = [];
+		for (let i = 0; i < gw; i++) {
+			const x = x0 + Math.floor(((i + 0.5) * rw) / gw);
+			top.push(edge(x, y0, 0, -1));
+			bottom.push(edge(x, y1, 0, 1));
+		}
+		for (let j = 0; j < gh; j++) {
+			const y = y0 + Math.floor(((j + 0.5) * rh) / gh);
+			left.push(edge(x0, y, -1, 0));
+			right.push(edge(x1, y, 1, 0));
+		}
+
+		// The ring is mostly background: samples far from its median are the object being erased,
+		// rebuilt from the inliers on either side of them.
+		const strips = [top, bottom, left, right];
+		const ring = strips.flat();
+		const med = [0, 1, 2].map((k) => median(ring.map((c) => c[k])));
+		const dev = (c: RGB) => Math.max(...c.map((v, k) => Math.abs(v - med[k])));
+		const thr = Math.max(24, 3 * 1.4826 * median(ring.map(dev)));
+		for (const a of strips) {
+			const ok = a.map((c) => dev(c) <= thr);
+			if (!ok.includes(true)) {
+				a.fill(med);
+				continue;
+			}
+			for (let i = 0; i < a.length; i++) {
+				if (ok[i]) continue;
+				let end = i;
+				while (end < a.length && !ok[end]) end++;
+				const lo = i - 1;
+				const hi = end < a.length ? end : -1;
+				for (let g = i; g < end; g++) {
+					const t = (g - lo) / (hi - lo);
+					a[g] = lo < 0 ? a[hi] : hi < 0 ? a[lo] : a[lo].map((v, k) => Math.round((1 - t) * v + t * a[hi][k]));
+				}
+				i = end;
+			}
+		}
+
+		// Coons patch, clamped to the four samples each pixel interpolates so it can't overshoot.
+		const avg = (p: RGB, q: RGB) => p.map((v, k) => (v + q[k]) >> 1);
+		const c00 = avg(top[0], left[0]);
+		const c10 = avg(top[gw - 1], right[0]);
+		const c01 = avg(bottom[0], left[gh - 1]);
+		const c11 = avg(bottom[gw - 1], right[gh - 1]);
+		const out = new ImageData(gw, gh);
+		for (let j = 0; j < gh; j++) {
+			const v = (j + 0.5) / gh;
+			for (let i = 0; i < gw; i++) {
+				const u = (i + 0.5) / gw;
+				const o = (j * gw + i) * 4;
+				for (let k = 0; k < 3; k++) {
+					const l = left[j][k];
+					const r = right[j][k];
+					const t = top[i][k];
+					const d = bottom[i][k];
+					const bi = (1 - u) * (1 - v) * c00[k] + u * (1 - v) * c10[k] + (1 - u) * v * c01[k] + u * v * c11[k];
+					const value = Math.round((1 - u) * l + u * r + (1 - v) * t + v * d - bi);
+					out.data[o + k] = clamp(value, Math.min(l, r, t, d), Math.max(l, r, t, d));
+				}
+				out.data[o + 3] = 255;
+			}
+		}
+		canvas ??= document.createElement('canvas');
+		canvas.width = gw;
+		canvas.height = gh;
+		canvas.getContext('2d')?.putImageData(out, 0, 0);
+		return canvas.toDataURL();
 	}
 
 	function home(): Rect {
@@ -173,6 +301,7 @@
 			commit([...shapes, { id: ++uid, kind: 'step', color, x1: p.x, y1: p.y, x2: p.x, y2: p.y, n }]);
 			return;
 		} else {
+			if (tool === 'erase') clean = surfaces();
 			drag = { type: 'draw' };
 			draft = { id: ++uid, kind: tool, color, x1: p.x, y1: p.y, x2: p.x, y2: p.y, d: `M${p.x} ${p.y}`, n: 1 };
 		}
@@ -197,8 +326,11 @@
 				drag.edge.includes('s') ? p.y : s.y + s.h
 			);
 		} else if (draft) {
-			if (draft.kind !== 'pen') draft = { ...draft, x2: p.x, y2: p.y };
-			else if ((draft.n ?? 0) < MAX_POINTS)
+			if (draft.kind !== 'pen') {
+				const next = { ...draft, x2: p.x, y2: p.y };
+				if (next.kind === 'erase' && clean) next.fill = patch(clean, box(next), true);
+				draft = next;
+			} else if ((draft.n ?? 0) < MAX_POINTS)
 				draft = {
 					...draft,
 					d: `${draft.d}L${p.x} ${p.y}`,
@@ -216,8 +348,9 @@
 		if ((drag.type === 'new' || drag.type === 'resize') && (sel.w < MIN || sel.h < MIN)) sel = drag.start;
 		if (draft) {
 			const big = draft.kind === 'pen' ? (draft.n ?? 0) > 2 : Math.hypot(draft.x2 - draft.x1, draft.y2 - draft.y1) > 4;
-			if (big) commit([...shapes, draft]);
+			if (big) commit([...shapes, draft.kind === 'erase' && clean ? { ...draft, fill: patch(clean, box(draft), false) } : draft]);
 			draft = null;
+			clean = null;
 		}
 		drag = null;
 	}
@@ -295,6 +428,22 @@
 			}
 		});
 
+		// A patch is baked from the colours around it, so a theme switch bakes every one again.
+		const themes = new MutationObserver(() => {
+			const img = surfaces();
+			if (!img) return;
+			const fills = new Map<number, string>();
+			const again = (list: Shape[]) =>
+				list.map((s) => {
+					if (s.kind !== 'erase') return s;
+					if (!fills.has(s.id)) fills.set(s.id, patch(img, box(s), false));
+					return { ...s, fill: fills.get(s.id) };
+				});
+			shapes = again(shapes);
+			past = past.map(again);
+		});
+		themes.observe(document.documentElement, { attributeFilter: ['data-theme'] });
+
 		now = new Date();
 		const clock = setInterval(() => (now = new Date()), 10_000);
 
@@ -330,6 +479,7 @@
 		return () => {
 			gone = true;
 			ro.disconnect();
+			themes.disconnect();
 			clearInterval(clock);
 			cancelAnimationFrame(frame);
 			cancelAnimationFrame(crossFrame);
@@ -342,16 +492,16 @@
 </script>
 
 <div class="stage" bind:this={stage}>
-	<div class="shot" bind:this={shot} style:--W="{W}px" style:--H="{H}px">
-		<div class="desk">
+	<div class="shot" bind:this={shot}>
+		<div class="desk" bind:this={desk}>
 			<p class="headline" bind:this={headline}>Select it. Draw on it. Press <span class="mark" bind:this={mark}>Enter.</span></p>
 
 			<div class="win" aria-hidden="true">
-				<div class="win-bar"><i></i><i></i><i></i><span>~ zsh</span></div>
-				<p class="win-body"><span class="prompt">$</span> {COMMAND}<span class="caret"></span></p>
+				<div class="win-bar"><i></i><i></i><i></i><span>~ fish</span></div>
+				<p class="win-body"><span class="prompt">&gt;</span> {COMMAND}<span class="caret"></span></p>
 			</div>
 
-			<div class="panel" aria-hidden="true">
+			<div class="taskbar" aria-hidden="true">
 				<span class="app">
 					<svg viewBox="0 0 24 24" class="logo"><rect x="2" y="2" width="20" height="20" rx="6" /><circle cx="12" cy="12" r="5.5" /></svg>
 					Unisic
@@ -402,11 +552,9 @@
 						<circle cx={s.x1} cy={s.y1} r="14" fill={s.color} />
 						<text class="num" x={s.x1} y={s.y1}>{s.n}</text>
 					</g>
-				{:else if s.kind === 'erase'}
+				{:else if s.kind === 'erase' && s.fill}
 					{@const b = box(s)}
-					<foreignObject x={b.x} y={b.y} width={b.w} height={b.h}>
-						<div class="erase" style:background-position="{-b.x}px {-b.y}px"></div>
-					</foreignObject>
+					<image href={s.fill} x={b.x} y={b.y} width={b.w} height={b.h} preserveAspectRatio="none" />
 				{/if}
 				{#if (s.kind === 'blur' || s.kind === 'erase') && s === draft}
 					{@const b = box(s)}
@@ -510,20 +658,7 @@
 		display: grid;
 		align-content: center;
 		padding: var(--s6) clamp(var(--s4), 6cqi, var(--s9)) var(--s10);
-	}
-	.desk,
-	.erase {
-		background: var(--desk);
-	}
-	/* The app rebuilds the background from the pixels around the rectangle. Here the desk's own
-	   background, lined up with the desk, stands in for that, so whatever sat on it is gone. */
-	.erase {
-		width: 100%;
-		height: 100%;
-		background-size:
-			var(--W) var(--H),
-			var(--W) var(--H),
-			24px 24px;
+		background: var(--deep);
 	}
 
 	.headline {
@@ -594,7 +729,7 @@
 		}
 	}
 
-	.panel {
+	.taskbar {
 		position: absolute;
 		inset: auto 0 0;
 		display: flex;
@@ -991,7 +1126,7 @@
 			overflow: hidden;
 			clip-path: inset(50%);
 		}
-		.panel .app {
+		.taskbar .app {
 			display: none;
 		}
 	}

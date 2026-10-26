@@ -107,7 +107,7 @@
 		align-self: stretch;
 		grid-row: span 2;
 		border-radius: 4px;
-		background: linear-gradient(135deg, color-mix(in oklab, var(--accent) 45%, transparent), color-mix(in oklab, var(--secondary) 70%, transparent));
+		background: color-mix(in oklab, var(--accent) 30%, var(--surface));
 	}
 	.result .doc i {
 		height: 2px;

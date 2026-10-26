@@ -5,9 +5,10 @@
 	const VERSION = '0.8.8';
 	const DOWNLOAD = `https://github.com/unisic/unisic/releases/download/v${VERSION}`;
 	const RELEASES = 'https://github.com/unisic/unisic/releases/latest';
+	const OBS = 'https://download.opensuse.org/repositories/home:/unisic';
 
 	type Step = { say?: string; cmd?: string };
-	type Tab = { id: string; label: string; steps: Step[]; docs?: boolean };
+	type Tab = { id: string; label: string; steps: Step[] };
 
 	const TABS: Tab[] = [
 		{
@@ -34,8 +35,14 @@
 			id: 'arch',
 			label: 'Arch',
 			steps: [
-				{ say: 'From the AUR with any helper. unisic-bin repacks the release build, unisic compiles it:', cmd: 'paru -S unisic-bin' },
-				{ say: 'Or the package from the release:', cmd: 'sudo pacman -U ./unisic-*-x86_64.pkg.tar.zst' }
+				{
+					say: 'A signed pacman repository on the openSUSE Build Service, so updates come with pacman -Syu. Trust its key:',
+					cmd: `curl -fsSL 'https://build.opensuse.org/projects/home:unisic/signing_keys/download?kind=gpg' -o /tmp/unisic-obs.key`
+				},
+				{ cmd: 'sudo pacman-key --add /tmp/unisic-obs.key && sudo pacman-key --lsign-key E5057FCB0F3DF876' },
+				{ say: 'Add the repository and install:', cmd: `printf '\\n[home_unisic_Arch]\\nServer = ${OBS}/Arch/$arch\\n' | sudo tee -a /etc/pacman.conf` },
+				{ cmd: 'sudo pacman -Syu unisic' },
+				{ say: 'Or the package from the release, which adds the same repository by itself:', cmd: 'sudo pacman -U ./unisic-*-x86_64.pkg.tar.zst' }
 			]
 		},
 		{
@@ -43,17 +50,25 @@
 			label: 'Debian, Ubuntu',
 			steps: [
 				{
-					say: 'Debian 13 and Ubuntu 25.10 or 26.04. The package from the release adds the signed apt repository, so later versions come with your system updates:',
-					cmd: 'sudo apt install ./unisic_*_amd64.deb'
-				}
-			],
-			docs: true
+					say: 'A signed apt repository on the openSUSE Build Service, so updates come with apt upgrade. Pick your release, then run the rest in the same shell:',
+					cmd: 'REPO=Debian_13  # or xUbuntu_26.04, xUbuntu_25.10'
+				},
+				{ cmd: `curl -fsSL "${OBS}/$REPO/Release.key" | gpg --dearmor | sudo tee /etc/apt/keyrings/home_unisic.gpg > /dev/null` },
+				{ cmd: `echo "deb [signed-by=/etc/apt/keyrings/home_unisic.gpg] ${OBS}/$REPO/ ./" | sudo tee /etc/apt/sources.list.d/home_unisic.list` },
+				{ cmd: 'sudo apt update && sudo apt install unisic' },
+				{ say: 'Or the package from the release, which adds the same repository by itself:', cmd: 'sudo apt install ./unisic_*_amd64.deb' }
+			]
 		},
 		{
 			id: 'opensuse',
 			label: 'openSUSE',
-			steps: [{ say: 'Tumbleweed and Leap 16.0 get a signed repository from the openSUSE Build Service, home:unisic.' }],
-			docs: true
+			steps: [
+				{
+					say: 'A signed repository on the openSUSE Build Service. On Leap 16.0, put 16.0 in place of openSUSE_Tumbleweed:',
+					cmd: 'sudo zypper addrepo https://download.opensuse.org/repositories/home:unisic/openSUSE_Tumbleweed/home:unisic.repo'
+				},
+				{ say: 'Accept the signing key when zypper asks, then install:', cmd: 'sudo zypper refresh && sudo zypper install unisic' }
+			]
 		},
 		{
 			id: 'nix',
@@ -111,44 +126,42 @@
 				{/each}
 			</div>
 
-			{#each TABS as t, i (t.id)}
-				<div class="panel-body" id="panel-{t.id}" role="tabpanel" aria-labelledby="tab-{t.id}" hidden={active !== i}>
-					{#if t.id === 'windows'}
-						<p class="say">
-							Experimental. Both files install for your user only, need no administrator rights and update themselves.
-							Recording a single window does not work yet.
-						</p>
-						<div class="files">
-							<a class="btn primary" href="{DOWNLOAD}/unisic-{VERSION}-windows-x64-experimental-setup.exe">
-								Download the installer
-							</a>
-							<a class="btn" href="{DOWNLOAD}/Unisic-{VERSION}-windows-x86_64-experimental.zip">Download the zip</a>
-						</div>
-						<p class="say small">
-							The installer adds a Start menu entry and an uninstaller. Unpack the zip anywhere and run
-							<code>bin\unisic.exe</code>; keep the folder where it is, since updates start from there.
-						</p>
-					{:else}
-						{#each t.steps as s, j (j)}
-							{#if s.say}<p class="say">{s.say}</p>{/if}
-							{#if s.cmd}
-								<div class="cmd">
-									<code><span aria-hidden="true">$ </span>{s.cmd}</code>
-									<Copy text={s.cmd} />
-								</div>
-							{/if}
-						{/each}
-						{#if t.docs}
-							<p class="say small">
-								Repository setup, step by step: <a href="/docs/installation/">installation docs</a>.
+			<div class="bodies">
+				{#each TABS as t, i (t.id)}
+					<div class="panel-body" id="panel-{t.id}" role="tabpanel" aria-labelledby="tab-{t.id}" hidden={active !== i}>
+						{#if t.id === 'windows'}
+							<p class="say">
+								Experimental. Both files install for your user only, need no administrator rights and update themselves.
+								Recording a single window does not work yet.
 							</p>
+							<div class="files">
+								<a class="btn primary" href="{DOWNLOAD}/unisic-{VERSION}-windows-x64-experimental-setup.exe">
+									Download the installer
+								</a>
+								<a class="btn" href="{DOWNLOAD}/Unisic-{VERSION}-windows-x86_64-experimental.zip">Download the zip</a>
+							</div>
+							<p class="say small">
+								The installer adds a Start menu entry and an uninstaller. Unpack the zip anywhere and run
+								<code>bin\unisic.exe</code>; keep the folder where it is, since updates start from there.
+							</p>
+						{:else}
+							{#each t.steps as s, j (j)}
+								{#if s.say}<p class="say">{s.say}</p>{/if}
+								{#if s.cmd}
+									<div class="cmd">
+										<code><span aria-hidden="true">$ </span>{s.cmd}</code>
+										<Copy text={s.cmd} />
+									</div>
+								{/if}
+							{/each}
 						{/if}
-					{/if}
-				</div>
-			{/each}
+					</div>
+				{/each}
+			</div>
 
 			<p class="all">
-				Version {VERSION}. Every file, with checksums: <a href={RELEASES}>GitHub releases</a>.
+				Version {VERSION}. Every file, with checksums: <a href={RELEASES}>GitHub releases</a>. Building from source:
+				<a href="/docs/installation/#build-from-source">installation docs</a>.
 			</p>
 		</div>
 	</div>
@@ -198,10 +211,21 @@
 			color: var(--text);
 		}
 	}
-	.panel-body:not([hidden]) {
+	/* Every panel stays laid out in the same cell, so the box is as tall as the longest one and
+	   switching tabs never moves what is below it. Hidden panels are invisible, not removed. */
+	.bodies {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
+	}
+	.panel-body {
+		grid-area: 1 / 1;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		align-content: start;
 		gap: var(--s3);
+	}
+	.panel-body[hidden] {
+		visibility: hidden;
 	}
 	.say {
 		max-width: 64ch;
