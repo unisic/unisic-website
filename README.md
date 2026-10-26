@@ -43,4 +43,4 @@ Every looping animation runs only while its section is on screen and stops when 
 
 ## Fonts
 
-Bricolage Grotesque, under the SIL Open Font License; the license file is in `static/fonts/`.
+Red Hat Display, Red Hat Text and Red Hat Mono, under the SIL Open Font License; the license file is in `static/fonts/`.

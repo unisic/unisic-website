@@ -102,7 +102,6 @@
 		font-family: var(--font-display);
 		font-size: 22cqi;
 		font-weight: 760;
-		font-stretch: 76%;
 		letter-spacing: -0.035em;
 		line-height: 1;
 		font-variant-numeric: tabular-nums;

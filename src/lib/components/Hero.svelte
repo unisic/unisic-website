@@ -133,10 +133,9 @@
 	h1 {
 		max-width: 18ch;
 		font-size: clamp(2.75rem, 1.25rem + 4.4vw, 5.75rem);
-		font-weight: 760;
-		font-stretch: 76%;
-		letter-spacing: -0.035em;
-		line-height: 0.9;
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 0.98;
 	}
 	.mark {
 		color: var(--accent);

@@ -87,7 +87,6 @@
 		gap: var(--s2);
 		min-height: 44px;
 		font-weight: 700;
-		font-stretch: 80%;
 		font-size: 1.25rem;
 		letter-spacing: -0.01em;
 		text-decoration: none;

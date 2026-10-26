@@ -1,17 +1,49 @@
 @font-face {
-	font-family: 'Bricolage Grotesque';
-	src: url('/fonts/bricolage-latin.woff2') format('woff2');
-	font-weight: 200 800;
-	font-stretch: 75% 100%;
+	font-family: 'Red Hat Display';
+	src: url('/fonts/red-hat-display-latin.woff2') format('woff2');
+	font-weight: 300 900;
 	font-display: swap;
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
 		U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-	font-family: 'Bricolage Grotesque';
-	src: url('/fonts/bricolage-latin-ext.woff2') format('woff2');
-	font-weight: 200 800;
-	font-stretch: 75% 100%;
+	font-family: 'Red Hat Display';
+	src: url('/fonts/red-hat-display-latin-ext.woff2') format('woff2');
+	font-weight: 300 900;
+	font-display: swap;
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+		U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+		U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Red Hat Text';
+	src: url('/fonts/red-hat-text-latin.woff2') format('woff2');
+	font-weight: 300 700;
+	font-display: swap;
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+		U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: 'Red Hat Text';
+	src: url('/fonts/red-hat-text-latin-ext.woff2') format('woff2');
+	font-weight: 300 700;
+	font-display: swap;
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+		U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+		U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Red Hat Mono';
+	src: url('/fonts/red-hat-mono-latin.woff2') format('woff2');
+	font-weight: 300 700;
+	font-display: swap;
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+		U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: 'Red Hat Mono';
+	src: url('/fonts/red-hat-mono-latin-ext.woff2') format('woff2');
+	font-weight: 300 700;
 	font-display: swap;
 	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
 		U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
@@ -46,8 +78,9 @@
 	--line: color-mix(in oklab, var(--text) 14%, transparent);
 	--line-strong: color-mix(in oklab, var(--text) 26%, transparent);
 
-	--font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
-	--font-mono: ui-monospace, 'SFMono-Regular', 'Cascadia Mono', 'DejaVu Sans Mono', Menlo, Consolas, monospace;
+	--font-display: 'Red Hat Display', ui-sans-serif, system-ui, sans-serif;
+	--font-body: 'Red Hat Text', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'Red Hat Mono', ui-monospace, 'SFMono-Regular', 'Cascadia Mono', 'DejaVu Sans Mono', Menlo, Consolas, monospace;
 
 	--s1: 4px;
 	--s2: 8px;
@@ -193,7 +226,7 @@
 html {
 	background: var(--deep);
 	color: var(--text);
-	font-family: var(--font-display);
+	font-family: var(--font-body);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-size-adjust: 100%;
@@ -205,7 +238,6 @@ body {
 	background: var(--bg);
 	font-size: var(--t-body);
 	line-height: 1.55;
-	font-stretch: 92%;
 	overflow-x: clip;
 }
 
@@ -213,10 +245,10 @@ h1,
 h2,
 h3 {
 	margin: 0;
-	font-weight: 720;
-	font-stretch: 78%;
-	line-height: 0.92;
-	letter-spacing: -0.025em;
+	font-family: var(--font-display);
+	font-weight: 800;
+	line-height: 0.98;
+	letter-spacing: -0.03em;
 	text-wrap: balance;
 }
 h3 {

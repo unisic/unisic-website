@@ -670,9 +670,8 @@
 	.headline {
 		justify-self: start;
 		max-width: 12ch;
-		font: 760 clamp(2.25rem, 7cqi, 5.5rem) / 0.88 var(--font-display);
-		font-stretch: 76%;
-		letter-spacing: -0.035em;
+		font: 800 clamp(2.25rem, 7cqi, 5.5rem) / 0.98 var(--font-display);
+		letter-spacing: -0.03em;
 		text-wrap: balance;
 	}
 	.mark {
