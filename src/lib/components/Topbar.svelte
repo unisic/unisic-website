@@ -21,7 +21,7 @@
 	<div class="inner">
 		<a class="brand" href="{root}#main">
 			<img src="/favicon.svg" alt="" width="28" height="28" />
-			Unisic
+			<span class="name">Unisic</span>
 		</a>
 		<nav id="site-nav" aria-label={words.nav} popover bind:this={menu}>
 			<a href="{root}#capture" onclick={close}>{words.features}</a>
@@ -76,7 +76,12 @@
 		height: 100%;
 		margin-inline: auto;
 	}
+	/* 86px is the logo plus the word. The brand gives way before the controls do, and once it is narrower
+	   than that the word goes (the container query below) instead of running into the pause button. */
 	.brand {
+		flex: 0 1 86px;
+		min-width: 28px;
+		container-type: inline-size;
 		display: flex;
 		align-items: center;
 		gap: var(--s2);
@@ -86,6 +91,16 @@
 		font-size: 1.25rem;
 		letter-spacing: -0.01em;
 		text-decoration: none;
+	}
+	@container (max-width: 85px) {
+		.name {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip-path: inset(50%);
+			white-space: nowrap;
+		}
 	}
 	/* Phones: the popover drops under the bar as a full-width sheet. */
 	nav {
@@ -141,6 +156,12 @@
 	}
 	.end .btn {
 		padding-inline: var(--s3);
+	}
+	/* Under 360px the longest install labels (de, nl) need the last few pixels. */
+	@media (max-width: 359px) {
+		.end {
+			gap: var(--s1);
+		}
 	}
 	.pause,
 	.lang,
