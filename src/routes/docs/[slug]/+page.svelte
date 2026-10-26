@@ -68,7 +68,7 @@
 	<article>
 		<header class="head">
 			<p class="label">Docs <span aria-hidden="true">/</span> {doc.group}</p>
-			<h1>{doc.seoTitle}</h1>
+			<h1>{doc.title}</h1>
 			<p class="lede">{doc.description}</p>
 		</header>
 

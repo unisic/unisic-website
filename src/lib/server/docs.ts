@@ -8,9 +8,9 @@ import { SITE_URL } from '#lib/i18n/locales.js';
 
 export type DocMeta = {
 	slug: string;
-	/** Nav label: what the sidebar and prev/next show. */
+	/** Nav label and page heading: what the sidebar, prev/next and the h1 show. */
 	title: string;
-	/** Page heading and <title>; falls back to title. */
+	/** <title> and og:title, shaped for search; falls back to title. */
 	seoTitle: string;
 	description: string;
 	order: number;
