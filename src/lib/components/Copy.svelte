@@ -21,24 +21,21 @@
 	$effect(() => () => clearTimeout(timer));
 </script>
 
-<button class="copy" type="button" onclick={copy} data-state={status}>
-	<span class="glyphs" aria-hidden="true">
-		<svg class="icon a" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" /></svg>
-		<svg class="icon b" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
-	</span>
-	<span class="txt">
-		{#each [['idle', label ?? t.copy], ['done', t.copied], ['failed', t.select]] as [s, word] (s)}
-			<span class:on={status === s}>{word}</span>
-		{/each}
-	</span>
+<button class="copy" type="button" onclick={copy}>
+	{#each [['idle', label ?? t.copy], ['done', t.copied], ['failed', t.select]] as [s, word] (s)}
+		<span class="state" class:on={status === s}>
+			<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+				{#if s === 'done'}<path d="m5 12.5 4.5 4.5L19 7.5" />{:else}<rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />{/if}
+			</svg>
+			{word}
+		</span>
+	{/each}
 </button>
 <span class="sr-only" role="status">{status === 'done' ? t.done : status === 'failed' ? t.failed : ''}</span>
 
 <style>
 	.copy {
-		display: inline-flex;
-		align-items: center;
-		gap: var(--s2);
+		display: inline-grid;
 		min-height: 36px;
 		padding: 0 var(--s3);
 		border: 0;
@@ -67,49 +64,33 @@
 			background: color-mix(in oklab, var(--text) 18%, transparent);
 		}
 	}
-	.glyphs {
-		position: relative;
-		display: grid;
-		width: 18px;
-		height: 18px;
-	}
-	.glyphs .icon {
+	/* All three states share one cell, so the button keeps the width of the longest and the shown one sits centered. */
+	.state {
 		grid-area: 1 / 1;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--s2);
 		transition:
 			opacity 200ms var(--ease-icon),
+			visibility 200ms;
+	}
+	.state:not(.on) {
+		visibility: hidden;
+		opacity: 0;
+	}
+	.state .icon {
+		transition:
 			scale 200ms var(--ease-icon),
 			filter 200ms var(--ease-icon);
 	}
-	.b {
-		opacity: 0;
+	.state:not(.on) .icon {
 		scale: 0.25;
 		filter: blur(4px);
-		color: var(--success);
-	}
-	[data-state='done'] .a {
-		opacity: 0;
-		scale: 0.25;
-		filter: blur(4px);
-	}
-	[data-state='done'] .b {
-		opacity: 1;
-		scale: 1;
-		filter: blur(0);
-	}
-	/* All three labels share one cell, so the button keeps the width of the longest. */
-	.txt {
-		display: grid;
-		text-align: start;
-	}
-	.txt span {
-		grid-area: 1 / 1;
-	}
-	.txt span:not(.on) {
-		visibility: hidden;
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.glyphs .icon {
-			transition-property: opacity;
+		.state .icon {
+			transition: none;
 		}
 	}
 </style>
