@@ -126,7 +126,7 @@
 	--primary: #eff1f5;
 	--secondary: #e6e9ef;
 	--tertiary: #ccd0da;
-	--accent: #8839ef;
+	--accent: #802ce4;
 	--bg: #eff1f5;
 	--deep: color-mix(in oklab, #eff1f5 90%, #4c4f69);
 	--surface: #ffffff;
@@ -134,8 +134,8 @@
 	--text: #4c4f69;
 	--on-accent: #ffffff;
 	--danger: #d20f39;
-	--success: #40a02b;
-	--mute-mix: 86%;
+	--success: #007200;
+	--mute-mix: 89%;
 	--scrim: rgb(76 79 105 / 0.42);
 	color-scheme: light;
 }
@@ -152,6 +152,7 @@
 	--on-accent: #1e1e2e;
 	--danger: #f38ba8;
 	--success: #a6e3a1;
+	--mute-mix: 72%;
 }
 :root[data-theme='dracula'] {
 	--primary: #282a36;
@@ -180,6 +181,7 @@
 	--on-accent: #282828;
 	--danger: #fb4934;
 	--success: #b8bb26;
+	--mute-mix: 72%;
 }
 :root[data-theme='nord'] {
 	--primary: #2e3440;
@@ -194,6 +196,7 @@
 	--on-accent: #2e3440;
 	--danger: #bf616a;
 	--success: #a3be8c;
+	--mute-mix: 70%;
 }
 
 [data-mode] {
