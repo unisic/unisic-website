@@ -8,7 +8,7 @@ export const en = {
 	meta: {
 		title: 'Unisic: screenshots, recording and OCR for Linux',
 		description:
-			'Unisic draws on the selection before the shot, records GIF and video, reads text out of pixels and uploads the result. A screenshot tool for Linux Wayland with zero telemetry.'
+			'Free screenshot tool for Linux. Capture long pages, annotate, record with sound, copy text with OCR and upload. No telemetry, no account.'
 	},
 
 	// Topbar, Footer and the skip link, also shown on the English-only docs.
@@ -47,7 +47,7 @@ export const en = {
 		kicker: 'Free and open source screenshot tool for Linux',
 		title: 'Take the shot. Unisic handles everything',
 		titleMark: 'after.',
-		lede: 'Capture a region or a page longer than your screen, mark it up, record it with sound, pull the text out and upload a link. All in one free app.',
+		lede: 'Capture long pages, mark them up, record with sound, pull out the text and share a link.',
 		runsOn: 'Runs on',
 		more: 'and more',
 		alt: "Unisic's Capture page: Full screen, Region and Window cards with their shortcuts, and the capture options below.",
@@ -60,7 +60,7 @@ export const en = {
 		packages: 'Per-distro packages, Nix',
 		windowsInstaller: 'Windows installer',
 		experimental: 'Experimental',
-		facts: ['Free, GPL-3.0', 'No account', 'No telemetry'],
+		facts: ['No account', 'No telemetry'],
 		source: 'Source on GitHub'
 	},
 
@@ -72,57 +72,29 @@ export const en = {
 		failed: 'Clipboard blocked, select the text instead'
 	},
 
-	why: {
-		title: 'Why Unisic.',
-		ledeHtml:
-			'Of the tools in the <a href="#compare">comparison</a>, only Unisic and ShareX have every feature, and ShareX runs only on Windows.',
-		see: 'See it',
-		// Why.svelte HREFS
-		points: [
-			{
-				title: 'Scrolling capture',
-				text: 'A page longer than the screen comes out as one image. Flameshot, Spectacle, ksnip and Satty have no scrolling capture.'
-			},
-			{
-				title: 'Recording with sound',
-				text: 'The same region as a GIF, MP4 or WebM, with system sound, the microphone or one app on its own track.'
-			},
-			{
-				title: 'Text and QR codes',
-				text: 'Copy the text out of any capture, or get the link inside a QR code or barcode.'
-			},
-			{
-				title: 'Uploads and history',
-				text: 'Your own server over HTTP, FTP or SFTP, or a ShareX .sxcu config, and a thumbnail of every capture in the history.'
-			}
-		]
-	},
-
 	capture: {
-		kicker: 'Capture',
 		title: 'Every way to grab the screen.',
-		lede: 'Full screen across monitors, a region with live dimensions, the active window, or a page longer than your screen. Add a delay of up to 60 seconds and the cursor when you need them.',
+		lede: 'Add a delay of up to 60 seconds, with or without the cursor.',
 		// Capture.svelte KEYS
 		modes: [
 			{ name: 'Full screen', say: 'All monitors in one image.' },
-			{ name: 'Region', say: 'Drag a box with live dimensions and mark it up before the shot.' },
+			{ name: 'Region', say: 'Drag a box and draw on it before the shot.' },
 			{ name: 'Window', say: 'The active window, nothing around it.' }
 		],
 		scroll: 'A page longer than your screen',
 		scrolling: 'Scroll down to capture...',
 		finish: 'Finish',
 		captionHtml:
-			'Start it with <code>unisic --scroll</code>, scroll the page, press Finish. The pieces are stitched into one image.'
+			'Run <code>unisic --scroll</code>, scroll, press Finish. You get one image.'
 	},
 
 	edit: {
-		kicker: 'Annotate and edit',
 		title: 'Mark it up before the shot, or after.',
-		lede: 'Draw arrows, shapes, blur and numbered steps right in the capture overlay, then press Enter to burn them into the crop. Try it below. The editor picks up from there, with crop, undo and zoom.'
+		lede: 'Draw in the overlay, press Enter. Crop and fix later in the editor.'
 	},
 
 	overlay: {
-		hint: 'Drag the frame or its handles, pick a tool and draw inside it, then press Capture.',
+		hint: 'Drag the frame, pick a tool, draw, then press Capture.',
 		keys: 'Arrow keys move the frame, Enter captures, Esc resets.',
 		tool: 'Tool:',
 		// The demo arrow points at the end of headlineMark, so keep it last.
@@ -152,24 +124,22 @@ export const en = {
 	},
 
 	record: {
-		kicker: 'Record',
 		title: 'Record the screen, with sound.',
-		lede: 'A region, the full screen or a window, saved as GIF, MP4 or WebM. System sound, the microphone and single apps land on separate tracks, and instant replay keeps the last stretch of the screen.',
+		lede: 'GIF, MP4 or WebM. System, mic and app audio on separate tracks. Instant replay saves what just happened.',
 		alt: "Unisic's Screen recording page: Screen, Region or Window, WebM format, frame rate, CRF quality, system audio, microphone, application audio and a replay length of 30 seconds.",
 		format: 'Format',
 		fps: '{fps} frames per second by default',
 		drawn: 'Drawn into the recording',
 		effects: [
-			{ name: 'Pointer halo', say: 'keeps the cursor easy to find in a scaled-down video' },
+			{ name: 'Pointer halo', say: 'keeps the cursor easy to spot' },
 			{ name: 'Click ripples', say: 'show where and when you clicked' },
-			{ name: 'Key badge', say: 'shows the shortcuts you press, off until you turn it on' }
+			{ name: 'Key badge', say: 'shows the keys you press, off by default' }
 		]
 	},
 
 	read: {
-		kicker: 'OCR and QR',
 		title: 'Copy text out of pixels.',
-		lede: 'Select any text on screen and get it back as text. Tesseract does the reading, with Polish and English and automatic language detection. Point Unisic at a QR code or a barcode and zxing-cpp hands you what it encodes.',
+		lede: 'Select text on screen and paste it anywhere. Tesseract reads English and Polish, zxing-cpp decodes QR codes and barcodes.',
 		region: 'OCR region',
 		lines: '{n} lines',
 		out: 'Recognized text goes straight to the clipboard.',
@@ -179,16 +149,15 @@ export const en = {
 	},
 
 	share: {
-		kicker: 'Share and history',
 		title: 'From shot to link in one key.',
-		lede: 'After a capture Unisic can copy the image, save it, upload it and put the link on your clipboard. Every capture lands in a history with thumbnails, and deleting one moves the file to the trash instead of erasing it.',
+		lede: 'Every capture lands in a history with thumbnails. Deleting one moves the file to the trash.',
 		steps: ['Capture', 'Copy image', 'Upload', 'Link copied'],
 		hosts: 'Upload anywhere.',
 		customHttp: 'Custom HTTP',
 		sxcu: '.sxcu import',
 		history: 'Your history on this page',
 		emptyHtml:
-			'Nothing yet. Drag a selection in the <a href="#edit">editor demo</a> above and press Capture; it shows up here.'
+			'Nothing yet. Press Capture in the <a href="#edit">demo above</a>.'
 	},
 
 	toast: {
@@ -197,35 +166,33 @@ export const en = {
 	},
 
 	themes: {
-		kicker: 'Themes and languages',
-		title: 'Your colors, your language.',
-		lede: "Six themes ship with Unisic, plus one that follows your system's light or dark scheme and accent color. Pick one below and this page switches with it.",
+		title: 'Six themes, seven languages.',
+		lede: 'System follows your light or dark mode and accent color. Pick a theme and this page switches too.',
 		label: 'Page theme',
 		system: 'System',
 		languages: 'Interface languages',
 		languagesText:
-			"English, Polish, Spanish, Italian, French, Russian and German. Unisic follows your desktop's language unless you pick one in Settings."
+			'English, Polish, Spanish, Italian, French, Russian and German. Unisic follows your desktop language unless you pick one.'
 	},
 
 	privacy: {
-		kicker: 'Privacy',
 		title: 'One request, and you can turn it off.',
-		lede: 'No telemetry, no analytics, no account. The only request Unisic makes on its own asks GitHub whether there is a newer release, shortly after it starts and once a day after that. Nothing about you or your captures is sent.',
+		lede: 'No telemetry, no analytics, no account. The one automatic request checks GitHub for updates and sends nothing about you.',
 		log: 'Requests Unisic makes on its own',
 		when: ['After start', 'Every 24 h'],
-		none: 'No automatic requests. Settings keeps a Check now button for when you want one.',
+		none: 'No automatic requests. Settings still has Check now.',
 		updates: 'Automatic updates',
 		demo: 'Demo of the switch in Settings',
-		uploads: 'Uploads happen only when you press Upload or turn on upload after capture, and only to the host you picked.',
+		uploads: 'Uploads happen only when you ask, and only to the host you picked.',
 		sent: 'What exactly is sent'
 	},
 
 	compare: {
-		kicker: 'Compared',
-		title: 'Where it stands among the others.',
-		lede: "Six tools, the same questions. Every answer was checked against the tool's source, README or release notes for the version in the header, so you can check it too.",
+		title: 'How it compares.',
+		// No other Linux column in Compare.svelte MARKS has a yes in all four rows.
+		lede: 'Of these Linux tools, only Unisic has all four: scrolling capture, recording with sound, OCR and uploads. Every answer is checked against the source of the version shown.',
 		vs: 'Compare Unisic with',
-		caption: 'Screenshot tools compared. Checked 2026-10-26 against tagged source.',
+		caption: 'Screenshot tools compared, checked 2026-10-26.',
 		say: { y: 'Yes', p: 'Partly', n: 'No' },
 		// Compare.svelte MARKS: one note per tool (Unisic, Flameshot, Spectacle, ksnip, Satty, ShareX), '' for none.
 		rows: [
@@ -263,7 +230,7 @@ export const en = {
 			}
 		],
 		footHtml:
-			'Satty only annotates: the image comes from a file or standard input, usually from grim. ksnip\'s behaviour on Plasma 6 was not checked. Spot a mistake? <a href="https://github.com/unisic/unisic/issues">Open an issue</a>.'
+			'Satty only annotates images from other tools, usually grim. ksnip on Plasma 6 was not checked. Spot a mistake? <a href="https://github.com/unisic/unisic/issues">Open an issue</a>.'
 	}
 };
 

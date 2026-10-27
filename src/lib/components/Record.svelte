@@ -34,7 +34,6 @@
 	id="record"
 	mode="video"
 	split
-	kicker={t.record.kicker}
 	title={t.record.title}
 	lede={t.record.lede}
 >

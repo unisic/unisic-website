@@ -4,7 +4,7 @@ export default {
 	meta: {
 		title: 'Unisic: zrzuty ekranu, nagrywanie i OCR na Linuksa',
 		description:
-			'Unisic pozwala rysować na zaznaczeniu przed zrzutem, nagrywa GIF-y i wideo, odczytuje tekst z obrazu i wysyła wynik na serwer. Program do zrzutów ekranu na Linuksa z Waylandem, bez telemetrii.'
+			'Darmowy program do zrzutów ekranu na Linuksa. Długie strony, rysowanie, nagrywanie z dźwiękiem, OCR i wysyłanie. Bez telemetrii i konta.'
 	},
 
 	chrome: {
@@ -39,10 +39,10 @@ export default {
 	},
 
 	hero: {
-		kicker: 'Darmowy program do zrzutów ekranu na Linuksa',
+		kicker: 'Darmowy program open source do zrzutów ekranu na Linuksa',
 		title: 'Zrób zrzut. Unisic zajmie się',
 		titleMark: 'resztą.',
-		lede: 'Zaznacz obszar albo długą stronę, dorysuj strzałki, nagraj ekran z dźwiękiem, skopiuj tekst i wyślij link. Wszystko w jednym programie.',
+		lede: 'Rób zrzuty długich stron, rysuj na nich, nagrywaj z dźwiękiem, kopiuj tekst i wysyłaj link.',
 		runsOn: 'Działa w',
 		more: 'i innych',
 		alt: 'Strona Przechwytywanie w Unisic: karty Pełny ekran, Obszar i Okno ze skrótami, a pod nimi opcje przechwytywania.',
@@ -55,7 +55,7 @@ export default {
 		packages: 'Pakiety dla dystrybucji i Nix',
 		windowsInstaller: 'Instalator Windows',
 		experimental: 'Eksperymentalny',
-		facts: ['Darmowy, GPL-3.0', 'Bez konta', 'Bez telemetrii'],
+		facts: ['Bez konta', 'Bez telemetrii'],
 		source: 'Kod źródłowy na GitHubie'
 	},
 
@@ -67,55 +67,28 @@ export default {
 		failed: 'Schowek zablokowany, zaznacz tekst ręcznie'
 	},
 
-	why: {
-		title: 'Dlaczego Unisic.',
-		ledeHtml:
-			'Z programów w <a href="#compare">porównaniu</a> wszystkie te funkcje mają tylko Unisic i ShareX. ShareX działa tylko na Windowsie.',
-		see: 'Zobacz',
-		points: [
-			{
-				title: 'Zrzuty z przewijaniem',
-				text: 'Strona dłuższa niż ekran trafia do jednego obrazu. Flameshot, Spectacle, ksnip i Satty tego nie potrafią.'
-			},
-			{
-				title: 'Nagrywanie z dźwiękiem',
-				text: 'Ten sam obszar jako GIF, MP4 lub WebM. Dźwięk systemu, mikrofon albo jedna aplikacja na osobnej ścieżce.'
-			},
-			{
-				title: 'Tekst i kody QR',
-				text: 'Skopiuj tekst z dowolnego zrzutu albo odczytaj link z kodu QR lub kreskowego.'
-			},
-			{
-				title: 'Wysyłanie i historia',
-				text: 'Własny serwer przez HTTP, FTP lub SFTP albo konfiguracja .sxcu z ShareX. W historii miniatura każdego zrzutu.'
-			}
-		]
-	},
-
 	capture: {
-		kicker: 'Zrzuty ekranu',
 		title: 'Każdy sposób na zrzut ekranu.',
-		lede: 'Pełny ekran na wszystkich monitorach, obszar z wymiarami na żywo, aktywne okno albo strona dłuższa niż ekran. Gdy trzeba, dodaj kursor i opóźnienie do 60 sekund.',
+		lede: 'Dodaj opóźnienie do 60 sekund, z kursorem lub bez.',
 		modes: [
 			{ name: 'Pełny ekran', say: 'Wszystkie monitory na jednym obrazie.' },
-			{ name: 'Obszar', say: 'Ramka z wymiarami na żywo. Rysujesz w niej przed zrzutem.' },
+			{ name: 'Obszar', say: 'Przeciągnij ramkę i rysuj w niej przed zrzutem.' },
 			{ name: 'Okno', say: 'Aktywne okno i nic poza nim.' }
 		],
 		scroll: 'Strona dłuższa niż ekran',
 		scrolling: 'Przewiń w dół...',
 		finish: 'Zakończ',
 		captionHtml:
-			'Uruchom <code>unisic --scroll</code>, przewiń stronę i naciśnij Zakończ. Unisic sklei fragmenty w jeden obraz.'
+			'Uruchom <code>unisic --scroll</code>, przewiń, naciśnij Zakończ. Dostajesz jeden obraz.'
 	},
 
 	edit: {
-		kicker: 'Adnotacje i edycja',
 		title: 'Rysuj przed zrzutem i po nim.',
-		lede: 'Strzałki, kształty, rozmycie i numerowane kroki rysujesz od razu na nakładce, a Enter utrwala je w zrzucie. Wypróbuj poniżej. Resztę zrobisz w edytorze: kadrowanie, cofanie, powiększanie.'
+		lede: 'Rysuj na nakładce, naciśnij Enter. Kadrowanie i poprawki potem w edytorze.'
 	},
 
 	overlay: {
-		hint: 'Przeciągnij ramkę lub jej uchwyty, wybierz narzędzie i rysuj w środku. Potem naciśnij Przechwyć.',
+		hint: 'Przeciągnij ramkę, wybierz narzędzie, rysuj i naciśnij Przechwyć.',
 		keys: 'Strzałki przesuwają ramkę, Enter robi zrzut, Esc resetuje.',
 		tool: 'Narzędzie:',
 		headline: 'Zaznacz. Narysuj. Naciśnij',
@@ -143,24 +116,22 @@ export default {
 	},
 
 	record: {
-		kicker: 'Nagrywanie',
 		title: 'Nagrywaj ekran z dźwiękiem.',
-		lede: 'Obszar, pełny ekran lub okno jako GIF, MP4 albo WebM. Dźwięk systemu, mikrofon i pojedyncze aplikacje trafiają na osobne ścieżki. Natychmiastowa powtórka zachowuje ostatnie chwile z ekranu.',
+		lede: 'GIF, MP4 lub WebM. Dźwięk systemu, mikrofonu i aplikacji na osobnych ścieżkach. Natychmiastowa powtórka zapisze to, co właśnie się stało.',
 		alt: 'Strona Nagrywanie ekranu w Unisic: Ekran, Obszar lub Okno, format WebM, liczba klatek, jakość CRF, dźwięk systemowy, mikrofon, dźwięk aplikacji i długość powtórki 30 sekund.',
 		format: 'Format',
 		fps: 'Domyślnie {fps} klatek na sekundę',
 		drawn: 'Widoczne na nagraniu',
 		effects: [
-			{ name: 'Poświata kursora', say: 'ułatwia znalezienie kursora w pomniejszonym wideo' },
+			{ name: 'Poświata kursora', say: 'ułatwia dostrzeżenie kursora' },
 			{ name: 'Fale kliknięć', say: 'pokazują, gdzie i kiedy klikasz' },
-			{ name: 'Wskaźnik klawiszy', say: 'pokazuje naciskane skróty, domyślnie wyłączony' }
+			{ name: 'Wskaźnik klawiszy', say: 'pokazuje naciskane klawisze, domyślnie wyłączony' }
 		]
 	},
 
 	read: {
-		kicker: 'OCR i QR',
 		title: 'Kopiuj tekst prosto z pikseli.',
-		lede: 'Zaznacz napis na ekranie i skopiuj go jako tekst. Tesseract czyta po polsku i angielsku, a język rozpoznaje sam. Wskaż kod QR lub kreskowy, a zxing-cpp odczyta jego zawartość.',
+		lede: 'Zaznacz tekst na ekranie i wklej go, gdzie chcesz. Tesseract czyta po polsku i angielsku, zxing-cpp odczytuje kody QR i kreskowe.',
 		region: 'Obszar OCR',
 		lines: '{n} wierszy',
 		out: 'Rozpoznany tekst trafia prosto do schowka.',
@@ -170,15 +141,14 @@ export default {
 	},
 
 	share: {
-		kicker: 'Udostępnianie i historia',
 		title: 'Zrzut i link jednym klawiszem.',
-		lede: 'Po zrzucie Unisic może skopiować obraz, zapisać go, wysłać na serwer i skopiować link. Każdy zrzut trafia do historii z miniaturą, a usunięty plik ląduje w koszu.',
+		lede: 'Każdy zrzut trafia do historii z miniaturą. Usunięty plik ląduje w koszu.',
 		steps: ['Przechwyć', 'Kopiuj obraz', 'Wyślij', 'Link w schowku'],
 		hosts: 'Wysyłaj, gdzie chcesz.',
 		customHttp: 'Własny serwer HTTP',
 		sxcu: 'Import .sxcu',
 		history: 'Twoja historia na tej stronie',
-		emptyHtml: 'Na razie pusto. Zaznacz obszar w <a href="#edit">demo</a> wyżej i naciśnij Przechwyć.'
+		emptyHtml: 'Na razie pusto. Naciśnij Przechwyć w <a href="#edit">demo wyżej</a>.'
 	},
 
 	toast: {
@@ -187,35 +157,32 @@ export default {
 	},
 
 	themes: {
-		kicker: 'Motywy i języki',
-		title: 'Twoje kolory, twój język.',
-		lede: 'Sześć motywów w zestawie i siódmy, który bierze z systemu jasny lub ciemny tryb i kolor akcentu. Wybierz jeden poniżej, a ta strona też się zmieni.',
+		title: 'Sześć motywów, siedem języków.',
+		lede: 'Systemowy bierze z pulpitu jasny lub ciemny tryb i kolor akcentu. Wybierz motyw, a ta strona też się zmieni.',
 		label: 'Motyw strony',
 		system: 'Systemowy',
 		languages: 'Języki interfejsu',
 		languagesText:
-			'Angielski, polski, hiszpański, włoski, francuski, rosyjski i niemiecki. Unisic bierze język z pulpitu, chyba że wybierzesz inny w Ustawieniach.'
+			'Angielski, polski, hiszpański, włoski, francuski, rosyjski i niemiecki. Unisic bierze język z pulpitu, chyba że wybierzesz inny.'
 	},
 
 	privacy: {
-		kicker: 'Prywatność',
 		title: 'Jedno zapytanie. I to opcjonalne.',
-		lede: 'Bez telemetrii, analityki i konta. Unisic sam z siebie pyta tylko GitHuba, czy jest nowsza wersja: chwilę po starcie, potem raz na dobę. Nie wysyła nic o tobie ani o twoich zrzutach.',
+		lede: 'Bez telemetrii, analityki i konta. Jedyne automatyczne zapytanie sprawdza na GitHubie aktualizacje i nie wysyła nic o tobie.',
 		log: 'Zapytania, które Unisic wysyła sam',
 		when: ['Po starcie', 'Co 24 h'],
-		none: 'Brak automatycznych zapytań. W Ustawieniach zostaje przycisk Sprawdź teraz.',
+		none: 'Brak automatycznych zapytań. W Ustawieniach zostaje Sprawdź teraz.',
 		updates: 'Automatyczne aktualizacje',
 		demo: 'Demo przełącznika z Ustawień',
-		uploads: 'Pliki wysyłasz tylko ty: przyciskiem Wyślij albo opcją wysyłania po zrzucie, i tylko na wybrany serwer.',
+		uploads: 'Pliki idą tylko na twoje żądanie i tylko na wybrany serwer.',
 		sent: 'Co dokładnie jest wysyłane'
 	},
 
 	compare: {
-		kicker: 'Porównanie',
-		title: 'Jak wypada na tle innych.',
-		lede: 'Sześć programów, te same pytania. Każdą odpowiedź sprawdziliśmy w kodzie, README albo opisie wydania wersji z nagłówka, więc ty też możesz.',
+		title: 'Unisic na tle innych.',
+		lede: 'Z tych programów na Linuksa wszystkie cztery ma tylko Unisic: zrzuty z przewijaniem, nagrywanie z dźwiękiem, OCR i wysyłanie. Każdą odpowiedź sprawdziliśmy w kodzie wersji z nagłówka.',
 		vs: 'Porównaj Unisic z programem',
-		caption: 'Programy do zrzutów ekranu. Sprawdzone 2026-10-26 w kodzie oznaczonych wydań.',
+		caption: 'Programy do zrzutów ekranu, sprawdzone 2026-10-26.',
 		say: { y: 'Tak', p: 'Częściowo', n: 'Nie' },
 		rows: [
 			{
@@ -255,6 +222,6 @@ export default {
 			}
 		],
 		footHtml:
-			'Satty tylko rysuje: obraz bierze z pliku lub standardowego wejścia, zwykle z grim. Działania ksnip w Plasmie 6 nie sprawdzaliśmy. Widzisz błąd? <a href="https://github.com/unisic/unisic/issues">Zgłoś go</a>.'
+			'Satty tylko rysuje na obrazach z innych programów, zwykle z grim. ksnip w Plasmie 6 nie sprawdzaliśmy. Widzisz błąd? <a href="https://github.com/unisic/unisic/issues">Zgłoś go</a>.'
 	}
 } satisfies Dictionary;

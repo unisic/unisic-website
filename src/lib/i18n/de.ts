@@ -4,7 +4,7 @@ export default {
 	meta: {
 		title: 'Unisic: Screenshots, Bildschirmaufzeichnung und OCR für Linux',
 		description:
-			'Unisic beschriftet die Auswahl vor der Aufnahme, zeichnet GIF und Video auf, liest Text aus Pixeln und lädt hoch. Screenshot-Tool für Linux Wayland ohne Telemetrie.'
+			'Kostenloses Screenshot-Tool für Linux. Lange Seiten aufnehmen, beschriften, mit Ton aufzeichnen, Text per OCR kopieren und hochladen. Keine Telemetrie, kein Konto.'
 	},
 
 	chrome: {
@@ -42,7 +42,7 @@ export default {
 		kicker: 'Kostenloses Open-Source-Screenshot-Tool für Linux',
 		title: 'Aufnehmen. Unisic erledigt den',
 		titleMark: 'Rest.',
-		lede: 'Bereich oder lange Seite aufnehmen, beschriften, mit Ton aufzeichnen, Text herausholen, per Link teilen. Alles in einer kostenlosen App.',
+		lede: 'Lange Seiten aufnehmen, beschriften, mit Ton aufzeichnen, Text herausholen und per Link teilen.',
 		runsOn: 'Läuft auf',
 		more: 'und mehr',
 		alt: 'Die Seite Aufnahme in Unisic: Karten für Vollbild, Bereich und Fenster mit ihren Tastenkürzeln, darunter die Aufnahmeoptionen.',
@@ -55,7 +55,7 @@ export default {
 		packages: 'Pakete je Distribution, Nix',
 		windowsInstaller: 'Windows-Installer',
 		experimental: 'Experimentell',
-		facts: ['Kostenlos, GPL-3.0', 'Kein Konto', 'Keine Telemetrie'],
+		facts: ['Kein Konto', 'Keine Telemetrie'],
 		source: 'Quellcode auf GitHub'
 	},
 
@@ -67,55 +67,28 @@ export default {
 		failed: 'Zwischenablage gesperrt, wählen Sie den Text stattdessen aus'
 	},
 
-	why: {
-		title: 'Warum Unisic.',
-		ledeHtml:
-			'Von den Tools im <a href="#compare">Vergleich</a> haben nur Unisic und ShareX alle Funktionen, und ShareX läuft nur unter Windows.',
-		see: 'Ansehen',
-		points: [
-			{
-				title: 'Aufnahme mit Scrollen',
-				text: 'Eine Seite, die länger ist als der Bildschirm, wird zu einem Bild. Flameshot, Spectacle, ksnip und Satty bieten keine Aufnahme mit Scrollen.'
-			},
-			{
-				title: 'Aufzeichnung mit Ton',
-				text: 'Derselbe Bereich als GIF, MP4 oder WebM, mit Systemton, Mikrofon oder einer einzelnen App auf eigener Spur.'
-			},
-			{
-				title: 'Text und QR-Codes',
-				text: 'Kopieren Sie den Text aus jeder Aufnahme oder holen Sie den Link aus einem QR-Code oder Barcode.'
-			},
-			{
-				title: 'Uploads und Verlauf',
-				text: 'Ihr eigener Server über HTTP, FTP oder SFTP oder eine .sxcu-Konfiguration von ShareX, dazu ein Vorschaubild jeder Aufnahme im Verlauf.'
-			}
-		]
-	},
-
 	capture: {
-		kicker: 'Aufnahme',
 		title: 'Alle Wege, den Bildschirm aufzunehmen.',
-		lede: 'Vollbild über alle Monitore, ein Bereich mit Live-Maßen, das aktive Fenster oder eine Seite, die länger ist als Ihr Bildschirm. Bei Bedarf kommen eine Verzögerung von bis zu 60 Sekunden und der Mauszeiger dazu.',
+		lede: 'Mit Verzögerung bis zu 60 Sekunden, mit oder ohne Mauszeiger.',
 		modes: [
 			{ name: 'Vollbild', say: 'Alle Monitore in einem Bild.' },
-			{ name: 'Bereich', say: 'Ziehen Sie einen Rahmen mit Live-Maßen auf und beschriften Sie ihn vor der Aufnahme.' },
+			{ name: 'Bereich', say: 'Ziehen Sie einen Rahmen auf und zeichnen Sie vor der Aufnahme darauf.' },
 			{ name: 'Fenster', say: 'Das aktive Fenster, sonst nichts.' }
 		],
 		scroll: 'Eine Seite, länger als Ihr Bildschirm',
 		scrolling: 'Nach unten scrollen zum Aufnehmen...',
 		finish: 'Fertigstellen',
 		captionHtml:
-			'Starten Sie mit <code>unisic --scroll</code>, scrollen Sie die Seite und klicken Sie auf Fertigstellen. Die Teile werden zu einem Bild zusammengefügt.'
+			'Starten Sie <code>unisic --scroll</code>, scrollen Sie, klicken Sie auf Fertigstellen. Heraus kommt ein Bild.'
 	},
 
 	edit: {
-		kicker: 'Beschriften und bearbeiten',
 		title: 'Beschriften Sie vor der Aufnahme oder danach.',
-		lede: 'Zeichnen Sie Pfeile, Formen, Weichzeichner und nummerierte Schritte direkt im Auswahl-Overlay und drücken Sie dann Enter, um sie in den Ausschnitt einzubrennen. Probieren Sie es unten aus. Der Editor macht dort weiter, mit Zuschneiden, Rückgängig und Zoom.'
+		lede: 'Zeichnen Sie im Overlay und drücken Sie Enter. Zuschneiden und Korrigieren geht später im Editor.'
 	},
 
 	overlay: {
-		hint: 'Ziehen Sie den Rahmen oder seine Griffe, wählen Sie ein Werkzeug und zeichnen Sie darin, dann klicken Sie auf Aufnahme.',
+		hint: 'Ziehen Sie den Rahmen, wählen Sie ein Werkzeug, zeichnen Sie und klicken Sie auf Aufnahme.',
 		keys: 'Pfeiltasten verschieben den Rahmen, Enter nimmt auf, Esc setzt zurück.',
 		tool: 'Werkzeug:',
 		headline: 'Auswählen. Darauf zeichnen.',
@@ -143,24 +116,22 @@ export default {
 	},
 
 	record: {
-		kicker: 'Aufzeichnung',
 		title: 'Den Bildschirm aufzeichnen, mit Ton.',
-		lede: 'Ein Bereich, der ganze Bildschirm oder ein Fenster, gespeichert als GIF, MP4 oder WebM. Systemton, Mikrofon und einzelne Apps landen auf getrennten Spuren, und die Sofortwiedergabe hält fest, was zuletzt auf dem Bildschirm passiert ist.',
+		lede: 'GIF, MP4 oder WebM. System-, Mikrofon- und App-Ton auf getrennten Spuren. Die Sofortwiedergabe speichert, was gerade passiert ist.',
 		alt: 'Die Seite Bildschirmaufnahme in Unisic: Bildschirm, Bereich oder Fenster, Format WebM, Bildrate, CRF-Qualität, Systemton, Mikrofon, Anwendungston und eine Wiedergabelänge von 30 Sekunden.',
 		format: 'Format',
 		fps: 'Standardmäßig {fps} Bilder pro Sekunde',
 		drawn: 'In die Aufzeichnung gezeichnet',
 		effects: [
-			{ name: 'Zeigerschein', say: 'hält den Mauszeiger auch in einem verkleinerten Video gut auffindbar' },
+			{ name: 'Zeigerschein', say: 'macht den Mauszeiger leicht auffindbar' },
 			{ name: 'Klickwellen', say: 'zeigen, wo und wann Sie geklickt haben' },
-			{ name: 'Tastenanzeige', say: 'zeigt die Tastenkürzel, die Sie drücken, und bleibt aus, bis Sie sie einschalten' }
+			{ name: 'Tastenanzeige', say: 'zeigt die gedrückten Tasten, standardmäßig aus' }
 		]
 	},
 
 	read: {
-		kicker: 'OCR und QR',
 		title: 'Text aus Pixeln kopieren.',
-		lede: 'Wählen Sie Text auf dem Bildschirm aus und erhalten Sie ihn als Text zurück. Das Lesen übernimmt Tesseract, mit Polnisch, Englisch und automatischer Spracherkennung. Richten Sie Unisic auf einen QR-Code oder Barcode, und zxing-cpp liefert Ihnen den Inhalt.',
+		lede: 'Wählen Sie Text auf dem Bildschirm aus und fügen Sie ihn überall ein. Tesseract liest Englisch und Polnisch, zxing-cpp dekodiert QR-Codes und Barcodes.',
 		region: 'OCR-Bereich',
 		lines: '{n} Zeilen',
 		out: 'Erkannter Text landet direkt in der Zwischenablage.',
@@ -170,16 +141,15 @@ export default {
 	},
 
 	share: {
-		kicker: 'Teilen und Verlauf',
 		title: 'Von der Aufnahme zum Link mit einer Taste.',
-		lede: 'Nach einer Aufnahme kann Unisic das Bild kopieren, speichern, hochladen und den Link in Ihre Zwischenablage legen. Jede Aufnahme landet in einem Verlauf mit Vorschaubildern, und beim Löschen wandert die Datei in den Papierkorb, statt endgültig gelöscht zu werden.',
+		lede: 'Jede Aufnahme landet in einem Verlauf mit Vorschaubildern. Beim Löschen wandert die Datei in den Papierkorb.',
 		steps: ['Aufnahme', 'Bild kopieren', 'Hochladen', 'Link kopiert'],
 		hosts: 'Überall hochladen.',
 		customHttp: 'Eigenes HTTP',
 		sxcu: '.sxcu-Import',
 		history: 'Ihr Verlauf auf dieser Seite',
 		emptyHtml:
-			'Noch nichts da. Ziehen Sie oben in der <a href="#edit">Editor-Demo</a> eine Auswahl auf und klicken Sie auf Aufnahme. Das Ergebnis erscheint hier.'
+			'Noch nichts da. Klicken Sie in der <a href="#edit">Demo oben</a> auf Aufnahme.'
 	},
 
 	toast: {
@@ -188,35 +158,32 @@ export default {
 	},
 
 	themes: {
-		kicker: 'Farbschemata und Sprachen',
-		title: 'Ihre Farben, Ihre Sprache.',
-		lede: 'Unisic bringt sechs Farbschemata mit, dazu eines, das dem hellen oder dunklen Schema und der Akzentfarbe Ihres Systems folgt. Wählen Sie unten eines aus, und diese Seite wechselt mit.',
+		title: 'Sechs Farbschemata, sieben Sprachen.',
+		lede: 'System folgt Ihrem hellen oder dunklen Modus und der Akzentfarbe. Wählen Sie ein Schema, und diese Seite wechselt mit.',
 		label: 'Farbschema der Seite',
 		system: 'System',
 		languages: 'Sprachen der Oberfläche',
 		languagesText:
-			'Englisch, Polnisch, Spanisch, Italienisch, Französisch, Russisch und Deutsch. Unisic folgt der Sprache Ihres Desktops, sofern Sie in den Einstellungen keine andere wählen.'
+			'Englisch, Polnisch, Spanisch, Italienisch, Französisch, Russisch und Deutsch. Unisic folgt der Sprache Ihres Desktops, sofern Sie keine andere wählen.'
 	},
 
 	privacy: {
-		kicker: 'Datenschutz',
 		title: 'Eine Anfrage, und die lässt sich abschalten.',
-		lede: 'Keine Telemetrie, keine Analyse, kein Konto. Die einzige Anfrage, die Unisic von sich aus stellt, fragt bei GitHub nach, ob es eine neuere Version gibt, kurz nach dem Start und danach einmal am Tag. Nichts über Sie oder Ihre Aufnahmen wird gesendet.',
+		lede: 'Keine Telemetrie, keine Analyse, kein Konto. Die einzige automatische Anfrage prüft bei GitHub auf Updates und sendet nichts über Sie.',
 		log: 'Anfragen, die Unisic von sich aus stellt',
 		when: ['Nach dem Start', 'Alle 24 h'],
-		none: 'Keine automatischen Anfragen. Für eine Prüfung von Hand gibt es in den Einstellungen die Schaltfläche „Jetzt prüfen“.',
+		none: 'Keine automatischen Anfragen. In den Einstellungen gibt es weiterhin „Jetzt prüfen“.',
 		updates: 'Automatische Aktualisierungen',
 		demo: 'Demo des Schalters in den Einstellungen',
-		uploads: 'Hochgeladen wird nur, wenn Sie auf Hochladen klicken oder das Hochladen nach der Aufnahme einschalten, und nur zu dem Host, den Sie gewählt haben.',
+		uploads: 'Hochgeladen wird nur auf Ihren Wunsch, und nur zu dem Host, den Sie gewählt haben.',
 		sent: 'Was genau gesendet wird'
 	},
 
 	compare: {
-		kicker: 'Vergleich',
-		title: 'Wie es im Vergleich abschneidet.',
-		lede: 'Sechs Tools, dieselben Fragen. Jede Antwort wurde anhand von Quellcode, README oder Versionshinweisen des Tools für die Version im Tabellenkopf geprüft, damit Sie sie selbst nachprüfen können.',
+		title: 'So schneidet es ab.',
+		lede: 'Von diesen Linux-Tools hat nur Unisic alle vier: Aufnahme mit Scrollen, Aufzeichnung mit Ton, OCR und Uploads. Jede Antwort ist am Quellcode der angezeigten Version geprüft.',
 		vs: 'Unisic vergleichen mit',
-		caption: 'Screenshot-Tools im Vergleich. Geprüft am 2026-10-26 anhand des Quellcodes der getaggten Versionen.',
+		caption: 'Screenshot-Tools im Vergleich, geprüft am 2026-10-26.',
 		say: { y: 'Ja', p: 'Teilweise', n: 'Nein' },
 		rows: [
 			{
@@ -253,6 +220,6 @@ export default {
 			}
 		],
 		footHtml:
-			'Satty beschriftet nur: Das Bild kommt aus einer Datei oder der Standardeingabe, meist von grim. Das Verhalten von ksnip unter Plasma 6 wurde nicht geprüft. Einen Fehler entdeckt? <a href="https://github.com/unisic/unisic/issues">Öffnen Sie ein Issue</a>.'
+			'Satty beschriftet nur Bilder aus anderen Tools, meist von grim. ksnip unter Plasma 6 wurde nicht geprüft. Einen Fehler entdeckt? <a href="https://github.com/unisic/unisic/issues">Öffnen Sie ein Issue</a>.'
 	}
 } satisfies Dictionary;

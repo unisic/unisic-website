@@ -51,7 +51,6 @@
 		{ id: 'erase', key: 'E', d: 'M4 15l9-9 6 6-7 7H8zM14 20h6' }
 	];
 	const COLORS = ['#FF4757', '#FFD84D', '#2ED573', '#1E90FF', '#C8ACD6', '#FFFFFF'];
-	const COMMAND = 'unisic --region';
 	const TASKBAR = 40;
 	const MAX_SHAPES = 60;
 	const MAX_POINTS = 2000;
@@ -504,11 +503,6 @@
 		<div class="desk" bind:this={desk}>
 			<p class="headline" bind:this={headline}>{words.headline} <span class="mark" bind:this={mark}>{words.headlineMark}</span></p>
 
-			<div class="win" aria-hidden="true">
-				<div class="win-bar"><i></i><i></i><i></i><span>~ fish</span></div>
-				<p class="win-body"><span class="prompt">&gt;</span> {COMMAND}<span class="caret"></span></p>
-			</div>
-
 			<div class="taskbar" aria-hidden="true">
 				<span class="app">
 					<svg viewBox="0 0 24 24" class="logo"><rect x="2" y="2" width="20" height="20" rx="6" /><circle cx="12" cy="12" r="5.5" /></svg>
@@ -677,61 +671,6 @@
 	.mark {
 		color: var(--accent);
 		white-space: nowrap;
-	}
-
-	.win {
-		display: none;
-		position: absolute;
-		right: clamp(var(--s5), 6vw, var(--s9));
-		bottom: 128px;
-		width: 380px;
-		border-radius: var(--r2);
-		background: color-mix(in oklab, var(--surface) 92%, transparent);
-		box-shadow:
-			0 0 0 1px var(--line),
-			0 24px 60px -20px rgb(0 0 0 / 0.6);
-		font-family: var(--font-mono);
-		font-size: var(--t-small);
-	}
-	.win-bar {
-		display: flex;
-		align-items: center;
-		gap: 6px;
-		padding: 10px var(--s3);
-		border-bottom: 1px solid var(--line);
-		color: var(--muted);
-	}
-	.win-bar i {
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		background: var(--line-strong);
-	}
-	.win-bar span {
-		margin-left: var(--s2);
-	}
-	.win-body {
-		min-height: 5.5em;
-		padding: var(--s3) var(--s4);
-		white-space: pre-wrap;
-		word-break: break-all;
-	}
-	.prompt {
-		color: var(--success);
-		user-select: none;
-	}
-	.caret {
-		display: inline-block;
-		width: 0.6em;
-		height: 1.1em;
-		margin-left: 2px;
-		vertical-align: text-bottom;
-		background: var(--accent);
-	}
-	@container (min-width: 1000px) {
-		.win {
-			display: block;
-		}
 	}
 
 	.taskbar {

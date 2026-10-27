@@ -39,7 +39,6 @@
 <Chapter
 	id="read"
 	mode="ocr"
-	kicker={t.read.kicker}
 	title={t.read.title}
 	lede={t.read.lede}
 >

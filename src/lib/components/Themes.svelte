@@ -38,7 +38,6 @@
 
 <Chapter
 	id="themes"
-	kicker={t.themes.kicker}
 	title={t.themes.title}
 	lede={t.themes.lede}
 >

@@ -4,7 +4,7 @@ export default {
 	meta: {
 		title: 'Unisic: screenshots, schermopnames en OCR voor Linux',
 		description:
-			'Unisic tekent op de selectie vóór de screenshot, neemt GIF en video op, leest tekst uit pixels en uploadt. Een screenshottool voor Linux Wayland zonder telemetrie.'
+			"Gratis screenshottool voor Linux. Lange pagina's vastleggen, annoteren, opnemen met geluid, tekst kopiëren met OCR en uploaden. Geen telemetrie, geen account."
 	},
 
 	chrome: {
@@ -42,7 +42,7 @@ export default {
 		kicker: 'Gratis en open source screenshottool voor Linux',
 		title: 'Maak de screenshot. Unisic doet de',
 		titleMark: 'rest.',
-		lede: 'Leg een gebied of een lange pagina vast, annoteer het, neem het op met geluid, haal de tekst eruit en deel een link. Alles in één gratis app.',
+		lede: "Leg lange pagina's vast, annoteer ze, neem op met geluid, haal de tekst eruit en deel een link.",
 		runsOn: 'Draait op',
 		more: 'en meer',
 		alt: 'De pagina Vastleggen van Unisic: kaarten voor Volledig scherm, Gebied en Venster met hun sneltoetsen, en daaronder de opties voor vastleggen.',
@@ -55,7 +55,7 @@ export default {
 		packages: 'Pakketten per distributie, Nix',
 		windowsInstaller: 'Windows-installer',
 		experimental: 'Experimenteel',
-		facts: ['Gratis, GPL-3.0', 'Geen account', 'Geen telemetrie'],
+		facts: ['Geen account', 'Geen telemetrie'],
 		source: 'Broncode op GitHub'
 	},
 
@@ -67,55 +67,28 @@ export default {
 		failed: 'Klembord geblokkeerd, selecteer de tekst zelf'
 	},
 
-	why: {
-		title: 'Waarom Unisic.',
-		ledeHtml:
-			'Van de tools in de <a href="#compare">vergelijking</a> hebben alleen Unisic en ShareX elke functie, en ShareX draait alleen op Windows.',
-		see: 'Bekijken',
-		points: [
-			{
-				title: 'Scrollend vastleggen',
-				text: 'Een pagina die langer is dan het scherm wordt één afbeelding. Flameshot, Spectacle, ksnip en Satty kunnen niet scrollend vastleggen.'
-			},
-			{
-				title: 'Opnemen met geluid',
-				text: 'Hetzelfde gebied als GIF, MP4 of WebM, met systeemgeluid, de microfoon of één app op een eigen spoor.'
-			},
-			{
-				title: 'Tekst en QR-codes',
-				text: 'Kopieer de tekst uit elke screenshot, of haal de link uit een QR-code of streepjescode.'
-			},
-			{
-				title: 'Uploads en geschiedenis',
-				text: 'Je eigen server via HTTP, FTP of SFTP, of een .sxcu-configuratie van ShareX, en een miniatuur van elke screenshot in de geschiedenis.'
-			}
-		]
-	},
-
 	capture: {
-		kicker: 'Vastleggen',
 		title: 'Elke manier om het scherm vast te leggen.',
-		lede: 'Volledig scherm over alle monitoren, een gebied met live afmetingen, het actieve venster, of een pagina die langer is dan je scherm. Voeg een vertraging tot 60 seconden en de muisaanwijzer toe als je ze nodig hebt.',
+		lede: 'Voeg een vertraging tot 60 seconden toe, met of zonder muisaanwijzer.',
 		modes: [
 			{ name: 'Volledig scherm', say: 'Alle monitoren in één afbeelding.' },
-			{ name: 'Gebied', say: 'Trek een kader met live afmetingen en annoteer het vóór de screenshot.' },
+			{ name: 'Gebied', say: 'Trek een kader en teken erop vóór de screenshot.' },
 			{ name: 'Venster', say: 'Het actieve venster, verder niets.' }
 		],
 		scroll: 'Een pagina langer dan je scherm',
 		scrolling: 'Scroll omlaag om vast te leggen...',
 		finish: 'Voltooien',
 		captionHtml:
-			'Start het met <code>unisic --scroll</code>, scroll door de pagina en druk op Voltooien. De stukken worden samengevoegd tot één afbeelding.'
+			'Voer <code>unisic --scroll</code> uit, scroll en druk op Voltooien. Je krijgt één afbeelding.'
 	},
 
 	edit: {
-		kicker: 'Annoteren en bewerken',
 		title: 'Annoteer vóór de screenshot, of erna.',
-		lede: 'Teken pijlen, vormen, vervaging en genummerde stappen direct in de selectie-overlay en druk dan op Enter om ze in de uitsnede te branden. Probeer het hieronder. De editor gaat daarna verder, met bijsnijden, ongedaan maken en zoomen.'
+		lede: 'Teken in de overlay en druk op Enter. Snijd bij en verfijn later in de editor.'
 	},
 
 	overlay: {
-		hint: 'Sleep het kader of de grepen, kies een gereedschap en teken erin, en druk dan op Vastleggen.',
+		hint: 'Sleep het kader, kies een gereedschap, teken en druk op Vastleggen.',
 		keys: 'Pijltjestoetsen verplaatsen het kader, Enter legt vast, Esc zet terug.',
 		tool: 'Gereedschap:',
 		headline: 'Selecteer het. Teken erop. Druk op',
@@ -143,24 +116,22 @@ export default {
 	},
 
 	record: {
-		kicker: 'Opnemen',
 		title: 'Neem het scherm op, met geluid.',
-		lede: 'Een gebied, het volledige scherm of een venster, opgeslagen als GIF, MP4 of WebM. Systeemgeluid, de microfoon en losse apps komen op aparte sporen, en instant replay bewaart het laatste stuk van je scherm.',
+		lede: 'GIF, MP4 of WebM. Systeem-, microfoon- en appgeluid op aparte sporen. Instant replay bewaart wat net gebeurde.',
 		alt: 'De pagina Schermopname van Unisic: Scherm, Gebied of Venster, WebM-formaat, framerate, CRF-kwaliteit, systeemgeluid, microfoon, app-geluid en een replay-lengte van 30 seconden.',
 		format: 'Formaat',
 		fps: 'Standaard {fps} beelden per seconde',
 		drawn: 'In de opname getekend',
 		effects: [
-			{ name: 'Aanwijzerhalo', say: 'houdt de cursor goed vindbaar in een verkleinde video' },
+			{ name: 'Aanwijzerhalo', say: 'maakt de cursor makkelijk te vinden' },
 			{ name: 'Klikgolven', say: 'tonen waar en wanneer je klikte' },
-			{ name: 'Toetsenbadge', say: 'toont de sneltoetsen die je indrukt, uit tot je hem aanzet' }
+			{ name: 'Toetsenbadge', say: 'toont de toetsen die je indrukt, standaard uit' }
 		]
 	},
 
 	read: {
-		kicker: 'OCR en QR',
 		title: 'Kopieer tekst uit pixels.',
-		lede: 'Selecteer tekst op je scherm en krijg die terug als tekst. Tesseract doet het lezen, met Pools en Engels en automatische taalherkenning. Richt Unisic op een QR-code of streepjescode en zxing-cpp geeft je wat erin staat.',
+		lede: 'Selecteer tekst op het scherm en plak die overal. Tesseract leest Engels en Pools, zxing-cpp decodeert QR-codes en streepjescodes.',
 		region: 'OCR-gebied',
 		lines: '{n} regels',
 		out: 'Herkende tekst gaat direct naar het klembord.',
@@ -170,16 +141,15 @@ export default {
 	},
 
 	share: {
-		kicker: 'Delen en geschiedenis',
 		title: 'Van screenshot naar link met één toets.',
-		lede: 'Na het vastleggen kan Unisic de afbeelding kopiëren, opslaan, uploaden en de link op je klembord zetten. Elke screenshot komt in een geschiedenis met miniaturen, en verwijderen verplaatst het bestand naar de prullenbak in plaats van het te wissen.',
+		lede: 'Elke screenshot komt in een geschiedenis met miniaturen. Verwijderen verplaatst het bestand naar de prullenbak.',
 		steps: ['Vastleggen', 'Beeld kopiëren', 'Uploaden', 'Link gekopieerd'],
 		hosts: 'Overal uploaden.',
 		customHttp: 'Eigen HTTP',
 		sxcu: '.sxcu-import',
 		history: 'Je geschiedenis op deze pagina',
 		emptyHtml:
-			'Nog niets. Trek boven in de <a href="#edit">editordemo</a> een selectie en druk op Vastleggen. Het resultaat verschijnt hier.'
+			'Nog niets. Druk op Vastleggen in de <a href="#edit">demo hierboven</a>.'
 	},
 
 	toast: {
@@ -188,35 +158,32 @@ export default {
 	},
 
 	themes: {
-		kicker: "Thema's en talen",
-		title: 'Jouw kleuren, jouw taal.',
-		lede: "Unisic heeft zes thema's, plus één dat het lichte of donkere schema en de accentkleur van je systeem volgt. Kies er hieronder een en deze pagina wisselt mee.",
+		title: "Zes thema's, zeven talen.",
+		lede: 'Systeem volgt je lichte of donkere modus en accentkleur. Kies een thema en deze pagina wisselt mee.',
 		label: 'Paginathema',
 		system: 'Systeem',
 		languages: 'Talen van de interface',
 		languagesText:
-			'Engels, Pools, Spaans, Italiaans, Frans, Russisch en Duits. Unisic volgt de taal van je bureaublad, tenzij je er een kiest in Instellingen.'
+			'Engels, Pools, Spaans, Italiaans, Frans, Russisch en Duits. Unisic volgt de taal van je bureaublad, tenzij je er een kiest.'
 	},
 
 	privacy: {
-		kicker: 'Privacy',
 		title: 'Eén verzoek, en dat kun je uitzetten.',
-		lede: 'Geen telemetrie, geen analytics, geen account. Het enige verzoek dat Unisic uit zichzelf doet, vraagt GitHub of er een nieuwere release is, kort na het starten en daarna één keer per dag. Er wordt niets over jou of je screenshots verzonden.',
+		lede: 'Geen telemetrie, geen analytics, geen account. Het ene automatische verzoek zoekt op GitHub naar updates en verstuurt niets over jou.',
 		log: 'Verzoeken die Unisic uit zichzelf doet',
 		when: ['Na het starten', 'Elke 24 u'],
-		none: 'Geen automatische verzoeken. In Instellingen blijft een knop Nu controleren voor als je er een wilt.',
+		none: 'Geen automatische verzoeken. In Instellingen staat nog steeds Nu controleren.',
 		updates: 'Automatische updates',
 		demo: 'Demo van de schakelaar in Instellingen',
-		uploads: 'Uploaden gebeurt alleen als je op Uploaden drukt of uploaden na het vastleggen aanzet, en alleen naar de host die je hebt gekozen.',
+		uploads: 'Uploaden gebeurt alleen als jij erom vraagt, en alleen naar de host die je hebt gekozen.',
 		sent: 'Wat er precies wordt verzonden'
 	},
 
 	compare: {
-		kicker: 'Vergelijking',
-		title: 'Hoe het zich verhoudt tot de rest.',
-		lede: 'Zes tools, dezelfde vragen. Elk antwoord is gecontroleerd aan de hand van de broncode, README of releasenotes van de tool voor de versie in de kop, zodat jij het ook kunt nagaan.',
+		title: 'Hoe het zich verhoudt.',
+		lede: 'Van deze Linux-tools heeft alleen Unisic alle vier: scrollend vastleggen, opnemen met geluid, OCR en uploads. Elk antwoord is gecontroleerd aan de broncode van de getoonde versie.',
 		vs: 'Vergelijk Unisic met',
-		caption: 'Screenshottools vergeleken. Gecontroleerd op 2026-10-26 aan de hand van getagde broncode.',
+		caption: 'Screenshottools vergeleken, gecontroleerd op 2026-10-26.',
 		say: { y: 'Ja', p: 'Deels', n: 'Nee' },
 		rows: [
 			{
@@ -253,6 +220,6 @@ export default {
 			}
 		],
 		footHtml:
-			'Satty annoteert alleen: de afbeelding komt uit een bestand of standaardinvoer, meestal van grim. Het gedrag van ksnip op Plasma 6 is niet gecontroleerd. Fout gezien? <a href="https://github.com/unisic/unisic/issues">Open een issue</a>.'
+			'Satty annoteert alleen afbeeldingen van andere tools, meestal grim. ksnip op Plasma 6 is niet gecontroleerd. Fout gezien? <a href="https://github.com/unisic/unisic/issues">Open een issue</a>.'
 	}
 } satisfies Dictionary;

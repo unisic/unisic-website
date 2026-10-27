@@ -45,7 +45,6 @@
 <Chapter
 	id="compare"
 	band
-	kicker={t.compare.kicker}
 	title={t.compare.title}
 	lede={t.compare.lede}
 >

@@ -12,7 +12,6 @@
 <Chapter
 	id="privacy"
 	split
-	kicker={t.privacy.kicker}
 	title={t.privacy.title}
 	lede={t.privacy.lede}
 >

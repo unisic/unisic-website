@@ -69,14 +69,14 @@
 
 		<div class="term panel">
 			{#if windows}
-				<p class="bar"><i></i><i></i><i></i><span>{t.hero.windows}</span></p>
+				<p class="bar">{t.hero.windows}</p>
 				<div class="body">
 					<a class="btn primary get" href={WINDOWS_SETUP}>{@render windowsLogo()}{t.hero.download}</a>
 					<a class="other" href={PACKAGES}>{t.hero.linuxPackages}</a>
 				</div>
 				<p class="note">{t.hero.windowsNote}</p>
 			{:else}
-				<p class="bar"><i></i><i></i><i></i><span>{t.hero.anyDistro}</span></p>
+				<p class="bar">{t.hero.anyDistro}</p>
 				<div class="body">
 					<code class="cmd"><span class="prompt" aria-hidden="true">$</span> {INSTALL_HEAD}<wbr /><span class="tail">{INSTALL_TAIL}</span></code>
 					<Copy text={INSTALL} />
@@ -296,22 +296,10 @@
 		margin-top: var(--s7);
 	}
 	.bar {
-		display: flex;
-		align-items: center;
-		gap: 6px;
 		padding: 10px var(--s4);
 		border-bottom: 1px solid var(--line);
 		font-size: var(--t-small);
 		font-weight: 600;
-	}
-	.bar i {
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		background: var(--line-strong);
-	}
-	.bar span {
-		margin-left: var(--s2);
 	}
 	.body {
 		display: flex;
@@ -379,6 +367,9 @@
 		flex-wrap: wrap;
 		row-gap: 0;
 		padding-block: var(--s2);
+	}
+	.alt .label {
+		color: inherit;
 	}
 
 	.foot {

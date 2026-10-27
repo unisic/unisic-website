@@ -7,7 +7,6 @@
 	let {
 		id,
 		mode = 'shot',
-		kicker,
 		title,
 		lede,
 		split = false,
@@ -16,7 +15,6 @@
 	}: {
 		id: string;
 		mode?: Mode;
-		kicker: string;
 		title: string;
 		lede?: string;
 		split?: boolean;
@@ -27,7 +25,6 @@
 
 <section {id} class="chapter" class:band data-mode={mode} aria-labelledby="{id}-title">
 	<header class="head wrap" class:split>
-		<p class="kicker label">{kicker}</p>
 		<h2 id="{id}-title">{title}</h2>
 		{#if lede}<p class="lede">{lede}</p>{/if}
 	</header>
@@ -48,9 +45,6 @@
 		gap: var(--s4);
 		margin-bottom: var(--s7);
 	}
-	.kicker {
-		color: var(--accent);
-	}
 	h2 {
 		max-width: 14ch;
 		font-size: var(--t-h2);
@@ -69,9 +63,6 @@
 			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 			column-gap: var(--s8);
 			align-items: end;
-		}
-		.split .kicker {
-			grid-column: 1 / -1;
 		}
 		.split .lede {
 			margin-top: 0;

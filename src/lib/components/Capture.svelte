@@ -23,7 +23,6 @@
 
 <Chapter
 	id="capture"
-	kicker={t.capture.kicker}
 	title={t.capture.title}
 	lede={t.capture.lede}
 >

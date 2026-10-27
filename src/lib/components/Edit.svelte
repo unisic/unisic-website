@@ -10,7 +10,6 @@
 	id="edit"
 	mode="measure"
 	band
-	kicker={t.edit.kicker}
 	title={t.edit.title}
 	lede={t.edit.lede}
 >

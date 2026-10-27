@@ -4,7 +4,7 @@ export default {
 	meta: {
 		title: 'Unisic: capturas de pantalla, grabación y OCR para Linux',
 		description:
-			'Con Unisic dibujas en la selección antes de capturar, grabas GIF y vídeo, sacas texto de los píxeles y subes el resultado. Capturas para Linux Wayland, sin telemetría.'
+			'Herramienta gratuita de capturas para Linux. Captura páginas largas, anota, graba con sonido, copia texto con OCR y sube. Sin telemetría ni cuenta.'
 	},
 
 	chrome: {
@@ -42,7 +42,7 @@ export default {
 		kicker: 'Capturador de pantalla libre y gratuito para Linux',
 		title: 'Haz la captura. Unisic se encarga del',
 		titleMark: 'resto.',
-		lede: 'Captura una región o una página larga, anótala, grábala con sonido, saca el texto y compártela con un enlace. Todo en una app gratuita.',
+		lede: 'Captura páginas largas, anótalas, graba con sonido, saca el texto y comparte un enlace.',
 		runsOn: 'Funciona en',
 		more: 'y más',
 		alt: 'La página Capturar de Unisic: las tarjetas Pantalla completa, Región y Ventana con sus atajos, y debajo las opciones de captura.',
@@ -55,7 +55,7 @@ export default {
 		packages: 'Paquetes por distro, Nix',
 		windowsInstaller: 'Instalador de Windows',
 		experimental: 'Experimental',
-		facts: ['Gratis, GPL-3.0', 'Sin cuenta', 'Sin telemetría'],
+		facts: ['Sin cuenta', 'Sin telemetría'],
 		source: 'Código en GitHub'
 	},
 
@@ -67,55 +67,28 @@ export default {
 		failed: 'Portapapeles bloqueado, selecciona el texto a mano'
 	},
 
-	why: {
-		title: 'Por qué Unisic.',
-		ledeHtml:
-			'De las herramientas de la <a href="#compare">comparativa</a>, solo Unisic y ShareX tienen todas las funciones, y ShareX solo funciona en Windows.',
-		see: 'Míralo',
-		points: [
-			{
-				title: 'Captura con desplazamiento',
-				text: 'Una página más larga que la pantalla sale como una sola imagen. Flameshot, Spectacle, ksnip y Satty no tienen captura con desplazamiento.'
-			},
-			{
-				title: 'Grabación con sonido',
-				text: 'La misma región como GIF, MP4 o WebM, con el sonido del sistema, el micrófono o una sola app en su propia pista.'
-			},
-			{
-				title: 'Texto y códigos QR',
-				text: 'Copia el texto de cualquier captura, o saca el enlace de un código QR o de barras.'
-			},
-			{
-				title: 'Subidas e historial',
-				text: 'Tu propio servidor por HTTP, FTP o SFTP, o una configuración .sxcu de ShareX, y una miniatura de cada captura en el historial.'
-			}
-		]
-	},
-
 	capture: {
-		kicker: 'Captura',
 		title: 'Todas las formas de capturar la pantalla.',
-		lede: 'Pantalla completa en todos los monitores, una región con dimensiones en vivo, la ventana activa o una página más larga que tu pantalla. Añade un retardo de hasta 60 segundos y el cursor cuando los necesites.',
+		lede: 'Añade un retardo de hasta 60 segundos, con o sin cursor.',
 		modes: [
 			{ name: 'Pantalla completa', say: 'Todos los monitores en una imagen.' },
-			{ name: 'Región', say: 'Arrastra un recuadro con dimensiones en vivo y anótalo antes de capturar.' },
+			{ name: 'Región', say: 'Arrastra un recuadro y dibuja en él antes de capturar.' },
 			{ name: 'Ventana', say: 'La ventana activa, sin nada alrededor.' }
 		],
 		scroll: 'Una página más larga que tu pantalla',
 		scrolling: 'Desplázate hacia abajo para capturar...',
 		finish: 'Terminar',
 		captionHtml:
-			'Iníciala con <code>unisic --scroll</code>, desplaza la página y pulsa Terminar. Los trozos se unen en una sola imagen.'
+			'Ejecuta <code>unisic --scroll</code>, desplázate y pulsa Terminar. Obtienes una sola imagen.'
 	},
 
 	edit: {
-		kicker: 'Anotar y editar',
 		title: 'Anótalo antes de la captura, o después.',
-		lede: 'Dibuja flechas, formas, desenfoque y pasos numerados directamente en la superposición de captura y pulsa Enter para fijarlos en el recorte. Pruébalo abajo. El editor sigue desde ahí, con recorte, deshacer y zoom.'
+		lede: 'Dibuja en la superposición y pulsa Enter. Recorta y retoca después en el editor.'
 	},
 
 	overlay: {
-		hint: 'Arrastra el marco o sus tiradores, elige una herramienta y dibuja dentro, luego pulsa Capturar.',
+		hint: 'Arrastra el marco, elige una herramienta, dibuja y pulsa Capturar.',
 		keys: 'Las flechas mueven el marco, Enter captura y Esc restablece.',
 		tool: 'Herramienta:',
 		headline: 'Selecciona. Dibuja encima. Pulsa',
@@ -143,24 +116,22 @@ export default {
 	},
 
 	record: {
-		kicker: 'Grabación',
 		title: 'Graba la pantalla, con sonido.',
-		lede: 'Una región, la pantalla completa o una ventana, guardada como GIF, MP4 o WebM. El sonido del sistema, el micrófono y cada app van en pistas separadas, y la repetición instantánea conserva lo último que pasó en pantalla.',
+		lede: 'GIF, MP4 o WebM. Sonido del sistema, micrófono y apps en pistas separadas. La repetición instantánea guarda lo que acaba de pasar.',
 		alt: 'La página Grabación de pantalla de Unisic: Pantalla, Región o Ventana, formato WebM, velocidad de fotogramas, calidad CRF, audio del sistema, micrófono, audio de aplicaciones y una repetición de 30 segundos.',
 		format: 'Formato',
 		fps: '{fps} fotogramas por segundo por defecto',
 		drawn: 'Dibujado en la grabación',
 		effects: [
-			{ name: 'Halo del puntero', say: 'mantiene el cursor fácil de encontrar en un vídeo reducido' },
+			{ name: 'Halo del puntero', say: 'facilita ver el cursor' },
 			{ name: 'Ondas de clic', say: 'muestran dónde y cuándo hiciste clic' },
-			{ name: 'Indicador de teclas', say: 'muestra los atajos que pulsas, desactivado hasta que lo actives' }
+			{ name: 'Indicador de teclas', say: 'muestra las teclas que pulsas, desactivado por defecto' }
 		]
 	},
 
 	read: {
-		kicker: 'OCR y QR',
 		title: 'Copia el texto de los píxeles.',
-		lede: 'Selecciona cualquier texto en pantalla y recíbelo como texto. Tesseract se encarga de leerlo, en polaco e inglés y con detección automática del idioma. Apunta Unisic a un código QR o de barras y zxing-cpp te da lo que contiene.',
+		lede: 'Selecciona texto en pantalla y pégalo donde quieras. Tesseract lee inglés y polaco, zxing-cpp decodifica códigos QR y de barras.',
 		region: 'Región OCR',
 		lines: '{n} líneas',
 		out: 'El texto reconocido va directo al portapapeles.',
@@ -170,16 +141,15 @@ export default {
 	},
 
 	share: {
-		kicker: 'Compartir e historial',
 		title: 'De la captura al enlace con una tecla.',
-		lede: 'Tras una captura, Unisic puede copiar la imagen, guardarla, subirla y poner el enlace en tu portapapeles. Cada captura queda en un historial con miniaturas, y al eliminar una, el archivo va a la papelera en lugar de borrarse.',
+		lede: 'Cada captura queda en un historial con miniaturas. Al eliminar una, el archivo va a la papelera.',
 		steps: ['Captura', 'Copiar imagen', 'Subir', 'Enlace copiado'],
 		hosts: 'Sube a donde quieras.',
 		customHttp: 'HTTP personalizado',
 		sxcu: 'Importar .sxcu',
 		history: 'Tu historial en esta página',
 		emptyHtml:
-			'Aún no hay nada. Arrastra una selección en la <a href="#edit">demo del editor</a> de arriba y pulsa Capturar; aparecerá aquí.'
+			'Aún no hay nada. Pulsa Capturar en la <a href="#edit">demo de arriba</a>.'
 	},
 
 	toast: {
@@ -188,35 +158,32 @@ export default {
 	},
 
 	themes: {
-		kicker: 'Temas e idiomas',
-		title: 'Tus colores, tu idioma.',
-		lede: 'Unisic trae seis temas, más uno que sigue el esquema claro u oscuro y el color de acento de tu sistema. Elige uno abajo y esta página cambia con él.',
+		title: 'Seis temas, siete idiomas.',
+		lede: 'Sistema sigue tu modo claro u oscuro y tu color de acento. Elige un tema y esta página también cambia.',
 		label: 'Tema de la página',
 		system: 'Sistema',
 		languages: 'Idiomas de la interfaz',
 		languagesText:
-			'Inglés, polaco, español, italiano, francés, ruso y alemán. Unisic usa el idioma de tu escritorio salvo que elijas otro en Ajustes.'
+			'Inglés, polaco, español, italiano, francés, ruso y alemán. Unisic usa el idioma de tu escritorio salvo que elijas otro.'
 	},
 
 	privacy: {
-		kicker: 'Privacidad',
 		title: 'Una sola petición, y puedes desactivarla.',
-		lede: 'Sin telemetría, sin analíticas, sin cuenta. La única petición que Unisic hace por su cuenta pregunta a GitHub si hay una versión más reciente, poco después de iniciarse y luego una vez al día. No se envía nada sobre ti ni sobre tus capturas.',
+		lede: 'Sin telemetría, sin analíticas, sin cuenta. La única petición automática comprueba en GitHub si hay actualizaciones y no envía nada sobre ti.',
 		log: 'Peticiones que Unisic hace por su cuenta',
 		when: ['Al iniciar', 'Cada 24 h'],
-		none: 'Sin peticiones automáticas. Ajustes mantiene un botón Comprobar ahora para cuando quieras hacer una.',
+		none: 'Sin peticiones automáticas. Ajustes sigue teniendo Comprobar ahora.',
 		updates: 'Actualizaciones automáticas',
 		demo: 'Demo del interruptor de Ajustes',
-		uploads: 'Solo se sube algo cuando pulsas Subir o activas la subida tras la captura, y solo al servidor que elegiste.',
+		uploads: 'Solo se sube algo cuando tú lo pides, y solo al servidor que elegiste.',
 		sent: 'Qué se envía exactamente'
 	},
 
 	compare: {
-		kicker: 'Comparativa',
-		title: 'Cómo queda frente a las demás.',
-		lede: 'Seis herramientas, las mismas preguntas. Cada respuesta se comprobó en el código fuente, el README o las notas de versión de la herramienta, en la versión que indica la cabecera, para que tú también puedas comprobarla.',
+		title: 'Cómo se compara.',
+		lede: 'De estas herramientas para Linux, solo Unisic tiene las cuatro: captura con desplazamiento, grabación con sonido, OCR y subidas. Cada respuesta se comprobó en el código fuente de la versión indicada.',
 		vs: 'Comparar Unisic con',
-		caption: 'Comparativa de herramientas de captura. Comprobado el 2026-10-26 en el código fuente etiquetado.',
+		caption: 'Comparativa de herramientas de captura, comprobada el 2026-10-26.',
 		say: { y: 'Sí', p: 'En parte', n: 'No' },
 		rows: [
 			{
@@ -253,6 +220,6 @@ export default {
 			}
 		],
 		footHtml:
-			'Satty solo anota: la imagen viene de un archivo o de la entrada estándar, normalmente de grim. No se comprobó cómo se comporta ksnip en Plasma 6. ¿Ves un error? <a href="https://github.com/unisic/unisic/issues">Abre una incidencia</a>.'
+			'Satty solo anota imágenes de otras herramientas, normalmente de grim. No se comprobó ksnip en Plasma 6. ¿Ves un error? <a href="https://github.com/unisic/unisic/issues">Abre una incidencia</a>.'
 	}
 } satisfies Dictionary;

@@ -4,16 +4,14 @@
 	import { ui } from '#lib/ui.svelte.js';
 	import type { Dictionary } from '#lib/i18n/en.js';
 
-
 	let { t }: { t: Dictionary } = $props();
 
-	const hosts = $derived(['Imgur', 'catbox.moe', 'Litterbox', 'tmpfiles.org', 'vgy.me', 'Buzzheavier', t.share.customHttp, t.share.sxcu, 'FTP', 'SFTP']);
+	const hosts = $derived(['Imgur', 'catbox.moe', 'Litterbox', 'tmpfiles.org', 'uguu.se', 'vgy.me', 'Buzzheavier', t.share.customHttp, t.share.sxcu, 'FTP', 'SFTP']);
 </script>
 
 <Chapter
 	id="share"
 	split
-	kicker={t.share.kicker}
 	title={t.share.title}
 	lede={t.share.lede}
 >
@@ -122,16 +120,17 @@
 		gap: var(--s4);
 	}
 	.hosts ul {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		column-gap: var(--s5);
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s2);
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 	.hosts li {
-		padding-block: var(--s2);
-		border-bottom: 1px solid var(--line);
+		padding: var(--s2) var(--s3);
+		border-radius: var(--r2);
+		box-shadow: inset 0 0 0 1px var(--line);
 	}
 
 	.live {
