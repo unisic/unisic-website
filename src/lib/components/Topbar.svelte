@@ -25,7 +25,7 @@
 		</a>
 		<nav id="site-nav" aria-label={words.nav} popover bind:this={menu}>
 			<a href="{root}#capture" onclick={close}>{words.features}</a>
-			<a href="{root}#themes" onclick={close}><span class="dot" aria-hidden="true"></span>{words.themes}</a>
+			<a href="{root}#themes" onclick={close}>{words.themes}</a>
 			<a href="{root}#compare" onclick={close}>{words.compare}</a>
 			<a href="/docs/" onclick={close} aria-current={docs ? 'page' : undefined}>{words.docs}</a>
 		</nav>
@@ -139,13 +139,6 @@
 			color: var(--text);
 		}
 	}
-	.dot {
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		background: var(--accent);
-		box-shadow: inset 0 0 0 1px var(--line-strong);
-	}
 	/* Phones fit five controls in 360px, so the gaps stay tight until the nav moves into the bar. */
 	.end {
 		display: flex;
@@ -234,6 +227,43 @@
 	@media (hover: hover) and (pointer: fine) {
 		#lang-menu a:hover {
 			color: var(--text);
+		}
+	}
+	/* Both menus drop in from the bar; display and overlay keep them in the top layer until the fade out ends. */
+	@media (prefers-reduced-motion: no-preference) {
+		#lang-menu,
+		nav {
+			transition:
+				opacity 140ms var(--ease-out),
+				transform 140ms var(--ease-out),
+				overlay 140ms allow-discrete,
+				display 140ms allow-discrete;
+		}
+		#lang-menu {
+			transform-origin: top right;
+		}
+		#lang-menu:not(:popover-open) {
+			opacity: 0;
+			transform: translateY(-4px) scale(0.97);
+		}
+		@starting-style {
+			#lang-menu:popover-open {
+				opacity: 0;
+				transform: translateY(-4px) scale(0.97);
+			}
+		}
+	}
+	/* From 760px the nav sits in the bar, so only the phone sheet fades. */
+	@media (prefers-reduced-motion: no-preference) and (max-width: 759px) {
+		nav:not(:popover-open) {
+			opacity: 0;
+			transform: translateY(-8px);
+		}
+		@starting-style {
+			nav:popover-open {
+				opacity: 0;
+				transform: translateY(-8px);
+			}
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
