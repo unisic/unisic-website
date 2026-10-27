@@ -6,82 +6,78 @@ order: 1
 group: "Getting started"
 ---
 
-This page introduces Unisic: what it is, the capture-to-upload workflow it covers, how it captures on different Wayland sessions, what you need to run it, and where it stands on privacy and licensing.
-
 ## What is Unisic
 
-Unisic is an open-source, zero-telemetry screenshot and screen recorder for Linux, licensed under the GNU GPL v3. Most snipping tools stop at a rectangle of pixels and walk away. Unisic covers everything that should happen *after* you press the hotkey.
+Unisic is an open-source screenshot tool and screen recorder for Linux. It has zero telemetry and is licensed under the GNU GPL v3.
 
-The moment you trigger a capture, Unisic gives you the whole workflow: annotate on the selection overlay before the shot is even taken, edit afterwards, copy text out of any region with OCR, record the same region as a GIF or video, and push the result wherever it belongs - clipboard, disk, or a custom upload destination with the link ready to paste.
+After you trigger a capture, you can annotate on the selection overlay before the shot is taken, edit afterwards, and copy text from any region with OCR. You can record the same region as a GIF or video. The result goes to the clipboard, to disk, or to a custom upload destination, with the link ready to paste.
 
-It is built for Linux on legitimate APIs only (`xdg-desktop-portal`, KWin ScreenShot2, PipeWire, KGlobalAccel, `wlr-screencopy`), and is written in C++20 / Qt 6 / QML with a fully custom UI. An experimental Windows 11 build, written entirely by AI, ships with each release from 0.8.8 on; see [Installation](/docs/installation#windows-experimental).
+Unisic uses only legitimate Linux APIs (`xdg-desktop-portal`, KWin ScreenShot2, PipeWire, KGlobalAccel, `wlr-screencopy`). It is written in C++20, Qt 6 and QML, with a fully custom UI. Each release from 0.8.8 on also ships an experimental Windows 11 build, written entirely by AI. See [Installation](/docs/installation#windows-experimental).
 
 ## The workflow
 
-Unisic treats a screenshot as the start of a task, not the end of one.
-
 ### Annotate before the shot
 
-Draw directly on the frozen capture overlay with nearly the whole editor tool set - pen, arrow, shapes, callout, text, highlight, blur, measure, steps and more - and the annotations are burnt into the final crop. Enter, Space, or a double-click captures; Esc cancels.
+Draw on the frozen capture overlay with nearly the whole editor tool set: pen, arrow, shapes, callout, text, highlight, blur, measure, steps and more. Annotations are burnt into the final crop. Enter, Space or a double-click captures; Esc cancels.
 
 ### Edit afterwards
 
-An optional post-capture editor opens automatically, with tools such as highlight, pixelate, smart eraser, magnifier, callout, measure, numbered steps, and crop. You can zoom (`Ctrl+scroll`), undo, and redo, and everything is composited in image-pixel space.
+An optional editor opens automatically after capture. Its tools include highlight, pixelate, smart eraser, magnifier, callout, measure, numbered steps and crop. It supports zoom (`Ctrl+scroll`), undo and redo, and composites everything in image-pixel space.
 
 ### Extract text and codes
 
-OCR any region to copy its text (`Meta+Shift+T`), or pick individual words in the editor to copy, highlight, or redact them. Point it at a QR code or barcode and the payload is copied instead.
+OCR any region to copy its text (`Meta+Shift+T`). In the editor, pick individual words to copy, highlight or redact them. On a QR code or barcode, the payload is copied instead.
 
 ### Record
 
-Capture a region, the full screen, or a window as a GIF or as MP4/WebM video, with optional system and microphone audio. Instant replay keeps the last moments buffered so you can save what already happened. `Ctrl+Esc` is a fixed emergency stop.
+Record a region, the full screen or a window as a GIF or as MP4/WebM video. System and microphone audio are optional. Instant replay buffers the last moments, so you can save what already happened. `Ctrl+Esc` is a fixed emergency stop.
 
 ### Edit your own files
 
-The Edit page opens images and recordings that didn't come from a capture: images land in the same editor, videos in the trim window.
+The Edit page opens images and recordings that did not come from a capture. Images open in the same editor, videos in the trim window.
 
 ### Upload
 
-Send the result to a custom HTTP destination, an imported `.sxcu` (ShareX) uploader, FTP/SFTP, or one of the built-in hosts (catbox.moe and expiring hosts like uguu.se) - and the resulting link is copied to your clipboard automatically.
+Send the result to a custom HTTP destination, an imported `.sxcu` (ShareX) uploader, FTP/SFTP, or a built-in host (catbox.moe, or expiring hosts such as uguu.se). The link is copied to your clipboard automatically.
 
 ### History
 
-Every capture is kept in a history view with thumbnails. Star favorites, pin a capture as a floating always-on-top preview, or drag a thumbnail straight into another app. Deleting one moves the file to the trash, and external deletions are picked up automatically.
+The history view keeps every capture with a thumbnail. Star favorites, pin a capture as a floating always-on-top preview, or drag a thumbnail into another app. Deleting a capture moves the file to the trash. External deletions are picked up automatically.
 
 ## Capture backends
 
-Unisic uses the right Wayland path for your session:
+Unisic picks the Wayland capture path for your session:
 
-- **KDE Plasma** gets the fully silent native path through KWin ScreenShot2.
-- **Other desktops** work through `xdg-desktop-portal`.
-- **wlroots compositors** (such as niri) capture through `wlr-screencopy` via `grim`.
+- **KDE Plasma**: the fully silent native path through KWin ScreenShot2.
+- **Other desktops**: `xdg-desktop-portal`.
+- **wlroots compositors** (such as niri): `wlr-screencopy` via `grim`.
 
 ## Requirements
 
-Native packages install a portal backend, PipeWire and ffmpeg; portable bundles carry ffmpeg and use the session's running portal and PipeWire services. Missing application dependencies stop source builds instead of disabling features.
+Native packages install a portal backend, PipeWire and ffmpeg. Portable bundles carry ffmpeg and use the session's running portal and PipeWire services. A missing application dependency stops a source build instead of disabling features.
 
-See [Installation](/docs/installation) for the distro repositories and complete build instructions, and [Compositors](/docs/compositors) for backend-specific setup.
+See [Installation](/docs/installation) for distro repositories and build instructions, and [Compositors](/docs/compositors) for backend-specific setup.
 
 ## Privacy
 
-Unisic collects nothing: no telemetry, no crash reporting, no analytics, no account. The only network requests it makes on its own are to `api.github.com` and `github.com` to check for a newer release - only the latest version tag is fetched, and nothing about you is sent. Uploads happen only when you trigger them, to destinations you configured.
+Unisic collects nothing: no telemetry, no crash reporting, no analytics, no account. On its own, it only contacts `api.github.com` and `github.com` to check for a newer release. It fetches only the latest version tag and sends nothing about you. Uploads happen only when you trigger them, to destinations you configured.
 
 ## License
 
-Unisic is free software under the **GNU GPL v3**. You are free to use, study, modify, and redistribute it - including commercially - but any distributed derivative must also be released under GPL v3 with full source. This keeps the project and every fork of it open, forever.
+Unisic is free software under the **GNU GPL v3**. You may use, study, modify and redistribute it, including commercially. Any distributed derivative must also be released under GPL v3 with full source.
 
 ## Development
 
-Unisic is developed with agentic AI assistance (see [`AGENTS.md`](https://github.com/unisic/unisic/blob/main/AGENTS.md) for the contributor guide those agents follow). Every generated change is read line by line and reviewed by the maintainer before it lands - the tooling speeds things up, but nothing merges unread, so the codebase stays free of unreviewed machine output and its usual mistakes. Bug reports are still the best safety net: if something slipped through, please [file an issue](https://github.com/unisic/unisic/issues).
+Unisic is developed with agentic AI assistance. Those agents follow the contributor guide in [`AGENTS.md`](https://github.com/unisic/unisic/blob/main/AGENTS.md). The maintainer reads and reviews every generated change line by line before it lands; nothing merges unread. If something slipped through, please [file an issue](https://github.com/unisic/unisic/issues).
 
 Unisic is built by [@DeBondor](https://github.com/DeBondor) and [@D3anDark](https://github.com/D3anDark), and inspired by [ShareX](https://getsharex.com/) and [Spectacle](https://apps.kde.org/spectacle/).
 
 ## Reporting issues
 
-Unisic is stable as of 0.7, but no screenshot tool survives contact with every compositor unscathed. If something misbehaves, a report with your desktop, compositor, GPU, and logs in [Issues](https://github.com/unisic/unisic/issues) helps a lot. Feature requests are welcome there too.
+Unisic is stable as of 0.7. If something misbehaves on your setup, report it in [Issues](https://github.com/unisic/unisic/issues) with your desktop, compositor, GPU and logs. Feature requests are welcome there too.
 
 ## Where to next
 
-- [Installation](/docs/installation) - install from your distro's repository or build from source.
-- [Capture](/docs/capture) - full screen, region, and active-window captures.
-- [Hotkeys](/docs/hotkeys) - the default shortcuts and how to change them.
+- [Installation](/docs/installation): install from your distro's repository or build from source.
+- [Capture](/docs/capture): full screen, region and active-window captures.
+- [Hotkeys](/docs/hotkeys): the default shortcuts and how to change them.

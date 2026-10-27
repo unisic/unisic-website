@@ -8,10 +8,6 @@ group: "Reference"
 
 ## Default hotkeys
 
-Unisic maps its capture and recording actions to global keyboard shortcuts. This page lists the defaults, explains how to change them, and covers how to bind keys on compositors that lack a global-shortcuts portal.
-
-Unisic ships with the following default keyboard shortcuts:
-
 | Action | Shortcut |
 | --- | --- |
 | Capture full screen | `Meta+Shift+1` |
@@ -24,11 +20,11 @@ Unisic ships with the following default keyboard shortcuts:
 | Start/save instant replay | `Meta+Shift+I` |
 | Stop recording (fixed) | `Ctrl+Esc` |
 
-For what each capture action does, see [Capture](/docs/capture); for the recording shortcuts, see [Recording](/docs/recording).
+See [Capture](/docs/capture) for what each capture action does and [Recording](/docs/recording) for the recording shortcuts.
 
 ### Windows (experimental)
 
-Windows keeps `Win+Shift` with digits and most letters for itself, so the [experimental Windows build](/docs/installation#windows-experimental) puts its defaults on Print Screen:
+Windows reserves `Win+Shift` with digits and most letters, so the [experimental Windows build](/docs/installation#windows-experimental) puts its defaults on Print Screen:
 
 | Action | Shortcut |
 | --- | --- |
@@ -40,11 +36,11 @@ Windows keeps `Win+Shift` with digits and most letters for itself, so the [exper
 | OCR region (copy text) | `Win+Shift+O` |
 | Stop recording (fixed) | `Ctrl+Alt+Esc` (`Ctrl+Esc` is the Start menu) |
 
-A bare `Print` opens the Snipping Tool until you turn off Settings > Accessibility > Keyboard > "Use the Print screen key to open screen capture"; `Ctrl+Print` works either way.
+A bare `Print` opens the Snipping Tool until you turn off Settings > Accessibility > Keyboard > "Use the Print screen key to open screen capture". `Ctrl+Print` works either way.
 
 ## In the main window
 
-The main window has its own shortcuts, listed in-app under `Ctrl+/`:
+The main window has its own shortcuts:
 
 | Action | Shortcut |
 | --- | --- |
@@ -58,20 +54,20 @@ The main window has its own shortcuts, listed in-app under `Ctrl+/`:
 
 ## Editing hotkeys
 
-Every shortcut except the fixed stop key is editable. Change them in **Settings -> Hotkeys** - new bindings are applied to the system immediately - or in KDE's Shortcuts KCM. Every action can carry a second, alternative binding.
+Every shortcut except the fixed stop key is editable. Change them in **Settings -> Hotkeys**, which applies new bindings to the system immediately, or in KDE's Shortcuts KCM. Each action can have a second, alternative binding.
 
-Screenshot hotkeys can also carry their own task preset - after-capture actions and an upload destination for just that key - so different keys route captures differently.
+A screenshot hotkey can have its own task preset (after-capture actions and an upload destination), so different keys route captures differently.
 
 ## The fixed stop key
 
 > [!TIP]
-> `Ctrl+Esc` is a fixed emergency stop for recording. It cannot be reassigned, so you always have a reliable way to end a GIF or video capture.
+> `Ctrl+Esc` is the emergency stop for GIF and video recording. It cannot be reassigned, so it is always available.
 
 ## niri and other wlroots compositors
 
-On niri and other wlroots compositors there is no KGlobalAccel / GlobalShortcuts portal, so Unisic cannot register global shortcuts itself. Bind keys in your compositor config instead: a running Unisic instance picks the command up when a second invocation forwards it to the running process.
+niri and other wlroots compositors have no KGlobalAccel / GlobalShortcuts portal, so Unisic cannot register global shortcuts itself. Bind keys in your compositor config instead. A second invocation forwards the command to the running Unisic instance.
 
-Each capture entry point has a CLI flag you can spawn from a binding:
+Each capture entry point has a CLI flag to spawn from a binding:
 
 ```sh
 unisic --fullscreen | --region | --window | --gif | --measure

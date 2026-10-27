@@ -6,59 +6,57 @@ order: 3
 group: "Capturing & editing"
 ---
 
-This page covers Unisic's capture workflow: the three capture modes, drawing annotations on the frozen overlay before the shot is taken, copying text out of a region with OCR, and the capture options and backends involved.
-
 ## Capture modes
 
-Unisic offers three ways to grab pixels. Each is available from a hotkey or from the command line.
+Each of the three modes runs from a hotkey or from the command line.
 
 ### Full screen
 
-Captures everything at once, with all monitors stitched into a single image. Use this when you want the entire desktop in one shot regardless of how many displays you have.
+Captures all monitors, stitched into one image.
 
 ### Region
 
-Opens a frozen, per-monitor overlay so you can drag out exactly the rectangle you want. The selection shows live dimensions as you resize it, and because the overlay is frozen you can line up moving content without it shifting under you. Press `Enter` or double-click inside the selection to capture, or `Esc` to cancel.
+Opens a frozen overlay on each monitor. Drag out the rectangle to capture. The selection shows live dimensions while you resize it. Because the overlay is frozen, moving content does not shift while you line it up. Press `Enter` or double-click inside the selection to capture, or `Esc` to cancel.
 
-On Plasma, `W` fills the selection with the area of the window you were working in: Unisic asks KWin where that window is and selects exactly its rectangle, ready to nudge, resize or simply confirm. It selects the area, not the window, so anything drawn over that area is captured too. The same key works in the OCR, GIF and recording selectors. No other compositor tells an application where another window is, so the `W` hint does not appear outside KWin.
+On Plasma, `W` fills the selection with the rectangle of the window you were working in. Unisic asks KWin where that window is. You can then nudge, resize or confirm the selection. `W` selects the area, not the window, so anything drawn over that area is captured too. The same key works in the OCR, GIF and recording selectors. Other compositors do not tell an application where another window is, so the `W` hint appears only on KWin.
 
 ### Active window
 
-Captures the currently focused window on its own, without you having to trace its bounds by hand.
+Captures the focused window alone, with no need to trace its bounds.
 
 ## Annotate before the shot
 
-Unisic lets you draw on the frozen overlay *before* the capture is taken, so the marks are part of the shot rather than a separate editing pass. Nearly the whole editor tool set is available on the overlay - pen, line, arrow, shapes, callout, text, highlight, blur, pixelate, smart eraser, measure, and numbered steps. Anything you draw inside the selection is burnt into the final crop.
+Draw on the frozen overlay *before* the capture. The marks become part of the shot, with no separate editing pass. The overlay has nearly the whole editor tool set: pen, line, arrow, shapes, callout, text, highlight, blur, pixelate, smart eraser, measure and numbered steps. Anything drawn inside the selection is burnt into the final crop.
 
-As with a plain region capture, `Enter`, `Space`, or a double-click captures the annotated selection and `Esc` cancels. `Ctrl+drag` moves the selected region, `Ctrl+A` selects the whole screen, and `Ctrl+C` confirms and copies the result even when auto-copy is off. For the full tool set and post-capture editing, the editor opens afterwards - see [the editor](/docs/editor).
+As with a plain region capture, `Enter`, `Space` or a double-click captures the annotated selection, and `Esc` cancels. `Ctrl+drag` moves the selected region. `Ctrl+A` selects the whole screen. `Ctrl+C` confirms and copies the result, even with auto-copy off. The editor opens afterwards, with the full tool set and post-capture editing: see [the editor](/docs/editor).
 
 ## Copy text out of a region (OCR)
 
-`Meta+Shift+T` opens the same region selection, but instead of an image you get text: the region is OCR'd and the recognized text lands on your clipboard. Point it at a QR code or barcode and the decoded payload is copied instead.
+`Meta+Shift+T` opens the same region selection, but copies text instead of an image. Unisic runs OCR on the region and puts the recognized text on the clipboard. For a QR code or barcode, it copies the decoded payload instead.
 
-For picking individual words out of a finished capture - to copy, highlight, or redact them - see [the editor](/docs/editor).
+To copy, highlight or redact individual words in a finished capture, see [the editor](/docs/editor).
 
 ## Capture options
 
-- **Delay** - set a timer before the shot fires, useful for opening menus or hovering states that would otherwise close.
-- **Cursor** - optionally include the mouse cursor in the captured image.
-- **Do not disturb** - pauses desktop notifications while the capture runs, so they never land in the screenshot (KDE Plasma).
+- **Delay**: a timer before the shot, for menus or hover states that would otherwise close.
+- **Cursor**: optionally include the mouse cursor in the image.
+- **Do not disturb**: pauses desktop notifications during the capture, so they never land in the screenshot (KDE Plasma).
 
 ## How the pixels are captured
 
-Unisic grabs the screen through legitimate Wayland APIs only and picks the right path for your compositor automatically:
+Unisic captures the screen through legitimate Wayland APIs only. It picks the path for your compositor automatically:
 
-- **KDE Plasma** - the fully silent native KWin ScreenShot2 path.
-- **Other desktops** - the `xdg-desktop-portal` route, through your installed portal backend.
-- **wlroots compositors** - capture via wlr-screencopy using the packaged `grim`.
+- **KDE Plasma**: the silent native KWin ScreenShot2 path.
+- **Other desktops**: `xdg-desktop-portal`, through your installed portal backend.
+- **wlroots compositors**: wlr-screencopy, through the packaged `grim`.
 
-On first run in a KDE session, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications`, declaring `X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2` to authorize the silent KWin path (AppImage runs skip this). Without it, captures still work through the portal.
+On first run in a KDE session, Unisic installs `app.unisic.Unisic.desktop` into `~/.local/share/applications`. It declares `X-KDE-DBUS-Restricted-Interfaces=org.kde.KWin.ScreenShot2`, which authorizes the silent KWin path. AppImage runs skip this step. Without the file, captures still work through the portal.
 
-See [compositor support](/docs/compositors) for the details of each path and per-compositor notes.
+See [compositor support](/docs/compositors) for each path and per-compositor notes.
 
 ## Hotkeys and the command line
 
-The default capture hotkeys are:
+Default capture hotkeys:
 
 | Action | Shortcut |
 | --- | --- |
@@ -68,9 +66,9 @@ The default capture hotkeys are:
 | OCR region (copy text) | `Meta+Shift+T` |
 | Copy last capture | `Meta+Shift+C` |
 
-These are editable in Settings -> Hotkeys - see [hotkeys](/docs/hotkeys).
+Change them in Settings -> Hotkeys. See [hotkeys](/docs/hotkeys).
 
-You can also trigger a capture directly:
+Or trigger a capture from the command line:
 
 ```sh
 unisic --fullscreen
@@ -79,6 +77,6 @@ unisic --window
 unisic --measure   # on-screen measure overlay
 ```
 
-The capture flags accept modifiers: `--delay <seconds>` (0-60) waits before the shot, `--output <path>` saves to an explicit file (`-` streams the image to stdout), and `--format png|jpg|webp` picks the format for `--output`.
+The capture flags accept modifiers. `--delay <seconds>` (0-60) waits before the shot. `--output <path>` saves to a given file, and `-` streams the image to stdout. `--format png|jpg|webp` sets the format for `--output`.
 
-If Unisic is already running, a second invocation forwards the command to the running instance, which is how compositor-side keybinds drive captures.
+If Unisic is already running, a second invocation forwards the command to the running instance. Compositor-side keybinds drive captures this way.

@@ -6,50 +6,56 @@ order: 5
 group: "Capturing & editing"
 ---
 
-Unisic records your screen as an animated GIF or as MP4/WebM video, using the same region, full-screen, or window selection you use for screenshots. Recording is a separate feature from taking screenshots, with its own requirements and hotkeys.
+Recording uses the same region, full-screen and window selection as screenshots, but has its own requirements and hotkeys.
 
 ## Formats
 
-Unisic produces two kinds of recording:
+- **GIF**: encoded with a two-pass palette. The first pass builds an optimized color palette from the frames, the second encodes against it.
+- **MP4 / WebM**: video with optional **system audio** and **microphone** tracks, both off by default. It can instead record a **single application**, alone or mixed with the microphone.
 
-- **GIF** - encoded with a two-pass palette: the first pass analyzes the frames to build an optimized color palette, and the second pass encodes against it.
-- **MP4 / WebM** - standard video output, with optional **system audio** and **microphone** tracks (both off by default) - or the sound of a **single application**, alone or mixed with the microphone.
-
-An optional countdown delays the start of a recording.
+An optional countdown delays the start.
 
 ## How recording works
 
-Recordings run through a pipeline: the **ScreenCast portal** provides the stream, **PipeWire** carries it, and **ffmpeg** encodes the frames into the final GIF, MP4, or WebM file. Encoding is software by default, with a VAAPI / NVENC hardware option in the recording settings.
+The **ScreenCast portal** provides the stream, **PipeWire** carries it, and **ffmpeg** encodes the frames to GIF, MP4 or WebM. Encoding is software by default. The recording settings offer VAAPI / NVENC hardware encoding.
 
 ## What you can record
 
-You can record any of three areas:
+- a **region** you select
+- the **full screen**
+- a single **window**
 
-- a **region** you select,
-- the **full screen**, or
-- a single **window**.
+On Plasma, press `W` in the region selector to select the active window. Unisic asks KWin where that window is and selects exactly its rectangle. Nudge, resize or confirm it, for a recording, a screenshot or a text read.
 
-On Plasma the active window's area is one key away while you select: press `W` in the region selector and Unisic asks KWin where the window you were working in is, then selects exactly that rectangle - ready to nudge, resize or simply confirm, for a recording as much as for a screenshot or a text read. It selects the area rather than the window, so the frame stays where it started: move the window afterwards and it leaves the shot, and anything pulled over that area (a menu, a dialog) is recorded too. This needs KWin, because no other compositor tells an application where another window is; elsewhere the `W` hint does not appear at all.
+It selects the area, not the window, so the frame stays where it started. Move the window afterwards and it leaves the shot. Anything pulled over that area (a menu, a dialog) is recorded too. This needs KWin, because no other compositor tells an application where another window is. Elsewhere the `W` hint does not appear.
 
 ## Instant replay
 
-Instant replay records into a rolling buffer instead of a file: start it, forget it, and when something worth keeping happens press **Save replay** (or `Meta+Shift+I`) to write out the last stretch - 30 seconds by default, configurable on the Record page.
+Instant replay records into a rolling buffer instead of a file. Press **Save replay** (or `Meta+Shift+I`) to write out the last 30 seconds. Change the length on the Record page.
 
 ## Trimming a recording
 
-Finished recordings open in a trim window to cut the start and end off. You can trim from the History page or directly from the notification card a recording pops up.
+The trim window cuts the start and end off a finished recording. It does not open on its own: open it from the History page, the notification card a recording pops up, or the Edit page.
 
-In the trim window: `Space` plays and pauses, `I` and `O` mark the in and out points at the playhead, `Left`/`Right` scrub one second (`Shift` for 5), `Home`/`End` jump to the ends, and `Ctrl+W` closes the window. Trimming always writes a new file next to the original.
+Trim window keys:
+
+- `Space`: play and pause
+- `I` / `O`: mark the in and out points at the playhead
+- `Left` / `Right`: scrub one second (`Shift` for 5)
+- `Home` / `End`: jump to the start or end
+- `Ctrl+W`: close the window
+
+Trimming always writes a new file next to the original.
 
 ## Stopping a recording
 
-`Ctrl+Esc` is a fixed emergency stop. It always ends the current recording and, unlike the other recording shortcuts, cannot be rebound.
+`Ctrl+Esc` is a fixed emergency stop: it always ends the current recording. Unlike the other recording shortcuts, it cannot be rebound.
 
 ## Requirements
 
-Every Unisic package includes ffmpeg and the PipeWire command-line tools. On Wayland, recording uses the session's running PipeWire and ScreenCast portal services; on X11, it captures frames through XShm and uses the same packaged encoder. A source build without the PipeWire development library fails at configure time rather than disabling recording.
+Every Unisic package includes ffmpeg and the PipeWire command-line tools. On Wayland, recording uses the session's running PipeWire and ScreenCast portal services. On X11, it captures frames through XShm and uses the same packaged encoder. A source build without the PipeWire development library fails at configure time instead of disabling recording.
 
-See [Installation](/docs/installation) for the complete source-build package list.
+See [Installation](/docs/installation) for the full source-build package list.
 
 ## Hotkeys
 
@@ -60,10 +66,10 @@ See [Installation](/docs/installation) for the complete source-build package lis
 | Start/save instant replay | `Meta+Shift+I` |
 | Stop recording (fixed) | `Ctrl+Esc` |
 
-`Ctrl+Esc` is fixed and cannot be changed; the others are editable. You can also start a GIF recording from the command line:
+Start a GIF recording from the command line:
 
 ```sh
 unisic --gif
 ```
 
-For the full list of shortcuts and how to rebind them, see [Hotkeys](/docs/hotkeys). Output formats and file locations are managed with the rest of your settings - see [Configuration](/docs/configuration).
+See [Hotkeys](/docs/hotkeys) for all shortcuts and how to rebind them, and [Configuration](/docs/configuration) for output formats and file locations.

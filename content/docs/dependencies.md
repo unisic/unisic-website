@@ -6,7 +6,7 @@ order: 2
 group: "Getting started"
 ---
 
-Unisic has no optional dependencies and no reduced package variant. Native packages install every linked library, runtime helper and one desktop-specific portal backend as a hard dependency. The AppImage, portable archive and Flatpak carry their own helpers; the desktop session supplies PipeWire and its portal backend. A build missing one compile-time dependency stops at configure time instead of quietly removing the feature.
+Unisic has no optional dependencies and no reduced package variant. Native packages install every linked library, runtime helper and one desktop-specific portal backend as hard dependencies. The AppImage, portable archive and Flatpak carry their own helpers; the desktop session supplies PipeWire and its portal backend. A build missing a compile-time dependency stops at configure time instead of silently dropping the feature.
 
 Every package includes the same feature tools:
 
@@ -21,13 +21,11 @@ Every package includes the same feature tools:
 | `zip` | Diagnostics and ZIP export |
 | `grim` | Silent, multi-monitor-safe screenshots on niri and wlroots compositors |
 
-The app's **Settings → General → Diagnostics → Run system check** verifies this runtime set. A missing item means the install was modified or broken, not that an optional feature was omitted.
-
 ## OCR language packs
 
-OCR recognizes text only in languages whose Tesseract pack is installed. Install one pack per language you capture; combine several in **Settings → OCR** with `+` (for example `eng+pol`), or leave auto-language on to detect the script for you.
+OCR reads text only in languages whose Tesseract pack is installed. Install one pack per language. Combine several in **Settings → OCR** with `+` (for example `eng+pol`), or leave auto-language on to detect the script.
 
-The `osd` pack (installed in the commands above) is what auto-language uses to detect a capture's script. Keep it installed.
+Auto-language uses the `osd` pack to detect a capture's script. Keep it installed.
 
 | Distribution | English pack | Find the rest |
 | --- | --- | --- |
@@ -36,14 +34,14 @@ The `osd` pack (installed in the commands above) is what auto-language uses to d
 | Arch | `tesseract-data-eng` | `pacman -Ss tesseract-data` |
 | openSUSE | `tesseract-ocr-traineddata-english` | `zypper search tesseract-ocr-traineddata` |
 
-For example, to add English and Polish on Fedora:
+To add English and Polish on Fedora:
 
 ```sh
 sudo dnf install tesseract-langpack-eng tesseract-langpack-pol
 ```
 
-The same pattern applies on the other distributions - swap in the package name from the table and the language code you need.
+On other distributions, use the package name from the table with the language code you need.
 
 ## Verify
 
-After installing, open **Settings → General → Diagnostics → Run system check** in Unisic. Every packaged tool should show a tick. The **Copy diagnostics** button next to it copies a plain-text summary for a bug report.
+Open **Settings → General → Diagnostics → Run system check** in Unisic. Every packaged tool should show a tick. A missing one means the install was modified or broken, not that an optional feature was left out. **Copy diagnostics**, next to it, copies a plain-text summary for a bug report.
