@@ -11,7 +11,8 @@ group: "Reference"
 | What | Location |
 | --- | --- |
 | Settings and upload destinations | `~/.config/unisic/` |
-| Capture history | `~/.local/share/unisic/` |
+| Capture history | `~/.local/share/Unisic/unisic/` |
+| Screenshot statistics (`unisic.stats`, read by [unisic.app/stats](/stats/)) | `~/.local/share/Unisic/unisic/` |
 
 Custom [upload destinations](/docs/upload-destinations) (the **Servers** page) are stored with the settings in `~/.config/unisic/`.
 

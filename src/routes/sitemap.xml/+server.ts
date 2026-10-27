@@ -11,10 +11,11 @@ export const GET: RequestHandler = () => {
 		...LOCALES.map((l) => `<xhtml:link rel="alternate" hreflang="${l.code}" href="${SITE_URL}${home(l.code)}"/>`),
 		`<xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}/"/>`
 	].join('');
-	// The docs are English only, so they carry no alternates.
+	// The docs and the stats page are English only, so they carry no alternates.
 	const urls = [
 		...LOCALES.map((l) => `<url><loc>${SITE_URL}${home(l.code)}</loc>${alternates}</url>`),
-		...['', ...getAllDocs().map((d) => `${d.slug}/`)].map((path) => `<url><loc>${SITE_URL}/docs/${path}</loc></url>`)
+		...['', ...getAllDocs().map((d) => `${d.slug}/`)].map((path) => `<url><loc>${SITE_URL}/docs/${path}</loc></url>`),
+		`<url><loc>${SITE_URL}/stats/</loc></url>`
 	];
 	const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
