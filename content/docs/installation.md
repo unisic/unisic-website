@@ -196,7 +196,7 @@ What works: screenshots (full screen, region, active window), the overlay, the e
 
 Building needs **Qt 6.5+**, CMake and Ninja.
 
-Each block is two commands. The first installs the build libraries: every one is required, and a missing one stops `cmake -B build` at configure time with the package name in the error. The second installs what the built binary calls at run time: the CLI tools, the portal and the OCR language data. The build does not check those, but they are the same set the native packages depend on, so run both. Out of the box OCR reads with every installed langpack, so `eng` + `osd` is enough for it; `pol` is listed because the manual OCR language field defaults to `pol+eng` and every Unisic package ships it. Add the langpack for any further language you want OCR to read.
+Each block is two commands. The first installs the build libraries: every one is required, and a missing one stops `cmake -B build` at configure time with the package name in the error. The second installs what the built binary calls at run time: the CLI tools, the portal and the OCR language data. The build does not check those, but they are the same set the native packages depend on, so run both. Out of the box OCR reads with every installed langpack, so `eng` + `osd` is enough for it; `pol` is listed because every Unisic package ships Polish OCR next to English; leave it out if you do not need it, and add the langpack for any further language you want OCR to read.
 
 Set `PORTAL_BACKEND` to the package for your desktop (`-kde`, `-gnome` or `-wlr`) before running the matching block.
 
