@@ -196,20 +196,25 @@ What works: screenshots (full screen, region, active window), the overlay, the e
 
 Building needs **Qt 6.5+**, CMake and Ninja.
 
+Each block is two commands. The first installs the build libraries: every one is required, and a missing one stops `cmake -B build` at configure time with the package name in the error. The second installs what the built binary calls at run time: the CLI tools, the portal and the OCR language data. The build does not check those, but they are the same set the native packages depend on, so run both. Out of the box OCR reads with every installed langpack, so `eng` + `osd` is enough for it; `pol` is listed because the manual OCR language field defaults to `pol+eng` and every Unisic package ships it. Add the langpack for any further language you want OCR to read.
+
 Set `PORTAL_BACKEND` to the package for your desktop (`-kde`, `-gnome` or `-wlr`) before running the matching block.
 
 ### Fedora
 
 ```sh
 PORTAL_BACKEND=xdg-desktop-portal-kde
-sudo dnf install -y cmake ninja-build gcc-c++ \
-    qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qtsvg-devel qt6-qtwayland \
+# build
+sudo dnf install -y cmake ninja-build gcc-c++ pkgconf-pkg-config \
+    qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qtsvg-devel \
     qt6-qtwayland-devel qt6-qtbase-private-devel qt6-qttools-devel \
     plasma-wayland-protocols-devel pipewire-devel tesseract-devel leptonica-devel \
     zxing-cpp-devel layer-shell-qt-devel wayland-devel kf6-kguiaddons-devel \
-    libinput-devel systemd-devel libX11-devel libXext-devel libXfixes-devel libxcb-devel \
-    ffmpeg-free curl grim pipewire-utils zip wl-clipboard xdg-desktop-portal \
-    "$PORTAL_BACKEND" tesseract-langpack-eng tesseract-langpack-pol tesseract-osd
+    libinput-devel systemd-devel libX11-devel libXext-devel libXfixes-devel libxcb-devel
+# run time
+sudo dnf install -y qt6-qtwayland ffmpeg-free curl grim pipewire-utils zip \
+    wl-clipboard xdg-desktop-portal "$PORTAL_BACKEND" \
+    tesseract-langpack-eng tesseract-langpack-pol tesseract-osd
 ```
 
 ### Debian / Ubuntu
@@ -218,26 +223,32 @@ Needs a release with Qt 6.5+ (trixie / 24.10+):
 
 ```sh
 PORTAL_BACKEND=xdg-desktop-portal-kde
+# build
 sudo apt install cmake ninja-build g++ pkg-config \
-    qt6-base-dev qt6-declarative-dev qt6-svg-dev qt6-wayland \
+    qt6-base-dev qt6-declarative-dev qt6-svg-dev \
     qt6-wayland-dev qt6-base-private-dev qt6-tools-dev qt6-l10n-tools \
     plasma-wayland-protocols libpipewire-0.3-dev libtesseract-dev libleptonica-dev \
     libzxing-dev liblayershellqtinterface-dev libwayland-dev libkf6guiaddons-dev \
-    libinput-dev libudev-dev libx11-dev libxext-dev libxfixes-dev libxcb1-dev \
-    ffmpeg curl grim pipewire-bin zip wl-clipboard xdg-desktop-portal \
-    "$PORTAL_BACKEND" tesseract-ocr-eng tesseract-ocr-pol tesseract-ocr-osd
+    libinput-dev libudev-dev libx11-dev libxext-dev libxfixes-dev libxcb1-dev
+# run time
+sudo apt install qt6-wayland ffmpeg curl grim pipewire-bin zip \
+    wl-clipboard xdg-desktop-portal "$PORTAL_BACKEND" \
+    tesseract-ocr-eng tesseract-ocr-pol tesseract-ocr-osd
 ```
 
 ### Arch
 
 ```sh
 PORTAL_BACKEND=xdg-desktop-portal-kde
-sudo pacman -S --needed base-devel qt6-base qt6-declarative qt6-svg qt6-wayland \
-    qt6-tools plasma-wayland-protocols pipewire tesseract leptonica zxing-cpp \
-    layer-shell-qt wayland kguiaddons libinput libx11 libxext libxfixes libxcb \
-    ffmpeg curl grim pipewire-audio zip wl-clipboard xdg-desktop-portal \
-    "$PORTAL_BACKEND" tesseract-data-eng tesseract-data-pol tesseract-data-osd \
-    cmake ninja pkgconf
+# build
+sudo pacman -S --needed base-devel cmake ninja pkgconf \
+    qt6-base qt6-declarative qt6-svg qt6-wayland qt6-tools \
+    plasma-wayland-protocols pipewire tesseract leptonica zxing-cpp \
+    layer-shell-qt wayland kguiaddons libinput libx11 libxext libxfixes libxcb
+# run time
+sudo pacman -S --needed pipewire-audio ffmpeg curl grim zip \
+    wl-clipboard xdg-desktop-portal "$PORTAL_BACKEND" \
+    tesseract-data-eng tesseract-data-pol tesseract-data-osd
 cd packaging/arch && makepkg -si   # or use the common build below
 ```
 
