@@ -8,6 +8,8 @@ group: "Getting started"
 
 Unisic has no optional dependencies and no reduced package variant. Native packages install every linked library, runtime helper and one desktop-specific portal backend as hard dependencies. The AppImage, portable archive and Flatpak carry their own helpers; the desktop session supplies PipeWire and its portal backend. A build missing a compile-time dependency stops at configure time instead of silently dropping the feature.
 
+The one exception is background removal in the editor. It needs ONNX Runtime and a 224 MB model, which no package installs: the Flatpak carries the runtime, the other packages only suggest it (`onnxruntime` on Fedora, `onnxruntime-cpu` on Arch, `libonnxruntime1.21` or `libonnxruntime1.23` on Debian and Ubuntu), and **Settings → Editor → Background removal** downloads the model, plus the runtime on x86_64 when the system has none, into your user folder without root. See [Editor](/docs/editor#remove-the-background).
+
 Every package includes the same feature tools:
 
 | Tool | Used for |

@@ -52,6 +52,12 @@ The **More** menu also turns the whole picture: **Rotate left**, **Rotate right*
 
 The annotations you placed turn with the picture and become part of it. Each of these is a single undo step, and undo brings the shapes back as shapes you can edit.
 
+## Remove the background
+
+**Remove background** in the **More** menu cuts out the main subject and makes everything else transparent. It runs the BiRefNet lite model on your computer, so nothing is uploaded, and it is a single undo step.
+
+It needs a one-time download in **Settings → Editor → Background removal**: the 224 MB model, plus the 11 MB ONNX Runtime when your system has none (the Flatpak carries its own). Nothing needs root. One run takes about 10 seconds and up to 7 GB of memory; when less is free, Unisic says so and does not start. **Delete downloaded files** takes the downloads off the disk again. It is Linux only: the Windows preview does not offer it.
+
 ## Print
 
 **Print…** in the **More** menu (`Ctrl+P`), or on a History tile, opens the system print dialog with the picture and everything drawn on it. The picture keeps its on-screen size and shrinks to fit the page when it is larger; a picture wider than tall starts on a landscape page.
