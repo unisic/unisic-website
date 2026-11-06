@@ -17,7 +17,7 @@ Every package includes the same feature tools:
 | `wl-copy` | Keeping image clipboard offers alive on Wayland |
 | Tesseract + `eng` / `pol` / `osd` data | OCR and script detection |
 | zxing-cpp | QR and barcode payloads inside OCR |
-| `curl` | FTP, FTPS, SFTP and SCP upload destinations |
+| `curl` | FTP, FTPS, SFTP, SCP and S3 upload destinations (S3 signing needs curl 7.75 or newer) |
 | `zip` | Diagnostics and ZIP export |
 | `grim` | Silent, multi-monitor-safe screenshots on niri and wlroots compositors |
 

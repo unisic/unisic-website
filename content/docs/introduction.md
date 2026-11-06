@@ -22,7 +22,7 @@ Draw on the frozen capture overlay with nearly the whole editor tool set: pen, a
 
 ### Edit afterwards
 
-An optional editor opens automatically after capture. Its tools include highlight, pixelate, smart eraser, magnifier, callout, measure, numbered steps and crop. It supports zoom (`Ctrl+scroll`), undo and redo, and composites everything in image-pixel space.
+An optional editor opens automatically after capture. Its tools include highlight, pixelate, smart eraser, magnifier, spotlight, callout, measure, numbered steps, crop, cut out and stickers, and the whole picture rotates, flips, resizes and prints. It supports zoom (`Ctrl+scroll`), undo and redo, and composites everything in image-pixel space.
 
 ### Extract text and codes
 
@@ -38,7 +38,7 @@ The Edit page opens images and recordings that did not come from a capture. Imag
 
 ### Upload
 
-Send the result to a custom HTTP destination, an imported `.sxcu` (ShareX) uploader, FTP/SFTP, or a built-in host (catbox.moe, or expiring hosts such as uguu.se). The link is copied to your clipboard automatically.
+Send the result to a custom HTTP destination, an imported `.sxcu` (ShareX) uploader, FTP/SFTP, an Amazon S3 or S3-compatible bucket (Cloudflare R2, MinIO and others), or a built-in host (catbox.moe, or expiring hosts such as uguu.se). The link is copied to your clipboard automatically. Besides captures, the Edit page uploads any file from disk or what you copied, and a watched folder (Settings > Capture > Upload from a folder) uploads every new file that lands in it. An opt-in setting shortens the link with is.gd or TinyURL before it is copied. Another sends the local file to the trash once it has uploaded on its own, for when the link is all you keep.
 
 ### History
 
