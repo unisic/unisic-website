@@ -34,7 +34,8 @@ export default {
 			releases: '版本发布',
 			bug: '报告问题',
 			docs: '文档',
-			kofi: '在 Ko-fi 上赞助'
+			kofi: '在 Ko-fi 上赞助',
+			coffee: '请我们喝杯咖啡'
 		}
 	},
 
