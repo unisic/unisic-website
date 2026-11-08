@@ -46,6 +46,10 @@ The **More** menu reads text out of the capture:
 - **Copy all text**: OCR the whole image and copy all recognized text.
 - **Select text**: recognized words become selectable regions. Select some, then copy them, make the highlight permanent, or **redact** them. Redact paints an opaque black bar over the words, never a blur, which can be recovered.
 
+## Remove background
+
+**Remove background** in the **More** menu cuts the subject out and makes everything else transparent. It runs on your computer and nothing is uploaded. Soft edges such as hair keep the subject's own colour. One run takes a few seconds and about 2 GB of memory. The first use needs a one-time download in **Settings → Editor → Background removal** (see [Dependencies](/docs/dependencies#background-removal)). Undo brings the background back.
+
 ## Rotate, flip and resize
 
 The **More** menu also turns the whole picture: **Rotate left**, **Rotate right**, **Flip horizontally**, **Flip vertically** and **Resize**. Resize takes a width and a height in pixels and keeps them in proportion unless you switch that off, up to 16384 px a side and 64 megapixels in total.

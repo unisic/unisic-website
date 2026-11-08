@@ -6,7 +6,7 @@ order: 2
 group: "Getting started"
 ---
 
-Unisic has no optional dependencies and no reduced package variant. Native packages install every linked library, runtime helper and one desktop-specific portal backend as hard dependencies. The AppImage, portable archive and Flatpak carry their own helpers; the desktop session supplies PipeWire and its portal backend. A build missing a compile-time dependency stops at configure time instead of silently dropping the feature.
+Unisic has no optional dependencies and no reduced package variant, with one exception: [background removal](#background-removal). Native packages install every linked library, runtime helper and one desktop-specific portal backend as hard dependencies. The AppImage, portable archive and Flatpak carry their own helpers; the desktop session supplies PipeWire and its portal backend. A build missing a compile-time dependency stops at configure time instead of silently dropping the feature.
 
 Every package includes the same feature tools:
 
@@ -41,6 +41,12 @@ sudo dnf install tesseract-langpack-eng tesseract-langpack-pol
 ```
 
 On other distributions, use the package name from the table with the language code you need.
+
+## Background removal
+
+**Remove background** in the editor needs ONNX Runtime 1.25 or newer and the BiRefNet lite model (181 MB). No package installs them for you. Download both once in **Settings → Editor → Background removal**, into your own data folder, without root. The download is checked against a pinned SHA-256 before it is kept.
+
+The Flatpak bundles the runtime, so it downloads only the model. Fedora and Arch packages suggest the system `onnxruntime` (`onnxruntime-cpu` on Arch), and Unisic uses it when it is new enough. Elsewhere, Settings downloads the runtime on x86_64 too. Not offered on Windows.
 
 ## Verify
 
