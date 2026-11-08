@@ -34,8 +34,7 @@ export default {
 			releases: 'Wydania',
 			bug: 'Zgłoś błąd',
 			docs: 'Dokumentacja',
-			kofi: 'Wesprzyj na Ko-fi',
-			coffee: 'Postaw nam kawę'
+			kofi: 'Wesprzyj na Ko-fi'
 		}
 	},
 

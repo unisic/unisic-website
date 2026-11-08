@@ -28,8 +28,7 @@
 			title: words.community,
 			links: [
 				{ href: 'https://discord.gg/U2Eyw6xQBz', text: 'Discord' },
-				{ href: 'https://ko-fi.com/deandark', text: words.kofi },
-				{ href: 'https://buymeacoffee.com/unisic', text: words.coffee }
+				{ href: 'https://ko-fi.com/unisic', text: words.kofi }
 			]
 		}
 	]);

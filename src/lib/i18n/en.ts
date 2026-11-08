@@ -39,8 +39,7 @@ export const en = {
 			releases: 'Releases',
 			bug: 'Report a bug',
 			docs: 'Documentation',
-			kofi: 'Support on Ko-fi',
-			coffee: 'Buy us a coffee'
+			kofi: 'Support on Ko-fi'
 		}
 	},
 
