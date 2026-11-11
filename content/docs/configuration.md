@@ -57,11 +57,10 @@ The capture flags trigger a capture directly. The settings flags read or write y
 
 ```sh
 unisic --fullscreen | --region | --window | --gif | --measure
-unisic --screen <name>
 unisic --export-settings <file> | --import-settings <file>
 ```
 
-`--screen <name>` captures one monitor by its output name (for example `DP-2`), wherever the pointer is; a name that matches no monitor lists the connected ones. The `--fullscreen`, `--region`, `--window`, `--screen` and `--measure` flags take modifiers; `--gif` does not. The modifiers are `--delay <seconds>` (0-60), `--output <path>` (`-` for stdout) and `--format png|jpg|webp`. `--tray-only` starts the app in the tray without raising the main window, for autostart entries.
+The `--fullscreen`, `--region`, `--window` and `--measure` flags take modifiers; `--gif` does not. The modifiers are `--delay <seconds>` (0-60), `--output <path>` (`-` for stdout) and `--format png|jpg|webp`. `--tray-only` starts the app in the tray without raising the main window, for autostart entries.
 
 Running `unisic` with no arguments starts it in the background with the tray icon and main window. A second invocation does not start another copy. It forwards the command to the running instance. Compositor keybinds rely on this: the keybind runs `unisic --region` (or another flag) and the running instance carries it out. See [Compositors](/docs/compositors) for binding these commands in compositors without a global-shortcuts portal.
 
