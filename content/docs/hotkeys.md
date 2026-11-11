@@ -46,6 +46,7 @@ The main window has its own shortcuts:
 | --- | --- |
 | Show / hide the shortcut list | `Ctrl+/` |
 | Jump to a page | `Ctrl+1` ... `Ctrl+6` |
+| Search actions, settings and captures | `Ctrl+K` |
 | Open Settings | `Ctrl+,` |
 | Hide the window to the tray | `Ctrl+W` |
 | Quit Unisic | `Ctrl+Q` |

@@ -66,6 +66,8 @@ Unisic collects nothing: no telemetry, no crash reporting, no analytics, no acco
 
 Unisic is free software under the **GNU GPL v3**. You may use, study, modify and redistribute it, including commercially. Any distributed derivative must also be released under GPL v3 with full source.
 
+The editor's sticker art is [Twemoji](https://github.com/jdecked/twemoji) by Twitter and the Twemoji contributors, under the CC BY 4.0 license, and the stickers' names and groups come from Unicode's emoji data and CLDR, under the Unicode License v3; both licenses ship with Unisic.
+
 ## Development
 
 Unisic is developed with agentic AI assistance. Those agents follow the contributor guide in [`AGENTS.md`](https://github.com/unisic/unisic/blob/main/AGENTS.md). The maintainer reads and reviews every generated change line by line before it lands; nothing merges unread. If something slipped through, please [file an issue](https://github.com/unisic/unisic/issues).
