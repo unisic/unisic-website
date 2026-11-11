@@ -28,6 +28,8 @@ Ready to use: catbox.moe (the default), buzzheavier.com, and the expiring hosts 
 
 Two more need your own credential before they upload. Imgur takes a Client-ID from an application you register. vgy.me takes the user key from your vgy.me account; paste it into the destination's settings.
 
+GitHub Pages is the third kind of built-in: a repository of your own that publishes a site, reached through your own domain if you have one. Pick "GitHub Pages" as the server's Type and fill in the repository (owner/name), the branch Pages publishes from, an optional folder, a personal access token that can write the repository's contents (a fine-grained token with Contents: Read and write on that repository), and the public address when the repository sits behind a custom domain (empty means the github.io address). Each upload is a commit, and the link is that address plus the file name, for example `https://cdn.example.com/2026-11-01_12-30-00.png`. Pages publishes a new commit within a minute or so, so a link copied right after the upload can show a 404 at first.
+
 ## Link auto-copied
 
 After a successful upload, Unisic copies the link to the clipboard.
