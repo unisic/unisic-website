@@ -1,6 +1,6 @@
 // The release every download link on the site points at. Bump both on release day.
-export const VERSION = '0.8.8';
-export const RELEASED = '2026-10-19';
+export const VERSION = '0.8.9';
+export const RELEASED = '2026-11-05';
 
 const DOWNLOAD = `https://github.com/unisic/unisic/releases/download/v${VERSION}`;
 
