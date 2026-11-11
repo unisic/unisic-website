@@ -1,4 +1,4 @@
-// The release every download link on the site points at. Bump both on release day.
+// The release every download link on the site points at. .github/workflows/follow-release.yml bumps both.
 export const VERSION = '0.8.9';
 export const RELEASED = '2026-11-05';
 

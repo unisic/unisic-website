@@ -1,0 +1,52 @@
+# Keeps the download links on the newest Unisic release. src/lib/release.ts
+# holds the version, and the push this makes is what redeploys unisic.app.
+name: Follow the Unisic release
+
+on:
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: follow-release
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Point release.ts at the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          json="$(gh api repos/unisic/unisic/releases/latest)"
+          version="$(jq -r '.tag_name | ltrimstr("v")' <<<"$json")"
+          released="$(jq -r '.published_at[:10]' <<<"$json")"
+          if [[ ! $version =~ ^[0-9]+(\.[0-9]+)+$ || ! $released =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+            echo "::error::Unexpected latest release: '$version' published '$released'"
+            exit 1
+          fi
+
+          # release.yml attaches the installer after publishing, and a failed Windows build leaves it off.
+          setup="unisic-${version}-windows-x64-experimental-setup.exe"
+          if ! jq -e --arg n "$setup" 'any(.assets[]; .name == $n)' <<<"$json" >/dev/null; then
+            echo "v$version has no $setup yet, the site stays where it is"
+            exit 0
+          fi
+
+          sed -i -E "s/^(export const VERSION = ')[^']*'/\1$version'/; s/^(export const RELEASED = ')[^']*'/\1$released'/" src/lib/release.ts
+          if ! grep -qx "export const VERSION = '$version';" src/lib/release.ts; then
+            echo "::error::src/lib/release.ts no longer has the VERSION line this workflow rewrites"
+            exit 1
+          fi
+          if git diff --quiet; then
+            echo "Already on v$version"
+            exit 0
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -qam "chore(release): point downloads at v$version"
+          git push
