@@ -12,7 +12,7 @@ To annotate on the frozen overlay before the shot, see [Capture](/docs/capture).
 
 The editor opens automatically after a [capture](/docs/capture). You can turn this off.
 
-The **Edit** page in the main window (`Ctrl+4`) opens any image in the editor, whatever its source. Videos and GIFs open in the trim window.
+The **Edit** page in the main window (`Ctrl+3`) opens any image in the editor, whatever its source. Videos and GIFs open in the trim window.
 
 `Ctrl+W` closes the editor (and the trim window).
 
